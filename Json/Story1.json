@@ -1,0 +1,12 @@
+// Story1.json
+{
+    "name": "Alice",
+    "imagePath": "alice",
+    "backgroundPath": "forest",
+    "bgmPath": "forest",
+    "dialogue": [
+        "Hello there!",
+        "How are you doing?",
+        "That's great to hear!"
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "items": [
+        {
+            "key": "sound_volume",
+            "value": {
+                "English": "Sound Volume:",
+                "Japanese": "音量：",
+                "Chinese": "音量："
+            }
+        },
+        {
+            "key": "bgm_volume",
+            "value": {
+                "English": "BGM Volume:",
+                "Japanese": "BGM音量：",
+                "Chinese": "背景音乐音量："
+            }
+        },
+        {
+            "key": "english",
+            "value": {
+                "English": "English",
+                "Japanese": "英語",
+                "Chinese": "英语"
+            }
+        },
+        {
+            "key": "japanese",
+            "value": {
+                "English": "Japanese",
+                "Japanese": "日本語",
+                "Chinese": "日语"
+            }
+        },
+        {
+            "key": "chinese",
+            "value": {
+                "English": "Chinese",
+                "Japanese": "中国語",
+                "Chinese": "中文"
+            }
+        }
+    ]
+}
