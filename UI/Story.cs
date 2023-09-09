@@ -1,7 +1,3 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -12,9 +8,9 @@ using System.IO;
 public class StoryController : MonoBehaviour
 {
     public Image backgroundImage;
-    public Image character1Image;
+    public Image storyImage;
     public Image character2Image;
-    public Text character1NameText;
+    public Text storyName;
     public Text character2NameText;
     public Text dialogueText;
     public GameObject dialoguePanel;
@@ -25,46 +21,42 @@ public class StoryController : MonoBehaviour
 
     void Start()
     {
-        LoadDialogue("character1", "character2");
+        //LoadDialogue("Story1");
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            DisplayNextSentence();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    DisplayNextSentence();
+        //}
     }
 
-    public void LoadDialogue(string character1Name, string character2Name)
+    public void LoadDialogue(string jsonFile)
     {
-        string character1FilePath = "Assets/Resources/" + character1Name + ".json";
-        string character1JsonString = File.ReadAllText(character1FilePath);
-        CharacterData character1Data = JsonUtility.FromJson<CharacterData>(character1JsonString);
-        character1Image.sprite = Resources.Load<Sprite>("Characters/" + character1Data.imagePath);
-        character1NameText.text = character1Data.name;
+        string storyFilePath = "Assets/Json/" + jsonFile + ".json";
+        string storyJson = File.ReadAllText(storyFilePath);
+        print(storyJson);
+        StoryData storyData = JsonUtility.FromJson<StoryData>(storyJson);
+        storyImage.sprite = Resources.Load<Sprite>("Characters/" + storyData.imagePath);
+        storyName.text = storyData.name;
 
-        string character2FilePath = "Assets/Resources/" + character2Name + ".json";
-        string character2JsonString = File.ReadAllText(character2FilePath);
-        CharacterData character2Data = JsonUtility.FromJson<CharacterData>(character2JsonString);
-        character2Image.sprite = Resources.Load<Sprite>("Characters/" + character2Data.imagePath);
-        character2NameText.text = character2Data.name;
 
-        backgroundImage.sprite = Resources.Load<Sprite>("Backgrounds/" + character1Data.backgroundPath);
+        backgroundImage.sprite = Resources.Load<Sprite>("Backgrounds/" + storyData.backgroundPath);
 
         if (bgmAudioSource.clip != null)
         {
             bgmAudioSource.Stop();
         }
-        if (character1Data.bgmPath != "")
+        if (storyData.bgmPath != "")
         {
-            AudioClip bgmClip = Resources.Load<AudioClip>("BGM/" + character1Data.bgmPath);
+            AudioClip bgmClip = Resources.Load<AudioClip>("BGM/" + storyData.bgmPath);
             bgmAudioSource.clip = bgmClip;
             bgmAudioSource.Play();
         }
 
         sentences.Clear();
-        foreach (string sentence in character1Data.dialogue)
+        foreach (string sentence in storyData.dialogue)
         {
             sentences.Enqueue(sentence);
         }
@@ -106,7 +98,7 @@ public class StoryController : MonoBehaviour
     }
 
     [System.Serializable]
-    public class CharacterData
+    public class StoryData
     {
         public string name;
         public string imagePath;

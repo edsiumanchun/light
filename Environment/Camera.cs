@@ -4,16 +4,39 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target; // The object the camera should follow
-    public Vector3 offset; // The offset from the target position
-    public float smoothTime = 0.3f; // The smoothing time for the camera movement
+    private float cameraHalfWidth;
+    private float backgroundLeftEdge;
+    private float backgroundRightEdge;
 
-    private Vector3 velocity = Vector3.zero;
-
-    void LateUpdate()
+    private void Start()
     {
-        // Smoothly move the camera towards the target position
-        Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        // Calculate the camera's half width based on the screen aspect ratio
+        float cameraHeight = Camera.main.orthographicSize * 2f;
+        cameraHalfWidth = cameraHeight * Camera.main.aspect * 0.5f;
+
+        // Assign the left and right edges of the background
+        AssignBackgroundEdges(DataHolder.background);
+    }
+
+    private void AssignBackgroundEdges(GameObject backgroundObject)
+    {
+        // Calculate the left and right edges of the background based on its position and scale
+        backgroundLeftEdge = backgroundObject.transform.position.x - backgroundObject.transform.localScale.x * 0.5f;
+        backgroundRightEdge = backgroundObject.transform.position.x + backgroundObject.transform.localScale.x * 0.5f;
+    }
+
+    private void LateUpdate()
+    {
+        if (DataHolder.player != null)
+        {
+            // Calculate the desired X position for the camera
+            float desiredX = DataHolder.player.transform.position.x;
+
+            // Apply the X position restrictions based on the background edges
+            float clampedX = Mathf.Clamp(desiredX, backgroundLeftEdge + cameraHalfWidth, backgroundRightEdge - cameraHalfWidth);
+
+            // Set the camera's position with the clamped X coordinate
+            transform.position = new Vector3(desiredX, 0, transform.position.z);
+        }
     }
 }
