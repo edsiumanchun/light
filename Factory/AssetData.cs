@@ -14,49 +14,87 @@ public class AssetsData
 [System.Serializable]
 public class AssetData
 {
-    public string name; // Name of the asset
-    public string path; // Path to the asset
     public List<Vector2> positions; // List of positions for the asset
+    public string name; // Name of the asset
+    public List<string> paths; // Path to the asset
+    public List<int> gridArray0;
+    public List<int> gridArray1;
+    public List<int> gridArray2;
+    public List<int> gridArray3;
 
     [System.NonSerialized]
-    public object asset; // The loaded asset
+    public List<object> tempAssets; // The loaded asset
+    public GameObject CreateObject(int index){
+        return CreateObjectWithAssetIndex(index, 0);
+    }
 
-    public List<GameObject> CreateObjects(bool includeCollider, GameObject parent)
+    public GameObject CreateObjectWithAssetIndex(int index, int assetIndex){
+        GameObject newObject = new GameObject(name + index.ToString());
+        SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = tempAssets[assetIndex] as Sprite;
+        newObject.AddComponent<BoxCollider2D>();
+        newObject.transform.rotation = Quaternion.identity;
+        return newObject;
+        // if(parent != null) {
+        //     newObject.transform.SetParent(parent.transform);   
+        // }
+    }
+
+    public void CreatePlates()
     {
-        List<GameObject> objects = new List<GameObject>();
+        SpriteRenderer backgroundSprite = DataHolder.background.GetComponent<SpriteRenderer>();
+        int numRows = 4;
+        int numColumns = 10;
+        float cellHeight = backgroundSprite.bounds.size.y / numRows;
+        float cellWidth = backgroundSprite.bounds.size.x / numColumns;
+
+        Vector2 gridStartPosition = backgroundSprite.bounds.center - new Vector3(backgroundSprite.bounds.size.x / 2f, -backgroundSprite.bounds.size.y / 2f);
+
+        List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3};
+
+        for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
+        {
+            List<int> gridArray = gridArrays[gridIndex];
+
+            for (int column = 0; column < gridArray.Count; column++)
+            {
+                int cellValue = gridArray[column];
+
+                if (cellValue != 0)
+                {
+
+                    if (cellValue == 1 || cellValue == 3)
+                    {
+                        GameObject newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, 0);
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 1f), gridStartPosition.y - cellHeight * (gridIndex + 0.5f), -3);
+                    }
+
+                    if (cellValue == 2 || cellValue == 3)
+                    {
+                        GameObject newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, 1);
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f), gridStartPosition.y - cellHeight * (gridIndex + 1f), -3.3f);
+                    }
+                }
+            }
+        }
+    }
+
+    public void CreateObjects() {
 
         int i = 0;
+        if(name == "plate"){
+            CreatePlates();
+            return;
+        }
         foreach (Vector2 position in positions)
         {
-            // Create a new empty GameObject
-            GameObject newObject = new GameObject(name);
-
-            // Add a SpriteRenderer component and set the sprite
-            SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-
-            // Use the loaded asset as the sprite
-            spriteRenderer.sprite = asset as Sprite;
-
-            // Add a collider if includeCollider is true
-            if (includeCollider)
-            {
-                newObject.AddComponent<BoxCollider2D>();
-            }
-
-            else
-            {
-                newObject.transform.rotation = Quaternion.identity;
-            }
-            // Set the parent of the GameObject (optional)
-            if(parent != null) {
-                newObject.transform.SetParent(parent.transform);   
-            }
-            objects.Add(newObject);
-
+            GameObject newObject = CreateObject(i);
+            SpriteRenderer spriteRenderer = newObject.GetComponent<SpriteRenderer>();
             // position
             newObject.transform.position = new Vector3(position.x, position.y, name == "background" ? 0 : -1);
             if (name == "background") {
                 DataHolder.background = newObject;
+                Camera.main.GetComponent<CameraController>().AssignBackgroundEdges();
             } else if (name == "player")
             {
                 DataHolder.player = newObject;
@@ -81,47 +119,45 @@ public class AssetData
                     DataHolder.doors = new List<GameObject>();
                     float doorOffsetY = 0f;
                     float doorOffsetX = 0f;
-                    if (position == new Vector2(1, -1) || position == new Vector2(-1, -1))
-                    {
-                        doorOffsetY = -1 * spriteRenderer.sprite.bounds.size.y / 2f;
-                    } else if (position == new Vector2(1, 1) || position == new Vector2(-1, 1)){
-                        doorOffsetY = spriteRenderer.sprite.bounds.size.y / 2f;
+                    if (position == new Vector2(1, -1) || position == new Vector2(-1, -1) || position == new Vector2(1, 1) || position == new Vector2(-1, 1)){
+                        doorOffsetY = -1 * spriteRenderer.sprite.bounds.size.y / 2 + -1 * spriteRenderer.sprite.bounds.size.x;
                     }
                     if (position == new Vector2(0, 1) || position == new Vector2(0, -1)) { 
                         newObject.transform.Rotate(0f, 0f, 90f);
-                        doorOffsetY += spriteRenderer.sprite.bounds.size.x / 2f * position.y;
+                        doorOffsetY += -1 * spriteRenderer.sprite.bounds.size.x / 2f ;
                     } else {
-                        doorOffsetX = -1 * spriteRenderer.sprite.bounds.size.x / 2f * position.x;
+                        doorOffsetX = -1 * spriteRenderer.sprite.bounds.size.x * position.x / 2f;
                     }
                     // Set the position
-                    newObject.transform.position = new Vector3(screenWidth / 2f * position.x + doorOffsetX, (screenHeight / 2f + doorOffsetY) * position.y, -3);
+                    newObject.transform.position = new Vector3(screenWidth / 2f * position.x + doorOffsetX, (screenHeight / 2f + doorOffsetY) * position.y, -3.8f);
                     DataHolder.doors.Add(newObject);
                 }
                 else
                 {
                     SpriteRenderer doorSpriteRenderer = DataHolder.doors[0].GetComponent<SpriteRenderer>();
                     float wallThickness = doorSpriteRenderer.bounds.size.x;
-                    float offset = spriteRenderer.size.y / 2　+ wallThickness / 2f;
+                    float offset = i % 2 == 0 ? spriteRenderer.size.y / 2　: spriteRenderer.size.x / 2;
+                    offset -= wallThickness ;
                     switch (i)
                     {
                         case 3:
                             // Create a hole at the left bottom with the default size
-                            newObject.transform.position = new Vector3(-screenWidth / 2f - offset, 0, -1);
+                            newObject.transform.position = new Vector3(-screenWidth / 2f - offset, 0, -3);
                             spriteRenderer.size = new Vector2(spriteRenderer.size.x, height);
                             break;
                         case 1:
                             // Default behavior for index 1
-                            newObject.transform.position = new Vector3(screenWidth / 2f + offset, 0f, -1);
+                            newObject.transform.position = new Vector3(screenWidth / 2f + offset, 0f, -3);
                             spriteRenderer.size = new Vector2(spriteRenderer.size.x, height);
                             break;
                         case 0:
                             // Default behavior for index 0
-                            newObject.transform.position = new Vector3(0f, -screenHeight / 2f - offset, -1);
+                            newObject.transform.position = new Vector3(0f, -screenHeight / 2f - offset, -3.5f);
                             spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
                             break;
                         case 2:
                             // Default behavior for index 2
-                            newObject.transform.position = new Vector3(0f, screenHeight / 2f + offset, -1);
+                            newObject.transform.position = new Vector3(0f, screenHeight / 2f + offset, -3.5f);
                             spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
                             break;
                         default:
@@ -132,7 +168,5 @@ public class AssetData
             }
             i++;
         }
-
-        return objects;
     }
 }

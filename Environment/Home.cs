@@ -8,7 +8,6 @@ using System.IO;
 public class HomeController : MonoBehaviour
 {
 
-    private List<GameObject> assets;
     public int numPlates = 5;
     public float plateSpacing = 2.0f;
 
@@ -30,7 +29,9 @@ public class HomeController : MonoBehaviour
         MainController.SetupScene();
          foreach (AssetData asset in DataHolder.loadedAssets)
         {
-            assets = asset.CreateObjects(true, null);
+            print(asset.tempAssets.Count);
+            asset.CreateObjects();
+            print(asset.tempAssets.Count);
         }
 
         // Set up boss death event

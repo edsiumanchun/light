@@ -2,7 +2,7 @@
   "assets": [
     {
       "name": "player",
-      "path": "Sprites/Plates/Egypt",
+      "paths": ["Sprites/Plates/EgyptV"],
       "positions": [
         {
           "x": 0,"y": 0
@@ -11,7 +11,7 @@
     },
     {
       "name": "background",
-      "path": "Sprites/Background/Egypt",
+      "paths": ["Sprites/Background/Egypt"],
       "positions": [
         {
           "x": 0, "y": 0
@@ -20,7 +20,7 @@
     },
     {
       "name": "door",
-      "path": "Sprites/Doors/Egypt",
+      "paths": ["Sprites/Doors/Egypt"],
       "positions": [
         {"x": -1, "y": 1},
         {"x": 0, "y": 1},
@@ -34,31 +34,15 @@
     },
     {
       "name": "plate",
-      "path": "Sprites/Plates/Egypt",
-      "positions": [
-        {"x": 1, "y": 2},
-        {"x": -3, "y": 1},
-        {"x": 2, "y": -2},
-        {"x": -1, "y": -3},
-        {"x": 3, "y": 3},
-        {"x": -2, "y": 1},
-        {"x": 0, "y": -1},
-        {"x": -3, "y": -2},
-        {"x": 2, "y": 3},
-        {"x": -1, "y": 0},
-        {"x": 3, "y": -1},
-        {"x": -2, "y": -3},
-        {"x": 1, "y": 1},
-        {"x": -3, "y": -1},
-        {"x": 2, "y": 2},
-        {"x": -1, "y": -2},
-        {"x": 3, "y": 0},
-        {"x": -2, "y": 3}
-      ]
+      "paths": ["Sprites/Plates/EgyptV", "Sprites/Plates/EgyptH"],
+      "gridArray0": [3, 1, 2, 3, 2, 1, 3, 3, 3, 3],
+      "gridArray1": [3, 0, 1, 0, 0, 0, 0, 0, 0, 3],
+      "gridArray2": [3, 0, 0, 0, 3, 0, 0, 0, 2, 3],
+      "gridArray3": [3, 0, 1, 0, 0, 0, 0, 0, 0, 3]
     },
     {
       "name": "wall",
-      "path": "Sprites/Walls/Egypt",
+      "paths": ["Sprites/Walls/Egypt"],
       "positions": [
         {"x": 0, "y": 0},
         {"x": 0, "y": 0},

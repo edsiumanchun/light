@@ -7,6 +7,7 @@ public class MainController : MonoBehaviour
 {
     private void Start()
     {
+
         LoadAssetsFromJson("Json/Game/Home", "HomeScene");
     }
 
@@ -39,23 +40,24 @@ public class MainController : MonoBehaviour
 
     private void LoadAsset(AssetData assetData, System.Type type)
     {
-        var asset = Resources.Load(assetData.path, type);
-        if (asset != null)
-        {
-            assetData.asset = asset;
-            DataHolder.loadedAssets.Add(assetData);
+        assetData.tempAssets = new List<object>();
+        foreach(string path in assetData.paths){
+            var asset = Resources.Load(path, type);
+            if(asset != null) {
+                assetData.tempAssets.Add(asset);
+            } else {
+                Debug.LogError("Failed to load asset." + path);
+            }
         }
-        else
-        {
-            Debug.LogError("Failed to load asset: " + assetData.name);
-        }
+            print(assetData.tempAssets.Count + assetData.name);
+        DataHolder.loadedAssets.Add(assetData);
     }
 
     public static void SetupScene(){
         Camera mainCamera = Camera.main;
         mainCamera.gameObject.AddComponent<CameraController>();
         // Set the orthographic size
-        float desiredSize = 3.3f;
+        float desiredSize = 3f;
         mainCamera.orthographicSize = desiredSize;
     }
 }

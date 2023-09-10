@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float cameraHalfWidth;
-    private float backgroundLeftEdge;
-    private float backgroundRightEdge;
+    public float cameraHalfWidth;
+    public float backgroundLeftEdge;
+    public float backgroundRightEdge;
 
     private void Start()
     {
         // Calculate the camera's half width based on the screen aspect ratio
         float cameraHeight = Camera.main.orthographicSize * 2f;
         cameraHalfWidth = cameraHeight * Camera.main.aspect * 0.5f;
-
-        // Assign the left and right edges of the background
-        AssignBackgroundEdges(DataHolder.background);
     }
 
-    private void AssignBackgroundEdges(GameObject backgroundObject)
+    public void AssignBackgroundEdges()
     {
         // Calculate the left and right edges of the background based on its position and scale
-        backgroundLeftEdge = backgroundObject.transform.position.x - backgroundObject.transform.localScale.x * 0.5f;
-        backgroundRightEdge = backgroundObject.transform.position.x + backgroundObject.transform.localScale.x * 0.5f;
+        GameObject backgroundObject = DataHolder.background;
+        backgroundLeftEdge = -1 * backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
+        backgroundRightEdge = backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
     }
 
     private void LateUpdate()
@@ -36,7 +34,7 @@ public class CameraController : MonoBehaviour
             float clampedX = Mathf.Clamp(desiredX, backgroundLeftEdge + cameraHalfWidth, backgroundRightEdge - cameraHalfWidth);
 
             // Set the camera's position with the clamped X coordinate
-            transform.position = new Vector3(desiredX, 0, transform.position.z);
+            transform.position = new Vector3(clampedX, 0, transform.position.z);
         }
     }
 }
