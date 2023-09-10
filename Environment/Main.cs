@@ -5,16 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+    List<string> stages;
     private void Start()
     {
-
-        LoadAssetsFromJson("Json/Game/Home", "HomeScene");
+        stages = new List<string>((new [] { "Egypt", "Lam", "Ding" }));
+        LoadAssetsFromJson(stages[0], "HomeScene");
     }
 
-    public void LoadAssetsFromJson(string jsonFilePath, string sceneName)
+    public void LoadAssetsFromJson(string stage, string sceneName)
     {
         DataHolder.loadedAssets = new List<AssetData>();
-        TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath);
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage);
         if (jsonFile != null)
         {
             AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
@@ -22,7 +23,7 @@ public class MainController : MonoBehaviour
             {
                 foreach (AssetData assetData in assetsData.assets)
                 {
-                    LoadAsset(assetData, typeof(Sprite));
+                    LoadAsset(stage, assetData, typeof(Sprite));
                 }
             }
             else
@@ -32,17 +33,19 @@ public class MainController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + jsonFilePath);
+            Debug.LogError("Failed to load JSON file: " + stage);
         }
         SceneManager.LoadScene(sceneName);
         // Create the background
     }
 
-    private void LoadAsset(AssetData assetData, System.Type type)
+    private void LoadAsset(string stage, AssetData assetData, System.Type type)
     {
         assetData.tempAssets = new List<object>();
-        foreach(string path in assetData.paths){
-            var asset = Resources.Load(path, type);
+        List<string> paths = assetData.paths == null || assetData.paths.Count == 0 ? new List<string>((new [] { stage })) : assetData.paths;
+            print(paths);
+        foreach(string path in paths){
+            var asset = Resources.Load("Sprites/" + assetData.name + "/" + path, type);
             if(asset != null) {
                 assetData.tempAssets.Add(asset);
             } else {

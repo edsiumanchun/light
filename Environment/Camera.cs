@@ -15,10 +15,9 @@ public class CameraController : MonoBehaviour
         cameraHalfWidth = cameraHeight * Camera.main.aspect * 0.5f;
     }
 
-    public void AssignBackgroundEdges()
+    public void AssignBackgroundEdges(GameObject backgroundObject)
     {
         // Calculate the left and right edges of the background based on its position and scale
-        GameObject backgroundObject = DataHolder.background;
         backgroundLeftEdge = -1 * backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
         backgroundRightEdge = backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
     }

@@ -29,9 +29,9 @@ public class HomeController : MonoBehaviour
         MainController.SetupScene();
          foreach (AssetData asset in DataHolder.loadedAssets)
         {
-            print(asset.tempAssets.Count);
+            // print(asset.tempAssets.Count);
             asset.CreateObjects();
-            print(asset.tempAssets.Count);
+            // print(asset.tempAssets.Count);
         }
 
         // Set up boss death event
