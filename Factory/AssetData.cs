@@ -39,6 +39,10 @@ public class AssetData
         return DataHolder.loadedAssets[1].tempAssets[0] as Sprite;
     }
 
+    public Sprite GetDoor(){
+        return DataHolder.loadedAssets[2] as AssetData;
+    }
+
     public GameObject CreateObjectWithAssetIndex(int index, int assetIndex){
         GameObject newObject = new GameObject(name + index.ToString());
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
@@ -70,6 +74,7 @@ public class AssetData
             for (int column = 0; column < gridArray.Count; column++)
             {
                 int cellValue = gridArray[column];
+                int door = gridArray[column];
                 if (cellValue == 0){
                     continue;
                 }
@@ -95,8 +100,10 @@ public class AssetData
     }
 
     public void CreateObjects() {
-
         int i = 0;
+        if(name == "Door"){
+            return;
+        }
         if(name == "Plate" || name == "Object"){
             Create2dObjects();
             return;
