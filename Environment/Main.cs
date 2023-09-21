@@ -37,7 +37,9 @@ public class MainController : MonoBehaviour
         {
             Debug.LogError("Failed to load JSON file: " + stage);
         }
+        print("?");
         SceneManager.LoadScene(sceneName);
+        print("?>");
         // Create the background
     }
 

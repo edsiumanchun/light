@@ -27,11 +27,13 @@ public class HomeController : MonoBehaviour
     void Start()
     {
         MainController.SetupScene();
+        print(DataHolder.loadedAssets);
+        int i = 0;
          foreach (AssetData asset in DataHolder.loadedAssets)
         {
             // print(asset.tempAssets.Count);
-            asset.CreateObjects();
-            // print(asset.tempAssets.Count);
+            asset.CreateObjects(i);
+            i++;
         }
 
         // Set up boss death event

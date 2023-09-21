@@ -228,11 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a7ef7de26744526bbcddd9ca9ef167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 0}
-  floorPrefab: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  bossPrefab: {fileID: 0}
-  backgroundPrefab: {fileID: 0}
   numPlates: 5
   plateSpacing: 2
   introStoryClip: {fileID: 0}
