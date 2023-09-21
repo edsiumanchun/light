@@ -37,35 +37,23 @@ public class AssetData
     }
 
     public GameObject CreateObjectWithAssetIndex(int index, int assetIndex, float z)
+{
+    GameObject newObject = new GameObject(name + index.ToString());
+    SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
+    spriteRenderer.sprite = tempAssets[assetIndex] as Sprite;
+    newObject.transform.rotation = Quaternion.identity;
+    if (name != "Background")
     {
-        GameObject newObject = new GameObject(name + index.ToString());
-        SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = tempAssets[assetIndex] as Sprite;
-        newObject.transform.rotation = Quaternion.identity;
-        newObject.transform.position = new Vector3(newObject.transform.position.x, newObject.transform.position.y, z);
-
-        if (name != "Background")
-        {
-            newObject.AddComponent<BoxCollider2D>();
-        }
-
-        if (name == "Object" && index > 1)
-        {
-            if(index == 1)
-            {
-                PlayerController playerController = newObject.AddComponent<PlayerController>();
-                JoystickController joystickController = newObject.AddComponent<JoystickController>();
-                // Additional configuration for player and joystick controllers
-            }
-        }
-
-        return newObject;
+        BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
     }
+    return newObject;
+}
 
     public void CreateObjects(float z)
     {
+        GameObject newObject ;
         if (name == "Background") {
-            GameObject newObject = CreateObjectWithAssetIndex(0, 0, 0);
+            newObject = CreateObjectWithAssetIndex(0, 0, z);
             Camera.main.GetComponent<CameraController>().AssignBackgroundEdges(newObject);
             return;
         }
@@ -90,26 +78,41 @@ public class AssetData
                     continue;
                 }
 
+                newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, cellValue - 1, z);
                 if (name == "PlateV" || name == "PlateH")
                 {
+                    if(name == "PlateV") {
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);   
+                    } else {
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset, gridStartPosition.y - cellHeight * (gridIndex) - offset, z); 
+                    }
                     switch (cellValue)
                     {
                         case 1:
-                            GameObject newObject1 = CreateObjectWithAssetIndex(gridIndex * 10 + column, cellValue, z);
-                            newObject1.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
-                            break;
                         case 2:
-                            GameObject newObject2 = CreateObjectWithAssetIndex(gridIndex * 10 + column, cellValue, z);
-                            newObject2.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset, gridStartPosition.y - cellHeight * (gridIndex) - offset, z);
                             break;
                         case 3:
-                            // Handle additional cases if needed
+                            BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
+                            boxCollider.isTrigger = true;
+                            boxCollider.usedByEffector = true;
+                            boxCollider.enabled = false;
+
+                            // Add a custom effector to control the collision behavior
+                            PlatformEffector2D effector = newObject.AddComponent<PlatformEffector2D>();
+                            effector.useColliderMask = true;
+                            effector.colliderMask = LayerMask.GetMask("Default"); // Add the appropriate layer(s) to the mask
+                            effector.rotationalOffset = 180; // Adjust the rotational offset as needed
                             break;
                     }
                 }
                 else if (name == "Object")
                 {
-                    GameObject newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, 0, z);
+                    if(cellValue == 1)
+                    {
+                        PlayerController playerController = newObject.AddComponent<PlayerController>();
+                        JoystickController joystickController = newObject.AddComponent<JoystickController>();
+                        // Additional configuration for player and joystick controllers
+                    }
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f), gridStartPosition.y - cellHeight * (gridIndex + 0.5f), z);
                 }
             }

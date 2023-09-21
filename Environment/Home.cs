@@ -31,8 +31,8 @@ public class HomeController : MonoBehaviour
         int i = 0;
          foreach (AssetData asset in DataHolder.loadedAssets)
         {
-            // print(asset.tempAssets.Count);
-            asset.CreateObjects(i);
+             print(asset.tempAssets.Count);
+            asset.CreateObjects(-1 * i);
             i++;
         }
 

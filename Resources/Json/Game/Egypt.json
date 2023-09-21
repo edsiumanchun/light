@@ -5,21 +5,20 @@
     },
     {
       "name": "PlateV",
-      "paths": ["EgyptV", "EgyptH", "YellowDoor", "YellowDoor"],
-      "gridArray0": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-      "gridArray1": [0, 0, 2, 0, 2, 2, 0, 0, 0, 3, 2],
-      "gridArray2": [2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 2],
-      "gridArray3": [0, 0, 2, 0, 2, 2, 0, 0, 0, 3, 2],
-      "gridArray4": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      "paths": ["Egypt","YellowDoor","YellowDoor"],
+      "gridArray0": [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+      "gridArray1": [1, 0, 1, 0, 1, 1, 0, 0, 0, 2, 1],
+      "gridArray2": [1, 0, 0, 0, 1, 1, 0, 0, 2, 2, 1],
+      "gridArray3": [1, 0, 1, 0, 1, 1, 0, 0, 0, 2, 1]
     },
     {
       "name": "PlateH",
-      "paths": ["EgyptV","YellowDoor"],
-      "gridArray0": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      "gridArray1": [1, 0, 1, 0, 1, 1, 0, 0, 0, 3, 1],
-      "gridArray2": [1, 0, 0, 0, 1, 1, 0, 0, 3, 3, 1],
-      "gridArray3": [1, 0, 1, 0, 1, 1, 0, 0, 0, 3, 1],
-      "gridArray4": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      "paths": ["Egypt","YellowDoor", "YellowDoor"],
+      "gridArray0": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "gridArray1": [1, 0, 1, 0, 1, 1, 0, 0, 0, 1],
+      "gridArray2": [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+      "gridArray3": [1, 0, 1, 0, 1, 1, 0, 0, 0, 1],
+      "gridArray4": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     {
       "name": "Object",
