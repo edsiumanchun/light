@@ -26,7 +26,10 @@ public class HomeController : MonoBehaviour
 
     void Start()
     {
+
         MainController.SetupScene();
+        this.gameObject.AddComponent<GameUIController>();
+        
         print(DataHolder.loadedAssets);
         int i = 0;
          foreach (AssetData asset in DataHolder.loadedAssets)

@@ -27,9 +27,12 @@ public class PlayerController : MonoBehaviour
     {
         DataHolder.player = this.gameObject;
         rb = this.gameObject.AddComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
         currentHealth = maxHP;
         UpdateLifeBarUI();
         audioSource = GetComponent<AudioSource>();
+        int layerIndex = LayerMask.NameToLayer("Player"); // Get the layer index based on the layer name.
+        this.gameObject.layer = layerIndex;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

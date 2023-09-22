@@ -1,50 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorController : MonoBehaviour
+public class FloatingPlateController : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    public LayerMask playerLayer;
+    public LayerMask passThroughLayers;
+
+    private BoxCollider2D boxCollider;
+    private PlatformEffector2D platformEffector;
+
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        BoxCollider2D boxCollider = this.gameObject.AddComponent<BoxCollider2D>();
+        boxCollider.usedByEffector = true;
+        boxCollider.enabled = false;
+        PlatformEffector2D effector = this.gameObject.AddComponent<PlatformEffector2D>();
+        effector.useColliderMask = true;
+        effector.colliderMask = LayerMask.GetMask("Player"); 
+        // effector.rotationalOffset = 180; // Adjust the rotational offset as needed
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Crouch"))
         {
-            // Handle collision with the player here
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
-            {
-                playerController.isOnFloor = true;
-            }
+            SetCollisionMask(passThroughLayers);
         }
-        else if (other.CompareTag("Boss"))
+        else if (Input.GetButtonUp("Crouch"))
         {
-            // Handle collision with the boss here
-            BossController bossController = other.GetComponent<BossController>();
-            if (bossController != null)
-            {
-                // bossController.SetIsGrounded(true);
-            }
+            SetCollisionMask(playerLayer);
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void SetCollisionMask(LayerMask collisionMask)
     {
-        if (other.CompareTag("Player"))
-        {
-            // Handle exit collision with the player here
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
-            {
-                playerController.isOnFloor = false;
-            }
-        }
-        else if (other.CompareTag("Boss"))
-        {
-            // Handle exit collision with the boss here
-            BossController bossController = other.GetComponent<BossController>();
-            if (bossController != null)
-            {
-                // bossController.SetIsGrounded(false);
-            }
-        }
+        platformEffector.colliderMask = collisionMask;
     }
 }

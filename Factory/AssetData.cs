@@ -90,19 +90,11 @@ public class AssetData
                     switch (cellValue)
                     {
                         case 1:
-                        case 2:
                             break;
-                        case 3:
-                            BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
-                            boxCollider.isTrigger = true;
-                            boxCollider.usedByEffector = true;
-                            boxCollider.enabled = false;
-
-                            // Add a custom effector to control the collision behavior
-                            PlatformEffector2D effector = newObject.AddComponent<PlatformEffector2D>();
-                            effector.useColliderMask = true;
-                            effector.colliderMask = LayerMask.GetMask("Default"); // Add the appropriate layer(s) to the mask
-                            effector.rotationalOffset = 180; // Adjust the rotational offset as needed
+                        case 2:
+                            if(name == "PlateV") {
+                            } else {
+                            }
                             break;
                     }
                 }

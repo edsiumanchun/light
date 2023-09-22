@@ -1,37 +1,95 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
-    public GameObject joystickPrefab; // The prefab for the joystick
-    public GameObject buttonPrefab; // The prefab for the skill buttons
-    public int numButtons = 4; // The number of skill buttons to create
+    public Sprite menuButtonImage;
+    public List<Sprite> buttonImages;
 
-    void Start()
+    private bool isMenuOpen;
+    private GameObject canvasObject;
+
+
+    public Vector2[] buttonPositions = new Vector2[]
     {
-        // Create the joystick
-        GameObject joystickObject = Instantiate(joystickPrefab);
-        joystickObject.transform.SetParent(transform, false);
+        new Vector2(-300f, 0f),  // Bottom right button position
+        new Vector2(-150f, 0f),  // Bottom right button position
+        new Vector2(0f, 0f),   // Bottom right button position
+    };
 
-        // Position the joystick at the left bottom of the screen
-        RectTransform joystickRect = joystickObject.GetComponent<RectTransform>();
-        joystickRect.anchorMin = new Vector2(0f, 0f);
-        joystickRect.anchorMax = new Vector2(0f, 0f);
-        joystickRect.pivot = new Vector2(0f, 0f);
-        joystickRect.anchoredPosition = new Vector2(50f, 50f);
+    public Vector2 menuButtonPosition = new Vector2(560f, 300f);  // Top right menu button position
+    public Vector2 containerPosition = new Vector2(560f, -300f);  // Top right menu button position
 
-        // Create the skill buttons
-        for (int i = 0; i < numButtons; i++)
+    private void Start()
+    {
+        buttonImages = DataHolder.UIButtons;
+        menuButtonImage = DataHolder.menuButtonImage;
+        // Create Canvas object
+        canvasObject = new GameObject("Canvas");
+        Canvas canvas = canvasObject.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasObject.AddComponent<CanvasScaler>();
+        canvasObject.AddComponent<GraphicRaycaster>();
+
+        // Create EventSystem object
+        GameObject eventSystemObject = new GameObject("EventSystem");
+        eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
+        eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+
+        // Set Canvas as parent for EventSystem
+        eventSystemObject.transform.SetParent(canvasObject.transform);
+
+        // Instantiate menu button
+        Button menuButton = CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform);
+        menuButton.onClick.AddListener(ToggleMenu);
+
+        // Create circle buttons container
+        GameObject circleButtonsContainer = new GameObject("CircleButtonsContainer");
+        circleButtonsContainer.transform.SetParent(canvasObject.transform, false);
+
+        // Set position of circleButtonsContainer
+        RectTransform containerRectTransform = circleButtonsContainer.AddComponent<RectTransform>();
+        containerRectTransform.anchoredPosition = containerPosition;
+
+        // Instantiate circle buttons
+        for (int i = 0; i < buttonImages.Count; i++)
         {
-            GameObject buttonObject = Instantiate(buttonPrefab);
-            buttonObject.transform.SetParent(transform, false);
-
-            // Position the button based on the index
-            RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
-            buttonRect.anchorMin = new Vector2(1f, 0f);
-            buttonRect.anchorMax = new Vector2(1f, 0f);
-            buttonRect.pivot = new Vector2(1f, 0f);
-            buttonRect.anchoredPosition = new Vector2(-50f - i * 100f, 50f);
+            int buttonIndex = i; // Store the index in a local variable to capture it in the lambda expression
+            Button button = CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform);
+            button.onClick.AddListener(() => ButtonAction(buttonIndex));
         }
+    }
+
+    private Button CreateButton(Sprite sprite, Vector2 position, Transform parent)
+    {
+        GameObject buttonObject = new GameObject("Button", typeof(RectTransform));
+        buttonObject.transform.SetParent(parent, false);
+
+        Image image = buttonObject.AddComponent<Image>();
+        image.sprite = sprite;
+
+        Button button = buttonObject.AddComponent<Button>();
+
+        RectTransform rectTransform = buttonObject.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = position;
+
+        return button;
+    }
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+
+        // Activate/deactivate the circle buttons container based on menu state
+        GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
+        circleButtonsContainer.SetActive(isMenuOpen);
+    }
+
+    private void ButtonAction(int buttonIndex)
+    {
+        // Perform the desired action based on the button index
+        Debug.Log("Button " + buttonIndex + " pressed.");
     }
 }
