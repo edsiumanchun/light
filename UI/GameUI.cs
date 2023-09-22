@@ -89,7 +89,21 @@ public class GameUIController : MonoBehaviour
 
     private void ButtonAction(int buttonIndex)
     {
-        // Perform the desired action based on the button index
-        Debug.Log("Button " + buttonIndex + " pressed.");
+        JoystickController joystickController = GameObject.Find("Player").GetComponent<JoystickController>();
+        switch (buttonIndex)
+        {
+            case 0:
+                joystickController.Jump();
+                break;
+            case 1:
+                joystickController.Crouch();
+                break;
+            case 2:
+                joystickController.Purify();
+                break;
+            default:
+                Debug.Log("Button " + buttonIndex + " pressed.");
+                break;
+        }
     }
 }

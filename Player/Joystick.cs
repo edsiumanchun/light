@@ -82,12 +82,20 @@ public class JoystickController : MonoBehaviour, IDragHandler
         transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    private void Jump()
+    public void Jump()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         // transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
         // Implement your jump logic here
         // Apply jumpForce to the player's rigidbody or perform any other desired action
+    }
+
+    public void Crouch()
+    {
+    }
+
+    public void Purify()
+    {
     }
 
     private bool IsJumpButtonDown()
