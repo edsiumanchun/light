@@ -3,8 +3,9 @@ using UnityEngine.EventSystems;
 
 public class JoystickController : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float jumpForce = 5.7f;
+    Rigidbody2D rb;
     private float xBounds;
 
     public Sprite GetBackgroundSprite()
@@ -19,6 +20,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         //xBounds = GetBackgroundSprite().bounds.size.x - GetPlateSprite().bounds.size.x * 2;
     }
 
@@ -77,12 +79,13 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     private void MovePlayer(float moveDirection)
     {
-        transform.Translate(Vector3.right * moveDirection * jumpForce * Time.deltaTime);
+        transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
     }
 
     private void Jump()
     {
-        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        // transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
         // Implement your jump logic here
         // Apply jumpForce to the player's rigidbody or perform any other desired action
     }

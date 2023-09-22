@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip dieSound;
     public JoystickController joystick; // The joystick controller
 
-    void Start()
+    void Awake()
     {
         DataHolder.player = this.gameObject;
         rb = this.gameObject.AddComponent<Rigidbody2D>();

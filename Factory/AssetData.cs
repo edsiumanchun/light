@@ -38,7 +38,8 @@ public class AssetData
 
     public GameObject CreateObjectWithAssetIndex(int index, int assetIndex, float z)
 {
-    GameObject newObject = new GameObject(name + index.ToString());
+    string pathName = paths.Count == 0 ? name :paths[assetIndex];
+    GameObject newObject = new GameObject(pathName + index.ToString());
     SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
     spriteRenderer.sprite = tempAssets[assetIndex] as Sprite;
     newObject.transform.rotation = Quaternion.identity;
@@ -113,7 +114,7 @@ public class AssetData
                         JoystickController joystickController = newObject.AddComponent<JoystickController>();
                         // Additional configuration for player and joystick controllers
                     }
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f), gridStartPosition.y - cellHeight * (gridIndex + 0.5f), z);
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z); 
                 }
             }
         }
