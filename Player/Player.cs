@@ -38,40 +38,50 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         string name = collision.gameObject.name;
-        if (name.Contains("Floor"))
+        switch (name)
         {
-            audioSource.PlayOneShot(landSound);
-        }
-        else if (name.Contains("Panel"))
-        {
-            audioSource.PlayOneShot(panelSound);
-        }
-        else if (name.Contains("Wall"))
-        {
-            audioSource.PlayOneShot(wallSound);
-        }
-        else if (name.Contains("Enemy"))
-        {
-            // Deduct HP and play hurt sound when the player collides with an enemy
-            currentHealth--;
-            UpdateLifeBarUI();
-            audioSource.PlayOneShot(hurtSound);
+            case string str when str.Contains("Floor"):
+                audioSource.PlayOneShot(landSound);
+                break;
 
-            if (currentHealth <= 0)
-            {
-                // Play die sound
-                audioSource.PlayOneShot(dieSound);
-            }
-            else
-            {
-                // Apply knockback force
-                Vector2 direction = (transform.position - collision.transform.position).normalized;
-                rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+            case string str when str.Contains("Panel"):
+                audioSource.PlayOneShot(panelSound);
+                break;
 
-                // Set invincibility
-                isInvincible = true;
-                invincibilityTimer = invincibilityTime;
-            }
+            case string str when str.Contains("Wall"):
+                audioSource.PlayOneShot(wallSound);
+                break;
+
+            case string str when str.Contains("Story"):
+                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+                if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
+                storyController.LoadDialogue(name);
+                audioSource.PlayOneShot(wallSound);
+                break;
+
+            case string str when str.Contains("Enemy"):
+
+                // Deduct HP and play hurt sound when the player collides with an enemy
+                currentHealth--;
+                UpdateLifeBarUI();
+                audioSource.PlayOneShot(hurtSound);
+
+                if (currentHealth <= 0)
+                {
+                    // Play die sound
+                    audioSource.PlayOneShot(dieSound);
+                }
+                else
+                {
+                    // Apply knockback force
+                    Vector2 direction = (transform.position - collision.transform.position).normalized;
+                    rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+
+                    // Set invincibility
+                    isInvincible = true;
+                    invincibilityTimer = invincibilityTime;
+                }
+                break;
         }
     }
 

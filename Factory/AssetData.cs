@@ -26,7 +26,7 @@ public class Path
 [System.Serializable]
 public class AssetData
 {
-    public string name; // Name of the asset
+    public string name = ""; // Name of the asset
     public List<int> gridArray0;
     public List<int> gridArray1;
     public List<int> gridArray2;
@@ -49,36 +49,40 @@ public class AssetData
 
     public GameObject CreateObjectWithAssetIndex(int index, int assetIndex, float z)
     {
-    string pathName = name == "Object" && assetIndex == 0 ? "Player" : name + index.ToString();
-    GameObject newObject = new GameObject(pathName);
-    SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-    switch (name)
-    {
-        case "PlateV":
-            spriteRenderer.sprite = DataHolder.plateV[assetIndex];
-            break;
-        case "PlateH":
-            spriteRenderer.sprite = DataHolder.plateH[assetIndex];
-            break;
-        case "Object":
-            spriteRenderer.sprite = DataHolder.objects[assetIndex];
-            break;
-        case "Background":
-            spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
-            break;
+        GameObject newObject = new GameObject();
+        SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
+        switch (name)
+        {
+            case "PlateV":
+                spriteRenderer.sprite = DataHolder.plateV[assetIndex];
+                break;
+            case "PlateH":
+                spriteRenderer.sprite = DataHolder.plateH[assetIndex];
+                break;
+            case "Object":
+                spriteRenderer.sprite = DataHolder.objects[assetIndex];
+                break;
+            case "Background":
+                spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
+                break;
+        }
+        string pathName = spriteRenderer.sprite.name;
+        newObject.name = pathName;
+        switch (pathName)
+        {
+            case "Player":
+                PlayerController playerController = newObject.AddComponent<PlayerController>();
+                JoystickController joystickController = newObject.AddComponent<JoystickController>();
+                Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
+                break;
+        }
+        return newObject;
     }
-
-        newObject.transform.rotation = Quaternion.identity;
-    if (name != "Background")
-    {
-        BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
-    }
-    return newObject;
-}
 
     public void CreateObjects(float z, float subStage)
     {
-        if (name == "Background") {
+        if (name == "Background")
+        {
             CreateObjectWithAssetIndex(0, 0, z);
             return;
         }
@@ -88,9 +92,9 @@ public class AssetData
         Vector2 gridStartPosition = backgroundSprite.bounds.center - new Vector3(backgroundSprite.bounds.size.x / 2f, -backgroundSprite.bounds.size.y / 2f);
         float cellHeight = (backgroundSprite.bounds.size.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x) / numColumns;
-        List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6};
+        List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
         float offset = plateSprite.bounds.size.x / 2;
-        float offsetX = + subStage * (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x);
+        float offsetX = +subStage * (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x);
 
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {
@@ -108,34 +112,22 @@ public class AssetData
                 newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, cellValue - 1, z);
                 if (name == "PlateV" || name == "PlateH")
                 {
-                    if(name == "PlateV") {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);   
-                    } else {
+                    if (name == "PlateV")
+                    {
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
+                    }
+                    else
+                    {
                         newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, z);
                         newObject.tag = "Ground";
-                    }
-                    switch (cellValue)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            if(name == "PlateV") {
-                            } else {
-                            }
-                            break;
                     }
                 }
                 else if (name == "Object")
                 {
-                    if(cellValue == 1)
-                    {
-                        PlayerController playerController = newObject.AddComponent<PlayerController>();
-                        JoystickController joystickController = newObject.AddComponent<JoystickController>();
-                        Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
-                        // Additional configuration for player and joystick controllers
-                    }
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z); 
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
                 }
+                newObject.transform.rotation = Quaternion.identity;
+                BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
             }
         }
     }

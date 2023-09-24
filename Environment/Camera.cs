@@ -8,12 +8,11 @@ public class CameraViewController : MonoBehaviour
     public GameObject player; // Reference to the player object
     public float backgroundWidth;
     public Transform backgroundObject; // Reference to the background object
-    public float animationDuration = 2f; // Duration of the camera animation
+    public float animationDuration = 0.08f; // Duration of the camera animation
 
     private Vector3 initialCameraPosition; // Initial position of the camera
     private Vector3 targetCameraPosition; // Target position for the camera animation
     private bool isAnimating; // Flag to check if camera animation is in progress
-    private float triggerOffset = 0.5f; // Offset to trigger camera movement
 
     public void SetBackgroundWidth()
     {

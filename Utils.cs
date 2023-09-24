@@ -18,4 +18,20 @@ public class Utils : MonoBehaviour
     {
         return (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer);
     }
+
+    static public Image CreateImage(Transform transform)
+    {
+        GameObject imageObj = new GameObject("Image");
+        imageObj.transform.SetParent(transform); // Set the parent transform
+        Image image = imageObj.AddComponent<Image>();
+        return image;
+    }
+
+    static public Text CreateText(Transform transform)
+    {
+        GameObject textObj = new GameObject("Text");
+        textObj.transform.SetParent(transform); // Set the parent transform
+        Text text = textObj.AddComponent<Text>();
+        return text;
+    }
 }

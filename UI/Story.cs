@@ -19,26 +19,32 @@ public class StoryController : MonoBehaviour
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
 
-    void Start()
-    {
-        //LoadDialogue("Story1");
-    }
+    //void Start()
+    //{
+    //    LoadDialogue("Story1");
+    //}
 
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    DisplayNextSentence();
-        //}
-    }
+    //void Update()
+    //{
+    //    //if (Input.GetMouseButtonDown(0))
+    //    //{
+    //    //    DisplayNextSentence();
+    //    //}
+    //}
 
-    public void LoadDialogue(string jsonFile)
+    public void LoadDialogue(string path)
     {
-        string storyFilePath = "Assets/Json/" + jsonFile + ".json";
-        string storyJson = File.ReadAllText(storyFilePath);
-        print(storyJson);
-        StoryData storyData = JsonUtility.FromJson<StoryData>(storyJson);
-        storyImage.sprite = Resources.Load<Sprite>("Characters/" + storyData.imagePath);
+        string storyFilePath = "Json/Story/" + DataHolder.currentStage + "/" + path;
+        //string storyJson = File.ReadAllText(storyFilePath);
+
+        print(storyFilePath);
+        TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
+        print(jsonFile);
+        StoryData storyData = JsonUtility.FromJson<StoryData>(jsonFile.text);
+        print(storyData);
+        //StoryData storyData = JsonUtility.FromJson<StoryData>(storyJson);
+        print("Sprites/Characters/" + storyData.imagePath);
+        storyImage.sprite = Resources.Load<Sprite>("Sprites/Characters/" + storyData.imagePath);
         storyName.text = storyData.name;
 
 

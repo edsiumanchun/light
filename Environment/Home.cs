@@ -25,6 +25,8 @@ public class HomeController : MonoBehaviour
 
     private void Awake()
     {
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
         CameraViewController cameraViewController = Camera.main.gameObject.AddComponent<CameraViewController>();
         cameraViewController.SetBackgroundWidth();
     }
