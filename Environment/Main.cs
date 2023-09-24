@@ -32,22 +32,19 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsFromJson(string stage, string sceneName)
     {
-        DataHolder.loadedAssets = new List<AssetData>();
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage);
         if (jsonFile != null)
         {
             AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
-            if (assetsData != null && assetsData.assets != null)
-            {
-                foreach (AssetData assetData in assetsData.assets)
-                {
-                    LoadAsset(stage, assetData, typeof(Sprite));
-                }
-            }
-            else
-            {
-                Debug.LogError("Failed to parse JSON data.");
-            }
+            Path paths = assetsData.paths;
+            DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
+            DataHolder.plateV = LoadSprites("PlateV", paths.plateV);
+            DataHolder.objects = LoadSprites("Object", paths.objects);
+            DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
+
+            List<List<AssetData>> assetDatas = new List<List<AssetData>>((new[] { assetsData.assets0, assetsData.assets1, assetsData.assets2 }));
+            assetDatas.RemoveAll(list => list == null);
+            DataHolder.loadedAssets = assetDatas;
         }
         else
         {
@@ -57,33 +54,12 @@ public class MainController : MonoBehaviour
         // Create the background
     }
 
-    private void LoadAsset(string stage, AssetData assetData, System.Type type)
-    {
-        assetData.tempAssets = new List<object>();
-        List<string> paths = assetData.paths == null || assetData.paths.Count == 0 ? new List<string>((new [] { stage })) : assetData.paths;
-            print(paths);
-        //assetData.tempAssets = LoadSprites(assetData.name, paths);
-        foreach (string path in paths)
-        {
-            var asset = Resources.Load("Sprites/" + assetData.name + "/" + path, type);
-            if (asset != null)
-            {
-                assetData.tempAssets.Add(asset);
-            }
-            else
-            {
-                Debug.LogError("Failed to load asset." + path);
-            }
-        }
-        DataHolder.loadedAssets.Add(assetData);
-    }
-
     public static void SetupScene(){
-        Camera mainCamera = Camera.main;
-        mainCamera.gameObject.AddComponent<CameraController>();
+        // Camera mainCamera = Camera.main;
+        // mainCamera.gameObject.AddComponent<CameraController>();
         // Set the orthographic size
-        float desiredSize = 3f;
-        mainCamera.orthographicSize = desiredSize;
+        // float desiredSize = 3f;
+        // mainCamera.orthographicSize = desiredSize;
     }
 
     public static List<Sprite> LoadSprites(string folder, List<string> paths)
@@ -92,6 +68,7 @@ public class MainController : MonoBehaviour
         foreach (string path in paths)
         {
             Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
+            //print("Sprites/" + folder + "/" + path);
             if (asset != null)
             {
                 temp.Add(asset);

@@ -8,41 +8,67 @@ using System.IO;
 [System.Serializable]
 public class AssetsData
 {
-    public List<AssetData> assets;
+    public Path paths;
+    public List<AssetData> assets0;
+    public List<AssetData> assets1;
+    public List<AssetData> assets2;
+}
+
+[System.Serializable]
+public class Path
+{
+    public List<string> plateV;
+    public List<string> plateH;
+    public List<string> objects;
+    public List<string> backgrounds;
 }
 
 [System.Serializable]
 public class AssetData
 {
     public string name; // Name of the asset
-    public List<string> paths; // Path to the asset
     public List<int> gridArray0;
     public List<int> gridArray1;
     public List<int> gridArray2;
     public List<int> gridArray3;
     public List<int> gridArray4;
-    int numRows = 4;
-    int numColumns = 10;
+    public List<int> gridArray5;
+    public List<int> gridArray6;
+    int numRows = 5;
+    int numColumns = 5;
 
-    [System.NonSerialized]
-    public List<object> tempAssets; // The loaded asset
     public Sprite GetBackgroundSprite()
     {
-        return DataHolder.loadedAssets[0].tempAssets[0] as Sprite;
+        return DataHolder.backgrounds[0];
     }
 
     public Sprite GetPlateSprite()
     {
-        return DataHolder.loadedAssets[1].tempAssets[0] as Sprite;
+        return DataHolder.plateV[0];
     }
 
     public GameObject CreateObjectWithAssetIndex(int index, int assetIndex, float z)
-{
-    string pathName = paths.Count == 0 ? name :paths[assetIndex];
-    GameObject newObject = new GameObject(pathName + index.ToString());
+    {
+    string pathName = name == "Object" && assetIndex == 0 ? "Player" : name + index.ToString();
+    GameObject newObject = new GameObject(pathName);
     SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-    spriteRenderer.sprite = tempAssets[assetIndex] as Sprite;
-    newObject.transform.rotation = Quaternion.identity;
+    switch (name)
+    {
+        case "PlateV":
+            spriteRenderer.sprite = DataHolder.plateV[assetIndex];
+            break;
+        case "PlateH":
+            spriteRenderer.sprite = DataHolder.plateH[assetIndex];
+            break;
+        case "Object":
+            spriteRenderer.sprite = DataHolder.objects[assetIndex];
+            break;
+        case "Background":
+            spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
+            break;
+    }
+
+        newObject.transform.rotation = Quaternion.identity;
     if (name != "Background")
     {
         BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
@@ -50,21 +76,21 @@ public class AssetData
     return newObject;
 }
 
-    public void CreateObjects(float z)
+    public void CreateObjects(float z, float subStage)
     {
-        GameObject newObject ;
         if (name == "Background") {
-            newObject = CreateObjectWithAssetIndex(0, 0, z);
-            Camera.main.GetComponent<CameraController>().AssignBackgroundEdges(newObject);
+            CreateObjectWithAssetIndex(0, 0, z);
             return;
         }
+        GameObject newObject;
         Sprite plateSprite = GetPlateSprite();
         Sprite backgroundSprite = GetBackgroundSprite();
         Vector2 gridStartPosition = backgroundSprite.bounds.center - new Vector3(backgroundSprite.bounds.size.x / 2f, -backgroundSprite.bounds.size.y / 2f);
         float cellHeight = (backgroundSprite.bounds.size.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x) / numColumns;
-        List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4 };
+        List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6};
         float offset = plateSprite.bounds.size.x / 2;
+        float offsetX = + subStage * (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x);
 
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {
@@ -83,9 +109,10 @@ public class AssetData
                 if (name == "PlateV" || name == "PlateH")
                 {
                     if(name == "PlateV") {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);   
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);   
                     } else {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset, gridStartPosition.y - cellHeight * (gridIndex) - offset, z); 
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, z);
+                        newObject.tag = "Ground";
                     }
                     switch (cellValue)
                     {
@@ -104,9 +131,10 @@ public class AssetData
                     {
                         PlayerController playerController = newObject.AddComponent<PlayerController>();
                         JoystickController joystickController = newObject.AddComponent<JoystickController>();
+                        Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
                         // Additional configuration for player and joystick controllers
                     }
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z); 
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z); 
                 }
             }
         }

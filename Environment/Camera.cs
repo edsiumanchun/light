@@ -2,38 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraViewController : MonoBehaviour
 {
-    public float cameraHalfWidth;
-    public float backgroundLeftEdge;
-    public float backgroundRightEdge;
+    private int index = 0; // the current index
+    public GameObject player; // Reference to the player object
+    public float backgroundWidth;
+    public Transform backgroundObject; // Reference to the background object
+    public float animationDuration = 2f; // Duration of the camera animation
+
+    private Vector3 initialCameraPosition; // Initial position of the camera
+    private Vector3 targetCameraPosition; // Target position for the camera animation
+    private bool isAnimating; // Flag to check if camera animation is in progress
+    private float triggerOffset = 0.5f; // Offset to trigger camera movement
+
+    public void SetBackgroundWidth()
+    {
+        Sprite backgroundSprite = DataHolder.backgrounds[0];
+        backgroundWidth = backgroundSprite.bounds.size.x;
+    }
 
     private void Start()
     {
-        // Calculate the camera's half width based on the screen aspect ratio
-        float cameraHeight = Camera.main.orthographicSize * 2f;
-        cameraHalfWidth = cameraHeight * Camera.main.aspect * 0.5f;
+        initialCameraPosition = transform.position;
     }
 
-    public void AssignBackgroundEdges(GameObject backgroundObject)
+    void Update()
     {
-        // Calculate the left and right edges of the background based on its position and scale
-        backgroundLeftEdge = -1 * backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
-        backgroundRightEdge = backgroundObject.GetComponent<SpriteRenderer>().bounds.size.x / 2f;
-    }
-
-    private void LateUpdate()
-    {
-        if (DataHolder.player != null)
+        if (player == null || isAnimating)
         {
-            // Calculate the desired X position for the camera
-            float desiredX = DataHolder.player.transform.position.x;
-
-            // Apply the X position restrictions based on the background edges
-            float clampedX = Mathf.Clamp(desiredX, backgroundLeftEdge + cameraHalfWidth, backgroundRightEdge - cameraHalfWidth);
-
-            // Set the camera's position with the clamped X coordinate
-            transform.position = new Vector3(clampedX, 0, transform.position.z);
+            return;
         }
+        float playerX = player.transform.position.x;
+        // Check if the player has crossed the threshold going right
+        if (playerX > backgroundWidth * (0.5f + index))
+        {
+            index++;
+            float newXPosition = backgroundWidth * index;
+            targetCameraPosition = new Vector3(newXPosition, 0, initialCameraPosition.z);
+            StartCoroutine(AnimateCamera());
+        }
+        // Check if the player has crossed the threshold going left
+        else if (index > 0 && playerX < backgroundWidth * (-0.5f + index))
+        {
+            index--;
+            float newXPosition = backgroundWidth * index;
+            targetCameraPosition = new Vector3(newXPosition, 0, initialCameraPosition.z);
+            StartCoroutine(AnimateCamera());
+        }
+    }
+
+    private IEnumerator AnimateCamera()
+    {
+        isAnimating = true;
+
+        float elapsedTime = 0f;
+        Vector3 startingPosition = transform.position;
+
+        while (elapsedTime < animationDuration)
+        {
+            // Calculate the new position based on the animation curve
+            float t = elapsedTime / animationDuration;
+            transform.position = Vector3.Lerp(startingPosition, targetCameraPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetCameraPosition;
+        isAnimating = false;
     }
 }

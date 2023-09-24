@@ -46,7 +46,7 @@ public class SettingsController : MonoBehaviour
     private void LoadLocalizedText()
     {
         localizedText = new Dictionary<string, string>();
-        string filePath = Path.Combine(Application.streamingAssetsPath, "../Localization.json");
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "../Localization.json");
 
         if (File.Exists(filePath))
         {

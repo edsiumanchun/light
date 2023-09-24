@@ -3,19 +3,83 @@ using UnityEngine.EventSystems;
 
 public class JoystickController : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float jumpForce = 5.7f;
-    Rigidbody2D rb;
+    [SerializeField] private float moveSpeed = 6;
+    [SerializeField] private float jumpForce = 6.8f;
+    private Rigidbody2D rb;
+    private bool isJumping = false;
     private float xBounds;
 
+    void Update()
+    {
+        // jump
+        if (IsJumpButtonDown())
+        {
+            Jump();
+        }
+    }
+
+    private bool IsJumpButtonDown()
+    {
+        if (Application.isMobilePlatform)
+        {
+            return false; 
+        }
+        else
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void Jump()
+    {
+        if(isJumping || IsCollidingWithUpperObject()){
+            return;
+        }
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        isJumping = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            // The player is touching the ground, so they can jump again
+            isJumping = false;
+        }
+    }
+
+    private bool IsCollidingWithUpperObject()
+{
+    // Get all the colliders involved in the collision
+    ContactPoint2D[] contacts = new ContactPoint2D[10];
+    int numContacts = rb.GetContacts(contacts);
+
+    int groundCount = 0;
+
+    for (int i = 0; i < numContacts; i++)
+    {
+        // Check if the contact point is with an upper object
+        if (contacts[i].collider.CompareTag("Ground"))
+        {
+            groundCount++;
+        }
+    }
+    return groundCount >= 4;
+}
+    // other than jump
     public Sprite GetBackgroundSprite()
     {
-        return DataHolder.loadedAssets[0].tempAssets[0] as Sprite;
+        return DataHolder.backgrounds[0];
     }
 
     public Sprite GetPlateSprite()
     {
-        return DataHolder.loadedAssets[1].tempAssets[0] as Sprite;
+        return DataHolder.plateV[0];
     }
 
     private void Start()
@@ -68,27 +132,11 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
-    void Update()
-    {
-        // jump
-        if (IsJumpButtonDown())
-        {
-            Jump();
-        }
-    }
-
     private void MovePlayer(float moveDirection)
     {
         transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    public void Jump()
-    {
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        // transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
-        // Implement your jump logic here
-        // Apply jumpForce to the player's rigidbody or perform any other desired action
-    }
 
     public void Crouch()
     {
@@ -96,33 +144,5 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Purify()
     {
-    }
-
-    private bool IsJumpButtonDown()
-    {
-        // Check if the jump button is pressed for mobile or desktop
-        // Modify this method according to your input setup
-        if (Application.isMobilePlatform)
-        {
-            // Check for mobile touch input
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    return true;
-                }
-            }
-        }
-        else
-        {
-            // Check for desktop input
-            if (Input.GetButtonDown("Jump"))
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

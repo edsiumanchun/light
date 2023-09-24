@@ -23,20 +23,27 @@ public class HomeController : MonoBehaviour
 
     byte[] fileData;
 
+    private void Awake()
+    {
+        CameraViewController cameraViewController = Camera.main.gameObject.AddComponent<CameraViewController>();
+        cameraViewController.SetBackgroundWidth();
+    }
 
     void Start()
     {
 
-        MainController.SetupScene();
         this.gameObject.AddComponent<GameUIController>();
-        
-        print(DataHolder.loadedAssets);
-        int i = 0;
-         foreach (AssetData asset in DataHolder.loadedAssets)
+
+        int j = 0;
+        foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
         {
-             print(asset.tempAssets.Count);
-            asset.CreateObjects(-1 * i);
-            i++;
+            int i = 0;
+            foreach (AssetData asset in assetDataList)
+            {
+                asset.CreateObjects(-1 * i, j);
+                i++;
+            }
+            j++;
         }
 
         // Set up boss death event

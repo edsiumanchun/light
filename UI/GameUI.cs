@@ -14,9 +14,9 @@ public class GameUIController : MonoBehaviour
 
     public Vector2[] buttonPositions = new Vector2[]
     {
-        new Vector2(-300f, 0f),  // Bottom right button position
-        new Vector2(-150f, 0f),  // Bottom right button position
-        new Vector2(0f, 0f),   // Bottom right button position
+        new Vector2(0f, 0f),  // Bottom right button position
+        new Vector2(0f, 150f),  // Bottom right button position
+        new Vector2(0f, 300f),   // Bottom right button position
     };
 
     public Vector2 menuButtonPosition = new Vector2(560f, 300f);  // Top right menu button position
