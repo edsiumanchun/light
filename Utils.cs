@@ -19,19 +19,21 @@ public class Utils : MonoBehaviour
         return (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer);
     }
 
-    static public Image CreateImage(Transform transform)
+    static public GameObject CreateImage(Transform transform, Vector2 position)
     {
         GameObject imageObj = new GameObject("Image");
         imageObj.transform.SetParent(transform); // Set the parent transform
+        imageObj.transform.position = position;
         Image image = imageObj.AddComponent<Image>();
-        return image;
+        return imageObj;
     }
 
-    static public Text CreateText(Transform transform)
+    static public GameObject CreateText(Transform transform, Vector2 position)
     {
         GameObject textObj = new GameObject("Text");
         textObj.transform.SetParent(transform); // Set the parent transform
+        textObj.transform.position = position;
         Text text = textObj.AddComponent<Text>();
-        return text;
+        return textObj;
     }
 }

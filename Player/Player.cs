@@ -53,9 +53,10 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case string str when str.Contains("Story"):
-                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
-                storyController.LoadDialogue(name);
+                //Camera.main.gameObject.GetComponent<StoryController>();
+                //if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
+                //storyController.LoadStoryDataFromJSON(name);
+                GameObject newObject = Instantiate(DataHolder.storyCanvas);
                 audioSource.PlayOneShot(wallSound);
                 break;
 

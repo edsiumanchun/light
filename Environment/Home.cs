@@ -17,24 +17,22 @@ public class HomeController : MonoBehaviour
     public float dialogDelay = 2.0f;
     public float storyDelay = 5.0f;
 
-    private AudioSource audioSource;
-    private StoryController storyController;
-
-
-    byte[] fileData;
-
     private void Awake()
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
         CameraViewController cameraViewController = Camera.main.gameObject.AddComponent<CameraViewController>();
         cameraViewController.SetBackgroundWidth();
+
     }
 
     void Start()
     {
 
+        // UI
         this.gameObject.AddComponent<GameUIController>();
+        this.gameObject.AddComponent<StoryController>();
+        // UI
 
         int j = 0;
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
@@ -54,52 +52,5 @@ public class HomeController : MonoBehaviour
         // {
         //     currentHealth.OnBossDeath += PlayEndingStory;
         // }
-
-        // Create the story controller
-        GameObject storyControllerObject = new GameObject("StoryController");
-        storyController = storyControllerObject.AddComponent<StoryController>();
-
-        // Play the introduction story
-        if (introStoryClip != null)
-        {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.clip = introStoryClip;
-
-            // Load the WelcomeStoryEvent data from JSON
-            string welcomeStoryJson = Resources.Load<TextAsset>("WelcomeStoryEvent").text;
-            WelcomeStoryEvent welcomeStoryEvent = JsonUtility.FromJson<WelcomeStoryEvent>(welcomeStoryJson);
-
-            // Play the WelcomeStoryEvent using the StoryController
-            audioSource.Play();
-            storyController.StartCoroutine(storyController.PlayStory(welcomeStoryEvent, dialogBoxPrefab, audioSource, dialogDelay, storyDelay));
-        }
-    }
-
-    void PlayEndingStory()
-    {
-        // Stop any playing audio
-        audioSource.Stop();
-
-        // Play the ending story
-        if (endingStoryClip != null)
-        {
-            audioSource.clip = endingStoryClip;
-
-            // Load the VictoryStoryEvent data from JSON
-            string victoryStoryJson = Resources.Load<TextAsset>("VictoryStoryEvent").text;
-            VictoryStoryEvent victoryStoryEvent = JsonUtility.FromJson<VictoryStoryEvent>(victoryStoryJson);
-
-            // Play the VictoryStoryEvent using the StoryController
-            audioSource.Play();
-            storyController.StartCoroutine(storyController.PlayStory(victoryStoryEvent, dialogBoxPrefab, audioSource, dialogDelay, storyDelay));
-        }
-
-        // Load next scene after ending story finishes
-        Invoke("LoadNextScene", endingStoryClip.length);
-    }
-
-    void LoadNextScene()
-    {
-        SceneManager.LoadScene("NextSceneName");
     }
 }

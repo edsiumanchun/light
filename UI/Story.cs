@@ -3,70 +3,124 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+using UnityEngine.EventSystems;
+
+[System.Serializable]
+public class StoryDataWrapper
+{
+    public List<StoryData> storyArray;
+}
+
+[System.Serializable]
+public class StoryData
+{
+    public string name;
+    public string imagePath;
+    public string backgroundPath;
+    public string bgmPath;
+    public string[] dialogue;
+}
 
 public class StoryController : MonoBehaviour
 {
-    public Image backgroundImage;
-    public Image storyImage;
-    public Image character2Image;
-    public Text storyName;
-    public Text character2NameText;
-    public Text dialogueText;
+    public Texture2D leftGifTexture;
+    public Texture2D rightGifTexture;
+    public GameObject leftImage;
+    public GameObject rightImage;
+    public GameObject backgroundImage;
+    public GameObject dialogueText;
     public GameObject dialoguePanel;
     public AudioSource bgmAudioSource;
-
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
+    private int currentStoryIndex;
+    public StoryDataWrapper wrapper;
 
-    //void Start()
-    //{
-    //    LoadDialogue("Story1");
-    //}
+    public GameObject canvasObject;
 
-    //void Update()
-    //{
-    //    //if (Input.GetMouseButtonDown(0))
-    //    //{
-    //    //    DisplayNextSentence();
-    //    //}
-    //}
-
-    public void LoadDialogue(string path)
+    private void Start()
     {
-        string storyFilePath = "Json/Story/" + DataHolder.currentStage + "/" + path;
-        //string storyJson = File.ReadAllText(storyFilePath);
+        // Create Canvas object
+        canvasObject = new GameObject("StoryCanvas");
+        Canvas canvas = canvasObject.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasObject.AddComponent<CanvasScaler>();
+        canvasObject.AddComponent<GraphicRaycaster>();
+        // setup
+        sentences = new Queue<string>();
+        isTyping = false;
+        currentStoryIndex = 0;
+        //
+        if(backgroundImage != null) {
+            return;
+        };
+        Vector3 backgroundPosition = new Vector3(0f, 5f, 0f);
+        Vector3 leftPosition = new Vector3(-10f, 0f, 0f);
+        Vector3 rightPosition = new Vector3(10f, 0f, 0f);
+        Vector3 dialoguePosition = new Vector3(0f, 0f, 0f);
+        Vector3 dialoguePanelPosition = new Vector3(0f, -5f, 0f);
+
+        backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition);
+        leftImage = Utils.CreateImage(canvasObject.transform, leftPosition);
+        rightImage = Utils.CreateImage(canvasObject.transform, rightPosition);
+        print(rightImage);
+        dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition);
+
+        dialoguePanel = new GameObject("DialoguePanel");
+        // parent
+        dialoguePanel.transform.SetParent(canvasObject.transform); // Set the parent transform
+        dialoguePanel.transform.position = dialoguePanelPosition;
+        dialoguePanel.AddComponent<RectTransform>(); // Add a RectTransform component
+
+        // 
+        // Create the audio source
+        bgmAudioSource = gameObject.AddComponent<AudioSource>();
+        // Other initialization code...
+    }
+
+    public void LoadStoryDataFromJSON(string jsonFilePath)
+    {
+        string storyFilePath = "Json/Story/" + DataHolder.currentStage + "/" + jsonFilePath;
+
+        //if (File.Exists(jsonFilePath))
+        //{
+        //    string jsonString = File.ReadAllText(jsonFilePath);
+        //    storyArray = JsonConvert.DeserializeObject<StoryData[]>(jsonString);
+        //}
+        //else
+        //{
+        //    Debug.LogError("JSON file not found: " + jsonFilePath);
+        //}
 
         print(storyFilePath);
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
         print(jsonFile);
-        StoryData storyData = JsonUtility.FromJson<StoryData>(jsonFile.text);
-        print(storyData);
-        //StoryData storyData = JsonUtility.FromJson<StoryData>(storyJson);
-        print("Sprites/Characters/" + storyData.imagePath);
-        storyImage.sprite = Resources.Load<Sprite>("Sprites/Characters/" + storyData.imagePath);
-        storyName.text = storyData.name;
+        
+        wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
+        LoadStory(wrapper.storyArray[currentStoryIndex]);
 
-
-        backgroundImage.sprite = Resources.Load<Sprite>("Backgrounds/" + storyData.backgroundPath);
-
-        if (bgmAudioSource.clip != null)
-        {
-            bgmAudioSource.Stop();
-        }
-        if (storyData.bgmPath != "")
-        {
-            AudioClip bgmClip = Resources.Load<AudioClip>("BGM/" + storyData.bgmPath);
-            bgmAudioSource.clip = bgmClip;
-            bgmAudioSource.Play();
-        }
-
-        sentences.Clear();
-        foreach (string sentence in storyData.dialogue)
-        {
-            sentences.Enqueue(sentence);
-        }
         DisplayNextSentence();
+    }
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // Called when the screen is tapped
+        DisplayNextSentence();
+    }
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.GetComponent<Text>().text = "";
+        isTyping = true;
+
+        foreach (char character in sentence)
+        {
+            dialogueText.GetComponent<Text>().text += character;
+            yield return new WaitForSeconds(0.1f); // Adjust the delay between characters if needed
+        }
+
+        isTyping = false;
     }
 
     public void DisplayNextSentence()
@@ -75,7 +129,7 @@ public class StoryController : MonoBehaviour
         {
             // Finish typing the current sentence immediately
             StopAllCoroutines();
-            dialogueText.text = sentences.Peek();
+            dialogueText.GetComponent<Text>().text = sentences.Peek();
             isTyping = false;
             return;
         }
@@ -84,6 +138,19 @@ public class StoryController : MonoBehaviour
         {
             // End of dialogue
             dialoguePanel.SetActive(false);
+
+            // Move to the next story
+            currentStoryIndex++;
+            if (currentStoryIndex < wrapper.storyArray.Count)
+            {
+                LoadStory(wrapper.storyArray[currentStoryIndex]);
+            }
+            else
+            {
+                // End of all stories
+                // Perform any desired actions here
+            }
+
             return;
         }
 
@@ -91,49 +158,39 @@ public class StoryController : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
-    IEnumerator TypeSentence(string sentence)
+    private void LoadStory(StoryData story)
     {
-        isTyping = true;
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        // Load and display the story data
+
+        //Sprite leftSprite = Sprite.Create(leftGifTexture, new Rect(0, 0, leftGifTexture.width, leftGifTexture.height), Vector2.one * 0.5f);
+        //leftImage.sprite = leftSprite;
+
+        Sprite rightSprite = Resources.Load<Sprite>("Sprites/Characters/" + story.imagePath);
+        print("Sprites/Characters/" + story.imagePath);
+        print(rightImage);
+        print(rightSprite);
+        rightImage.GetComponent<Image>().sprite = rightSprite;
+
+        backgroundImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + story.backgroundPath);
+
+        if (bgmAudioSource.clip != null)
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            bgmAudioSource.Stop();
         }
-        isTyping = false;
-    }
-
-    [System.Serializable]
-    public class StoryData
-    {
-        public string name;
-        public string imagePath;
-        public string backgroundPath;
-        public string bgmPath;
-        public string[] dialogue;
-    }
-
-    public IEnumerator PlayStory(IStoryEvent storyEvent, GameObject dialogBoxPrefab, AudioSource audioSource, float dialogDelay, float storyDelay)
-    {
-        // Create the dialog box
-        DialogBox dialogBox = Instantiate(dialogBoxPrefab, transform).GetComponent<DialogBox>();
-
-        // Play the story event
-        yield return storyEvent.Play(dialogBox);
-
-        // Wait for the story to finish before playing the next one
-        yield return new WaitForSeconds(storyDelay);
-
-        // Hide the dialog box
-        dialogBox.Hide();
-
-        // Wait for a delay before playing the next story
-        yield return new WaitForSeconds(dialogDelay);
-
-        // Play the next story event if there is one
-        if (audioSource !=null)
+        if (!string.IsNullOrEmpty(story.bgmPath))
         {
-            audioSource.Stop();
+            AudioClip bgmClip = Resources.Load<AudioClip>("BGM/" + story.bgmPath);
+            bgmAudioSource.clip = bgmClip;
+            bgmAudioSource.Play();
         }
+
+        sentences.Clear();
+        foreach (string sentence in story.dialogue)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        // Start displaying the first sentence
+        DisplayNextSentence();
     }
 }

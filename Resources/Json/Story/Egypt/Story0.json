@@ -1,12 +1,26 @@
-
 {
-    "name": "Alice",
-    "imagePath": "Alice",
-    "backgroundPath": "forest",
-    "bgmPath": "forest",
-    "dialogue": [
-        "Hello there!",
-        "How are you doing?",
-        "That's great to hear!"
-    ]
+"storyArray" : [
+	{
+	    "name": "Alice",
+	    "imagePath": "Alice",
+	    "backgroundPath": "forest",
+	    "bgmPath": "forest",
+	    "dialogue": [
+	        "Hello there!",
+	        "How are you doing?",
+	        "That's great to hear!"
+	    ]
+	},
+	{
+	    "name": "Alice",
+	    "imagePath": "Test",
+	    "backgroundPath": "forest",
+	    "bgmPath": "forest",
+	    "dialogue": [
+	        "Hello there!",
+	        "How are you doing?",
+	        "That's great to hear!"
+	    ]
+	}
+]
 }
