@@ -8,14 +8,10 @@ using System.IO;
 public class HomeController : MonoBehaviour
 {
 
+    public GameObject storyCanvasPrefab;
     public int numPlates = 5;
     public float plateSpacing = 2.0f;
 
-    public AudioClip introStoryClip;
-    public AudioClip endingStoryClip;
-    public GameObject dialogBoxPrefab;
-    public float dialogDelay = 2.0f;
-    public float storyDelay = 5.0f;
 
     private void Awake()
     {
@@ -45,7 +41,6 @@ public class HomeController : MonoBehaviour
             }
             j++;
         }
-
         // Set up boss death event
         // int currentHealth = boss.GetComponent<BossController>().currentHealth;
         // if (currentHealth != null)

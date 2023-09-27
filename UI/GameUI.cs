@@ -28,7 +28,6 @@ public class GameUIController : MonoBehaviour
         menuButtonImage = DataHolder.menuButtonImage;
         // Create Canvas object
         canvasObject = new GameObject("GameCanvas");
-        DataHolder.storyCanvas = canvasObject;
         Canvas canvas = canvasObject.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvasObject.AddComponent<CanvasScaler>();

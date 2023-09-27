@@ -13,8 +13,6 @@ public class MainController : MonoBehaviour
         LoadAssetsFromJson(DataHolder.currentStage, "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
-        DataHolder.storyCanvas = new GameObject("Canvas");
-        DataHolder.storyCanvas.AddComponent<StoryController>();
     }
 
     public void LoadAssetsForButtonsUI()

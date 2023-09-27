@@ -54,32 +54,35 @@ public class StoryController : MonoBehaviour
         if(backgroundImage != null) {
             return;
         };
-        Vector3 backgroundPosition = new Vector3(0f, 5f, 0f);
-        Vector3 leftPosition = new Vector3(-10f, 0f, 0f);
-        Vector3 rightPosition = new Vector3(10f, 0f, 0f);
-        Vector3 dialoguePosition = new Vector3(0f, 0f, 0f);
-        Vector3 dialoguePanelPosition = new Vector3(0f, -5f, 0f);
+        var elementWidth = 300;
+        Vector2 backgroundPosition = new Vector2(0, 5f);
+        Vector2 leftPosition = new Vector2(-Screen.width / 2f + elementWidth / 2f, 0f);
+        Vector2 rightPosition = new Vector2(Screen.width / 2f - elementWidth / 2f, 0f);
+        Vector2 dialoguePosition = new Vector2(0f, 0f);
+        Vector2 dialoguePanelPosition = new Vector2(0f, -50f);
 
         backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition);
         leftImage = Utils.CreateImage(canvasObject.transform, leftPosition);
         rightImage = Utils.CreateImage(canvasObject.transform, rightPosition);
+
         print(rightImage);
         dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition);
 
         dialoguePanel = new GameObject("DialoguePanel");
         // parent
-        dialoguePanel.transform.SetParent(canvasObject.transform); // Set the parent transform
-        dialoguePanel.transform.position = dialoguePanelPosition;
-        dialoguePanel.AddComponent<RectTransform>(); // Add a RectTransform component
+        RectTransform dialoguePanelTransform = dialoguePanel.AddComponent<RectTransform>();
+        dialoguePanelTransform.SetParent(canvasObject.transform); // Set the parent transform
+        dialoguePanelTransform.localPosition = dialoguePanelPosition;
 
-        // 
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
+        canvasObject.SetActive(false);
     }
 
     public void LoadStoryDataFromJSON(string jsonFilePath)
     {
+        canvasObject.SetActive(true);
         string storyFilePath = "Json/Story/" + DataHolder.currentStage + "/" + jsonFilePath;
 
         //if (File.Exists(jsonFilePath))

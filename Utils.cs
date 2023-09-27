@@ -22,8 +22,9 @@ public class Utils : MonoBehaviour
     static public GameObject CreateImage(Transform transform, Vector2 position)
     {
         GameObject imageObj = new GameObject("Image");
-        imageObj.transform.SetParent(transform); // Set the parent transform
-        imageObj.transform.position = position;
+        RectTransform imageTransform = imageObj.AddComponent<RectTransform>();
+        imageTransform.SetParent(transform); // Set the parent transform
+        imageTransform.anchoredPosition = position;
         Image image = imageObj.AddComponent<Image>();
         return imageObj;
     }
@@ -31,8 +32,9 @@ public class Utils : MonoBehaviour
     static public GameObject CreateText(Transform transform, Vector2 position)
     {
         GameObject textObj = new GameObject("Text");
-        textObj.transform.SetParent(transform); // Set the parent transform
-        textObj.transform.position = position;
+        RectTransform textTransform = textObj.AddComponent<RectTransform>();
+        textTransform.SetParent(transform); // Set the parent transform
+        textTransform.anchoredPosition = position;
         Text text = textObj.AddComponent<Text>();
         return textObj;
     }

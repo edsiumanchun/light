@@ -28,5 +28,4 @@ public static class DataHolder
     public static List<Sprite> UIButtons; // List to store the loaded assets
     public static Sprite menuButtonImage; // List to store the loaded assets
 
-    public static GameObject storyCanvas;
 }
