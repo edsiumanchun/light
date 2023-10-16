@@ -10,7 +10,7 @@ public class MainController : MonoBehaviour
     List<string> stages;
     private void Start()
     {
-        LoadAssetsFromJson(DataHolder.currentStage, "HomeScene");
+        LoadAssetsFromJson(DataHolder.currentStage + DataHolder.currentFloor, "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
     }

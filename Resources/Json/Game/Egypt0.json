@@ -3,7 +3,7 @@
     "backgrounds": ["Egypt"],
     "plateV": ["Egypt","YellowDoor","Gate"],
     "plateH": ["Egypt","Egypt", "Egypt"],
-    "objects": ["Player","Story0","Trigger","Enemy1","Enemy2","Enemy1","Enemy1","Enemy1","Enemy1","Enemy1"]
+    "objects": ["Player","Story0","Trigger","YellowKey","Enemy2","Enemy1","Enemy1","Enemy1","Enemy1","Enemy1"]
   },
   "assets0": [
     {

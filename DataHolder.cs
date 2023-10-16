@@ -14,6 +14,11 @@ public static class DataHolder
     {
         get { return stages[0]; }
     }
+
+    public static int currentFloor
+    {
+        get { return 0; }
+    }
     // public static float scale; // List to store the loaded assets
     public static GameObject player; // List to store the loaded assets
     public static List<List<AssetData>> loadedAssets; // List to store the loaded assets

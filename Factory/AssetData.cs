@@ -47,7 +47,7 @@ public class AssetData
         return DataHolder.plateV[0];
     }
 
-    public GameObject CreateObjectWithAssetIndex(int index, int assetIndex, float z)
+    public GameObject CreateObjectWithAssetIndex(int rowIndex, int columnIndex, int assetIndex, float z)
     {
         GameObject newObject = new GameObject();
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
@@ -66,6 +66,17 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
                 break;
         }
+        if(name != "Background")
+        {
+            CacheObjectController cacheObjectController  = newObject.AddComponent<CacheObjectController>();
+            CacheObjectData cacheObject = new CacheObjectData();
+            cacheObject.rowIndex = rowIndex;
+            cacheObject.columnIndex = columnIndex;
+            cacheObject.stage = DataHolder.currentStage;
+            cacheObject.floor = 1;
+            cacheObject.type = name;
+        }
+        // --------- //
         string pathName = spriteRenderer.sprite.name;
         newObject.name = pathName;
         switch (pathName)
@@ -75,9 +86,14 @@ public class AssetData
                 JoystickController joystickController = newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
                 break;
-
             case "Trigger":
                 newObject.AddComponent<GateTriggerController>(); // Create a new script GateTrigger and attach it to the object
+                break;
+            case "YellowKey":
+                newObject.AddComponent<KeyController>();
+                break;
+            case "YellowDoor":
+                // newObject.AddComponent<KeyController>();
                 break;
         }
         return newObject;
@@ -87,7 +103,7 @@ public class AssetData
     {
         if (name == "Background")
         {
-            CreateObjectWithAssetIndex(0, 0, z);
+            CreateObjectWithAssetIndex(0, 0, 0, z);
             return;
         }
         GameObject newObject;
@@ -113,7 +129,7 @@ public class AssetData
                     continue;
                 }
 
-                newObject = CreateObjectWithAssetIndex(gridIndex * 10 + column, cellValue - 1, z);
+                newObject = CreateObjectWithAssetIndex(gridIndex, column, cellValue - 1, z);
                 if (name == "PlateV" || name == "PlateH")
                 {
                     if (name == "PlateV")
