@@ -75,6 +75,10 @@ public class AssetData
                 JoystickController joystickController = newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
                 break;
+
+            case "Trigger":
+                newObject.AddComponent<GateTriggerController>(); // Create a new script GateTrigger and attach it to the object
+                break;
         }
         return newObject;
     }

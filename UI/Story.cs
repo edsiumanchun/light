@@ -54,19 +54,20 @@ public class StoryController : MonoBehaviour
         if(backgroundImage != null) {
             return;
         };
-        var elementWidth = 300;
+        var elementWidth = 360;
+        var elementHeight = elementWidth * 2 / 3;
         Vector2 backgroundPosition = new Vector2(0, 5f);
         Vector2 leftPosition = new Vector2(-Screen.width / 2f + elementWidth / 2f, 0f);
         Vector2 rightPosition = new Vector2(Screen.width / 2f - elementWidth / 2f, 0f);
         Vector2 dialoguePosition = new Vector2(0f, 0f);
-        Vector2 dialoguePanelPosition = new Vector2(0f, -50f);
+        Vector2 dialoguePanelPosition = new Vector2(0f, -Screen.height / 2);
 
-        backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition);
-        leftImage = Utils.CreateImage(canvasObject.transform, leftPosition);
-        rightImage = Utils.CreateImage(canvasObject.transform, rightPosition);
+        backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition, new Vector2(Screen.width, Screen.height));
+        leftImage = Utils.CreateImage(canvasObject.transform, leftPosition, new Vector2(elementWidth, elementWidth));
+        rightImage = Utils.CreateImage(canvasObject.transform, rightPosition, new Vector2(elementWidth, elementWidth));
 
         print(rightImage);
-        dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition);
+        dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition, new Vector2(Screen.width, Screen.height / 2));
 
         dialoguePanel = new GameObject("DialoguePanel");
         // parent

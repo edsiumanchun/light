@@ -65,6 +65,10 @@ public class CameraViewController : MonoBehaviour
 
             elapsedTime += Time.deltaTime;
             yield return null;
+
+            // lock gate
+            GameObject gateObject = GameObject.Find("Trigger");
+            gateObject.GetComponent<GateTriggerController>().ResetPositions();
         }
 
         transform.position = targetCameraPosition;
