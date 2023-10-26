@@ -38,7 +38,7 @@ public class MainController : MonoBehaviour
             Path paths = assetsData.paths;
             DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
             DataHolder.plateV = LoadSprites("PlateV", paths.plateV);
-            DataHolder.objects = LoadSprites("Object", paths.objects);
+            DataHolder.objects = LoadObjects("Object", paths.objects);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
 
             List<List<AssetData>> assetDatas = new List<List<AssetData>>((new[] { assetsData.assets0, assetsData.assets1, assetsData.assets2 }));
@@ -67,6 +67,23 @@ public class MainController : MonoBehaviour
         foreach (string path in paths)
         {
             Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
+            //print("Sprites/" + folder + "/" + path);
+            if (asset != null)
+            {
+                temp.Add(asset);
+            }
+        }
+        return temp;
+    }
+
+    public static List<Object> LoadObjects(string folder, List<string> paths)
+    {
+        List<Object> temp = new List<Object>();
+        foreach (string path in paths)
+        {
+            Object asset = path.Contains("_p") ?
+                Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", "")) :
+                (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
             //print("Sprites/" + folder + "/" + path);
             if (asset != null)
             {

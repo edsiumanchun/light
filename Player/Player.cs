@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float invincibilityTime = 1f; // The duration of invincibility after taking damage
     private bool isInvincible = false; // Whether the player is currently invincible
     private float invincibilityTimer = 0f; // The timer for invincibility
-    public float knockbackForce = 10f; // The force of knockback when taking damage
+    public float knockbackForce = 0f; // The force of knockback when taking damage
 
     public float moveSpeed = 1f;
     public int maxHP = 3; // Maximum HP of the player

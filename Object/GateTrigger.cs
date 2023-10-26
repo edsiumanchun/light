@@ -29,32 +29,22 @@ public class GateTriggerController : MonoBehaviour
         if (!gateOpened && other.gameObject.name == "Player")
         {
             gateOpened = true;
-            StartCoroutine(MoveGate(true));
+            OpenGate(true);
             StartCoroutine(MoveObject(false));
         }
     }
 
     public void ResetPositions()
     {
-        StartCoroutine(MoveGate(false));
+        OpenGate(false);
         StartCoroutine(MoveObject(true));
         gateOpened = false;
     }
 
-    private System.Collections.IEnumerator MoveGate(bool isUp)
+    private void OpenGate(bool isUp)
     {
         GameObject gateObject = GameObject.Find("Gate");
-        Vector3 startPosition = gateObject.transform.position;
-        Vector3 offset = isUp ? Vector3.up * gateOpenHeight : Vector3.down * gateOpenHeight;
-        Vector3 targetPosition = startPosition + offset;
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime * gateMoveSpeed;
-            gateObject.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
-            yield return null;
-        }
+        gateObject.GetComponent<GateController>().OpenGate(isUp);
     }
 
     private System.Collections.IEnumerator MoveObject(bool isUp)

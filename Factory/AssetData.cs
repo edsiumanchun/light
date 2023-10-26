@@ -24,7 +24,7 @@ public class Path
 }
 
 [System.Serializable]
-public class AssetData
+public class AssetData 
 {
     public string name = ""; // Name of the asset
     public List<int> gridArray0;
@@ -36,6 +36,23 @@ public class AssetData
     public List<int> gridArray6;
     int numRows = 5;
     int numColumns = 5;
+    bool isSprite = true;
+
+    Vector2 GetCombinedSize(GameObject parentGameObject)
+    {
+        Bounds combinedBounds = new Bounds();
+
+        foreach (Transform childTransform in parentGameObject.transform)
+        {
+            SpriteRenderer spriteRenderer = childTransform.GetComponent<SpriteRenderer>();
+            Sprite sprite = spriteRenderer.sprite;
+            Bounds objectBounds = sprite.bounds;
+            Vector2 localPosition = childTransform.localPosition;
+            combinedBounds.Encapsulate(new Vector2(objectBounds.size.x + localPosition.x * 2 , objectBounds.size.y + localPosition.y * 2));
+        }
+        Debug.Log(combinedBounds.size.y);
+        return combinedBounds.size;
+    }
 
     public Sprite GetBackgroundSprite()
     {
@@ -47,8 +64,9 @@ public class AssetData
         return DataHolder.plateV[0];
     }
 
-    public GameObject CreateObjectWithAssetIndex(int rowIndex, int columnIndex, int assetIndex, float z)
+    public GameObject CreateObjectWithAssetIndex(int assetIndex, float z)
     {
+        isSprite = DataHolder.objects[assetIndex] is Sprite;
         GameObject newObject = new GameObject();
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
         switch (name)
@@ -60,24 +78,23 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
-                spriteRenderer.sprite = DataHolder.objects[assetIndex];
+                if (isSprite) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.objects[assetIndex];
+                } else
+                {
+                    GameObject prefab = (GameObject)DataHolder.objects[assetIndex];
+                    newObject = HomeController.InstantiateObject(prefab);
+                    //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
+                    //offsetY = GetCombinedHeight(newObject) / 2;
+                    //newObject = Instantiate(prefab, transform.position, transform.rotation);
+                }
                 break;
             case "Background":
                 spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
                 break;
         }
-        if(name != "Background")
-        {
-            CacheObjectController cacheObjectController  = newObject.AddComponent<CacheObjectController>();
-            CacheObjectData cacheObject = new CacheObjectData();
-            cacheObject.rowIndex = rowIndex;
-            cacheObject.columnIndex = columnIndex;
-            cacheObject.stage = DataHolder.currentStage;
-            cacheObject.floor = 1;
-            cacheObject.type = name;
-        }
         // --------- //
-        string pathName = spriteRenderer.sprite.name;
+        string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name;
         newObject.name = pathName;
         switch (pathName)
         {
@@ -89,13 +106,19 @@ public class AssetData
             case "Trigger":
                 newObject.AddComponent<GateTriggerController>(); // Create a new script GateTrigger and attach it to the object
                 break;
-            case "YellowKey":
+            case "KeyGold":
+            case "KeySilver":
+            case "KeyCopper":
                 newObject.AddComponent<KeyController>();
                 break;
-            case "YellowDoor":
-                // newObject.AddComponent<KeyController>();
+            case "Gate":
+            case "DoorGold":
+            case "DoorSilver":
+            case "DoorCopper":
+                newObject.AddComponent<GateController>();
                 break;
         }
+            
         return newObject;
     }
 
@@ -103,7 +126,7 @@ public class AssetData
     {
         if (name == "Background")
         {
-            CreateObjectWithAssetIndex(0, 0, 0, z);
+            CreateObjectWithAssetIndex(0, z);
             return;
         }
         GameObject newObject;
@@ -129,7 +152,12 @@ public class AssetData
                     continue;
                 }
 
-                newObject = CreateObjectWithAssetIndex(gridIndex, column, cellValue - 1, z);
+                newObject = CreateObjectWithAssetIndex(cellValue - 1, z);
+                BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
+                if (!isSprite)
+                {
+                    boxCollider.size = GetCombinedSize(newObject);
+                }
                 if (name == "PlateV" || name == "PlateH")
                 {
                     if (name == "PlateV")
@@ -144,10 +172,19 @@ public class AssetData
                 }
                 else if (name == "Object")
                 {
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + boxCollider.size.y / 2, z);
                 }
                 newObject.transform.rotation = Quaternion.identity;
-                BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
+                
+                //boxCollider.sharedMaterial.bounciness = 0f;
+                //boxCollider.sharedMaterial.friction = 1f;
+
+                CacheObjectController cacheObjectController = newObject.AddComponent<CacheObjectController>();
+                CacheObjectData cacheObject = new CacheObjectData();
+                cacheObject.rowIndex = gridIndex;
+                cacheObject.columnIndex = column;
+                cacheObject.stage = DataHolder.currentStage + DataHolder.currentFloor;
+                cacheObject.type = name;
             }
         }
     }

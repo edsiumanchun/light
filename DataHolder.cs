@@ -25,7 +25,7 @@ public static class DataHolder
     public static List<AssetData> loadedSound; // List to store the loaded assets
     public static List<AssetData> loadedGameObject; // List to store the loaded assets
 
-    public static List<Sprite> objects; // List to store the loaded assets
+    public static List<Object> objects; // List to store the loaded assets
     public static List<Sprite> plateH; // List to store the loaded assets
     public static List<Sprite> plateV; // List to store the loaded assets
     public static List<Sprite> backgrounds; // List to store the loaded assets

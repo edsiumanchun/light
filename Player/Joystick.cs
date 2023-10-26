@@ -144,5 +144,13 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Purify()
     {
+        GameObject[] objectsToPurify = GameObject.FindGameObjectsWithTag("Purify");
+        print("purify");
+        foreach (GameObject obj in objectsToPurify)
+        {
+            print("purify");
+            obj.GetComponent<CacheObjectController>().PurifyCacheData();
+            Destroy(obj);
+        }
     }
 }

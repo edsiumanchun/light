@@ -66,7 +66,6 @@ public class StoryController : MonoBehaviour
         leftImage = Utils.CreateImage(canvasObject.transform, leftPosition, new Vector2(elementWidth, elementWidth));
         rightImage = Utils.CreateImage(canvasObject.transform, rightPosition, new Vector2(elementWidth, elementWidth));
 
-        print(rightImage);
         dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition, new Vector2(Screen.width, Screen.height / 2));
 
         dialoguePanel = new GameObject("DialoguePanel");
