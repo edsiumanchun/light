@@ -13,13 +13,16 @@ public class MainController : MonoBehaviour
         LoadAssetsFromJson(DataHolder.currentStage + DataHolder.currentFloor, "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
+        LoadAssetsForSettingsUI();
+        LoadAssetsForDashboardUI();
+        LoadAssetsForCommonUI();
     }
 
     public void LoadAssetsForButtonsUI()
     {
         List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
         List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.UIButtons = sprites;
+        DataHolder.gameButtonImages = sprites;
     }
 
     public void LoadAssetsForMenuUI()
@@ -29,12 +32,38 @@ public class MainController : MonoBehaviour
         DataHolder.menuButtonImage = sprites[0];
     }
 
+    public void LoadAssetsForSettingsUI()
+    {
+        List<string> paths = new List<string>((new[] { "Right", "Left"}));
+        List<Sprite> sprites = LoadSprites("UI", paths);
+        DataHolder.settingButtonImages = sprites;
+    }
+
+
+    public void LoadAssetsForDashboardUI()
+    {
+        List<string> paths = new List<string>((new[] { "Copper", "Silver", "Gold" }));
+        List<Sprite> sprites = LoadSprites("UI", paths);
+        DataHolder.dashboardImages = sprites;
+        List<string> paths2 = new List<string>((new[] { "Setting"}));
+        List<Sprite> sprites2 = LoadSprites("UI", paths2);
+        DataHolder.dashboardButtonImages = sprites2;
+    }
+
+
+    public void LoadAssetsForCommonUI()
+    {
+        List<string> paths = new List<string>((new[] { "Close"}));
+        List<Sprite> sprites = LoadSprites("UI", paths);
+        DataHolder.commonImages = sprites;
+    }
+
     public void LoadAssetsFromJson(string stage, string sceneName)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage);
+        AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
-            AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
             Path paths = assetsData.paths;
             DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
             DataHolder.plateV = LoadSprites("PlateV", paths.plateV);

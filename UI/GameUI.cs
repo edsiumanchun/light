@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +23,7 @@ public class GameUIController : MonoBehaviour
 
     private void Start()
     {
-        buttonImages = DataHolder.UIButtons;
+        buttonImages = DataHolder.gameButtonImages;
         menuButtonImage = DataHolder.menuButtonImage;
         // Create Canvas object
         canvasObject = new GameObject("GameCanvas");
@@ -42,7 +41,7 @@ public class GameUIController : MonoBehaviour
         eventSystemObject.transform.SetParent(canvasObject.transform);
 
         // Instantiate menu button
-        Button menuButton = CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform);
+        Button menuButton = UIUtils.CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform);
         menuButton.onClick.AddListener(ToggleMenu);
 
         // Create circle buttons container
@@ -57,34 +56,25 @@ public class GameUIController : MonoBehaviour
         for (int i = 0; i < buttonImages.Count; i++)
         {
             int buttonIndex = i; // Store the index in a local variable to capture it in the lambda expression
-            Button button = CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform);
+            Button button = UIUtils.CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform);
             button.onClick.AddListener(() => ButtonAction(buttonIndex));
         }
     }
 
-    private Button CreateButton(Sprite sprite, Vector2 position, Transform parent)
-    {
-        GameObject buttonObject = new GameObject("Button", typeof(RectTransform));
-        buttonObject.transform.SetParent(parent, false);
-
-        Image image = buttonObject.AddComponent<Image>();
-        image.sprite = sprite;
-
-        Button button = buttonObject.AddComponent<Button>();
-
-        RectTransform rectTransform = buttonObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = position;
-
-        return button;
-    }
 
     private void ToggleMenu()
     {
         isMenuOpen = !isMenuOpen;
 
         // Activate/deactivate the circle buttons container based on menu state
-        GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-        circleButtonsContainer.SetActive(isMenuOpen);
+        //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
+        //circleButtonsContainer.SetActive(isMenuOpen);
+
+        //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
+        //settingsController.canvasObject.SetActive(true);
+
+        DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
+        dashboardController.canvasObject.SetActive(true);
     }
 
     private void ButtonAction(int buttonIndex)

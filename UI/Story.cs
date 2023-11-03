@@ -30,12 +30,12 @@ public class StoryController : MonoBehaviour
     public GameObject backgroundImage;
     public GameObject dialogueText;
     public GameObject dialoguePanel;
-    public AudioSource bgmAudioSource;
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
     private int currentStoryIndex;
     public StoryDataWrapper wrapper;
 
+    public AudioSource bgmAudioSource;
     public GameObject canvasObject;
 
     private void Start()

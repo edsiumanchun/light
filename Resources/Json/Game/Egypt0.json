@@ -3,7 +3,7 @@
     "backgrounds": ["Egypt"],
     "plateH": ["Egypt","Egypt", "Egypt"],
     "plateV": ["Egypt","DoorCopper","DoorSilver","DoorGold","Gate"],
-    "objects": ["Player","KeyCopper","KeySilver","KeyGold","Trigger","Story0","Enemy3","Enemy3_p"]
+    "objects": ["Player","KeyCopper","KeySilver","KeyGold","Trigger","Story0","Enemy3","Stone_p"]
   },
   "assets0": [
     {

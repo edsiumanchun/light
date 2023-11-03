@@ -30,7 +30,16 @@ public static class DataHolder
     public static List<Sprite> plateV; // List to store the loaded assets
     public static List<Sprite> backgrounds; // List to store the loaded assets
     // ui
-    public static List<Sprite> UIButtons; // List to store the loaded assets
+    public static List<Sprite> gameButtonImages; // List to store the loaded assets
     public static Sprite menuButtonImage; // List to store the loaded assets
 
+    // ui2
+    public static List<Sprite> settingButtonImages; // List to store the loaded assets
+
+    // ui3
+    public static List<Sprite> dashboardImages; // List to store the loaded assets
+    public static List<Sprite> dashboardButtonImages; // List to store the loaded assets
+
+    // common ui
+    public static List<Sprite> commonImages; // List to store the loaded assets
 }

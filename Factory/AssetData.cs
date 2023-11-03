@@ -45,6 +45,7 @@ public class AssetData
         foreach (Transform childTransform in parentGameObject.transform)
         {
             SpriteRenderer spriteRenderer = childTransform.GetComponent<SpriteRenderer>();
+            if(spriteRenderer == null) { continue; }
             Sprite sprite = spriteRenderer.sprite;
             Bounds objectBounds = sprite.bounds;
             Vector2 localPosition = childTransform.localPosition;
@@ -66,7 +67,7 @@ public class AssetData
 
     public GameObject CreateObjectWithAssetIndex(int assetIndex, float z)
     {
-        isSprite = DataHolder.objects[assetIndex] is Sprite;
+        isSprite = true;
         GameObject newObject = new GameObject();
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
         switch (name)
@@ -78,6 +79,7 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
+                isSprite = DataHolder.objects[assetIndex] is Sprite;
                 if (isSprite) {
                     spriteRenderer.sprite = (Sprite)DataHolder.objects[assetIndex];
                 } else

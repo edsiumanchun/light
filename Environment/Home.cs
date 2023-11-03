@@ -28,6 +28,8 @@ public class HomeController : MonoBehaviour
         // UI
         this.gameObject.AddComponent<GameUIController>();
         this.gameObject.AddComponent<StoryController>();
+        this.gameObject.AddComponent<SettingsController>();
+        this.gameObject.AddComponent<DashboardController>();
         // UI
 
         int j = 0;
