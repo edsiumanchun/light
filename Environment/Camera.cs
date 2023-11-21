@@ -14,12 +14,6 @@ public class CameraViewController : MonoBehaviour
     private Vector3 targetCameraPosition; // Target position for the camera animation
     private bool isAnimating; // Flag to check if camera animation is in progress
 
-    public void SetBackgroundWidth()
-    {
-        Sprite backgroundSprite = DataHolder.backgrounds[0];
-        backgroundWidth = backgroundSprite.bounds.size.x;
-    }
-
     private void Start()
     {
         initialCameraPosition = transform.position;
@@ -68,7 +62,10 @@ public class CameraViewController : MonoBehaviour
 
             // lock gate
             GameObject gateObject = GameObject.Find("Trigger");
-            gateObject.GetComponent<GateTriggerController>().ResetPositions();
+            if(gateObject != null)
+            {
+                gateObject.GetComponent<GateTriggerController>().ResetPositions();
+            }
         }
 
         transform.position = targetCameraPosition;

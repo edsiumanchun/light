@@ -6,118 +6,119 @@ using System.IO;
 public class DashboardController : MonoBehaviour
 {
     public List<Sprite> commonImages;
-    public List<Sprite> dashboardImages;
+    public List<Sprite> keyImages;
     public List<Sprite> dashboardButtonImages;
+    public Vector2 goldPosition = new Vector2(-80f, 88f);
+    public Vector2 closeButtonPosition = new Vector2(330f, 278f);
     public Vector2[] infoPositions = new Vector2[]
     {
-        new Vector2(0, -200f),  // Bottom right button position
-        new Vector2(0, 0f),  // Bottom right button position
-        new Vector2(0, 200f),   // Bottom right button position
+        new Vector2(-210f, -80f),  // Bottom right button position
+        new Vector2(-70f, -80f),  // Bottom right button position
+        new Vector2(70f, -80f),   // Bottom right button position
+        new Vector2(210f, -80f),   // Bottom right button position
     };
     public Vector2[] buttonPositions = new Vector2[]
     {
-        new Vector2(0f, 500f),   // Bottom right button position
-        new Vector2(200f, -500f),  // Bottom right button position
+        new Vector2(218f, 88f),   // Bottom right button position
+        new Vector2(118f, 88f),  // Bottom right button position
     };
 
+    /// ////////
     public GameObject canvasObject;
     public AudioSource bgmAudioSource;
-    public GameObject leftImage;
-    public GameObject rightImage;
     public GameObject backgroundImage;
-    public GameObject dialogueText;
-    public GameObject dialoguePanel;
+    public GameObject coinTextImage;
+    public List<GameObject> keyTextImages;
     //
-    public Button settingButton;
-    public Button closeButton;
-
-    public Text copperKeyText;
-    public Text silverKeyText;
-    public Text goldKeyText;
+    public List<GameObject> buttons;
+    public GameObject closeButton;
 
     private void Start()
     {
         commonImages = DataHolder.commonImages;
-        dashboardImages = DataHolder.dashboardImages;
+        keyImages = DataHolder.keyImages;
         dashboardButtonImages = DataHolder.dashboardButtonImages;
         // canvas
         SetupCanvas();
         SetupInfo();
         SetupButtons();
-    }
-
-    private void SetupInfo()
-    {
-        copperKeyText = UIUtils.CreateRow(dashboardImages[0], infoPositions[0], canvasObject.transform);
-        silverKeyText = UIUtils.CreateRow(dashboardImages[1], infoPositions[1], canvasObject.transform);
-        goldKeyText = UIUtils.CreateRow(dashboardImages[2], infoPositions[2], canvasObject.transform);
-        int copperKeyCount = 10;
-        int silverKeyCount = 5;
-        int goldKeyCount = 2;
-        // Update the key count texts
-        copperKeyText.text = copperKeyCount.ToString();
-        silverKeyText.text = silverKeyCount.ToString();
-        goldKeyText.text = goldKeyCount.ToString();
-
-    }
-
-    private void SetupButtons()
-    {
-        closeButton = UIUtils.CreateButton(commonImages[0], buttonPositions[0], canvasObject.transform);
-        settingButton = UIUtils.CreateButton(dashboardButtonImages[0], buttonPositions[1], canvasObject.transform);
-        closeButton.onClick.AddListener(OnCloseButtonClicked);
-        settingButton.onClick.AddListener(OnSettingsButtonClicked);
+        SetText();
     }
 
     private void SetupCanvas()
     {
-        // Create Canvas object
-        canvasObject = new GameObject("Dashboard");
-        Canvas canvas = canvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasObject.AddComponent<CanvasScaler>();
-        canvasObject.AddComponent<GraphicRaycaster>();
-        //
-        if (backgroundImage != null)
-        {
-            return;
-        };
-        var elementWidth = 360;
-        var elementHeight = elementWidth * 2 / 3;
-        Vector2 backgroundPosition = new Vector2(0, 5f);
-        Vector2 leftPosition = new Vector2(-Screen.width / 2f + elementWidth / 2f, 0f);
-        Vector2 rightPosition = new Vector2(Screen.width / 2f - elementWidth / 2f, 0f);
-        Vector2 dialoguePosition = new Vector2(0f, 0f);
-        Vector2 dialoguePanelPosition = new Vector2(0f, -Screen.height / 2);
+        canvasObject = Utils.CreateCanvas("Dashboard", true);
+        Button button = canvasObject.AddComponent<Button>();
+        button.onClick.AddListener(OnClickButton);
+        Vector2 backgroundPosition = new Vector2(0, 0f);
 
-        backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition, new Vector2(Screen.width, Screen.height));
-        leftImage = Utils.CreateImage(canvasObject.transform, leftPosition, new Vector2(elementWidth, elementWidth));
-        rightImage = Utils.CreateImage(canvasObject.transform, rightPosition, new Vector2(elementWidth, elementWidth));
-
-        dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition, new Vector2(Screen.width, Screen.height / 2));
-
-        dialoguePanel = new GameObject("DialoguePanel");
-        // parent
-        RectTransform dialoguePanelTransform = dialoguePanel.AddComponent<RectTransform>();
-        dialoguePanelTransform.SetParent(canvasObject.transform); // Set the parent transform
-        dialoguePanelTransform.localPosition = dialoguePanelPosition;
-
+        backgroundImage = Utils.CreateImage(DataHolder.dashboardBackgroundImages[0], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
         canvasObject.SetActive(false);
     }
 
-    private void OnCloseButtonClicked()
+
+    private void SetupInfo()
     {
-        // Handle the exit button click
-        // Add your code to exit the dashboard controller here
-        canvasObject.SetActive(false);
+        keyTextImages = new List<GameObject>();
+        Utils.CreateImage(keyImages[0], infoPositions[0], canvasObject.transform);
+        Utils.CreateImage(keyImages[1], infoPositions[1], canvasObject.transform);
+        Utils.CreateImage(keyImages[2], infoPositions[2], canvasObject.transform);
+        Utils.CreateImage(keyImages[3], infoPositions[3], canvasObject.transform);
+        keyTextImages.Add(Utils.CreateTextImage(DataHolder.dashboardBackgroundImages[2], new Vector2(infoPositions[0].x, infoPositions[0].y - 130), canvasObject.transform));
+        keyTextImages.Add(Utils.CreateTextImage(DataHolder.dashboardBackgroundImages[2], new Vector2(infoPositions[1].x, infoPositions[1].y - 130), canvasObject.transform));
+        keyTextImages.Add(Utils.CreateTextImage(DataHolder.dashboardBackgroundImages[2], new Vector2(infoPositions[2].x, infoPositions[2].y - 130), canvasObject.transform));
+        keyTextImages.Add(Utils.CreateTextImage(DataHolder.dashboardBackgroundImages[2], new Vector2(infoPositions[3].x, infoPositions[3].y - 130), canvasObject.transform));
+
+        coinTextImage = Utils.CreateImageWithText(DataHolder.dashboardBackgroundImages[1], goldPosition, new Vector2(50, 0), canvasObject.transform, TextAnchor.MiddleLeft);
     }
 
-    private void OnSettingsButtonClicked()
+    public void SetText()
     {
-        SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-        settingsController.canvasObject.SetActive(true);
+        int copperKeyCount = CacheController.GetCache("Copper");
+        int silverKeyCount = CacheController.GetCache("Silver");
+        int goldKeyCount = CacheController.GetCache("Gold");
+        int soul = 32;
+        int coin = 2;
+        // Update the key count texts
+        keyTextImages[0].GetComponent<Text>().text = copperKeyCount.ToString();
+        keyTextImages[1].GetComponent<Text>().text = silverKeyCount.ToString();
+        keyTextImages[2].GetComponent<Text>().text = goldKeyCount.ToString();
+        keyTextImages[3].GetComponent<Text>().text = soul.ToString();
+        coinTextImage.GetComponent<Text>().text = coin.ToString();
+
+    }
+
+    private void SetupButtons()
+    {
+        buttons = new List<GameObject>();
+        closeButton = Utils.CreateButton(commonImages[0], closeButtonPosition, canvasObject.transform, () =>
+        {
+            canvasObject.SetActive(false);
+        });
+        buttons.Add(Utils.CreateTextButton(dashboardButtonImages[0], buttonPositions[0], new Vector2(0, -38), canvasObject.transform, () =>
+        {
+            ScrollViewController settingsController = Camera.main.gameObject.GetComponent<ScrollViewController>();
+            settingsController.canvasObject.SetActive(true);
+        }));
+        buttons.Add(Utils.CreateTextButton(dashboardButtonImages[1], buttonPositions[1], new Vector2(0, -38), canvasObject.transform, () =>
+        {
+            SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
+            settingsController.canvasObject.SetActive(true);
+        }));
+        Text text0 = buttons[0].GetComponent<Text>();
+        Text text1 = buttons[1].GetComponent<Text>();
+        text0.fontSize = 28;
+        text1.fontSize = 28;
+        text0.text = "setup";
+        text1.text = "info";
+    }
+
+    void OnClickButton()
+    {
+        // Set the active state of the game object to false
+        canvasObject.SetActive(false);
     }
 }

@@ -51,13 +51,7 @@ public class AssetData
             Vector2 localPosition = childTransform.localPosition;
             combinedBounds.Encapsulate(new Vector2(objectBounds.size.x + localPosition.x * 2 , objectBounds.size.y + localPosition.y * 2));
         }
-        Debug.Log(combinedBounds.size.y);
         return combinedBounds.size;
-    }
-
-    public Sprite GetBackgroundSprite()
-    {
-        return DataHolder.backgrounds[0];
     }
 
     public Sprite GetPlateSprite()
@@ -93,6 +87,8 @@ public class AssetData
                 break;
             case "Background":
                 spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
+                spriteRenderer.drawMode = SpriteDrawMode.Tiled;
+                spriteRenderer.size = DataHolder.GetBackgroundSize();
                 break;
         }
         // --------- //
@@ -101,8 +97,8 @@ public class AssetData
         switch (pathName)
         {
             case "Player":
-                PlayerController playerController = newObject.AddComponent<PlayerController>();
-                JoystickController joystickController = newObject.AddComponent<JoystickController>();
+                newObject.AddComponent<PlayerController>();
+                newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
                 break;
             case "Trigger":
@@ -114,9 +110,9 @@ public class AssetData
                 newObject.AddComponent<KeyController>();
                 break;
             case "Gate":
-            case "DoorGold":
-            case "DoorSilver":
-            case "DoorCopper":
+            case "GateGold":
+            case "GateSilver":
+            case "GateCopper":
                 newObject.AddComponent<GateController>();
                 break;
         }
@@ -133,13 +129,13 @@ public class AssetData
         }
         GameObject newObject;
         Sprite plateSprite = GetPlateSprite();
-        Sprite backgroundSprite = GetBackgroundSprite();
-        Vector2 gridStartPosition = backgroundSprite.bounds.center - new Vector3(backgroundSprite.bounds.size.x / 2f, -backgroundSprite.bounds.size.y / 2f);
-        float cellHeight = (backgroundSprite.bounds.size.y - plateSprite.bounds.size.x) / numRows;
-        float cellWidth = (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x) / numColumns;
+        Vector2 backgroundSize = DataHolder.GetBackgroundSize();
+        Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(backgroundSize.x / 2f, -backgroundSize.y / 2f);
+        float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
+        float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
         float offset = plateSprite.bounds.size.x / 2;
-        float offsetX = +subStage * (backgroundSprite.bounds.size.x - plateSprite.bounds.size.x);
+        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
 
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {

@@ -14,23 +14,23 @@ public class GameUIController : MonoBehaviour
     public Vector2[] buttonPositions = new Vector2[]
     {
         new Vector2(0f, 0f),  // Bottom right button position
-        new Vector2(0f, 150f),  // Bottom right button position
-        new Vector2(0f, 300f),   // Bottom right button position
+        //new Vector2(0f, 100f),  // Bottom right button position
+        //new Vector2(0f, 200f),   // Bottom right button position
     };
 
-    public Vector2 menuButtonPosition = new Vector2(560f, 300f);  // Top right menu button position
-    public Vector2 containerPosition = new Vector2(560f, -300f);  // Top right menu button position
+    public Vector2 menuButtonPosition, containerPosition;  // Top right menu button position
+
+    public Vector2 screenSize;
 
     private void Start()
     {
+        canvasObject = Utils.CreateCanvas("GameCanvas", false);
+        screenSize = Utils.GetCanvasSize(canvasObject);
+        menuButtonPosition = new Vector2(screenSize.x / 2, screenSize.y / 2);
+        containerPosition = new Vector2(screenSize.x / 2, -1 * screenSize.y / 2);
         buttonImages = DataHolder.gameButtonImages;
         menuButtonImage = DataHolder.menuButtonImage;
         // Create Canvas object
-        canvasObject = new GameObject("GameCanvas");
-        Canvas canvas = canvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasObject.AddComponent<CanvasScaler>();
-        canvasObject.AddComponent<GraphicRaycaster>();
 
         // Create EventSystem object
         GameObject eventSystemObject = new GameObject("EventSystem");
@@ -41,8 +41,21 @@ public class GameUIController : MonoBehaviour
         eventSystemObject.transform.SetParent(canvasObject.transform);
 
         // Instantiate menu button
-        Button menuButton = UIUtils.CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform);
-        menuButton.onClick.AddListener(ToggleMenu);
+        GameObject menuButton = Utils.CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform, () => {
+
+            isMenuOpen = !isMenuOpen;
+
+            // Activate/deactivate the circle buttons container based on menu state
+            //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
+            //circleButtonsContainer.SetActive(isMenuOpen);
+
+            //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
+            //settingsController.canvasObject.SetActive(true);
+
+            DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
+            dashboardController.SetText();
+            dashboardController.canvasObject.SetActive(true);
+        });
 
         // Create circle buttons container
         GameObject circleButtonsContainer = new GameObject("CircleButtonsContainer");
@@ -56,25 +69,8 @@ public class GameUIController : MonoBehaviour
         for (int i = 0; i < buttonImages.Count; i++)
         {
             int buttonIndex = i; // Store the index in a local variable to capture it in the lambda expression
-            Button button = UIUtils.CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform);
-            button.onClick.AddListener(() => ButtonAction(buttonIndex));
+            GameObject button = Utils.CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform, () => ButtonAction(buttonIndex));
         }
-    }
-
-
-    private void ToggleMenu()
-    {
-        isMenuOpen = !isMenuOpen;
-
-        // Activate/deactivate the circle buttons container based on menu state
-        //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-        //circleButtonsContainer.SetActive(isMenuOpen);
-
-        //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-        //settingsController.canvasObject.SetActive(true);
-
-        DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
-        dashboardController.canvasObject.SetActive(true);
     }
 
     private void ButtonAction(int buttonIndex)
@@ -83,13 +79,13 @@ public class GameUIController : MonoBehaviour
         switch (buttonIndex)
         {
             case 0:
-                joystickController.Jump();
+                joystickController.Purify();
                 break;
             case 1:
                 joystickController.Crouch();
                 break;
             case 2:
-                joystickController.Purify();
+                joystickController.Jump();
                 break;
             default:
                 Debug.Log("Button " + buttonIndex + " pressed.");

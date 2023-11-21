@@ -17,6 +17,22 @@ public static class CacheController
         SetCache(key, newCache);
     }
 
+    public static void IncreaseCache(string key, int amount, int maxCache)
+    {
+        int currentCache = GetCache(key);
+        int newCache = currentCache + amount;
+        newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
+        SetCache(key, newCache);
+    }
+
+    public static void DecreaseCache(string key, int amount, int maxCache)
+    {
+        int currentCache = GetCache(key);
+        int newCache = currentCache - amount;
+        newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
+        SetCache(key, newCache);
+    }
+
     public static int GetCache(string key)
     {
         return PlayerPrefs.GetInt(key, 0);

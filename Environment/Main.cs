@@ -15,12 +15,16 @@ public class MainController : MonoBehaviour
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
         LoadAssetsForDashboardUI();
+        LoadAssetsForScrollViewUI();
+        LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
+        LoadAssetsForSettingBackground();
     }
 
     public void LoadAssetsForButtonsUI()
     {
-        List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
+        //List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
+        List<string> paths = new List<string>((new[] { "Purify"}));
         List<Sprite> sprites = LoadSprites("UI", paths);
         DataHolder.gameButtonImages = sprites;
     }
@@ -42,20 +46,45 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForDashboardUI()
     {
-        List<string> paths = new List<string>((new[] { "Copper", "Silver", "Gold" }));
-        List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.dashboardImages = sprites;
-        List<string> paths2 = new List<string>((new[] { "Setting"}));
-        List<Sprite> sprites2 = LoadSprites("UI", paths2);
+        List<string> paths = new List<string>((new[] { "KeyCopper", "KeySilver", "KeyGold", "KeyFlower" }));
+        List<Sprite> sprites = LoadSprites("Object", paths);
+        DataHolder.keyImages = sprites;
+        List<string> paths2 = new List<string>((new[] { "Setting", "Book"}));
+        List<Sprite> sprites2 = LoadSprites("UI/Dashboard", paths2);
         DataHolder.dashboardButtonImages = sprites2;
+
+        List<string> paths3 = new List<string>((new[] { "DashboardPanel", "GoldPlate", "Plate" }));
+        List<Sprite> sprites3 = LoadSprites("UI/Dashboard", paths3);
+        DataHolder.dashboardBackgroundImages = sprites3;
     }
 
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close"}));
+        List<string> paths = new List<string>((new[] { "Close"} ));
         List<Sprite> sprites = LoadSprites("UI", paths);
         DataHolder.commonImages = sprites;
+    }
+
+    public void LoadAssetsForSettingBackground()
+    {
+        List<string> paths2 = new List<string>((new[] { "SettingPanel"}));
+        List<Sprite> sprites2 = LoadSprites("UI", paths2);
+        DataHolder.settingBackgroundImage = sprites2[0];
+    }
+
+    public void LoadAssetsForScrollViewUI()
+    {
+        List<string> paths = new List<string>((new[] { "SettingPanel", "ScrollViewCell" }));
+        List<Sprite> sprites = LoadSprites("UI", paths);
+        DataHolder.scrollViewImages = sprites;
+    }
+
+    public void LoadAssetsForStoryUI()
+    {
+        List<string> paths = new List<string>((new[] { "ChatPanel"}));
+        List<Sprite> sprites = LoadSprites("UI/Story", paths);
+        DataHolder.storyImages = sprites;
     }
 
     public void LoadAssetsFromJson(string stage, string sceneName)

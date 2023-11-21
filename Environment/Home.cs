@@ -17,19 +17,18 @@ public class HomeController : MonoBehaviour
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-        CameraViewController cameraViewController = Camera.main.gameObject.AddComponent<CameraViewController>();
-        cameraViewController.SetBackgroundWidth();
-
     }
 
     void Start()
     {
 
         // UI
+        this.gameObject.AddComponent<CameraViewController>();
         this.gameObject.AddComponent<GameUIController>();
         this.gameObject.AddComponent<StoryController>();
         this.gameObject.AddComponent<SettingsController>();
         this.gameObject.AddComponent<DashboardController>();
+        this.gameObject.AddComponent<ScrollViewController>();
         // UI
 
         int j = 0;

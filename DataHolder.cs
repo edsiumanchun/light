@@ -35,11 +35,24 @@ public static class DataHolder
 
     // ui2
     public static List<Sprite> settingButtonImages; // List to store the loaded assets
+    public static Sprite settingBackgroundImage;
 
     // ui3
-    public static List<Sprite> dashboardImages; // List to store the loaded assets
+    public static List<Sprite> keyImages; // List to store the loaded assets
     public static List<Sprite> dashboardButtonImages; // List to store the loaded assets
+    public static List<Sprite> dashboardBackgroundImages;
+
+    // ui4
+    public static List<Sprite> scrollViewImages;
+    public static List<Sprite> storyImages;
 
     // common ui
     public static List<Sprite> commonImages; // List to store the loaded assets
+
+
+    public static Vector2 GetBackgroundSize()
+    {
+        Sprite sprite = DataHolder.backgrounds[0];
+        return new Vector2(sprite.bounds.size.x, sprite.bounds.size.y * 4);
+    }
 }

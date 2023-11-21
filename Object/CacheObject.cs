@@ -29,29 +29,6 @@ public class CacheObjectController : MonoBehaviour
         // Set the collider material's bounciness and friction to desired values
     }
 
-    // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        oldTag = gameObject.tag;
-        if (collision.gameObject.name == "Player") {
-            if(this.gameObject.name.Contains("Enemy"))
-            {
-                gameObject.tag = "Purify";
-            } else if (this.gameObject.name.Contains("Door"))
-            {
-                gameObject.tag = "Open";
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Player") 
-        {
-            gameObject.tag = oldTag;
-        }
-    }
-
     public void PurifyCacheData()
     {
         //CacheController.SetObjectCache(cacheObjectData.stage, cacheObjectData);

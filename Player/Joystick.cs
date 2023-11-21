@@ -8,6 +8,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private Rigidbody2D rb;
     private bool isJumping = false;
     private float xBounds;
+    public GameObject purifyObject;
 
     void Update()
     {
@@ -54,27 +55,22 @@ public class JoystickController : MonoBehaviour, IDragHandler
     }
 
     private bool IsCollidingWithUpperObject()
-{
-    // Get all the colliders involved in the collision
-    ContactPoint2D[] contacts = new ContactPoint2D[10];
-    int numContacts = rb.GetContacts(contacts);
-
-    int groundCount = 0;
-
-    for (int i = 0; i < numContacts; i++)
     {
-        // Check if the contact point is with an upper object
-        if (contacts[i].collider.CompareTag("Ground"))
+        // Get all the colliders involved in the collision
+        ContactPoint2D[] contacts = new ContactPoint2D[10];
+        int numContacts = rb.GetContacts(contacts);
+
+        int groundCount = 0;
+
+        for (int i = 0; i < numContacts; i++)
         {
-            groundCount++;
+            // Check if the contact point is with an upper object
+            if (contacts[i].collider.CompareTag("Ground"))
+            {
+                groundCount++;
+            }
         }
-    }
-    return groundCount >= 4;
-}
-    // other than jump
-    public Sprite GetBackgroundSprite()
-    {
-        return DataHolder.backgrounds[0];
+        return groundCount >= 4;
     }
 
     public Sprite GetPlateSprite()
@@ -85,7 +81,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //xBounds = GetBackgroundSprite().bounds.size.x - GetPlateSprite().bounds.size.x * 2;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -144,13 +139,30 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Purify()
     {
-        GameObject[] objectsToPurify = GameObject.FindGameObjectsWithTag("Purify");
         print("purify");
-        foreach (GameObject obj in objectsToPurify)
+        if (purifyObject == null) return;
+        purifyObject.GetComponent<CacheObjectController>().PurifyCacheData();
+        if (purifyObject.GetComponent<GateController>() != null)
         {
-            print("purify");
-            obj.GetComponent<CacheObjectController>().PurifyCacheData();
-            Destroy(obj);
+            purifyObject.GetComponent<GateController>().DestoryGate();
         }
+        else if (purifyObject.GetComponent<EnemyController>() != null)
+        {
+
+        }
+        SetPurifyObject(null);
+    }
+
+    public void SetPurifyObject(GameObject gameObject)
+    {
+        this.purifyObject = gameObject;
+        if (gameObject == null)
+        {
+            // hide button
+        } else
+        {
+            // show button
+        }
+
     }
 }

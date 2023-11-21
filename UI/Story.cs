@@ -41,11 +41,9 @@ public class StoryController : MonoBehaviour
     private void Start()
     {
         // Create Canvas object
-        canvasObject = new GameObject("StoryCanvas");
-        Canvas canvas = canvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasObject.AddComponent<CanvasScaler>();
-        canvasObject.AddComponent<GraphicRaycaster>();
+        canvasObject = Utils.CreateCanvas("StoryCanvas", true);
+        Button button = canvasObject.AddComponent<Button>();
+        button.onClick.AddListener(OnClickButton);
         // setup
         sentences = new Queue<string>();
         isTyping = false;
@@ -55,18 +53,17 @@ public class StoryController : MonoBehaviour
             return;
         };
         var elementWidth = 360;
-        var elementHeight = elementWidth * 2 / 3;
         Vector2 backgroundPosition = new Vector2(0, 5f);
         Vector2 leftPosition = new Vector2(-Screen.width / 2f + elementWidth / 2f, 0f);
         Vector2 rightPosition = new Vector2(Screen.width / 2f - elementWidth / 2f, 0f);
         Vector2 dialoguePosition = new Vector2(0f, 0f);
         Vector2 dialoguePanelPosition = new Vector2(0f, -Screen.height / 2);
 
-        backgroundImage = Utils.CreateImage(canvasObject.transform, backgroundPosition, new Vector2(Screen.width, Screen.height));
-        leftImage = Utils.CreateImage(canvasObject.transform, leftPosition, new Vector2(elementWidth, elementWidth));
-        rightImage = Utils.CreateImage(canvasObject.transform, rightPosition, new Vector2(elementWidth, elementWidth));
+        backgroundImage = Utils.CreateImage(DataHolder.storyImages[0], backgroundPosition, canvasObject.transform);
+        leftImage = Utils.CreateImage(DataHolder.storyImages[0], leftPosition, canvasObject.transform);
+        rightImage = Utils.CreateImage(DataHolder.storyImages[0], rightPosition, canvasObject.transform);
 
-        dialogueText = Utils.CreateText(canvasObject.transform, dialoguePosition, new Vector2(Screen.width, Screen.height / 2));
+        dialogueText = Utils.CreateText(new Vector2(Screen.width, Screen.height / 2), dialoguePosition, canvasObject.transform, TextAnchor.UpperLeft);
 
         dialoguePanel = new GameObject("DialoguePanel");
         // parent
@@ -195,5 +192,11 @@ public class StoryController : MonoBehaviour
 
         // Start displaying the first sentence
         DisplayNextSentence();
+    }
+
+    void OnClickButton()
+    {
+        // Set the active state of the game object to false
+        canvasObject.SetActive(false);
     }
 }
