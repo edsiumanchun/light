@@ -47,7 +47,7 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForDashboardUI()
     {
         List<string> paths = new List<string>((new[] { "KeyCopper", "KeySilver", "KeyGold", "KeyFlower" }));
-        List<Sprite> sprites = LoadSprites("Object", paths);
+        List<Sprite> sprites = LoadSprites("Items", paths);
         DataHolder.keyImages = sprites;
         List<string> paths2 = new List<string>((new[] { "Setting", "Book"}));
         List<Sprite> sprites2 = LoadSprites("UI/Dashboard", paths2);
@@ -96,7 +96,9 @@ public class MainController : MonoBehaviour
             Path paths = assetsData.paths;
             DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
             DataHolder.plateV = LoadSprites("PlateV", paths.plateV);
-            DataHolder.objects = LoadObjects("Object", paths.objects);
+            DataHolder.items = LoadSprites("Items", paths.items);
+            DataHolder.decorations = LoadSprites("Decorations", paths.decorations);
+            DataHolder.characters = LoadPrefabs("Characters", paths.characters);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
 
             List<List<AssetData>> assetDatas = new List<List<AssetData>>((new[] { assetsData.assets0, assetsData.assets1, assetsData.assets2 }));
@@ -134,14 +136,12 @@ public class MainController : MonoBehaviour
         return temp;
     }
 
-    public static List<Object> LoadObjects(string folder, List<string> paths)
+    public static List<Object> LoadPrefabs(string folder, List<string> paths)
     {
         List<Object> temp = new List<Object>();
         foreach (string path in paths)
         {
-            Object asset = path.Contains("_p") ?
-                Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", "")) :
-                (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
+            Object asset = Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", ""));
             //print("Sprites/" + folder + "/" + path);
             if (asset != null)
             {

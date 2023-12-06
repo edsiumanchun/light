@@ -19,8 +19,10 @@ public class Path
 {
     public List<string> plateV;
     public List<string> plateH;
-    public List<string> objects;
+    public List<string> items;
+    public List<string> characters;
     public List<string> backgrounds;
+    public List<string> decorations;
 }
 
 [System.Serializable]
@@ -49,7 +51,7 @@ public class AssetData
             Sprite sprite = spriteRenderer.sprite;
             Bounds objectBounds = sprite.bounds;
             Vector2 localPosition = childTransform.localPosition;
-            combinedBounds.Encapsulate(new Vector2(objectBounds.size.x + localPosition.x * 2 , objectBounds.size.y + localPosition.y * 2));
+            combinedBounds.Encapsulate(new Vector2(objectBounds.size.x + localPosition.x , objectBounds.size.y + localPosition.y ));
         }
         return combinedBounds.size;
     }
@@ -73,12 +75,13 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
-                isSprite = DataHolder.objects[assetIndex] is Sprite;
-                if (isSprite) {
-                    spriteRenderer.sprite = (Sprite)DataHolder.objects[assetIndex];
+                isSprite = false;
+                int formattedIndex = assetIndex % 10;
+                if (assetIndex / 10 >= 1) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
                 } else
                 {
-                    GameObject prefab = (GameObject)DataHolder.objects[assetIndex];
+                    GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = HomeController.InstantiateObject(prefab);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
@@ -92,7 +95,7 @@ public class AssetData
                 break;
         }
         // --------- //
-        string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name;
+        string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         newObject.name = pathName;
         switch (pathName)
         {
@@ -155,6 +158,7 @@ public class AssetData
                 if (!isSprite)
                 {
                     boxCollider.size = GetCombinedSize(newObject);
+                    boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
                 }
                 if (name == "PlateV" || name == "PlateH")
                 {
@@ -170,7 +174,8 @@ public class AssetData
                 }
                 else if (name == "Object")
                 {
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + boxCollider.size.y / 2, z);
+                    float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z);
                 }
                 newObject.transform.rotation = Quaternion.identity;
                 

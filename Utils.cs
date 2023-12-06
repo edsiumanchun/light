@@ -4,10 +4,28 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class Utils : MonoBehaviour
 {
+    public static float referenceResolution = 1200;
 
     public static bool IsMobilePlatform()
     {
         return (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer);
+    }
+
+    static public Vector2 ScaleToUI(Vector2 size)
+    {
+        Camera mainCamera = Camera.main;
+        Vector2 screenPos = mainCamera.WorldToScreenPoint(size);
+        return screenPos;
+    }
+
+    static public void MoveImage(GameObject image, float x, float y)
+    {
+        RectTransform imageRectTransform = image.GetComponent<RectTransform>();
+        float halfHeight = imageRectTransform.rect.height * y;
+        float halfWidth = imageRectTransform.rect.width * x;
+        Vector3 currentPosition = imageRectTransform.localPosition;
+        currentPosition += new Vector3(halfWidth, halfHeight, 0f);
+        imageRectTransform.localPosition = currentPosition;
     }
 
     static public GameObject CreateImage(Sprite sprite, Vector2 position, Transform parent)
@@ -19,6 +37,8 @@ public class Utils : MonoBehaviour
         Image image = imageObj.AddComponent<Image>();
         image.sprite = sprite;
         image.SetNativeSize();
+
+
         return imageObj;
     }
 
@@ -76,7 +96,6 @@ public class Utils : MonoBehaviour
 
     static public GameObject CreateCanvas(string name, bool haveMask)
     {
-        float referenceResolution = 1200;
         GameObject canvasObject = new GameObject(name);
         Canvas canvas = canvasObject.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -86,8 +105,8 @@ public class Utils : MonoBehaviour
         canvasScaler.referenceResolution = new Vector2(referenceResolution, referenceResolution);
 
         // Set the Screen Match Mode and Match Width or Height
-        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        canvasScaler.matchWidthOrHeight = 0.5f;
+        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Shrink;
+        //canvasScaler.matchWidthOrHeight = 0.5f;
         if(haveMask)
         {
             // aspect ratio
@@ -113,12 +132,13 @@ public class Utils : MonoBehaviour
     {
         CanvasScaler canvasScaler = gameObject.GetComponent<CanvasScaler>();
         float scaleFactor = canvasScaler.scaleFactor;
-        Vector2 referenceResolution = canvasScaler.referenceResolution;
-        Vector2 actualScreenSize = referenceResolution * scaleFactor;
-
+        //Vector2 referenceResolution = canvasScaler.referenceResolution;
+        //Vector2 actualScreenSize = referenceResolution * scaleFactor;
         // aspect ratio
         RectTransform canvasRectTransform = gameObject.GetComponent<RectTransform>();
+        //Debug.Log(referenceResolution);
+        //return new Vector2(canvasRectTransform.sizeDelta.x / canvasRectTransform.localScale.x, canvasRectTransform.sizeDelta.y / canvasRectTransform.localScale.y);
         Vector2 canvasSize = canvasRectTransform.sizeDelta;
-        return new Vector2(actualScreenSize.x, actualScreenSize.y * canvasSize.y / canvasSize.x);
+        return new Vector2(referenceResolution, referenceResolution * canvasSize.y / canvasSize.x);
     }
 }

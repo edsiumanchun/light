@@ -34,9 +34,11 @@ public class StoryController : MonoBehaviour
     private bool isTyping = false;
     private int currentStoryIndex;
     public StoryDataWrapper wrapper;
+    public string currentSentence = "";
 
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
+    public Vector2 screenSize;
 
     private void Start()
     {
@@ -52,18 +54,17 @@ public class StoryController : MonoBehaviour
         if(backgroundImage != null) {
             return;
         };
-        var elementWidth = 360;
-        Vector2 backgroundPosition = new Vector2(0, 5f);
-        Vector2 leftPosition = new Vector2(-Screen.width / 2f + elementWidth / 2f, 0f);
-        Vector2 rightPosition = new Vector2(Screen.width / 2f - elementWidth / 2f, 0f);
+        screenSize = Utils.GetCanvasSize(canvasObject);
+        Vector2 backgroundPosition = new Vector2(0, -screenSize.y / 2);
         Vector2 dialoguePosition = new Vector2(0f, 0f);
         Vector2 dialoguePanelPosition = new Vector2(0f, -Screen.height / 2);
 
         backgroundImage = Utils.CreateImage(DataHolder.storyImages[0], backgroundPosition, canvasObject.transform);
-        leftImage = Utils.CreateImage(DataHolder.storyImages[0], leftPosition, canvasObject.transform);
-        rightImage = Utils.CreateImage(DataHolder.storyImages[0], rightPosition, canvasObject.transform);
-
-        dialogueText = Utils.CreateText(new Vector2(Screen.width, Screen.height / 2), dialoguePosition, canvasObject.transform, TextAnchor.UpperLeft);
+        Utils.MoveImage(backgroundImage, 0, 0.5f);
+        RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
+        dialogueText = Utils.CreateText(
+            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 7.0f / 8.8f),
+            imageRectTransform.localPosition, canvasObject.transform, TextAnchor.UpperLeft);
 
         dialoguePanel = new GameObject("DialoguePanel");
         // parent
@@ -99,9 +100,14 @@ public class StoryController : MonoBehaviour
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
         LoadStory(wrapper.storyArray[currentStoryIndex]);
 
-        DisplayNextSentence();
     }
 
+
+    void OnClickButton()
+    {
+        // Set the active state of the game object to false
+        DisplayNextSentence();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -117,7 +123,7 @@ public class StoryController : MonoBehaviour
         foreach (char character in sentence)
         {
             dialogueText.GetComponent<Text>().text += character;
-            yield return new WaitForSeconds(0.1f); // Adjust the delay between characters if needed
+            yield return new WaitForSeconds(0.03f); // Adjust the delay between characters if needed
         }
 
         isTyping = false;
@@ -129,7 +135,7 @@ public class StoryController : MonoBehaviour
         {
             // Finish typing the current sentence immediately
             StopAllCoroutines();
-            dialogueText.GetComponent<Text>().text = sentences.Peek();
+            dialogueText.GetComponent<Text>().text = currentSentence;
             isTyping = false;
             return;
         }
@@ -147,6 +153,7 @@ public class StoryController : MonoBehaviour
             }
             else
             {
+                canvasObject.SetActive(false);
                 // End of all stories
                 // Perform any desired actions here
             }
@@ -154,24 +161,21 @@ public class StoryController : MonoBehaviour
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        StartCoroutine(TypeSentence(sentence));
+        currentSentence = sentences.Dequeue();
+        StartCoroutine(TypeSentence(currentSentence));
     }
 
     private void LoadStory(StoryData story)
     {
-        // Load and display the story data
-
-        //Sprite leftSprite = Sprite.Create(leftGifTexture, new Rect(0, 0, leftGifTexture.width, leftGifTexture.height), Vector2.one * 0.5f);
-        //leftImage.sprite = leftSprite;
-
+        Vector2 leftPosition = new Vector2(-screenSize.x / 2f, 0f);
+        Vector2 rightPosition = new Vector2(screenSize.x / 2f, 0f);
+        Destroy(leftImage);
+        Destroy(rightImage);
         Sprite rightSprite = Resources.Load<Sprite>("Sprites/Characters/" + story.imagePath);
         print("Sprites/Characters/" + story.imagePath);
-        print(rightImage);
-        print(rightSprite);
+        rightImage = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
+        Utils.MoveImage(rightImage, -0.5f, 0);
         rightImage.GetComponent<Image>().sprite = rightSprite;
-
-        backgroundImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + story.backgroundPath);
 
         if (bgmAudioSource.clip != null)
         {
@@ -192,11 +196,5 @@ public class StoryController : MonoBehaviour
 
         // Start displaying the first sentence
         DisplayNextSentence();
-    }
-
-    void OnClickButton()
-    {
-        // Set the active state of the game object to false
-        canvasObject.SetActive(false);
     }
 }
