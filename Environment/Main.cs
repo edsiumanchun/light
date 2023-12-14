@@ -10,12 +10,12 @@ public class MainController : MonoBehaviour
     List<string> stages;
     private void Start()
     {
-        LoadAssetsFromJson(DataHolder.currentStage + DataHolder.currentFloor, "HomeScene");
+        LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
         LoadAssetsForDashboardUI();
-        LoadAssetsForScrollViewUI();
+        LoadAssetsForStageUI();
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
         LoadAssetsForSettingBackground();
@@ -61,7 +61,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close"} ));
+        List<string> paths = new List<string>((new[] { "NavBar" , "Close", "Left", "Right", "CommonButton" } ));
         List<Sprite> sprites = LoadSprites("UI", paths);
         DataHolder.commonImages = sprites;
     }
@@ -73,11 +73,11 @@ public class MainController : MonoBehaviour
         DataHolder.settingBackgroundImage = sprites2[0];
     }
 
-    public void LoadAssetsForScrollViewUI()
+    public void LoadAssetsForStageUI()
     {
-        List<string> paths = new List<string>((new[] { "SettingPanel", "ScrollViewCell" }));
+        List<string> paths = new List<string>((new[] { "StagePanel" }));
         List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.scrollViewImages = sprites;
+        DataHolder.stageImages = sprites;
     }
 
     public void LoadAssetsForStoryUI()
@@ -87,9 +87,10 @@ public class MainController : MonoBehaviour
         DataHolder.storyImages = sprites;
     }
 
-    public void LoadAssetsFromJson(string stage, string sceneName)
+    static public void LoadAssetsFromJson(int stage, int floor, string sceneName)
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage);
+        CacheManager.SetCache(Cache.CurrentStage.ToString(), stage);
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "-" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
@@ -100,17 +101,30 @@ public class MainController : MonoBehaviour
             DataHolder.decorations = LoadSprites("Decorations", paths.decorations);
             DataHolder.characters = LoadPrefabs("Characters", paths.characters);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
+            LoadFloorAssetsFromJson(floor, sceneName);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file: " + stage.ToString() + "-" + floor.ToString());
+        }
+    }
 
+    static public void LoadFloorAssetsFromJson(int floor, string sceneName)
+    {
+        print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
+        AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
+        if (jsonFile != null)
+        {
             List<List<AssetData>> assetDatas = new List<List<AssetData>>((new[] { assetsData.assets0, assetsData.assets1, assetsData.assets2 }));
             assetDatas.RemoveAll(list => list == null);
             DataHolder.loadedAssets = assetDatas;
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + stage);
+            Debug.LogError("Failed to load JSON file: " + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
         }
         SceneManager.LoadScene(sceneName);
-        // Create the background
     }
 
     public static void SetupScene(){

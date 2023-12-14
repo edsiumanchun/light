@@ -21,10 +21,10 @@ public class Utils : MonoBehaviour
     static public void MoveImage(GameObject image, float x, float y)
     {
         RectTransform imageRectTransform = image.GetComponent<RectTransform>();
-        float halfHeight = imageRectTransform.rect.height * y;
-        float halfWidth = imageRectTransform.rect.width * x;
-        Vector3 currentPosition = imageRectTransform.localPosition;
-        currentPosition += new Vector3(halfWidth, halfHeight, 0f);
+        float halfHeight = imageRectTransform.rect.height * y * imageRectTransform.localScale.y;
+        float halfWidth = imageRectTransform.rect.width * x * imageRectTransform.localScale.x;
+        Vector2 currentPosition = imageRectTransform.localPosition;
+        currentPosition += new Vector2(halfWidth, halfHeight);
         imageRectTransform.localPosition = currentPosition;
     }
 
@@ -140,5 +140,22 @@ public class Utils : MonoBehaviour
         //return new Vector2(canvasRectTransform.sizeDelta.x / canvasRectTransform.localScale.x, canvasRectTransform.sizeDelta.y / canvasRectTransform.localScale.y);
         Vector2 canvasSize = canvasRectTransform.sizeDelta;
         return new Vector2(referenceResolution, referenceResolution * canvasSize.y / canvasSize.x);
+    }
+
+    static public GameObject CreateNavigationBar(string title, Vector2 position, Transform parent, UnityAction onClickAction)
+    {
+        GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.NavBar)], position, Vector2.zero, parent, TextAnchor.MiddleCenter);
+        NavBar.GetComponent<Text>().text = title;
+        GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(200, 0), NavBar.transform, onClickAction);
+        return NavBar;
+    }
+
+    static public GameObject CreateSelectionBar(string title, Vector2 position, Transform parent, UnityAction onClickActionLeft, UnityAction onClickActionRight)
+    {
+        GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.NavBar)], position, Vector2.zero, parent, TextAnchor.MiddleCenter);
+        NavBar.GetComponent<Text>().text = title;
+        GameObject rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(200, 0), NavBar.transform, onClickActionRight);
+        GameObject leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-200, 0), NavBar.transform, onClickActionLeft);
+        return NavBar;
     }
 }

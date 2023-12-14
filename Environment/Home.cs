@@ -28,13 +28,15 @@ public class HomeController : MonoBehaviour
         this.gameObject.AddComponent<StoryController>();
         this.gameObject.AddComponent<SettingsController>();
         this.gameObject.AddComponent<DashboardController>();
-        this.gameObject.AddComponent<ScrollViewController>();
+        this.gameObject.AddComponent<StageController>();
         // UI
 
         int j = 0;
+        List<string> destroyedItems = CacheUsage.loadDestroyObject();
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
         {
             int i = 0;
+            if (destroyedItems.Contains(i.ToString() + j.ToString())) continue;
             foreach (AssetData asset in assetDataList)
             {
                 asset.CreateObjects(-1 * i, j);

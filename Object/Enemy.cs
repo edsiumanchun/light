@@ -27,4 +27,10 @@ public class EnemyController : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         player.GetComponent<JoystickController>().SetPurifyObject(null);
     }
+
+    public void DestroyEnemy()
+    {
+        CacheUsage.cacheDestroyedObject(this.gameObject.name);
+        Destroy(gameObject); // Destroy the key game object after collision
+    }
 }

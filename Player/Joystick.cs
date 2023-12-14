@@ -141,7 +141,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
     {
         print("purify");
         if (purifyObject == null) return;
-        purifyObject.GetComponent<CacheObjectController>().PurifyCacheData();
         if (purifyObject.GetComponent<GateController>() != null)
         {
             purifyObject.GetComponent<GateController>().DestoryGate();

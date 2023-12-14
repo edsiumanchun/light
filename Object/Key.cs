@@ -16,8 +16,8 @@ public class KeyController : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            CacheController.IncreaseCache(this.gameObject.name.Replace("Key", ""), 1);
-            Debug.Log(this.gameObject.name.Replace("Key", "") + " Key collected! Key cache: " +  CacheController.GetCache("this.gameObject.name"));
+            CacheManager.IncreaseCache(this.gameObject.name.Replace("Key", ""), 1);
+            Debug.Log(this.gameObject.name.Replace("Key", "") + " Key collected! Key cache: " +  CacheManager.GetCache("this.gameObject.name"));
             Destroy(gameObject); // Destroy the key game object after collision
         }
     }

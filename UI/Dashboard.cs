@@ -9,7 +9,6 @@ public class DashboardController : MonoBehaviour
     public List<Sprite> keyImages;
     public List<Sprite> dashboardButtonImages;
     public Vector2 goldPosition = new Vector2(-80f, 88f);
-    public Vector2 closeButtonPosition = new Vector2(330f, 278f);
     public Vector2[] infoPositions = new Vector2[]
     {
         new Vector2(-210f, -80f),  // Bottom right button position
@@ -31,7 +30,6 @@ public class DashboardController : MonoBehaviour
     public List<GameObject> keyTextImages;
     //
     public List<GameObject> buttons;
-    public GameObject closeButton;
 
     private void Start()
     {
@@ -77,9 +75,9 @@ public class DashboardController : MonoBehaviour
 
     public void SetText()
     {
-        int copperKeyCount = CacheController.GetCache("Copper");
-        int silverKeyCount = CacheController.GetCache("Silver");
-        int goldKeyCount = CacheController.GetCache("Gold");
+        int copperKeyCount = CacheManager.GetCache("Copper");
+        int silverKeyCount = CacheManager.GetCache("Silver");
+        int goldKeyCount = CacheManager.GetCache("Gold");
         int soul = 32;
         int coin = 2;
         // Update the key count texts
@@ -94,14 +92,14 @@ public class DashboardController : MonoBehaviour
     private void SetupButtons()
     {
         buttons = new List<GameObject>();
-        closeButton = Utils.CreateButton(commonImages[0], closeButtonPosition, canvasObject.transform, () =>
+        Utils.CreateNavigationBar("茶茶的魔法世界", new Vector2(0f, 278f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
         buttons.Add(Utils.CreateTextButton(dashboardButtonImages[0], buttonPositions[0], new Vector2(0, -38), canvasObject.transform, () =>
         {
-            ScrollViewController settingsController = Camera.main.gameObject.GetComponent<ScrollViewController>();
-            settingsController.canvasObject.SetActive(true);
+            StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
+            stageController.canvasObject.SetActive(true);
         }));
         buttons.Add(Utils.CreateTextButton(dashboardButtonImages[1], buttonPositions[1], new Vector2(0, -38), canvasObject.transform, () =>
         {

@@ -5,20 +5,17 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 
+public enum UICommon
+{
+    NavBar = 0,
+    Close = 1,
+    Left = 2,
+    Right = 3,
+    CommonButton = 4
+}
+
 public static class DataHolder
 {
-    // stages
-    public static List<string> stages = new List<string>((new[] { "Egypt", "Lam", "Ding" }));
-
-    public static string currentStage
-    {
-        get { return stages[0]; }
-    }
-
-    public static int currentFloor
-    {
-        get { return 0; }
-    }
     // public static float scale; // List to store the loaded assets
     public static GameObject player; // List to store the loaded assets
     public static List<List<AssetData>> loadedAssets; // List to store the loaded assets
@@ -45,7 +42,7 @@ public static class DataHolder
     public static List<Sprite> dashboardBackgroundImages;
 
     // ui4
-    public static List<Sprite> scrollViewImages;
+    public static List<Sprite> stageImages;
     public static List<Sprite> storyImages;
 
     // common ui

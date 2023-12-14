@@ -61,7 +61,7 @@ public class AssetData
         return DataHolder.plateV[0];
     }
 
-    public GameObject CreateObjectWithAssetIndex(int assetIndex, float z)
+    public GameObject CreateObjectWithAssetIndex(int assetIndex, float z, string id)
     {
         isSprite = true;
         GameObject newObject = new GameObject();
@@ -96,7 +96,7 @@ public class AssetData
         }
         // --------- //
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
-        newObject.name = pathName;
+        newObject.name = pathName + id;
         switch (pathName)
         {
             case "Player":
@@ -127,7 +127,7 @@ public class AssetData
     {
         if (name == "Background")
         {
-            CreateObjectWithAssetIndex(0, z);
+            CreateObjectWithAssetIndex(0, z, "");
             return;
         }
         GameObject newObject;
@@ -153,16 +153,16 @@ public class AssetData
                     continue;
                 }
 
-                newObject = CreateObjectWithAssetIndex(cellValue - 1, z);
+                newObject = CreateObjectWithAssetIndex(cellValue - 1, z, gridIndex.ToString() + column.ToString());
                 BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
                 if (!isSprite)
                 {
                     boxCollider.size = GetCombinedSize(newObject);
                     boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
                 }
-                if (name == "PlateV" || name == "PlateH")
+                if (name.Contains("PlateV") || name.Contains("PlateH"))
                 {
-                    if (name == "PlateV")
+                    if (name.Contains("PlateV"))
                     {
                         newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
                     }
@@ -172,22 +172,12 @@ public class AssetData
                         newObject.tag = "Ground";
                     }
                 }
-                else if (name == "Object")
+                else if (name.Contains("Object"))
                 {
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z);
                 }
                 newObject.transform.rotation = Quaternion.identity;
-                
-                //boxCollider.sharedMaterial.bounciness = 0f;
-                //boxCollider.sharedMaterial.friction = 1f;
-
-                CacheObjectController cacheObjectController = newObject.AddComponent<CacheObjectController>();
-                CacheObjectData cacheObject = new CacheObjectData();
-                cacheObject.rowIndex = gridIndex;
-                cacheObject.columnIndex = column;
-                cacheObject.stage = DataHolder.currentStage + DataHolder.currentFloor;
-                cacheObject.type = name;
             }
         }
     }

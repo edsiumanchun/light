@@ -81,7 +81,7 @@ public class StoryController : MonoBehaviour
     public void LoadStoryDataFromJSON(string jsonFilePath)
     {
         canvasObject.SetActive(true);
-        string storyFilePath = "Json/Story/" + DataHolder.currentStage + "/" + jsonFilePath;
+        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + jsonFilePath;
 
         //if (File.Exists(jsonFilePath))
         //{
@@ -167,15 +167,19 @@ public class StoryController : MonoBehaviour
 
     private void LoadStory(StoryData story)
     {
-        Vector2 leftPosition = new Vector2(-screenSize.x / 2f, 0f);
-        Vector2 rightPosition = new Vector2(screenSize.x / 2f, 0f);
-        Destroy(leftImage);
-        Destroy(rightImage);
+        Vector2 rightPosition = new Vector2(screenSize.x / 2f, -screenSize.y / 2f);
         Sprite rightSprite = Resources.Load<Sprite>("Sprites/Characters/" + story.imagePath);
         print("Sprites/Characters/" + story.imagePath);
         rightImage = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-        Utils.MoveImage(rightImage, -0.5f, 0);
+        Utils.MoveImage(rightImage, -0.5f, 0.5f);
         rightImage.GetComponent<Image>().sprite = rightSprite;
+
+        Vector2 leftPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
+        Sprite leftSprite = Resources.Load<Sprite>("Sprites/Characters/" + story.imagePath);
+        print("Sprites/Characters/" + story.imagePath);
+        leftImage = Utils.CreateImage(leftSprite, leftPosition, canvasObject.transform);
+        Utils.MoveImage(leftImage, 0.5f, 0.5f);
+        leftImage.GetComponent<Image>().sprite = leftSprite;
 
         if (bgmAudioSource.clip != null)
         {
