@@ -13,24 +13,29 @@ public enum Cache
     Copper = 2,
     Silver = 3,
     Gold = 4,
-    Destroy = 5
+    Flower = 5,
+    Coin = 6,
+    Destroy = 7,
+    HP = 8,
+    Damage = 9,
+    Defend = 10
 }
 
 public static class CacheUsage
 {
     public static void cacheDestroyedObject(string id)
     {
-        Dictionary<string, List<string>> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
+        Dictionary<string, string> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
 
         // If the dictionary is null, assign an empty dictionary
         if (dictionary == null)
         {
-            dictionary = new Dictionary<string, List<string>>();
+            dictionary = new Dictionary<string, string>();
         }
 
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        string key = CurrentStage.ToString() + "-" + currentFloor.ToString();
+        string key = CurrentStage.ToString() + "/" + currentFloor.ToString();
 
         List<string> list;
 
@@ -41,28 +46,47 @@ public static class CacheUsage
         }
         else
         {
-            list = dictionary[key];
+            list = CacheManager.ConvertJsonToList(dictionary[key]);
         }
-        string lastTwoCharacters = id.Substring(id.Length - 2);
-        list.Add(lastTwoCharacters);
+        string [] firstTwoCharacters = id.Split("_");
+        list.Add(firstTwoCharacters[0]);
 
-        dictionary[key] = list;
-
+        dictionary[key] = CacheManager.ConvertListToJson(list);
         CacheManager.SaveDictionary(Cache.Destroy.ToString(), dictionary);
     }
 
-    public static List<string> loadDestroyObject()
+    public static bool isDestroyObject(string id)
     {
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        string key = CurrentStage.ToString() + "-" + currentFloor.ToString();
-        Dictionary<string, List<string>> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
-        return dictionary[key];
+        string key = CurrentStage.ToString() + "/" + currentFloor.ToString();
+        Dictionary<string, string> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
+        if (dictionary.ContainsKey(key) == true)
+        {
+            return CacheManager.ConvertJsonToList(dictionary[key]).Contains(id);
+        } else
+        {
+            return false;
+        }
+        
     }
 }
 
 public static class CacheManager
 {
+
+    public static string ConvertListToJson(List<string> stringList)
+    {
+        Wrapper wrapper = new Wrapper { List = stringList };
+        return JsonUtility.ToJson(wrapper);
+    }
+
+    public static List<string> ConvertJsonToList(string json)
+    {
+        Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
+        return wrapper.List;
+    }
+
     public static void IncreaseCache(string key, int amount)
     {
         int currentCache = GetCache(key);
@@ -95,7 +119,11 @@ public static class CacheManager
 
     public static int GetCache(string key)
     {
-        return PlayerPrefs.GetInt(key, 0);
+        int defaultValue = 0;
+        if(key == Cache.HP.ToString() || key == Cache.Defend.ToString() || key == Cache.Damage.ToString()){
+            defaultValue = 1;
+        }
+        return PlayerPrefs.GetInt(key, defaultValue);
     }
 
     public static void SetCache(string key, int value)
@@ -104,32 +132,48 @@ public static class CacheManager
         PlayerPrefs.Save();
     }
 
-    public static void SaveDictionary(string key, Dictionary<string, List<string>> dictionary)
+    public static void SaveDictionary(string key, Dictionary<string, string> dictionary)
     {
         // Convert the dictionary to a serializable format
         SerializableDictionary serializableDictionary = new SerializableDictionary(dictionary);
 
         // Serialize the dictionary to JSON string
         string dictionaryJson = JsonUtility.ToJson(serializableDictionary);
+        Debug.Log(key);
+        Debug.Log(dictionaryJson);
 
         // Save the JSON string using PlayerPrefs
         PlayerPrefs.SetString(key, dictionaryJson);
         PlayerPrefs.Save();
     }
 
-    public static Dictionary<string, List<string>> LoadDictionary(string key)
+    public static Dictionary<string, string> LoadDictionary(string key)
     {
+        //Caching.ClearCache();
+        //PlayerPrefs.DeleteAll();
         // Retrieve the JSON string from PlayerPrefs
         string dictionaryJson = PlayerPrefs.GetString(key);
-
-        // Deserialize the JSON string to dictionary
+        Debug.Log(key);
+        Debug.Log(dictionaryJson);
         SerializableDictionary serializableDictionary = JsonUtility.FromJson<SerializableDictionary>(dictionaryJson);
-
-        // Convert the dictionary back to the required format
-        Dictionary<string, List<string>> dictionary = serializableDictionary.ToDictionary();
+        Dictionary<string, string> dictionary;
+        if (serializableDictionary == null)
+        {
+            dictionary = new Dictionary<string, string>();
+        } else
+        {
+            dictionary = serializableDictionary.ToDictionary();
+        }
 
         // Return the dictionary
         return dictionary;
+    }
+
+
+    [System.Serializable]
+    private class Wrapper
+    {
+        public List<string> List;
     }
 }
 
@@ -137,18 +181,17 @@ public static class CacheManager
 public class SerializableDictionary
 {
     public List<string> keys;
-    public List<List<string>> values;
+    public List<string> values;
 
-    public SerializableDictionary(Dictionary<string, List<string>> dictionary)
+    public SerializableDictionary(Dictionary<string, string> dictionary)
     {
         keys = dictionary.Keys.ToList();
         values = dictionary.Values.ToList();
     }
 
-    public Dictionary<string, List<string>> ToDictionary()
+    public Dictionary<string, string> ToDictionary()
     {
-        Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-
+        Dictionary<string, string> dictionary = new Dictionary<string, string>();
         for (int i = 0; i < keys.Count; i++)
         {
             dictionary.Add(keys[i], values[i]);

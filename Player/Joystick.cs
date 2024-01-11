@@ -141,13 +141,14 @@ public class JoystickController : MonoBehaviour, IDragHandler
     {
         print("purify");
         if (purifyObject == null) return;
+        print(purifyObject);
         if (purifyObject.GetComponent<GateController>() != null)
         {
             purifyObject.GetComponent<GateController>().DestoryGate();
         }
         else if (purifyObject.GetComponent<EnemyController>() != null)
         {
-
+            purifyObject.GetComponent<EnemyController>().DestroyEnemy();
         }
         SetPurifyObject(null);
     }

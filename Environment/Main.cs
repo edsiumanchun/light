@@ -1,12 +1,16 @@
 //gitlab: glpat-FBMK5PA9Nqe2cMz8edpx
 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+    public static List<EnemyData> enemyDataList;
     List<string> stages;
     private void Start()
     {
@@ -19,6 +23,14 @@ public class MainController : MonoBehaviour
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
         LoadAssetsForSettingBackground();
+    }
+
+
+    static public void LoadEnemyData(int stage)
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/EnemyData");
+        EnemyDataWrapper assetsData = JsonUtility.FromJson<EnemyDataWrapper>(jsonFile.text);
+        enemyDataList = assetsData.enemies;
     }
 
     public void LoadAssetsForButtonsUI()
@@ -46,8 +58,8 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForDashboardUI()
     {
-        List<string> paths = new List<string>((new[] { "KeyCopper", "KeySilver", "KeyGold", "KeyFlower" }));
-        List<Sprite> sprites = LoadSprites("Items", paths);
+        List<string> paths = new List<string>((new[] { "Heart", "Shield", "Shield", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard" }));
+        List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
         DataHolder.keyImages = sprites;
         List<string> paths2 = new List<string>((new[] { "Setting", "Book"}));
         List<Sprite> sprites2 = LoadSprites("UI/Dashboard", paths2);
@@ -61,7 +73,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "NavBar" , "Close", "Left", "Right", "CommonButton" } ));
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CommonButton" } ));
         List<Sprite> sprites = LoadSprites("UI", paths);
         DataHolder.commonImages = sprites;
     }
@@ -90,7 +102,8 @@ public class MainController : MonoBehaviour
     static public void LoadAssetsFromJson(int stage, int floor, string sceneName)
     {
         CacheManager.SetCache(Cache.CurrentStage.ToString(), stage);
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "-" + floor.ToString());
+        MainController.LoadEnemyData(stage);
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
@@ -105,14 +118,14 @@ public class MainController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + stage.ToString() + "-" + floor.ToString());
+            Debug.LogError("Failed to load JSON file: " + stage.ToString() + "/" + floor.ToString());
         }
     }
 
     static public void LoadFloorAssetsFromJson(int floor, string sceneName)
     {
-        print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
+        //print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
@@ -122,7 +135,7 @@ public class MainController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "-" + floor.ToString());
+            Debug.LogError("Failed to load JSON file: " + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         }
         SceneManager.LoadScene(sceneName);
     }

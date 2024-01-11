@@ -51,14 +51,6 @@ public class DialogBox : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class DialogueLine
-{
-    public string speaker;
-    public string text;
-}
-
-
 public class Story : MonoBehaviour
 {
     // Start is called before the first frame update

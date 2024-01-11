@@ -7,11 +7,10 @@ using System.IO;
 
 public enum UICommon
 {
-    NavBar = 0,
-    Close = 1,
-    Left = 2,
-    Right = 3,
-    CommonButton = 4
+    Close = 0,
+    Left = 1,
+    Right = 2,
+    CommonButton = 3
 }
 
 public static class DataHolder

@@ -1,0 +1,60 @@
+{
+  "enemies": [
+    {
+      "name": "gargoyle",
+      "attack": 10,
+      "defend": 5,
+      "coin": 100,
+      "hp": 50
+    },
+    {
+      "name": "Enemy 2",
+      "damage": 8,
+      "defend": 3,
+      "coin": 80,
+      "hp": 40
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    },
+    {
+      "name": "Enemy 3",
+      "damage": 12,
+      "defend": 7,
+      "coin": 120,
+      "hp": 60
+    }
+  ]
+}

@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class EnemyController : MonoBehaviour
 {
+    public EnemyData enemyData;
     // Use this for initialization
     void Start()
     {
-
+        string[] substrings = this.gameObject.name.Split( "Enemy" );
+        print(this.gameObject.name);
+        enemyData = MainController.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
     }
 
     // Update is called once per frame
@@ -30,6 +35,9 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
+        // need animation
+        enemyData.hp -= CacheManager.GetCache(Cache.Damage.ToString());
+        CacheManager.DecreaseCache(Cache.HP.ToString(), enemyData.damage);
         CacheUsage.cacheDestroyedObject(this.gameObject.name);
         Destroy(gameObject); // Destroy the key game object after collision
     }

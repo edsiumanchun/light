@@ -3,7 +3,7 @@
     "backgrounds": ["Egypt"],
     "plateH": ["Egypt","Egypt", "Egypt"],
     "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","Story0","Stone"],
+    "characters": ["Player","Story0","Enemy0"],
     "items": ["KeyCopper","KeySilver","KeyGold","Trigger"],
     "decorations": []
   },
@@ -26,7 +26,7 @@
       "gridArray1": [1, 0, 1, 0, 1, 1],
       "gridArray2": [1, 0, 0, 0, 4, 1],
       "gridArray3": [1, 0, 0, 2, 3, 1],
-      "gridArray4": [1, 0, 1, 0, 0, 5]
+      "gridArray4": [1, 0, 0, 1, 0, 5]
     },
     {
       "name": "Object",

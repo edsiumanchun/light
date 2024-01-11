@@ -75,12 +75,12 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
-                isSprite = false;
                 int formattedIndex = assetIndex % 10;
                 if (assetIndex / 10 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
                 } else
                 {
+                    isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = HomeController.InstantiateObject(prefab);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
@@ -96,7 +96,7 @@ public class AssetData
         }
         // --------- //
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
-        newObject.name = pathName + id;
+        newObject.name = pathName == "Player" ? pathName : id + "_" + pathName;
         switch (pathName)
         {
             case "Player":
@@ -110,16 +110,34 @@ public class AssetData
             case "KeyGold":
             case "KeySilver":
             case "KeyCopper":
+                if (CacheUsage.isDestroyObject(id))
+                {
+                    return null;
+                }
                 newObject.AddComponent<KeyController>();
                 break;
             case "Gate":
             case "GateGold":
             case "GateSilver":
             case "GateCopper":
+                if (CacheUsage.isDestroyObject("|" + id))
+                {
+                    return null;
+                }
                 newObject.AddComponent<GateController>();
                 break;
         }
-            
+        if (pathName.Contains("Enemy"))
+        {
+            if (CacheUsage.isDestroyObject(id))
+            {
+                return null;
+            }
+            newObject.AddComponent<EnemyController>();
+        } else if (name.Contains("Event"))
+        {
+
+        }
         return newObject;
     }
 
@@ -147,13 +165,9 @@ public class AssetData
             for (int column = 0; column < gridArray.Count; column++)
             {
                 int cellValue = gridArray[column];
-
-                if (cellValue == 0)
-                {
-                    continue;
-                }
-
+                if (cellValue == 0) continue;
                 newObject = CreateObjectWithAssetIndex(cellValue - 1, z, gridIndex.ToString() + column.ToString());
+                if (newObject == null) continue;
                 BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
                 if (!isSprite)
                 {

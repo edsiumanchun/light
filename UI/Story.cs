@@ -5,22 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[System.Serializable]
-public class StoryDataWrapper
-{
-    public List<StoryData> storyArray;
-}
-
-[System.Serializable]
-public class StoryData
-{
-    public string name;
-    public string imagePath;
-    public string backgroundPath;
-    public string bgmPath;
-    public string[] dialogue;
-}
-
 public class StoryController : MonoBehaviour
 {
     public Texture2D leftGifTexture;
@@ -78,10 +62,10 @@ public class StoryController : MonoBehaviour
         canvasObject.SetActive(false);
     }
 
-    public void LoadStoryDataFromJSON(string jsonFilePath)
+    public void LoadStoryDataFromJSON()
     {
         canvasObject.SetActive(true);
-        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + jsonFilePath;
+        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString());
 
         //if (File.Exists(jsonFilePath))
         //{

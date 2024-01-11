@@ -1,4 +1,6 @@
 // using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -34,6 +36,7 @@ public class Utils : MonoBehaviour
         RectTransform imageTransform = imageObj.AddComponent<RectTransform>();
         imageTransform.SetParent(parent); // Set the parent transform
         imageTransform.anchoredPosition = position;
+        // imageTransform.sizeDelta = new Vector2(30,30);
         Image image = imageObj.AddComponent<Image>();
         image.sprite = sprite;
         image.SetNativeSize();
@@ -52,7 +55,7 @@ public class Utils : MonoBehaviour
         Text text = textObj.AddComponent<Text>();
 
         text.font = (Font)Resources.GetBuiltinResource(typeof(Font), "LegacyRuntime.ttf");
-        text.fontSize = 33;
+        text.fontSize = 23;
         text.color = Color.white;
         text.alignment = textAnchor;
         Outline outline = textObj.AddComponent<Outline>();
@@ -72,13 +75,13 @@ public class Utils : MonoBehaviour
 
     static public GameObject CreateTextButton(Sprite sprite, Vector2 imagePosition, Vector2 textPosition, Transform parent, UnityAction onClickAction)
     {
-        GameObject buttonObject = CreateImageWithText(sprite, imagePosition, textPosition, parent, TextAnchor.MiddleCenter);
-        Button button = buttonObject.AddComponent<Button>();
+        GameObject imageGameObject = CreateImage(sprite, imagePosition, parent);
+        GameObject rowTextObject = CreateText(new Vector2(100, 50), textPosition, imageGameObject.transform, TextAnchor.MiddleCenter);
+        Button button = rowTextObject.AddComponent<Button>();
         button.onClick.AddListener(onClickAction);
-        GameObject imageObject = button.transform.parent.gameObject;
-        Button button2 = imageObject.AddComponent<Button>();
+        Button button2 = imageGameObject.AddComponent<Button>();
         button2.onClick.AddListener(onClickAction);
-        return buttonObject;
+        return rowTextObject;
     }
 
     static public GameObject CreateImageWithText(Sprite sprite, Vector2 imagePosition, Vector2 textPosition, Transform parent, TextAnchor textAnchor)
@@ -144,18 +147,36 @@ public class Utils : MonoBehaviour
 
     static public GameObject CreateNavigationBar(string title, Vector2 position, Transform parent, UnityAction onClickAction)
     {
-        GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.NavBar)], position, Vector2.zero, parent, TextAnchor.MiddleCenter);
+        GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
+        NavBar.GetComponent<Text>().fontSize = 33;
         GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(200, 0), NavBar.transform, onClickAction);
         return NavBar;
     }
 
     static public GameObject CreateSelectionBar(string title, Vector2 position, Transform parent, UnityAction onClickActionLeft, UnityAction onClickActionRight)
     {
-        GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.NavBar)], position, Vector2.zero, parent, TextAnchor.MiddleCenter);
+        GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
         GameObject rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(200, 0), NavBar.transform, onClickActionRight);
         GameObject leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-200, 0), NavBar.transform, onClickActionLeft);
         return NavBar;
+    }
+
+    static public GameObject CreateAvatarAndRows(Sprite sprite, List<Sprite> sprites, List<string> values, Vector2 position, Transform parent)
+    {
+        GameObject enemyInfo = Utils.CreateImage(sprite, position, parent.transform);
+        for (int i = 0; i < values.Count; i++)
+        {
+            int x = i == 0 ? 0 : -44;
+            GameObject cell;
+            if(i == 0){
+                cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 44 + 99), new Vector2(0, -66), enemyInfo.transform, TextAnchor.MiddleCenter);
+            } else {
+                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 44 + 33), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
+            }
+            cell.GetComponent<Text>().text = values[i];
+        }
+        return enemyInfo;
     }
 }

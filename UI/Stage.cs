@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class StageController : MonoBehaviour
 {
     public Vector2 contentSize;
-    public Vector2 cellSize = new Vector2(100f, 100f);
+    public Vector2 cellSize = new Vector2(80f, 80f);
     public int cellCount = 10;
 
     public List<GameObject> buttons;
@@ -42,23 +42,23 @@ public class StageController : MonoBehaviour
 
     private void SetupButtons()
     {
-        Utils.CreateNavigationBar("樓層", new Vector2(0f, 278f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("樓層", new Vector2(0f, 193f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
-        Utils.CreateSelectionBar("abc", new Vector2(0f, -278f), canvasObject.transform, () =>
+        Utils.CreateSelectionBar("abc", new Vector2(0f, -168f), canvasObject.transform, () =>
         {
         }, () =>
         {
         });
-        int rowCount = 4;
+        int rowCount = 3;
         int columnCount = 5;
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
 
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
-        float startY = totalHeight / 2 - (cellSize.y / 2);
+        float startY = totalHeight / 2 - (cellSize.y / 2) + 20;
 
         for (int row = 0; row < rowCount; row++)
         {
@@ -70,7 +70,8 @@ public class StageController : MonoBehaviour
                 float yPos = startY - row * cellSize.y;
 
                 GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.CommonButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
-                { 
+                {
+                    CacheManager.SetCache( (1 + Cache.CurrentFloor).ToString(), index);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
                 });
 

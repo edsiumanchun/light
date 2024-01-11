@@ -1,0 +1,10 @@
+{
+  "enemies": [
+    {
+      "money": 50,
+      "hp": 100,
+      "damage": 20,
+      "name": "gargoyle"
+    }
+  ]
+}
