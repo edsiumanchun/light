@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
-    public Sprite menuButtonImage;
+    public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
 
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
@@ -31,7 +31,7 @@ public class GameUIController : MonoBehaviour
         dashboardButtonPosition = new Vector2(padding - screenSize.x / 2, screenSize.y / 2 - padding);
         containerPosition = new Vector2(screenSize.x / 2 - padding, -1 * screenSize.y / 2 + padding);
         buttonImages = DataHolder.gameButtonImages;
-        menuButtonImage = DataHolder.menuButtonImage;
+        menuButtonImages = DataHolder.menuButtonImages;
         // Create Canvas object
 
         // Create EventSystem object VERY IMPORTANT!!!
@@ -51,7 +51,7 @@ public class GameUIController : MonoBehaviour
     private void SetupButton()
     {
         // Instantiate menu button
-        GameObject menuButton = Utils.CreateButton(menuButtonImage, menuButtonPosition, canvasObject.transform, () => {
+        GameObject settingButton = Utils.CreateButton(menuButtonImages[0], menuButtonPosition, canvasObject.transform, () => {
 
             isMenuOpen = !isMenuOpen;
             // Activate/deactivate the circle buttons container based on menu state
@@ -60,10 +60,10 @@ public class GameUIController : MonoBehaviour
 
             //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
             //settingsController.canvasObject.SetActive(true);
-            MenuController menuController = Camera.main.gameObject.GetComponent<MenuController>();
-            menuController.canvasObject.SetActive(true);
+            SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
+            settingsController.canvasObject.SetActive(true);
         });
-        GameObject stageButton = Utils.CreateButton(menuButtonImage, new Vector2(menuButtonPosition.x, menuButtonPosition.y - 150), canvasObject.transform, () => {
+        GameObject stageButton = Utils.CreateButton(menuButtonImages[1], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 110), canvasObject.transform, () => {
 
             isStageOpen = !isStageOpen;
             // Activate/deactivate the circle buttons container based on menu state
@@ -75,7 +75,7 @@ public class GameUIController : MonoBehaviour
             StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
             stageController.canvasObject.SetActive(true);
         });
-        GameObject infoButton = Utils.CreateButton(menuButtonImage, new Vector2(menuButtonPosition.x, menuButtonPosition.y - 300), canvasObject.transform, () => {
+        GameObject infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 220), canvasObject.transform, () => {
 
             isInfoOpen = !isInfoOpen;
             // Activate/deactivate the circle buttons container based on menu state
@@ -89,7 +89,7 @@ public class GameUIController : MonoBehaviour
         });
 
         // Instantiate menu button
-        GameObject dashboardButton = Utils.CreateButton(menuButtonImage, dashboardButtonPosition, canvasObject.transform, () => {
+        GameObject dashboardButton = Utils.CreateButton(menuButtonImages[2], dashboardButtonPosition, canvasObject.transform, () => {
 
             isDashboardOpen = !isDashboardOpen;
 

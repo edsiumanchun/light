@@ -19,10 +19,8 @@ public class MainController : MonoBehaviour
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
         LoadAssetsForDashboardUI();
-        LoadAssetsForStageUI();
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
-        LoadAssetsForSettingBackground();
     }
 
 
@@ -37,33 +35,30 @@ public class MainController : MonoBehaviour
     {
         //List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
         List<string> paths = new List<string>((new[] { "Purify"}));
-        List<Sprite> sprites = LoadSprites("UI", paths);
+        List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
         DataHolder.gameButtonImages = sprites;
     }
 
     public void LoadAssetsForMenuUI()
     {
-        List<string> paths = new List<string>((new[] { "Menu" }));
-        List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.menuButtonImage = sprites[0];
+        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info" }));
+        List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
+        DataHolder.menuButtonImages = sprites;
     }
 
     public void LoadAssetsForSettingsUI()
     {
-        List<string> paths = new List<string>((new[] { "Right", "Left"}));
-        List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.settingButtonImages = sprites;
+        List<string> paths2 = new List<string>((new[] { "Bin"}));
+        List<Sprite> sprites2 = LoadSprites("UI/Setting", paths2);
+        DataHolder.settingImages = sprites2;
     }
 
 
     public void LoadAssetsForDashboardUI()
     {
-        List<string> paths = new List<string>((new[] { "Heart", "Shield", "Shield", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard" }));
+        List<string> paths = new List<string>((new[] { "Heart", "Attack", "Shield", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Attack2" }));
         List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
         DataHolder.keyImages = sprites;
-        List<string> paths2 = new List<string>((new[] { "Setting", "Book"}));
-        List<Sprite> sprites2 = LoadSprites("UI/Dashboard", paths2);
-        DataHolder.dashboardButtonImages = sprites2;
 
         List<string> paths3 = new List<string>((new[] { "DashboardPanel", "GoldPlate", "Plate" }));
         List<Sprite> sprites3 = LoadSprites("UI/Dashboard", paths3);
@@ -73,23 +68,9 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CommonButton" } ));
-        List<Sprite> sprites = LoadSprites("UI", paths);
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CircleButton", "SelectionBar", "Panel", "LongButton" } ));
+        List<Sprite> sprites = LoadSprites("UI/Common", paths);
         DataHolder.commonImages = sprites;
-    }
-
-    public void LoadAssetsForSettingBackground()
-    {
-        List<string> paths2 = new List<string>((new[] { "SettingPanel"}));
-        List<Sprite> sprites2 = LoadSprites("UI", paths2);
-        DataHolder.settingBackgroundImage = sprites2[0];
-    }
-
-    public void LoadAssetsForStageUI()
-    {
-        List<string> paths = new List<string>((new[] { "StagePanel" }));
-        List<Sprite> sprites = LoadSprites("UI", paths);
-        DataHolder.stageImages = sprites;
     }
 
     public void LoadAssetsForStoryUI()

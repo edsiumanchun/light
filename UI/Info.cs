@@ -11,8 +11,6 @@ public class InfoController : MonoBehaviour
     public List<GameObject> gameObjects;
 
     public List<Sprite> commonImages;
-    public List<Sprite> stageImages;
-
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public GameObject backgroundImage;
@@ -27,7 +25,6 @@ public class InfoController : MonoBehaviour
 
         gameObjects = new List<GameObject>();
         commonImages = DataHolder.commonImages;
-        stageImages = DataHolder.stageImages;
         SetupCanvas();
         SetupButtons();
     }
@@ -39,7 +36,7 @@ public class InfoController : MonoBehaviour
         button.onClick.AddListener(OnClickButton);
         Vector2 backgroundPosition = new Vector2(0, 0f);
 
-        backgroundImage = Utils.CreateImage(DataHolder.stageImages[0], backgroundPosition, canvasObject.transform);
+        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
@@ -64,7 +61,7 @@ public class InfoController : MonoBehaviour
         List<Sprite> icons = new List<Sprite>{
             keyImages[0],
             keyImages[0],
-            keyImages[1],
+            keyImages[9],
             keyImages[2],
             keyImages[3]
         };

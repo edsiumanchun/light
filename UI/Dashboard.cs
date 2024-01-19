@@ -6,7 +6,6 @@ using System.IO;
 public class DashboardController : MonoBehaviour
 {
     public List<Sprite> keyImages;
-    public List<Sprite> dashboardButtonImages;
 
     /// ////////
     public GameObject canvasObject;
@@ -18,7 +17,6 @@ public class DashboardController : MonoBehaviour
     private void Start()
     {
         keyImages = DataHolder.keyImages;
-        dashboardButtonImages = DataHolder.dashboardButtonImages;
         // canvas
         SetupCanvas();
         SetupInfo();
@@ -31,7 +29,7 @@ public class DashboardController : MonoBehaviour
         screenSize = Utils.GetCanvasSize(canvasObject);
         Button button = canvasObject.AddComponent<Button>();
         button.onClick.AddListener(OnClickButton);
-        Vector2 backgroundPosition = new Vector2(180 - screenSize.x / 2, screenSize.y / 2 - 330);
+        Vector2 backgroundPosition = new Vector2(93 - screenSize.x / 2, screenSize.y / 2 - 330);
 
         backgroundImage = Utils.CreateImage(DataHolder.dashboardBackgroundImages[0], backgroundPosition, canvasObject.transform);
         // Create the audio source
@@ -44,15 +42,15 @@ public class DashboardController : MonoBehaviour
     private void SetupInfo()
     {
         keyTextImages = new List<GameObject>();
-        for(int i = 0; i < 4; i++){
-            Utils.CreateImage(keyImages[i], new Vector2(-90, 110 - (i * 80)), backgroundImage.transform);
-            keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(-10 , 110 - (i * 80)), backgroundImage.transform, TextAnchor.MiddleLeft));
+        for(int i = 0; i < 8; i++){
+            Utils.CreateImage(keyImages[i], new Vector2(-18, 154 - (i * 44)), backgroundImage.transform);
+            keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(60 , 154 - (i * 44)), backgroundImage.transform, TextAnchor.MiddleLeft));
         }
 
-        for(int i = 0; i < 4; i++){
-            Utils.CreateImage(keyImages[i+4], new Vector2(60, 110 - (i * 80)), backgroundImage.transform);
-            keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(140 , 110 - (i * 80)), backgroundImage.transform, TextAnchor.MiddleLeft));
-        }
+        // for(int i = 0; i < 4; i++){
+        //     Utils.CreateImage(keyImages[i+4], new Vector2(60, 110 - (i * 44)), backgroundImage.transform);
+        //     keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(140 , 110 - (i * 44)), backgroundImage.transform, TextAnchor.MiddleLeft));
+        // }
     }
 
     public void SetText()

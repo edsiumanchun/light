@@ -10,7 +10,10 @@ public enum UICommon
     Close = 0,
     Left = 1,
     Right = 2,
-    CommonButton = 3
+    CircleButton = 3,
+    SelectionBar= 4,
+    Panel=5,
+    LongButton = 6
 }
 
 public static class DataHolder
@@ -29,19 +32,12 @@ public static class DataHolder
     public static List<Sprite> backgrounds; // List to store the loaded assets
     // ui
     public static List<Sprite> gameButtonImages; // List to store the loaded assets
-    public static Sprite menuButtonImage; // List to store the loaded assets
-
-    // ui2
-    public static List<Sprite> settingButtonImages; // List to store the loaded assets
-    public static Sprite settingBackgroundImage;
-
+    public static List<Sprite> menuButtonImages; // List to store the loaded assets
     // ui3
     public static List<Sprite> keyImages; // List to store the loaded assets
-    public static List<Sprite> dashboardButtonImages; // List to store the loaded assets
+    public static List<Sprite> settingImages; // List to store the loaded assets
     public static List<Sprite> dashboardBackgroundImages;
 
-    // ui4
-    public static List<Sprite> stageImages;
     public static List<Sprite> storyImages;
 
     // common ui

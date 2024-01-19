@@ -16,9 +16,13 @@ public class KeyController : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            CacheManager.IncreaseCache(this.gameObject.name.Replace("Key", ""), 1);
-            Debug.Log(this.gameObject.name.Replace("Key", "") + " Key collected! Key cache: " +  CacheManager.GetCache("this.gameObject.name"));
+            string keyName = this.gameObject.name.Split("_")[1].Replace("Key", "");
+            CacheManager.IncreaseCache(keyName, 1);
+            Debug.Log(keyName + " Key collected! Key cache: " +  CacheManager.GetCache("this.gameObject.name"));
             Destroy(gameObject); // Destroy the key game object after collision
+
+            DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
+            dashboardController.SetText();
         }
     }
 }

@@ -150,16 +150,16 @@ public class Utils : MonoBehaviour
         GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
         NavBar.GetComponent<Text>().fontSize = 33;
-        GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(200, 0), NavBar.transform, onClickAction);
+        GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(260, 0), NavBar.transform, onClickAction);
         return NavBar;
     }
 
     static public GameObject CreateSelectionBar(string title, Vector2 position, Transform parent, UnityAction onClickActionLeft, UnityAction onClickActionRight)
     {
-        GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
+        GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.SelectionBar)], position, new Vector2(0, 0), parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
-        GameObject rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(200, 0), NavBar.transform, onClickActionRight);
-        GameObject leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-200, 0), NavBar.transform, onClickActionLeft);
+        GameObject rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(144, 0), NavBar.transform, onClickActionRight);
+        GameObject leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-144, 0), NavBar.transform, onClickActionLeft);
         return NavBar;
     }
 

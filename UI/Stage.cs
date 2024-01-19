@@ -11,8 +11,6 @@ public class StageController : MonoBehaviour
     public List<GameObject> buttons;
 
     public List<Sprite> commonImages;
-    public List<Sprite> stageImages;
-
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public GameObject backgroundImage;
@@ -21,7 +19,6 @@ public class StageController : MonoBehaviour
     {
         buttons = new List<GameObject>();
         commonImages = DataHolder.commonImages;
-        stageImages = DataHolder.stageImages;
         SetupCanvas();
         SetupButtons();
     }
@@ -33,7 +30,7 @@ public class StageController : MonoBehaviour
         button.onClick.AddListener(OnClickButton);
         Vector2 backgroundPosition = new Vector2(0, 0f);
 
-        backgroundImage = Utils.CreateImage(DataHolder.stageImages[0], backgroundPosition, canvasObject.transform);
+        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
@@ -46,7 +43,7 @@ public class StageController : MonoBehaviour
         {
             canvasObject.SetActive(false);
         });
-        Utils.CreateSelectionBar("abc", new Vector2(0f, -168f), canvasObject.transform, () =>
+        Utils.CreateSelectionBar("abc", new Vector2(0f, -157f), canvasObject.transform, () =>
         {
         }, () =>
         {
@@ -69,7 +66,7 @@ public class StageController : MonoBehaviour
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y;
 
-                GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.CommonButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
+                GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.CircleButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
                 {
                     CacheManager.SetCache( (1 + Cache.CurrentFloor).ToString(), index);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
