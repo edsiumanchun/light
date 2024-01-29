@@ -42,7 +42,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
             return;
         }
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        isJumping = true;
+        isJumping = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

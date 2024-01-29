@@ -68,7 +68,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CircleButton", "SelectionBar", "Panel", "LongButton" } ));
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel" } ));
         List<Sprite> sprites = LoadSprites("UI/Common", paths);
         DataHolder.commonImages = sprites;
     }

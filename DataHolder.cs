@@ -11,9 +11,11 @@ public enum UICommon
     Left = 1,
     Right = 2,
     CircleButton = 3,
-    SelectionBar= 4,
-    Panel=5,
-    LongButton = 6
+    SelCircleButton = 4,
+    SelectionBar= 5,
+    Panel=6,
+    LongButton = 7,
+    ConfirmPanel = 8
 }
 
 public static class DataHolder

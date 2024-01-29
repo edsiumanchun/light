@@ -81,15 +81,23 @@ public class SettingsController : MonoBehaviour
         actions.Add(
             () =>
             {
-                    StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
-                    stageController.canvasObject.SetActive(true);
+                    ConfirmController confirmController = Camera.main.gameObject.GetComponent<ConfirmController>();
+                    confirmController.SetupAction(()=>{
+                        Caching.ClearCache();
+                        PlayerPrefs.DeleteAll();
+                        MainController.LoadAssetsFromJson(0, 0 , "HomeScene");
+                    }, "Confirm to delete records permanently?",
+                    new List<string>(){
+                        "Cancel", "Confirm"
+                    });
+                    confirmController.canvasObject.SetActive(true);
             }
         );
         actions.Add(
             () =>
             {
-                    ConfirmController confirmController = Camera.main.gameObject.GetComponent<ConfirmController>();
-                    confirmController.canvasObject.SetActive(true);
+                    // ConfirmController confirmController = Camera.main.gameObject.GetComponent<ConfirmController>();
+                    // confirmController.canvasObject.SetActive(true);
             }
         );
         // Create circle buttons container

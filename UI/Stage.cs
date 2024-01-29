@@ -39,6 +39,7 @@ public class StageController : MonoBehaviour
 
     private void SetupButtons()
     {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         Utils.CreateNavigationBar("樓層", new Vector2(0f, 193f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
@@ -66,9 +67,10 @@ public class StageController : MonoBehaviour
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y;
 
+                var image = currentFloor == index + 1 ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];
                 GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.CircleButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
                 {
-                    CacheManager.SetCache( (1 + Cache.CurrentFloor).ToString(), index);
+                    CacheManager.SetCache( Cache.CurrentFloor.ToString(), index + 1);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
                 });
 

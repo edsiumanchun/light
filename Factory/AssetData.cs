@@ -95,6 +95,7 @@ public class AssetData
                 break;
         }
         // --------- //
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         newObject.name = pathName == "Player" ? pathName : id + "_" + pathName;
         switch (pathName)
@@ -115,6 +116,12 @@ public class AssetData
                     return null;
                 }
                 newObject.AddComponent<KeyController>();
+                break;
+            case "GoUp":
+                // MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
+                break;
+            case "GoDown":
+                // MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
                 break;
             case "Gate":
             case "GateGold":

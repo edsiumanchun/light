@@ -1,29 +1,29 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ConfirmController : MonoBehaviour
 {
     public Vector2 contentSize;
-    public Vector2 cellSize = new Vector2(188f, 200f);
+    public Vector2 cellSize = new Vector2(230f, 83f);
     public int cellCount = 10;
+
+    public List<GameObject> buttons;
 
     public List<Sprite> commonImages;
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public GameObject backgroundImage;
-    public static List<EnemyData> enemyDataList;
-    public List<Sprite> keyImages;
-    private void Start()
-    {
-        keyImages = DataHolder.keyImages;
-        string[] substrings = this.gameObject.name.Split( "Enemy" );
-        print(this.gameObject.name);
-        enemyDataList = MainController.enemyDataList;
+    public GameObject messageGO;
+    public List<UnityAction> actions;
+    public List<string> buttonTitles;
 
+    private void Awake()
+    {
+        buttons = new List<GameObject>();
         commonImages = DataHolder.commonImages;
         SetupCanvas();
-        SetupButtons();
     }
 
     private void SetupCanvas()
@@ -33,55 +33,60 @@ public class ConfirmController : MonoBehaviour
         button.onClick.AddListener(OnClickButton);
         Vector2 backgroundPosition = new Vector2(0, 0f);
 
-        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
+        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.ConfirmPanel)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
         canvasObject.SetActive(false);
     }
 
+    public void SetupAction(UnityAction action, string message, List<string> titles){
+        if(messageGO == null){
+            SetupText();
+        }
+        foreach(var button in buttons){
+            Destroy(button);
+        }
+        actions = new List<UnityAction>();
+        actions.Add(
+            () =>
+            {
+                    ConfirmController confirmController = Camera.main.gameObject.GetComponent<ConfirmController>();
+                    confirmController.canvasObject.SetActive(false);
+            }
+        );
+        actions.Add(action);
+        buttonTitles = titles;
+        SetupButtons();
+        buttons[1].GetComponent<Button>().onClick.AddListener(action);
+        messageGO.GetComponent<Text>().text = message;
+    }
+
+    private void SetupText(){
+        messageGO = Utils.CreateText(new Vector2(350,350), new Vector2(0, 38), canvasObject.transform, TextAnchor.MiddleCenter);
+    }
     private void SetupButtons()
-    {
-        Utils.CreateNavigationBar("確認", new Vector2(0f, 193f), canvasObject.transform, () =>
-        {
-            canvasObject.SetActive(false);
-        });
-        int rowCount = 1;
-        int columnCount = 3;
+    {   
+        int columnCount = 2;
 
         float totalWidth = columnCount * cellSize.x;
-        float totalHeight = rowCount * cellSize.y;
+        float totalHeight = 1 * cellSize.y;
 
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
-        float startY = totalHeight / 2 - (cellSize.y / 2) ;
+        float startY = totalHeight / 2 - (cellSize.y / 2) - 88;
 
-        List<Sprite> icons = new List<Sprite>{
-            keyImages[0],
-            keyImages[0],
-            keyImages[1],
-            keyImages[2],
-            keyImages[3]
-        };
-        for (int row = 0; row < rowCount; row++)
+
+        for (int column = 0; column < columnCount; column++)
         {
-            for (int column = 0; column < columnCount; column++)
-            {
-                int index = row * columnCount + column;
+            int index = column;
 
-                float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y - 33;
-            
-                EnemyData enemyData = enemyDataList[index];
-                List<string> stringList = new List<string>()
-                {
-                    enemyData.name,
-                    enemyData.hp.ToString(),
-                    enemyData.damage.ToString(),
-                    enemyData.defend.ToString(),
-                    enemyData.coin.ToString()
-                };
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[8], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
-            }
+            float xPos = startX + column * cellSize.x;
+            float yPos = startY;
+
+            GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.LongButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, actions[column]);
+            cell.name = index.ToString();
+            cell.GetComponent<Text>().text = buttonTitles[column];
+            buttons.Add(cell);
         }
     }
 

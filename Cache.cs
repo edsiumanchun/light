@@ -149,8 +149,8 @@ public static class CacheManager
 
     public static Dictionary<string, string> LoadDictionary(string key)
     {
-        //Caching.ClearCache();
-        //PlayerPrefs.DeleteAll();
+        // Caching.ClearCache();
+        // PlayerPrefs.DeleteAll();
         // Retrieve the JSON string from PlayerPrefs
         string dictionaryJson = PlayerPrefs.GetString(key);
         Debug.Log(key);
