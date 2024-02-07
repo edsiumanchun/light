@@ -35,15 +35,61 @@ public class PlayerController : MonoBehaviour
         this.gameObject.layer = layerIndex;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string name = collision.gameObject.name;
+        string playerPosition = name.Split('_')[0];
+        Debug.Log(name);
         switch (name)
         {
+            case string str when str.Contains("GoUp"):
+                break;
+            case string str when str.Contains("GoDown"):
+                break;
+            case string str when str.Contains("Floor"):
+                break;
+            case string str when str.Contains("Panel"):
+                break;
+
+            case string str when str.Contains("Wall"):
+                break;
+
+            case string str when str.Contains("Story"):
+                break;
+
+            case string str when str.Contains("Enemy"):
+                break;
+        }
+    }
+
+    void GoDown(Collision2D collision){
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        string name = collision.gameObject.name;
+        string playerPosition = name.Split('_')[0];
+        CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + playerPosition[1]);
+        MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        string name = collision.gameObject.name;
+        string playerPosition = name.Split('_')[0];
+        Debug.Log(name);
+        switch (name)
+        {
+            case string str when str.Contains("GoUp"):
+                CacheManager.SetStringCache(Cache.Exit.ToString(), "4" + playerPosition[1]);
+                MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
+                break;
+            case string str when str.Contains("GoDown"):
+                CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + playerPosition[1]);
+                MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+                break;
             case string str when str.Contains("Floor"):
                 audioSource.PlayOneShot(landSound);
                 break;
-
             case string str when str.Contains("Panel"):
                 audioSource.PlayOneShot(panelSound);
                 break;

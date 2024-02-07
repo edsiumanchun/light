@@ -4,15 +4,18 @@ using UnityEngine.UI;
 
 public class StageController : MonoBehaviour
 {
+    List<string> stages = new List<string>(){"ABC","ABCs","AdBC"};
     public Vector2 contentSize;
-    public Vector2 cellSize = new Vector2(80f, 80f);
+    public Vector2 cellSize = new Vector2(88f, 88f);
     public int cellCount = 10;
+    public int tempStage = 0;
 
     public List<GameObject> buttons;
 
     public List<Sprite> commonImages;
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
+    public GameObject selectionBarObject;
     public GameObject backgroundImage;
 
     private void Start()
@@ -20,6 +23,7 @@ public class StageController : MonoBehaviour
         buttons = new List<GameObject>();
         commonImages = DataHolder.commonImages;
         SetupCanvas();
+        SetupBar();
         SetupButtons();
     }
 
@@ -36,27 +40,40 @@ public class StageController : MonoBehaviour
         // Other initialization code...
         canvasObject.SetActive(false);
     }
-
-    private void SetupButtons()
-    {
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+    private void SetupBar(){
+        tempStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         Utils.CreateNavigationBar("樓層", new Vector2(0f, 193f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
-        Utils.CreateSelectionBar("abc", new Vector2(0f, -157f), canvasObject.transform, () =>
+        selectionBarObject = Utils.CreateSelectionBar(stages[tempStage], new Vector2(0f, -157f), canvasObject.transform, () =>
         {
+            tempStage = Mathf.Max(tempStage - 1, 0);
+            foreach(var button in buttons){
+                Destroy(button);
+            }
+            SetupButtons();
         }, () =>
         {
+            tempStage = Mathf.Min(tempStage + 1, stages.Count - 1);
+        foreach(var button in buttons){
+            Destroy(button);
+        }
+            SetupButtons();
         });
-        int rowCount = 3;
+    }
+
+    private void SetupButtons()
+    {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int rowCount = 2;
         int columnCount = 5;
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
 
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
-        float startY = totalHeight / 2 - (cellSize.y / 2) + 20;
+        float startY = totalHeight / 2 - (cellSize.y / 2);
 
         for (int row = 0; row < rowCount; row++)
         {
@@ -67,16 +84,18 @@ public class StageController : MonoBehaviour
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y;
 
-                var image = currentFloor == index + 1 ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];
-                GameObject cell = Utils.CreateTextButton(commonImages[((int)UICommon.CircleButton)], new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
+                var image = currentFloor == index ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];
+                if(tempStage != CacheManager.GetCache(Cache.CurrentStage.ToString())){
+                    image = commonImages[((int)UICommon.CircleButton)];
+                }
+                GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
                 {
-                    CacheManager.SetCache( Cache.CurrentFloor.ToString(), index + 1);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
                 });
 
-                cell.name = index.ToString();
-                cell.GetComponent<Text>().text = index.ToString();
-                buttons.Add(cell);
+                cell.name = (index + 1).ToString();
+                cell.GetComponent<Text>().text = (index + 1).ToString();
+                buttons.Add(cell.transform.parent.gameObject);
             }
         }
     }

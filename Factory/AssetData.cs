@@ -118,10 +118,8 @@ public class AssetData
                 newObject.AddComponent<KeyController>();
                 break;
             case "GoUp":
-                // MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
                 break;
             case "GoDown":
-                // MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
                 break;
             case "Gate":
             case "GateGold":
@@ -165,20 +163,33 @@ public class AssetData
         float offset = plateSprite.bounds.size.x / 2;
         float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
 
+        string playerPosition = CacheManager.GetStringCache(Cache.Exit.ToString());
+        playerPosition = playerPosition == "" ? "40" : playerPosition; 
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {
             List<int> gridArray = gridArrays[gridIndex];
-
             for (int column = 0; column < gridArray.Count; column++)
             {
+                string id = gridIndex.ToString() + column.ToString();
                 int cellValue = gridArray[column];
-                if (cellValue == 0) continue;
-                newObject = CreateObjectWithAssetIndex(cellValue - 1, z, gridIndex.ToString() + column.ToString());
+                if (cellValue == 0) {
+                        Debug.Log("???");
+                        Debug.Log(id);
+                        Debug.Log(name);
+                    if(playerPosition == id && name.Contains("Object")){
+                        Debug.Log("???");
+                        newObject = CreateObjectWithAssetIndex(0, z, id);
+                    } else {
+                        continue;
+                    }
+                } else {
+                    newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
+                }
                 if (newObject == null) continue;
                 BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
                 if (!isSprite)
                 {
-                    boxCollider.size = GetCombinedSize(newObject);
+                    boxCollider.size = new Vector2(1.5f, 2f);
                     boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
                 }
                 if (name.Contains("PlateV") || name.Contains("PlateH"))

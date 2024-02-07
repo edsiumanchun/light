@@ -10,15 +10,16 @@ public enum Cache
 {
     CurrentStage = 0,
     CurrentFloor = 1,
-    Copper = 2,
-    Silver = 3,
-    Gold = 4,
-    Flower = 5,
-    Coin = 6,
-    Destroy = 7,
-    HP = 8,
-    Damage = 9,
-    Defend = 10
+    Exit = 2,
+    Copper = 3,
+    Silver = 4,
+    Gold = 5,
+    Flower = 6,
+    Coin = 7,
+    Destroy = 8,
+    HP = 9,
+    Damage = 10,
+    Defend = 11
 }
 
 public static class CacheUsage
@@ -132,6 +133,18 @@ public static class CacheManager
         PlayerPrefs.Save();
     }
 
+
+    public static string GetStringCache(string key)
+    {
+        return PlayerPrefs.GetString(key, "");
+    }
+
+    public static void SetStringCache(string key, string value)
+    {
+        PlayerPrefs.SetString(key, value);
+        PlayerPrefs.Save();
+    }
+
     public static void SaveDictionary(string key, Dictionary<string, string> dictionary)
     {
         // Convert the dictionary to a serializable format
@@ -150,7 +163,6 @@ public static class CacheManager
     public static Dictionary<string, string> LoadDictionary(string key)
     {
         // Caching.ClearCache();
-        // PlayerPrefs.DeleteAll();
         // Retrieve the JSON string from PlayerPrefs
         string dictionaryJson = PlayerPrefs.GetString(key);
         Debug.Log(key);

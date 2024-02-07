@@ -11,9 +11,9 @@ using UnityEngine.SceneManagement;
 public class MainController : MonoBehaviour
 {
     public static List<EnemyData> enemyDataList;
-    List<string> stages;
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
@@ -84,6 +84,8 @@ public class MainController : MonoBehaviour
     {
         CacheManager.SetCache(Cache.CurrentStage.ToString(), stage);
         MainController.LoadEnemyData(stage);
+        Debug.Log(stage);
+        Debug.Log(floor);
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
@@ -105,6 +107,7 @@ public class MainController : MonoBehaviour
 
     static public void LoadFloorAssetsFromJson(int floor, string sceneName)
     {
+        CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
         //print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
