@@ -16,12 +16,16 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public bool isOnFloor = false; // Whether the player is standing on the floor or not
     private AudioSource audioSource;
+    public AudioClip gateSound;
     public AudioClip landSound;
     public AudioClip panelSound;
     public AudioClip wallSound;
     public AudioClip hurtSound;
     public AudioClip dieSound;
     public JoystickController joystick; // The joystick controller
+
+    public UIGameButton status = UIGameButton.none; // Whether the player is standing on the floor or not
+    char exitPosition = '0';
 
     void Awake()
     {
@@ -37,15 +41,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string name = collision.gameObject.name;
-        string playerPosition = name.Split('_')[0];
-        Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
                 break;
-            case string str when str.Contains("GoDown"):
+            case string str when str.Contains("Gate") || str.Contains("GoDown") ||  str.Contains("Story"):
+                status = UIGameButton.none;
+                gameUIController.hideGameButton();
                 break;
             case string str when str.Contains("Floor"):
                 break;
@@ -54,25 +59,31 @@ public class PlayerController : MonoBehaviour
 
             case string str when str.Contains("Wall"):
                 break;
-
-            case string str when str.Contains("Story"):
-                break;
-
             case string str when str.Contains("Enemy"):
+                gameUIController.hideGameButton();
                 break;
         }
     }
 
-    void GoDown(Collision2D collision){
+    public void ShowStory(){
+        StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+        //if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
+        storyController.LoadStoryDataFromJSON();
+        audioSource.PlayOneShot(wallSound);
+
+    }
+
+    public void GoDown(){
+        status = UIGameButton.none;
+        print(exitPosition);
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        string name = collision.gameObject.name;
-        string playerPosition = name.Split('_')[0];
-        CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + playerPosition[1]);
+        CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + exitPosition);
         MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string name = collision.gameObject.name;
         string playerPosition = name.Split('_')[0];
@@ -84,8 +95,15 @@ public class PlayerController : MonoBehaviour
                 MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
                 break;
             case string str when str.Contains("GoDown"):
-                CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + playerPosition[1]);
-                MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+                exitPosition = playerPosition[1];
+                gameUIController.showGameButton((int)UIGameButton.Down);
+                status = UIGameButton.Down;
+                break;
+            case string str when str.Contains("Gate"):
+                status = UIGameButton.Gate;
+                gameUIController.showGameButton((int)UIGameButton.Gate);
+                audioSource.PlayOneShot(gateSound);
+                
                 break;
             case string str when str.Contains("Floor"):
                 audioSource.PlayOneShot(landSound);
@@ -99,10 +117,9 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case string str when str.Contains("Story"):
-                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                //if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
-                storyController.LoadStoryDataFromJSON();
-                audioSource.PlayOneShot(wallSound);
+
+                gameUIController.showGameButton((int)UIGameButton.Story);
+                status = UIGameButton.Story;
                 break;
 
             case string str when str.Contains("Enemy"):
@@ -127,6 +144,7 @@ public class PlayerController : MonoBehaviour
                     isInvincible = true;
                     invincibilityTimer = invincibilityTime;
                 }
+                gameUIController.showGameButton((int)UIGameButton.Purify);
                 break;
         }
     }

@@ -51,12 +51,17 @@ public class GateController : MonoBehaviour
         {
             return;
         }
-        string cacheKey = this.gameObject.name.Replace("Gate", "");
+        string[] splitArray = this.gameObject.name.Split("Gate");
+        string cacheKey = splitArray[splitArray.Length - 1];
+
         int copperKeyCount = CacheManager.GetCache(cacheKey);
+        print(cacheKey);
         if (copperKeyCount <= 0)
         {
             return;
         }
+        
+        CacheManager.DecreaseCache(cacheKey, 1);
         CacheUsage.cacheDestroyedObject("|" + this.gameObject.name);
         Debug.Log(this.gameObject.name.Replace("Gate", "") + " Key collected! Key cache: " + cacheKey);
         Destroy(gameObject); // Destroy the key game object after collision

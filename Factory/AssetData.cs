@@ -75,8 +75,10 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
-                int formattedIndex = assetIndex % 10;
-                if (assetIndex / 10 >= 1) {
+                int formattedIndex = assetIndex % 20;
+                if (assetIndex / 40 >= 1) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
+                } else if (assetIndex / 20 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
                 } else
                 {
@@ -173,11 +175,9 @@ public class AssetData
                 string id = gridIndex.ToString() + column.ToString();
                 int cellValue = gridArray[column];
                 if (cellValue == 0) {
-                        Debug.Log("???");
                         Debug.Log(id);
                         Debug.Log(name);
                     if(playerPosition == id && name.Contains("Object")){
-                        Debug.Log("???");
                         newObject = CreateObjectWithAssetIndex(0, z, id);
                     } else {
                         continue;
@@ -196,18 +196,18 @@ public class AssetData
                 {
                     if (name.Contains("PlateV"))
                     {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z);
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z * 0.01f - 4);
                     }
                     else
                     {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, z);
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, z * 0.01f - 7);
                         newObject.tag = "Ground";
                     }
                 }
                 else if (name.Contains("Object"))
                 {
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z);
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z * 0.01f - 1);
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

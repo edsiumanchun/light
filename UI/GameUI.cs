@@ -6,6 +6,7 @@ public class GameUIController : MonoBehaviour
 {
     public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
+    public GameObject gameButton, buttonImage;
 
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
     private GameObject canvasObject;
@@ -114,11 +115,22 @@ public class GameUIController : MonoBehaviour
         containerRectTransform.anchoredPosition = containerPosition;
 
         // Instantiate circle buttons
-        for (int i = 0; i < buttonImages.Count; i++)
+        for (int i = 0; i < 1; i++)
         {
             int buttonIndex = i; // Store the index in a local variable to capture it in the lambda expression
-            GameObject button = Utils.CreateButton(buttonImages[i], buttonPositions[i], circleButtonsContainer.transform, () => ButtonAction(buttonIndex));
+            var image = DataHolder.commonImages[((int)UICommon.BigCircleButton)];
+            gameButton = Utils.CreateButton(image, buttonPositions[i], circleButtonsContainer.transform, () => ButtonAction(buttonIndex));
+            buttonImage = Utils.CreateImage(buttonImages[i], new Vector2(0, 0), gameButton.transform);
         }
+        hideGameButton();
+    }
+
+    public void hideGameButton() {
+        gameButton.SetActive(false);
+    }
+    public void showGameButton(int index) {
+        gameButton.SetActive(true);
+        buttonImage.GetComponent<Image>().sprite = buttonImages[index];
     }
 
     private void ButtonAction(int buttonIndex)

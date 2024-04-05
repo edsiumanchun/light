@@ -34,7 +34,7 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForButtonsUI()
     {
         //List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
-        List<string> paths = new List<string>((new[] { "Purify"}));
+        List<string> paths = new List<string>((new[] { "Purify", "Down", "Chat", "Gate"}));
         List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
         DataHolder.gameButtonImages = sprites;
     }
@@ -56,7 +56,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForDashboardUI()
     {
-        List<string> paths = new List<string>((new[] { "Heart", "Attack", "Shield", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Attack2" }));
+        List<string> paths = new List<string>((new[] { "Heart", "Light", "Dark", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Dark"}));
         List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
         DataHolder.keyImages = sprites;
 
@@ -68,7 +68,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel" } ));
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel" } ));
         List<Sprite> sprites = LoadSprites("UI/Common", paths);
         DataHolder.commonImages = sprites;
     }

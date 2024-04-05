@@ -10,12 +10,22 @@ public enum UICommon
     Close = 0,
     Left = 1,
     Right = 2,
-    CircleButton = 3,
-    SelCircleButton = 4,
-    SelectionBar= 5,
-    Panel=6,
-    LongButton = 7,
-    ConfirmPanel = 8
+    BigCircleButton = 3,
+    CircleButton = 4,
+    SelCircleButton = 5,
+    SelectionBar= 6,
+    Panel=7,
+    LongButton = 8,
+    ConfirmPanel = 9
+}
+
+public enum UIGameButton
+{
+    Purify = 0,
+    Down = 1,
+    Story = 2,
+    Gate = 3,
+    none = 99
 }
 
 public static class DataHolder

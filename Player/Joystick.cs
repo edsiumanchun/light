@@ -4,11 +4,14 @@ using UnityEngine.EventSystems;
 public class JoystickController : MonoBehaviour, IDragHandler
 {
     [SerializeField] private float moveSpeed = 6;
-    [SerializeField] private float jumpForce = 6.8f;
+    // [SerializeField] private float jumpForce = 6.8f;
+    [SerializeField] private float jumpForce = 7f;
     private Rigidbody2D rb;
-    private bool isJumping = false;
     private float xBounds;
     public GameObject purifyObject;
+    private int jumpCount = 0;
+    private int jumpCap = 2;
+    // [TBD]only foot can trigger
 
     void Update()
     {
@@ -38,19 +41,20 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Jump()
     {
-        if(isJumping || IsCollidingWithUpperObject()){
+        if(jumpCount >= jumpCap){
             return;
         }
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        isJumping = false;
+        jumpCount++;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+        
+        Vector2 collisionNormal = collision.contacts[0].normal;
+        if (collisionNormal == Vector2.up){
             // The player is touching the ground, so they can jump again
-            isJumping = false;
+            jumpCount = 0;
         }
     }
 
@@ -139,18 +143,23 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Purify()
     {
-        print("purify");
+        PlayerController playerController = this.gameObject.GetComponent<PlayerController>();
+        if(playerController.status == UIGameButton.Down){
+            playerController.GoDown();
+            return;
+        } else if(playerController.status == UIGameButton.Story){
+            playerController.ShowStory();
+            return;
+        }
+
         if (purifyObject == null) return;
         print(purifyObject);
-        if (purifyObject.GetComponent<GateController>() != null)
-        {
+        if(playerController.status == UIGameButton.Gate){
             purifyObject.GetComponent<GateController>().DestoryGate();
-        }
-        else if (purifyObject.GetComponent<EnemyController>() != null)
-        {
+        } else  {
             purifyObject.GetComponent<EnemyController>().DestroyEnemy();
+            SetPurifyObject(null);
         }
-        SetPurifyObject(null);
     }
 
     public void SetPurifyObject(GameObject gameObject)
