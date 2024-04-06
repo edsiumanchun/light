@@ -85,6 +85,7 @@ public class AssetData
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = HomeController.InstantiateObject(prefab);
+                    prefab.AddComponent<AnimatorController>();
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
                     //newObject = Instantiate(prefab, transform.position, transform.rotation);
@@ -99,7 +100,13 @@ public class AssetData
         // --------- //
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
-        newObject.name = pathName == "Player" ? pathName : id + "_" + pathName;
+        if(name == "PlateV" || name == "PlateH") {
+            newObject.name = id + "_" + name + "_" + pathName;
+        } else if(pathName == "Player"){
+            newObject.name = pathName;
+        } else {
+            newObject.name = id + "_" + pathName;
+        }
         switch (pathName)
         {
             case "Player":
@@ -189,7 +196,11 @@ public class AssetData
                 BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
                 if (!isSprite)
                 {
-                    boxCollider.size = new Vector2(1.5f, 2f);
+                    if(newObject.name.Contains("Player")) {
+                        boxCollider.size = new Vector2(0.5f, 1.8f);
+                    } else {
+                        boxCollider.size = new Vector2(1.5f, 1.8f);
+                    }
                     boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
                 }
                 if (name.Contains("PlateV") || name.Contains("PlateH"))
@@ -206,8 +217,10 @@ public class AssetData
                 }
                 else if (name.Contains("Object"))
                 {
+                    if (newObject.name.Contains("Decoration") == false){
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z * 0.01f - 1);
+                    }
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

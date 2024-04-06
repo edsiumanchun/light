@@ -12,7 +12,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private int jumpCount = 0;
     private int jumpCap = 2;
     // [TBD]only foot can trigger
-
+    public float stopMove = 0;
     void Update()
     {
         // jump
@@ -131,9 +131,31 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
+    public void SetupStopMove(){
+        stopMove = transform.localScale.x;
+    }
+
     private void MovePlayer(float moveDirection)
     {
+        if (moveDirection > 0)
+        {
+            if(stopMove < 0){
+                return;
+            }
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if(moveDirection < 0)
+        {
+            if(stopMove > 0){
+                return;
+            }
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        } else {
+            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+            return;
+        }
         transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
+        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
     }
 
 

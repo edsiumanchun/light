@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float invincibilityTime = 1f; // The duration of invincibility after taking damage
     private bool isInvincible = false; // Whether the player is currently invincible
     private float invincibilityTimer = 0f; // The timer for invincibility
-    public float knockbackForce = 0f; // The force of knockback when taking damage
+    public float knockbackForce = 3f; // The force of knockback when taking damage
 
     public float moveSpeed = 1f;
     public int maxHP = 3; // Maximum HP of the player
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip wallSound;
     public AudioClip hurtSound;
     public AudioClip dieSound;
-    public JoystickController joystick; // The joystick controller
+
 
     public UIGameButton status = UIGameButton.none; // Whether the player is standing on the floor or not
     char exitPosition = '0';
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         DataHolder.player = this.gameObject;
         rb = this.gameObject.AddComponent<Rigidbody2D>();
+
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
         currentHealth = maxHP;
         UpdateLifeBarUI();
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             case string str when str.Contains("GoUp"):
                 break;
-            case string str when str.Contains("Gate") || str.Contains("GoDown") ||  str.Contains("Story"):
+            case string str when str.Contains("GoDown") ||  str.Contains("Story"):
                 status = UIGameButton.none;
                 gameUIController.hideGameButton();
                 break;
@@ -56,8 +58,12 @@ public class PlayerController : MonoBehaviour
                 break;
             case string str when str.Contains("Panel"):
                 break;
-
-            case string str when str.Contains("Wall"):
+            case string str when str.Contains("PlateV"):
+                if(str.Contains("Gate")) {
+                    status = UIGameButton.none;
+                    gameUIController.hideGameButton();
+                } 
+                this.gameObject.GetComponent<JoystickController>().stopMove = 0;
                 break;
             case string str when str.Contains("Enemy"):
                 gameUIController.hideGameButton();
@@ -99,12 +105,6 @@ public class PlayerController : MonoBehaviour
                 gameUIController.showGameButton((int)UIGameButton.Down);
                 status = UIGameButton.Down;
                 break;
-            case string str when str.Contains("Gate"):
-                status = UIGameButton.Gate;
-                gameUIController.showGameButton((int)UIGameButton.Gate);
-                audioSource.PlayOneShot(gateSound);
-                
-                break;
             case string str when str.Contains("Floor"):
                 audioSource.PlayOneShot(landSound);
                 break;
@@ -112,8 +112,15 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(panelSound);
                 break;
 
-            case string str when str.Contains("Wall"):
-                audioSource.PlayOneShot(wallSound);
+            case string str when str.Contains("PlateV"):
+                if(str.Contains("Gate")) {
+                    status = UIGameButton.Gate;
+                    gameUIController.showGameButton((int)UIGameButton.Gate);
+                    audioSource.PlayOneShot(gateSound);
+                } else {
+                    audioSource.PlayOneShot(wallSound);
+                }
+                this.gameObject.GetComponent<JoystickController>().SetupStopMove();
                 break;
 
             case string str when str.Contains("Story"):
@@ -137,8 +144,10 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     // Apply knockback force
-                    Vector2 direction = (transform.position - collision.transform.position).normalized;
-                    rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+                    
+                    Vector2 forwardDirection = transform.forward;
+                    Vector2 backwardDirection = -forwardDirection;
+                    rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
 
                     // Set invincibility
                     isInvincible = true;
@@ -172,7 +181,6 @@ public class PlayerController : MonoBehaviour
     {
 
     }
-
 
     void UpdateLifeBarUI()
     {
