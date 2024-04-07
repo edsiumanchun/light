@@ -134,17 +134,7 @@ public class MainController : MonoBehaviour
 
     public static List<Sprite> LoadSprites(string folder, List<string> paths)
     {
-        List<Sprite> temp = new List<Sprite>();
-        foreach (string path in paths)
-        {
-            Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
-            //print("Sprites/" + folder + "/" + path);
-            if (asset != null)
-            {
-                temp.Add(asset);
-            }
-        }
-        return temp;
+        return Utils.LoadSprites(folder, paths);
     }
 
     public static List<Object> LoadPrefabs(string folder, List<string> paths)

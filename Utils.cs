@@ -179,4 +179,22 @@ public class Utils : MonoBehaviour
         }
         return enemyInfo;
     }
+
+
+    public static List<Sprite> LoadSprites(string folder, List<string> paths)
+    {
+        List<Sprite> temp = new List<Sprite>();
+        foreach (string path in paths)
+        {
+            Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
+            //print("Sprites/" + folder + "/" + path);
+            if (asset != null)
+            {
+                temp.Add(asset);
+            } else {
+                temp.Add(null);
+            }
+        }
+        return temp;
+    }
 }
