@@ -46,7 +46,7 @@ public class AnimatorController : MonoBehaviour
 
     public void SetAnimationStatus(AnimationStatus status)
     {
-        // ReplaceSprite(status);
+        // ReplacePrefab(status);
         animator.SetInteger("status", (int)status);
     }
 
@@ -67,6 +67,30 @@ public class AnimatorController : MonoBehaviour
     //     {
     //         return null; // or any default sprite
     //     }
+    // }
+
+    // void ReplacePrefab(){
+    //     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
+    //     newObject = Utils.InstantiateObject(prefab);
+    //     prefab.AddComponent<AnimatorController>();
+    //     // Assuming you have a reference to the original GameObject and the new prefab
+    //     GameObject originalObject;
+    //     GameObject newPrefab;
+
+    //     // Step 1: Get the position and other necessary properties of the original GameObject
+    //     Vector3 position = originalObject.transform.position;
+    //     Quaternion rotation = originalObject.transform.rotation;
+    //     Vector3 scale = originalObject.transform.localScale;
+    //     Transform parentTransform = originalObject.transform.parent;
+
+    //     // Step 2: Instantiate the new prefab at the same position
+    //     GameObject newObject = Instantiate(newPrefab, position, rotation, parentTransform);
+
+    //     // Step 3: Transfer properties from the original GameObject to the instantiated prefab
+    //     newObject.transform.localScale = scale;
+
+    //     // Step 4: Destroy the original GameObject
+    //     Destroy(originalObject);
     // }
 
     // void ReplaceSprite(AnimationStatus status){

@@ -197,4 +197,10 @@ public class Utils : MonoBehaviour
         }
         return temp;
     }
+
+    static public GameObject InstantiateObject(GameObject prefab)
+    {
+        GameObject newObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
+        return newObject;
+    }
 }

@@ -13,7 +13,7 @@ public class MainController : MonoBehaviour
     public static List<EnemyData> enemyDataList;
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll(); // ???
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();

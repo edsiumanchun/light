@@ -84,7 +84,7 @@ public class AssetData
                 {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
-                    newObject = HomeController.InstantiateObject(prefab);
+                    newObject = Utils.InstantiateObject(prefab);
                     prefab.AddComponent<AnimatorController>();
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
