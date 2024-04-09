@@ -100,9 +100,9 @@ public class AssetData
         // --------- //
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
-        if(name == "PlateV" || name == "PlateH") {
+        if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
-        } else if(pathName == "Player"){
+        } else if(pathName.Contains("PlateV")){
             newObject.name = pathName;
         } else {
             newObject.name = id + "_" + pathName;
@@ -217,10 +217,11 @@ public class AssetData
                 }
                 else if (name.Contains("Object"))
                 {
-                    if (newObject.name.Contains("Decoration") == false){
+                    if ((cellValue - 1 >= 40 && cellValue - 1 < 60) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+                        boxCollider.enabled = false;
+                    }
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z * 0.01f - 1);
-                    }
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

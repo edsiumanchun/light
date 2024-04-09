@@ -8,7 +8,8 @@ public enum AnimationStatus
     Attack = 1,
     Move = 2,
     Action = 3,
-    Die = 4
+    Die = 4,
+    Jump= 5
 }
 
 // public enum ComponentType
@@ -29,7 +30,7 @@ public class AnimatorController : MonoBehaviour
     // Dictionary<AnimationStatus, List<Sprite>> animationSprites = new Dictionary<AnimationStatus, List<Sprite>>();
     private Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         

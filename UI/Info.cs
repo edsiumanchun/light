@@ -61,9 +61,8 @@ public class InfoController : MonoBehaviour
         List<Sprite> icons = new List<Sprite>{
             keyImages[0],
             keyImages[0],
-            keyImages[9],
-            keyImages[2],
-            keyImages[3]
+            keyImages[keyImages.Count - 2],
+            keyImages[2]
         };
         for (int row = 0; row < rowCount; row++)
         {
@@ -80,10 +79,10 @@ public class InfoController : MonoBehaviour
                     enemyData.name,
                     enemyData.hp.ToString(),
                     enemyData.damage.ToString(),
-                    enemyData.defend.ToString(),
+                    // enemyData.defend.ToString(),
                     enemyData.coin.ToString()
                 };
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[8], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(keyImages[keyImages.Count - 1], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
             }

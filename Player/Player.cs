@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int maxHealth = 3; // The maximum health of the player
-    public float invincibilityTime = 1f; // The duration of invincibility after taking damage
-    private bool isInvincible = false; // Whether the player is currently invincible
-    private float invincibilityTimer = 0f; // The timer for invincibility
     public float knockbackForce = 3f; // The force of knockback when taking damage
 
     public float moveSpeed = 1f;
-    public int maxHP = 3; // Maximum HP of the player
-    private int currentHealth; // Current HP of the player
+    private int currentHealth = 10; // Current HP of the player
+    private int attack = 1; // Current HP of the player
     public Rigidbody2D rb;
     public bool isOnFloor = false; // Whether the player is standing on the floor or not
     private AudioSource audioSource;
@@ -20,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip landSound;
     public AudioClip panelSound;
     public AudioClip wallSound;
+    public AudioClip heartSound;
+    public AudioClip lightSound;
     public AudioClip hurtSound;
     public AudioClip dieSound;
 
@@ -34,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
-        currentHealth = maxHP;
         UpdateLifeBarUI();
         audioSource = GetComponent<AudioSource>();
         int layerIndex = LayerMask.NameToLayer("Player"); // Get the layer index based on the layer name.
@@ -123,61 +120,52 @@ public class PlayerController : MonoBehaviour
                 this.gameObject.GetComponent<JoystickController>().SetupStopMove();
                 break;
 
+            case string str when str.Contains("Heart"):
+                audioSource.PlayOneShot(heartSound);
+                currentHealth = currentHealth + 10;
+                Destroy(collision.gameObject);
+                break;
+            case string str when str.Contains("Light"):
+                audioSource.PlayOneShot(lightSound);
+                attack = attack + 1;
+                Destroy(collision.gameObject);
+                break;
+                
             case string str when str.Contains("Story"):
-
                 gameUIController.showGameButton((int)UIGameButton.Story);
                 status = UIGameButton.Story;
                 break;
 
             case string str when str.Contains("Enemy"):
-
-                // Deduct HP and play hurt sound when the player collides with an enemy
-                currentHealth--;
-                UpdateLifeBarUI();
-                audioSource.PlayOneShot(hurtSound);
-
-                if (currentHealth <= 0)
-                {
-                    // Play die sound
-                    audioSource.PlayOneShot(dieSound);
-                }
-                else
-                {
-                    // Apply knockback force
-                    
-                    Vector2 forwardDirection = transform.forward;
-                    Vector2 backwardDirection = -forwardDirection;
-                    rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
-
-                    // Set invincibility
-                    isInvincible = true;
-                    invincibilityTimer = invincibilityTime;
-                }
-                gameUIController.showGameButton((int)UIGameButton.Purify);
+                TakeDamage(5);
                 break;
         }
     }
 
     public void TakeDamage(int damage)
     {
-        if (!isInvincible)
+        // Deduct HP and play hurt sound when the player collides with an enemy
+        int trial = currentHealth - damage;
+        audioSource.PlayOneShot(hurtSound);
+
+        if (trial <= 0)
         {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                isInvincible = true;
-                invincibilityTimer = invincibilityTime;
-                rb.velocity = Vector2.zero;
-                rb.AddForce(transform.up * knockbackForce, ForceMode2D.Impulse);
-            }
+            // Play die sound
+            audioSource.PlayOneShot(dieSound);
+        }
+        else
+        {
+            // Apply knockback force
+            UpdateLifeBarUI();
+            currentHealth = trial;
+            
+            // Vector2 forwardDirection = transform.forward;
+            // Vector2 backwardDirection = -forwardDirection;
+            // rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
 
-    void Die()
+    void AboutToDie()
     {
 
     }

@@ -44,6 +44,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
         if(jumpCount >= jumpCap){
             return;
         }
+        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Jump);
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         jumpCount++;
     }

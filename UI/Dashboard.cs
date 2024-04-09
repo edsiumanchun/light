@@ -42,7 +42,7 @@ public class DashboardController : MonoBehaviour
     private void SetupInfo()
     {
         keyTextImages = new List<GameObject>();
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < 6; i++){
             Utils.CreateImage(keyImages[i], new Vector2(-18, 154 - (i * 44)), backgroundImage.transform);
             keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(60 , 154 - (i * 44)), backgroundImage.transform, TextAnchor.MiddleLeft));
         }
@@ -58,25 +58,23 @@ public class DashboardController : MonoBehaviour
         int copperKeyCount = CacheManager.GetCache(Cache.Copper.ToString());
         int silverKeyCount = CacheManager.GetCache(Cache.Silver.ToString());
         int goldKeyCount = CacheManager.GetCache(Cache.Gold.ToString());
-        int flowerKeyCount = CacheManager.GetCache(Cache.Flower.ToString());
+        // int flowerKeyCount = CacheManager.GetCache(Cache.Flower.ToString());
 
         int coinKeyCount = CacheManager.GetCache(Cache.Coin.ToString());
         int hpCount = CacheManager.GetCache(Cache.HP.ToString());
         int damageCount = CacheManager.GetCache(Cache.Damage.ToString());
-        int defendCount = CacheManager.GetCache(Cache.Defend.ToString());
+        // int defendCount = CacheManager.GetCache(Cache.Defend.ToString());
         // Update the key count texts
         keyTextImages[0].GetComponent<Text>().text = hpCount.ToString();
         keyTextImages[1].GetComponent<Text>().text = damageCount.ToString();
-        keyTextImages[2].GetComponent<Text>().text = defendCount.ToString();
-        keyTextImages[3].GetComponent<Text>().text = coinKeyCount.ToString();
+        keyTextImages[2].GetComponent<Text>().text = coinKeyCount.ToString();
+        // keyTextImages[3].GetComponent<Text>().text = coinKeyCount.ToString();
 
-        keyTextImages[4].GetComponent<Text>().text = copperKeyCount.ToString();
-        keyTextImages[5].GetComponent<Text>().text = silverKeyCount.ToString();
-        keyTextImages[6].GetComponent<Text>().text = goldKeyCount.ToString();
-        keyTextImages[7].GetComponent<Text>().text = flowerKeyCount.ToString();
-
+        keyTextImages[3].GetComponent<Text>().text = copperKeyCount.ToString();
+        keyTextImages[4].GetComponent<Text>().text = silverKeyCount.ToString();
+        keyTextImages[5].GetComponent<Text>().text = goldKeyCount.ToString();
         // keyTextImages[7].GetComponent<Text>().text = flowerKeyCount.ToString();
-        // keyTextImages[8].GetComponent<Text>().text = flowerKeyCount.ToString();
+
     }
 
     void OnClickButton()

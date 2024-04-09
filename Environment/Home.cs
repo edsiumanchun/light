@@ -51,10 +51,4 @@ public class HomeController : MonoBehaviour
         //     currentHealth.OnBossDeath += PlayEndingStory;
         // }
     }
-
-    static public GameObject InstantiateObject(GameObject prefab)
-    {
-        GameObject newObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
-        return newObject;
-    }
 }
