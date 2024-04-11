@@ -44,7 +44,7 @@ public class GateTriggerController : MonoBehaviour
     private void OpenGate(bool isUp)
     {
         GameObject gateObject = GameObject.Find("Gate");
-        gateObject.GetComponent<GateController>().OpenGate(isUp);
+        gateObject.GetComponent<GateController>().OpenGateAndDestroy(isUp);
     }
 
     private System.Collections.IEnumerator MoveObject(bool isUp)

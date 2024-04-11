@@ -45,6 +45,8 @@ public class JoystickController : MonoBehaviour, IDragHandler
             return;
         }
         this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Jump);
+        Utils.showChildrenWithName("jump", transform);
+        
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         jumpCount++;
     }
@@ -56,6 +58,9 @@ public class JoystickController : MonoBehaviour, IDragHandler
         if (collisionNormal == Vector2.up){
             // The player is touching the ground, so they can jump again
             jumpCount = 0;
+            print("joystickenter2d");
+            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+            Utils.showChildrenWithName("move", transform);
         }
     }
 
@@ -152,11 +157,21 @@ public class JoystickController : MonoBehaviour, IDragHandler
             }
             transform.localScale = new Vector3(1f, 1f, 1f);
         } else {
-            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+            if(jumpCount == 0){
+                print("moveplayer");
+                if(this.gameObject.GetComponent<AnimatorController>().animator.GetInteger("status") == (int)AnimationStatus.Action) {
+                    return;
+                }
+                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+                Utils.showChildrenWithName("move", transform);
+            }
             return;
         }
         transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
-        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+        if(jumpCount == 0){
+            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+            Utils.showChildrenWithName("move", transform);
+        }
     }
 
 
@@ -178,7 +193,9 @@ public class JoystickController : MonoBehaviour, IDragHandler
         if (purifyObject == null) return;
         print(purifyObject);
         if(playerController.status == UIGameButton.Gate){
-            purifyObject.GetComponent<GateController>().DestoryGate();
+            purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
+            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
+            Utils.showChildrenWithName("move", transform);
         } else  {
             purifyObject.GetComponent<EnemyController>().DestroyEnemy();
             SetPurifyObject(null);

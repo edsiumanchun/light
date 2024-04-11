@@ -28,7 +28,7 @@ public enum AnimationStatus
 public class AnimatorController : MonoBehaviour
 {
     // Dictionary<AnimationStatus, List<Sprite>> animationSprites = new Dictionary<AnimationStatus, List<Sprite>>();
-    private Animator animator;
+    public Animator animator;
 
     private void Awake()
     {

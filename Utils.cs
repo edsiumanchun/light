@@ -203,4 +203,19 @@ public class Utils : MonoBehaviour
         GameObject newObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
         return newObject;
     }
+
+    static public void showChildrenWithName(string name, Transform transform) {
+        foreach (Transform child in transform)
+        {
+            // Check if the child object's name contains the word "jump"
+            if (child.name.ToLower().Contains(name))
+            {
+                child.gameObject.SetActive(true);  // Enable the child object if its name contains "jump"
+            }
+            else
+            {
+                child.gameObject.SetActive(false); // Disable the child object if its name doesn't contain "jump"
+            }
+        }
+    }
 }

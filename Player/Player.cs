@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+        if(gameUIController == null) return;
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string name = collision.gameObject.name;
         switch (name)
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case string str when str.Contains("Enemy"):
-                TakeDamage(5);
+                gameUIController.showGameButton((int)UIGameButton.Purify);
                 break;
         }
     }
@@ -152,6 +153,9 @@ public class PlayerController : MonoBehaviour
         {
             // Play die sound
             audioSource.PlayOneShot(dieSound);
+            Vector2 forwardDirection = transform.forward;
+            Vector2 backwardDirection = -forwardDirection;
+            rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
         }
         else
         {
@@ -159,9 +163,9 @@ public class PlayerController : MonoBehaviour
             UpdateLifeBarUI();
             currentHealth = trial;
             
-            // Vector2 forwardDirection = transform.forward;
-            // Vector2 backwardDirection = -forwardDirection;
-            // rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
+            Vector2 forwardDirection = transform.forward;
+            Vector2 backwardDirection = -forwardDirection;
+            rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
 

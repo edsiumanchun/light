@@ -6,7 +6,7 @@
     "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
     "characters": ["Player","Story0","Enemy0"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "decorations": ["Lamp"]
+    "decorations": ["Lamp", "SolidLamp"]
   },
   "assets0": [
     {
@@ -31,7 +31,7 @@
     },
     {
       "name": "Object",
-      "gridArray0": [22, 0, 0, 0, 0],
+      "gridArray0": [22, 0, 0, 0, 41],
       "gridArray1": [0, 0, 0, 0, 0],
       "gridArray2": [0, 0, 41, 0, 0],
       "gridArray3": [0, 0, 0, 0, 0],
