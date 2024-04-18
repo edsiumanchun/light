@@ -1,0 +1,48 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "我們跟你們餓鬼無仇無怨，為什麼你們要傷害我的子民？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "這與我們無關，是你們人類在自傷殘殺而己。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "什麼意思？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "都怪你們所做的好事，將這裡的餓鬼變得凶殘暴戾，無法自控。",
+	        "幸虧你把我淨化了，才沒讓我墮入萬劫不復之淵。"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "centerPrefab": "",
+	    "dialogue": [
+	        "餓鬼消失了..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "(每次使用淨化術後，餓鬼隔一陣子就消失了...是巧合嗎?)",  
+	        "(還有，黑暗結界又是什麼一回事?)"
+	    ]
+	}
+]
+}

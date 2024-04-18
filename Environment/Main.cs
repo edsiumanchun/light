@@ -79,6 +79,8 @@ public class MainController : MonoBehaviour
         List<string> paths = new List<string>((new[] { "ChatPanel"}));
         List<Sprite> sprites = LoadSprites("UI/Story", paths);
         DataHolder.storyImages = sprites;
+        List<string> prefabPaths = new List<string>((new[] { "Player"}));
+        DataHolder.storyPrefabs = LoadPrefabs("Story", prefabPaths);
     }
 
     static public void LoadAssetsFromJson(int stage, int floor, string sceneName)

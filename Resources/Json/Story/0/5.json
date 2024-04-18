@@ -1,0 +1,20 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"嗯？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "公主。我是羅莤亞"
+	    ]
+	}
+]
+}
+
+

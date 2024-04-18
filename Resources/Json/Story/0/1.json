@@ -1,25 +1,65 @@
 {
 "storyArray" : [
 	{
-	    "name": "Alice",
-	    "imagePath": "Alice",
+	    "name": "player",
+	    "centerPrefab": "player",
 	    "backgroundPath": "forest",
 	    "bgmPath": "forest",
 	    "dialogue": [
-	        "Hello there!",
-	        "How are you doing?",
-	        "That's great to hear!"
+	        "你好。請問你有見過我國的子民嗎？"
 	    ]
 	},
 	{
-	    "name": "Alice",
-	    "imagePath": "Test",
+	    "name": "story00",
+	    "centerPrefab": "story00",
+	    "dialogue": [
+	        "客人，你好。我好像見過一些人類在「餓鬼古墓」出現，但很遺憾，恐怕他們是凶多吉少。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
 	    "backgroundPath": "forest",
 	    "bgmPath": "forest",
 	    "dialogue": [
-	        "Hello there!",
-	        "How are you doing?",
-	        "That's great to hear!"
+	        "不會吧..."
+	    ]
+	},
+	{
+	    "name": "story00",
+	    "centerPrefab": "story00",
+	    "dialogue": [
+	        "是這樣的...「餓鬼古墓」的看守鬼是「塚間食熱灰土鬼」，以燒屍處熱灰土為食。",
+	        "「塚間食熱灰土鬼」飢餓多年，一月方得一餐，或不得吃...",
+	        "難得有人到訪「餓鬼古墓」，他必定非常凶狠...再說，他的實力也是不容小覷...你不怕嗎？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "backgroundPath": "forest",
+	    "bgmPath": "forest",
+	    "dialogue": [
+	        "我早有覺悟，把所有被困的子民帶回國。",
+	        "對了，你也是餓鬼嗎？"
+	    ]
+	},
+	{
+	    "name": "story00",
+	    "centerPrefab": "story00",
+	    "dialogue": [
+	        "不是的，我只是在一個商人。",
+	        "如果你有足夠的金錢，我可以給你出售珍貴的生命藥水和光明碎片。",
+	        "生命藥水可以增加聖騎士的生命值，而光明碎片則可以增強法術力量。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "backgroundPath": "forest",
+	    "bgmPath": "forest",
+	    "dialogue": [
+	        "這些道具看起來不錯..."
 	    ]
 	}
 ]

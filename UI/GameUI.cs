@@ -9,7 +9,7 @@ public class GameUIController : MonoBehaviour
     public GameObject gameButton, buttonImage;
 
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
-    private GameObject canvasObject;
+    public GameObject canvasObject;
 
 
     public Vector2[] buttonPositions = new Vector2[]

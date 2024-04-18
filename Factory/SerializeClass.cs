@@ -38,7 +38,9 @@ public class StoryDataWrapper
 public class StoryData
 {
     public string name;
-    public string imagePath;
+    public string leftPrefab;
+    public string rightPrefab;
+    public string centerPrefab;
     public string backgroundPath;
     public string bgmPath;
     public string[] dialogue;

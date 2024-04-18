@@ -1,0 +1,192 @@
+{
+"storyArray" : [
+	{
+	    "name": "story04",
+	    "centerPrefab": "story04",
+	    "dialogue": [
+	        "竟然能夠抵擋住我的力量，真是讓我難以置信。"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "還差一點便成功了..."
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "centerPrefab": "",
+	    "dialogue": [
+	        "(戰鬥激烈進行，公主受了致命傷，無法再施法）"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "一切也完了...我愧對父王和國民..."
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "dialogue": [
+	        "(塚間食熱灰土鬼突然消失）"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "(又是這樣子消失...是天意要我活下去嗎？)",
+	        "咳咳..."
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "公主！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "是你嗎？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "我恢復了意識後就非常擔心你，所以立刻前來尋找公主。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "你沒事就好了..."
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "幸好我擔心公主出事，只喝了半瓶重生藥水。來吧，公主，喝下它。"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "dialogue": [
+	        "公主喝下重生藥水後，很快沉睡了。",
+	        "當她醒來時，發現自己已回到地面。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "現在是什麼狀況？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "是我把你背上來的。還好你能夠脫險。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "辛苦了。"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "才不辛苦呢...只要使用二段跳躍，不用花很多時間便能回到地面了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "什麼是二段跳躍？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "這是聖騎士的高階技能，簡單來說就是在空中能再跳起一次的技能...難道你不會嗎？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "沒學過啊，可以教我嗎？"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "好吧，看在你救過我一命的份上，我會好好教你。但你要認真聽啊。"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "dialogue": [
+	        "數小時後",
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "哈哈，這感覺真爽！蘿西亞。我好像已經掌握了它...，我的任務也完成了，是時候回家找母親了。"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "公主好像已經掌握了二段跳躍。我的任務也完成了，是時候回家找母親了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        " 跟你談了這麼久，還未知該怎麼稱呼你。"
+	    ]
+	},
+	{
+	    "name": "story01",
+	    "centerPrefab": "story01",
+	    "dialogue": [
+	        "我叫蘿西亞，後會有期！"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "dialogue": [
+	        "蘿西亞離去了"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "我也不磨蹭了，現在就去尋找失蹤的子民！"
+	    ]
+	}
+]
+}
+
+

@@ -20,9 +20,9 @@ public class Utils : MonoBehaviour
         return screenPos;
     }
 
-    static public void MoveImage(GameObject image, float x, float y)
+    static public void MovePrefab(GameObject prefab, float x, float y)
     {
-        RectTransform imageRectTransform = image.GetComponent<RectTransform>();
+        RectTransform imageRectTransform = prefab.GetComponent<RectTransform>();
         float halfHeight = imageRectTransform.rect.height * y * imageRectTransform.localScale.y;
         float halfWidth = imageRectTransform.rect.width * x * imageRectTransform.localScale.x;
         Vector2 currentPosition = imageRectTransform.localPosition;
@@ -97,7 +97,10 @@ public class Utils : MonoBehaviour
         return CreateImageWithText(sprite, position, Vector2.zero, parent, TextAnchor.MiddleCenter);
     }
 
-    static public GameObject CreateCanvas(string name, bool haveMask)
+    static public GameObject CreateCanvas(string name, bool haveMask){
+        return Utils.CreateCanvas(name, haveMask, 0.88f);
+    }
+    static public GameObject CreateCanvas(string name, bool haveMask, float opacity)
     {
         GameObject canvasObject = new GameObject(name);
         Canvas canvas = canvasObject.AddComponent<Canvas>();
@@ -119,7 +122,7 @@ public class Utils : MonoBehaviour
             backgroundImageObject.name = "BackgroundImageObject";
             RectTransform rectTransform = backgroundImageObject.GetComponent<RectTransform>();                               // Set the Image component
             Image backgroundImage = backgroundImageObject.GetComponent<Image>();
-            backgroundImage.color = new Color(0f, 0f, 0f, 0.88f);
+            backgroundImage.color = new Color(0f, 0f, 0f, opacity);
 
             //set size
             RectTransform childRect = backgroundImageObject.GetComponent<RectTransform>();

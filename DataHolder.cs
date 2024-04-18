@@ -39,6 +39,7 @@ public static class DataHolder
     public static List<Sprite> items; // List to store the loaded assets
     public static List<Sprite> decorations; // List to store the loaded assets
     public static List<Object> characters; // List to store the loaded assets
+    public static List<Object> storyPrefabs; // List to store the loaded assets
     public static List<Sprite> plateH; // List to store the loaded assets
     public static List<Sprite> plateV; // List to store the loaded assets
     public static List<Sprite> backgrounds; // List to store the loaded assets

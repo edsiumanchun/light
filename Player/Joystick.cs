@@ -158,7 +158,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
             transform.localScale = new Vector3(1f, 1f, 1f);
         } else {
             if(jumpCount == 0){
-                print("moveplayer");
                 if(this.gameObject.GetComponent<AnimatorController>().animator.GetInteger("status") == (int)AnimationStatus.Action) {
                     return;
                 }

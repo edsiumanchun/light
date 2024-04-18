@@ -71,11 +71,12 @@ public class PlayerController : MonoBehaviour
 
     public void ShowStory(){
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        //if(storyController == null) storyController = Camera.main.gameObject.AddComponent<StoryController>();
         storyController.LoadStoryDataFromJSON();
         audioSource.PlayOneShot(wallSound);
-
+        // VideoPlayerController videoController = Camera.main.gameObject.GetComponent<VideoPlayerController>();  
+        // videoController.StartVideo("myvideo");
     }
+    
 
     public void GoDown(){
         status = UIGameButton.none;

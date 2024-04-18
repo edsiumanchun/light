@@ -31,6 +31,7 @@ public class HomeController : MonoBehaviour
         this.gameObject.AddComponent<DashboardController>();
         this.gameObject.AddComponent<StageController>();
         this.gameObject.AddComponent<InfoController>();
+        this.gameObject.AddComponent<VideoPlayerController>();
         // UI
 
         int j = 0;
