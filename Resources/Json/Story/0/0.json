@@ -2,9 +2,9 @@
 "storyArray" : [
 	{
 	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "player",
-	    "centerPrefab": "player",
+	    "leftPrefab": "0",
+	    "rightPrefab": "0",
+	    "centerPrefab": "1",
 	    "backgroundPath": "forest",
 	    "bgmPath": "forest",
 	    "dialogue": [
@@ -20,7 +20,7 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
+	    "centerPrefab": "0",
 	    "dialogue": [
 	        "..."
 	    ]
@@ -34,7 +34,7 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
+	    "centerPrefab": "0",
 	    "dialogue": [
 	        "最近不知什麼原因...「餓鬼古墓」突然打開，令國家面臨前所未有的危機。",
 	        "我國許多勇敢的戰士早前前往一探究竟，郤一去不返，音訊全無。",

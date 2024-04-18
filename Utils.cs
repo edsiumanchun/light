@@ -201,10 +201,16 @@ public class Utils : MonoBehaviour
         return temp;
     }
 
-    static public GameObject InstantiateObject(GameObject prefab)
+    static public GameObject InstantiateObject(GameObject prefab, bool useDifferentSize)
     {
-        GameObject newObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
-        return newObject;
+        Vector3 differentSize = new Vector3(1/3f, 1/3f, 1/3f);
+        GameObject gameObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
+
+        if(useDifferentSize)
+        {
+           gameObject.transform.localScale = differentSize;
+        }
+        return gameObject;
     }
 
     static public void showChildrenWithName(string name, Transform transform) {
@@ -221,4 +227,5 @@ public class Utils : MonoBehaviour
             }
         }
     }
+
 }

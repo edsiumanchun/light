@@ -84,7 +84,7 @@ public class AssetData
                 {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
-                    newObject = Utils.InstantiateObject(prefab);
+                    newObject = Utils.InstantiateObject(prefab, true);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
                     //newObject = Instantiate(prefab, transform.position, transform.rotation);
@@ -181,8 +181,6 @@ public class AssetData
                 string id = gridIndex.ToString() + column.ToString();
                 int cellValue = gridArray[column];
                 if (cellValue == 0) {
-                        Debug.Log(id);
-                        Debug.Log(name);
                     if(playerPosition == id && name.Contains("Object")){
                         newObject = CreateObjectWithAssetIndex(0, z, id);
                     } else {

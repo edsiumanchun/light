@@ -232,8 +232,8 @@ public class StoryController : MonoBehaviour
         if(story.leftPrefab != null && story.leftPrefab != "") {
             Vector2 leftPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
             // leftPrefab = Utils.CreateImage(leftSprite, leftPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[0];
-            leftPrefab = Utils.InstantiateObject(prefab);
+            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.leftPrefab)];
+            leftPrefab = Utils.InstantiateObject(prefab, false);
             leftPrefab.transform.SetParent(storyGameObject.transform, true);
             leftPrefab.name = "leftPrefab";
             PositionPrefabAtCorner(leftPrefab,0);
@@ -245,8 +245,8 @@ public class StoryController : MonoBehaviour
         if(story.rightPrefab != null && story.rightPrefab != "") {
             Vector2 rightPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
             // rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[0];
-            rightPrefab = Utils.InstantiateObject(prefab);
+            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.rightPrefab)];
+            rightPrefab = Utils.InstantiateObject(prefab, false);
             rightPrefab.transform.SetParent(storyGameObject.transform, true);
             rightPrefab.name = "rightPrefab";
             PositionPrefabAtCorner(rightPrefab,2);
@@ -258,8 +258,8 @@ public class StoryController : MonoBehaviour
         if(story.centerPrefab != null && story.centerPrefab != "") {
             Vector2 centerPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
             // centerPrefab = Utils.CreateImage(centerSprite, centerPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[0];
-            centerPrefab = Utils.InstantiateObject(prefab);
+            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.centerPrefab)];
+            centerPrefab = Utils.InstantiateObject(prefab, false);
             centerPrefab.transform.SetParent(storyGameObject.transform, true);
             centerPrefab.name = "centerPrefab";
             PositionPrefabAtCorner(centerPrefab,1);
