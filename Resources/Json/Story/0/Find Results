@@ -130,8 +130,8 @@ Searching 68 files for "imagePath" (regex)
 
 ~/Myproject/Assets/Resources/Json/Story/0/2.json:
     3  	{
-    4  	    "name": "story01",
-    5: 	    "imagePath": "story01",
+    4  	    "name": "rosia",
+    5: 	    "imagePath": "rosia",
     6  	    "backgroundPath": "forest",
     7  	    "bgmPath": "forest",
     .
@@ -142,8 +142,8 @@ Searching 68 files for "imagePath" (regex)
    16  	        "我們跟你們餓鬼無仇無怨，為什麼你們要傷害我的子民？"
    ..
    19  	{
-   20  	    "name": "story01",
-   21: 	    "imagePath": "story01",
+   20  	    "name": "rosia",
+   21: 	    "imagePath": "rosia",
    22  	    "dialogue": [
    23  	        "這與我們無關，是你們人類在自傷殘殺而己。"
    ..
@@ -154,8 +154,8 @@ Searching 68 files for "imagePath" (regex)
    30  	        "什麼意思？"
    ..
    33  	{
-   34  	    "name": "story01",
-   35: 	    "imagePath": "story01",
+   34  	    "name": "rosia",
+   35: 	    "imagePath": "rosia",
    36  	    "dialogue": [
    37  	        "都怪你們設下的黑暗結界，將這裡的餓鬼變得凶殘暴戾，無法自控。。",
    ..
@@ -283,8 +283,8 @@ Searching 68 files for "imagePath" (regex)
     7  	    	"嗯？"
     .
    10  	{
-   11  	    "name": "story01",
-   12: 	    "imagePath": "story01",
+   11  	    "name": "rosia",
+   12: 	    "imagePath": "rosia",
    13  	    "dialogue": [
    14  	        "公主。我是羅莤亞"
 

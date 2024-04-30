@@ -1,0 +1,70 @@
+{
+"storyArray" : [
+	{
+	    "name": "soldier",
+	    "centerPrefab": "soldier",
+	    "dialogue": [
+	        "多謝公主把我淨化，否則我只會一直錯下去...也請你𣎴要讓國家一直錯下去！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "是什麼意思？"
+	    ]
+	},{
+	    "name": "soldier",
+	    "centerPrefab": "soldier",
+	    "dialogue": [
+	        "我生前是一名聖騎士，五年前我國打著要保衛國家的正義口號，任命我和數千名聖騎士攻打鄰國。",
+	        "攻城後，我不慎把一名三十多歲的無辜男子殺害，該男子的小孩就在旁邊一直哭泣。",
+	        "那時候我有點內疚，一個不留神，該男子的妻子從後偷襲我，我當場致命，刺殺我的女子最後也死於我的劍下。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "如果早在二十年前出世，我必定會設法阻止戰爭發生。"
+	        "逝去的人痛苦, 他們的親人更是傷心斷腸。"
+	    ]
+	},{
+	    "name": "soldier",
+	    "centerPrefab": "soldier",
+	    "dialogue": [
+	        "對，希望公主能將這個想法普及給國民知道。",
+	        "因為這殺戳的罪業，每隔七天，我都要感受一次被殺時候死亡的痛苦。",
+	        "我已經沒救了，但我也不希望別人跟我一樣走上不歸之路。",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+    		"世人太愚蠢，死後才發現人世間的種種都帶不走，一生所爭取的都化為烏有..."
+	    ]
+	},{
+	    "name": "soldier",
+	    "centerPrefab": "soldier",
+	    "dialogue": [
+	        "不只這樣，現在還被無數怨魂纏身，他們不原諒我也是無可厚非。"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "（餓鬼軍人消失了）"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"因為「執著」而無間斷地持續著這痛苦值得嗎？"
+	    ]
+	}
+]
+}
+
+

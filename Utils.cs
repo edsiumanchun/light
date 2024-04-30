@@ -209,6 +209,9 @@ public class Utils : MonoBehaviour
         if(useDifferentSize)
         {
            gameObject.transform.localScale = differentSize;
+        } else {
+           gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
+
         }
         return gameObject;
     }

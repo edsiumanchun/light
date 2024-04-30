@@ -1,12 +1,6 @@
 {
 "storyArray" : [
 	{
-	    "name": "story04",
-	    "centerPrefab": "story04",
-	    "dialogue": [
-	        "竟然能夠抵擋住我的力量，真是讓我難以置信。"
-	    ]
-	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
@@ -17,47 +11,46 @@
 	    "name": "narrator",
 	    "centerPrefab": "",
 	    "dialogue": [
-	        "(戰鬥激烈進行，公主受了致命傷，無法再施法）"
+	        "(公主受了致命傷，無法再施法）"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "一切也完了...我愧對父王和國民..."
+	        "（呻吟）嗚...我的傷口太深了...（倒在地上）"
 	    ]
 	},
 	{
 	    "name": "narrator",
 	    "dialogue": [
-	        "(塚間食熱灰土鬼突然消失）"
+	        "(餓鬼突然消失）"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "(又是這樣子消失...是天意要我活下去嗎？)",
-	        "咳咳..."
+	        "(又是這樣子消失...是天意要我活下去嗎？)"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "公主！"
+	        "（急忙上前）公主！"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "是你嗎？"
+	        "（努力恢復意識）是你嗎？"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "我恢復了意識後就非常擔心你，所以立刻前來尋找公主。"
 	    ]
@@ -70,120 +63,180 @@
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "幸好我擔心公主出事，只喝了半瓶重生藥水。來吧，公主，喝下它。"
+	        "幸好我擔心公主出事，所以只喝了半瓶重生藥水。來吧，公主，快喝下它。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "（喝下重生藥水）嗯...（逐漸陷入沉睡）."
 	    ]
 	},
 	{
 	    "name": "narrator",
 	    "dialogue": [
-	        "公主喝下重生藥水後，很快沉睡了。",
-	        "當她醒來時，發現自己已回到地面。"
+	        "當公主醒來時，發現自己已經身在醫院。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "公主，太好了，你終於醒來了。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "現在是什麼狀況？"
+	        "羅西亞，是你把我背過來的嗎？辛苦了。"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "是我把你背上來的。還好你能夠脫險。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "辛苦了。"
-	    ]
-	},
-	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
-	    "dialogue": [
-	        "才不辛苦呢...只要使用二段跳躍，不用花很多時間便能回到地面了。"
+	        "不辛苦，公主。你是我的救命恩人，這點小事不值一提。",
+	        "對了，讓我介紹一下，這是我的妹妹瑪麗亞。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "什麼是二段跳躍？"
+	        "怎麼會這樣...你一直在為國家效命，我竟然不知道..."
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "這是聖騎士的高階技能，簡單來說就是在空中能再跳起一次的技能...難道你不會嗎？"
+	        "是這樣的，我的妹妹患了奇怪腄瘤，前年來到醫院接受治療，卻不幸遇上醫療事故，令她慘成植物人。"
+	        "因為不想因妹妹的事影響了平日的情緒，所以一直沒有將這事掛在嘴邊...",
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "沒學過啊，可以教我嗎？"
+	        "這樣把情緒抑壓著真的好嗎？"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "好吧，看在你救過我一命的份上，我會好好教你。但你要認真聽啊。"
+	        "習慣了，如果因為情緒影響了平日的表現，我怎能對得起國王的知遇之恩？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "（害羞地）你好，茶茶公主。我今年八歲了。多謝你救了姐姐。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "不用客氣，瑪麗亞。你要堅強地活下去，才不會浪費你姐姐的一番苦心。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "對啊，羅西亞姐姐是這世上對我最好的人。我會努力的。"
+	    ]
+	},
+	{
+	    "name": "nurse",
+	    "centerPrefab": "",
+	    "dialogue": [
+	        "（走進房間）瑪麗亞，差不多該進行手術了。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "(緊緊拉著茶茶公主的手）姐姐，我有點害怕..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "不要怕，瑪麗亞。姐姐會一直陪伴著你的，你不會孤單的。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "真的嗎？姐姐不會騙我吧？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "姐姐從來不會騙你的..."
+	    ]
+	},
+	{
+	    "name": "nurse",
+	    "centerPrefab": "",
+	    "dialogue": [
+	        "現在該進去見醫生了，你們在這裡稍等片刻吧。"
 	    ]
 	},
 	{
 	    "name": "narrator",
+	    "centerPrefab": "",
 	    "dialogue": [
-	        "數小時後",
+	        "（瑪麗亞陪同護士進入房間，茶茶公主則突然感到不祥的氣息）"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "哈哈，這感覺真爽！蘿西亞。我好像已經掌握了它...，我的任務也完成了，是時候回家找母親了。"
-	    ]
-	},
-	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
-	    "dialogue": [
-	        "公主好像已經掌握了二段跳躍。我的任務也完成了，是時候回家找母親了。"
+	        "發生什麼事？"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        " 跟你談了這麼久，還未知該怎麼稱呼你。"
+	        "我能感應到醫院地下有餓鬼的氣息..."
+	        "羅西亞，你在這裡等候瑪麗亞，我到下面查看一下。"
 	    ]
 	},
 	{
-	    "name": "story01",
-	    "centerPrefab": "story01",
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "我叫蘿西亞，後會有期！"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "蘿西亞離去了"
+	        "你剛剛痊愈，要不要我代你去？"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我也不磨蹭了，現在就去尋找失蹤的子民！"
+	        "沒事，瑪麗亞現在最需要的是你。我很快就會回來。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "好吧。"
 	    ]
 	}
 ]
