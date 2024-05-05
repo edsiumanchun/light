@@ -30,7 +30,7 @@
     },
     {
       "name": "Object",
-      "gridArray0": [21, 24, 3, 25, 0],
+      "gridArray0": [21, 2, 1, 25, 0],
       "gridArray1": [24, 0, 25, 0, 0],
       "gridArray2": [0, 21, 0, 21, 0],
       "gridArray3": [25, 0, 0, 2, 24],

@@ -84,7 +84,7 @@ public class AssetData
                 {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
-                    newObject = Utils.InstantiateObject(prefab, true);
+                    newObject = Utils.InstantiateObject(prefab);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
                     //newObject = Instantiate(prefab, transform.position, transform.rotation);
@@ -218,7 +218,8 @@ public class AssetData
                         boxCollider.enabled = false;
                     } 
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, z * 0.01f - 1);
+                    float newZ = newObject.name.Contains("Player") ? -9.3f : z * 0.01f - 1 ;
+                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

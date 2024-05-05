@@ -201,18 +201,10 @@ public class Utils : MonoBehaviour
         return temp;
     }
 
-    static public GameObject InstantiateObject(GameObject prefab, bool useDifferentSize)
+    static public GameObject InstantiateObject(GameObject prefab)
     {
-        Vector3 differentSize = new Vector3(1/3f, 1/3f, 1/3f);
         GameObject gameObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
 
-        if(useDifferentSize)
-        {
-           gameObject.transform.localScale = differentSize;
-        } else {
-           gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
-
-        }
         return gameObject;
     }
 
@@ -231,4 +223,10 @@ public class Utils : MonoBehaviour
         }
     }
 
+    static public void changeAlpha(GameObject GO, float alpha) {
+        if(GO == null) return;
+        Color imageColor = GO.GetComponent<Image>().color;
+        imageColor.a = alpha;
+        GO.GetComponent<Image>().color = imageColor;
+    }
 }

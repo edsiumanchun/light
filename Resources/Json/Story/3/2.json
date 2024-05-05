@@ -1,0 +1,26 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "老伯伯，你怎麼會在這裡出現？你找到你的家人嗎？"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "還沒有..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"老伯伯，"
+	    ]
+	}
+]
+}
+
+

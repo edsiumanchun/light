@@ -8,8 +8,8 @@ Searching 68 files for "imagePath" (regex)
     7  	    "bgmPath": "forest",
     .
    12  	{
-   13  	    "name": "oldknight",
-   14: 	    "imagePath": "oldknight",
+   13  	    "name": "sage",
+   14: 	    "imagePath": "sage",
    15  	    "dialogue": [
    16  	        "公主...老夫失明多年，已經無法再看到你的容顏..."
    ..
@@ -20,8 +20,8 @@ Searching 68 files for "imagePath" (regex)
    23  	        "..."
    ..
    26  	{
-   27  	    "name": "oldknight",
-   28: 	    "imagePath": "oldknight",
+   27  	    "name": "sage",
+   28: 	    "imagePath": "sage",
    29  	    "dialogue": [
    30  	        "話說公主到此險地, 所為何事?"
    ..
@@ -32,8 +32,8 @@ Searching 68 files for "imagePath" (regex)
    37  	        "最近不知什麼原因...「餓鬼古墓」突然打開，令國家面臨前所未有的危機。",
    ..
    42  	{
-   43  	    "name": "oldknight",
-   44: 	    "imagePath": "oldknight",
+   43  	    "name": "sage",
+   44: 	    "imagePath": "sage",
    45  	    "dialogue": [
    46  	        "原來如此，此地險象環生，以公主現時的力量恐怕是九死一生。",
    ..
@@ -50,8 +50,8 @@ Searching 68 files for "imagePath" (regex)
    62  	        "數小時後..."
    ..
    65  	{
-   66  	    "name": "oldknight",
-   67: 	    "imagePath": "oldknight",
+   66  	    "name": "sage",
+   67: 	    "imagePath": "sage",
    68  	    "dialogue": [
    69  	        "使用「淨化術」的人必須為人正直，宅心仁厚。",
    ..
@@ -62,8 +62,8 @@ Searching 68 files for "imagePath" (regex)
    77  	        "前輩過奬了。"
    ..
    80  	{
-   81  	    "name": "oldknight",
-   82: 	    "imagePath": "oldknight",
+   81  	    "name": "sage",
+   82: 	    "imagePath": "sage",
    83  	    "dialogue": [
    84  	        "可惜我已經無法視物，沒法陪伴公主左右。",
    ..
@@ -74,8 +74,8 @@ Searching 68 files for "imagePath" (regex)
    92  	        "好的...待我回來後，定必答謝前輩的恩德！"
    ..
    95  	{
-   96  	    "name": "oldknight",
-   97: 	    "imagePath": "oldknight",
+   96  	    "name": "sage",
+   97: 	    "imagePath": "sage",
    98  	    "dialogue": [
    99  	        "不必了，老夫早已看淡世間的一切種種..."
   ...

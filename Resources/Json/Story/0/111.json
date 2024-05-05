@@ -1,0 +1,89 @@
+{
+"storyArray" : [
+	{
+	    "name": "ghostkid",
+	    "centerPrefab": "ghostkid",
+	    "dialogue": [
+	        "（見到母親後痛哭）媽媽，我很掛念你...你為了我受苦了。"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "centerPrefab": "ghostmum",
+	    "dialogue": [
+	        "（擁抱餓鬼）兒子，是我不好，令你受苦了。",
+	        "我實在太飢餓，無力氣跟那些力氣大的餓鬼爭取食物。",
+	        "好不容易得到一口不淨的食物，卻被其他餓鬼阻攔，不許我回來把食物分享給你。我真的對不起你。"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "centerPrefab": "ghostkid",
+	    "dialogue": [
+	    	"不是這樣的，對我來說，能再次見到母親已經是很幸福了。"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "centerPrefab": "ghostmum",
+	    "dialogue": [
+	    	"對了，你餓了，來吧。我從垃圾桶找到些吃剩的渣滓，快點來吃吧。"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "centerPrefab": "ghostkid",
+	    "dialogue": [
+	    	"很好吃，我一點也不會浪費的。"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "centerPrefab": "ghostmum",
+	    "dialogue": [
+	    	"這位姑娘，真的很多謝你令我們母子團聚。"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "centerPrefab": "ghostkid",
+	    "dialogue": [
+	    	"姐姐的恩情，我實在無以為報..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"不用道謝，看見你們這種狀況，又怎可能袖手旁觀？",
+	    	"雖然世人有不同苦難，但相比你們所受的苦，也實在是微不足道。"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "centerPrefab": "ghostmum",
+	    "dialogue": [
+	    	"恩人真的是宅心仁厚。世人見我們落得如此下場，只會冷嘲熱諷。",
+	    	"不用說出手幫助，有多少人會像恩人一樣能夠設身處地，理解我們的苦況？"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "centerPrefab": "ghostkid",
+	    "dialogue": [
+	    	"世間雖苦，也會偶爾出現照耀我們的希望...多謝你，姐姐。"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "（兩人臉上帶著滿足感，然後消失了）"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"看來你們靠自己淨化了自己的心靈。希望你們能夠早日得到解脫。"
+	    ]
+	}
+]
+}
+
+

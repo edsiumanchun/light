@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 public class StoryController : MonoBehaviour
 {
-    public GameObject storyGameObject;
     public Texture2D leftGifTexture;
     public Texture2D rightGifTexture;
     public GameObject leftPrefab;
@@ -26,10 +25,13 @@ public class StoryController : MonoBehaviour
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public Vector2 screenSize;
+    GameObject container;
+    GameObject gameUI;
 
     private void Start()
     {
-        storyGameObject = new GameObject("Story");
+        container = GameObject.Find("Container");
+        gameUI = GameObject.Find("GameCanvas");
         // Create Canvas object
         canvasObject = Utils.CreateCanvas("StoryCanvas", true, 0f);
         Button button = canvasObject.AddComponent<Button>();
@@ -127,10 +129,7 @@ public class StoryController : MonoBehaviour
     }
 
     void SetupFadeObject(bool isStart){
-        GameObject container = GameObject.Find("Container");
-        GameObject gameUI = GameObject.Find("GameCanvas");
         Fade(container, isStart);
-        Fade(storyGameObject, !isStart);
         canvasObject.SetActive(!isStart);
         gameUI.SetActive(isStart);
     }
@@ -193,7 +192,7 @@ public class StoryController : MonoBehaviour
 
     void PositionPrefabAtCorner(GameObject obj, float position)
     {
-        Vector2 offset = position == 0 ? new Vector2(0.5f, 0.5f) : new Vector2(-0.5f, 0.5f) ;
+        Vector2 offset = position == 0 ? new Vector2(3f, 3f) : new Vector2(-3f, 3f) ;
         // Get the screen dimensions
         float screenRatio = (float)Screen.width / Screen.height;
         float screenHeight = Camera.main.orthographicSize * 2f;
@@ -218,7 +217,7 @@ public class StoryController : MonoBehaviour
         cornerPosition.y = screenHeight * 0.5f;
 
         // Apply the offset
-        cornerPosition += new Vector2(screenWidth * offset.x, screenHeight * offset.y);
+        cornerPosition += new Vector2(screenWidth * offset.x, screenHeight + 200);
 
         // Convert screen coordinates to world coordinates
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(cornerPosition.x, cornerPosition.y, 0f));
@@ -229,49 +228,60 @@ public class StoryController : MonoBehaviour
     }
     public void LoadStory(StoryData story)
     {
+        RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
         if(story.leftPrefab != null && story.leftPrefab != "") {
-            Vector2 leftPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
-            // leftPrefab = Utils.CreateImage(leftSprite, leftPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.leftPrefab)];
-            leftPrefab = Utils.InstantiateObject(prefab, false);
-            leftPrefab.transform.SetParent(storyGameObject.transform, true);
-            leftPrefab.name = "leftPrefab";
-            PositionPrefabAtCorner(leftPrefab,0);
-        } else {
             if(leftPrefab != null){
                 Destroy(leftPrefab);
             }
-        }
+            Vector2 leftPosition = new Vector2(- imageRectTransform.sizeDelta.x / 2 ,  - screenSize.y / 2f );
+            List<string> paths = new List<string>((new[] { story.leftPrefab}));
+            Sprite leftSprite = Utils.LoadSprites("Story", paths)[0];
+            leftPrefab = Utils.CreateImage(leftSprite, leftPosition, canvasObject.transform);
+
+            RectTransform rectTransform = leftPrefab.GetComponent<RectTransform>();
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 380);
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 380);
+            leftPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
+            Utils.MovePrefab(leftPrefab, -0.33f, 0.5f);
+            leftPrefab.name = story.leftPrefab;
+           // Vector2 imageSize = imageRectTransform.sizeDelta;
+            // leftPrefab.transform.position = new Vector2(0, - screenSize.y / 2f );
+
+            // GameObject prefab = new GameObject();
+            //SpriteRenderer spriteRenderer = prefab.AddComponent<SpriteRenderer>();
+            //spriteRenderer.sprite = leftSprite;
+            // GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.leftPrefab)];
+            // leftPrefab = Utils.InstantiateObject(prefab);
+            // prefab.transform.SetParent(canvasObject.transform, true);
+            //prefab.name = "leftPrefab";
+            //PositionPrefabAtCorner(prefab,0);
+        } 
         if(story.rightPrefab != null && story.rightPrefab != "") {
-            Vector2 rightPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
-            // rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.rightPrefab)];
-            rightPrefab = Utils.InstantiateObject(prefab, false);
-            rightPrefab.transform.SetParent(storyGameObject.transform, true);
-            rightPrefab.name = "rightPrefab";
-            PositionPrefabAtCorner(rightPrefab,2);
-        } else {
             if(rightPrefab != null){
                 Destroy(rightPrefab);
             }
+            Vector2 rightPosition = new Vector2(imageRectTransform.sizeDelta.x / 2 ,  - screenSize.y / 2f );
+            List<string> paths = new List<string>((new[] { story.rightPrefab}));
+            Sprite rightSprite = Utils.LoadSprites("Story", paths)[0];
+            rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
+            rightPrefab.transform.localScale = new Vector3(-1f, 1f, 1f);
+            Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
+            rightPrefab.name = story.rightPrefab;
         }
         if(story.centerPrefab != null && story.centerPrefab != "") {
-            Vector2 centerPosition = new Vector2(-screenSize.x / 2f, -screenSize.y / 2f);
-            // centerPrefab = Utils.CreateImage(centerSprite, centerPosition, canvasObject.transform);
-            GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.centerPrefab)];
-            centerPrefab = Utils.InstantiateObject(prefab, false);
-            centerPrefab.transform.SetParent(storyGameObject.transform, true);
-            centerPrefab.name = "centerPrefab";
-            PositionPrefabAtCorner(centerPrefab,1);
         } else {
-            if(centerPrefab != null){
-                Destroy(centerPrefab);
-            }
         }
         
-        // Utils.MovePrefab(leftPrefab, 0.5f, 0.5f);
-        // leftPrefab.GetComponent<Image>().sprite = leftSprite;
-
+        if(leftPrefab.name.Contains(story.name)) {
+            Utils.changeAlpha(leftPrefab, 1f);
+            Utils.changeAlpha(rightPrefab, 0.1f);
+        } else if(rightPrefab.name.Contains(story.name)) {
+            Utils.changeAlpha(leftPrefab, 0.1f);
+            Utils.changeAlpha(rightPrefab, 1f);
+        } else {
+            Utils.changeAlpha(leftPrefab, 0.1f);
+            Utils.changeAlpha(rightPrefab, 0.1f);
+        }
         if (bgmAudioSource.clip != null)
         {
             bgmAudioSource.Stop();

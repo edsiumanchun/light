@@ -3,7 +3,7 @@
     "backgrounds": ["Egypt"],
     "plateH": ["Egypt", "GoUp", "GoDown"],
     "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","Story0","Enemy0"],
+    "characters": ["Player","StorySage","Enemy0"],
     "items": ["KeyCopper","KeySilver","KeyGold","Trigger"],
     "decorations": []
   },

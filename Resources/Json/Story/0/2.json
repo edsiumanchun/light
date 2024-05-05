@@ -2,8 +2,8 @@
 "storyArray" : [
 	
 	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
 	    "dialogue": [
 	        "這感覺很温暖。你對我做了什麼？"
 	    ]
@@ -15,24 +15,24 @@
 	    ]
 	},
 	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
 	    "dialogue": [
-	        "除了去除煩惱，我還能感受到温飽。",
+	        "除了煩惱盡失外，我還能感受到温飽。",
 	        "我已經有一個月沒吃飯，多謝你！"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "一個月沒吃飯？這就是你們餓鬼的宿命嗎？"
+	        "竟然一個月沒吃飯...這是你們餓鬼的宿命嗎？"
 	    ]
 	},
 	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
 	    "dialogue": [
-	        "也可以這樣說，我們是來贖罪。",
+	        "算是吧，我們是來贖罪的。",
 	        "姐姐，幸好有你，我才不會墮入萬劫不復之淵。"
 	    ]
 	},
@@ -47,8 +47,8 @@
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "(真的是不可思議！教我「淨化術」的高人究竟是何方神聖？)",
-	        "(還有，每次淨化的餓鬼都會消失，是巧合嗎？)",
+	        "(真的是不可思議！教我「淨化術」的老伯伯究竟是何方神聖？)",
+	        "(還有，每次淨化的餓鬼都會消失，是巧合嗎？)"
 	    ]
 	}
 ]

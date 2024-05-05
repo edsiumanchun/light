@@ -1,67 +1,159 @@
 {
 "storyArray" : [
 	{
-	    "name": "soldier",
-	    "centerPrefab": "soldier",
-	    "dialogue": [
-	        "多謝公主把我淨化，否則我只會一直錯下去...也請你𣎴要讓國家一直錯下去！"
-	    ]
-	},
-	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "是什麼意思？"
-	    ]
-	},{
-	    "name": "soldier",
-	    "centerPrefab": "soldier",
-	    "dialogue": [
-	        "我生前是一名聖騎士，五年前我國打著要保衛國家的正義口號，任命我和數千名聖騎士攻打鄰國。",
-	        "攻城後，我不慎把一名三十多歲的無辜男子殺害，該男子的小孩就在旁邊一直哭泣。",
-	        "那時候我有點內疚，一個不留神，該男子的妻子從後偷襲我，我當場致命，刺殺我的女子最後也死於我的劍下。"
+	        "既然已經得到「重生藥」，先會去醫院看看吧。"
 	    ]
 	},
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "如果早在二十年前出世，我必定會設法阻止戰爭發生。"
-	        "逝去的人痛苦, 他們的親人更是傷心斷腸。"
-	    ]
-	},{
-	    "name": "soldier",
-	    "centerPrefab": "soldier",
-	    "dialogue": [
-	        "對，希望公主能將這個想法普及給國民知道。",
-	        "因為這殺戳的罪業，每隔七天，我都要感受一次被殺時候死亡的痛苦。",
-	        "我已經沒救了，但我也不希望別人跟我一樣走上不歸之路。",
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-    		"世人太愚蠢，死後才發現人世間的種種都帶不走，一生所爭取的都化為烏有..."
-	    ]
-	},{
-	    "name": "soldier",
-	    "centerPrefab": "soldier",
-	    "dialogue": [
-	        "不只這樣，現在還被無數怨魂纏身，他們不原諒我也是無可厚非。"
-	    ]
-	},{
 	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "centerPrefab": "",
 	    "dialogue": [
-	        "（餓鬼軍人消失了）"
+	        "茶茶公主來到醫院"
 	    ]
-	},
-	{
+	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"因為「執著」而無間斷地持續著這痛苦值得嗎？"
+	    	"羅西亞，發生什麼事情？"
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "瑪利亞...瑪利亞...",
+	        "死了...",
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"什麼..."
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "瑪利亞臨死...要我答應她...不要因為她難過..."
+	        "你叫我怎麼辦到？"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"羅西亞，想哭就哭吧..."
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "妹妹! 都是我不好...我還有話想跟你說啊...",
+	        "這世界...這世界..."
+	        "(奔跑)鳴哇..."
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"羅西亞！"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "公主..."
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"瑪利亞？你不是已經病逝嗎？"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "對，我已經死了。",
+	        "大概是因為公主是與眾不同，我的靈魂才可以跟你同步。"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"瑪利亞，老實說，我也很難過，但這刻最痛苦的是你的姐姐的痛苦。",
+	    	"世間最苦, 不過別離...生離，苦，死別，傷...",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "公主，人海茫茫中，有幾多人只是過客，能跟你相識確實是一場緣份。",
+	        "如果可以，轉生前我有一個心願, 希望你可以答應..."
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"沒問題，定必為妳守諾一生！"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "就是要好好保護我的姐姐..."
+	        "雖然她表面看似堅強，因爲我的事情...她的內心早已經接近崩毀邊緣。"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"瑪利亞真的是好孩子...到了這時候還在擔心姐姐。"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "依我看，如果姐姐從這個方向跑，多半是去了修道院。"
+	        "每當姐姐極度悲傷的時侯，她都會到這裡冷靜一下。"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"好的，我馬上去看。"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "差不多時候要轉生去了，公主，謝謝你了！"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "centerPrefab": "",
+	    "dialogue": [
+	        "茶茶公主來到修道院"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"羅西亞..."
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "呼...呼...瑪利亞...沒法接受...沒法相信...",
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"看來羅西亞已經走火入魔，現在的我沒法控制著她..."
 	    ]
 	}
 ]

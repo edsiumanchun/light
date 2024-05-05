@@ -1,10 +1,9 @@
 {
 "storyArray" : [
 	{
-	    "name": "oldknight",
-	    "leftPrefab": "0",
-	    "centerPrefab": "2",
-	    "rightPrefab": "1",
+	    "name": "sage",
+	    "leftPrefab": "player",
+	    "rightPrefab": "sage",
 	    "backgroundPath": "forest",
 	    "bgmPath": "forest",
 	    "dialogue": [
@@ -13,37 +12,35 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "0",
 	    "dialogue": [
-	    	"老伯伯，你好。我是楓之木的公主。",
-	        "最近不知什麼原因...「餓鬼古墓」突然打開，令國家面臨前所未有的危機。",
-	        "我國許多勇敢的戰士早前前往嘗試把結界封印，郤一去不返，音訊全無。",
-	        "我無法袖手旁觀，讓同伴白白犧牲，所以前來打聽他們的消息..."
+	    	"老伯伯，你是來自東方的騎士嗎？",
+	        "最近不知道是什麼原因...「餓鬼古墓」的氣息變得不尋常，令我的國家面臨前所未有的危機。",
+	        "因此國王派出幾名聖士前往「餓鬼古墓」把結界封印，郤一去不返，音訊全無。",
+	        "同伴身陷險境令我非常擔心，所以決定前來「餓鬼古墓」營救他們。"
 	    ]
 	},
 	{
-	    "name": "oldknight",
-	    "centerPrefab": "oldknight",
+	    "name": "sage",
+	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "原來如此，實在令人敬佩。",
-	        "可惜此地險象環生，以公主現時的力量恐怕是九死一生，你不怕死嗎？"
+	        "可是，以你現時的實力要在「餓鬼古墓」存活下來是幾乎不可能，難道你不怕死嗎？"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "0",
 	    "dialogue": [
-	    	"我所背負的是人民對我的希望。",
+	    	"我所背負的是國民對我的希望。",
 	    	"無論前路有多凶險，我也不能退縮。"
 	    ]
 	},
 	{
-	    "name": "oldknight",
-	    "centerPrefab": "oldknight",
+	    "name": "sage",
+	    "centerPrefab": "sage",
 	    "dialogue": [
-	        "或許是天意...",
-	        "這樣吧，我看你的打扮也算是聖騎士吧，老夫將「淨化術」傳授給你。",
-	        "「淨化術」能淨化餓鬼心靈，令它們不再暴戾，你願不願意跟我學習？",
+	        "這樣吧，老夫將凈土派古法的「淨化術」傳授給你，助你救出你的同伴。",
+	        "「淨化術」能夠淨化餓鬼的心靈，消除他們心中的戾氣，你願不願意跟我學習？"
 	    ]
 	},
 	{
@@ -57,57 +54,58 @@
 	    "name": "narrator",
 	    "centerPrefab": "",
 	    "dialogue": [
-	        "數小時後...茶茶公主習得淨化術。"
+	        "數小時後...茶茶習得「淨化術」。"
 	    ]
 	},
 	{
 	    "name": "narrator",
 	    "centerPrefab": "",
 	    "dialogue": [
-	        "(走近怪物按右下角按鈕能夠使用淨化術。)"
+	        "(走近目標按右下角按鈕能夠使用「淨化術」。)"
 	    ]
 	},
 	{
-	    "name": "oldknight",
-	    "centerPrefab": "oldknight",
+	    "name": "sage",
+	    "centerPrefab": "sage",
 	    "dialogue": [
-	        "使用「淨化術」的人必須為人正直，宅心仁厚。",
-	        "沒想到公主能在短時間掌握「淨化術」的要訣，老夫果然沒看錯你。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "老伯伯過奬了。"
-	    ]
-	},
-	{
-	    "name": "oldknight",
-	    "centerPrefab": "oldknight",
-	    "dialogue": [
-	        "就這樣吧，老夫要尋找家人，先行離去了。"
+	        "使用「淨化術」的人必須心中無我，發願利他，才可以喚醒靈魂深處的良知。",
+	        "你能夠在短時間內掌握「淨化術」的要訣，令老夫有點意外。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "且慢，還想請問前輩為什麼要對一個素未謀面的人這麼關心？"
+	        "全賴老伯伯教導有方。"
 	    ]
 	},
 	{
-	    "name": "oldknight",
-	    "centerPrefab": "oldknight",
+	    "name": "sage",
+	    "centerPrefab": "sage",
 	    "dialogue": [
-	        "這是因為你很像我的家人。"
+	        "好...好...老夫要尋找我的孫女，先行離去了。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "無論如何，待我回來後，定必答謝老伯伯的恩德！"
+	        "且慢，未知老伯伯為何要對一個素未謀面的人如此關心？"
+	    ]
+	},
+	{
+	    "name": "sage",
+	    "centerPrefab": "sage",
+	    "dialogue": [
+	        "這是因為你很像我的孫女。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "原來是這樣，希望老伯伯早日找到你的孫女！",
+	        "若果日後有機會再遇上，定必答謝老伯伯的恩德。"
 	    ]
 	}
 ]

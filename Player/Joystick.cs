@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class JoystickController : MonoBehaviour, IDragHandler
 {
+    bool isFighting = false;
     [SerializeField] private float moveSpeed = 6;
     // [SerializeField] private float jumpForce = 6.8f;
     [SerializeField] private float jumpForce = 7f;
@@ -143,6 +144,9 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     private void MovePlayer(float moveDirection)
     {
+        if(isFighting){
+            return;
+        }
         if (moveDirection > 0)
         {
             if(stopMove < 0){
@@ -192,12 +196,13 @@ public class JoystickController : MonoBehaviour, IDragHandler
         if (purifyObject == null) return;
         print(purifyObject);
         if(playerController.status == UIGameButton.Gate){
+            Utils.showChildrenWithName("move", transform);
             purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
-            Utils.showChildrenWithName("move", transform);
         } else  {
-            purifyObject.GetComponent<EnemyController>().DestroyEnemy();
-            SetPurifyObject(null);
+            isFighting = true;
+            Utils.showChildrenWithName("move", transform);
+            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
         }
     }
 
