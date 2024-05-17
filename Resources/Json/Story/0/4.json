@@ -1,247 +1,55 @@
 {
 "storyArray" : [
+	
 	{
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
+	    "dialogue": [
+	        "這感覺很温暖。你對我做了什麼？"
+	    ]
+	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "還差一點就成功了..."
+	        "我只是用淨化術把你內心的戾氣淨化。"
+	    ]
+	},
+	{
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
+	    "dialogue": [
+	        "除了煩惱盡失外，我還能感受到温飽。",
+	        "我已經有一個月沒吃飯，多謝你！"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "竟然一個月沒吃飯...這是你們餓鬼的宿命嗎？"
+	    ]
+	},
+	{
+	    "name": "ghost",
+	    "centerPrefab": "ghost",
+	    "dialogue": [
+	        "算是吧，我們是來贖罪的。",
+	        "姐姐，幸好有你，我才不會墮入萬劫不復之淵。"
 	    ]
 	},
 	{
 	    "name": "narrator",
 	    "centerPrefab": "",
 	    "dialogue": [
-	        "(公主受了致命傷，無法再施法）"
+	        "餓鬼消失了..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "（倒在地上）"
-	        "完了..."
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "(餓鬼突然消失）"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "(又是這樣子消失...是天意要我活下去嗎？)"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "（急忙上前）公主！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "（努力恢復意識）是你嗎？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "我恢復了意識後就非常不放心，所以立刻前來尋找公主。",
-	        "公主，快把「重生藥」喝下把。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "為何你還有「重生藥」？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "我擔心公主出事，以防萬一剛剛只喝了半瓶「重生藥」。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "（喝下重生藥水）嗯...（逐漸陷入沉睡）."
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "當公主醒來時，發現自己已經身在醫院。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "公主，太好了，你終於醒來了。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "羅西亞，是你把我背過來嗎？辛苦了。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "不辛苦，公主。你是我的救命恩人，這點小事不值一提。",
-	        "對了，讓我介紹一下，這是我的妹妹瑪麗亞。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "你的妹妹發生了什麼事？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "是這樣的，我的妹妹三歲的時侯患了奇怪腄瘤，於是前來醫院求醫..."
-	        "卻不幸遇上醫療事故，令她身體癱瘓，現在要依賴人工心臟才可以呼吸。"
-	        "為了不讓你們擔心，所以一直沒有將妹妹的事掛在嘴邊...",
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "羅西亞，你總是先為別人著想，卻忽略了自己的感受..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "哈哈，習慣了，大概是跟公主相處久了，便不知不覺變得跟公主一樣了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "（害羞地）你好，茶茶公主。我今年八歲了。多謝你救了姐姐。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "不用客氣，瑪麗亞...你要堅強地活下去，才不會浪費你姐姐的一番苦心。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "對啊，羅西亞姐姐是這世上對我最好的人。我會努力的。"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "（走進房間）瑪麗亞，差不多該進行手術了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "(緊緊拉著茶茶公主的手）姐姐，我有點害怕..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "不要怕，瑪麗亞...姐姐會一直陪伴著你，你不會孤單的。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "真的嗎？姐姐不會騙我吧？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "姐姐從來不會騙你的..."
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "現在該進去見醫生了，你們在這裡稍等片刻吧。"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "（護士陪同瑪麗亞進入病房，茶茶公主突然感到不祥的氣息）"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "發生什麼事？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "地下室有餓鬼的氣息...羅西亞，你在這裡等候瑪麗亞，我到下面查看一下。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "你受了重傷，醫生建議你多休息，要不要我代你去？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "你留在這裡就好，瑪麗亞現在最需要的是你的陪伴...我很快就會回來。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "好吧。"
+	        "(真的是不可思議！教我「淨化術」的老伯伯究竟是何方神聖？)",
+	        "(還有，每次淨化的餓鬼都會消失，是巧合嗎？)"
 	    ]
 	}
 ]
 }
-
-

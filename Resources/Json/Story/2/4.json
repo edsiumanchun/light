@@ -1,159 +1,96 @@
 {
 "storyArray" : [
 	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "這裡不再受餓鬼的威脅，我終於可以回崗位工作了。",
+	        "國王離開前下達旨令把母牛屠殺，以供東盟國的外交官員享用。",
+	    ]
+	},
+	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "既然已經得到「重生藥」，先會去醫院看看吧。"
+	        "看來國家近日和東盟國的關係開始破冰了。"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "對的，國王為了款待使者，不想失禮人家，決定要把全國最好的食物和娛樂招待客人。",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "沒想到出外一會兒，國家就發生了這麼多事。",
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "欸，剛剛的牛刀還在，跟公主談話的時候就不見了，太奇怪了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "這母牛陪著我長大，既然找不到牛刀，不如今天放她一條生路？"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "公主，我連這事也幹不了，就不用當廚師了。"
+	    ]
+	},
+	{
+	    "name": "cow",
+	    "centerPrefab": "cow",
+	    "dialogue": [
+	        "吽..."
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "什麼？牛刀竟然被小牛吞了？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "為了保護母親，小牛竟然把牛刀吞下...",
+	        "萬物皆有有靈性，也許小牛寧願死也不願承受失去至愛的痛苦。"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "公主，我不想殺這頭牛了，我可以怎麼辦？"
 	    ]
 	},
 	{
 	    "name": "narrator",
-	    "centerPrefab": "",
+	    "centerPrefab": "narrator",
 	    "dialogue": [
-	        "茶茶公主來到醫院"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞，發生什麼事情？"
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "瑪利亞...瑪利亞...",
-	        "死了...",
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"什麼..."
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "瑪利亞臨死...要我答應她...不要因為她難過..."
-	        "你叫我怎麼辦到？"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞，想哭就哭吧..."
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "妹妹! 都是我不好...我還有話想跟你說啊...",
-	        "這世界...這世界..."
-	        "(奔跑)鳴哇..."
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞！"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "公主..."
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"瑪利亞？你不是已經病逝嗎？"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "對，我已經死了。",
-	        "大概是因為公主是與眾不同，我的靈魂才可以跟你同步。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"瑪利亞，老實說，我也很難過，但這刻最痛苦的是你的姐姐的痛苦。",
-	    	"世間最苦, 不過別離...生離，苦，死別，傷...",
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "公主，人海茫茫中，有幾多人只是過客，能跟你相識確實是一場緣份。",
-	        "如果可以，轉生前我有一個心願, 希望你可以答應..."
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"沒問題，定必為妳守諾一生！"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "就是要好好保護我的姐姐..."
-	        "雖然她表面看似堅強，因爲我的事情...她的內心早已經接近崩毀邊緣。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"瑪利亞真的是好孩子...到了這時候還在擔心姐姐。"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "依我看，如果姐姐從這個方向跑，多半是去了修道院。"
-	        "每當姐姐極度悲傷的時侯，她都會到這裡冷靜一下。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"好的，我馬上去看。"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "差不多時候要轉生去了，公主，謝謝你了！"
+	        "突然餓鬼的氣息又出現，除了茶茶公主，眾人暈倒。"
 	    ]
 	},
 	{
-	    "name": "narrator",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "茶茶公主來到修道院"
-	    ]
-	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"羅西亞..."
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "呼...呼...瑪利亞...沒法接受...沒法相信...",
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"看來羅西亞已經走火入魔，現在的我沒法控制著她..."
+	        "還好有「淨化術」護身才不會被震暈，這餓鬼的氣息是從隔壁的藏書庫散發出來..."
 	    ]
 	}
 ]

@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
-    public static List<EnemyData> enemyDataList;
     private void Start()
     {
         PlayerPrefs.DeleteAll(); // ???
@@ -28,7 +27,7 @@ public class MainController : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/EnemyData");
         EnemyDataWrapper assetsData = JsonUtility.FromJson<EnemyDataWrapper>(jsonFile.text);
-        enemyDataList = assetsData.enemies;
+        DataHolder.enemyDataList = assetsData.enemies;
     }
 
     public void LoadAssetsForButtonsUI()
@@ -142,16 +141,6 @@ public class MainController : MonoBehaviour
 
     public static List<Object> LoadPrefabs(string folder, List<string> paths)
     {
-        List<Object> temp = new List<Object>();
-        foreach (string path in paths)
-        {
-            Object asset = Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", ""));
-            //print("Sprites/" + folder + "/" + path);
-            if (asset != null)
-            {
-                temp.Add(asset);
-            }
-        }
-        return temp;
+        return Utils.LoadPrefabs(folder, paths);
     }
 }

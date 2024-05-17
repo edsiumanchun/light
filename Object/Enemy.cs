@@ -6,12 +6,15 @@ using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public EnemyData enemyData;
+    HPTextComponent hpTextComponent;
     // Use this for initialization
     void Start()
     {
+        hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
+        hpTextComponent.textColor = Color.red;
         string[] substrings = this.gameObject.name.Split( "Enemy" );
         print(this.gameObject.name);
-        enemyData = MainController.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
+        enemyData = DataHolder.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
     }
 
     // Update is called once per frame
@@ -33,12 +36,31 @@ public class EnemyController : MonoBehaviour
         player.GetComponent<JoystickController>().SetPurifyObject(null);
     }
 
+
     public void DestroyEnemy()
     {
-        // need animation
-        enemyData.hp -= CacheManager.GetCache(Cache.Damage.ToString());
-        CacheManager.DecreaseCache(Cache.HP.ToString(), enemyData.damage);
-        CacheUsage.cacheDestroyedObject(this.gameObject.name);
-        Destroy(gameObject); // Destroy the key game object after collision
+        Utils.AddEffect(this.gameObject, "light");
+        DataHolder.player.GetComponent<PlayerController>().SetupHPText();
+        hpTextComponent.SetText(enemyData.hp.ToString());
+        StartCoroutine(DecreaseHPOverTime());
+    }
+
+    private IEnumerator DecreaseHPOverTime()
+    {
+        while (enemyData.hp > 0)
+        {
+            yield return new WaitForSeconds(0.88f); // Wait for 1 second
+            enemyData.hp -= CacheManager.GetCache(Cache.Damage.ToString());
+            hpTextComponent.SetText(enemyData.hp.ToString());
+
+            CacheManager.DecreaseCache(Cache.HP.ToString(), enemyData.damage);
+            DataHolder.player.GetComponent<PlayerController>().SetupHPText();
+
+            if (enemyData.hp <= 0)
+            {
+                CacheUsage.cacheDestroyedObject(this.gameObject.name);
+                Destroy(gameObject); 
+            }
+        }
     }
 }

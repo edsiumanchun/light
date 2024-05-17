@@ -1,55 +1,74 @@
 {
 "storyArray" : [
-	
 	{
-	    "name": "ghost",
-	    "centerPrefab": "ghost",
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "backgroundPath": "forest",
+	    "bgmPath": "forest",
 	    "dialogue": [
-	        "這感覺很温暖。你對我做了什麼？"
+	        "你好，請問你有見過身穿盔甲的騎士嗎？"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "centerPrefab": "shopowner",
+	    "dialogue": [
+	        "客人，你好。最近好像確實有人類在「餓鬼古墓」出現。",
+	        "只可惜，他們十之八九凶多吉少了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "怎麼會這樣？"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "centerPrefab": "shopowner",
+	    "dialogue": [
+	        "我也跟你說實話吧，這裡本來杳無人煙，人類也無發看到餓鬼。",
+	        "自從有一群穿黑衣的人類來這裡佈置了結界後，餓鬼們就變得非常殘暴，破壞力也是變得不容小覷。"
+	    ]
+	},{
+	    "name": "player",
+	    "imagePath": "player",
+	    "dialogue": [
+	        "那麼餓鬼到底是什麼來頭？"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "centerPrefab": "shopowner",
+	    "dialogue": [
+	        "餓鬼生前大多極度貪婪，令它們死後靈魂進入餓鬼身體中受苦，處於極度飢餓與痛苦之境，深受折磨。",
+	        "雖然許多餓鬼生前都是惡名昭彰，但是他們受過這餓鬼世界的洗禮後，有些已經轉世為人了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "那麼你也是餓鬼嗎？"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "centerPrefab": "shopowner",
+	    "dialogue": [
+	        "我只是一個商人，如果你有足夠的金錢，我可以給你出售珍貴的生命藥水和光明碎片。",
+	        "生命藥水可以增加人類的生命值，而光明碎片則可以增強法術力量。",
+	        "有興趣買點東西嗎？"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我只是用淨化術把你內心的戾氣淨化。"
-	    ]
-	},
-	{
-	    "name": "ghost",
-	    "centerPrefab": "ghost",
-	    "dialogue": [
-	        "除了煩惱盡失外，我還能感受到温飽。",
-	        "我已經有一個月沒吃飯，多謝你！"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "竟然一個月沒吃飯...這是你們餓鬼的宿命嗎？"
-	    ]
-	},
-	{
-	    "name": "ghost",
-	    "centerPrefab": "ghost",
-	    "dialogue": [
-	        "算是吧，我們是來贖罪的。",
-	        "姐姐，幸好有你，我才不會墮入萬劫不復之淵。"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "餓鬼消失了..."
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "(真的是不可思議！教我「淨化術」的老伯伯究竟是何方神聖？)",
-	        "(還有，每次淨化的餓鬼都會消失，是巧合嗎？)"
+	        "先讓我看看吧。"
 	    ]
 	}
 ]
 }
+
+

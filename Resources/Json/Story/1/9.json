@@ -1,0 +1,316 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "你是什麼人！？"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "黑衣人沒有回答，只是從暗格中逃走了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"（十之八九是放置黑暗結界的人）",
+	    	"（無論如何，醫院的餓鬼結界已經解除了...先跟羅西亞滙合再說吧！）"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "公主來到瑪利亞的病房，發現羅西亞等人不在，於是走到醫院外面查看..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"（蘿西亞好像在談心事，還是不打擾她們較好。）"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"哇，好漂亮，很久沒看過花火了。",
+	    	"彷彿這一刻所有煩惱都拋諸腦海...如果時間可以停留在這一刻，你說多好呢？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"瑪利亞..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐...可以答應我一件事嗎？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"即管說，我什麼也會答應你的！"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"真的嗎？我的要求很簡單的。",
+	    	"那次事故令我沒法控制身體，如果有一天，我連表達自己的能力也失去...",
+	    	"也記得要再次帶我來這裡看花火！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"瑪利亞...你不會有事的，我們還有很多看花火的日子。",
+	    	"除此之外...（盤起蛋糕）"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"是蛋糕！我還以為姐姐忘記了..."
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "鳴..."
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "這時候，公主忍不住上前安慰。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"羅西亞，想必你身心都很疲倦...能夠支撐到現在，實在不簡單。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"公主，你終於回來了！"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐，我不知還有沒有明天...但我也有一件心事想跟公主說..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"有什麼心願即管說吧，我會盡力為你實現。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"公主，你的眼神看似很堅定, 但若果細心觀察...",
+	    	"就會發現真正的你, 內心一直很孤獨。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"瑪利亞..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"確實如此，公主你一直把所有責任背負在自己身上。",
+	    	"因為不想帶給別人麻煩，平時寧願將自己的感受藏在心底，也不願跟人說。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"你們...",
+	    	"要不要先吃蛋糕..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"好啊！讓我試試姐姐親手做的蛋糕吧。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"你怎知道是我親手做的..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"因為只有姐姐的蛋糕才會有這麼多忌廉...還有的是...",
+	    	"蛋糕真的很好吃！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"鳴鳴..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"自從被植入人工心臟後，我就沒法再感受到温暖的感覺...",
+	    	"不可思議的是，現在我能感受到心臟在温暖地跳動起來...",
+	    	"還好有你們，如果沒有你們，就沒有今晚怦・然・心・動的回憶。",
+	    	"這段回憶我無論如何也不會忘記！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"瑪西亞...無論如何也不要放棄，沒有你，姐姐到那裡也不會有美好的回憶！"
+	    ]
+	},
+	{
+	    "name": "nurse",
+	    "centerPrefab": "nurse",
+	    "dialogue": [
+	    	"瑪利亞，到了覆診的時間了。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"妹妹不用擔心，只要再進行一次檢查，診明天就出院了。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"嗯..."
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "瑪利亞被帶進房間..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"羅西亞...怎麼你一臉不安？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"這傻瓜以為我不知道，明明失去了味覺，卻裝作說好吃，就是不想讓我失望...",
+	    	"今次覆診也不是絕對安全，希望這次妹妹能夠平安渡過吧..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"不用擔心，必定會安然無恙。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"承你貴言了...",
+	    	"話說公主現在有什麼打算？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"黑暗結界和餓鬼出沒的謎團一天未解決，我一天都還不放心。"	,
+	    	"我打算回王都找情報組打聽消息。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"最近我也察覺到鄰國有異動，很可能跟他們有關...公主千萬別掉以輕心。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"好的，我走了，你和瑪利亞要保重。"	
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	    	"嗯，祝公主一路順風！"
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "公主到了王都...發現牢獄有不祥的餓鬼氣息。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"又是餓鬼氣息，難道連王都也淪陷了？"
+	    ]
+	}
+]
+}
+
+

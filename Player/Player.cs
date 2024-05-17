@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public HPTextComponent hpTextComponent;
     public float knockbackForce = 3f; // The force of knockback when taking damage
 
     public float moveSpeed = 1f;
@@ -36,6 +37,11 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         int layerIndex = LayerMask.NameToLayer("Player"); // Get the layer index based on the layer name.
         this.gameObject.layer = layerIndex;
+    }
+    void Start()
+    {
+        hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
+        hpTextComponent.textColor = Color.white;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -178,5 +184,10 @@ public class PlayerController : MonoBehaviour
     void UpdateLifeBarUI()
     {
         // Update the life bar UI based on currentHealth and maxHealth
+    }
+
+    public void SetupHPText(){
+        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        hpTextComponent.SetText(hp.ToString());
     }
 }

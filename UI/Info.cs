@@ -21,7 +21,7 @@ public class InfoController : MonoBehaviour
         keyImages = DataHolder.keyImages;
         string[] substrings = this.gameObject.name.Split( "Enemy" );
         print(this.gameObject.name);
-        enemyDataList = MainController.enemyDataList;
+        enemyDataList = DataHolder.enemyDataList;
 
         gameObjects = new List<GameObject>();
         commonImages = DataHolder.commonImages;

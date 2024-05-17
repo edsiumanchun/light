@@ -1,0 +1,13 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "以我現在的力量是很難戰勝的...",
+	        "這次我真的沒有把握...",
+	        "對手比我強太多了..."
+	    ]
+	}
+]
+}

@@ -194,7 +194,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
 
         if (purifyObject == null) return;
-        print(purifyObject);
         if(playerController.status == UIGameButton.Gate){
             Utils.showChildrenWithName("move", transform);
             purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
@@ -203,6 +202,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
+            purifyObject.GetComponent<EnemyController>().DestroyEnemy();
         }
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 public class Utils : MonoBehaviour
 {
     public static float referenceResolution = 1200;
@@ -229,4 +230,28 @@ public class Utils : MonoBehaviour
         imageColor.a = alpha;
         GO.GetComponent<Image>().color = imageColor;
     }
+    
+    public static List<Object> LoadPrefabs(string folder, List<string> paths)
+    {
+        List<Object> temp = new List<Object>();
+        foreach (string path in paths)
+        {
+            Object asset = Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", ""));
+            //print("Sprites/" + folder + "/" + path);
+            if (asset != null)
+            {
+                temp.Add(asset);
+            }
+        }
+        return temp;
+    }
+
+    public static void AddEffect(GameObject GO, string effectName) {
+        List<string> paths = new List<string>((new[] { "purify"}));
+        GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
+        GameObject lightObject = Instantiate(lightPrefab);
+        lightObject.transform.SetParent(GO.transform);
+        lightObject.transform.localPosition = new Vector3(0, 0.8f, 0);
+    }
+
 }

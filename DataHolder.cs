@@ -57,6 +57,8 @@ public static class DataHolder
     public static List<Sprite> commonImages; // List to store the loaded assets
 
 
+    public static List<EnemyData> enemyDataList;
+
     public static Vector2 GetBackgroundSize()
     {
         Sprite sprite = DataHolder.backgrounds[0];
