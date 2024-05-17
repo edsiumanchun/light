@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        Utils.AddEffect(this.gameObject, "light");
+        Utils.AddEffect(this.gameObject, "purify");
         DataHolder.player.GetComponent<PlayerController>().SetupHPText();
         hpTextComponent.SetText(enemyData.hp.ToString());
         StartCoroutine(DecreaseHPOverTime());

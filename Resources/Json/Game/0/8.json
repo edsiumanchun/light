@@ -1,12 +1,4 @@
 ﻿{
-  "paths": {
-   "backgrounds": ["Egypt"],
-    "plateH": ["Egypt", "GoUp", "GoDown"],
-    "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","Story0","Enemy0"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark","Trigger"],
-    "decorations": ["lamp"]
-  },
   "assets0": [
     {
       "name": "Background"

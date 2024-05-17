@@ -90,7 +90,7 @@
 	    "centerPrefab": "maria",
 	    "dialogue": [
 	        "公主，人海茫茫中，有幾多人只是過客，能跟你相識確實是一場緣份。",
-	        "如果可以，轉生前我有一個心願, 希望你可以答應..."
+	        "如果可以...希望在轉生前，公主能夠答應我一個要求..."
 	    ]
 	},{
 	    "name": "player",
@@ -115,33 +115,21 @@
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	        "依我看，如果姐姐從這個方向離去，多半是去了修道院。"
-	        "每當姐姐想不開的時侯，她都會到這裡冷靜一下。"
+	        "距離轉生前還有一段時間，如公主不嫌棄，請讓我引導公主去找到姐姐。"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"好的，我馬上去看。"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "我差不多時候要轉生去了，公主，謝謝你了！"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"安息吧，瑪利亞。"
+	    	"好的，靠你了。"
 	    ]
 	},
 	{
 	    "name": "narrator",
 	    "centerPrefab": "",
 	    "dialogue": [
-	        "茶茶公主來到修道院。"
+	        "瑪利亞加入隊伍，在戰鬥中瑪利亞能夠每秒治愈公主5點血量。"
+	        "茶茶公主來到羅西亞的家。"
 	    ]
 	},{
 	    "name": "player",
@@ -156,10 +144,16 @@
 	        "嗚嗚...",
 	    ]
 	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"看來姐姐已經不受控制了，請讓我帶領公主走到姐姐的內心世界。"
+	    ]
+	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"看來羅西亞已經走火入魔，現在的我也沒辦法控制著她..."
+	    	"嗯，我準備好了！"
 	    ]
 	}
 ]

@@ -1,12 +1,4 @@
 ﻿{
-  "paths": {
-    "backgrounds": ["Egypt"],
-    "plateH": ["Egypt", "GoUp", "GoDown"],
-    "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","Story0","Enemy0"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "decorations": ["Lamp"]
-  },
   "assets0": [
     {
       "name": "Background"
@@ -32,9 +24,9 @@
       "name": "Object",
       "gridArray0": [26, 0, 1, 0, 21],
       "gridArray1": [0, 25, 2, 24, 0],
-      "gridArray2": [3, 3, 0, 0, 22],
-      "gridArray3": [0, 21, 3, 0, 0],
-      "gridArray4": [21, 24, 3, 25, 26]
+      "gridArray2": [11, 11, 0, 0, 22],
+      "gridArray3": [0, 21, 11, 0, 0],
+      "gridArray4": [21, 24, 11, 25, 26]
     }
   ]
 }

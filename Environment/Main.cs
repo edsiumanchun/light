@@ -88,7 +88,7 @@ public class MainController : MonoBehaviour
         MainController.LoadEnemyData(stage);
         Debug.Log(stage);
         Debug.Log(floor);
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/" + floor.ToString());
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/Config");
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
@@ -98,8 +98,10 @@ public class MainController : MonoBehaviour
             DataHolder.items = LoadSprites("Items", paths.items);
             DataHolder.decorations = LoadSprites("Decorations", paths.decorations);
             DataHolder.characters = LoadPrefabs("Characters", paths.characters);
+            DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
             LoadFloorAssetsFromJson(floor, sceneName);
+            Debug.Log("LoadFloorAssetsFromJson");
         }
         else
         {

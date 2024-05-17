@@ -23,6 +23,7 @@ public class Path
     public List<string> characters;
     public List<string> backgrounds;
     public List<string> decorations;
+    public List<string> enemies;
 }
 
 [System.Serializable]
@@ -75,12 +76,16 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.plateH[assetIndex];
                 break;
             case "Object":
-                int formattedIndex = assetIndex % 20;
-                if (assetIndex / 40 >= 1) {
+                int formattedIndex = assetIndex % 10;
+                if (assetIndex / 30 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
                 } else if (assetIndex / 20 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
-                } else
+                } else if (assetIndex / 10 >= 1) {
+                    isSprite = false;
+                    GameObject prefab = (GameObject)DataHolder.enemies[formattedIndex];
+                    newObject = Utils.InstantiateObject(prefab);
+                } else 
                 {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];

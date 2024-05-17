@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip dieSound;
 
+    public GameObject maria;
 
     public UIGameButton status = UIGameButton.none; // Whether the player is standing on the floor or not
     char exitPosition = '0';
@@ -40,9 +41,17 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        if(CurrentStage == 2){
+            // GameObject prefab = Utils.LoadPrefabs("Characters", new Game "MariaGhost");
+            // maria = Utils.InstantiateObject(prefab);
+            // maria.transform.SetParent(this.gameObject.transform);
+            // maria.transform.position = Vector2(-0.3f,0.3f); 
+        }
         hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
         hpTextComponent.textColor = Color.white;
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {

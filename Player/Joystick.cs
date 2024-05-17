@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
 
 public class JoystickController : MonoBehaviour, IDragHandler
 {
@@ -203,6 +205,23 @@ public class JoystickController : MonoBehaviour, IDragHandler
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
             purifyObject.GetComponent<EnemyController>().DestroyEnemy();
+            GameObject gameObject = GameObject.Find("MariaGhost");
+            if (gameObject != null)
+            {
+                Utils.AddEffect(this.gameObject, "heart");
+                StartCoroutine(IncreaseHPOverTime());
+            }
+        }
+    }
+
+    private IEnumerator IncreaseHPOverTime()
+    {
+        while (isFighting)
+        {
+            yield return new WaitForSeconds(1f); // Wait for 1 second
+            int hpCount = CacheManager.GetCache(Cache.HP.ToString());
+            CacheManager.IncreaseCache(Cache.HP.ToString(), hpCount + 5);
+            DataHolder.player.GetComponent<PlayerController>().SetupHPText();
         }
     }
 
