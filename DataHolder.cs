@@ -43,6 +43,7 @@ public static class DataHolder
     public static List<Sprite> plateH; // List to store the loaded assets
     public static List<Sprite> plateV; // List to store the loaded assets
     public static List<Sprite> backgrounds; // List to store the loaded assets
+    public static List<AudioClip> audios; // List to store the loaded assets
     // ui
     public static List<Sprite> gameButtonImages; // List to store the loaded assets
     public static List<Sprite> menuButtonImages; // List to store the loaded assets

@@ -19,7 +19,8 @@ public enum Cache
     Destroy = 8,
     HP = 9,
     Damage = 10,
-    Defend = 11
+    Defend = 11,
+    HPMax = 12
 }
 
 public static class CacheUsage
@@ -121,7 +122,9 @@ public static class CacheManager
     public static int GetCache(string key)
     {
         int defaultValue = 0;
-        if(key == Cache.HP.ToString() || key == Cache.Defend.ToString() || key == Cache.Damage.ToString()){
+        if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString()){
+            defaultValue = 10;
+        } else if (key == Cache.Defend.ToString() || key == Cache.Damage.ToString()){
             defaultValue = 1;
         }
         return PlayerPrefs.GetInt(key, defaultValue);

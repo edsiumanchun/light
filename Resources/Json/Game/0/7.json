@@ -1,7 +1,8 @@
 ﻿{
   "assets0": [
     {
-      "name": "Background"
+      "name": "Background",
+      "gridArray0": [0]
     },
     {
       "name": "PlateH",
@@ -22,11 +23,11 @@
     },
     {
       "name": "Object",
-      "gridArray0": [26, 0, 1, 0, 21],
-      "gridArray1": [0, 25, 2, 24, 0],
+      "gridArray0": [26, 0, 0, 0, 21],
+      "gridArray1": [0, 24, 0, 24, 0],
       "gridArray2": [11, 11, 0, 0, 22],
-      "gridArray3": [0, 21, 11, 0, 0],
-      "gridArray4": [21, 24, 11, 25, 26]
+      "gridArray3": [0, 21, 22, 0, 0],
+      "gridArray4": [21, 24, 11, 4, 26]
     }
   ]
 }

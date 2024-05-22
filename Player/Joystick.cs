@@ -44,7 +44,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     public void Jump()
     {
-        if(jumpCount >= jumpCap){
+        if(jumpCount >= jumpCap || isFighting == true){
             return;
         }
         this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Jump);
@@ -179,7 +179,23 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
+    private IEnumerator IncreaseHPOverTime()
+    {
+        while (isFighting)
+        {
+            yield return new WaitForSeconds(1f); // Wait for 1 second
+            int hpCount = CacheManager.GetCache(Cache.HP.ToString());
+            CacheManager.IncreaseCache(Cache.HP.ToString(), hpCount + 5);
+            DataHolder.player.GetComponent<PlayerController>().SetupHPText();
+        }
+    }
 
+    public void ReleaseFighting(){
+        Debug.Log("???");
+        isFighting = false;
+        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+        Utils.showChildrenWithName("move", transform);
+    }
     public void Crouch()
     {
     }
@@ -201,6 +217,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
             purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
         } else  {
+            // purify
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
@@ -214,16 +231,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
-    private IEnumerator IncreaseHPOverTime()
-    {
-        while (isFighting)
-        {
-            yield return new WaitForSeconds(1f); // Wait for 1 second
-            int hpCount = CacheManager.GetCache(Cache.HP.ToString());
-            CacheManager.IncreaseCache(Cache.HP.ToString(), hpCount + 5);
-            DataHolder.player.GetComponent<PlayerController>().SetupHPText();
-        }
-    }
 
     public void SetPurifyObject(GameObject gameObject)
     {

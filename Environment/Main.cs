@@ -10,9 +10,11 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+
     private void Start()
     {
         PlayerPrefs.DeleteAll(); // ???
+
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
@@ -40,7 +42,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForMenuUI()
     {
-        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info" }));
+        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info", "HPBar", "GreenBar", "RedBar" }));
         List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
         DataHolder.menuButtonImages = sprites;
     }
@@ -93,6 +95,7 @@ public class MainController : MonoBehaviour
         if (jsonFile != null)
         {
             Path paths = assetsData.paths;
+            DataHolder.audios = LoadAudios("Audios", paths.audios);
             DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
             DataHolder.plateV = LoadSprites("PlateV", paths.plateV);
             DataHolder.items = LoadSprites("Items", paths.items);
@@ -145,4 +148,10 @@ public class MainController : MonoBehaviour
     {
         return Utils.LoadPrefabs(folder, paths);
     }
+
+    public static List<AudioClip> LoadAudios(string folder, List<string> paths)
+    {
+        return Utils.LoadAudios(paths);
+    }
+
 }

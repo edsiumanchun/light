@@ -62,10 +62,11 @@ public class DashboardController : MonoBehaviour
 
         int coinKeyCount = CacheManager.GetCache(Cache.Coin.ToString());
         int hpCount = CacheManager.GetCache(Cache.HP.ToString());
+        int hpMaxCount = CacheManager.GetCache(Cache.HPMax.ToString());
         int damageCount = CacheManager.GetCache(Cache.Damage.ToString());
         // int defendCount = CacheManager.GetCache(Cache.Defend.ToString());
         // Update the key count texts
-        keyTextImages[0].GetComponent<Text>().text = hpCount.ToString();
+        keyTextImages[0].GetComponent<Text>().text = hpCount.ToString() + "/" + hpMaxCount.ToString();
         keyTextImages[1].GetComponent<Text>().text = damageCount.ToString();
         keyTextImages[2].GetComponent<Text>().text = coinKeyCount.ToString();
         // keyTextImages[3].GetComponent<Text>().text = coinKeyCount.ToString();

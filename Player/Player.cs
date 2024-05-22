@@ -42,11 +42,16 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        if(CurrentStage == 2){
-            // GameObject prefab = Utils.LoadPrefabs("Characters", new Game "MariaGhost");
-            // maria = Utils.InstantiateObject(prefab);
-            // maria.transform.SetParent(this.gameObject.transform);
-            // maria.transform.position = Vector2(-0.3f,0.3f); 
+        if(CurrentStage >= 0){
+
+
+            List<string> myList = new List<string>();
+            myList.Add("MariaGhost");
+            GameObject prefabs = (GameObject)Utils.LoadPrefabs("Characters",myList)[0];
+            maria = Utils.InstantiateObject(prefabs);
+            maria.name = "MariaGhostMoveJump";
+            maria.transform.SetParent(this.gameObject.transform);
+            maria.transform.localPosition = new Vector2(-0.8f,0.8f); 
         }
         hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
         hpTextComponent.textColor = Color.white;
@@ -95,24 +100,27 @@ public class PlayerController : MonoBehaviour
 
     public void GoDown(){
         status = UIGameButton.none;
-        print(exitPosition);
+        CacheManager.SetCache(Cache.Exit.ToString(), 2);
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        CacheManager.SetStringCache(Cache.Exit.ToString(), "0" + exitPosition);
-        MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
+        MainController.LoadFloorAssetsFromJson(currentFloor - offset, "HomeScene");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
         string name = collision.gameObject.name;
         string playerPosition = name.Split('_')[0];
         Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
-                CacheManager.SetStringCache(Cache.Exit.ToString(), "4" + playerPosition[1]);
-                MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
+                CacheManager.SetCache(Cache.Exit.ToString(), 0);
+                MainController.LoadFloorAssetsFromJson(currentFloor + offset, "HomeScene");
                 break;
             case string str when str.Contains("GoDown"):
                 exitPosition = playerPosition[1];
@@ -196,7 +204,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SetupHPText(){
-        int hp = CacheManager.GetCache(Cache.HP.ToString());
-        hpTextComponent.SetText(hp.ToString());
+        //int hp = CacheManager.GetCache(Cache.HP.ToString());
+        // hpTextComponent.SetText(hp.ToString());
     }
 }

@@ -184,7 +184,22 @@ public class Utils : MonoBehaviour
         return enemyInfo;
     }
 
-
+    public static List<AudioClip> LoadAudios(List<string> paths)
+    {
+        List<AudioClip> temp = new List<AudioClip>();
+        foreach (string path in paths)
+        {
+            AudioClip asset = (AudioClip)Resources.Load("Audios/" + path, typeof(AudioClip));
+            print("Audios/" + path);
+            if (asset != null)
+            {
+                temp.Add(asset);
+            } else {
+                temp.Add(null);
+            }
+        }
+        return temp;
+    }
     public static List<Sprite> LoadSprites(string folder, List<string> paths)
     {
         List<Sprite> temp = new List<Sprite>();
@@ -247,11 +262,14 @@ public class Utils : MonoBehaviour
     }
 
     public static void AddEffect(GameObject GO, string effectName) {
-        List<string> paths = new List<string>((new[] { "purify"}));
+        List<string> paths = new List<string>((new[] { effectName}));
         GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
         GameObject lightObject = Instantiate(lightPrefab);
         lightObject.transform.SetParent(GO.transform);
         lightObject.transform.localPosition = new Vector3(0, 0.8f, 0);
     }
-
+    public static void ChangeAudioClipByName(int sourceIndex)
+    {
+        PersistentAudioSource.Instance.PlayAudio(sourceIndex);
+    }
 }

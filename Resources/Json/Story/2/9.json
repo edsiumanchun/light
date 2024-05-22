@@ -36,8 +36,6 @@
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "瑪利亞臨死...要我答應她...不要因為她難過..."
-	        "你叫我怎麼辦到？",
 	        "妹妹! 都是我不好...我還有話想跟你說啊..."
 	    ]
 	},{
@@ -132,28 +130,89 @@
 	        "茶茶公主來到羅西亞的家。"
 	    ]
 	},{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "maria",
+	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"羅西亞..."
+	    	"姐姐！"
 	    ]
 	},{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "嗚嗚...",
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	    	"看來姐姐已經不受控制了，請讓我帶領公主走到姐姐的內心世界。"
+	        "嗚嗚嗚...",
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"嗯，我準備好了！"
+	    	"看來你的姐姐已經失去了理性..."
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"身為靈體的我能夠辦到的事情很有限，現在能救姐姐的只有公主了。"
+	    ]
+	},{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	    	"瑪利亞，你姐姐對我有恩，我願獻上一切把她從黒暗中帶回來！"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"很好，公主你只需要對我姐姐使用淨化術，把善念傳到她內心的深處就行。"
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"好，交給我吧",
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	    	"羅西亞在神志不清的時候看到各種幻像。"
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "妹妹...唉...",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐，如果你想見我最後一面，就別再被幻境所迷惑了。",
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "你不是我的妹妹！我的妹妹已經死了！",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐，請過來這邊找我，我和公主...",
+	    ]
+	},{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	    	"聲音被中斷了。",
+	    	"羅西亞沉思片刻，最終下定決心..."
+	    ]
+	},{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "無論是真是假，先相信也無妨...反正也沒什麼可失去了...",
 	    ]
 	}
 ]

@@ -1,11 +1,12 @@
 {
   "paths": {
-    "backgrounds": ["Egypt"],
-    "plateH": ["Egypt", "GoUp", "GoDown"],
-    "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","StorySage"],
+    "backgrounds": ["Egypt", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleDesert", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
+    "plateH": ["City", "GoUp", "GoDown","Space"],
+    "plateV": ["City","GateCopper","GateSilver","GateGold","Gate", "Space"],
+    "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "enemies": ["Enemy0"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "decorations": ["Lamp"]
+    "decorations": ["Lamp", "Dark", "Wall"],
+    "audios": ["elf","bgm"]
   }
 }

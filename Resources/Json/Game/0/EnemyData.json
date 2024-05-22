@@ -1,20 +1,11 @@
 {
-  "paths": {
-    "backgrounds": ["Egypt"],
-    "plateH": ["Egypt", "GoUp", "GoDown"],
-    "plateV": ["Egypt","GateCopper","GateSilver","GateGold","Gate"],
-    "characters": ["Player","StorySage"],
-    "enemies": ["Enemy0"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "decorations": ["Lamp"]
-  },
   "enemies": [
     {
       "name": "gargoyle",
-      "attack": 10,
+      "damage": 8,
       "defend": 5,
-      "coin": 100,
-      "hp": 50
+      "coin": 3,
+      "hp": 3
     },
     {
       "name": "Enemy 2",

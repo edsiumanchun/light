@@ -1,0 +1,82 @@
+{
+"storyArray" : [
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "是瑪利亞嗎？我在做夢嗎？",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	        "人生如夢，何苦執迷於現狀。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "可以的話真想一直待在這夢境裡...",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"姐姐，你已經盡力了。這是我的命運，已無法改變。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "對不起，我真的無法放下你...",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"我已成為過去，姐姐沒必要如此執著。",
+	    	"這些年來，多謝姐姐的悉心照顧，你為了我確實付出了很多。",
+	    	"在我離世前，只有一個願望，希望姐姐能夠答應。 - 希望姐姐能夠得到幸福。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "說吧，無論是什麼我也會答應！",
+	    ]
+	},{
+	    "name": "maria",
+	    "centerPrefab": "maria",
+	    "dialogue": [
+	    	"我的心願就是...",
+	    	"希望姐姐得到幸福，能快樂地活下去..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "瑪利亞...你竟然...",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "羅西亞，是時候放過自己了...",
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "公主和瑪利亞消失了。",
+	    ]
+	}
+]
+}
+
+

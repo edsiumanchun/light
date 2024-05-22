@@ -7,7 +7,6 @@ using System.IO;
 
 public class HomeController : MonoBehaviour
 {
-
     public GameObject storyCanvasPrefab;
     public int numPlates = 5;
     public float plateSpacing = 2.0f;
@@ -52,4 +51,5 @@ public class HomeController : MonoBehaviour
         //     currentHealth.OnBossDeath += PlayEndingStory;
         // }
     }
+
 }

@@ -24,6 +24,7 @@ public class Path
     public List<string> backgrounds;
     public List<string> decorations;
     public List<string> enemies;
+    public List<string> audios;
 }
 
 [System.Serializable]
@@ -96,10 +97,18 @@ public class AssetData
                 }
                 break;
             case "Background":
-                spriteRenderer.sprite = DataHolder.backgrounds[assetIndex];
-                spriteRenderer.drawMode = SpriteDrawMode.Tiled;
+                int index = gridArray0[0];
+                spriteRenderer.sprite = DataHolder.backgrounds[index];
+                spriteRenderer.drawMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
                 spriteRenderer.size = DataHolder.GetBackgroundSize();
+                if(index > 0) {
+                    newObject.transform.localScale = new Vector3(1.23f, 1.23f, 1f);
+                }
                 break;
+            case "Audio":
+                int audioIndex = gridArray0[0];
+                Utils.ChangeAudioClipByName(audioIndex);
+                return null;
         }
         // --------- //
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
@@ -161,7 +170,7 @@ public class AssetData
 
     public void CreateObjects(float z, float subStage)
     {
-        if (name == "Background")
+        if (name == "Audio" )
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;
@@ -169,31 +178,50 @@ public class AssetData
         GameObject newObject;
         Sprite plateSprite = GetPlateSprite();
         Vector2 backgroundSize = DataHolder.GetBackgroundSize();
-        Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(backgroundSize.x / 2f, -backgroundSize.y / 2f);
         float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
+        if (name == "Background") {
+            newObject = CreateObjectWithAssetIndex(0, z, "");
+            int index = gridArray0[0];
+            if(index > 0){
+                newObject.transform.position = new Vector3(0, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
+            }
+            return;
+        }
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
         float offset = plateSprite.bounds.size.x / 2;
         float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
-
-        string playerPosition = CacheManager.GetStringCache(Cache.Exit.ToString());
-        playerPosition = playerPosition == "" ? "40" : playerPosition; 
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {
             List<int> gridArray = gridArrays[gridIndex];
             for (int column = 0; column < gridArray.Count; column++)
             {
+                float startPositionX = gridArray.Count > 7 ? backgroundSize.x / 2f * 1.58f : backgroundSize.x / 2f;
+                Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
                 string id = gridIndex.ToString() + column.ToString();
                 int cellValue = gridArray[column];
-                if (cellValue == 0) {
-                    if(playerPosition == id && name.Contains("Object")){
-                        newObject = CreateObjectWithAssetIndex(0, z, id);
+
+                if (cellValue == 0) { 
+                    continue;  
+                } else if (cellValue == 1 && name.Contains("Object")){
+                    int playerPosition = CacheManager.GetCache(Cache.Exit.ToString());
+                    // Debug.Log(playerPosition);
+                    // Debug.Log(column);
+                    // Debug.Log(gridIndex);
+                    // Debug.Log(gridArrays.Count);
+                    // Debug.Log(gridArray.Count);
+                    // Debug.Log(playerPosition != 0 && column == gridArray.Count - 1);
+                    // Debug.Log(playerPosition != 2 && column == 0);
+                    // Debug.Log(playerPosition != 0 && gridIndex == 4);
+                    // Debug.Log(playerPosition != 2 && gridIndex == 0);
+                    if(
+                        (playerPosition == 0 && gridIndex >= 3) 
+                        || (playerPosition == 2 && gridIndex < 3) ) {
                     } else {
                         continue;
                     }
-                } else {
-                    newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
                 }
+                newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
                 if (newObject == null) continue;
                 BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
                 if (!isSprite)

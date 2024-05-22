@@ -68,10 +68,13 @@ public class StoryController : MonoBehaviour
         canvasObject.SetActive(false);
     }
 
-    public void LoadStoryDataFromJSON()
+    public void LoadStoryDataFromJSON(){
+        LoadStoryDataFromJSONWithPath(CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString()));
+    }
+    public void LoadStoryDataFromJSONWithPath(string path)
     {
         SetupFadeObject(false);
-        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        string storyFilePath = "Json/Story/" + path;
 
         //if (File.Exists(jsonFilePath))
         //{
