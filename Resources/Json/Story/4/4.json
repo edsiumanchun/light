@@ -1,0 +1,99 @@
+{
+"storyArray" : [
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "這裡不再受餓鬼的威脅，我終於可以回崗位工作了。",
+	        "國王離開前下達旨令把母牛屠殺，以供東盟國的外交官員享用。",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "看來國家近日和東盟國的關係開始破冰了。"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "對的，國王為了款待使者，不想失禮人家，決定要把全國最好的食物和娛樂招待客人。",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "沒想到出外一會兒，國家就發生了這麼多事。",
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "欸，剛剛的牛刀還在，跟公主談話的時候就不見了，太奇怪了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "這母牛陪著我長大，既然找不到牛刀，不如今天放她一條生路？"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "公主，我連這事也幹不了，就不用當廚師了。"
+	    ]
+	},
+	{
+	    "name": "cow",
+	    "centerPrefab": "cow",
+	    "dialogue": [
+	        "吽..."
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "什麼？牛刀竟然被小牛吞了？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "為了保護母親，小牛竟然把牛刀吞下...",
+	        "萬物皆有有靈性，也許小牛寧願死也不願承受失去至愛的痛苦。"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "centerPrefab": "chef",
+	    "dialogue": [
+	        "公主，我不想殺這頭牛了，我可以怎麼辦？"
+	    ]
+	},
+	{
+	    "name": "narrator",
+	    "centerPrefab": "narrator",
+	    "dialogue": [
+	        "突然餓鬼的氣息又出現，除了茶茶公主，眾人暈倒。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "centerPrefab": "player",
+	    "dialogue": [
+	        "還好有「淨化術」護身才不會被震暈，這餓鬼的氣息是從隔壁的藏書庫散發出來..."
+	    ]
+	}
+]
+}
+
+

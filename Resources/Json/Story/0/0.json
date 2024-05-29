@@ -1,111 +1,65 @@
 {
 "storyArray" : [
 	{
-	    "name": "sage",
-	    "leftPrefab": "player",
+	    "name": "player",
+	   	"leftPrefab": "player",
 	    "rightPrefab": "sage",
-	    "backgroundPath": "forest",
-	    "bgmPath": "forest",
 	    "dialogue": [
-	        "沒想到這種地方也有旅人來到訪，未知來此險地所為何事？"
+	    	"是來自東方的前輩嗎？"
 	    ]
-	},
-	{
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	        "姑娘，快離開這裡，這裡有可怕的餓鬼..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostshow"
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	        "這...這是...天罡淨魔術！?"
+	    ]
+	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"老伯伯，你是來自東方的騎士嗎？",
-	        "最近不知道是什麼原因...「餓鬼古墓」的氣息變得不尋常，令我的國家面臨前所未有的危機。",
-	        "因此國王派出幾名聖士前往「餓鬼古墓」把結界封印，郤一去不返，音訊全無。",
-	        "同伴身陷險境令我非常擔心，所以決定前來「餓鬼古墓」營救他們。"
+	    	"對，這是能令讓餓鬼享受温飽後自我解脫的神奇力量。"
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	        "實在令老夫大開眼界，沒想到有生之年能看到這失傳已久的絕技。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "earthquake"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"老伯伯，這裡很危險，你還是別逗留在這裡了..."
 	    ]
 	},
 	{
 	    "name": "sage",
 	    "centerPrefab": "sage",
 	    "dialogue": [
-	        "原來如此，實在令人敬佩。",
-	        "可是，以你現時的實力要在「餓鬼古墓」存活下來是幾乎不可能，難道你不怕死嗎？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "0",
-	    "dialogue": [
-	    	"我所背負的是國民對我的希望。",
-	    	"無論前路有多凶險，我也不能退縮。"
-	    ]
-	},
-	{
-	    "name": "sage",
-	    "centerPrefab": "sage",
-	    "dialogue": [
-	        "這樣吧，老夫將凈土派古法的「淨化術」傳授給你，助你救出你的同伴。",
-	        "「淨化術」能夠淨化餓鬼的心靈，消除他們心中的戾氣，你願不願意跟我學習？"
+	        "好...好...老夫也要去尋找孫女，先行離去，就此別過！"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "當然願意！"
+	        "有緑再見了！"
 	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
+	},{
+	    "name": "event",
 	    "dialogue": [
-	        "數小時後...茶茶習得「淨化術」。"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "(走近目標按右下角按鈕能夠使用「淨化術」。)"
-	    ]
-	},
-	{
-	    "name": "sage",
-	    "centerPrefab": "sage",
-	    "dialogue": [
-	        "使用「淨化術」的人必須心中無我，發願利他，才可以喚醒靈魂深處的良知。",
-	        "你能夠在短時間內掌握「淨化術」的要訣，令老夫有點意外。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "全賴老伯伯教導有方。"
-	    ]
-	},
-	{
-	    "name": "sage",
-	    "centerPrefab": "sage",
-	    "dialogue": [
-	        "好...好...老夫要尋找我的孫女，先行離去了。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "且慢，未知老伯伯為何要對一個素未謀面的人如此關心？"
-	    ]
-	},
-	{
-	    "name": "sage",
-	    "centerPrefab": "sage",
-	    "dialogue": [
-	        "這是因為你很像我的孫女。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "原來是這樣，希望老伯伯早日找到你的孫女！",
-	        "若果日後有機會再遇上，定必答謝老伯伯的恩德。"
+	        "sageleave"
 	    ]
 	}
 ]

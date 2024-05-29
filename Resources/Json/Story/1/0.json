@@ -2,7 +2,8 @@
 "storyArray" : [
 	{
 	    "name": "ghostkid",
-	    "centerPrefab": "ghostkid",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "sage",
 	    "dialogue": [
 	        "（見到母親後痛哭）媽媽，我很掛念你..."
 	    ]
