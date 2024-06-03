@@ -6,7 +6,9 @@
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "enemies": ["Enemy0"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "decorations": ["Lamp", "Dark", "Wall"],
+    "obstacles": ["Dark"],
+    "decorations": ["Dark", "Lamp", "Wall"],
+    "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]
   }
 }

@@ -2,72 +2,39 @@
 "storyArray" : [
 	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "shopowner",
 	    "dialogue": [
-	        "人類，你來這裡要幹什麼？"
+	        "姑娘，為何要來這鬼地方？"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "最近各地的餓鬼都莫名其妙地活躍起來，我是為了調查這種異狀而來的。"
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
-	    "dialogue": [
-	        "這裡本來杳無人煙，正常的人類也沒辦法看到餓鬼。",
-	        "自從這裡被佈置了結界後，餓鬼們便顯現出來，還變得很殘暴..."
+	        "我是為了找我的伙伴而來的，自從上週來過這裡就失去蹤影...",
+	        "請問你有見過其他人類來過這裡嗎？"
 	    ]
 	},{
-	    "name": "player",
-	    "imagePath": "player",
-	    "dialogue": [
-	    	"我只聽說過黑曜石可以辟邪，"
-	    ]
-	},
-	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
 	    "dialogue": [
-	        "這是有心人所做的好..."
-	    	"大多餓鬼都處於極度飢餓與痛苦之境，深受折磨...人類竟然還要落井下石。",
-	    	"更可笑的是餓鬼生前大多是貪婪的人類，岩不是自相殘殺。",
-	    ]
-	},{
-	    "name": "player",
-	    "imagePath": "player",
-	    "dialogue": [
-	        "諷刺的是人與人之間也經常為了利益而自相殘殺..."
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
-	    "dialogue": [
-	        "世人不信死後會受到審判，為一生所做的罪業負上沉重的代價...",
-	        "待他們轉生成餓鬼後才後悔卻為時已晚了。",
+	        "不好意思，我今天才來當值，這個我不清楚。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "。"
+	        "你在這裡上班嗎？"
 	    ]
 	},
 	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
 	    "dialogue": [
-	        "姑娘不像壞人，今天破例把這些有用的物品出售給你吧。"
+	        "對啊，我們都在販賣商品給餓鬼...",
+	        "姑娘也可以來看看，用怪物貨幣就可以交易。",
 	    	"這裡有可以增加生命值的生命石，和增強法力的強化石。"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "好的，讓我看看吧。"
 	    ]

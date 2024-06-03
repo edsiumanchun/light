@@ -2,70 +2,65 @@
 "storyArray" : [
 	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "shopowner",
 	    "dialogue": [
-	        "客人，你需要點什麼嗎？"
+	        "你好，貪婪的人類..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我想知道為何醫院會出現餓鬼？"
+	        "我有點疑惑，怎麼說我是貪婪？"
 	    ]
 	},
 	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
 	    "dialogue": [
-	        "都怪貪婪的人類..."
+	        "末法時代，凡是人類皆是貪婪！"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "難道就沒有例外嗎？"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "dialogue": [
+	        "不貪婪的人類就不是凡人，是超凡入聖了！",
+	        "人類每天都是為了錢財，權力，名利而煩惱...",
+	        "對我們來說，人類就像小丑一樣...既可笑又可憐。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "雖然有點諷刺，但你所說並非沒有道理...",
+	        "很感謝你的指導。",
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "dialogue": [
+	        "哈哈，姑娘挺有意思。"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我是完全不知情的。"
+	        "說起來，你是販賣道具的商人嗎？"
 	    ]
 	},
 	{
 	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
 	    "dialogue": [
-	        "嗯，我也感受到你沒有人類的惡意，我把我所知道的都告訴你吧。",
-	        "「餓鬼」是由輕微的地水風火造成的，因此正常人是不可能看到他們的。",
-	        "最近，人間有不少地方出現了以貪為供的「黑暗結界」，令「餓鬼」顯現出來，也令他們變得非常暴戾，"
+	        "對，今天來了不少貨品，過來看看吧！"
 	    ]
 	},{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "event",
 	    "dialogue": [
-	        "如果把餓鬼的惡念消去，能否回復現狀？"
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
-	    "dialogue": [
-	        "這樣只是治標不治本。若要徹底將問題根治，則必需要把「黑暗結界」破壞。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "就是說，只要把「黑暗結界」破壞，就能夠讓醫院回復正常吧。"
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "centerPrefab": "shopowner",
-	    "dialogue": [
-	        "要找到「黑暗結界」也不容易，要不要買些道具增強自己的實力？"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "嗯，我看看。"
+	        "shop"
 	    ]
 	}
 ]

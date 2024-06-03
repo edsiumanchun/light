@@ -43,6 +43,8 @@ public static class DataHolder
     public static List<Sprite> plateH; // List to store the loaded assets
     public static List<Sprite> plateV; // List to store the loaded assets
     public static List<Sprite> backgrounds; // List to store the loaded assets
+    public static List<Sprite> obstacles; // List to store the loaded assets
+    public static List<Sprite> walls; // List to store the loaded assets
     public static List<AudioClip> audios; // List to store the loaded assets
     // ui
     public static List<Sprite> gameButtonImages; // List to store the loaded assets
@@ -63,7 +65,8 @@ public static class DataHolder
 
     public static Vector2 GetBackgroundSize()
     {
-        Sprite sprite = DataHolder.backgrounds[0];
+        Debug.Log("?" + DataHolder.backgrounds.Count);
+        Sprite sprite = DataHolder.walls[0];
         return new Vector2(sprite.bounds.size.x, sprite.bounds.size.y * 4);
     }
 }

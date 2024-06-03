@@ -1,130 +1,135 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "event",
 	    "dialogue": [
-	        "你是什麼人！？"
+	        "bigghostgoneplayerback"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "leftPrefab": "rosia",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	    	"好漂亮的花火！",
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"瑪利亞，如果時間可以停留在這一刻，你說多好呢？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"姐姐，我有一件心事想告訴你..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"什麼心事？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "我在三歲的時侯患了奇怪腄瘤，是姐姐把我帶來醫院醫治..."
+	        "在手術過程中發生了醫療事故，令我身體癱瘓。",
+	        "老實說，我沒有因為失去活動能力而感到難過...",
+	        "每當姐姐為我冒險去找靈藥而失蹤數天時，才是我感到最難過的日子。",
+	    	"我很想...很想每年...有姐姐陪我看花火！"
 	    ]
 	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "name": "event",
 	    "dialogue": [
-	        "黑衣人沒有回答，只是從暗格中逃走了。"
+	        "rosiacry"
 	    ]
 	},
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "rosia",
 	    "dialogue": [
-	    	"（十之八九是放置黑暗結界的人）",
-	    	"（無論如何，醫院的餓鬼結界已經解除了...先跟羅西亞滙合再說吧！）"
+	    	"瑪利亞...你不會有事的，我們還有很多看花火的日子。"
 	    ]
 	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "name": "event",
 	    "dialogue": [
-	        "公主來到瑪利亞的病房，發現羅西亞等人不在，於是走到醫院外面查看..."
+	        "playerconsole"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"（蘿西亞好像在談心事，還是不打擾她們較好。）"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	    	"哇，好漂亮，很久沒看過花火了。",
-	    	"彷彿這一刻所有煩惱都拋諸腦海...如果時間可以停留在這一刻，你說多好呢？"
+	    	"羅西亞，我能感受到你的辛酸..."
+	    	"你為妹妹所付出的一切真令人佩服。"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	    	"瑪利亞..."
+	    	"不算什麼，公主過去所做的事情才真正令世人讚歎！"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
+	    "leftPrefab": "player",
+	    "rightPrefab": "maria",
 	    "dialogue": [
-	    	"姐姐...可以答應我一件事嗎？"
+	    	"姐姐，可以告訴我公主做了什麼了不起的事情嗎？"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "leftPrefab": "player",
+	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"即管說，我什麼也會答應你的！"
+	    	"當然可以啊...就在五年前，公主微服出巡...",
+	    	"她看見民間疾苦，生老病死，苦不堪言，身為公主的她感到非常自責...",
+	    	"於是公主放棄了皇室的身份，也放棄了榮華富貴...",
+	    	"到東盟國修行，尋找提升心靈層次的真理。"
 	    ]
 	},
 	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
+	    "name": "player",
 	    "dialogue": [
-	    	"真的嗎？我的要求很簡單的。",
-	    	"那次事故令我沒法控制身體，如果有一天，我連表達自己的能力也失去...",
-	    	"也記得要再次帶我來這裡看花火！"
+	    	"很慚愧...到現在我還是沒有任何成就..."
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	    	"瑪利亞...你不會有事的，我們還有很多看花火的日子。",
-	    	"除此之外...（盤起蛋糕）"
+	    	"等等！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "opencake"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
+	    "leftPrefab": "player",
+	    "rightPrefab": "maria",
 	    "dialogue": [
 	    	"是蛋糕！我還以為姐姐忘記了..."
 	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "鳴..."
-	    ]
-	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
-	    "dialogue": [
-	        "這時候，公主忍不住上前安慰。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞，想必你身心都很疲倦...能夠支撐到現在，實在不簡單。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	    	"公主，你終於回來了！"
-	    ]
 	},
 	{
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"姐姐，我不知還有沒有明天...但我也有一件心事想跟公主說..."
+	    	"姐姐，我不知還有沒有明天...",
+	    	"但我也有一件心事想跟公主說..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"有什麼心願即管說吧，我會盡力為你實現。"
+	    	""
 	    ]
 	},
 	{
@@ -262,7 +267,6 @@
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	    	"承你貴言了...",
 	    	"話說公主現在有什麼打算？"
@@ -270,22 +274,19 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"黑暗結界和餓鬼出沒的謎團一天未解決，我一天都還不放心。"	,
+	    	"餓鬼異常出沒的謎團還未解決，我還是放心不了。",
 	    	"我打算回王都找情報組打聽消息。"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	    	"最近我也察覺到鄰國有異動，很可能跟他們有關...公主千萬別掉以輕心。"
+	    	"最近東盟國的國師來了王都，這異動很可能跟他們有關..."
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"好的，我走了，你和瑪利亞要保重。"	
 	    ]
@@ -297,17 +298,16 @@
 	    	"嗯，祝公主一路順風！"
 	    ]
 	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "name": "event",
 	    "dialogue": [
-	        "公主到了王都...發現牢獄有不祥的餓鬼氣息。"
+	        "playergotocastle"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"又是餓鬼氣息，難道連王都也淪陷了？"
+	    	"是...是夢魘？"
 	    ]
 	}
 ]

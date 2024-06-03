@@ -23,6 +23,8 @@ public class Path
     public List<string> characters;
     public List<string> backgrounds;
     public List<string> decorations;
+    public List<string> obstacles;
+    public List<string> walls;
     public List<string> enemies;
     public List<string> audios;
 }
@@ -79,6 +81,8 @@ public class AssetData
             case "Object":
                 int formattedIndex = assetIndex % 10;
                 if (assetIndex / 30 >= 1) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.obstacles[formattedIndex];
+                } if (assetIndex / 40 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
                 } else if (assetIndex / 20 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
@@ -86,8 +90,7 @@ public class AssetData
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.enemies[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
-                } else 
-                {
+                } else {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
@@ -99,11 +102,9 @@ public class AssetData
             case "Background":
                 int index = gridArray0[0];
                 spriteRenderer.sprite = DataHolder.backgrounds[index];
-                spriteRenderer.drawMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
+                // spriteRenderer.drawMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
                 spriteRenderer.size = DataHolder.GetBackgroundSize();
-                if(index > 0) {
-                    newObject.transform.localScale = new Vector3(1.23f, 1.23f, 1f);
-                }
+                newObject.transform.localScale = new Vector3(1.23f, 1.23f, 1f);
                 break;
             case "Audio":
                 int audioIndex = gridArray0[0];
@@ -126,6 +127,7 @@ public class AssetData
                 newObject.AddComponent<PlayerController>();
                 newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
+                Debug.Log("???" + newObject.name);
                 break;
             case "Trigger":
                 newObject.AddComponent<GateTriggerController>(); // Create a new script GateTrigger and attach it to the object
@@ -183,9 +185,7 @@ public class AssetData
         if (name == "Background") {
             newObject = CreateObjectWithAssetIndex(0, z, "");
             int index = gridArray0[0];
-            if(index > 0){
-                newObject.transform.position = new Vector3(0, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
-            }
+            newObject.transform.position = new Vector3(0, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
             return;
         }
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
@@ -196,24 +196,26 @@ public class AssetData
             List<int> gridArray = gridArrays[gridIndex];
             for (int column = 0; column < gridArray.Count; column++)
             {
-                float startPositionX = gridArray.Count > 7 ? backgroundSize.x / 2f * 1.58f : backgroundSize.x / 2f;
+                bool isFirstPage = gridArray.Count > 7;
+                float startPositionX = isFirstPage ? backgroundSize.x / 2f * 1.58f : backgroundSize.x / 2f;
                 Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
                 string id = gridIndex.ToString() + column.ToString();
                 int cellValue = gridArray[column];
 
+                if(name.Contains("Object") && column == 0 && !isFirstPage) {
+                    Vector3 vector3 = new Vector3(0, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
+                    
+                    GameObject wall = new GameObject();
+                    wall.name = "Wall" + id;
+                    SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
+                    wall.transform.position = vector3;
+                }
                 if (cellValue == 0) { 
+                    // wall
                     continue;  
                 } else if (cellValue == 1 && name.Contains("Object")){
                     int playerPosition = CacheManager.GetCache(Cache.Exit.ToString());
-                    // Debug.Log(playerPosition);
-                    // Debug.Log(column);
-                    // Debug.Log(gridIndex);
-                    // Debug.Log(gridArrays.Count);
-                    // Debug.Log(gridArray.Count);
-                    // Debug.Log(playerPosition != 0 && column == gridArray.Count - 1);
-                    // Debug.Log(playerPosition != 2 && column == 0);
-                    // Debug.Log(playerPosition != 0 && gridIndex == 4);
-                    // Debug.Log(playerPosition != 2 && gridIndex == 0);
                     if(
                         (playerPosition == 0 && gridIndex >= 3) 
                         || (playerPosition == 2 && gridIndex < 3) ) {
@@ -247,12 +249,13 @@ public class AssetData
                 }
                 else if (name.Contains("Object"))
                 {
-                    if ((cellValue - 1 >= 40 && cellValue - 1 < 60) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+                    if ((cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
                         boxCollider.enabled = false;
                     } 
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     float newZ = newObject.name.Contains("Player") ? -9.3f : z * 0.01f - 1 ;
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
+                    
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

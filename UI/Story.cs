@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 public class StoryController : MonoBehaviour
 {
+    bool isWaitingEvent = false;
     public Texture2D leftGifTexture;
     public Texture2D rightGifTexture;
     public GameObject leftPrefab;
@@ -53,8 +54,9 @@ public class StoryController : MonoBehaviour
         Utils.MovePrefab(backgroundImage, 0, 0.5f);
         RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
         dialogueText = Utils.CreateText(
-            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 7.0f / 8.8f),
+            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 6.8f / 8.8f),
             imageRectTransform.localPosition, canvasObject.transform, TextAnchor.UpperLeft);
+        
 
         dialoguePanel = new GameObject("DialoguePanel");
         // parent
@@ -165,6 +167,7 @@ public class StoryController : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if(isWaitingEvent) return;
         if (isTyping)
         {
             // Finish typing the current sentence immediately
@@ -295,14 +298,28 @@ public class StoryController : MonoBehaviour
             bgmAudioSource.clip = bgmClip;
             bgmAudioSource.Play();
         }
-        
-        sentences.Clear();
-        foreach (string sentence in story.dialogue)
-        {
-            sentences.Enqueue(sentence);
+        int i = 0;
+        if(story.name == "event") {
+            StartCoroutine(ShowEvent(story));
+        } else {
+            foreach (string sentence in story.dialogue)
+            {
+                if(i == 0){
+                    sentences.Enqueue(story.name + "\n" + sentence);
+                } else {
+                    sentences.Enqueue(sentence);
+                }
+                i++;
+            }
+            DisplayNextSentence();
         }
-
-        // Start displaying the first sentence
+    }
+    IEnumerator ShowEvent(StoryData story)
+    {
+        isWaitingEvent = true;
+        int time = EventController.ShowEvent(story.dialogue[0]);
+        yield return new WaitForSeconds(time);
+        isWaitingEvent = false;
         DisplayNextSentence();
     }
 }

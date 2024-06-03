@@ -1,125 +1,118 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "event",
 	    "dialogue": [
-	        "既然已經得到「重生藥」，先會去醫院看看吧。"
+	        "playergotohospital"
 	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
+	},{
+	    "name": "nurse",
+	    "leftPrefab": "player",
+	    "righttPrefab": "nurse",
 	    "dialogue": [
-	        "茶茶公主來到醫院"
+	    	"這裡是醫院嗎？"
+	    ]
+	},{
+	    "name": "nurse",
+	    "dialogue": [
+	    	"公主，是王都的情報組把你送來醫院的。",
+	    	"你所受的只是皮外傷，幾天後就會康復。",
+	    	"可是，羅西亞就慘了...瑪利亞剛剛過身了..."
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"羅西亞，發生什麼事情？"
+	    	"不會吧？我馬上去看看羅西亞！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playergotorosia"
 	    ]
 	},{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "leftPrefab": "player",
+	    "righttPrefab": "rosia",
 	    "dialogue": [
-	        "瑪利亞...瑪利亞...",
-	        "死了...",
+	        "妹妹..."
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"什麼..."
+	    	"瑪利亞現在很安詳...我們讓她安息吧..."
 	    ]
 	},{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "妹妹! 都是我不好...我還有話想跟你說啊..."
+	        "嗯...我想靜一下..."
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"羅西亞，想哭就哭吧..."
+	    	"羅西亞..."
 	    ]
 	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "event",
 	    "dialogue": [
-	        "公主，別管我了，讓我靜一下吧。",
-	        "(黯然離去)"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞！"
+	        "rosialeave"
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
+	    "leftPrefab": "player",
+	    "righttPrefab": "maria",
 	    "dialogue": [
 	        "公主..."
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"瑪利亞？你不是已經病逝嗎？"
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	        "對，我已經死了。",
-	        "大概是因為公主是與眾不同，我的靈魂才可以跟你同步。"
+	        "對，我已經死了。"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"瑪利亞，老實說，我也很難過，但這刻最痛苦的肯定是你的姐姐啊。",
-	    	"世間最苦, 不過別離...生離，苦，死別，傷...",
+	    	"那麼...這是..."
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	        "大概是因為公主有到東盟國修行，我的靈魂才可以跟公主同步。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"世間最苦，不過別離...真不敢想像你姐姐現在有多難受...",
 	    ]
 	},{
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	        "公主，人海茫茫中，有幾多人只是過客，能跟你相識確實是一場緣份。",
-	        "如果可以...希望在轉生前，公主能夠答應我一個要求..."
+	        "姐姐表面看似堅強，但長期為了我的事情而奔波的她...",
+	        "內心早已經接近崩毀邊緣。",
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"沒問題，定必為妳守諾一生！"
+	    	"真令人擔心，我馬上去看看你姐姐吧。"
 	    ]
 	},{
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	        "就是要好好保護我的姐姐..."
-	        "雖然她表面看似堅強，因爲我的事情...她的內心早已經接近崩毀邊緣。"
+	        "距離轉生前還有一段時間...",
+	        "如公主不嫌棄，請讓我陪同公主去找姐姐吧。"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"瑪利亞真的是好孩子...到了這時候還在擔心姐姐。"
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	        "距離轉生前還有一段時間，如公主不嫌棄，請讓我引導公主去找到姐姐。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"好的，靠你了。"
+	    	"好的。"
 	    ]
 	},
 	{
@@ -127,7 +120,11 @@
 	    "centerPrefab": "",
 	    "dialogue": [
 	        "瑪利亞加入隊伍，在戰鬥中瑪利亞能夠每秒治愈公主5點血量。"
-	        "茶茶公主來到羅西亞的家。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playergoforrosia"
 	    ]
 	},{
 	    "name": "maria",
@@ -136,83 +133,62 @@
 	    	"姐姐！"
 	    ]
 	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "嗚嗚嗚...",
-	    ]
-	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"看來你的姐姐已經失去了理性..."
+	    	"瑪利亞，我們該如何是好？"
 	    ]
 	},{
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"身為靈體的我能夠辦到的事情很有限，現在能救姐姐的只有公主了。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"瑪利亞，你姐姐對我有恩，我願獻上一切把她從黒暗中帶回來！"
+	    	"公主只要用最真誠的心去為姐姐祈福就行。"
 	    ]
 	},{
 	    "name": "maria",
 	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"很好，公主你只需要對我姐姐使用淨化術，把善念傳到她內心的深處就行。"
+	    	"我試試吧。",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiadelusion"
+	    ]
+	},{
+	    "name": "rosia",
+	    "leftPrefab": "player",
+	    "righttPrefab": "rosia",
+	    "dialogue": [
+	        "我的一生...真是充滿...苦難...",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"好，交給我吧",
-	    ]
-	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
-	    "dialogue": [
-	    	"羅西亞在神志不清的時候看到各種幻像。"
+	    	"姐姐，這一切都是幻境...",
 	    ]
 	},{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "妹妹...唉...",
+	        "你是誰？別假扮我的妹妹！我的妹妹已經死了！",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"姐姐，如果你想見我最後一面，就別再被幻境所迷惑了。",
+	    	"沒有生死，靈魂不滅...",
+	    	"別被假象所蒙騙，破迷啟悟，尋找清淨之藏...",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiathink"
 	    ]
 	},{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "你不是我的妹妹！我的妹妹已經死了！",
-	    ]
-	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	    	"姐姐，請過來這邊找我，我和公主...",
-	    ]
-	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
-	    "dialogue": [
-	    	"聲音被中斷了。",
-	    	"羅西亞沉思片刻，最終下定決心..."
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "無論是真是假，先相信也無妨...反正也沒什麼可失去了...",
+	        "尋找清淨之藏？",
 	    ]
 	}
 ]

@@ -25,36 +25,40 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"對，這是能令讓餓鬼享受温飽後自我解脫的神奇力量。"
+	    	"對，這是能令讓餓鬼享受温飽後自我解脫的天罡淨魔術。"
 	    ]
 	},{
 	    "name": "sage",
 	    "dialogue": [
 	        "實在令老夫大開眼界，沒想到有生之年能看到這失傳已久的絕技。"
 	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "最近各地的餓鬼都莫名其妙地活躍起來，老伯伯還是別逗留在這裡較好..."
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	    	"老夫...老夫要找跟我失散多年的外孫..."
+	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "earthquake"
+	        "playerpoint"
 	    ]
-	},{
+	},
+	{
 	    "name": "player",
 	    "dialogue": [
-	    	"老伯伯，這裡很危險，你還是別逗留在這裡了..."
+	        "那麼老伯伯到那邊找找看吧，那邊相對較安全。"
 	    ]
 	},
 	{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
-	        "好...好...老夫也要去尋找孫女，先行離去，就此別過！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "有緑再見了！"
+	        "好的，那麼老夫先告辭了，有縁再見！"
 	    ]
 	},{
 	    "name": "event",

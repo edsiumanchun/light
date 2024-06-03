@@ -1,186 +1,148 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "event",
+	   	"leftPrefab": "player",
 	    "dialogue": [
-	        "還差一點就成功了..."
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
-	    "dialogue": [
-	        "(公主受了致命傷，無法再施法）"
+	        "playerhurt"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "（倒在地上）"
-	        "完了..."
+	        "沒希望了..."
 	    ]
 	},
 	{
-	    "name": "narrator",
+	    "name": "event",
 	    "dialogue": [
-	        "(餓鬼突然消失）"
+	        "ghostgonerosiacome"
 	    ]
 	},
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
 	    "dialogue": [
-	        "(又是這樣子消失...是天意要我活下去嗎？)"
+	        "公主！"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playersleep"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "（急忙上前）公主！"
+	        "公主，你安好嗎？"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "（努力恢復意識）是你嗎？"
+	        "已經恢復了不少，辛苦你把我帶來醫院。"
 	    ]
 	},
 	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "event",
 	    "dialogue": [
-	        "我恢復了意識後就非常不放心，所以立刻前來尋找公主。",
-	        "公主，快把「重生藥」喝下把。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "為何你還有「重生藥」？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "我擔心公主出事，以防萬一剛剛只喝了半瓶「重生藥」。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "（喝下重生藥水）嗯...（逐漸陷入沉睡）."
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "當公主醒來時，發現自己已經身在醫院。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "公主，太好了，你終於醒來了。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "羅西亞，是你把我背過來嗎？辛苦了。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "不辛苦，公主。你是我的救命恩人，這點小事不值一提。",
-	        "對了，讓我介紹一下，這是我的妹妹瑪麗亞。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "你的妹妹發生了什麼事？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "是這樣的，我的妹妹三歲的時侯患了奇怪腄瘤，於是前來醫院求醫..."
-	        "卻不幸遇上醫療事故，令她身體癱瘓，現在要依賴人工心臟才可以呼吸。"
-	        "為了不讓你們擔心，所以一直沒有將妹妹的事掛在嘴邊...",
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "羅西亞，你總是先為別人著想，卻忽略了自己的感受..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "哈哈，習慣了，大概是跟公主相處久了，便不知不覺變得跟公主一樣了。"
+	        "mariacome"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
+	   	"leftPrefab": "rosia",
+	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "（害羞地）你好，茶茶公主。我今年八歲了。多謝你救了姐姐。"
+	        "是辛苦了公主把失蹤的姐姐帶回來才對啊。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "瑪利亞，很抱歉...",
+	        "今次還是找不到醫治癱瘓症的靈藥？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "不要緊，只要姐姐平安回來就行了...",
+	        "聽醫生叔叔說...癱瘓症是沒法醫治的",
+	        "姐姐你就別再為我去冒險去找靈藥，好嗎？"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiacry"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	        "若不是那次醫療事故..."
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	        "已成定局，無需感到難過。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "不用客氣，瑪麗亞...你要堅強地活下去，才不會浪費你姐姐的一番苦心。"
+	        "瑪利亞，你才八歲就這麼懂事，真是難得。"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	        "對啊，羅西亞姐姐是這世上對我最好的人。我會努力的。"
+	        "羅西亞是這世上最好的姐姐，我不能像小孩一樣讓她煩惱啊。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "nursecome"
 	    ]
 	},
 	{
 	    "name": "nurse",
-	    "centerPrefab": "",
+	   	"leftPrefab": "nurse"
 	    "dialogue": [
-	        "（走進房間）瑪麗亞，差不多該進行手術了。"
+	        "瑪麗亞，差不多該進行手術了。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "mariascare"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
+	   	"leftPrefab": "rosia",
+	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "(緊緊拉著茶茶公主的手）姐姐，我有點害怕..."
+	        "姐姐，我有點害怕..."
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "不要怕，瑪麗亞...姐姐會一直陪伴著你，你不會孤單的。"
+	        "不要怕，瑪麗亞...姐姐會一直在這裡陪伴著你的..."
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	        "真的嗎？姐姐不會騙我吧？"
 	    ]
@@ -189,56 +151,53 @@
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "姐姐從來不會騙你的..."
+	        "姐姐從來不會騙你..."
 	    ]
 	},
 	{
-	    "name": "nurse",
-	    "centerPrefab": "",
+	    "name": "maria",
 	    "dialogue": [
-	        "現在該進去見醫生了，你們在這裡稍等片刻吧。"
+	        "嗯..."
 	    ]
 	},
 	{
-	    "name": "narrator",
-	    "centerPrefab": "",
+	    "name": "event",
 	    "dialogue": [
-	        "（護士陪同瑪麗亞進入病房，茶茶公主突然感到不祥的氣息）"
+	        "marialeaveplayerturn"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
 	    "dialogue": [
 	        "發生什麼事？"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "地下室有餓鬼的氣息...羅西亞，你在這裡等候瑪麗亞，我到下面查看一下。"
+	        "地下室有餓鬼的氣息...我去查看一下。",
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "你受了重傷，醫生建議你多休息，要不要我代你去？"
+	        "你受了重傷，醫生建議你多點休息，還是我代你去吧！"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "你留在這裡就好，瑪麗亞現在最需要的是你的陪伴...我很快就會回來。"
+	    	"不必擔心，我很快就會回來。"
+	        "何況...瑪利亞出來後一定很想見到你。"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "好吧。"
+	        "那麼，公主萬事要小心一點。"
 	    ]
 	}
 ]

@@ -59,6 +59,7 @@ public class Utils : MonoBehaviour
         text.fontSize = 23;
         text.color = Color.white;
         text.alignment = textAnchor;
+        text.lineSpacing = 1.3f;
         Outline outline = textObj.AddComponent<Outline>();
         outline.effectColor = Color.black;
         return textObj;
@@ -259,6 +260,15 @@ public class Utils : MonoBehaviour
             }
         }
         return temp;
+    }
+
+    public static GameObject LoadPrefabAndInstantObject(string folder, string name, Vector3 vector3){
+        List<string> prefabPaths = new List<string>((new[] {name}));
+        GameObject o = (GameObject)LoadPrefabs(folder, prefabPaths)[0];
+        GameObject o2 = Utils.InstantiateObject(o);
+        o2.transform.localPosition = vector3;
+        o2.name = name;
+        return o2;
     }
 
     public static void AddEffect(GameObject GO, string effectName) {

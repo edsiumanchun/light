@@ -3,52 +3,61 @@
 	
 	{
 	    "name": "ghost",
-	    "centerPrefab": "ghost",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "ghost",
 	    "dialogue": [
 	        "這感覺很温暖。你對我做了什麼？"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我只是用淨化術把你內心的戾氣淨化。"
+	        "我只是把你內心的戾氣淨化而己。"
 	    ]
 	},
 	{
 	    "name": "ghost",
-	    "centerPrefab": "ghost",
 	    "dialogue": [
 	        "除了煩惱盡失外，我還能感受到温飽。",
 	        "我已經有一個月沒吃飯，多謝你！"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "竟然一個月沒吃飯...這是你們餓鬼的宿命嗎？"
 	    ]
 	},
 	{
 	    "name": "ghost",
-	    "centerPrefab": "ghost",
 	    "dialogue": [
 	        "算是吧，我們是來贖罪的。",
 	        "姐姐，幸好有你，我才不會墮入萬劫不復之淵。"
 	    ]
-	},
-	{
-	    "name": "narrator",
-	    "centerPrefab": "",
+	},{
+	    "name": "player",
 	    "dialogue": [
-	        "餓鬼消失了..."
+	        "不用客氣。"
+	        "話說...你知道是誰把這兩枚令餓鬼變得暴戾的囚魂石放在這裡嗎？"
 	    ]
 	},
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "ghost",
 	    "dialogue": [
-	        "(真的是不可思議！教我「淨化術」的老伯伯究竟是何方神聖？)",
-	        "(還有，每次淨化的餓鬼都會消失，是巧合嗎？)"
+	        "是一位來自東方的長髮少年。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "莫非是他？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostdisappear"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "看來餓鬼小孩轉生的時間到了。"
 	    ]
 	}
 ]

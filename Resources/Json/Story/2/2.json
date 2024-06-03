@@ -3,55 +3,49 @@
 	
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "為何這裡變成這樣？"
+	        "我離開了五年後，這裡發生了什麼事？"
 	    ]
 	},
 	{
 	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
 	    "dialogue": [
-	        "公主，是這樣的。東盟國家派了大使與國王進行談判和解",
-	        "這可是近年來兩國關係緊張局勢的一大突破。"
+	        "公主，是這樣的...我國最近和東盟國積極修好關係。",
+	        "東盟國的國師在會議廳跟國王有說有笑，還說什麼要把餓鬼封印和殲滅。",
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "父王一直很自責八年前沒有能力阻止國家對東盟國的入侵。",
-	        "如今有這個破冰的機會，他肯定不惜一切代價也要達成協議。",
+	        "如今有了破冰的機會，他肯定不惜一切代價也要達成協議。",
 	    ]
 	},
 	{
 	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
 	    "dialogue": [
-	        "對，會議完結後，他們便去了聖地進行儀式，然後這裡就有很多餓鬼出沒。",
-	        "我不敢說這些都跟東盟國有關，但這未免太巧合。"
+	        "對的，當會議完結後，他們便去了聖地進行儀式...",
+	        "東盟國的國師就在這裡設置囚魂石，然後這裡就出現了很多餓鬼。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "這裡沒有人受傷吧？",
 	    ]
 	},
 	{
 	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
 	    "dialogue": [
-	        "公主有心了，只是現在王都四周都是餓鬼，我們也沒有能力把餓鬼退治。",
-	        "還好餓鬼不會主動攻擊我們。"
+	        "我們有良好的裝備在身，餓鬼暫時沒有主動攻擊我們。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "嗯，無論如何，先把這裡回復原狀再說吧。",
+	        "那麼，我去看看其他人的狀況。",
 	    ]
 	}
 ]

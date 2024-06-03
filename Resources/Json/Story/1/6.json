@@ -1,46 +1,51 @@
 {
 	"storyArray" : [
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "ghostkid",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "小孩子，需要幫忙嗎？"
+	        "我很餓...",
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "你想得到解脫嗎？"
 	    ]
 	},
 	{
 	    "name": "ghostkid",
 	    "centerPrefab": "ghostkid",
 	    "dialogue": [
-	        "我在醫院已經等了半年，母親為了養活我，在醫院外尋找食物...",
-	        "大概是因為母親外出後，有很多力氣大的餓鬼在途中阻止我和她見面，至今母親還沒回來。",
-	        "唉...雖說此生要來贖罪，但怎說也不願把母親牽連在內..."
+	        "想啊！可是...我不能把母親掉低在這裡。",
+	        "如果你能把我帶到母親的身邊，我會非常感激你。"
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"要不要我先用淨化術來緩解你現在的痛苦？"
+	        "那麼，你的母親在哪裡？"
 	    ]
 	},
 	{
 	    "name": "ghostkid",
 	    "centerPrefab": "ghostkid",
 	    "dialogue": [
-	    	"不必了，只要你把我帶到母親的身邊就可以。"
-
+	        "本來母親跟我在一起，她為了不再讓我涯餓一年前出外尋找食物...",
+	        "可是，到現在母親還沒回來...",
 	    ]
 	},{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "好的，那麼請你跟隨著我吧。"
+	    	"好吧，那麼我們一起找你母親吧。"
 	    ]
 	},
 	{
 	    "name": "ghostkid",
 	    "centerPrefab": "ghostkid",
 	    "dialogue": [
-	    	"感謝你，人類。"
+	    	"這裡很多力氣大的餓鬼在途中阻擾我出外找母親，姐姐要小心一點。"
 	    ]
 	}
 ]

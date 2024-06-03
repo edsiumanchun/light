@@ -1,24 +1,34 @@
 {
 "storyArray" : [
 	{
-	    "name": "ghostkid",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "sage",
+	    "name": "event",
 	    "dialogue": [
-	        "（見到母親後痛哭）媽媽，我很掛念你..."
+	        "ghostkidcry"
+	    ]
+	},{
+	    "name": "ghostkid",
+	   	"leftPrefab": "ghostkid",
+	    "dialogue": [
+	        "媽媽，我很掛念你..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostmumhug"
 	    ]
 	},
 	{
 	    "name": "ghostmum",
-	    "centerPrefab": "ghostmum",
+	   	"leftPrefab": "ghostkid",
+	    "rightPrefab": "ghostmum",
 	    "dialogue": [
-	        "（擁抱餓鬼）兒子，要你苦等這麼久。",
-	        "我已經很努力...但我實在太飢餓，無力跟那些力氣大的餓鬼爭取食物。",
-	        "好不容易得到一口不淨的食物，卻被其他餓鬼阻攔，不許我回來把食物分享給你...真的對不起。"
+	        "兒子，讓你苦等了這麼久，我簡直是心如刀割。",
+	        "這些年來，我已經盡了力去找食物...",
+	        "但每當我得到一些食物，食物便會化為灰燼...",
+	        "花了半年時間才得到一口不淨之食...卻被其他餓鬼阻攔，不讓我回來找你。"
 	    ]
 	},{
 	    "name": "ghostkid",
-	    "centerPrefab": "ghostkid",
 	    "dialogue": [
 	    	"不要緊...對我來說，能再次見到母親已經是很幸福了。"
 	    ]
@@ -27,7 +37,12 @@
 	    "name": "ghostmum",
 	    "centerPrefab": "ghostmum",
 	    "dialogue": [
-	    	"對了，你餓了，來吧。我從垃圾桶找到些吃剩的渣滓，快點來吃吧。"
+	    	"對了，我從垃圾桶找到些吃剩的渣滓，快點來吃吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostseat"
 	    ]
 	},{
 	    "name": "ghostkid",
@@ -61,7 +76,8 @@
 	    "name": "ghostmum",
 	    "centerPrefab": "ghostmum",
 	    "dialogue": [
-	    	"恩人真的是宅心仁厚。世人見到我們落得如此下場，只會冷嘲熱諷。",
+	    	"恩人真的是宅心仁厚...",
+	    	"世人見到我們落得如此下場，只會冷嘲熱諷。",
 	    	"不用說出手幫助，有多少人會像恩人一樣能夠設身處地，理解我們的苦況？"
 	    ]
 	},{
@@ -71,17 +87,16 @@
 	    	"世間雖苦，也會偶爾出現照耀我們的希望...多謝你，姐姐。"
 	    ]
 	},{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "name": "event",
 	    "dialogue": [
-	        "（兩人臉上帶著滿足感，然後消失了）"
+	        "ghostsgone"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"看來你們靠自己淨化了自己的心靈。希望你們能夠早日得到解脫。"
+	    	"看來餓鬼母子靠自己得到解脫了。"
 	    ]
 	}
 ]

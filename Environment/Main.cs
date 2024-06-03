@@ -95,11 +95,13 @@ public class MainController : MonoBehaviour
         if (jsonFile != null)
         {
             Path paths = assetsData.paths;
+            DataHolder.walls = LoadSprites("Walls", paths.walls);
             DataHolder.audios = LoadAudios("Audios", paths.audios);
             DataHolder.plateH = LoadSprites("PlateH", paths.plateH);
             DataHolder.plateV = LoadSprites("PlateV", paths.plateV);
             DataHolder.items = LoadSprites("Items", paths.items);
             DataHolder.decorations = LoadSprites("Decorations", paths.decorations);
+            DataHolder.obstacles = LoadSprites("Obstacles", paths.obstacles);
             DataHolder.characters = LoadPrefabs("Characters", paths.characters);
             DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
