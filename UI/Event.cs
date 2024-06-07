@@ -7,21 +7,126 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 public class EventController : MonoBehaviour
 {
-    public static Vector3 StickToPlayer(Vector3 vector3) {
-
-        GameObject player = GameObject.Find("Player");
-        return new Vector3(player.transform.position.x - vector3.x, player.transform.position.y - vector3.y, vector3.z);
+    public static Vector3 GetVector(string target,Vector3 vector3) { 
+        GameObject gameObject = GameObject.Find(target);
+        return new Vector3(gameObject.transform.position.x - vector3.x, gameObject.transform.position.y - vector3.y, vector3.z);
     }
-    public static int ShowEvent(string name)
+
+    public static void TurnAround(GameObject gameObject){
+        Transform transform = gameObject.transform;
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+    public static float ShowEvent(string name)
     { 
+        GameObject player = GameObject.Find("Player");
+        GameObject story = GameObject.Find("Story");
+        GameObject boss = GameObject.Find("Boss");
+        GameObject rosia = GameObject.Find("Rosia");
+        Vector3 vector3;
+        GameObject gameObject;
         switch(name)
         {
+            // disappear
+            case "bossdisappear":
+                boss.GetComponent<EnemyController>().Die();
+                return 1f;
+            case "storydisappear":
+                Utils.Fade(story);
+                return 0.1f;
+            // shop
+            case "shop":
+                ShopController shopController = Camera.main.gameObject.GetComponent<ShopController>();
+                shopController.canvasObject.SetActive(true);
+                return 0.1f;
+            // animation
+            case "playerdown":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
+                return 1;
+            case "playerhurt":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Hurt);
+                return 1;
+            case "playerpoint":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Point);
+                return 0.3f;
+            case "playerturn":
+                TurnAround(player);
+                return 0.1f;
+            case "storyturn":
+                TurnAround(story);
+                return 0.1f;
+            case "playeridle":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+                return 1;
+            case "playerkneel":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Kneel);
+                return 1;
+            case "rosiawake":
+                rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                return 1f;
+            case "storywake":
+                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                return 1f;
+            case "rosiadown":
+                rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
+                return 1f;
+            case "rosiadcry":
+                rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
+                return 1f;
+            case "ghostkidcry":
+                boss.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
+                return 1f;
+            case "storyleave":
+                TurnAround(story);
+                vector3 = GetVector("38_PlateV_Space", new Vector3(0.8f,0f,1f));
+                vector3 = new Vector3(vector3.x, story.transform.position.y, vector3.z);
+                story.transform.DOMove(vector3, 3);
+                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                return 3;
+            // move
             case "ghostshow":
-                Vector3 vector3 = StickToPlayer(new Vector3(-0.4f,0.4f,1f));
-                GameObject gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
-                Renderer renderer = gameObject.GetComponent<Renderer>();
-                renderer.sortingOrder = -1;
-                return 10;
+                vector3 = GetVector("Player",new Vector3(1.3f,0.4f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
+                gameObject.AddComponent<EnemyController>();
+                gameObject.name = "Boss";
+                gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
+                return 1.8f;
+            case "playerattack":
+                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
+                Utils.AddEffect(boss, "purify");
+                Utils.AddEffect(player, "purify");
+                return 1.8f;
+            case "rosiacome":
+                vector3 = GetVector("Player",new Vector3(0.8f,0.4f,1f));
+                rosia = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
+                rosia.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
+                return 1;
+            case "nursecome":
+                GameObject nurse = GameObject.Find("Nurse");
+                nurse.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
+                nurse.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                return 1f;
+            case "chefcome":
+                story.transform.DOMove(GetVector("Cow", new Vector3(0.8f,0f,1f)), 1);
+                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                return 1f;
+            case "mariascare":
+                return 1f;
+            case "marialeave":
+                TurnAround(story);
+                GameObject maria = GameObject.Find("Maria");
+                maria.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
+                return 1f;
+            case "ghostmumhug":
+                return 1f;
+            case "ghostseat":
+                return 1f;
+            case "ghostsleave":
+                boss.GetComponent<EnemyController>().Die();
+                return 1f;
+            case "switchscene":
+                MainController.LoadFloorAssetsFromJson(0, "HomeScene");
+                return 1f;
         }
         return 0;
     }

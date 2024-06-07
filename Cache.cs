@@ -20,7 +20,9 @@ public enum Cache
     HP = 9,
     Damage = 10,
     Defend = 11,
-    HPMax = 12
+    HPMax = 12,
+    ClearStage = 13,
+    ClearFloor = 14
 }
 
 public static class CacheUsage
@@ -76,7 +78,38 @@ public static class CacheUsage
 
 public static class CacheManager
 {
+    public static bool ChangeCoin(int amount){
+        int coin = CacheManager.GetCache(Cache.Coin.ToString());
+        if(coin - amount <= 0) {
+            return false;
+        } else {
+            int margin = amount >= 0 ? 9999999 : 0;
+            CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
+            return true;
+        }
+    }
+    public static bool ChangeHP(int amount){
+        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        int hpMax = CacheManager.GetCache(Cache.HP.ToString());
+        if(hp - amount <= 0) {
+            return false;
+        } else {
+            int margin = amount >= 0 ? hpMax : 0;
+            CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
+            return true;
+        }
+    }
 
+    public static bool ChangeKey(string cacheKey, int amount){
+        int key = CacheManager.GetCache(cacheKey);
+        if(key - amount <= 0) {
+            return false;
+        } else {
+            int margin = amount >= 0 ? 999 : 0;
+            CacheManager.ChangeCache(cacheKey, amount, margin);
+            return true;
+        }
+    }
     public static string ConvertListToJson(List<string> stringList)
     {
         Wrapper wrapper = new Wrapper { List = stringList };
@@ -89,32 +122,10 @@ public static class CacheManager
         return wrapper.List;
     }
 
-    public static void IncreaseCache(string key, int amount)
+    public static void ChangeCache(string key, int amount, int maxCache)
     {
         int currentCache = GetCache(key);
         int newCache = currentCache + amount;
-        SetCache(key, newCache);
-    }
-
-    public static void DecreaseCache(string key, int amount)
-    {
-        int currentCache = GetCache(key);
-        int newCache = currentCache - amount;
-        SetCache(key, newCache);
-    }
-
-    public static void IncreaseCache(string key, int amount, int maxCache)
-    {
-        int currentCache = GetCache(key);
-        int newCache = currentCache + amount;
-        newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
-        SetCache(key, newCache);
-    }
-
-    public static void DecreaseCache(string key, int amount, int maxCache)
-    {
-        int currentCache = GetCache(key);
-        int newCache = currentCache - amount;
         newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
         SetCache(key, newCache);
     }
@@ -123,11 +134,32 @@ public static class CacheManager
     {
         int defaultValue = 0;
         if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString()){
-            defaultValue = 10;
+            defaultValue = 5;
         } else if (key == Cache.Defend.ToString() || key == Cache.Damage.ToString()){
             defaultValue = 1;
+        } else if (key == Cache.ClearFloor.ToString() || key == Cache.ClearStage.ToString()){
+            defaultValue = -1;
         }
         return PlayerPrefs.GetInt(key, defaultValue);
+    }
+
+    public static void SetClearFloor(){
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        CacheManager.SetCache(Cache.ClearFloor.ToString(),currentFloor);
+        CacheManager.SetCache(Cache.ClearStage.ToString(),currentStage);
+    }
+
+    public static bool IsCleared() {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        int clearFloor = CacheManager.GetCache(Cache.ClearFloor.ToString());
+        int clearStage = CacheManager.GetCache(Cache.ClearStage.ToString());
+        if(clearFloor >= currentFloor && clearStage >= currentStage) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void SetCache(string key, int value)

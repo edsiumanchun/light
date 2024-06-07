@@ -2,40 +2,34 @@
 "storyArray" : [
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "老前輩，竟然在這裡遇見你...很感謝你之前把「淨化術」傳授給我。",
 	        "但我心中一直有個疑問，為何「淨化術」有如此強大的力量？"
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 761	        "淨化術本質是施食法，其核心除了讓餓鬼飽滿，甚至能令餓鬼解脫。",
 	        "其威力遠超出我們的想像，這種善念甚至乎能夠對人類起作用。",
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "原來是這樣，這就能解釋為何每次施法後餓鬼都消失了。"
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "沒有其他事的話，老夫要去找家人了。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"還沒有找到嗎？如果可以的話，真想能幫上老伯伯的忙..."
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "恐怕不容易...我和孫女已失散八年，就算是現在我也未必能靠她的容貌辨認出來了。",
 	        "嵐兒的下落未知，我只能靠這隻兔子了，這是我們之間的約定...",
@@ -44,39 +38,33 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"這兔子真的很有靈性。"
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "大概是因為那時侯只有嵐兒每天悉心照顧牠，牠才會銘記在心。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"老伯伯的毅力令我很佩服，若然你的孫女知道，也必定會感到非常欣慰。"
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "就算走到天涯海角，我也要找到嵐兒，直到有一天我雙腿沒法走動。"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"那麼不打擾了，我也有要事在身，先行吿辭了。"
 	    ]
 	},{
 	    "name": "sage",
-	    "centerPrefab": "sage",
 	    "dialogue": [
 	        "嗯，有緣再見。"
 	    ]

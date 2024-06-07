@@ -42,20 +42,20 @@ public class SettingsController : MonoBehaviour
 
         soundVolumeGO = Utils.CreateSelectionBar("Sound", new Vector2(xPos, yPos), canvasObject.transform, () =>
         {
-            CacheManager.DecreaseCache("SoundVolume", 1, 1);
+            CacheManager.ChangeCache("SoundVolume", -1, 1);
             UpdateSoundVolumeText();
         }, () => {
-            CacheManager.IncreaseCache("SoundVolume", 1, 5);
+            CacheManager.ChangeCache("SoundVolume", 1, 5);
             UpdateSoundVolumeText();
         });
 
         bgmVolumeGO = Utils.CreateSelectionBar("BGM", new Vector2(xPos, yPos + space), canvasObject.transform, () =>
         {
-            CacheManager.DecreaseCache("BGMVolume", 1, 1);
+            CacheManager.ChangeCache("BGMVolume", -1, 1);
             UpdateBGMVolumeText();
         }, () =>
         {
-            CacheManager.IncreaseCache("BGMVolume", 1, 5);
+            CacheManager.ChangeCache("BGMVolume", 1, 5);
             UpdateBGMVolumeText();
         });
 

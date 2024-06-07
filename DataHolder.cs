@@ -45,6 +45,7 @@ public static class DataHolder
     public static List<Sprite> backgrounds; // List to store the loaded assets
     public static List<Sprite> obstacles; // List to store the loaded assets
     public static List<Sprite> walls; // List to store the loaded assets
+    public static List<Sprite> products; // List to store the loaded assets
     public static List<AudioClip> audios; // List to store the loaded assets
     // ui
     public static List<Sprite> gameButtonImages; // List to store the loaded assets
@@ -62,6 +63,7 @@ public static class DataHolder
 
 
     public static List<EnemyData> enemyDataList;
+    public static List<ProductData> productsDataList; // List to store the loaded assets
 
     public static Vector2 GetBackgroundSize()
     {

@@ -3,7 +3,8 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "bigghostgoneplayerback"
+	        "bossdisappear",
+	        "switchscene"
 	    ]
 	},
 	{

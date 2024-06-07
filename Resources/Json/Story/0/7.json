@@ -17,7 +17,8 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "saverosia",
+	        "playerkneel",
+	        "rosiawake"
 	    ]
 	},
 	{
@@ -66,7 +67,7 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "rosiasleep",
+	        "rosiadown",
 	    ]
 	},
 	{

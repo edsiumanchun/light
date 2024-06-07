@@ -52,7 +52,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostdisappear"
+	        "bossdisappear"
 	    ]
 	},{
 	    "name": "player",

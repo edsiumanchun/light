@@ -142,6 +142,7 @@ public class GameUIController : MonoBehaviour
         gameButton.SetActive(false);
     }
     public void showGameButton(int index) {
+        if(gameButton == null) return;
         gameButton.SetActive(true);
         buttonImage.GetComponent<Image>().sprite = buttonImages[index];
     }
@@ -172,7 +173,6 @@ public class GameUIController : MonoBehaviour
     {
         float hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
         float hp = CacheManager.GetCache(Cache.HP.ToString());
-        Debug.Log(hp);
         foreach (Transform child in playerHPBar.transform) {
             if (child.name == "HPBar"){
                 child.transform.localScale = new Vector3(hp / hpMax, 1f, 1f);

@@ -45,3 +45,18 @@ public class StoryData
     public string bgmPath;
     public string[] dialogue;
 }
+
+
+
+[System.Serializable]
+public class ProductDataWrapper
+{
+    public List<ProductData> products;
+}
+
+[System.Serializable]
+public class ProductData
+{
+    public int coin;
+    public string name;
+}

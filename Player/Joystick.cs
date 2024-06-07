@@ -184,14 +184,12 @@ public class JoystickController : MonoBehaviour, IDragHandler
         while (isFighting)
         {
             yield return new WaitForSeconds(1f); // Wait for 1 second
-            int hpCount = CacheManager.GetCache(Cache.HP.ToString());
-            CacheManager.IncreaseCache(Cache.HP.ToString(), hpCount + 5);
+            CacheManager.ChangeHP(5);
             DataHolder.player.GetComponent<PlayerController>().SetupHPText();
         }
     }
 
     public void ReleaseFighting(){
-        Debug.Log("???");
         isFighting = false;
         this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
         Utils.showChildrenWithName("move", transform);

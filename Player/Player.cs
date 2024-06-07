@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if(Camera.main == null) return;
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         if(gameUIController == null) return;
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
@@ -91,7 +92,12 @@ public class PlayerController : MonoBehaviour
 
     public void ShowStory(){
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        storyController.LoadStoryDataFromJSON();
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        if( (CacheManager.IsCleared() && currentFloor == 2) ){
+            EventController.ShowEvent("shop");
+        } else {
+            storyController.LoadStoryDataFromJSON();
+        }
         audioSource.PlayOneShot(wallSound);
         // VideoPlayerController videoController = Camera.main.gameObject.GetComponent<VideoPlayerController>();  
         // videoController.StartVideo("myvideo");
@@ -204,7 +210,5 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SetupHPText(){
-        //int hp = CacheManager.GetCache(Cache.HP.ToString());
-        // hpTextComponent.SetText(hp.ToString());
     }
 }

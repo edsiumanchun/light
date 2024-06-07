@@ -18,7 +18,7 @@ public class KeyController : MonoBehaviour
         {
             string keyName = this.gameObject.name.Split("_")[1].Replace("Key", "");
             print(keyName);
-            CacheManager.IncreaseCache(keyName, 1);
+            CacheManager.ChangeKey(keyName, 1);
             print(CacheManager.GetCache(keyName));
             Debug.Log(keyName + " Key collected! Key cache: " +  CacheManager.GetCache("this.gameObject.name"));
             Destroy(gameObject); // Destroy the key game object after collision

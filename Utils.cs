@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using DG.Tweening;
 public class Utils : MonoBehaviour
 {
+    public static bool isTest = true;
     public static float referenceResolution = 1200;
 
     public static bool IsMobilePlatform()
@@ -59,7 +61,7 @@ public class Utils : MonoBehaviour
         text.fontSize = 23;
         text.color = Color.white;
         text.alignment = textAnchor;
-        text.lineSpacing = 1.3f;
+        text.lineSpacing = 1.08f;
         Outline outline = textObj.AddComponent<Outline>();
         outline.effectColor = Color.black;
         return textObj;
@@ -276,10 +278,23 @@ public class Utils : MonoBehaviour
         GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
         GameObject lightObject = Instantiate(lightPrefab);
         lightObject.transform.SetParent(GO.transform);
-        lightObject.transform.localPosition = new Vector3(0, 0.8f, 0);
+        lightObject.transform.localPosition = new Vector3(0, 0.8f, -8f);
     }
     public static void ChangeAudioClipByName(int sourceIndex)
     {
         PersistentAudioSource.Instance.PlayAudio(sourceIndex);
     }
+
+    public static void Fade(GameObject gameObject){
+        Transform[] children = gameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+        {
+            SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.DOFade(0f, 0.3f);
+            }
+        }
+    }
+
 }

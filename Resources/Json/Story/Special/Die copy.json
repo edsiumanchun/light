@@ -1,0 +1,14 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "dialogue": [
+	        "不行了...",
+	        "恢復體力後再來吧..."
+	    ]
+	}
+]
+}
+
+

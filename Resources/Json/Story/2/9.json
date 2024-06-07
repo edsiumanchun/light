@@ -44,7 +44,7 @@
 	},{
 	    "name": "rosia",
 	    "dialogue": [
-	        "嗯...我想靜一下..."
+	        "我...我想靜一下..."
 	    ]
 	},{
 	    "name": "player",
@@ -171,7 +171,7 @@
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "你是誰？別假扮我的妹妹！我的妹妹已經死了！",
+	        "你是誰？別再假扮我的妹妹！我的妹妹已經死了！",
 	    ]
 	},{
 	    "name": "maria",

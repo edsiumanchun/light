@@ -77,20 +77,15 @@ public class StoryController : MonoBehaviour
     {
         SetupFadeObject(false);
         string storyFilePath = "Json/Story/" + path;
-
-        //if (File.Exists(jsonFilePath))
-        //{
-        //    string jsonString = File.ReadAllText(jsonFilePath);
-        //    storyArray = JsonConvert.DeserializeObject<StoryData[]>(jsonString);
-        //}
-        //else
-        //{
-        //    Debug.LogError("JSON file not found: " + jsonFilePath);
-        //}
-
         print(storyFilePath);
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
         print(jsonFile);
+        
+        // if(storyFilePath.Contains("Special")) {
+        //     backgroundImage.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        // } else {
+        //     backgroundImage.transform.localScale = new Vector3(1f, 1f, 1f);
+        // }
         
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
         LoadStory(wrapper.storyArray[currentStoryIndex]);
@@ -187,6 +182,7 @@ public class StoryController : MonoBehaviour
             else
             {
                 SetupFadeObject(true);
+                CacheManager.SetClearFloor();
             }
 
             return;
@@ -247,7 +243,7 @@ public class StoryController : MonoBehaviour
             RectTransform rectTransform = leftPrefab.GetComponent<RectTransform>();
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 380);
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 380);
-            leftPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
+            // leftPrefab.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             Utils.MovePrefab(leftPrefab, -0.33f, 0.5f);
             leftPrefab.name = story.leftPrefab;
            // Vector2 imageSize = imageRectTransform.sizeDelta;
@@ -270,7 +266,7 @@ public class StoryController : MonoBehaviour
             List<string> paths = new List<string>((new[] { story.rightPrefab}));
             Sprite rightSprite = Utils.LoadSprites("Story", paths)[0];
             rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-            rightPrefab.transform.localScale = new Vector3(-1f, 1f, 1f);
+            rightPrefab.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
             Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
             rightPrefab.name = story.rightPrefab;
         }
@@ -304,11 +300,7 @@ public class StoryController : MonoBehaviour
         } else {
             foreach (string sentence in story.dialogue)
             {
-                if(i == 0){
-                    sentences.Enqueue(story.name + "\n" + sentence);
-                } else {
-                    sentences.Enqueue(sentence);
-                }
+                sentences.Enqueue(story.name + "\n" + sentence);
                 i++;
             }
             DisplayNextSentence();
@@ -317,8 +309,10 @@ public class StoryController : MonoBehaviour
     IEnumerator ShowEvent(StoryData story)
     {
         isWaitingEvent = true;
-        int time = EventController.ShowEvent(story.dialogue[0]);
-        yield return new WaitForSeconds(time);
+        foreach (string order in story.dialogue) {
+            float time = EventController.ShowEvent(order);
+            yield return new WaitForSeconds(time);
+        }
         isWaitingEvent = false;
         DisplayNextSentence();
     }

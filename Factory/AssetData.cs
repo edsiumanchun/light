@@ -80,10 +80,10 @@ public class AssetData
                 break;
             case "Object":
                 int formattedIndex = assetIndex % 10;
-                if (assetIndex / 30 >= 1) {
-                    spriteRenderer.sprite = (Sprite)DataHolder.obstacles[formattedIndex];
-                } if (assetIndex / 40 >= 1) {
+                if (assetIndex / 40 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
+                } else if (assetIndex / 30 >= 1) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.obstacles[formattedIndex];
                 } else if (assetIndex / 20 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.items[formattedIndex];
                 } else if (assetIndex / 10 >= 1) {
@@ -104,7 +104,7 @@ public class AssetData
                 spriteRenderer.sprite = DataHolder.backgrounds[index];
                 // spriteRenderer.drawMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
                 spriteRenderer.size = DataHolder.GetBackgroundSize();
-                newObject.transform.localScale = new Vector3(1.23f, 1.23f, 1f);
+                newObject.transform.localScale = new Vector3(1.27f, 1.27f, 1f);
                 break;
             case "Audio":
                 int audioIndex = gridArray0[0];
@@ -112,12 +112,22 @@ public class AssetData
                 return null;
         }
         // --------- //
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
         } else if(pathName.Contains("Player")){
             newObject.name = pathName;
+        } else if( pathName.Contains("Story")){
+            if(!Utils.isTest) {
+                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+                if(CacheManager.IsCleared() && currentFloor != 2){
+                    newObject.SetActive(false);
+                    return null;
+                } 
+            }
+            newObject.name = "Story";
+        } else if( pathName.Contains("Boss")){
+            newObject.name = "Boss";
         } else {
             newObject.name = id + "_" + pathName;
         }
@@ -127,7 +137,6 @@ public class AssetData
                 newObject.AddComponent<PlayerController>();
                 newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;
-                Debug.Log("???" + newObject.name);
                 break;
             case "Trigger":
                 newObject.AddComponent<GateTriggerController>(); // Create a new script GateTrigger and attach it to the object

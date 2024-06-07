@@ -9,7 +9,13 @@ public enum AnimationStatus
     Move = 2,
     Action = 3,
     Die = 4,
-    Jump= 5
+    Jump = 5,
+    Point = 6,
+    Kneel = 7,
+    Wake = 8,
+    Down = 9,
+    Hurt = 10,
+    Cry = 11
 }
 
 // public enum ComponentType

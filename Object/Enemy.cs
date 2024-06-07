@@ -13,9 +13,11 @@ public class EnemyController : MonoBehaviour
     {
         hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
         hpTextComponent.textColor = Color.red;
-        string[] substrings = this.gameObject.name.Split( "Enemy" );
         print(this.gameObject.name);
-        enemyData = DataHolder.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
+        if(this.gameObject.name.Contains("Enemy") ) {
+        string[] substrings = this.gameObject.name.Split( "Enemy" );
+            enemyData = DataHolder.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
+        }
     }
 
     // Update is called once per frame
@@ -52,24 +54,33 @@ public class EnemyController : MonoBehaviour
     {
         while (enemyData.hp > 0)
         {
-            if(Cache.HP - enemyData.damage <= 0) {
-
+            bool result = CacheManager.ChangeHP(enemyData.damage);
+            if(result == false) {
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                storyController.LoadStoryDataFromJSONWithPath("Special/Die.json");
+                storyController.LoadStoryDataFromJSONWithPath("Special/Die");
                 yield break;
             }
             yield return new WaitForSeconds(0.8f); // Wait for 1 second
             currentHP -= CacheManager.GetCache(Cache.Damage.ToString());
-            CacheManager.DecreaseCache(Cache.HP.ToString(), enemyData.damage);
-            Debug.Log(enemyData.damage);
             Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP / enemyData.hp);
             if (currentHP <= 0)
             {
                 Camera.main.GetComponent<GameUIController>().HideHPBar(true);
                 CacheUsage.cacheDestroyedObject(this.gameObject.name);
                 DataHolder.player.GetComponent<JoystickController>().ReleaseFighting();
-                Destroy(gameObject); 
+                Die();
             }
         }
+    }
+
+    public void Die(){
+        Utils.Fade(this.gameObject);
+        StartCoroutine(DelayDestroy());
+
+    }
+
+    private IEnumerator DelayDestroy(){
+        yield return new WaitForSeconds(0.3f); // Wait for 1 second
+        Destroy(gameObject); 
     }
 }

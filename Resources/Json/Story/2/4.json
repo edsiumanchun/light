@@ -3,7 +3,7 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "chefwake"
+	        "storywake"
 	    ]
 	},{
 	    "name": "player",
@@ -21,7 +21,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "chefkill"
+	        "chefcome"
 	    ]
 	},
 	{
@@ -32,7 +32,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "chefturn"
+	        "storyturn"
 	    ]
 	},
 	{
@@ -43,7 +43,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "chefturn"
+	        "storyturn"
 	    ]
 	},
 	{
@@ -55,7 +55,8 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "chefleaveandknifedrop"
+	        "storyleave",
+	        "knifedrop"
 	    ]
 	},
 	{
@@ -67,12 +68,12 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
+	    	"switchscene",
 	        "savecows"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "讓你們回歸大自然吧！"
 	    ]

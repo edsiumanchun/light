@@ -13,8 +13,13 @@ public class MainController : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll(); // ???
-
+        if(Utils.isTest) {
+            PlayerPrefs.DeleteAll();
+            CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
+           //  CacheManager.SetCache( Cache.CurrentFloor.ToString(), 2);
+        }
+        LoadShopData();
+        LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
@@ -24,6 +29,19 @@ public class MainController : MonoBehaviour
         LoadAssetsForCommonUI();
     }
 
+    public void LoadAssetsForShop()
+    {
+        List<string> paths = new List<string>((new[] { "Heart", "Light", "Heart", "Light", "Heart", "Light" }));
+        List<Sprite> sprites = LoadSprites("UI/Products", paths);
+        DataHolder.products = sprites;
+    }
+
+    static public void LoadShopData()
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/Shop");
+        ProductDataWrapper assetsData = JsonUtility.FromJson<ProductDataWrapper>(jsonFile.text);
+        DataHolder.productsDataList = assetsData.products;
+    }
 
     static public void LoadEnemyData(int stage)
     {

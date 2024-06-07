@@ -15,7 +15,12 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostshow"
+	        "ghostshow",
+	        "playerturn",
+	        "playerattack",
+	        "bossdisappear",
+	        "playerturn",
+	        "playeridle"
 	    ]
 	},{
 	    "name": "sage",
@@ -41,6 +46,7 @@
 	},{
 	    "name": "sage",
 	    "dialogue": [
+	    	"姑娘，你知道最近這裡的村莊在哪裡嗎？",
 	    	"老夫...老夫要找跟我失散多年的外孫..."
 	    ]
 	},{
@@ -52,18 +58,19 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "那麼老伯伯到那邊找找看吧，那邊相對較安全。"
+	        "沿着這條小徑一直走，約一個小時就到達阿爾卑斯小鎮。"
 	    ]
 	},
 	{
 	    "name": "sage",
 	    "dialogue": [
-	        "好的，那麼老夫先告辭了，有縁再見！"
+	        "謝謝，那麼老夫先告辭了，有縁再見！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "sageleave"
+	        "storyleave",
+	        "storydisappear"
 	    ]
 	}
 ]

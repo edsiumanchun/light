@@ -9,7 +9,7 @@
 	    "name": "ghostkid",
 	   	"leftPrefab": "ghostkid",
 	    "dialogue": [
-	        "媽媽，我很掛念你..."
+	        "終於見到你了..."
 	    ]
 	},{
 	    "name": "event",
@@ -22,7 +22,7 @@
 	   	"leftPrefab": "ghostkid",
 	    "rightPrefab": "ghostmum",
 	    "dialogue": [
-	        "兒子，讓你苦等了這麼久，我簡直是心如刀割。",
+	        "孩兒，讓你苦等了這麼久，我簡直是心如刀割。",
 	        "這些年來，我已經盡了力去找食物...",
 	        "但每當我得到一些食物，食物便會化為灰燼...",
 	        "花了半年時間才得到一口不淨之食...卻被其他餓鬼阻攔，不讓我回來找你。"
@@ -89,7 +89,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostsgone"
+	        "ghostsleave"
 	    ]
 	},
 	{

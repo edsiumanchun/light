@@ -4,19 +4,20 @@
 	    "name": "event",
 	   	"leftPrefab": "player",
 	    "dialogue": [
-	        "playerhurt"
+	        "playerhurt",
+	        "bossdisappear"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "沒希望了..."
+	        "失血過多了..."
 	    ]
 	},
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostgonerosiacome"
+	    	"rosiacome"
 	    ]
 	},
 	{
@@ -29,7 +30,7 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "playersleep"
+	        "playerdown"
 	    ]
 	},
 	{
@@ -42,12 +43,6 @@
 	    "name": "player",
 	    "dialogue": [
 	        "已經恢復了不少，辛苦你把我帶來醫院。"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "mariacome"
 	    ]
 	},
 	{
@@ -163,7 +158,8 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "marialeaveplayerturn"
+	        "marialeave",
+	        "playerturn"
 	    ]
 	},
 	{
