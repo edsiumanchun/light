@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
         if(Utils.isTest) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-           //  CacheManager.SetCache( Cache.CurrentFloor.ToString(), 2);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 4);
         }
         LoadShopData();
         LoadAssetsForShop();

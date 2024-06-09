@@ -90,34 +90,29 @@
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	        "姐姐表面看似堅強，但長期為了我的事情而奔波的她...",
 	        "內心早已經接近崩毀邊緣。",
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"真令人擔心，我馬上去看看你姐姐吧。"
+	    	"真令人擔心，我還是去看看你姐姐吧。"
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	        "距離轉生前還有一段時間...",
 	        "如公主不嫌棄，請讓我陪同公主去找姐姐吧。"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"好的。"
+	    	"好！"
 	    ]
 	},
 	{
 	    "name": "narrator",
-	    "centerPrefab": "",
 	    "dialogue": [
 	        "瑪利亞加入隊伍，在戰鬥中瑪利亞能夠每秒治愈公主5點血量。"
 	    ]
@@ -128,27 +123,23 @@
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	    	"姐姐！"
 	    ]
 	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	    	"瑪利亞，我們該如何是好？"
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"公主只要用最真誠的心去為姐姐祈福就行。"
+	    	"沒什麼好辦法...只好試試用最真誠的心為姐姐祈福..."
 	    ]
 	},{
-	    "name": "maria",
-	    "centerPrefab": "maria",
+	    "name": "player",
 	    "dialogue": [
-	    	"我試試吧。",
+	    	"嗯，試試看吧。",
 	    ]
 	},{
 	    "name": "event",
@@ -160,7 +151,7 @@
 	    "leftPrefab": "player",
 	    "righttPrefab": "rosia",
 	    "dialogue": [
-	        "我的一生...真是充滿...苦難...",
+	        "我的一生...真是坎坷...",
 	    ]
 	},{
 	    "name": "maria",
@@ -171,13 +162,13 @@
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "你是誰？別再假扮我的妹妹！我的妹妹已經死了！",
+	        "你是誰？為何要假扮我的妹妹？我的妹妹已經死了！",
 	    ]
 	},{
 	    "name": "maria",
 	    "dialogue": [
 	    	"沒有生死，靈魂不滅...",
-	    	"別被假象所蒙騙，破迷啟悟，尋找清淨之藏...",
+	    	"別被幻境所蒙騙，破迷啟悟，尋找清淨之藏...",
 	    ]
 	},{
 	    "name": "event",

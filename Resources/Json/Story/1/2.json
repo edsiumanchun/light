@@ -43,19 +43,8 @@
 	{
 	    "name": "shopowner",
 	    "dialogue": [
-	        "哈哈，姑娘挺有意思。"
-	    ]
-	},{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "說起來，你是販賣道具的商人嗎？"
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "dialogue": [
-	        "對，今天來了不少貨品，過來看看吧！"
+	        "哈哈，姑娘...我欣賞你！",
+	        "今次破例把珍貴的道具賣給人類吧！"
 	    ]
 	},{
 	    "name": "event",
