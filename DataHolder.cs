@@ -57,6 +57,7 @@ public static class DataHolder
 
     public static List<Sprite> storyImages;
     public static List<Object> enemies;
+    public static List<Object> bosses;
 
     // common ui
     public static List<Sprite> commonImages; // List to store the loaded assets

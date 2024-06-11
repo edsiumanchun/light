@@ -1,10 +1,8 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
-	    "leftPrefab": "player",
 	    "dialogue": [
-	        "不行了..."
+	        "體力不足，無法作戰。"
 	    ]
 	}
 ]

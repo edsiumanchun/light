@@ -14,9 +14,14 @@ public class EnemyController : MonoBehaviour
         hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
         hpTextComponent.textColor = Color.red;
         print(this.gameObject.name);
-        if(this.gameObject.name.Contains("Enemy") ) {
-        string[] substrings = this.gameObject.name.Split( "Enemy" );
-            enemyData = DataHolder.enemyDataList[int.Parse(substrings[substrings.Length - 1])];
+        foreach (var data in DataHolder.enemyDataList)
+        {
+            if(this.gameObject.name.Contains(data.name)) {
+                enemyData = data;
+            }
+        }
+        if( this.gameObject.name.Contains("Boss")){
+            this.gameObject.name = "Boss";
         }
     }
 
@@ -42,6 +47,12 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
+        bool result = CacheManager.CheckChangeHP(enemyData.damage);
+        if(result == false) {
+            StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+            storyController.LoadStoryDataFromJSONWithPath("Special/Die");
+            return;
+        }
         currentHP = enemyData.hp;
         Utils.AddEffect(this.gameObject, "purify");
         DataHolder.player.GetComponent<PlayerController>().SetupHPText();

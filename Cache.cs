@@ -88,12 +88,21 @@ public static class CacheManager
             return true;
         }
     }
-    public static bool ChangeHP(int amount){
+
+    public static bool CheckChangeHP(int amount){
         int hp = CacheManager.GetCache(Cache.HP.ToString());
-        int hpMax = CacheManager.GetCache(Cache.HP.ToString());
         if(hp - amount <= 0) {
             return false;
         } else {
+            return true;
+        }
+    }
+    public static bool ChangeHP(int amount){
+        bool result = CheckChangeHP(amount);
+        if(result) {
+            return false;
+        } else {
+            int hpMax = CacheManager.GetCache(Cache.HP.ToString());
             int margin = amount >= 0 ? hpMax : 0;
             CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
             return true;

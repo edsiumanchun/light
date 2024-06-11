@@ -216,6 +216,12 @@ public class JoystickController : MonoBehaviour, IDragHandler
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
         } else  {
             // purify
+            bool result = CacheManager.CheckChangeHP(purifyObject.GetComponent<EnemyController>().enemyData.damage);
+            if(result == false) {
+                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+                storyController.LoadStoryDataFromJSONWithPath("Special/Die");
+                return;
+            }
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);

@@ -47,7 +47,7 @@ public class MainController : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/EnemyData");
         EnemyDataWrapper assetsData = JsonUtility.FromJson<EnemyDataWrapper>(jsonFile.text);
-        DataHolder.enemyDataList = assetsData.enemies;
+        DataHolder.enemyDataList = assetsData.targets;
     }
 
     public void LoadAssetsForButtonsUI()
@@ -122,6 +122,7 @@ public class MainController : MonoBehaviour
             DataHolder.obstacles = LoadSprites("Obstacles", paths.obstacles);
             DataHolder.characters = LoadPrefabs("Characters", paths.characters);
             DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
+            DataHolder.bosses = LoadPrefabs("Bosses", paths.bosses);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
             LoadFloorAssetsFromJson(floor, sceneName);
             Debug.Log("LoadFloorAssetsFromJson");

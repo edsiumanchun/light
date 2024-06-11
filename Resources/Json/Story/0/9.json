@@ -111,7 +111,7 @@
 	},
 	{
 	    "name": "nurse",
-	   	"leftPrefab": "nurse"
+	   	"leftPrefab": "nurse",
 	    "dialogue": [
 	        "瑪麗亞，差不多該進行手術了。"
 	    ]

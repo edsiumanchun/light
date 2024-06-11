@@ -2,21 +2,20 @@
 "storyArray" : [
 	{
 	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
+	    "leftPrefab": "player",
+	    "rightPrefab": "sentinel",
 	    "dialogue": [
 	        "公主，你終於回來了!"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "我不在這裡的時候發生了什麼事，父王為何要跟東盟國的大使前往聖地？",
 	    ]
 	},
 	{
 	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
 	    "dialogue": [
 	        "公主，是這樣的...東盟國最近來了一個具有神奇力量的神官....",
 	        "他向東盟國國王提議利用黑暗結界把正常人看不見的餓鬼顯現出來，再消滅他們。"
@@ -24,7 +23,6 @@
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
 	        "就是他們擾亂餓鬼世界的秩序吧...",
 	    ]

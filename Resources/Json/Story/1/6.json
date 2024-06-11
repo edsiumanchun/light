@@ -24,7 +24,7 @@
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "那麼，你的母親在哪裡？"
+	        "你的母親在哪裡？"
 	    ]
 	},
 	{
@@ -38,7 +38,7 @@
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"好吧，那麼我們一起找你母親吧。"
+	    	"那麼我們一起找你母親吧。"
 	    ]
 	},
 	{

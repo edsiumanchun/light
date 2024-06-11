@@ -87,6 +87,41 @@
 	    "dialogue": [
 	        "回歸大自然吧！"
 	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"musicplay2"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "能聽到樂神演奏的雅樂真的是人生一大樂事。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "公主過獎了，這是祝福有情生靈得到智慧的鎮昏曲。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "鎮昏曲是什麼意思？"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "原意是為了鎮壓任何生靈昏聵不明的習性。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "不愧是樂神..."
+	    ]
 	}
 ]
 }

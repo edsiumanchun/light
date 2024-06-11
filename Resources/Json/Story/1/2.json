@@ -44,7 +44,68 @@
 	    "name": "shopowner",
 	    "dialogue": [
 	        "哈哈，姑娘...我欣賞你！",
-	        "今次破例把珍貴的道具賣給人類吧！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "musicappear"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"是熟悉的香氣...樂神，這次找我所為何事？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "只是被你的氣質所感召，想成為你的守護神而己。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"樂神，很感恩你來守護我。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "你不怕我嗎？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"樂神是歡樂吉祥的象徵，喜歡行善積德，令人尊敬。",
+	    	"相比起人心，鬼神一點也不可怕。"
+
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "公主果然是氣宇不凡，能守護公主實在是我的榮幸。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"說起來，這裡的餓鬼大概是因為受囚魂石的影響而變得十分暴戾。"
+	    	"我們要先把這裡回復正常。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "好！"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "shopowner",
+	    "dialogue": [
+	        "姑娘既然跟樂神相識，今天破例將道具賣給人類吧！",
 	    ]
 	},{
 	    "name": "event",

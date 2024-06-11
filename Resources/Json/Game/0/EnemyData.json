@@ -1,14 +1,14 @@
 {
-  "enemies": [
+  "targets": [
     {
-      "name": "gargoyle",
+      "name": "EnemyBone",
       "damage": 8,
       "defend": 5,
       "coin": 3,
       "hp": 3
     },
     {
-      "name": "Enemy 2",
+      "name": "BossBone",
       "damage": 8,
       "defend": 3,
       "coin": 80,

@@ -85,19 +85,33 @@
 	    "name": "ghostkid",
 	    "centerPrefab": "ghostkid",
 	    "dialogue": [
-	    	"世間雖苦，也會偶爾出現照耀我們的希望...多謝你，姐姐。"
+	    	"世間雖苦，也會偶爾出現照耀我們的希望..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "ghostsleave"
+	    	"musicplay"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"願你們母子倆能早日得到解脫。"
+	        "樂神，此旋律讓人感到釋然，郤令人感到莫名其妙的衰傷..."
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"此乃是讓靈魂得到安樂的鎮魂曲。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "鎮魂曲...感恩..."
 	    ]
 	}
 ]

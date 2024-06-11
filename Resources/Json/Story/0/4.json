@@ -2,9 +2,9 @@
 "storyArray" : [
 	
 	{
-	    "name": "ghost",
+	    "name": "skeleton",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "soul",
+	    "rightPrefab": "skeleton",
 	    "dialogue": [
 	        "這感覺很温暖。你對我做了什麼？"
 	    ]
@@ -15,50 +15,81 @@
 	    ]
 	},
 	{
-	    "name": "ghost",
+	    "name": "skeleton",
 	    "dialogue": [
 	        "除了煩惱盡失外，我還能感受到温飽。",
-	        "我已經有一個月沒吃飯，多謝你！"
+	        "我已經有一百年沒吃飯，餓到只剩骨架，真的多謝你！"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "竟然...一個月沒吃飯...",
-	        "這是你們餓鬼的宿命嗎？"
+	        "一百年沒吃飯...難道這就是你們餓鬼的宿命嗎？"
 	    ]
 	},
 	{
-	    "name": "ghost",
+	    "name": "skeleton",
 	    "dialogue": [
 	        "算是吧，我們是來贖罪的。",
-	        "姐姐，幸好有你，我才不會墮入萬劫不復之淵。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "不用客氣。",
-	        "話說...你知道是誰把這兩枚令餓鬼變得暴戾的囚魂石放在這裡嗎？"
-	    ]
-	},
-	{
-	    "name": "ghost",
-	    "dialogue": [
-	        "是一位來自東方的長髮少年。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "莫非是他？"
+	        "幸好有你，我才不會墮入萬劫不復之淵。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "bossdisappear"
+	        "bossdisappear",
+	        "musicappear"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "漂亮！"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "餓鬼小孩...希望你轉生後不再墮落吧。"
+	        "是令人心曠神怡的香氣，閣下是樂神嗎？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "真的不簡單，單憑氣味就洞悉一切。"	    
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "樂神是歡樂吉祥的象徵，喜歡行善積德，令人尊敬。",
+	    	"得到樂神讚賞是我的榮幸，未知是否有要事要找我？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "沒什麼，只是人類近期頻頻介入餓鬼世界的秩序...",
+	        "跟餓鬼打交道對你們豪無益處，你為何要干涉骷髏餓鬼的命運？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "這是因為我寧願自受違規的後果，也不忍見衪受飢餓之苦而已。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "哈哈，真有意思...看來放置囚魂石的人不是你。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "是令餓鬼顯現和變得暴戾的囚魂石嗎？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "正是，懂得放置囚魂石的人也非泛泛之輩，你亦要多加提防...",
+	        "不多說了，我也要去辦正經事，就此別過吧！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "musicdisappear"
 	    ]
 	}
 ]

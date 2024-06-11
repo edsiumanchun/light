@@ -19,6 +19,7 @@ public class StoryController : MonoBehaviour
     public GameObject dialoguePanel;
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
+    private bool isStory = false;
     private int currentStoryIndex;
     public StoryDataWrapper wrapper;
     public string currentSentence = "";
@@ -39,22 +40,19 @@ public class StoryController : MonoBehaviour
         button.onClick.AddListener(OnClickButton);
         // setup
         sentences = new Queue<string>();
-        isTyping = false;
-        currentStoryIndex = 0;
         //
         if(backgroundImage != null) {
             return;
         };
         screenSize = Utils.GetCanvasSize(canvasObject);
         Vector2 backgroundPosition = new Vector2(0, -screenSize.y / 2);
-        Vector2 dialoguePosition = new Vector2(0f, 0f);
         Vector2 dialoguePanelPosition = new Vector2(0f, -Screen.height / 2);
 
         backgroundImage = Utils.CreateImage(DataHolder.storyImages[0], backgroundPosition, canvasObject.transform);
         Utils.MovePrefab(backgroundImage, 0, 0.5f);
         RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
         dialogueText = Utils.CreateText(
-            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 6.8f / 8.8f),
+            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 6.6f / 8.8f),
             imageRectTransform.localPosition, canvasObject.transform, TextAnchor.UpperLeft);
         
 
@@ -76,19 +74,24 @@ public class StoryController : MonoBehaviour
     public void LoadStoryDataFromJSONWithPath(string path)
     {
         SetupFadeObject(false);
+
+        isTyping = false;
+        currentStoryIndex = 0;
         string storyFilePath = "Json/Story/" + path;
         print(storyFilePath);
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
         print(jsonFile);
-        
-        // if(storyFilePath.Contains("Special")) {
-        //     backgroundImage.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-        // } else {
-        //     backgroundImage.transform.localScale = new Vector3(1f, 1f, 1f);
-        // }
-        
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
-        LoadStory(wrapper.storyArray[currentStoryIndex]);
+        StoryData story = wrapper.storyArray[currentStoryIndex];
+        isStory = story.name != null;
+        dialogueText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;
+
+        if(isStory) {
+            backgroundImage.transform.localScale = new Vector3(1f, 1f, 1f);
+        } else {
+            backgroundImage.transform.localScale = new Vector3(0.68f, 0.5f, 1f);
+        }
+        LoadStory(story);
 
     }
     public void Fade(GameObject targetObject, bool fadeIn)
@@ -246,17 +249,6 @@ public class StoryController : MonoBehaviour
             // leftPrefab.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             Utils.MovePrefab(leftPrefab, -0.33f, 0.5f);
             leftPrefab.name = story.leftPrefab;
-           // Vector2 imageSize = imageRectTransform.sizeDelta;
-            // leftPrefab.transform.position = new Vector2(0, - screenSize.y / 2f );
-
-            // GameObject prefab = new GameObject();
-            //SpriteRenderer spriteRenderer = prefab.AddComponent<SpriteRenderer>();
-            //spriteRenderer.sprite = leftSprite;
-            // GameObject prefab = (GameObject)DataHolder.characters[int.Parse(story.leftPrefab)];
-            // leftPrefab = Utils.InstantiateObject(prefab);
-            // prefab.transform.SetParent(canvasObject.transform, true);
-            //prefab.name = "leftPrefab";
-            //PositionPrefabAtCorner(prefab,0);
         } 
         if(story.rightPrefab != null && story.rightPrefab != "") {
             if(rightPrefab != null){
@@ -270,19 +262,17 @@ public class StoryController : MonoBehaviour
             Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
             rightPrefab.name = story.rightPrefab;
         }
-        if(story.centerPrefab != null && story.centerPrefab != "") {
-        } else {
-        }
-        
-        if(leftPrefab.name.Contains(story.name)) {
-            Utils.changeAlpha(leftPrefab, 1f);
-            Utils.changeAlpha(rightPrefab, 0.1f);
-        } else if(rightPrefab.name.Contains(story.name)) {
-            Utils.changeAlpha(leftPrefab, 0.1f);
-            Utils.changeAlpha(rightPrefab, 1f);
-        } else {
-            Utils.changeAlpha(leftPrefab, 0.1f);
-            Utils.changeAlpha(rightPrefab, 0.1f);
+        if(isStory) {
+            if(leftPrefab.name.Contains(story.name)) {
+                Utils.changeAlpha(leftPrefab, 1f);
+                Utils.changeAlpha(rightPrefab, 0.1f);
+            } else if(rightPrefab.name.Contains(story.name)) {
+                Utils.changeAlpha(leftPrefab, 0.1f);
+                Utils.changeAlpha(rightPrefab, 1f);
+            } else {
+                Utils.changeAlpha(leftPrefab, 0.1f);
+                Utils.changeAlpha(rightPrefab, 0.1f);
+            }
         }
         if (bgmAudioSource.clip != null)
         {

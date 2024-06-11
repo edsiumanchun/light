@@ -26,6 +26,7 @@ public class Path
     public List<string> obstacles;
     public List<string> walls;
     public List<string> enemies;
+    public List<string> bosses;
     public List<string> audios;
 }
 
@@ -80,7 +81,11 @@ public class AssetData
                 break;
             case "Object":
                 int formattedIndex = assetIndex % 10;
-                if (assetIndex / 40 >= 1) {
+                if (assetIndex / 90 >= 1) {
+                    isSprite = false;
+                    GameObject prefab = (GameObject)DataHolder.bosses[formattedIndex];
+                    newObject = Utils.InstantiateObject(prefab);
+                } else if (assetIndex / 40 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
                 } else if (assetIndex / 30 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.obstacles[formattedIndex];
@@ -127,7 +132,7 @@ public class AssetData
             }
             newObject.name = "Story";
         } else if( pathName.Contains("Boss")){
-            newObject.name = "Boss";
+            // newObject.name = "Boss"; do it in enemy.js
         } else {
             newObject.name = id + "_" + pathName;
         }
@@ -165,7 +170,7 @@ public class AssetData
                 newObject.AddComponent<GateController>();
                 break;
         }
-        if (pathName.Contains("Enemy"))
+        if (pathName.Contains("Enemy") || pathName.Contains("Boss"))
         {
             if (CacheUsage.isDestroyObject(id))
             {
@@ -258,7 +263,7 @@ public class AssetData
                 }
                 else if (name.Contains("Object"))
                 {
-                    if ((cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+                    if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
                         boxCollider.enabled = false;
                     } 
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;

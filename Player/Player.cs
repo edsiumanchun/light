@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 } 
                 this.gameObject.GetComponent<JoystickController>().stopMove = 0;
                 break;
-            case string str when str.Contains("Enemy"):
+            case string str when str.Contains("Enemy") || str.Contains("Boss"):
                 gameUIController.hideGameButton();
                 break;
         }
@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
                 status = UIGameButton.Story;
                 break;
 
-            case string str when str.Contains("Enemy"):
+            case string str when str.Contains("Enemy") || str.Contains("Boss"):
                 gameUIController.showGameButton((int)UIGameButton.Purify);
                 break;
         }

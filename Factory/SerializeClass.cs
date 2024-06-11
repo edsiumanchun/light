@@ -15,7 +15,7 @@ public class DialogueLine
 [System.Serializable]
 public class EnemyDataWrapper
 {
-    public List<EnemyData> enemies;
+    public List<EnemyData> targets;
 }
 
 [System.Serializable]

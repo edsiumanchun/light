@@ -19,8 +19,6 @@ public class InfoController : MonoBehaviour
     private void Start()
     {
         keyImages = DataHolder.keyImages;
-        string[] substrings = this.gameObject.name.Split( "Enemy" );
-        print(this.gameObject.name);
         enemyDataList = DataHolder.enemyDataList;
 
         gameObjects = new List<GameObject>();
@@ -76,7 +74,7 @@ public class InfoController : MonoBehaviour
                 EnemyData enemyData = enemyDataList[index];
                 List<string> stringList = new List<string>()
                 {
-                    enemyData.name,
+                    enemyData.name.Replace("Boss", "").Replace("Enemy", ""),
                     enemyData.hp.ToString(),
                     enemyData.damage.ToString(),
                     // enemyData.defend.ToString(),

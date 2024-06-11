@@ -19,8 +19,6 @@ public class ShopController : MonoBehaviour
     private void Start()
     {
         products = DataHolder.products;
-        string[] substrings = this.gameObject.name.Split( "Enemy" );
-        print(this.gameObject.name);
         productsDataList = DataHolder.productsDataList;
 
         gameObjects = new List<GameObject>();

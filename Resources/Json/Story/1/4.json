@@ -81,9 +81,22 @@
 	{
 	    "name": "player",
 	   	"leftPrefab": "player",
+	   	"rightPrefab": "music",
 	    "dialogue": [
 	    	"八年前，一個叫嵐的孩子嗎？",
-	    	"不知道這孩子是否還在人世..."
+	    	"樂神，你知道這孩子是否還在人世嗎？"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"我不知道。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"既然如此，只好順其自然吧。"
 	    ]
 	}
 ]
