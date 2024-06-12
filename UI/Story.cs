@@ -234,6 +234,7 @@ public class StoryController : MonoBehaviour
     public void LoadStory(StoryData story)
     {
         RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
+        Debug.Log("story.leftPrefab" + story.leftPrefab);
         if(story.leftPrefab != null && story.leftPrefab != "") {
             if(leftPrefab != null){
                 Destroy(leftPrefab);
@@ -250,17 +251,19 @@ public class StoryController : MonoBehaviour
             Utils.MovePrefab(leftPrefab, -0.33f, 0.5f);
             leftPrefab.name = story.leftPrefab;
         } 
-        if(story.rightPrefab != null && story.rightPrefab != "") {
+        if(story.rightPrefab != null) {
             if(rightPrefab != null){
                 Destroy(rightPrefab);
             }
-            Vector2 rightPosition = new Vector2(imageRectTransform.sizeDelta.x / 2 ,  - screenSize.y / 2f );
-            List<string> paths = new List<string>((new[] { story.rightPrefab}));
-            Sprite rightSprite = Utils.LoadSprites("Story", paths)[0];
-            rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-            rightPrefab.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
-            Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
-            rightPrefab.name = story.rightPrefab;
+            if(story.rightPrefab != ""){
+                Vector2 rightPosition = new Vector2(imageRectTransform.sizeDelta.x / 2 ,  - screenSize.y / 2f );
+                List<string> paths = new List<string>((new[] { story.rightPrefab}));
+                Sprite rightSprite = Utils.LoadSprites("Story", paths)[0];
+                rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
+                rightPrefab.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
+                Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
+                rightPrefab.name = story.rightPrefab;
+            }
         }
         if(isStory) {
             if(leftPrefab.name.Contains(story.name)) {

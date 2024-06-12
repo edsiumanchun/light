@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour
 {
+    public List<Sprite> keyImages;
     public Vector2 contentSize;
     public Vector2 cellSize = new Vector2(188f, 200f);
     public int cellCount = 10;
@@ -18,6 +19,7 @@ public class ShopController : MonoBehaviour
     public List<Sprite> products;
     private void Start()
     {
+        keyImages = DataHolder.keyImages;
         products = DataHolder.products;
         productsDataList = DataHolder.productsDataList;
 
@@ -63,7 +65,7 @@ public class ShopController : MonoBehaviour
                 int index = row * columnCount + column;
                 List<Sprite> icons = new List<Sprite>{
                     products[index],
-                    DataHolder.keyImages[2]
+                    keyImages[2]
                 };
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y - 33;
@@ -74,7 +76,7 @@ public class ShopController : MonoBehaviour
                     productData.name,
                     productData.coin.ToString()
                 };
-                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.keyImages[DataHolder.keyImages.Count - 1], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(keyImages[keyImages.Count - 1], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
 

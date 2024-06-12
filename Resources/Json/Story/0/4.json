@@ -34,12 +34,16 @@
 	    ]
 	},{
 	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
 	    "dialogue": [
 	        "bossdisappear",
 	        "musicappear"
 	    ]
 	},{
 	    "name": "music",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
 	    "dialogue": [
 	        "漂亮！"
 	    ]

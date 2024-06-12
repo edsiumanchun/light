@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
-
     private void Start()
     {
         if(Utils.isTest) {
@@ -76,7 +75,7 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForDashboardUI()
     {
         // List<string> paths = new List<string>((new[] { "Heart", "Light", "Dark", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Dark"}));
-        List<string> paths = new List<string>((new[] { "Heart", "Light", "Coin","KeyCopper", "KeySilver", "KeyGold", "Dark", "NameCard"}));
+        List<string> paths = new List<string>((new[] { "Heart", "Light", "Coin","KeyCopper", "KeySilver", "KeyGold", "Dark", "NameCard", "ShopCard"}));
         List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
         DataHolder.keyImages = sprites;
 
