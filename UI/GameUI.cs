@@ -67,7 +67,7 @@ public class GameUIController : MonoBehaviour
         playerHPBarText.GetComponent<Text>().fontSize = fontSize;
         playerMPBarText.GetComponent<Text>().fontSize = fontSize;
         DisplayHPInfo();
-        // HideHPBar(true);
+        HideHPBar(true);
         // hp
     }
 
@@ -210,7 +210,8 @@ public class GameUIController : MonoBehaviour
         }
         foreach (Transform child in enemyHPBar.transform) {
             if (child.name == "HPBar"){
-                child.transform.localScale = new Vector3(enemyHP / emeyMaxHP, 1f, 1f);
+                float ratio = (float)enemyHP / emeyMaxHP;
+                child.transform.localScale = new Vector3(ratio, 1f, 1f);
             }
         }
     }

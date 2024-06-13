@@ -184,9 +184,6 @@ public class AssetData
             }
             EnemyController enemyController = newObject.AddComponent<EnemyController>();
             enemyController.ProcessAssetIndex(assetIndex);
-        } else if (name.Contains("Event"))
-        {
-
         }
         return newObject;
     }

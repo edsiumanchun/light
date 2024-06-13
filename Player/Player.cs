@@ -117,20 +117,22 @@ public class PlayerController : MonoBehaviour
     {
         string name = collision.gameObject.name;
         Vector3 direction = transform.position - collision.gameObject.transform.position;
-        bool isRight = transform.localScale.x > 0;
+        bool isRight = collision.gameObject.transform.localScale.x > 0;
         if(name.Contains("Enemy") || name.Contains("Boss") || name.Contains("Story")) {
             if (Mathf.Abs (direction.x) > Mathf.Abs (direction.y)) {
                 if(isRight) {
-                    if(direction.x>0){print("collision is to the right" + name);}
+                    if(direction.x>0){
+                        print("collision is to the right" + name);
+                        return;
+                    }
                     else{
                         print("collision is to the left"  + name);
-                        return;
                     }
                 } else {
                     if(direction.x>0){print("collision is to the right" + name);
-                        return;
                     }else{
                         print("collision is to the left"  + name);
+                        return;
                     }
                 }
             

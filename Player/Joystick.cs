@@ -218,6 +218,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
             // purify
             bool result = CacheManager.CheckChangeHP(purifyObject.GetComponent<EnemyController>().enemyDamage);
             if(result == false) {
+                Debug.Log("???");
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
                 storyController.LoadStoryDataFromJSONWithPath("Special/Die");
                 return;

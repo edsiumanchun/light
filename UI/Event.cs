@@ -19,6 +19,7 @@ public class EventController : MonoBehaviour
 
     public static float ShowEvent(string name)
     { 
+        Debug.Log("?????" + name);
         GameObject player = GameObject.Find("Player");
         GameObject story = GameObject.Find("Story");
         GameObject boss = GameObject.Find("Boss");
@@ -29,7 +30,7 @@ public class EventController : MonoBehaviour
         {
             // disappear
             case "bossdisappear":
-                boss.GetComponent<EnemyController>().Die();
+                boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
             case "storydisappear":
                 Utils.Fade(story);
@@ -122,12 +123,18 @@ public class EventController : MonoBehaviour
             case "ghostseat":
                 return 1f;
             case "ghostsleave":
-                boss.GetComponent<EnemyController>().Die();
+                boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
             case "switchscene":
                 MainController.LoadFloorAssetsFromJson(0, "HomeScene");
                 return 1f;
+            case "musicappear":
+                vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
+                gameObject.name = "Music";
+                gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
+                return 1.8f;
         }
-        return 0;
+        return 0.1f;
     }
 }

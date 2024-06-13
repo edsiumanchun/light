@@ -15,9 +15,10 @@ public class MainController : MonoBehaviour
         if(Utils.isTest) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 1);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 4);
         }
-        CacheManager.SetCache(Cache.Exit.ToString(), 2);
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 0 : 2);
         LoadShopData();
         LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");

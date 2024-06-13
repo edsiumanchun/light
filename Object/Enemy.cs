@@ -104,30 +104,33 @@ public class EnemyController : MonoBehaviour
         while (currentHP > 0)
         {
             bool result = CacheManager.ChangeHP(enemyDamage);
+            Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyHP);
             if(result == false) {
+                Debug.Log("???");
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
                 storyController.LoadStoryDataFromJSONWithPath("Special/Die");
                 yield break;
             }
             yield return new WaitForSeconds(0.8f); // Wait for 1 second
             currentHP -= CacheManager.GetCache(Cache.Damage.ToString());
-            Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyHP);
             if (currentHP <= 0)
             {
                 Camera.main.GetComponent<GameUIController>().HideHPBar(true);
                 CacheUsage.cacheDestroyedObject(this.gameObject.name);
                 DataHolder.player.GetComponent<JoystickController>().ReleaseFighting();
-                Die();
+                Die(true);
             }
         }
     }
 
-    public void Die(){
+    public void Die(bool inGame){
         Utils.Fade(this.gameObject);
         StartCoroutine(DelayDestroy());
-        if(this.gameObject.name.Contains("Boss")) {
-            GameObject player = GameObject.Find("Player");
-            player.GetComponent<PlayerController>().ShowStory();
+        if(inGame) {
+            if(this.gameObject.name.Contains("Boss")) {
+                GameObject player = GameObject.Find("Player");
+                player.GetComponent<PlayerController>().ShowStory();
+            }   
         }
     }
 

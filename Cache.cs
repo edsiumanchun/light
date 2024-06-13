@@ -91,6 +91,8 @@ public static class CacheManager
 
     public static bool CheckChangeHP(int amount){
         int hp = CacheManager.GetCache(Cache.HP.ToString());
+        Debug.Log("CheckChangeHP" + hp);
+        Debug.Log("CheckChangeHP" + amount);
         if(hp - amount <= 0) {
             return false;
         } else {
@@ -99,14 +101,12 @@ public static class CacheManager
     }
     public static bool ChangeHP(int amount){
         bool result = CheckChangeHP(amount);
-        if(result) {
-            return false;
-        } else {
+        if(result == false) {
             int hpMax = CacheManager.GetCache(Cache.HP.ToString());
             int margin = amount >= 0 ? hpMax : 0;
             CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
-            return true;
         }
+        return result;
     }
 
     public static bool ChangeKey(string cacheKey, int amount){

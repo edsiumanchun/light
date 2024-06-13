@@ -74,7 +74,8 @@ public class StoryController : MonoBehaviour
     public void LoadStoryDataFromJSONWithPath(string path)
     {
         SetupFadeObject(false);
-
+        if(leftPrefab != null) Destroy(leftPrefab);
+        if(rightPrefab != null) Destroy(rightPrefab);
         isTyping = false;
         currentStoryIndex = 0;
         string storyFilePath = "Json/Story/" + path;
@@ -139,13 +140,13 @@ public class StoryController : MonoBehaviour
 
     void OnClickButton()
     {
-        // Set the active state of the game object to false
+        if(isWaitingEvent) return;
         DisplayNextSentence();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Called when the screen is tapped
+        if(isWaitingEvent) return;
         DisplayNextSentence();
     }
 
@@ -165,7 +166,6 @@ public class StoryController : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(isWaitingEvent) return;
         if (isTyping)
         {
             // Finish typing the current sentence immediately
