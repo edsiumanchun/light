@@ -49,7 +49,7 @@ public class ShopController : MonoBehaviour
         {
             canvasObject.SetActive(false);
         });
-        int rowCount = 1;
+        int rowCount = 2;
         int columnCount = 3;
 
         float totalWidth = columnCount * cellSize.x;
@@ -69,7 +69,6 @@ public class ShopController : MonoBehaviour
                 };
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y - 33;
-                Debug.Log("???" + index + "" + xPos + "" + yPos);
                 ProductData productData = productsDataList[index];
                 List<string> stringList = new List<string>()
                 {

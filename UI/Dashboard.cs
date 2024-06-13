@@ -29,7 +29,7 @@ public class DashboardController : MonoBehaviour
         screenSize = Utils.GetCanvasSize(canvasObject);
         Button button = canvasObject.AddComponent<Button>();
         button.onClick.AddListener(OnClickButton);
-        Vector2 backgroundPosition = new Vector2(93 - screenSize.x / 2, screenSize.y / 2 - 330);
+        Vector2 backgroundPosition = new Vector2(118 - screenSize.x / 2, screenSize.y / 2 - 313);
 
         backgroundImage = Utils.CreateImage(DataHolder.dashboardBackgroundImages[0], backgroundPosition, canvasObject.transform);
         // Create the audio source
@@ -43,8 +43,8 @@ public class DashboardController : MonoBehaviour
     {
         keyTextImages = new List<GameObject>();
         for(int i = 0; i < 6; i++){
-            Utils.CreateImage(keyImages[i], new Vector2(-18, 154 - (i * 44)), backgroundImage.transform);
-            keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(60 , 154 - (i * 44)), backgroundImage.transform, TextAnchor.MiddleLeft));
+            Utils.CreateImage(keyImages[i], new Vector2(-26, 113 - (i * 44)), backgroundImage.transform);
+            keyTextImages.Add(Utils.CreateText(new Vector2(100,50), new Vector2(54 , 113 - (i * 44)), backgroundImage.transform, TextAnchor.MiddleLeft));
         }
 
         // for(int i = 0; i < 4; i++){

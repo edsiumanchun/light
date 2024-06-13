@@ -6,6 +6,7 @@
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
+    "gems": ["Greed", "Angry", "Silly"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "decorations": ["Dark", "Lamp", "Wall"],

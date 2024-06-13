@@ -15,8 +15,9 @@ public class MainController : MonoBehaviour
         if(Utils.isTest) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 4);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 1);
         }
+        CacheManager.SetCache(Cache.Exit.ToString(), 2);
         LoadShopData();
         LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
@@ -59,7 +60,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForMenuUI()
     {
-        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info", "HPBar", "GreenBar", "RedBar" }));
+        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info", "HPBar", "BarGreen", "BarRed", "BarBlue", "Avatar" }));
         List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
         DataHolder.menuButtonImages = sprites;
     }
@@ -123,6 +124,7 @@ public class MainController : MonoBehaviour
             DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
             DataHolder.bosses = LoadPrefabs("Bosses", paths.bosses);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
+            DataHolder.gems = LoadSprites("Gems", paths.gems);
             LoadFloorAssetsFromJson(floor, sceneName);
             Debug.Log("LoadFloorAssetsFromJson");
         }

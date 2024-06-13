@@ -5,11 +5,14 @@ using UnityEngine.UI;
 public class GameUIController : MonoBehaviour
 {
     private GameObject playerHPBar;
+    private GameObject playerMPBar;
     private GameObject enemyHPBar;
+    private GameObject enemyHPBarText, playerMPBarText, playerHPBarText;
     // hp
     public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
     public GameObject gameButton, buttonImage;
+    public GameObject dashboardButton;
 
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
     public GameObject canvasObject;
@@ -29,10 +32,11 @@ public class GameUIController : MonoBehaviour
     private void Start()
     {
         float padding = 80;
+        float leftPadding = 38;
         canvasObject = Utils.CreateCanvas("GameCanvas", false);
         screenSize = Utils.GetCanvasSize(canvasObject);
         menuButtonPosition = new Vector2(screenSize.x / 2 - padding, screenSize.y / 2 - padding);
-        dashboardButtonPosition = new Vector2(padding - screenSize.x / 2, screenSize.y / 2 - padding);
+        dashboardButtonPosition = new Vector2(leftPadding + padding - screenSize.x / 2, screenSize.y / 2 - padding);
         containerPosition = new Vector2(screenSize.x / 2 - padding, -1 * screenSize.y / 2 + padding);
         buttonImages = DataHolder.gameButtonImages;
         menuButtonImages = DataHolder.menuButtonImages;
@@ -46,15 +50,27 @@ public class GameUIController : MonoBehaviour
 
         SetupButton();
         // hp
-        enemyHPBar = CreateHPBar(true);
-        playerHPBar = CreateHPBar(false);
-        HideHPBar(true);
+        float hpBarOffset = -74;
+        float xScale = 0.705f;
+        enemyHPBar = CreateBar(true, new Vector2(0, - screenSize.y / 2 ), 5, canvasObject);
+        enemyHPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), enemyHPBar.transform, TextAnchor.MiddleCenter);
+        playerHPBar = CreateBar(false, new Vector2(0, hpBarOffset), 4, dashboardButton);
+        playerHPBar.transform.localScale = new Vector3(xScale, 1, 1);
+        playerHPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), playerHPBar.transform, TextAnchor.MiddleCenter);
+        playerMPBar = CreateBar(false, new Vector2(0, hpBarOffset - 16), 6, dashboardButton);
+        playerMPBar.transform.localScale = new Vector3(xScale, 1, 1);
+        playerMPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), playerMPBar.transform, TextAnchor.MiddleCenter);
+        int fontSize = 18;
+        enemyHPBarText.GetComponent<Text>().fontSize = fontSize;
+        playerHPBarText.GetComponent<Text>().fontSize = fontSize;
+        playerMPBarText.GetComponent<Text>().fontSize = fontSize;
+        DisplayHPInfo();
+        // HideHPBar(true);
         // hp
     }
 
     public void HideHPBar(bool isHide){
         enemyHPBar.SetActive(!isHide);
-        playerHPBar.SetActive(!isHide);
     }
 
     // private void SetupDashboard()
@@ -103,7 +119,7 @@ public class GameUIController : MonoBehaviour
         });
 
         // Instantiate menu button
-        GameObject dashboardButton = Utils.CreateButton(menuButtonImages[2], dashboardButtonPosition, canvasObject.transform, () => {
+        dashboardButton = Utils.CreateButton(menuButtonImages[menuButtonImages.Count - 1], dashboardButtonPosition, canvasObject.transform, () => {
 
             isDashboardOpen = !isDashboardOpen;
 
@@ -167,12 +183,19 @@ public class GameUIController : MonoBehaviour
         }
     }
 
+    public void DisplayHPInfo(){
+        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        playerHPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
+        playerMPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
+    }
 
-
-    public void UpdateHPBar(float enemyHP)
+    public void UpdateHPBar(int enemyHP, int emeyMaxHP)
     {
-        float hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-        float hp = CacheManager.GetCache(Cache.HP.ToString());
+        DisplayHPInfo();
+        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        enemyHPBarText.GetComponent<Text>().text = enemyHP.ToString() + "/" + emeyMaxHP.ToString();
         foreach (Transform child in playerHPBar.transform) {
             if (child.name == "HPBar"){
                 child.transform.localScale = new Vector3(hp / hpMax, 1f, 1f);
@@ -180,33 +203,30 @@ public class GameUIController : MonoBehaviour
         }
         foreach (Transform child in enemyHPBar.transform) {
             if (child.name == "HPBar"){
-                child.transform.localScale = new Vector3(enemyHP, 1f, 1f);
+                child.transform.localScale = new Vector3(enemyHP / emeyMaxHP, 1f, 1f);
             }
         }
     }
 
-    private GameObject CreateHPBar(bool isEnemy)
-    {
-        Vector2 position = isEnemy ? new Vector2(0, - screenSize.y / 2 ) :  new Vector2(0, - screenSize.y / 2);
-        int hpbar = isEnemy ? 5 : 4;
-        float x = isEnemy ? 0.5f : -0.5f;
-        GameObject GO = Utils.CreateImageWithText(menuButtonImages[3], position, new Vector2(130, 0), canvasObject.transform, TextAnchor.MiddleCenter);
+    private GameObject CreateBar(bool isEnemy, Vector2 position, int hpbarType, GameObject parent)
+    {   
+        GameObject GO = Utils.CreateImageWithText(menuButtonImages[3], position, new Vector2(130, 0), parent.transform, TextAnchor.MiddleCenter);
         GO.transform.parent.gameObject.name = "HPBarContainer";
 
         // barGO
-        GameObject barGO = Utils.CreateImage(menuButtonImages[hpbar], new Vector2(0, 0), GO.transform.parent.gameObject.transform);
+        GameObject barGO = Utils.CreateImage(menuButtonImages[hpbarType], new Vector2(0, 0), GO.transform.parent.gameObject.transform);
         barGO.name = "HPBar";
         RectTransform rectTransform = barGO.GetComponent<RectTransform>();
 
         Vector3 currentPosition = rectTransform.position;
-        rectTransform.pivot = isEnemy ? new Vector2(0f, 0f) : new Vector2(1f, 0f);
+        rectTransform.pivot = new Vector2(0f, 0f) ;
         rectTransform.position = currentPosition;
 
         // rectTransform.anchorMin = isEnemy ? new Vector2(0f, 0f) : new Vector2(1f, 0f);
         // rectTransform.anchorMax = isEnemy ? new Vector2(0f, 1f) : new Vector2(1f, 1f);
 
-        Utils.MovePrefab(GO.transform.parent.gameObject, x, 0.5f);
-        Utils.MovePrefab(barGO, isEnemy ? -0.5f : 0.5f, -0.5f);
+        Utils.MovePrefab(GO.transform.parent.gameObject, 0, 0.5f);
+        Utils.MovePrefab(barGO, -0.5f , -0.5f);
         // barGO.transform.localPosition = new Vector2(0f, 0f);
         return GO.transform.parent.gameObject;
     }

@@ -19,7 +19,7 @@
       "gridArray0": [1, 2, 0, 0, 4, 1],
       "gridArray1": [1, 0, 1, 0, 0, 1],
       "gridArray2": [1, 0, 0, 0, 0, 1],
-      "gridArray3": [1, 0, 0, 0, 0, 1],
+      "gridArray3": [1, 0, 0, 2, 0, 1],
       "gridArray4": [1, 2, 0, 3, 1, 1]
     },
     {
@@ -27,8 +27,8 @@
       "gridArray0": [22, 0, 0, 0, 1],
       "gridArray1": [0, 0, 0, 0, 0],
       "gridArray2": [2, 0, 0, 0, 0],
-      "gridArray3": [24, 0, 0, 0, 0],
-      "gridArray4": [24, 0, 12, 1, 21]
+      "gridArray3": [21, 0, 1111, 0, 0],
+      "gridArray4": [12, 0, -12, 1, 21]
     }
   ]
 }                 

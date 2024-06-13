@@ -9,10 +9,10 @@
     },
     {
       "name": "BossBone",
-      "damage": 8,
+      "damage": 1,
       "defend": 3,
       "coin": 80,
-      "hp": 40
+      "hp": 1
     },
     {
       "name": "EnemyBat",

@@ -26,6 +26,7 @@ public class Path
     public List<string> obstacles;
     public List<string> walls;
     public List<string> enemies;
+    public List<string> gems;
     public List<string> bosses;
     public List<string> audios;
 }
@@ -81,7 +82,12 @@ public class AssetData
                 break;
             case "Object":
                 int formattedIndex = assetIndex % 10;
-                if (assetIndex / 90 >= 1) {
+                if (assetIndex / 1000 >= 1) {
+                    newObject.name = "Gem";
+                    EnemyController enemyController = newObject.AddComponent<EnemyController>();
+                    enemyController.ProcessAssetIndex(assetIndex);
+                    return newObject;
+                } else if (assetIndex / 90 >= 1) {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.bosses[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
@@ -176,12 +182,33 @@ public class AssetData
             {
                 return null;
             }
-            newObject.AddComponent<EnemyController>();
+            EnemyController enemyController = newObject.AddComponent<EnemyController>();
         } else if (name.Contains("Event"))
         {
 
         }
         return newObject;
+    }
+
+    public void SetupCollider(GameObject newObject, bool isSprite, int cellValue){
+        BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
+        if (!isSprite)
+        {
+            if(newObject.name.Contains("Player")) {
+                boxCollider.size = new Vector2(0.5f, 1.8f);
+            } else {
+                boxCollider.size = new Vector2(1.5f, 1.8f);
+            }
+            boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
+        } else if(newObject.name.Contains("Gem")){
+            boxCollider.size = new Vector2(2f, 2f);
+        }
+        if (name.Contains("Object"))
+        {
+            if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+                boxCollider.enabled = false;
+            } 
+        }
     }
 
     public void CreateObjects(float z, float subStage)
@@ -214,8 +241,8 @@ public class AssetData
                 float startPositionX = isFirstPage ? backgroundSize.x / 2f * 1.58f : backgroundSize.x / 2f;
                 Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
                 string id = gridIndex.ToString() + column.ToString();
-                int cellValue = gridArray[column];
-
+                int cellValue = Mathf.Abs(gridArray[column]);
+                bool isRight = gridArray[column] >= 0;
                 if(name.Contains("Object") && column == 0 && !isFirstPage) {
                     Vector3 vector3 = new Vector3(0, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
                     
@@ -239,16 +266,7 @@ public class AssetData
                 }
                 newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
                 if (newObject == null) continue;
-                BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
-                if (!isSprite)
-                {
-                    if(newObject.name.Contains("Player")) {
-                        boxCollider.size = new Vector2(0.5f, 1.8f);
-                    } else {
-                        boxCollider.size = new Vector2(1.5f, 1.8f);
-                    }
-                    boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
-                }
+                SetupCollider(newObject, isSprite, cellValue);
                 if (name.Contains("PlateV") || name.Contains("PlateH"))
                 {
                     if (name.Contains("PlateV"))
@@ -263,13 +281,13 @@ public class AssetData
                 }
                 else if (name.Contains("Object"))
                 {
-                    if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
-                        boxCollider.enabled = false;
-                    } 
+                    BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     float newZ = newObject.name.Contains("Player") ? -9.3f : z * 0.01f - 1 ;
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
-                    
+                    if(isRight) { // flip
+                        newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
+                    }
                 }
                 newObject.transform.rotation = Quaternion.identity;
             }

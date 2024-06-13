@@ -90,6 +90,7 @@ public class StageController : MonoBehaviour
                 }
                 GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
                 {
+                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 0 : 2);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
                 });
 

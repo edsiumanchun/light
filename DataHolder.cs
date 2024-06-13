@@ -54,6 +54,7 @@ public static class DataHolder
     public static List<Sprite> keyImages; // List to store the loaded assets
     public static List<Sprite> settingImages; // List to store the loaded assets
     public static List<Sprite> dashboardBackgroundImages;
+    public static List<Sprite> gems;
 
     public static List<Sprite> storyImages;
     public static List<Object> enemies;

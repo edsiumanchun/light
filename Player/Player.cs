@@ -113,13 +113,39 @@ public class PlayerController : MonoBehaviour
         MainController.LoadFloorAssetsFromJson(currentFloor - offset, "HomeScene");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
+        string name = collision.gameObject.name;
+        Vector3 direction = transform.position - collision.gameObject.transform.position;
+        bool isRight = transform.localScale.x > 0;
+        if(name.Contains("Enemy") || name.Contains("Boss") || name.Contains("Story")) {
+            if (Mathf.Abs (direction.x) > Mathf.Abs (direction.y)) {
+                if(isRight) {
+                    if(direction.x>0){print("collision is to the right" + name);}
+                    else{
+                        print("collision is to the left"  + name);
+                        return;
+                    }
+                } else {
+                    if(direction.x>0){print("collision is to the right" + name);
+                        return;
+                    }else{
+                        print("collision is to the left"  + name);
+                    }
+                }
+            
+            }else{
+                if(direction.y>0){print("collision is up"  + name);}
+                else{print("collision is down"  + name);}
+                return;
+
+            }
+        }
+
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
-        string name = collision.gameObject.name;
         string playerPosition = name.Split('_')[0];
         Debug.Log(name);
         switch (name)

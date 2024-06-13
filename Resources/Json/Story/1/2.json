@@ -89,18 +89,6 @@
 	    ]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	    	"說起來，這裡的餓鬼大概是因為受囚魂石的影響而變得十分暴戾。"
-	    	"我們要先把這裡回復正常。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "好！"
-	    ]
-	},
-	{
 	    "name": "shopowner",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "shopowner",

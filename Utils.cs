@@ -48,11 +48,11 @@ public class Utils : MonoBehaviour
         return imageObj;
     }
 
-    static public GameObject CreateText(Vector2 size, Vector2 position, Transform transform, TextAnchor textAnchor)
+    static public GameObject CreateText(Vector2 size, Vector2 position, Transform parent, TextAnchor textAnchor)
     {
         GameObject textObj = new GameObject("Text");
         RectTransform textTransform = textObj.AddComponent<RectTransform>();
-        textTransform.SetParent(transform); // Set the parent transform
+        textTransform.SetParent(parent); // Set the parent transform
         textTransform.anchoredPosition = position;
         textTransform.sizeDelta = size;
         Text text = textObj.AddComponent<Text>();
