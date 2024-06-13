@@ -31,7 +31,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForShop()
     {
-        List<string> paths = new List<string>((new[] { "Heart", "Light", "Heart", "Light", "Heart", "Light" }));
+        List<string> paths = new List<string>((new[] { "PotionRed", "PotionBlue", "PotionRed", "PotionBlue", "PotionRed", "PotionBlue"}));
         List<Sprite> sprites = LoadSprites("UI/Products", paths);
         DataHolder.products = sprites;
     }
@@ -76,7 +76,7 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForDashboardUI()
     {
         // List<string> paths = new List<string>((new[] { "Heart", "Light", "Dark", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Dark"}));
-        List<string> paths = new List<string>((new[] { "Heart", "Light", "Coin","KeyCopper", "KeySilver", "KeyGold", "Dark", "NameCard", "ShopCard"}));
+        List<string> paths = new List<string>((new[] { "GemGreed", "GemAngry", "GemSilly","KeyCopper", "KeySilver", "KeyGold", "Dark", "NameCard", "ShopCard", "Heart", "Attack"}));
         List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
         DataHolder.keyImages = sprites;
 

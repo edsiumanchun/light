@@ -75,7 +75,7 @@ public class ShopController : MonoBehaviour
                     productData.name,
                     productData.coin.ToString()
                 };
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[keyImages.Count - 1], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
 

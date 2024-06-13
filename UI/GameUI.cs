@@ -17,6 +17,8 @@ public class GameUIController : MonoBehaviour
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
     public GameObject canvasObject;
 
+    public GameObject infoButton;
+
 
     public Vector2[] buttonPositions = new Vector2[]
     {
@@ -105,7 +107,7 @@ public class GameUIController : MonoBehaviour
             StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
             stageController.canvasObject.SetActive(true);
         });
-        GameObject infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 220), canvasObject.transform, () => {
+        infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 220), canvasObject.transform, () => {
 
             isInfoOpen = !isInfoOpen;
             // Activate/deactivate the circle buttons container based on menu state
@@ -115,6 +117,7 @@ public class GameUIController : MonoBehaviour
             //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
             //settingsController.canvasObject.SetActive(true);
             InfoController infoController = Camera.main.gameObject.GetComponent<InfoController>();
+            infoController.SetupButtons();
             infoController.canvasObject.SetActive(true);
         });
 
@@ -156,11 +159,15 @@ public class GameUIController : MonoBehaviour
 
     public void hideGameButton() {
         gameButton.SetActive(false);
+        infoButton.SetActive(false);
     }
     public void showGameButton(int index) {
         if(gameButton == null) return;
         gameButton.SetActive(true);
         buttonImage.GetComponent<Image>().sprite = buttonImages[index];
+        if(index == (int)UIGameButton.Purify) {
+            infoButton.SetActive(true);
+        }
     }
 
     private void ButtonAction(int buttonIndex)

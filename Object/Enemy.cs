@@ -6,24 +6,34 @@ using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public int assetIndex = 0;
-    public EnemyData enemyData;
+    public List<EnemyData> enemyDatas;
+    public List<Sprite> avatars;
+    public int enemyHP = 0;
+    public int enemyDamage = 0;
     int currentHP = 0;
     HPTextComponent hpTextComponent;
     // Use this for initialization
-    void Start()
-    {
-        hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
-        hpTextComponent.textColor = Color.red;
-        print(this.gameObject.name);
+
+    void Awake (){
+        enemyDatas = new List<EnemyData>();
+        avatars = new List<Sprite>();
+
         foreach (var data in DataHolder.enemyDataList)
         {
             if(this.gameObject.name.Contains(data.name)) {
-                enemyData = data;
+                enemyDatas.Add(data);
+                enemyHP = data.hp;
+                enemyDamage = data.damage;
             }
         }
         if( this.gameObject.name.Contains("Boss")){
             this.gameObject.name = "Boss";
         }
+    }
+    void Start()
+    {
+        hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
+        hpTextComponent.textColor = Color.red;
     }
 
     public void ProcessAssetIndex(int index){
@@ -35,27 +45,37 @@ public class EnemyController : MonoBehaviour
             int digit4 = assetIndex % 10 ;
             float param = 0.5f;
             Vector3[] positions = { new Vector3(-param, param, 0), new Vector3(param, param, 0), new Vector3(param, -param, 0), new Vector3(-param, -param, 0) };
+            int[] digits = new[] { digit1, digit2, digit3, digit4 };
             for (int i = 0; i < 4; i++){
+                int digit = digits[i];
                 // Create a new GameObject and add a SpriteRenderer component
-                GameObject spriteObject = new GameObject("Digit " + (i + 1));
+                GameObject spriteObject = new GameObject();
                 SpriteRenderer spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
-                // Set the sprite based on the digit
-                int digit = new[] { digit1, digit2, digit3, digit4 }[i];
                 spriteRenderer.sprite = DataHolder.gems[digit];
+                spriteObject.name = spriteRenderer.sprite.name;
                 // Set the position of the SpriteRenderer
                 spriteObject.transform.position = positions[i];
                 spriteObject.transform.SetParent(transform);
+        
+                foreach (var data in DataHolder.enemyDataList)
+                {
+                    if(spriteObject.name.Contains(data.name)) {
+                        if(enemyDatas.Contains(data) == false) {
+                            enemyDatas.Add(data);
+                            avatars.Add(spriteRenderer.sprite);
+                        }
+                        enemyHP = enemyHP + data.hp;
+                        enemyDamage = enemyDamage + data.damage;
+                    }
+                }
             }
+        } else {
+            List<string> paths = new List<string>((new[] { enemyDatas[0].name}));
+            Sprite sprite = Utils.LoadSprites("Enemies", paths)[0];
+            avatars.Add(sprite);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject player = GameObject.Find("Player");
@@ -71,7 +91,7 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        currentHP = enemyData.hp;
+        currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
         DataHolder.player.GetComponent<PlayerController>().SetupHPText();
         // hpTextComponent.SetText(enemyData.hp.ToString());
@@ -81,9 +101,9 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator DecreaseHPOverTime()
     {
-        while (enemyData.hp > 0)
+        while (currentHP > 0)
         {
-            bool result = CacheManager.ChangeHP(enemyData.damage);
+            bool result = CacheManager.ChangeHP(enemyDamage);
             if(result == false) {
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
                 storyController.LoadStoryDataFromJSONWithPath("Special/Die");
@@ -91,7 +111,7 @@ public class EnemyController : MonoBehaviour
             }
             yield return new WaitForSeconds(0.8f); // Wait for 1 second
             currentHP -= CacheManager.GetCache(Cache.Damage.ToString());
-            Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyData.hp);
+            Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyHP);
             if (currentHP <= 0)
             {
                 Camera.main.GetComponent<GameUIController>().HideHPBar(true);

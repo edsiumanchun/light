@@ -2,9 +2,9 @@
 "storyArray" : [
 	
 	{
-	    "name": "skeleton",
+	    "name": "BossBone",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "skeleton",
+	    "rightPrefab": "BossBone",
 	    "dialogue": [
 	        "這感覺很温暖。你對我做了什麼？"
 	    ]
@@ -15,7 +15,7 @@
 	    ]
 	},
 	{
-	    "name": "skeleton",
+	    "name": "BossBone",
 	    "dialogue": [
 	        "除了煩惱盡失外，我還能感受到温飽。",
 	        "我已經有一百年沒吃飯，餓到只剩骨架，真的多謝你！"
@@ -27,7 +27,7 @@
 	    ]
 	},
 	{
-	    "name": "skeleton",
+	    "name": "BossBone",
 	    "dialogue": [
 	        "算是吧，我們是來贖罪的。",
 	        "幸好有你，我才不會墮入萬劫不復之淵。"

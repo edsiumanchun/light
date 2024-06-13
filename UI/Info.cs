@@ -14,17 +14,16 @@ public class InfoController : MonoBehaviour
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public GameObject backgroundImage;
-    public static List<EnemyData> enemyDataList;
+    public List<EnemyData> enemyDataList;
+    public List<Sprite> avatars;
     public List<Sprite> keyImages;
     private void Start()
     {
         keyImages = DataHolder.keyImages;
-        enemyDataList = DataHolder.enemyDataList;
 
         gameObjects = new List<GameObject>();
         commonImages = DataHolder.commonImages;
         SetupCanvas();
-        SetupButtons();
     }
 
     private void SetupCanvas()
@@ -39,16 +38,20 @@ public class InfoController : MonoBehaviour
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
         canvasObject.SetActive(false);
-    }
 
-    private void SetupButtons()
-    {
         Utils.CreateNavigationBar("怪物資訊", new Vector2(0f, 193f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
+    }
+
+    public void SetupButtons()
+    {
+        foreach(GameObject gameObject in gameObjects){
+            Destroy(gameObject);
+        }
         int rowCount = 1;
-        int columnCount = 3;
+        int columnCount = avatars.Count;
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
@@ -56,33 +59,31 @@ public class InfoController : MonoBehaviour
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
         float startY = totalHeight / 2 - (cellSize.y / 2) ;
 
-        List<Sprite> icons = new List<Sprite>{
-            keyImages[0],
-            keyImages[0],
-            keyImages[keyImages.Count - 3],
-            keyImages[2]
-        };
         for (int row = 0; row < rowCount; row++)
         {
             for (int column = 0; column < columnCount; column++)
             {
+                List<Sprite> icons = new List<Sprite>{
+                    avatars[row],
+                    keyImages[9],
+                    keyImages[10]
+                };
                 int index = row * columnCount + column;
 
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y - 33;
-            
+                Debug.Log(index + "????" + xPos + "???");
                 EnemyData enemyData = enemyDataList[index];
                 List<string> stringList = new List<string>()
                 {
                     enemyData.name.Replace("Boss", "").Replace("Enemy", ""),
                     enemyData.hp.ToString(),
                     enemyData.damage.ToString(),
-                    // enemyData.defend.ToString(),
-                    enemyData.coin.ToString()
                 };
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[keyImages.Count - 2], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
+                cell.transform.localScale = new Vector3(1,1,1);
             }
         }
     }
