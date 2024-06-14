@@ -8,7 +8,9 @@ public class ShopController : MonoBehaviour
     public Vector2 contentSize;
     public Vector2 cellSize = new Vector2(188f, 200f);
     public int cellCount = 10;
+    public int selectedIndex = 0;
 
+    public GameObject rowTextObject;
     public List<GameObject> gameObjects;
 
     public List<Sprite> commonImages;
@@ -39,17 +41,23 @@ public class ShopController : MonoBehaviour
         backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
+        Utils.CreateNavigationBar("商店", new Vector2(0f, 198f), canvasObject.transform, () =>
+        {
+            canvasObject.SetActive(false);
+        });
         // Other initialization code...
         canvasObject.SetActive(false);
     }
 
     private void SetupButtons()
     {
-        Utils.CreateNavigationBar("商品資訊", new Vector2(0f, 193f), canvasObject.transform, () =>
-        {
-            canvasObject.SetActive(false);
-        });
-        int rowCount = 2;
+        foreach(GameObject gameObject in gameObjects){
+            Destroy(gameObject);
+        }
+        if(rowTextObject != null) {
+            Destroy(rowTextObject);
+        }
+        int rowCount = 1;
         int columnCount = 3;
 
         float totalWidth = columnCount * cellSize.x;
@@ -63,18 +71,29 @@ public class ShopController : MonoBehaviour
             for (int column = 0; column < columnCount; column++)
             {
                 int index = row * columnCount + column;
-                List<Sprite> icons = new List<Sprite>{
-                    products[index],
-                    keyImages[2]
-                };
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y - 33;
+                float yPos = startY - row * cellSize.y + 33;
                 ProductData productData = productsDataList[index];
+
+                List<Sprite> icons = new List<Sprite>{
+                    products[index]
+                };
                 List<string> stringList = new List<string>()
                 {
-                    productData.name,
-                    productData.coin.ToString()
+                    productData.name
                 };
+                if(productData.greed > 0) {
+                    icons.Add(keyImages[0]);
+                    stringList.Add(productData.greed.ToString());
+                }
+                if(productData.angry > 0) {
+                    icons.Add(keyImages[1]);
+                    stringList.Add(productData.angry.ToString());
+                }
+                if(productData.silly > 0) {
+                    icons.Add(keyImages[2]);
+                    stringList.Add(productData.silly.ToString());
+                }
                 GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
@@ -83,12 +102,23 @@ public class ShopController : MonoBehaviour
                 button.onClick.AddListener(() => OnClickButtonWithParameter(index));
             }
         }
+        rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(-100, -178), canvasObject.transform, TextAnchor.MiddleLeft);
+        rowTextObject.GetComponent<Text>().text = productsDataList[selectedIndex].desc;
+        rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        GameObject buyButton = Utils.CreateTextButton(DataHolder.commonImages[((int)UICommon.LongButton)], new Vector2(300, 0), new Vector2(0, 0), rowTextObject.transform, () =>
+        {
+            
+        });
+        buyButton.transform.parent.gameObject.transform.localScale = new Vector3(0.68f,1f,1f);
+        buyButton.name = "Button";
+        buyButton.GetComponent<Text>().text = "買入";
     }
 
-    private void OnClickButtonWithParameter(int index)
-    {
+    private void Buy(){
+        int index = selectedIndex;
         ProductData productData = productsDataList[index];
-        bool result = CacheManager.ChangeCoin(productData.coin);
+        bool result = CacheManager.ChangeCoin(productData.silly);
         if (result) {
             switch (index)
             {
@@ -107,6 +137,11 @@ public class ShopController : MonoBehaviour
         } else {
 
         }
+    }
+
+    private void OnClickButtonWithParameter(int index)
+    {
+        
     }
 
     void OnClickButton()

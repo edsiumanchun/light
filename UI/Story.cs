@@ -69,20 +69,39 @@ public class StoryController : MonoBehaviour
     }
 
     public void LoadStoryDataFromJSON(){
-        LoadStoryDataFromJSONWithPath(CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString()));
+        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString());
+
+        print(storyFilePath);
+        TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
+        print(jsonFile);
+        wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
+        LoadStoryDataFromJSONWithPath();
     }
-    public void LoadStoryDataFromJSONWithPath(string path)
+
+    public void LoadStoryDataFromText(string result){
+        StoryData storyData = new StoryData
+        {
+            dialogue = new string[] { result }
+        };
+
+        // Create a new StoryDataWrapper and add the StoryData object
+        StoryDataWrapper storyDataWrapper = new StoryDataWrapper
+        {
+            storyArray = new System.Collections.Generic.List<StoryData>
+            {
+                storyData
+            }
+        }; 
+        wrapper = storyDataWrapper;
+        LoadStoryDataFromJSONWithPath();
+    }
+    public void LoadStoryDataFromJSONWithPath()
     {
         SetupFadeObject(false);
         if(leftPrefab != null) Destroy(leftPrefab);
         if(rightPrefab != null) Destroy(rightPrefab);
         isTyping = false;
         currentStoryIndex = 0;
-        string storyFilePath = "Json/Story/" + path;
-        print(storyFilePath);
-        TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
-        print(jsonFile);
-        wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
         StoryData story = wrapper.storyArray[currentStoryIndex];
         isStory = story.name != null;
         dialogueText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;

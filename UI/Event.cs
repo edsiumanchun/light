@@ -19,7 +19,6 @@ public class EventController : MonoBehaviour
 
     public static float ShowEvent(string name)
     { 
-        Debug.Log("?????" + name);
         GameObject player = GameObject.Find("Player");
         GameObject story = GameObject.Find("Story");
         GameObject boss = GameObject.Find("Boss");

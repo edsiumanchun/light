@@ -2,27 +2,24 @@
   "products": [
     {
       "name": "gargoyle",
-      "coin": 3
+      "greed": 3,
+      "angry": 3,
+      "silly": 0,
+      "desc": "???1"
     },
     {
       "name": "gargoyle",
-      "coin": 3
+      "greed": 0,
+      "angry": 3,
+      "silly": 3,
+      "desc": "???3"
     },
     {
       "name": "gargoyle",
-      "coin": 3
-    },
-    {
-      "name": "gargoyle",
-      "coin": 3
-    },
-    {
-      "name": "gargoyle",
-      "coin": 3
-    },
-    {
-      "name": "gargoyle",
-      "coin": 3
+      "greed": 3,
+      "angry": 0,
+      "silly": 3,
+      "desc": "???4"
     }
   ]
 }

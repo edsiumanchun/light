@@ -42,11 +42,11 @@ public class StageController : MonoBehaviour
     }
     private void SetupBar(){
         tempStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        Utils.CreateNavigationBar("樓層", new Vector2(0f, 193f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("地圖", new Vector2(0f, 198f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
-        selectionBarObject = Utils.CreateSelectionBar(stages[tempStage], new Vector2(0f, -157f), canvasObject.transform, () =>
+        selectionBarObject = Utils.CreateSelectionBar(stages[tempStage], new Vector2(0f, -178f), canvasObject.transform, () =>
         {
             tempStage = Mathf.Max(tempStage - 1, 0);
             foreach(var button in buttons){
@@ -88,7 +88,7 @@ public class StageController : MonoBehaviour
                 if(tempStage != CacheManager.GetCache(Cache.CurrentStage.ToString())){
                     image = commonImages[((int)UICommon.CircleButton)];
                 }
-                GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos), new Vector2(0, 0), canvasObject.transform, () =>
+                GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
                     CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 0 : 2);
                     MainController.LoadFloorAssetsFromJson(index, "HomeScene");
@@ -97,6 +97,7 @@ public class StageController : MonoBehaviour
                 cell.name = (index + 1).ToString();
                 cell.GetComponent<Text>().text = (index + 1).ToString();
                 buttons.Add(cell.transform.parent.gameObject);
+                cell.transform.parent.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             }
         }
     }

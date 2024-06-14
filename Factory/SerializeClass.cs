@@ -25,7 +25,7 @@ public class EnemyData
     public int hp;
     public int damage;
     public string name;
-    public int defend;
+    public int reward;
 }
 
 [System.Serializable]
@@ -57,6 +57,9 @@ public class ProductDataWrapper
 [System.Serializable]
 public class ProductData
 {
-    public int coin;
+    public int silly;
+    public int greed;
+    public int angry;
+    public string desc;
     public string name;
 }

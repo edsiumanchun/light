@@ -177,13 +177,14 @@ public class Utils : MonoBehaviour
         {
             int x = i == 0 ? 0 : -44;
             GameObject cell;
+            int topImageY = 64;
             if(i == 0){
-                cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 44 + 99), new Vector2(0, -66), enemyInfo.transform, TextAnchor.MiddleCenter);
+                cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 44 + topImageY), new Vector2(0, topImageY - 133), enemyInfo.transform, TextAnchor.MiddleCenter);
                 Image uiImage = cell.transform.parent.gameObject.GetComponent<Image>();
                 RectTransform uiImageRectTransform = uiImage.rectTransform;
                 uiImageRectTransform.sizeDelta = new Vector2(80f, 80f);
             } else {
-                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 44 + 33), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
+                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 38 + (topImageY - 77)), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
             }
             cell.GetComponent<Text>().text = values[i];
         }

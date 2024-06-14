@@ -33,9 +33,9 @@ public class SettingsController : MonoBehaviour
 
     private void SetupSelctionBar(){
         int xPos = 68;
-        int yPos = -68;
-        int space = 86;
-        Utils.CreateNavigationBar("設定", new Vector2(0f, 193f), canvasObject.transform, () =>
+        int yPos = -38;
+        int space = 77;
+        Utils.CreateNavigationBar("設定", new Vector2(0f, 198f + 2f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
@@ -106,7 +106,7 @@ public class SettingsController : MonoBehaviour
 
         // Set position of circleButtonsContainer
         RectTransform containerRectTransform = circleButtonsContainer.AddComponent<RectTransform>();
-        containerRectTransform.anchoredPosition = new Vector2(0, -157);
+        containerRectTransform.anchoredPosition = new Vector2(0, -174);
 
         // Instantiate circle buttons
         for (int i = 0; i < settingImages.Count; i++)

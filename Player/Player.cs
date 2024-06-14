@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     public void ShowStory(){
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        if( (CacheManager.IsCleared() && currentFloor == 2) ){
+        if( (CacheManager.IsCleared() && currentFloor == 2) || Utils.isTest){
             EventController.ShowEvent("shop");
         } else {
             storyController.LoadStoryDataFromJSON();

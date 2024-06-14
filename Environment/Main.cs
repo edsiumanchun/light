@@ -12,13 +12,14 @@ public class MainController : MonoBehaviour
 {
     private void Start()
     {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 0 : 2);
         if(Utils.isTest) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 4);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
+            CacheManager.SetCache(Cache.Exit.ToString(), 0);
         }
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 0 : 2);
         LoadShopData();
         LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");

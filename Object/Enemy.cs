@@ -106,9 +106,8 @@ public class EnemyController : MonoBehaviour
             bool result = CacheManager.ChangeHP(enemyDamage);
             Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyHP);
             if(result == false) {
-                Debug.Log("???");
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                storyController.LoadStoryDataFromJSONWithPath("Special/Die");
+                storyController.LoadStoryDataFromText("體力不足，無法作戰。");
                 yield break;
             }
             yield return new WaitForSeconds(0.8f); // Wait for 1 second
