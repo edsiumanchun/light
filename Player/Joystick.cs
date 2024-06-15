@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class JoystickController : MonoBehaviour, IDragHandler
 {
-    bool isFighting = false;
+    public bool isFighting = false;
     [SerializeField] private float moveSpeed = 6;
     // [SerializeField] private float jumpForce = 6.8f;
     [SerializeField] private float jumpForce = 7f;
@@ -179,15 +179,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
-    private IEnumerator IncreaseHPOverTime()
-    {
-        while (isFighting)
-        {
-            yield return new WaitForSeconds(1f); // Wait for 1 second
-            CacheManager.ChangeHP(5);
-            DataHolder.player.GetComponent<PlayerController>().SetupHPText();
-        }
-    }
 
     public void ReleaseFighting(){
         isFighting = false;
@@ -216,22 +207,14 @@ public class JoystickController : MonoBehaviour, IDragHandler
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
         } else  {
             // purify
-            bool result = CacheManager.CheckChangeHP(purifyObject.GetComponent<EnemyController>().enemyDamage);
+            bool result = CacheManager.ChangeHPMP(-1 * purifyObject.GetComponent<EnemyController>().enemyDamage,true);
             if(result == false) {
-                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                storyController.LoadStoryDataFromText("體力不足，無法作戰。");
                 return;
             }
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
             purifyObject.GetComponent<EnemyController>().DestroyEnemy();
-            GameObject gameObject = GameObject.Find("MariaGhost");
-            if (gameObject != null)
-            {
-                Utils.AddEffect(this.gameObject, "heart");
-                StartCoroutine(IncreaseHPOverTime());
-            }
         }
     }
 

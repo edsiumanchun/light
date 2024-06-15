@@ -29,14 +29,29 @@ public class StoryController : MonoBehaviour
     public Vector2 screenSize;
     GameObject container;
     GameObject gameUI;
+    public bool canPlayerMove = false;
+    public Button button;
+    public void ShowTutor(){
+        int showTutor = CacheManager.GetCache(Cache.ShowTutor.ToString());
+        if(showTutor == 0) {
+            SetIntervative(false);
+            LoadStoryDataFromText("【移動】左右滑動屏幕","【跳躍】點擊屏幕\n【特殊】貼近人物前方點擊右下角按鈕" );
+            
+        }
+    }
 
+    public void SetIntervative(bool isActive){
+        GameObject backgroundImageObject = canvasObject.transform.Find("BackgroundImageObject").gameObject;
+        backgroundImageObject.SetActive(isActive);
+        canPlayerMove = !isActive;
+    }
     private void Start()
     {
         container = GameObject.Find("Container");
         gameUI = GameObject.Find("GameCanvas");
         // Create Canvas object
         canvasObject = Utils.CreateCanvas("StoryCanvas", true, 0f);
-        Button button = canvasObject.AddComponent<Button>();
+        button = canvasObject.AddComponent<Button>();
         button.onClick.AddListener(OnClickButton);
         // setup
         sentences = new Queue<string>();
@@ -66,6 +81,7 @@ public class StoryController : MonoBehaviour
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
         canvasObject.SetActive(false);
+        ShowTutor();
     }
 
     public void LoadStoryDataFromJSON(){
@@ -78,12 +94,12 @@ public class StoryController : MonoBehaviour
         LoadStoryDataFromJSONWithPath();
     }
 
-    public void LoadStoryDataFromText(string result){
+    public void LoadStoryDataFromTextList(string title, string[] results){
         StoryData storyData = new StoryData
         {
-            dialogue = new string[] { result }
+            dialogue = results,
+            name = title
         };
-
         // Create a new StoryDataWrapper and add the StoryData object
         StoryDataWrapper storyDataWrapper = new StoryDataWrapper
         {
@@ -95,15 +111,22 @@ public class StoryController : MonoBehaviour
         wrapper = storyDataWrapper;
         LoadStoryDataFromJSONWithPath();
     }
+    public void LoadStoryDataFromText(string title, string result){
+        LoadStoryDataFromTextList(title, new string[] { result });
+    }
     public void LoadStoryDataFromJSONWithPath()
     {
         SetupFadeObject(false);
+        if(canPlayerMove == false) {
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<JoystickController>().isFighting = true;
+        }
         if(leftPrefab != null) Destroy(leftPrefab);
         if(rightPrefab != null) Destroy(rightPrefab);
         isTyping = false;
         currentStoryIndex = 0;
         StoryData story = wrapper.storyArray[currentStoryIndex];
-        isStory = story.name != null;
+        isStory = story.name != null && story.name != "";
         dialogueText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;
 
         if(isStory) {
@@ -154,17 +177,23 @@ public class StoryController : MonoBehaviour
     void SetupFadeObject(bool isStart){
         Fade(container, isStart);
         canvasObject.SetActive(!isStart);
-        gameUI.SetActive(isStart);
+        if(canPlayerMove) {
+            gameUI.SetActive(true);
+        } else {
+            gameUI.SetActive(isStart);
+        }
     }
 
     void OnClickButton()
     {
+        if(canPlayerMove) return;
         if(isWaitingEvent) return;
         DisplayNextSentence();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(canPlayerMove) return;
         if(isWaitingEvent) return;
         DisplayNextSentence();
     }
@@ -205,6 +234,8 @@ public class StoryController : MonoBehaviour
             {
                 SetupFadeObject(true);
                 CacheManager.SetClearFloor();
+                GameObject player = GameObject.Find("Player");
+                player.GetComponent<JoystickController>().isFighting = false;
             }
 
             return;
@@ -284,7 +315,7 @@ public class StoryController : MonoBehaviour
                 rightPrefab.name = story.rightPrefab;
             }
         }
-        if(isStory) {
+        if(isStory && leftPrefab != null) {
             if(leftPrefab.name.Contains(story.name)) {
                 Utils.changeAlpha(leftPrefab, 1f);
                 Utils.changeAlpha(rightPrefab, 0.1f);
@@ -308,8 +339,14 @@ public class StoryController : MonoBehaviour
         }
         int i = 0;
         if(story.name == "event") {
+            if(leftPrefab != null) leftPrefab.SetActive(false);
+            if(rightPrefab != null) rightPrefab.SetActive(false);
+            if(dialogueText != null) dialogueText.transform.parent.gameObject.SetActive(false);
             StartCoroutine(ShowEvent(story));
         } else {
+            if(leftPrefab != null) leftPrefab.SetActive(true);
+            if(rightPrefab != null) rightPrefab.SetActive(true);
+            if(dialogueText != null) dialogueText.transform.parent.gameObject.SetActive(true);
             foreach (string sentence in story.dialogue)
             {
                 sentences.Enqueue(story.name + "\n" + sentence);

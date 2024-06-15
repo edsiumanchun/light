@@ -14,15 +14,21 @@ public enum Cache
     Copper = 3,
     Silver = 4,
     Gold = 5,
-    Flower = 6,
-    Coin = 7,
+    HPRecover = 6,
+  //  MPRecover = 7,
     Destroy = 8,
     HP = 9,
-    Damage = 10,
-    Defend = 11,
-    HPMax = 12,
-    ClearStage = 13,
-    ClearFloor = 14
+    MP = 10,
+    HPMax = 11,
+    MPMax = 12,
+    Damage = 13,
+    Defend = 14,
+    ClearStage = 15,
+    ClearFloor = 16,
+    Greed = 17,
+    Angry = 18,
+    Silly = 19,
+    ShowTutor = 20
 }
 
 public static class CacheUsage
@@ -78,35 +84,51 @@ public static class CacheUsage
 
 public static class CacheManager
 {
-    public static bool ChangeCoin(int amount){
-        int coin = CacheManager.GetCache(Cache.Coin.ToString());
+    public static bool ChangeCoin(int amount, Cache type){
+        int coin = CacheManager.GetCache(type.ToString());
         if(coin - amount <= 0) {
             return false;
         } else {
             int margin = amount >= 0 ? 9999999 : 0;
-            CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
+            CacheManager.ChangeCache(type.ToString(), amount, margin);
             return true;
         }
     }
 
-    public static bool CheckChangeHP(int amount){
-        int hp = CacheManager.GetCache(Cache.HP.ToString());
-        Debug.Log("CheckChangeHP" + hp);
-        Debug.Log("CheckChangeHP" + amount);
-        if(hp - amount <= 0) {
+    public static bool CheckChangeCache(int amount, Cache type){
+        int value = CacheManager.GetCache(type.ToString());
+        if(value + amount < 0) {
             return false;
         } else {
             return true;
         }
     }
-    public static bool ChangeHP(int amount){
-        bool result = CheckChangeHP(amount);
-        if(result == false) {
-            int hpMax = CacheManager.GetCache(Cache.HP.ToString());
-            int margin = amount >= 0 ? hpMax : 0;
-            CacheManager.ChangeCache(Cache.HP.ToString(), amount, margin);
+    public static bool ChangeHPMP(int hpAmount, bool isCheck){
+        bool hp = CheckChangeCache(hpAmount, Cache.HP);
+        bool mp = CheckChangeCache(-1, Cache.MP);
+        if(hpAmount > 0){
+            mp = true;
         }
-        return result;
+        if(!isCheck) {
+            if(hp == true && mp == true) {
+                int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+                CacheManager.ChangeCache(Cache.HP.ToString(), hpAmount, hpMax);
+                if(hpAmount > 0){
+                } else {
+                    int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
+                    Debug.Log("?????" + hpAmount + "?????" + mpMax);
+                    CacheManager.ChangeCache(Cache.MP.ToString(), -1, mpMax);
+                }
+            } 
+        }
+        if(hp == false){
+            StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+            storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
+        } else if(mp == false){
+            StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+            storyController.LoadStoryDataFromText("", "靈力不足，無法作戰。");
+        }
+        return hp == true && mp == true;
     }
 
     public static bool ChangeKey(string cacheKey, int amount){
@@ -142,9 +164,9 @@ public static class CacheManager
     public static int GetCache(string key)
     {
         int defaultValue = 0;
-        if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString()){
+        if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString() || key == Cache.MPMax.ToString() || key == Cache.MP.ToString()){
             defaultValue = 5;
-        } else if (key == Cache.Defend.ToString() || key == Cache.Damage.ToString()){
+        } else if (key == Cache.HPRecover.ToString() || key == Cache.Damage.ToString()){
             defaultValue = 1;
         } else if (key == Cache.ClearFloor.ToString() || key == Cache.ClearStage.ToString()){
             defaultValue = -1;

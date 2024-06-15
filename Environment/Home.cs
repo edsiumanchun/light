@@ -40,6 +40,14 @@ public class HomeController : MonoBehaviour
             int i = 0;
             foreach (AssetData asset in assetDataList)
             {
+                if(i == 0 && asset.name != "Audio") {
+                    AssetData audioAsset = new AssetData
+                    {
+                        name = "Audio",
+                        gridArray0 = new List<int> { 0 }
+                    };
+                    audioAsset.CreateObjects(-1 * i, j);
+                }  
                 asset.CreateObjects(-1 * i, j);
                 i++;
             }

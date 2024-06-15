@@ -1,6 +1,11 @@
 {
 "storyArray" : [
 	{
+	    "name": "event",
+	    "dialogue": [
+	        "completeTutor"
+	    ]
+	},{
 	    "name": "player",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "sage",
@@ -41,7 +46,7 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "最近各地的餓鬼都莫名其妙地活躍起來...",
+	        "這裡經常有餓鬼出沒，老伯伯還是別逗留在這裡較好。",
 	        "老伯伯還是別逗留在這裡較好。"
 	    ]
 	},{
@@ -59,7 +64,7 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "沿着這條小徑一直走，約一個小時就到達阿爾卑斯小鎮。"
+	        "沿着這條小徑一直走，約一個小時就會到達王都。"
 	    ]
 	},
 	{

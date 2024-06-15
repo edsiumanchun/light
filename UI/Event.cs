@@ -23,17 +23,34 @@ public class EventController : MonoBehaviour
         GameObject story = GameObject.Find("Story");
         GameObject boss = GameObject.Find("Boss");
         GameObject rosia = GameObject.Find("Rosia");
+        GameObject music = GameObject.Find("Music");
         Vector3 vector3;
         GameObject gameObject;
         switch(name)
         {
+            case "completeTutor":
+                CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
+                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+                storyController.SetIntervative(true);
+                return 0.1f;
             // disappear
             case "bossdisappear":
                 boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
             case "storydisappear":
-                Utils.Fade(story);
+                Utils.Fade(story, true);
                 return 0.1f;
+
+            case "musicappear":
+                vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
+                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+                Utils.Fade(gameObject, false);
+                return 1.8f;
+
+            case "musicdisappear":
+                Utils.Fade(music, true);
+                return 1.8f;
             // shop
             case "shop":
                 ShopController shopController = Camera.main.gameObject.GetComponent<ShopController>();
@@ -59,16 +76,16 @@ public class EventController : MonoBehaviour
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
                 return 1;
             case "playerkneel":
-                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Kneel);
+                //player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Kneel);
                 return 1;
             case "rosiawake":
-                rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                //rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
             case "storywake":
                 story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
             case "rosiadown":
-                rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
+                // rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
                 return 1f;
             case "rosiadcry":
                 rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
@@ -83,6 +100,7 @@ public class EventController : MonoBehaviour
                 story.transform.DOMove(vector3, 3);
                 // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
                 return 3;
+                
             // move
             case "ghostshow":
                 vector3 = GetVector("Player",new Vector3(1.3f,0.4f,1f));
@@ -127,12 +145,6 @@ public class EventController : MonoBehaviour
             case "switchscene":
                 MainController.LoadFloorAssetsFromJson(0, "HomeScene");
                 return 1f;
-            case "musicappear":
-                vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
-                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
-                gameObject.name = "Music";
-                gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
-                return 1.8f;
         }
         return 0.1f;
     }

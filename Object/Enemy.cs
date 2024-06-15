@@ -93,9 +93,12 @@ public class EnemyController : MonoBehaviour
     {
         currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
-        DataHolder.player.GetComponent<PlayerController>().SetupHPText();
         // hpTextComponent.SetText(enemyData.hp.ToString());
-        Camera.main.GetComponent<GameUIController>().HideHPBar(false);
+        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
+        // if(Utils.isUAT) {
+        //     Die(true);
+        //     return;
+        // }
         StartCoroutine(DecreaseHPOverTime());
     }
 
@@ -103,33 +106,52 @@ public class EnemyController : MonoBehaviour
     {
         while (currentHP > 0)
         {
-            bool result = CacheManager.ChangeHP(enemyDamage);
-            Camera.main.GetComponent<GameUIController>().UpdateHPBar(currentHP, enemyHP);
+            bool result = CacheManager.ChangeHPMP(-1 * enemyDamage, false);
             if(result == false) {
-                StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-                storyController.LoadStoryDataFromText("體力不足，無法作戰。");
+                ResumeBattle();
                 yield break;
             }
-            yield return new WaitForSeconds(0.8f); // Wait for 1 second
             currentHP -= CacheManager.GetCache(Cache.Damage.ToString());
+            Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
+            yield return new WaitForSeconds(0.4f); // Wait for 1 second
+            GameObject gameObject = GameObject.Find("MariaGhost");
+            if (gameObject != null)
+            {
+                int hpRecover = CacheManager.GetCache(Cache.HPRecover.ToString());
+                Utils.AddEffect(DataHolder.player, "heart");
+                CacheManager.ChangeHPMP(hpRecover, false);
+                Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
+            }
+            yield return new WaitForSeconds(0.4f);
             if (currentHP <= 0)
             {
-                Camera.main.GetComponent<GameUIController>().HideHPBar(true);
                 CacheUsage.cacheDestroyedObject(this.gameObject.name);
-                DataHolder.player.GetComponent<JoystickController>().ReleaseFighting();
+                ResumeBattle();
                 Die(true);
             }
         }
     }
 
+    public void ResumeBattle(){
+        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(true);
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<JoystickController>().ReleaseFighting();
+        Utils.RemoveEffect(this.gameObject.transform);
+    }
+
     public void Die(bool inGame){
-        Utils.Fade(this.gameObject);
-        StartCoroutine(DelayDestroy());
         if(inGame) {
+            ResumeBattle();
             if(this.gameObject.name.Contains("Boss")) {
                 GameObject player = GameObject.Find("Player");
                 player.GetComponent<PlayerController>().ShowStory();
-            }   
+            } else {
+                Utils.Fade(this.gameObject, true);
+                StartCoroutine(DelayDestroy());
+            }
+        } else {
+            Utils.Fade(this.gameObject, true);
+            StartCoroutine(DelayDestroy());
         }
     }
 

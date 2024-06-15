@@ -117,7 +117,7 @@ public class SettingsController : MonoBehaviour
             GameObject detailGO = Utils.CreateImageWithText(settingImages[0], new Vector2(-68, 0), new Vector2(130, 0), buttonGO.transform, TextAnchor.MiddleLeft);
             buttons.Add(buttonGO);
             Text text0 = detailGO.GetComponent<Text>();
-            text0.fontSize = 28;
+            text0.fontSize = 23;
             text0.text = buttonTitles[i];
         }
         

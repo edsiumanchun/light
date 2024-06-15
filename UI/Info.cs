@@ -130,7 +130,7 @@ public class InfoController : MonoBehaviour
         }
         Debug.Log("132493" + index);
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        storyController.LoadStoryDataFromText("體力不足，無法作戰。");
+        storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
     }
 
     void OnClickButton()

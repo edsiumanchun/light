@@ -16,7 +16,8 @@ public enum UICommon
     SelectionBar= 6,
     Panel=7,
     LongButton = 8,
-    ConfirmPanel = 9
+    ConfirmPanel = 9,
+    ShortButton = 10
 }
 
 public enum UIGameButton

@@ -60,15 +60,15 @@ public class DashboardController : MonoBehaviour
         int goldKeyCount = CacheManager.GetCache(Cache.Gold.ToString());
         // int flowerKeyCount = CacheManager.GetCache(Cache.Flower.ToString());
 
-        int coinKeyCount = CacheManager.GetCache(Cache.Coin.ToString());
-        int hpCount = CacheManager.GetCache(Cache.HP.ToString());
-        int hpMaxCount = CacheManager.GetCache(Cache.HPMax.ToString());
-        int damageCount = CacheManager.GetCache(Cache.Damage.ToString());
+        int greedCount = CacheManager.GetCache(Cache.Greed.ToString());
+        int sillyCount = CacheManager.GetCache(Cache.Silly.ToString());
+        int angryCount = CacheManager.GetCache(Cache.Angry.ToString());
+        // int damageCount = CacheManager.GetCache(Cache.Damage.ToString());
         // int defendCount = CacheManager.GetCache(Cache.Defend.ToString());
         // Update the key count texts
-        keyTextImages[0].GetComponent<Text>().text = hpCount.ToString() + "/" + hpMaxCount.ToString();
-        keyTextImages[1].GetComponent<Text>().text = damageCount.ToString();
-        keyTextImages[2].GetComponent<Text>().text = coinKeyCount.ToString();
+        keyTextImages[0].GetComponent<Text>().text = greedCount.ToString();
+        keyTextImages[1].GetComponent<Text>().text = angryCount.ToString();
+        keyTextImages[2].GetComponent<Text>().text = sillyCount.ToString();
         // keyTextImages[3].GetComponent<Text>().text = coinKeyCount.ToString();
 
         keyTextImages[3].GetComponent<Text>().text = copperKeyCount.ToString();

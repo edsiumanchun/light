@@ -129,7 +129,7 @@ public class AssetData
         } else if(pathName.Contains("Player")){
             newObject.name = pathName;
         } else if( pathName.Contains("Story")){
-            if(!Utils.isTest) {
+            if(!Utils.isUAT) {
                 int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
                 if(CacheManager.IsCleared() && currentFloor != 2){
                     newObject.SetActive(false);
@@ -273,7 +273,11 @@ public class AssetData
                     }
                     else
                     {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, z * 0.01f - 7);
+                        float newZ = z * 0.01f - 7 ;
+                        if(newObject.name.Contains("GoDown")) {
+                            newZ = -1.8f;
+                        } 
+                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
                         newObject.tag = "Ground";
                     }
                 }
@@ -281,7 +285,10 @@ public class AssetData
                 {
                     BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
-                    float newZ = newObject.name.Contains("Player") ? -9.3f : z * 0.01f - 1 ;
+                    float newZ = z * 0.01f - 1 ;
+                    if (newObject.name.Contains("Player")) {
+                        newZ = -9.3f;
+                    }
                     newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
                     if(isRight) { // flip
                         newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);

@@ -1,25 +1,25 @@
 {
   "products": [
     {
-      "name": "gargoyle",
+      "name": "生命藥水",
       "greed": 3,
       "angry": 3,
       "silly": 0,
-      "desc": "???1"
+      "desc": "回復體力至體力上限"
     },
     {
-      "name": "gargoyle",
+      "name": "靈力藥水",
       "greed": 0,
       "angry": 3,
       "silly": 3,
-      "desc": "???3"
+      "desc": "回復靈力至靈力上限"
     },
     {
-      "name": "gargoyle",
+      "name": "鑰匙",
       "greed": 3,
       "angry": 0,
       "silly": 3,
-      "desc": "???4"
+      "desc": "獲得銅鑰匙（x1）"
     }
   ]
 }

@@ -5,18 +5,7 @@
 	   	"leftPrefab": "player",
 	    "dialogue": [
 	        "playerhurt",
-	        "bossdisappear"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "失血...過多了..."
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
+	        "bossdisappear",
 	    	"rosiacome"
 	    ]
 	},

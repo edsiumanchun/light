@@ -106,11 +106,11 @@ public class ShopController : MonoBehaviour
         rowTextObject.GetComponent<Text>().text = productsDataList[selectedIndex].desc;
         rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
 
-        GameObject buyButton = Utils.CreateTextButton(DataHolder.commonImages[((int)UICommon.LongButton)], new Vector2(300, 0), new Vector2(0, 0), rowTextObject.transform, () =>
+        GameObject buyButton = Utils.CreateTextButton(DataHolder.commonImages[((int)UICommon.ShortButton)], new Vector2(300, 0), new Vector2(0, 0), rowTextObject.transform, () =>
         {
-            
+            Buy();
         });
-        buyButton.transform.parent.gameObject.transform.localScale = new Vector3(0.68f,1f,1f);
+        buyButton.transform.parent.gameObject.transform.localScale = new Vector3(1f,1f,1f);
         buyButton.name = "Button";
         buyButton.GetComponent<Text>().text = "買入";
     }
@@ -118,13 +118,15 @@ public class ShopController : MonoBehaviour
     private void Buy(){
         int index = selectedIndex;
         ProductData productData = productsDataList[index];
-        bool result = CacheManager.ChangeCoin(productData.silly);
+        Cache type = productData.name == "Silly" ? Cache.Silly : 
+        productData.name == "Greed" ? Cache.Greed : Cache.Angry;
+        bool result = CacheManager.ChangeCoin(productData.silly, type);
         if (result) {
             switch (index)
             {
                 case 0:
                     int hpMax = CacheManager.GetCache(Cache.HP.ToString());
-                    CacheManager.ChangeHP(hpMax);
+                    CacheManager.ChangeHPMP(hpMax, false);
                     break;
                 case 1:
                     CacheManager.ChangeCache(Cache.Damage.ToString(), 1, 9999999);

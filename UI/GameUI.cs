@@ -12,12 +12,11 @@ public class GameUIController : MonoBehaviour
     public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
     public GameObject gameButton, buttonImage;
-    public GameObject dashboardButton;
+    public GameObject dashboardButton, settingButton, stageButton, infoButton, circleButtonsContainer;
 
     private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
     public GameObject canvasObject;
 
-    public GameObject infoButton;
 
 
     public Vector2[] buttonPositions = new Vector2[]
@@ -66,13 +65,17 @@ public class GameUIController : MonoBehaviour
         enemyHPBarText.GetComponent<Text>().fontSize = fontSize;
         playerHPBarText.GetComponent<Text>().fontSize = fontSize;
         playerMPBarText.GetComponent<Text>().fontSize = fontSize;
-        DisplayHPInfo();
-        HideHPBar(true);
+        DisplayHPMPInfo();
+        HideEnemyHPBar(true);
         // hp
     }
 
-    public void HideHPBar(bool isHide){
+    public void HideEnemyHPBar(bool isHide){
         enemyHPBar.SetActive(!isHide);
+        circleButtonsContainer.SetActive(isHide);
+        settingButton.SetActive(isHide);
+        infoButton.SetActive(isHide);
+        stageButton.SetActive(isHide);
     }
 
     // private void SetupDashboard()
@@ -83,39 +86,21 @@ public class GameUIController : MonoBehaviour
     private void SetupButton()
     {
         // Instantiate menu button
-        GameObject settingButton = Utils.CreateButton(menuButtonImages[0], menuButtonPosition, canvasObject.transform, () => {
+        settingButton = Utils.CreateButton(menuButtonImages[0], menuButtonPosition, canvasObject.transform, () => {
 
             isMenuOpen = !isMenuOpen;
-            // Activate/deactivate the circle buttons container based on menu state
-            //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-            //circleButtonsContainer.SetActive(isMenuOpen);
-
-            //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-            //settingsController.canvasObject.SetActive(true);
             SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
             settingsController.canvasObject.SetActive(true);
         });
-        GameObject stageButton = Utils.CreateButton(menuButtonImages[1], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 110), canvasObject.transform, () => {
+        stageButton = Utils.CreateButton(menuButtonImages[1], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 110), canvasObject.transform, () => {
 
             isStageOpen = !isStageOpen;
-            // Activate/deactivate the circle buttons container based on menu state
-            //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-            //circleButtonsContainer.SetActive(isMenuOpen);
-
-            //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-            //settingsController.canvasObject.SetActive(true);
             StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
             stageController.canvasObject.SetActive(true);
         });
         infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 220), canvasObject.transform, () => {
 
             isInfoOpen = !isInfoOpen;
-            // Activate/deactivate the circle buttons container based on menu state
-            //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-            //circleButtonsContainer.SetActive(isMenuOpen);
-
-            //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-            //settingsController.canvasObject.SetActive(true);
             InfoController infoController = Camera.main.gameObject.GetComponent<InfoController>();
             infoController.SetupButtons();
             infoController.canvasObject.SetActive(true);
@@ -125,21 +110,13 @@ public class GameUIController : MonoBehaviour
         dashboardButton = Utils.CreateButton(menuButtonImages[menuButtonImages.Count - 1], dashboardButtonPosition, canvasObject.transform, () => {
 
             isDashboardOpen = !isDashboardOpen;
-
-            // Activate/deactivate the circle buttons container based on menu state
-            //GameObject circleButtonsContainer = canvasObject.transform.Find("CircleButtonsContainer").gameObject;
-            //circleButtonsContainer.SetActive(isMenuOpen);
-
-            //SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
-            //settingsController.canvasObject.SetActive(true);
-
             DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
             dashboardController.SetText();
             dashboardController.canvasObject.SetActive(true);
         });
 
         // Create circle buttons container
-        GameObject circleButtonsContainer = new GameObject("CircleButtonsContainer");
+        circleButtonsContainer = new GameObject("CircleButtonsContainer");
         circleButtonsContainer.transform.SetParent(canvasObject.transform, false);
 
         // Set position of circleButtonsContainer
@@ -190,27 +167,34 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void DisplayHPInfo(){
+    public void DisplayHPMPInfo(){
         int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
         int hp = CacheManager.GetCache(Cache.HP.ToString());
+        int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
+        int mp = CacheManager.GetCache(Cache.MP.ToString());
         playerHPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
-        playerMPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
-    }
-
-    public void UpdateHPBar(int enemyHP, int emeyMaxHP)
-    {
-        DisplayHPInfo();
-        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-        int hp = CacheManager.GetCache(Cache.HP.ToString());
-        enemyHPBarText.GetComponent<Text>().text = enemyHP.ToString() + "/" + emeyMaxHP.ToString();
+        playerMPBarText.GetComponent<Text>().text = mp.ToString() + "/" + mpMax.ToString();
         foreach (Transform child in playerHPBar.transform) {
             if (child.name == "HPBar"){
-                child.transform.localScale = new Vector3(hp / hpMax, 1f, 1f);
+                child.transform.localScale = new Vector3((float)hp / hpMax, 1f, 1f);
             }
         }
+        foreach (Transform child in playerMPBar.transform) {
+            if (child.name == "HPBar"){
+                child.transform.localScale = new Vector3((float)mp / mpMax, 1f, 1f);
+            }
+        }
+    }
+
+    public void UpdateAllHPMPBar(int enemyHP, int enemyMaxHP)
+    {
+        DisplayHPMPInfo();
+        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        enemyHPBarText.GetComponent<Text>().text = enemyHP.ToString() + "/" + enemyMaxHP.ToString();
         foreach (Transform child in enemyHPBar.transform) {
             if (child.name == "HPBar"){
-                float ratio = (float)enemyHP / emeyMaxHP;
+                float ratio = (float)enemyHP / enemyMaxHP;
                 child.transform.localScale = new Vector3(ratio, 1f, 1f);
             }
         }

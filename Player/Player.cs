@@ -93,8 +93,10 @@ public class PlayerController : MonoBehaviour
     public void ShowStory(){
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        if( (CacheManager.IsCleared() && currentFloor == 2) || Utils.isTest){
-            EventController.ShowEvent("shop");
+        if( (CacheManager.IsCleared() && currentFloor == 2)){
+            if(Utils.isUAT){
+                EventController.ShowEvent("shop");
+            }
         } else {
             storyController.LoadStoryDataFromJSON();
         }
@@ -241,6 +243,4 @@ public class PlayerController : MonoBehaviour
         // Update the life bar UI based on currentHealth and maxHealth
     }
 
-    public void SetupHPText(){
-    }
 }

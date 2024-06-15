@@ -8,7 +8,7 @@ using TMPro;
 using DG.Tweening;
 public class Utils : MonoBehaviour
 {
-    public static bool isTest = true;
+    public static bool isUAT = true;
     public static float referenceResolution = 1200;
 
     public static bool IsMobilePlatform()
@@ -156,7 +156,7 @@ public class Utils : MonoBehaviour
     {
         GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
-        NavBar.GetComponent<Text>().fontSize = 33;
+        NavBar.GetComponent<Text>().fontSize = 28;
         GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(260, 0), NavBar.transform, onClickAction);
         return NavBar;
     }
@@ -281,22 +281,49 @@ public class Utils : MonoBehaviour
         List<string> paths = new List<string>((new[] { effectName}));
         GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
         GameObject lightObject = Instantiate(lightPrefab);
+        lightObject.name = "Effect";
         lightObject.transform.SetParent(GO.transform);
         lightObject.transform.localPosition = new Vector3(0, 0.8f, -8f);
+    }
+
+    public static void RemoveEffect(Transform transform)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            ParticleSystem particleSystem = child.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                Destroy(child);
+            }
+        }
     }
     public static void ChangeAudioClipByName(int sourceIndex)
     {
         PersistentAudioSource.Instance.PlayAudio(sourceIndex);
     }
 
-    public static void Fade(GameObject gameObject){
+    public static void Fade(GameObject gameObject, bool isFadeOut){
+        
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
             SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
             if (spriteRenderer != null)
             {
-                spriteRenderer.DOFade(0f, 0.3f);
+                // Set the alpha channel of the color
+                Color color = spriteRenderer.color;
+                color.a = isFadeOut ? 1f : 0f; // Set the alpha value between 0 and 1
+                spriteRenderer.color = color;
+            }
+        }
+
+        foreach (Transform child in children)
+        {
+            SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.DOFade(isFadeOut ? 0f : 1f, 0.3f);
             }
         }
     }
