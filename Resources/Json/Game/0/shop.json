@@ -1,14 +1,14 @@
 {
   "products": [
     {
-      "name": "生命藥水",
+      "name": "小血瓶",
       "greed": 3,
       "angry": 3,
       "silly": 0,
       "desc": "回復體力至體力上限"
     },
     {
-      "name": "靈力藥水",
+      "name": "小靈藥",
       "greed": 0,
       "angry": 3,
       "silly": 3,

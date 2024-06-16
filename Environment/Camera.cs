@@ -6,7 +6,7 @@ public class CameraViewController : MonoBehaviour
 {
     private int index = 0; // the current index
     public GameObject player; // Reference to the player object
-    public float backgroundWidth;
+    public float backgroundWidth = 12;
     public Transform backgroundObject; // Reference to the background object
     public float animationDuration = 0.08f; // Duration of the camera animation
 
@@ -27,7 +27,7 @@ public class CameraViewController : MonoBehaviour
         }
         float playerX = player.transform.position.x;
         // Check if the player has crossed the threshold going right
-        if (playerX > backgroundWidth * (0.5f + index))
+        if (playerX > backgroundWidth * (0.5f + index) && index < 1 )
         {
             index++;
             float newXPosition = backgroundWidth * index;

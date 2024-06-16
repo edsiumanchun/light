@@ -84,6 +84,9 @@ public class EventController : MonoBehaviour
             case "storywake":
                 story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
+            case "playerdrink":
+                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                return 1f;
             case "rosiadown":
                 // rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
                 return 1f;

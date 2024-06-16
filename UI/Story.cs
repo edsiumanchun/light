@@ -293,11 +293,7 @@ public class StoryController : MonoBehaviour
             List<string> paths = new List<string>((new[] { story.leftPrefab}));
             Sprite leftSprite = Utils.LoadSprites("Story", paths)[0];
             leftPrefab = Utils.CreateImage(leftSprite, leftPosition, canvasObject.transform);
-
-            RectTransform rectTransform = leftPrefab.GetComponent<RectTransform>();
-            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 380);
-            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 380);
-            // leftPrefab.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            leftPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
             Utils.MovePrefab(leftPrefab, -0.33f, 0.5f);
             leftPrefab.name = story.leftPrefab;
         } 
@@ -310,7 +306,7 @@ public class StoryController : MonoBehaviour
                 List<string> paths = new List<string>((new[] { story.rightPrefab}));
                 Sprite rightSprite = Utils.LoadSprites("Story", paths)[0];
                 rightPrefab = Utils.CreateImage(rightSprite, rightPosition, canvasObject.transform);
-                rightPrefab.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
+                rightPrefab.transform.localScale = new Vector3(-1f, 1f, 1f);
                 Utils.MovePrefab(rightPrefab, -0.33f, 0.5f);
                 rightPrefab.name = story.rightPrefab;
             }

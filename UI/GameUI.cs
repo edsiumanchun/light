@@ -135,8 +135,8 @@ public class GameUIController : MonoBehaviour
     }
 
     public void hideGameButton() {
-        gameButton.SetActive(false);
-        infoButton.SetActive(false);
+        if(gameButton != null) gameButton.SetActive(false);
+        if(infoButton != null) infoButton.SetActive(false);
     }
     public void showGameButton(int index) {
         if(gameButton == null) return;

@@ -3,7 +3,7 @@
 	{
 	    "name": "player",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "rosia",
+	    "rightPrefab": "rosiasad",
 	    "dialogue": [
 	        "羅西亞！是誰把你弄傷的？"
 	    ]
@@ -16,6 +16,12 @@
 	    ]
 	},
 	{
+	    "name": "player",
+	    "dialogue": [
+	        "別亂動...你要先把這小血瓶喝下吧。"
+	    ]
+	},
+	{
 	    "name": "event",
 	    "dialogue": [
 	        "playerkneel",
@@ -24,27 +30,62 @@
 	},
 	{
 	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"傷勢不輕，現在帶你到醫院療傷吧！"
+	    	"我看你傷勢不輕，還是先帶你到醫院療傷吧！"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"我不要回去！我還要趕緊收集大量三毒之石...",
-	    	"只有這樣，才可以跟餓鬼商人換取能醫百病的靈藥來醫治我的妹妹。"
+	    	"不用了，這小血瓶已經讓我恢復了不少體力。",
+	    	"我還要趕緊去找曼陀羅花..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "這樣吧...我來幫你收集三毒之石，但你要先把這瓶生命藥水喝下。"
+	        "有什麼比自己的生命更重要？"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"好吧...謝謝你，公主。"
+	    	"這一切都是為了醫治妹妺的癱瘓症..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"是想以曼陀羅花製藥吧？",
+	        "即使得到曼陀羅花，還需要日夜供養此花一年才會發揮作用。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"只要能救治妹妹，多少年也不是問題。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	        "這樣吧，我來幫你找曼陀羅花。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"公主..."
 	    ]
 	},
 	{
@@ -55,8 +96,10 @@
 	},
 	{
 	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
 	    "dialogue": [
-	        "看來藥力發作了。"
+	        "看來藥力生效了，好好休息吧。"
 	    ]
 	}
 ]

@@ -93,12 +93,11 @@ public class EnemyController : MonoBehaviour
     {
         currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
-        // hpTextComponent.SetText(enemyData.hp.ToString());
         Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
-        // if(Utils.isUAT) {
-        //     Die(true);
-        //     return;
-        // }
+        if(Utils.isUAT) {
+            Die(true);
+            return;
+        }
         StartCoroutine(DecreaseHPOverTime());
     }
 

@@ -169,6 +169,7 @@ public class AssetData
             case "GateGold":
             case "GateSilver":
             case "GateCopper":
+            case "GateGreen":
                 if (CacheUsage.isDestroyObject("|" + id))
                 {
                     return null;
@@ -221,15 +222,15 @@ public class AssetData
         Vector2 backgroundSize = DataHolder.GetBackgroundSize();
         float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
+        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
         if (name == "Background") {
             newObject = CreateObjectWithAssetIndex(0, z, "");
             int index = gridArray0[0];
-            newObject.transform.position = new Vector3(0, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
+            newObject.transform.position = new Vector3(offsetX, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
             return;
         }
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
         float offset = plateSprite.bounds.size.x / 2;
-        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
         {
             List<int> gridArray = gridArrays[gridIndex];
@@ -242,7 +243,7 @@ public class AssetData
                 int cellValue = Mathf.Abs(gridArray[column]);
                 bool isRight = gridArray[column] >= 0;
                 if(name.Contains("Object") && column == 0 && !isFirstPage) {
-                    Vector3 vector3 = new Vector3(0, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
+                    Vector3 vector3 = new Vector3(offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
                     
                     GameObject wall = new GameObject();
                     wall.name = "Wall" + id;

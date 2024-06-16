@@ -151,16 +151,16 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
         if (moveDirection > 0)
         {
-            if(stopMove < 0){
-                return;
-            }
+            // if(stopMove < 0){
+            //     return;
+            // }
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if(moveDirection < 0)
         {
-            if(stopMove > 0){
-                return;
-            }
+            // if(stopMove > 0){
+            //     return;
+            // }
             transform.localScale = new Vector3(1f, 1f, 1f);
         } else {
             if(jumpCount == 0){
@@ -202,9 +202,16 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
         if (purifyObject == null) return;
         if(playerController.status == UIGameButton.Gate){
-            Utils.showChildrenWithName("move", transform);
-            purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
-            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
+            Debug.Log("???");
+            if(purifyObject.gameObject.name.Contains("GateGreen")) {
+                // int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+                // HomeController.subStage = HomeController.subStage == 0 ? 1 : 0;
+                // MainController.LoadFloorAssetsFromJson(currentFloor, "HomeScene");
+            } else {
+                Utils.showChildrenWithName("move", transform);
+                purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
+                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
+            }
         } else  {
             // purify
             bool result = CacheManager.ChangeHPMP(-1 * purifyObject.GetComponent<EnemyController>().enemyDamage,true);

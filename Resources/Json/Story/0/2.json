@@ -32,7 +32,13 @@
 	{
 	    "name": "shopowner",
 	    "dialogue": [
-	    	"我這裡有一小瓶生命藥水，讓你免費體驗一下。"
+	    	"我這裡剛好有讓你免費體驗一下的血瓶。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playerdrink"
 	    ]
 	},
 	{

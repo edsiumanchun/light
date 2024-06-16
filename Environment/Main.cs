@@ -17,11 +17,10 @@ public class MainController : MonoBehaviour
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 4);
-            CacheManager.SetCache(Cache.Exit.ToString(), 0);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
+            CacheManager.SetCache(Cache.Exit.ToString(), 2); // 2 = up, 0 = down
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
         }
-        LoadShopData();
         LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
@@ -39,9 +38,9 @@ public class MainController : MonoBehaviour
         DataHolder.products = sprites;
     }
 
-    static public void LoadShopData()
+    static public void LoadShopData(int stage)
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/Shop");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/Shop");
         ProductDataWrapper assetsData = JsonUtility.FromJson<ProductDataWrapper>(jsonFile.text);
         DataHolder.productsDataList = assetsData.products;
     }
@@ -108,6 +107,7 @@ public class MainController : MonoBehaviour
     static public void LoadAssetsFromJson(int stage, int floor, string sceneName)
     {
         CacheManager.SetCache(Cache.CurrentStage.ToString(), stage);
+        MainController.LoadShopData(stage);
         MainController.LoadEnemyData(stage);
         Debug.Log(stage);
         Debug.Log(floor);
