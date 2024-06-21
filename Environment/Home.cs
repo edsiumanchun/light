@@ -27,9 +27,10 @@ public class HomeController : MonoBehaviour
         this.gameObject.AddComponent<StoryController>();
         this.gameObject.AddComponent<SettingsController>();
         this.gameObject.AddComponent<ConfirmController>();
-        this.gameObject.AddComponent<DashboardController>();
+        // this.gameObject.AddComponent<DashboardController>();
         this.gameObject.AddComponent<StageController>();
         this.gameObject.AddComponent<InfoController>();
+        this.gameObject.AddComponent<ItemController>();
         this.gameObject.AddComponent<ShopController>();
         this.gameObject.AddComponent<VideoPlayerController>();
         // UI

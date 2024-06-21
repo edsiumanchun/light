@@ -198,10 +198,10 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case string str when str.Contains("Enemy") || str.Contains("Boss") || str.Contains("Gem"):
-                InfoController infoController = Camera.main.gameObject.GetComponent<InfoController>();
+                // InfoController infoController = Camera.main.gameObject.GetComponent<InfoController>();
                 EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
-                infoController.avatars = enemyController.avatars;
-                infoController.enemyDataList = enemyController.enemyDatas;
+                // infoController.avatars = enemyController.avatars;
+                // infoController.enemyDataList = enemyController.enemyDatas;
                 gameUIController.showGameButton((int)UIGameButton.Purify);
                 break;
         }

@@ -8,7 +8,9 @@ public class CameraViewController : MonoBehaviour
     public GameObject player; // Reference to the player object
     public float backgroundWidth = 12;
     public Transform backgroundObject; // Reference to the background object
-    public float animationDuration = 0.08f; // Duration of the camera animation
+    public float animationDuration = 3.08f; // Duration of the camera animation
+    public float screenWidthUnits = 0f; // Duration of the camera animation
+    public float screenHeightInMeters = 0f; // Duration of the camera animation
 
     private Vector3 initialCameraPosition; // Initial position of the camera
     private Vector3 targetCameraPosition; // Target position for the camera animation
@@ -16,6 +18,8 @@ public class CameraViewController : MonoBehaviour
 
     private void Start()
     {
+        screenWidthUnits = 2f * Camera.main.orthographicSize * Camera.main.aspect;
+        screenHeightInMeters = 2f * Camera.main.orthographicSize;
         initialCameraPosition = transform.position;
     }
 
@@ -27,7 +31,7 @@ public class CameraViewController : MonoBehaviour
         }
         float playerX = player.transform.position.x;
         // Check if the player has crossed the threshold going right
-        if (playerX > backgroundWidth * (0.5f + index) && index < 1 )
+        if (playerX >= (screenWidthUnits)* (0.5f + index) && index < 1 )
         {
             index++;
             float newXPosition = backgroundWidth * index;
@@ -35,7 +39,7 @@ public class CameraViewController : MonoBehaviour
             StartCoroutine(AnimateCamera());
         }
         // Check if the player has crossed the threshold going left
-        else if (index > 0 && playerX < backgroundWidth * (-0.5f + index))
+        else if (index > 0 && playerX <= (backgroundWidth - screenWidthUnits / 2) )
         {
             index--;
             float newXPosition = backgroundWidth * index;

@@ -22,12 +22,17 @@ public class EventController : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         GameObject story = GameObject.Find("Story");
         GameObject boss = GameObject.Find("Boss");
+        GameObject bossGem = GameObject.Find("BossGem");
         GameObject rosia = GameObject.Find("Rosia");
         GameObject music = GameObject.Find("Music");
         Vector3 vector3;
         GameObject gameObject;
         switch(name)
         {
+            case "nextscene":
+                int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+                MainController.LoadAssetsFromJsonWithIsSave(currentStage + 1, 0, "HomeScene", false);
+                return 1f;
             case "completeTutor":
                 CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
                 StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
@@ -37,10 +42,12 @@ public class EventController : MonoBehaviour
             case "bossdisappear":
                 boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
+            case "bossgemdisappear":
+                bossGem.GetComponent<EnemyController>().Die(false);
+                return 1f;
             case "storydisappear":
                 Utils.Fade(story, true);
                 return 0.1f;
-
             case "musicappear":
                 vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
                 gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
@@ -58,13 +65,13 @@ public class EventController : MonoBehaviour
                 return 0.1f;
             // animation
             case "playerdown":
-                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
+                // player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
                 return 1;
             case "playerhurt":
-                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Hurt);
+                // player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Hurt);
                 return 1;
             case "playerpoint":
-                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Point);
+                // player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Point);
                 return 0.3f;
             case "playerturn":
                 TurnAround(player);
@@ -73,7 +80,7 @@ public class EventController : MonoBehaviour
                 TurnAround(story);
                 return 0.1f;
             case "playeridle":
-                player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+                // player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
                 return 1;
             case "playerkneel":
                 //player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Kneel);
@@ -82,10 +89,10 @@ public class EventController : MonoBehaviour
                 //rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
             case "storywake":
-                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
             case "playerdrink":
-                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
+                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Wake);
                 return 1f;
             case "rosiadown":
                 // rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Down);
@@ -121,7 +128,7 @@ public class EventController : MonoBehaviour
                 vector3 = GetVector("Player",new Vector3(0.8f,0.4f,1f));
                 rosia = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
                 rosia.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
-                return 1;
+                return 1.3f;
             case "nursecome":
                 GameObject nurse = GameObject.Find("Nurse");
                 nurse.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
@@ -144,9 +151,6 @@ public class EventController : MonoBehaviour
                 return 1f;
             case "ghostsleave":
                 boss.GetComponent<EnemyController>().Die(false);
-                return 1f;
-            case "switchscene":
-                MainController.LoadFloorAssetsFromJson(0, "HomeScene");
                 return 1f;
         }
         return 0.1f;

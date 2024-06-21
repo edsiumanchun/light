@@ -68,6 +68,9 @@ public class EnemyController : MonoBehaviour
                         enemyDamage = enemyDamage + data.damage;
                     }
                 }
+                if(spriteObject.name.Contains("Boss")) {
+                    this.gameObject.name = "BossGem";
+                }
             }
         } else {
             List<string> paths = new List<string>((new[] { enemyDatas[0].name}));
@@ -94,10 +97,10 @@ public class EnemyController : MonoBehaviour
         currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
         Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
-        if(Utils.isUAT) {
+        //if(Utils.isUAT) {
             Die(true);
             return;
-        }
+        //}
         StartCoroutine(DecreaseHPOverTime());
     }
 

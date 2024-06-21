@@ -136,6 +136,10 @@ public class AssetData
                     return null;
                 } 
             }
+                    Debug.Log("??" + pathName);
+            if(pathName.Contains("Sprite")) { // maria sick
+                isSprite = true;
+            }
             newObject.name = "Story";
         } else if( pathName.Contains("Boss")){
             // newObject.name = "Boss"; do it in enemy.js
@@ -278,13 +282,14 @@ public class AssetData
                         if(newObject.name.Contains("GoDown")) {
                             newZ = -1.8f;
                         } 
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
+                        newObject.transform.position = new Vector3(plateSprite.bounds.size.x / 12 + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
                         newObject.tag = "Ground";
                     }
                 }
                 else if (name.Contains("Object"))
                 {
                     BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
+                    Debug.Log("??" + newObject.name);
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     float newZ = z * 0.01f - 1 ;
                     if (newObject.name.Contains("Player")) {

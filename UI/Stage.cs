@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class StageController : MonoBehaviour
 {
-    List<string> stages = new List<string>(){"ABC","ABCs","AdBC"};
+    List<string> stages = new List<string>(){"grave","clinic"};
     public Vector2 contentSize;
     public Vector2 cellSize = new Vector2(88f, 88f);
     public int cellCount = 10;

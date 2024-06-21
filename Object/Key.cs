@@ -23,8 +23,8 @@ public class KeyController : MonoBehaviour
             Debug.Log(keyName + " Key collected! Key cache: " +  CacheManager.GetCache("this.gameObject.name"));
             Destroy(gameObject); // Destroy the key game object after collision
 
-            DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
-            dashboardController.SetText();
+            // DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
+            // dashboardController.SetText();
         }
     }
 }

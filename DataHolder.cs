@@ -66,7 +66,8 @@ public static class DataHolder
 
 
     public static List<EnemyData> enemyDataList;
-    public static List<ProductData> productsDataList; // List to store the loaded assets
+    public static List<ProductData> productsDataList; // List to store the loaded asset
+    public static List<ItemData> itemDataList; // List to store the loaded assetss
 
     public static Vector2 GetBackgroundSize()
     {

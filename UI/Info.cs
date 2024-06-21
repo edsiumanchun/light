@@ -2,30 +2,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoController : MonoBehaviour
-{
-    public Vector2 contentSize;
-    public Vector2 cellSize = new Vector2(188f, 200f);
-    public int cellCount = 10;
-
-    public List<GameObject> gameObjects;
-
-    public List<Sprite> commonImages;
+public class InfoController : PageIndexController
+{    public List<Sprite> commonImages;
     public AudioSource bgmAudioSource;
-    public GameObject canvasObject;
     public GameObject backgroundImage;
 
-    public GameObject rowTextObject;
     public List<EnemyData> enemyDataList;
     public List<Sprite> avatars;
     public List<Sprite> keyImages;
-    private void Start()
+    public void Start()
     {
-        keyImages = DataHolder.keyImages;
-
-        gameObjects = new List<GameObject>();
-        commonImages = DataHolder.commonImages;
         SetupCanvas();
+        base.Start();
+        enemyDataList = DataHolder.enemyDataList;
+        keyImages = DataHolder.keyImages;
+        commonImages = DataHolder.commonImages;
     }
 
     private void SetupCanvas()
@@ -63,14 +54,9 @@ public class InfoController : MonoBehaviour
             return input;
     }
 
-    public void SetupButtons()
+    public void DisplayPage()
     {
-        foreach(GameObject gameObject in gameObjects){
-            Destroy(gameObject);
-        }
-        if(rowTextObject != null) {
-            Destroy(rowTextObject);
-        }
+        base.DisplayPage();
         int rowCount = 1;
         int columnCount = avatars.Count;
 
@@ -89,7 +75,7 @@ public class InfoController : MonoBehaviour
                     keyImages[9],
                     keyImages[10]
                 };
-                int index = row * columnCount + column;
+                int index = currentPage + row * columnCount + column;
 
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y + 33;
@@ -113,6 +99,7 @@ public class InfoController : MonoBehaviour
         rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(0, -178), canvasObject.transform, TextAnchor.MiddleCenter);
         rowTextObject.GetComponent<Text>().text = reward;
         rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        UpdateNavigationButtonVisibility();
     }
 
     private void OnClickButtonWithParameter(int index)
@@ -128,7 +115,6 @@ public class InfoController : MonoBehaviour
             case 3:
                 break;
         }
-        Debug.Log("132493" + index);
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
         storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
     }

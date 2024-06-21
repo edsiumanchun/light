@@ -19,6 +19,18 @@
       "reward": 1 
     },
     {
+      "name": "Silly1",
+      "damage": 1,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "BossFlower",
+      "damage": 0,
+      "hp": 0,
+      "reward": 1 
+    },
+    {
       "name": "BossBone",
       "damage": 0,
       "hp": 30,

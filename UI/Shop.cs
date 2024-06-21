@@ -2,33 +2,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopController : MonoBehaviour
+public class ShopController : PageIndexController
 {
     public List<Sprite> keyImages;
-    public Vector2 contentSize;
-    public Vector2 cellSize = new Vector2(188f, 200f);
     public int cellCount = 10;
     public int selectedIndex = 0;
 
-    public GameObject rowTextObject;
-    public List<GameObject> gameObjects;
-
     public List<Sprite> commonImages;
     public AudioSource bgmAudioSource;
-    public GameObject canvasObject;
     public GameObject backgroundImage;
     public static List<ProductData> productsDataList;
     public List<Sprite> products;
-    private void Start()
+    public void Start()
     {
+        SetupCanvas();
+        base.Start();
         keyImages = DataHolder.keyImages;
         products = DataHolder.products;
         productsDataList = DataHolder.productsDataList;
-
-        gameObjects = new List<GameObject>();
         commonImages = DataHolder.commonImages;
-        SetupCanvas();
-        SetupButtons();
+        DisplayPage();
     }
 
     private void SetupCanvas()
@@ -49,14 +42,9 @@ public class ShopController : MonoBehaviour
         canvasObject.SetActive(false);
     }
 
-    private void SetupButtons()
+    public void DisplayPage()
     {
-        foreach(GameObject gameObject in gameObjects){
-            Destroy(gameObject);
-        }
-        if(rowTextObject != null) {
-            Destroy(rowTextObject);
-        }
+        base.DisplayPage();
         int rowCount = 1;
         int columnCount = 3;
 

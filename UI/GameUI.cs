@@ -12,9 +12,9 @@ public class GameUIController : MonoBehaviour
     public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
     public GameObject gameButton, buttonImage;
-    public GameObject dashboardButton, settingButton, stageButton, infoButton, circleButtonsContainer;
+    public GameObject avatarButton, settingButton, stageButton, infoButton, bagButton, circleButtonsContainer;
 
-    private bool isMenuOpen, isDashboardOpen, isStageOpen, isInfoOpen;
+    private bool isMenuOpen, isavatarOpen, isStageOpen, isInfoOpen, isItemOpen;
     public GameObject canvasObject;
 
 
@@ -22,22 +22,22 @@ public class GameUIController : MonoBehaviour
     public Vector2[] buttonPositions = new Vector2[]
     {
         new Vector2(0f, 0f),  // Bottom right button position
-        //new Vector2(0f, 100f),  // Bottom right button position
+        new Vector2(-130f, 0f),  // Bottom right button position
         //new Vector2(0f, 200f),   // Bottom right button position
     };
 
-    public Vector2 dashboardButtonPosition, menuButtonPosition, containerPosition;  // Top right menu button position
+    public Vector2 avatarButtonPosition, menuButtonPosition, containerPosition;  // Top right menu button position
 
     public Vector2 screenSize;
 
     private void Start()
     {
-        float padding = 80;
+        float padding = 90;
         float leftPadding = 38;
         canvasObject = Utils.CreateCanvas("GameCanvas", false);
         screenSize = Utils.GetCanvasSize(canvasObject);
-        menuButtonPosition = new Vector2(screenSize.x / 2 - padding, screenSize.y / 2 - padding);
-        dashboardButtonPosition = new Vector2(leftPadding + padding - screenSize.x / 2, screenSize.y / 2 - padding);
+        menuButtonPosition = new Vector2(screenSize.x / 2 - padding , screenSize.y / 2 - padding + 10);
+        avatarButtonPosition = new Vector2(leftPadding + padding - screenSize.x / 2, screenSize.y / 2 - padding);
         containerPosition = new Vector2(screenSize.x / 2 - padding, -1 * screenSize.y / 2 + padding);
         buttonImages = DataHolder.gameButtonImages;
         menuButtonImages = DataHolder.menuButtonImages;
@@ -55,10 +55,10 @@ public class GameUIController : MonoBehaviour
         float xScale = 0.705f;
         enemyHPBar = CreateBar(true, new Vector2(0, - screenSize.y / 2 ), 5, canvasObject);
         enemyHPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), enemyHPBar.transform, TextAnchor.MiddleCenter);
-        playerHPBar = CreateBar(false, new Vector2(0, hpBarOffset), 4, dashboardButton);
+        playerHPBar = CreateBar(false, new Vector2(0, hpBarOffset), 4, avatarButton);
         playerHPBar.transform.localScale = new Vector3(xScale, 1, 1);
         playerHPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), playerHPBar.transform, TextAnchor.MiddleCenter);
-        playerMPBar = CreateBar(false, new Vector2(0, hpBarOffset - 16), 6, dashboardButton);
+        playerMPBar = CreateBar(false, new Vector2(0, hpBarOffset - 16), 6, avatarButton);
         playerMPBar.transform.localScale = new Vector3(xScale, 1, 1);
         playerMPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), playerMPBar.transform, TextAnchor.MiddleCenter);
         int fontSize = 18;
@@ -78,13 +78,14 @@ public class GameUIController : MonoBehaviour
         stageButton.SetActive(isHide);
     }
 
-    // private void SetupDashboard()
+    // private void Setupavatar()
     // {
     //     Utils.CreateImageWithText(buttonImages[0], new Vector2(-50,0), new Vector2(50,0), canvasObject.transform, TextAnchor.MiddleRight);
     // }
 
     private void SetupButton()
     {
+        float yOffset = 110f;
         // Instantiate menu button
         settingButton = Utils.CreateButton(menuButtonImages[0], menuButtonPosition, canvasObject.transform, () => {
 
@@ -92,27 +93,30 @@ public class GameUIController : MonoBehaviour
             SettingsController settingsController = Camera.main.gameObject.GetComponent<SettingsController>();
             settingsController.canvasObject.SetActive(true);
         });
-        stageButton = Utils.CreateButton(menuButtonImages[1], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 110), canvasObject.transform, () => {
+        stageButton = Utils.CreateButton(menuButtonImages[1], new Vector2(menuButtonPosition.x, menuButtonPosition.y - yOffset), canvasObject.transform, () => {
 
             isStageOpen = !isStageOpen;
             StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
             stageController.canvasObject.SetActive(true);
         });
-        infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - 220), canvasObject.transform, () => {
+        // bagButton = Utils.CreateButton(menuButtonImages[8], new Vector2(118 - screenSize.x / 2, menuButtonPosition.y - yOffset * 2), canvasObject.transform, () => {
 
+        // });
+
+
+        infoButton = Utils.CreateButton(menuButtonImages[2], new Vector2(menuButtonPosition.x, menuButtonPosition.y - yOffset * 2), canvasObject.transform, () => {
             isInfoOpen = !isInfoOpen;
             InfoController infoController = Camera.main.gameObject.GetComponent<InfoController>();
-            infoController.SetupButtons();
+            infoController.DisplayPage();
             infoController.canvasObject.SetActive(true);
         });
 
         // Instantiate menu button
-        dashboardButton = Utils.CreateButton(menuButtonImages[menuButtonImages.Count - 1], dashboardButtonPosition, canvasObject.transform, () => {
-
-            isDashboardOpen = !isDashboardOpen;
-            DashboardController dashboardController = Camera.main.gameObject.GetComponent<DashboardController>();
-            dashboardController.SetText();
-            dashboardController.canvasObject.SetActive(true);
+        avatarButton = Utils.CreateButton(menuButtonImages[7], avatarButtonPosition, canvasObject.transform, () => {
+            isItemOpen = !isItemOpen;
+            ItemController itemController = Camera.main.gameObject.GetComponent<ItemController>();
+            itemController.DisplayPage();
+            itemController.canvasObject.SetActive(true);
         });
 
         // Create circle buttons container

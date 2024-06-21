@@ -4,54 +4,27 @@
     {
       "name": "PlateH",
       "gridArray0": [2, 1, 1, 1, 1],
-      "gridArray1": [0, 0, 1, 1, 1],
-      "gridArray2": [1, 0, 0, 1, 1],
-      "gridArray3": [0, 0, 0, 1, 1],
+      "gridArray1": [0, 1, 1, 1, 1],
+      "gridArray2": [0, 1, 1, 1, 1],
+      "gridArray3": [0, 1, 1, 1, 1],
       "gridArray4": [0, 1, 1, 1, 1],
       "gridArray5": [1, 1, 1, 1, 1]
     },
     {
       "name": "PlateV",
-      "gridArray0": [1, 0, 0, 0, 0, 0],
-      "gridArray1": [1, 0, 1, 0, 0, 1],
-      "gridArray2": [1, 0, 1, 0, 0, 5],
-      "gridArray3": [1, 0, 1, 0, 0, 1],
-      "gridArray4": [1, 0, 0, 0, 0, 5]
+      "gridArray0": [1, 0, 0, 0, 0, 1],
+      "gridArray1": [1, 0, 0, 0, 0, 1],
+      "gridArray2": [1, 0, 0, 0, 0, 1],
+      "gridArray3": [1, 0, 0, 0, 0, 1],
+      "gridArray4": [1, 0, 0, 0, 0, 1]
     },
     {
       "name": "Object",
-      "gridArray0": [1, 0, 0, 0, 0],
-      "gridArray1": [0, 0, 0, 0, 1111],
-      "gridArray2": [0, 0, 0, 0, 0],
-      "gridArray3": [0, 0, 0, -11, 1111],
-      "gridArray4": [0, 0, 0, 0, 0]
-    }
-  ],
-  "assets1": [
-    {
-      "name": "PlateH",
-      "gridArray0": [1, 1, 1, 1, 1],
-      "gridArray1": [0, 0, 1, 1, 1],
-      "gridArray2": [1, 0, 0, 1, 1],
-      "gridArray3": [0, 0, 0, 1, 1],
-      "gridArray4": [0, 0, 1, 1, 1],
-      "gridArray5": [1, 1, 1, 1, 1]
-    },
-    {
-      "name": "PlateV",
-      "gridArray0": [0, 0, 0, 0, 0, 1],
-      "gridArray1": [0, 0, 1, 0, 0, 1],
-      "gridArray2": [0, 0, 1, 0, 0, 1],
-      "gridArray3": [0, 0, 1, 0, 0, 1],
-      "gridArray4": [0, 0, 0, 0, 0, 5]
-    },
-    {
-      "name": "Object",
-      "gridArray0": [0, 0, 0, 0, 0],
-      "gridArray1": [0, 0, 0, 0, 1111],
-      "gridArray2": [0, 0, 0, 0, 0],
-      "gridArray3": [0, 0, 0, -11, 1111],
-      "gridArray4": [0, 0, 0, 0, 0]
+      "gridArray0": [1, 0, 1111, 2222, 3333],
+      "gridArray1": [0, 0, 2222, 1111, 4444],
+      "gridArray2": [0, 0, 3333, 4444, 4444],
+      "gridArray3": [0, 0, -1115, 4444, 4444],
+      "gridArray4": [0, -11, -11, -11, -1151]
     }
   ]
 }                 

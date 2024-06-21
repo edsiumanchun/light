@@ -46,8 +46,6 @@ public class StoryData
     public string[] dialogue;
 }
 
-
-
 [System.Serializable]
 public class ProductDataWrapper
 {
@@ -62,4 +60,21 @@ public class ProductData
     public int angry;
     public string desc;
     public string name;
+}
+
+
+[System.Serializable]
+public class ItemDataWrapper
+{
+    public List<ItemData> items;
+}
+
+[System.Serializable]
+public class ItemData
+{
+    public string name;
+    public string item1;
+    public string item2;
+    public string item3;
+    public string desc;
 }

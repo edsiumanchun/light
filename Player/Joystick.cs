@@ -202,7 +202,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
         if (purifyObject == null) return;
         if(playerController.status == UIGameButton.Gate){
-            Debug.Log("???");
             if(purifyObject.gameObject.name.Contains("GateGreen")) {
                 // int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
                 // HomeController.subStage = HomeController.subStage == 0 ? 1 : 0;

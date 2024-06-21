@@ -2,10 +2,6 @@
 {
   "assets0": [
     {
-      "name": "Audio",
-      "gridArray0": [0]
-    },
-    {
       "name": "Background",
       "gridArray0": [1]
     },

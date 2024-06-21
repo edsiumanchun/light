@@ -2,24 +2,12 @@
 "storyArray" : [
 	{
 	    "name": "event",
-	   	"leftPrefab": "player",
 	    "dialogue": [
+	        "bossgemdisappear",
 	        "playerhurt",
-	        "bossdisappear",
-	    	"rosiacome"
-	    ]
-	},
-	{
-	   	"leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	        "公主！"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "playerdown"
+	    	"rosiacome",
+	        "playerdown",
+	        "nextscene"
 	    ]
 	},
 	{
@@ -162,7 +150,7 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "地下室有餓鬼的氣息...我去查看一下。",
+	        "地下室有餓鬼的氣息...我去查看一下。"
 	    ]
 	},
 	{
@@ -174,7 +162,7 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"不用擔心，我很快就會回來。"
+	    	"不用擔心，我很快就會回來。",
 	        "何況...瑪利亞出來後一定很想見到你。"
 	    ]
 	},

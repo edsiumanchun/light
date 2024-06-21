@@ -1,0 +1,25 @@
+{
+  "itmes": [
+    {
+      "name": "Defilements",
+      "item1": "greed",
+      "item2": "hatred",
+      "item3": "delusion",
+      "desc": "減傷害"
+    },
+    {
+      "name": "Pillars",
+      "item1": "Ethics",
+      "item2": "Concentration",
+      "item3": "Wisdom",
+      "desc": ""
+    },
+    {
+      "name": "key",
+      "item1": "copper",
+      "item2": "silver",
+      "item3": "gold",
+      "desc": ""
+    }
+  ]
+}

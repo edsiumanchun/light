@@ -90,7 +90,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostsleave"
+	        "ghostsleave",
 	    	"musicplay"
 	    ]
 	},
