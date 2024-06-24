@@ -5,50 +5,38 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "shopowner",
 	    "dialogue": [
-	        "你好，貪婪的人類..."
+	        "是貪婪的人類..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "我有點疑惑，怎麼說我是貪婪？"
+	        "我和你素未謀面，為何要這樣指責我？"
 	    ]
 	},
 	{
 	    "name": "shopowner",
 	    "dialogue": [
-	        "末法時代，凡是人類皆是貪婪！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "難道就沒有例外嗎？"
-	    ]
-	},
-	{
-	    "name": "shopowner",
-	    "dialogue": [
-	        "不貪婪的人類就不是凡人，是超凡入聖了！",
-	        "人類每天都是為了錢財，權力，名利而煩惱...",
-	        "對我們來說，人類就像小丑一樣...既可笑又可憐。"
+	    	"你要是在悍衞自己的尊嚴，不就是在執著自我嗎？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
 	        "雖然有點諷刺，但你所說的並非沒有道理...",
-	        "很感謝你的指導。",
+	        "很感謝你的指導。"
 	    ]
 	},
 	{
 	    "name": "shopowner",
 	    "dialogue": [
-	        "哈哈，姑娘...我欣賞你！",
+	        "哈哈，姑娘...我欣賞你！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "musicappear"
+	        "musicappear",
+	        "playerturn"
 	    ]
 	},
 	{
@@ -56,44 +44,73 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"是熟悉的香氣...樂神，這次找我所為何事？"
+	    	"是熟悉的香氣..."
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "只是被你的氣質所感召，想成為你的守護神而己。"
+	        "公主，沒想到這麼快又見面了。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"樂神，很感恩你來守護我。"
+	    	"樂神，這次找我所為何事？"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "你不怕我嗎？"
+	        "沒什麼...只是被你的氣質所感召，想成為你的守護神而己。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"樂神是歡樂吉祥的象徵，喜歡行善積德，令人尊敬。",
-	    	"相比起人心，鬼神一點也不可怕。"
-
+	    	"得到樂神的賞識是我的榮幸...",
+	    	"可是，人一生的命運半點也不由人，我看還是各安天命吧。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "公主果然是氣宇不凡，能守護公主實在是我的榮幸。"
+	        "那麼，我跟你說...你能得到我的眷顧就是你的命運了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "musicdisappear"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "shopowner",
+	    "dialogue": [
+	    	"請等等..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
 	    ]
 	},
 	{
 	    "name": "shopowner",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "shopowner",
 	    "dialogue": [
-	        "姑娘既然跟樂神相識，今天破例將道具賣給人類吧！",
+	        "樂神大多時候都不會顯現本尊，只會默默守護著她敬重的人...",
+	        "話說姑娘是不是感到有點害怕？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"樂神是歡樂吉祥的象徵，喜歡行善積德，令人尊敬。",
+	    	"相比起人心，你們一點也不可怕。"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "dialogue": [
+	    	"得到樂神賞識的人果然是氣宇不凡...",
+	        "今天破例讓你以三毒之石交換一些好東西吧！"
 	    ]
 	},{
 	    "name": "event",

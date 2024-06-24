@@ -13,16 +13,15 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 0 : 2);
+        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 1);
-            CacheManager.SetCache(Cache.Exit.ToString(), 2); // 2 = up, 0 = down
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
+            CacheManager.SetCache(Cache.Exit.ToString(), 0); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
         }
         LoadItemData();
-        LoadAssetsForShop();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
@@ -30,13 +29,6 @@ public class MainController : MonoBehaviour
         LoadAssetsForDashboardUI();
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
-    }
-
-    public void LoadAssetsForShop()
-    {
-        List<string> paths = new List<string>((new[] { "PotionRed", "PotionBlue", "PotionRed", "PotionBlue", "PotionRed", "PotionBlue"}));
-        List<Sprite> sprites = LoadSprites("UI/Products", paths);
-        DataHolder.products = sprites;
     }
 
     static public void LoadShopData(int stage)
@@ -50,6 +42,7 @@ public class MainController : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/Item");
         ItemDataWrapper assetsData = JsonUtility.FromJson<ItemDataWrapper>(jsonFile.text);
+        Debug.Log("???" + assetsData.items.Count);
         DataHolder.itemDataList = assetsData.items;
     }
 
@@ -141,8 +134,8 @@ public class MainController : MonoBehaviour
             DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
             DataHolder.bosses = LoadPrefabs("Bosses", paths.bosses);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
-            DataHolder.gems = LoadSprites("Gems", paths.gems);
-            LoadFloorAssetsFromJsonWithIsSave(floor, sceneName, isSave);
+            DataHolder.gems = LoadSprites("Enemies", paths.gems);
+            LoadFloorAssetsFromJsonWithIsSave(stage, floor, sceneName, isSave);
             Debug.Log("LoadFloorAssetsFromJson");
         }
         else
@@ -152,14 +145,14 @@ public class MainController : MonoBehaviour
     }
 
     static public void LoadFloorAssetsFromJson(int floor, string sceneName){
-        LoadFloorAssetsFromJsonWithIsSave(floor, sceneName, true);
+        LoadFloorAssetsFromJsonWithIsSave(CacheManager.GetCache(Cache.CurrentStage.ToString()), floor, sceneName, true);
     }
 
-    static public void LoadFloorAssetsFromJsonWithIsSave(int floor, string sceneName, bool isSave)
+    static public void LoadFloorAssetsFromJsonWithIsSave(int stage, int floor, string sceneName, bool isSave)
     {
         CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
         //print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
+        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
         {
@@ -171,7 +164,11 @@ public class MainController : MonoBehaviour
         {
             Debug.LogError("Failed to load JSON file: " + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         }
-        SceneManager.LoadScene(sceneName);
+        if(HomeController.loaded) {
+            HomeController.LoadGame();
+        } else {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public static void SetupScene(){

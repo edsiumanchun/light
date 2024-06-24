@@ -2,11 +2,11 @@
   "paths": {
     "backgrounds": ["Egypt", "ScaleHoly", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleDesert", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["City", "GoUp", "GoDown","Space"],
-    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateGreen","Gate"],
+    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateGreen","Space"],
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Greed", "Angry", "Silly", "Silly1", "BossFlower"],
+    "gems": ["Greed", "Hatred", "Delusion", "Ethics", "BossFlower"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "decorations": ["Dark", "Lamp", "Wall"],

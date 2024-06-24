@@ -34,6 +34,8 @@ public class Path
 [System.Serializable]
 public class AssetData 
 {
+    public static GameObject gameObject;
+    public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
     public List<int> gridArray0;
     public List<int> gridArray1;
@@ -71,6 +73,7 @@ public class AssetData
     {
         isSprite = true;
         GameObject newObject = new GameObject();
+        AssetData.SetParent(newObject);
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
         switch (name)
         {
@@ -91,6 +94,7 @@ public class AssetData
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.bosses[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
+                    AssetData.SetParent(newObject);
                 } else if (assetIndex / 40 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
                 } else if (assetIndex / 30 >= 1) {
@@ -101,10 +105,12 @@ public class AssetData
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.enemies[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
+                    AssetData.SetParent(newObject);
                 } else {
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
+                    AssetData.SetParent(newObject);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
                     //newObject = Instantiate(prefab, transform.position, transform.rotation);
@@ -113,7 +119,7 @@ public class AssetData
             case "Background":
                 int index = gridArray0[0];
                 spriteRenderer.sprite = DataHolder.backgrounds[index];
-                // spriteRenderer.drawMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
+                // spriteRenderer.drawwMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
                 spriteRenderer.size = DataHolder.GetBackgroundSize();
                 newObject.transform.localScale = new Vector3(1.27f, 1.27f, 1f);
                 break;
@@ -126,7 +132,7 @@ public class AssetData
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
-        } else if(pathName.Contains("Player")){
+        } else if(pathName.Contains("Player") || pathName.Contains("Rosia") || pathName.Contains("Sion")){
             newObject.name = pathName;
         } else if( pathName.Contains("Story")){
             if(!Utils.isUAT) {
@@ -254,6 +260,7 @@ public class AssetData
                     SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
                     spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
                     wall.transform.position = vector3;
+                    AssetData.SetParent(wall);
                 }
                 if (cellValue == 0) { 
                     // wall
@@ -261,8 +268,8 @@ public class AssetData
                 } else if (cellValue == 1 && name.Contains("Object")){
                     int playerPosition = CacheManager.GetCache(Cache.Exit.ToString());
                     if(
-                        (playerPosition == 0 && gridIndex >= 3) 
-                        || (playerPosition == 2 && gridIndex < 3) ) {
+                        (playerPosition == 2 && gridIndex >= 3) 
+                        || (playerPosition == 0 && gridIndex < 3) ) {
                     } else {
                         continue;
                     }
@@ -303,5 +310,9 @@ public class AssetData
                 newObject.transform.rotation = Quaternion.identity;
             }
         }
+    }
+
+    public static void SetParent(GameObject GO){
+        GO.transform.SetParent(AssetData.gameObject.transform);
     }
 }

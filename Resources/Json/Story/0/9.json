@@ -4,51 +4,8 @@
 	    "name": "event",
 	    "dialogue": [
 	        "bossgemdisappear",
-	        "playerhurt",
-	    	"rosiacome",
 	        "playerdown",
 	        "nextscene"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "公主，你安好嗎？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "已經恢復了不少，辛苦你把我帶來醫院。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	   	"leftPrefab": "rosia",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	        "是辛苦了公主把失蹤的姐姐帶回來才對啊。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "瑪利亞，很抱歉...",
-	        "今次還是找不到醫治癱瘓症的靈藥？"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "不要緊，只要姐姐平安回來就行了...",
-	        "聽醫生叔叔說...癱瘓症是沒法醫治的...",
-	        "姐姐你就別再為我去冒險去找靈藥，好嗎？"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiacry"
 	    ]
 	},
 	{
@@ -56,7 +13,73 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	        "若不是那次醫療事故..."
+	        "公主，你終於醒來了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "羅西亞...是你帶我來到醫院嗎？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "是的，當我找到公主時，公主已經奄奄一息了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "羅西亞...辛苦你把我帶到醫院去。",
+	        "對了，這朵曼陀羅花交給你吧。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint",
+	        "rosiacometoplayer",
+	    	"playerIdle"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "rosia",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	        "在有生之年...我必定會報答公主對我們的恩情的！"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "謝謝你，公主。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	    	"rosiaturn"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "接下來，只要日夜供養此花一年，就可以用它來製藥...",
+	        "希望妹妹用藥後得以康復。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "雖說是件好消息，但我寧願這一輩子癱瘓也不願姐姐為我去冒險啊。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playersay"
 	    ]
 	},
 	{
@@ -64,20 +87,13 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "已成定局，無需感到難過。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
 	        "瑪利亞，你才八歲就這麼懂事，真是難得。"
 	    ]
 	},
 	{
 	    "name": "maria",
 	    "dialogue": [
-	        "羅西亞是這世上最好的姐姐，我不能像小孩一樣讓她煩惱的。"
+	        "羅西亞是這世上最好的姐姐，我不能像小孩一樣讓她增添煩惱的。"
 	    ]
 	},
 	{
@@ -89,20 +105,28 @@
 	{
 	    "name": "nurse",
 	   	"leftPrefab": "nurse",
+	   	"rightPrefab": "maria",
 	    "dialogue": [
-	        "瑪麗亞，差不多該進行手術了。"
+	        "瑪麗亞，十分鐘後就到你了，我現在去手術室檢查儀器。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "嗯..."
 	    ]
 	},
 	{
 	    "name": "event",
 	    "dialogue": [
+	        "nurseleave",
 	        "mariascare"
 	    ]
 	},
 	{
 	    "name": "maria",
 	   	"leftPrefab": "rosia",
-	    "rightPrefab": "maria",
+	    "rightPrefab": "mariascare",
 	    "dialogue": [
 	        "姐姐，我有點害怕..."
 	    ]
@@ -121,7 +145,6 @@
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "姐姐從來不會騙你..."
 	    ]
@@ -135,8 +158,8 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "marialeave",
-	        "playerturn"
+	        "playerturn",
+	        "ghostmumcry"
 	    ]
 	},
 	{
@@ -150,27 +173,23 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "地下室有餓鬼的氣息...我去查看一下。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "你受了重傷，醫生建議你多點休息，還是我代你去吧！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"不用擔心，我很快就會回來。",
-	        "何況...瑪利亞出來後一定很想見到你。"
+	        "又是這種不尋常的氣息...",
+	        "羅西亞...我去查看一下，你在這裡陪伴你的妹妹吧。"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "那麼，公主萬事要小心一點。"
+	        "嗯，公主萬事要小心一點。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "savescene",
+	        "playerturn",
+	        "ghostmumcry"
 	    ]
 	}
 ]

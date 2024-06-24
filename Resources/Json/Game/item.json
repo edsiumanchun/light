@@ -2,9 +2,9 @@
   "itmes": [
     {
       "name": "Defilements",
-      "item1": "greed",
-      "item2": "hatred",
-      "item3": "delusion",
+      "item1": "Greed",
+      "item2": "Hatred",
+      "item3": "Delusion",
       "desc": "減傷害"
     },
     {
@@ -16,9 +16,9 @@
     },
     {
       "name": "key",
-      "item1": "copper",
-      "item2": "silver",
-      "item3": "gold",
+      "item1": "Copper",
+      "item2": "Silver",
+      "item3": "Gold",
       "desc": ""
     }
   ]

@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
                 enemyDatas.Add(data);
                 enemyHP = data.hp;
                 enemyDamage = data.damage;
+                SetupAssetDataNamelist(data.name);
             }
         }
         if( this.gameObject.name.Contains("Boss")){
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
                         if(enemyDatas.Contains(data) == false) {
                             enemyDatas.Add(data);
                             avatars.Add(spriteRenderer.sprite);
+                            SetupAssetDataNamelist(data.name);
                         }
                         enemyHP = enemyHP + data.hp;
                         enemyDamage = enemyDamage + data.damage;
@@ -160,5 +162,9 @@ public class EnemyController : MonoBehaviour
     private IEnumerator DelayDestroy(){
         yield return new WaitForSeconds(0.3f); // Wait for 1 second
         Destroy(gameObject); 
+    }
+
+    private void SetupAssetDataNamelist(string name){
+        AssetData.nameList.Add(name);
     }
 }

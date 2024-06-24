@@ -9,13 +9,14 @@ public class ItemController : PageIndexController
     public GameObject backgroundImage;
 
     public List<ItemData> itemDataList;
-    public List<Sprite> avatars;
     public List<Sprite> keyImages;
     public void Start()
     {
+        folderName = "UI/Items";
+        itemDataList = DataHolder.itemDataList;
+        totalItems = itemDataList.Count;
         SetupCanvas();
         base.Start();
-        itemDataList = DataHolder.itemDataList;
         keyImages = DataHolder.keyImages;
         commonImages = DataHolder.commonImages;
     }
@@ -55,11 +56,11 @@ public class ItemController : PageIndexController
             return input;
     }
 
-    public void DisplayPage()
+    public override void DisplayPage()
     {
         base.DisplayPage();
         int rowCount = 1;
-        int columnCount = avatars.Count;
+        int columnCount = GetItemsLeft();
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
@@ -71,16 +72,16 @@ public class ItemController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
+                int index = currentPage * itemsPerPage + row * columnCount + column;
+                ItemData itemData = itemDataList[index];
                 List<Sprite> icons = new List<Sprite>{
-                    avatars[row],
+                    GetImage(itemData.name),
                     keyImages[9],
                     keyImages[10]
                 };
-                int index = currentPage + row * columnCount + column;
 
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y + 33;
-                ItemData itemData = itemDataList[index];
                 List<string> stringList = new List<string>()
                 {
                     itemData.name,

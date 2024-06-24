@@ -8,15 +8,11 @@ public class InfoController : PageIndexController
     public GameObject backgroundImage;
 
     public List<EnemyData> enemyDataList;
-    public List<Sprite> avatars;
     public List<Sprite> keyImages;
     public void Start()
     {
         SetupCanvas();
         base.Start();
-        enemyDataList = DataHolder.enemyDataList;
-        keyImages = DataHolder.keyImages;
-        commonImages = DataHolder.commonImages;
     }
 
     private void SetupCanvas()
@@ -54,11 +50,18 @@ public class InfoController : PageIndexController
             return input;
     }
 
-    public void DisplayPage()
+    public override void DisplayPage()
     {
         base.DisplayPage();
+        folderName = "Enemies";
+        enemyDataList = DataHolder.enemyDataList;
+        totalItems = enemyDataList.Count;
+        totalPages = Mathf.CeilToInt((float)totalItems / itemsPerPage);
+        keyImages = DataHolder.keyImages;
+        commonImages = DataHolder.commonImages;
+        base.DisplayPage();
         int rowCount = 1;
-        int columnCount = avatars.Count;
+        int columnCount = GetItemsLeft();
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
@@ -70,16 +73,16 @@ public class InfoController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
+                int index = currentPage * itemsPerPage + row * columnCount + column;
+                EnemyData enemyData = enemyDataList[index];
                 List<Sprite> icons = new List<Sprite>{
-                    avatars[row],
+                    GetImage(enemyData.name),
                     keyImages[9],
                     keyImages[10]
                 };
-                int index = currentPage + row * columnCount + column;
 
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y + 33;
-                EnemyData enemyData = enemyDataList[index];
                 List<string> stringList = new List<string>()
                 {
                     enemyData.name.Replace("Boss", "").Replace("Enemy", ""),

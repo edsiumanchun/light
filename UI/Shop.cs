@@ -12,14 +12,14 @@ public class ShopController : PageIndexController
     public AudioSource bgmAudioSource;
     public GameObject backgroundImage;
     public static List<ProductData> productsDataList;
-    public List<Sprite> products;
     public void Start()
     {
+        folderName = "UI/Products";
+        productsDataList = DataHolder.productsDataList;
+        totalItems = productsDataList.Count;
         SetupCanvas();
         base.Start();
         keyImages = DataHolder.keyImages;
-        products = DataHolder.products;
-        productsDataList = DataHolder.productsDataList;
         commonImages = DataHolder.commonImages;
         DisplayPage();
     }
@@ -42,11 +42,11 @@ public class ShopController : PageIndexController
         canvasObject.SetActive(false);
     }
 
-    public void DisplayPage()
+    public override void DisplayPage()
     {
         base.DisplayPage();
         int rowCount = 1;
-        int columnCount = 3;
+        int columnCount = GetItemsLeft();
 
         float totalWidth = columnCount * cellSize.x;
         float totalHeight = rowCount * cellSize.y;
@@ -58,13 +58,13 @@ public class ShopController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
-                int index = row * columnCount + column;
+                int index = currentPage * itemsPerPage + row * columnCount + column;
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y + 33;
                 ProductData productData = productsDataList[index];
 
                 List<Sprite> icons = new List<Sprite>{
-                    products[index]
+                    GetImage(productData.name)
                 };
                 List<string> stringList = new List<string>()
                 {

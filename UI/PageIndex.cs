@@ -11,29 +11,29 @@ public class PageIndexController : MonoBehaviour
 
     public Vector2 cellSize = new Vector2(188f, 200f);
     public GameObject rowTextObject;
-    public int cellCount = 10;
-
 
     public List<GameObject> gameObjects;
-    private int itemsPerPage = 3;
-    private int totalPages;
+    public int itemsPerPage = 3;
+    public int totalPages;
+    public int totalItems;
     public int currentPage = 0;
 
     private GameObject rightButton;
     private GameObject leftButton;
     public GameObject canvasObject;
-
+    public string folderName;
     public void Start()
     {
+        totalPages = Mathf.CeilToInt((float)totalItems / itemsPerPage);
         gameObjects = new List<GameObject>();
-        rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(244, 0), canvasObject.transform, () => {
+        rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(355, 0), canvasObject.transform, () => {
             NavigateToNextPage();
         });
-        leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-244, 0), canvasObject.transform, () => {
+        leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-355, 0), canvasObject.transform, () => {
             NavigateToPreviousPage();
         });
-        UpdateNavigationButtonVisibility();
     }
+
 
     private void NavigateToNextPage()
     {
@@ -44,7 +44,7 @@ public class PageIndexController : MonoBehaviour
         }
     }
 
-    public void DisplayPage()
+    public virtual void DisplayPage()
     {
         if(gameObjects != null) {
             foreach(GameObject gameObject in gameObjects){
@@ -67,10 +67,9 @@ public class PageIndexController : MonoBehaviour
 
     public void UpdateNavigationButtonVisibility()
     {
-        int totalItems = gameObjects.Count;
-        totalPages = Mathf.CeilToInt((float)totalItems / itemsPerPage);
+        Debug.Log("???" + totalPages);
         // Hide the navigation buttons if there are less than 4 items
-        if (gameObjects.Count <= 3)
+        if (totalPages <= 1)
         {
             rightButton.SetActive(false);
             leftButton.SetActive(false);
@@ -79,6 +78,20 @@ public class PageIndexController : MonoBehaviour
         {
             rightButton.SetActive(true);
             leftButton.SetActive(true);
+        }
+    }
+
+    public Sprite GetImage(string name) {
+        List<string> paths = new List<string>((new[] { name }));
+        List<Sprite> sprites = Utils.LoadSprites(folderName, paths);
+        return sprites[0];
+    } 
+
+    public int GetItemsLeft() {
+        if(totalItems / itemsPerPage < totalPages) {
+            return itemsPerPage;
+        } else {
+            return totalItems % itemsPerPage;
         }
     }
 }

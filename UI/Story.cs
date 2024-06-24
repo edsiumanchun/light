@@ -27,7 +27,6 @@ public class StoryController : MonoBehaviour
     public AudioSource bgmAudioSource;
     public GameObject canvasObject;
     public Vector2 screenSize;
-    GameObject container;
     GameObject gameUI;
     public bool canPlayerMove = false;
     public Button button;
@@ -47,7 +46,6 @@ public class StoryController : MonoBehaviour
     }
     private void Start()
     {
-        container = GameObject.Find("Container");
         gameUI = GameObject.Find("GameCanvas");
         // Create Canvas object
         canvasObject = Utils.CreateCanvas("StoryCanvas", true, 0f);
@@ -175,7 +173,6 @@ public class StoryController : MonoBehaviour
     }
 
     void SetupFadeObject(bool isStart){
-        Fade(container, isStart);
         canvasObject.SetActive(!isStart);
         if(canPlayerMove) {
             gameUI.SetActive(true);

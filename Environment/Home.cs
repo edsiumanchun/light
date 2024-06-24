@@ -11,6 +11,7 @@ public class HomeController : MonoBehaviour
     public int numPlates = 5;
     public float plateSpacing = 2.0f;
 
+    public static bool loaded = false;
 
     private void Awake()
     {
@@ -20,8 +21,6 @@ public class HomeController : MonoBehaviour
 
     void Start()
     {
-
-        // UI
         this.gameObject.AddComponent<CameraViewController>();
         this.gameObject.AddComponent<GameUIController>();
         this.gameObject.AddComponent<StoryController>();
@@ -33,9 +32,23 @@ public class HomeController : MonoBehaviour
         this.gameObject.AddComponent<ItemController>();
         this.gameObject.AddComponent<ShopController>();
         this.gameObject.AddComponent<VideoPlayerController>();
-        // UI
+        loaded = true;
+        LoadGame();
+        // Set up boss death event
+        // int currentHealth = boss.GetComponent<BossController>().currentHealth;
+        // if (currentHealth != null)
+        // {
+        //     currentHealth.OnBossDeath += PlayEndingStory;
+        // }
+    }
 
+    public static void LoadGame(){
+        // Camera.main.gameObject.GetComponent<InfoController>().DisplayPage();
+        if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
+        AssetData.gameObject = new GameObject();
+        AssetData.gameObject.name = "GameObject";
         int j = 0;
+        AssetData.nameList = new HashSet<string>();
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
         {
             int i = 0;
@@ -54,12 +67,5 @@ public class HomeController : MonoBehaviour
             }
             j++;
         }
-        // Set up boss death event
-        // int currentHealth = boss.GetComponent<BossController>().currentHealth;
-        // if (currentHealth != null)
-        // {
-        //     currentHealth.OnBossDeath += PlayEndingStory;
-        // }
     }
-
 }

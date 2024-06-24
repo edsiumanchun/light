@@ -140,15 +140,15 @@ public class GameUIController : MonoBehaviour
 
     public void hideGameButton() {
         if(gameButton != null) gameButton.SetActive(false);
-        if(infoButton != null) infoButton.SetActive(false);
+        // if(infoButton != null) infoButton.SetActive(false);
     }
     public void showGameButton(int index) {
         if(gameButton == null) return;
         gameButton.SetActive(true);
         buttonImage.GetComponent<Image>().sprite = buttonImages[index];
-        if(index == (int)UIGameButton.Purify) {
-            infoButton.SetActive(true);
-        }
+        // if(index == (int)UIGameButton.Purify) {
+        //     infoButton.SetActive(true);
+        // }
     }
 
     private void ButtonAction(int buttonIndex)

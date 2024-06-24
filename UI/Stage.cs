@@ -49,6 +49,7 @@ public class StageController : MonoBehaviour
         selectionBarObject = Utils.CreateSelectionBar(stages[tempStage], new Vector2(0f, -178f), canvasObject.transform, () =>
         {
             tempStage = Mathf.Max(tempStage - 1, 0);
+            selectionBarObject.GetComponent<Text>().text = stages[tempStage];
             foreach(var button in buttons){
                 Destroy(button);
             }
@@ -56,9 +57,10 @@ public class StageController : MonoBehaviour
         }, () =>
         {
             tempStage = Mathf.Min(tempStage + 1, stages.Count - 1);
-        foreach(var button in buttons){
-            Destroy(button);
-        }
+            selectionBarObject.GetComponent<Text>().text = stages[tempStage];
+            foreach(var button in buttons){
+                Destroy(button);
+            }
             SetupButtons();
         });
     }
@@ -90,8 +92,9 @@ public class StageController : MonoBehaviour
                 }
                 GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
-                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 0 : 2);
-                    MainController.LoadFloorAssetsFromJson(index, "HomeScene");
+                    CacheManager.SetCache(Cache.CurrentStage.ToString(), tempStage);
+                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 2 : 0);
+                    MainController.LoadAssetsFromJson(tempStage, index, "HomeScene");
                 });
 
                 cell.name = (index + 1).ToString();

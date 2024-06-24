@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     public void GoDown(){
         status = UIGameButton.none;
-        CacheManager.SetCache(Cache.Exit.ToString(), 2);
+        CacheManager.SetCache(Cache.Exit.ToString(), 0);
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         switch (name)
         {
             case string str when str.Contains("GoUp"):
-                CacheManager.SetCache(Cache.Exit.ToString(), 0);
+                CacheManager.SetCache(Cache.Exit.ToString(), 2);
                 MainController.LoadFloorAssetsFromJson(currentFloor + offset, "HomeScene");
                 break;
             case string str when str.Contains("GoDown"):
