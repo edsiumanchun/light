@@ -31,8 +31,17 @@ public class EventController : MonoBehaviour
         GameObject gameObject;
         switch(name)
         {
+            case "firework":
+                List<string> paths = new List<string>((new[] { "Firework2", "Firework3"}));
+                List<Object> fireworks = Utils.LoadPrefabs("Effect", paths);
+                int j = 0;
+                foreach(var firework in fireworks) {
+                    Camera.main.GetComponent<HomeController>().SpawnFirework((GameObject)firework, j == 1);
+                    j++;
+                }
+                return 0.1f;
             case "nextscene":
-                CacheManager.SetCache(Cache.Exit.ToString(), 2);
+                CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 0 : 2);
                 MainController.LoadAssetsFromJsonWithIsSave(currentStage + 1, 0, "HomeScene", false);
                 return 1f;
             case "savescene":
@@ -54,13 +63,7 @@ public class EventController : MonoBehaviour
             case "storydisappear":
                 Utils.Fade(story, true);
                 return 0.1f;
-            case "musicappear":
-                vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
-                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
-                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
-                Utils.Fade(gameObject, false);
-                return 1.8f;
-
+            // shop
             case "musicdisappear":
                 Utils.Fade(music, true);
                 return 1.8f;
@@ -115,9 +118,6 @@ public class EventController : MonoBehaviour
             case "rosiacry":
                 // rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
                 return 1f;
-            case "ghostkidcry":
-                // boss.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
-                return 1f;
             case "storyleave":
                 TurnAround(story);
                 vector3 = GetVector("38_PlateV_Space", new Vector3(0.8f,0f,1f));
@@ -127,13 +127,12 @@ public class EventController : MonoBehaviour
                 return 3;
                 
             // move
-            case "ghostshow":
-                vector3 = GetVector("Player",new Vector3(1.3f,0.4f,1f));
-                gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
-                gameObject.AddComponent<EnemyController>();
-                gameObject.name = "Boss";
-                gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
-                AssetData.SetParent(gameObject);
+
+            case "musicappear":
+                vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
+                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+                Utils.Fade(gameObject, false);
                 return 1.8f;
             case "playerattack":
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
@@ -148,12 +147,12 @@ public class EventController : MonoBehaviour
                 return 1.3f;
             case "nursecome":
                 vector3 = GetVector("Player",new Vector3(-5f,0f,1f));
-                GameObject nurse = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
-                nurse.name = "Nurse";
-                Utils.Fade(nurse, false);
+                gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
+                gameObject.name = "Nurse";
+                Utils.Fade(gameObject, false);
                 // nurse.transform.DOMove(GetVector("Story", new Vector3(-0.8f,04f,1f)), 2);
                 // nurse.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
-                AssetData.SetParent(nurse);
+                AssetData.SetParent(gameObject);
                 return 2f;
             case "chefcome":
                 story.transform.DOMove(GetVector("Cow", new Vector3(0.8f,0f,1f)), 1);
@@ -174,19 +173,38 @@ public class EventController : MonoBehaviour
                 return 1f;
             case "nurseleave":
                 //TurnAround(story);
-                GameObject nurse2 = GameObject.Find("Nurse");
-                Utils.Fade(nurse2, true);
+                gameObject = GameObject.Find("Nurse");
+                Utils.Fade(gameObject, true);
                 // story.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
-                return 1f;
-            case "ghostmumhug":
-                return 1f;
-            case "ghostmumcry":
                 return 1f;
             case "ghostseat":
                 return 1f;
+                
+                // ghost mum son
             case "ghostsleave":
-                boss.GetComponent<EnemyController>().Die(false);
+                gameObject = GameObject.Find("GhostKid");
+                Utils.Fade(story, true);
+                Utils.Fade(gameObject, true);
                 return 1f;
+            case "ghostmumcry":
+                return 1f;
+            case "ghostmumcome":
+                story.transform.DOMove(GetVector("GhostKid", new Vector3(0.8f,0f,1f)), 2f);
+                return 2f;
+            case "ghostkidshow":
+                vector3 = GetVector("Player",new Vector3(-3.3f,0f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "StoryGhostKid", vector3);
+                gameObject.name = "GhostKid";
+                Utils.Fade(gameObject, false);
+                return 1.8f;
+            case "ghostshow":
+                vector3 = GetVector("Player",new Vector3(1.3f,0.4f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
+                gameObject.AddComponent<EnemyController>();
+                gameObject.name = "Boss";
+                gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
+                AssetData.SetParent(gameObject);
+                return 1.8f;
         }
         return 0.1f;
     }

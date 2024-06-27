@@ -153,6 +153,7 @@ public class GameUIController : MonoBehaviour
 
     private void ButtonAction(int buttonIndex)
     {
+        Debug.Log("Button " + buttonIndex + " pressed.");
         JoystickController joystickController = GameObject.Find("Player").GetComponent<JoystickController>();
         switch (buttonIndex)
         {
@@ -166,7 +167,6 @@ public class GameUIController : MonoBehaviour
                 joystickController.Jump();
                 break;
             default:
-                Debug.Log("Button " + buttonIndex + " pressed.");
                 break;
         }
     }

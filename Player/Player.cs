@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if(Camera.main == null) return;
@@ -91,14 +92,21 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ShowStory(){
+
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
+        if(purifyObject != null && purifyObject.name.Contains("Trigger")) {
+            storyController.LoadStoryDataFromJSON("T", purifyObject.name.Contains("Light") ? 0 : 1);
+            return;
+        }
+
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if( (CacheManager.IsCleared() && currentFloor == 2)){
             if(Utils.isUAT){
                 EventController.ShowEvent("shop");
             }
         } else {
-            storyController.LoadStoryDataFromJSON();
+            storyController.LoadStoryDataFromJSON("", 0);
         }
         audioSource.PlayOneShot(wallSound);
         // VideoPlayerController videoController = Camera.main.gameObject.GetComponent<VideoPlayerController>();  
@@ -108,11 +116,20 @@ public class PlayerController : MonoBehaviour
 
     public void GoDown(){
         status = UIGameButton.none;
-        CacheManager.SetCache(Cache.Exit.ToString(), 0);
+        CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0);
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
+        int offset = AssetData.goUp ? 1 : -1; 
         MainController.LoadFloorAssetsFromJson(currentFloor - offset, "HomeScene");
+    }
+
+    public void GoExit() {
+        int exit = AssetData.exit;
+        status = UIGameButton.none;
+        CacheManager.SetCache(Cache.Exit.ToString(), exit >= 0 ? 3 : 1);
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit), "HomeScene");
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -149,19 +166,24 @@ public class PlayerController : MonoBehaviour
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int offset = currentStage == 0 || currentStage == 1 ? -1 : 1; 
+        int offset = AssetData.goUp ? 1 : -1; 
         string playerPosition = name.Split('_')[0];
         Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
-                CacheManager.SetCache(Cache.Exit.ToString(), 2);
+                CacheManager.SetCache(Cache.Exit.ToString(),AssetData.goUp ? 0 : 2);
                 MainController.LoadFloorAssetsFromJson(currentFloor + offset, "HomeScene");
                 break;
             case string str when str.Contains("GoDown"):
                 exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Down);
                 status = UIGameButton.Down;
+                break;
+            case string str when str.Contains("GateGreen"):
+                exitPosition = playerPosition[1];
+                gameUIController.showGameButton((int)UIGameButton.Gate);
+                status = UIGameButton.Exit;
                 break;
             case string str when str.Contains("Floor"):
                 audioSource.PlayOneShot(landSound);
@@ -172,8 +194,8 @@ public class PlayerController : MonoBehaviour
 
             case string str when str.Contains("PlateV"):
                 if(str.Contains("Gate")) {
-                    status = UIGameButton.Gate;
                     gameUIController.showGameButton((int)UIGameButton.Gate);
+                    status = UIGameButton.Gate;
                     audioSource.PlayOneShot(gateSound);
                 } else {
                     audioSource.PlayOneShot(wallSound);
@@ -203,6 +225,7 @@ public class PlayerController : MonoBehaviour
                 // infoController.avatars = enemyController.avatars;
                 // infoController.enemyDataList = enemyController.enemyDatas;
                 gameUIController.showGameButton((int)UIGameButton.Purify);
+                status = UIGameButton.Purify;
                 break;
         }
     }
@@ -241,6 +264,29 @@ public class PlayerController : MonoBehaviour
     void UpdateLifeBarUI()
     {
         // Update the life bar UI based on currentHealth and maxHealth
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("???" + name);
+        // Check if the colliding object has the specified tag
+        if (collision.name.Contains("Trigger"))
+        {
+            // Perform the desired action here
+            GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+            gameUIController.showGameButton((int)UIGameButton.Story);
+            status = UIGameButton.Story;
+
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<JoystickController>().SetPurifyObject(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.name.Contains("Trigger")){
+            GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+            gameUIController.hideGameButton();
+        }
     }
 
 }

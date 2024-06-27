@@ -1,0 +1,43 @@
+{
+	"storyArray" : [
+	{
+	    "name": "ghostkid",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "誰...可以給我...食物..."
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "小孩子，你想得到解脫嗎？"
+	    ]
+	},
+	{
+	    "name": "ghostkid",
+	    "dialogue": [
+	        "想啊！可是...我不能不顧母親而去的。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "你跟你的母親失散了嗎？"
+	    ]
+	},
+	{
+	    "name": "ghostkid",
+	    "dialogue": [
+	        "是的，母親為了不讓我涯餓...在幾年前出外尋找食物。",
+	        "不久，這裡便出現了很多力氣大的餓鬼阻擾母親回來...",
+	        "姐姐...你能否把我帶到地面去？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"好吧...這裡離地面不遠，很快就會到達。"
+	    ]
+	}
+]
+}
+
+

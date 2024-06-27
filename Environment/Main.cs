@@ -13,14 +13,14 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
-            CacheManager.SetCache(Cache.Exit.ToString(), 0); // 2 = down, 0 = up
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 3);
+            CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
         }
+        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         LoadItemData();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
         LoadAssetsForButtonsUI();
@@ -42,7 +42,6 @@ public class MainController : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/Item");
         ItemDataWrapper assetsData = JsonUtility.FromJson<ItemDataWrapper>(jsonFile.text);
-        Debug.Log("???" + assetsData.items.Count);
         DataHolder.itemDataList = assetsData.items;
     }
 
@@ -130,6 +129,7 @@ public class MainController : MonoBehaviour
             DataHolder.items = LoadSprites("Items", paths.items);
             DataHolder.decorations = LoadSprites("Decorations", paths.decorations);
             DataHolder.obstacles = LoadSprites("Obstacles", paths.obstacles);
+            DataHolder.triggers = LoadSprites("Triggers", paths.triggers);
             DataHolder.characters = LoadPrefabs("Characters", paths.characters);
             DataHolder.enemies = LoadPrefabs("Enemies", paths.enemies);
             DataHolder.bosses = LoadPrefabs("Bosses", paths.bosses);

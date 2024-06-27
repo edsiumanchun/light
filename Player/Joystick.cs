@@ -192,7 +192,10 @@ public class JoystickController : MonoBehaviour, IDragHandler
     public void Purify()
     {
         PlayerController playerController = this.gameObject.GetComponent<PlayerController>();
-        if(playerController.status == UIGameButton.Down){
+        if(playerController.status == UIGameButton.Exit){
+            playerController.GoExit();
+            return;
+        } else if(playerController.status == UIGameButton.Down){
             playerController.GoDown();
             return;
         } else if(playerController.status == UIGameButton.Story){

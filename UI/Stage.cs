@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class StageController : MonoBehaviour
 {
-    List<string> stages = new List<string>(){"grave","clinic"};
+    List<string> stages = new List<string>(){"Grave","Clinic","Palace","Jetavana"};
     public Vector2 contentSize;
     public Vector2 cellSize = new Vector2(88f, 88f);
     public int cellCount = 10;
@@ -93,8 +93,9 @@ public class StageController : MonoBehaviour
                 GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
                     CacheManager.SetCache(Cache.CurrentStage.ToString(), tempStage);
-                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 2 : 0);
+                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 2 : (AssetData.goUp ? 2 : 0));
                     MainController.LoadAssetsFromJson(tempStage, index, "HomeScene");
+                    canvasObject.SetActive(false);
                 });
 
                 cell.name = (index + 1).ToString();

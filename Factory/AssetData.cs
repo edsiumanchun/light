@@ -24,6 +24,7 @@ public class Path
     public List<string> backgrounds;
     public List<string> decorations;
     public List<string> obstacles;
+    public List<string> triggers;
     public List<string> walls;
     public List<string> enemies;
     public List<string> gems;
@@ -34,6 +35,8 @@ public class Path
 [System.Serializable]
 public class AssetData 
 {
+    public static bool goUp = false;
+    public static int exit = 0;
     public static GameObject gameObject;
     public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
@@ -47,6 +50,7 @@ public class AssetData
     int numRows = 5;
     int numColumns = 5;
     bool isSprite = true;
+
 
     Vector2 GetCombinedSize(GameObject parentGameObject)
     {
@@ -95,6 +99,10 @@ public class AssetData
                     GameObject prefab = (GameObject)DataHolder.bosses[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
                     AssetData.SetParent(newObject);
+                } else if (assetIndex / 50 >= 1) {
+                    spriteRenderer.sprite = (Sprite)DataHolder.triggers[formattedIndex];
+                    TriggerController triggerController = newObject.AddComponent<TriggerController>();
+                    triggerController.name = spriteRenderer.sprite.name;
                 } else if (assetIndex / 40 >= 1) {
                     spriteRenderer.sprite = (Sprite)DataHolder.decorations[formattedIndex];
                 } else if (assetIndex / 30 >= 1) {
@@ -127,8 +135,13 @@ public class AssetData
                 int audioIndex = gridArray0[0];
                 Utils.ChangeAudioClipByName(audioIndex);
                 return null;
+            case "Exit":
+                int exitIndex = gridArray0[0];
+                AssetData.exit = exitIndex;
+                return null;
         }
         // --------- //
+        Debug.Log("????" + spriteRenderer.sprite + assetIndex.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
@@ -142,7 +155,6 @@ public class AssetData
                     return null;
                 } 
             }
-                    Debug.Log("??" + pathName);
             if(pathName.Contains("Sprite")) { // maria sick
                 isSprite = true;
             }
@@ -201,6 +213,7 @@ public class AssetData
 
     public void SetupCollider(GameObject newObject, bool isSprite, int cellValue){
         BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
+        bool isTrigger = (cellValue - 1 >= 50 && cellValue <= 60);
         if (!isSprite)
         {
             if(newObject.name.Contains("Player")) {
@@ -211,10 +224,13 @@ public class AssetData
             boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
         } else if(newObject.name.Contains("Gem")){
             boxCollider.size = new Vector2(2f, 2f);
+        } else if(isTrigger){
+            boxCollider.size = new Vector2(1f, 1.8f);
+            boxCollider.isTrigger = true;
         }
         if (name.Contains("Object"))
         {
-            if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+            if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !isTrigger && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
                 boxCollider.enabled = false;
             } 
         }
@@ -222,7 +238,11 @@ public class AssetData
 
     public void CreateObjects(float z, float subStage)
     {
-        if (name == "Audio" )
+        if (name == "GoUp") {
+            AssetData.goUp = true;
+            return;
+        }
+        if (name == "Audio" || name == "Exit")
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;
@@ -233,12 +253,16 @@ public class AssetData
         float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
         float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
+        if (name == "Exit") {
+
+            return;
+        }
         if (name == "Background") {
             newObject = CreateObjectWithAssetIndex(0, z, "");
             int index = gridArray0[0];
             newObject.transform.position = new Vector3(offsetX, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
             return;
-        }
+        } 
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
         float offset = plateSprite.bounds.size.x / 2;
         for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
@@ -269,7 +293,9 @@ public class AssetData
                     int playerPosition = CacheManager.GetCache(Cache.Exit.ToString());
                     if(
                         (playerPosition == 2 && gridIndex >= 3) 
-                        || (playerPosition == 0 && gridIndex < 3) ) {
+                        || (playerPosition == 0 && gridIndex <= 0) 
+                        || (playerPosition == 1 && column >= 1) 
+                        || (playerPosition == 3 && column <= 0) ) {
                     } else {
                         continue;
                     }
@@ -296,7 +322,6 @@ public class AssetData
                 else if (name.Contains("Object"))
                 {
                     BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
-                    Debug.Log("??" + newObject.name);
                     float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
                     float newZ = z * 0.01f - 1 ;
                     if (newObject.name.Contains("Player")) {

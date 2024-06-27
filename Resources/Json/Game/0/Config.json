@@ -1,14 +1,15 @@
 {
   "paths": {
-    "backgrounds": ["Egypt", "ScaleHoly", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleDesert", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
+    "backgrounds": ["ScaleHoly", "Egypt", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleDesert", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["City", "GoUp", "GoDown","Space"],
     "plateV": ["City","GateCopper","GateSilver","GateGold", "GateGreen","Space"],
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Greed", "Hatred", "Delusion", "Ethics", "BossFlower"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
+    "items": ["KeyCopper","KeySilver","KeyGold", "Heart","Trigger"],
     "obstacles": ["Dark"],
+    "triggers": ["TriggerLight", "TriggerDark"],
     "decorations": ["Dark", "Lamp", "Wall"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]

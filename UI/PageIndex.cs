@@ -67,7 +67,7 @@ public class PageIndexController : MonoBehaviour
 
     public void UpdateNavigationButtonVisibility()
     {
-        Debug.Log("???" + totalPages);
+        // Debug.Log("???" + totalPages);
         // Hide the navigation buttons if there are less than 4 items
         if (totalPages <= 1)
         {

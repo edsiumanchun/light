@@ -116,7 +116,7 @@ public static class CacheManager
                 if(hpAmount > 0){
                 } else {
                     int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
-                    Debug.Log("?????" + hpAmount + "?????" + mpMax);
+                    // Debug.Log("?????" + hpAmount + "?????" + mpMax);
                     CacheManager.ChangeCache(Cache.MP.ToString(), -1, mpMax);
                 }
             } 

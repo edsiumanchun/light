@@ -1,0 +1,162 @@
+{
+"storyArray" : [
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostkidshow"
+	    ]
+	},{
+	    "name": "ghostkid",
+	   	"leftPrefab": "",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "媽媽！！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "孩兒...我是不是在做夢..."
+	    ]
+	},
+	{
+	    "name": "ghostkid",
+	    "dialogue": [
+	        "媽媽，這些年來，你也在受肌餓之苦嗎？"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "是的，我已經盡了力去找食物...",
+	        "但每當我得到一些食物，食物便會化為灰燼...",
+	        "好不容易得到一口不淨之食，卻被其他餓鬼阻止我回來找你。"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "dialogue": [
+	    	"全賴姐姐...我才能夠找到媽媽。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"這位姑娘，真的很感謝你令我們母子團聚。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"不必客氣，舉手之勞而已。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerIdle",
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"對了，我從垃圾桶裡找到些吃剩的渣滓...",
+	    	"孩子，快點來吃吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostmumcome",
+	        "ghostcome"
+	    ]
+	},{
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkideat",
+	    "name": "ghostkideat",
+	    "dialogue": [
+	    	"很好吃！"
+	    ]
+	},{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"別著急，我這裡還有很多。"
+	    ]
+	},{
+	    "name": "ghostkideat",
+	    "dialogue": [
+	    	"媽媽，你也吃點吧！"
+	    ]
+	},{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"媽媽已經飽了..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostsleave",
+	    	"musicappear",
+	    	"musicplay"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "樂神，此旋律讓人感到釋然，郤令人感到莫名其妙的衰傷..."
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"此乃是讓靈魂得到安樂的鎮魂曲。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "真的是妙樂！樂神你的琴藝真的很精湛。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"你可知道嗎？當我手指輕彈，七種琴音能夠剎時同出。",
+	    	"可是...天外有天...",
+	    	"據說大覺者指尖撥一弦，旋即現出千萬種琴聲。",
+	    	"此琴聲婉妙清徹，聽者歡心喜悅，不可言喻。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "七種琴音已經這麼悅耳，真難想像千萬種琴聲是多麼的妙啊..."
+	    ]
+	}
+]
+}
+
+

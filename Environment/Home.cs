@@ -46,7 +46,7 @@ public class HomeController : MonoBehaviour
         // Camera.main.gameObject.GetComponent<InfoController>().DisplayPage();
         if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
         AssetData.gameObject = new GameObject();
-        AssetData.gameObject.name = "GameObject";
+        AssetData.gameObject.name = "MainGameObject";
         int j = 0;
         AssetData.nameList = new HashSet<string>();
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
@@ -67,5 +67,40 @@ public class HomeController : MonoBehaviour
             }
             j++;
         }
+    }
+
+    public void SpawnFirework(GameObject firework, bool isLow)
+    {
+        StartCoroutine(SpawnFireworkCoroutine(firework, isLow));
+    }
+    private IEnumerator SpawnFireworkCoroutine(GameObject fireworkPrefab, bool isLow)
+    {
+        while (true)
+        {
+            GameObject gameObject = Instantiate(fireworkPrefab);
+            // ParticleSystem particleEffect = gameObject.GetComponent<ParticleSystem>();
+            // particleEffect.Stop();
+
+            // particleEffect.Clear();
+            // particleEffect.time = 0f;
+            // particleEffect.Play();
+            SpawnFireworkNow(gameObject, isLow);
+            float delay = Random.Range(6.6f, 8.8f);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    private void SpawnFireworkNow(GameObject gameObject, bool isLow)
+    {
+        Vector3 spawnPosition = new Vector3(
+            Random.Range(-4, 4),
+            isLow ? Random.Range(-6, -4) : Random.Range(0, 4),
+            -3
+        );
+        Debug.Log("????" + isLow);
+        // Vector2 worldVector = Utils.ScaleToWorld(spawnPosition);
+        GameObject mainGameObject = GameObject.Find("MainGameObject");
+        gameObject.transform.SetParent(mainGameObject.transform);
+        gameObject.transform.localPosition = spawnPosition;
     }
 }

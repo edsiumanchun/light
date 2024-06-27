@@ -3,8 +3,7 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "bossdisappear",
-	        "switchscene"
+	    	"firework"
 	    ]
 	},
 	{
@@ -12,7 +11,7 @@
 	    "leftPrefab": "rosia",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	    	"好漂亮的花火！",
+	    	"好漂亮的花火！"
 	    ]
 	},
 	{
@@ -36,11 +35,11 @@
 	{
 	    "name": "maria",
 	    "dialogue": [
-	        "我在三歲的時侯患了奇怪腄瘤，是姐姐把我帶來醫院醫治..."
-	        "在手術過程中發生了醫療事故，令我身體癱瘓。",
-	        "老實說，我沒有因為失去活動能力而感到難過...",
-	        "每當姐姐為我冒險去找靈藥而失蹤數天時，才是讓我感到最難過的日子。",
-	    	"我很想...很想每年...有姐姐陪我看花火！"
+	        "一直以來，姐姐因為那次令我身體癱瘓的醫療事故而無法釋懷。",
+	        "老實說，我沒有因為這一生命途不順而感到難過...",
+	        "真正讓我無時無刻感到難過的是...姐姐不在我身邊的時候...",
+	        "我很怕...失去姐姐。",
+	    	"我很想...很想每年...有姐姐陪伴我看花火！"
 	    ]
 	},{
 	    "name": "event",
@@ -56,7 +55,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playerconsole"
+	        "playerpoint"
 	    ]
 	},
 	{
@@ -64,14 +63,18 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"羅西亞，我能感受到你的辛酸..."
-	    	"你為妹妹所付出的一切真令人佩服。"
+	    	"羅西亞，你為妹妹所付出的一切真令人敬佩。"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"不算什麼，公主過去所做的事情才真正令世人讚歎！"
+	    	"不算什麼...跟公主相比，我的付出真的不值一提。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiaturn"
 	    ]
 	},
 	{
@@ -87,115 +90,137 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"當然可以啊...就在五年前，公主微服出巡...",
-	    	"她看見民間疾苦，生老病死，苦不堪言，身為公主的她感到非常自責...",
-	    	"於是公主放棄了皇室的身份，也放棄了榮華富貴...",
-	    	"到東盟國修行，尋找提升心靈層次的真理。"
+	    	"當然可以啊！",
+	    	"在五年前，公主體察民情的時候，她深深感受到民間疾苦...",
+	    	"身為公主的她感到非常自責，認為自己不配當公主...",
+	    	"於是公主放棄了皇室的身份，也放棄了榮華富貴到東盟國修行。",
+	    	"目的是為了尋找提升心靈層次的真理。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"很慚愧...到現在我還是沒有任何成就..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"等等！"
+	    	"真的很慚愧...直到現在，我還是沒有任何成就。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "opencake"
+	        "rosiaturn"
+	    ]
+	},
+	{
+	    "leftPrefab": "player",
+	    "rightPrefab": "maria",
+	    "name": "maria",
+	    "dialogue": [
+	    	"公主，請不要小看自己，你絕對是一個值得信賴的人！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"哈哈，瑪利亞真的很會哄人。"
 	    ]
 	},
 	{
 	    "name": "maria",
+	    "dialogue": [
+	    	"除了姐姐，就只有公主能讓我敞開心扉把心底話說出來。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"瑪利亞，你還有話想說嗎？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiaturn"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "leftPrefab": "rosia",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	    	"有啊...你知道嗎？",
+	    	"姐姐平時的眼神看似很堅定，但若果細心觀察...",
+	    	"就會發現她的內心一直很孤獨了。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"瑪利亞！"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"姐姐一直把照顧我的責任背負在自己身上。",
+	    	"她很怕帶給別人麻煩...",
+	    	"平時寧願將自己的感受藏在心底，也不願跟人說。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiaturn"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"妹妹啊！別談這些了...",
+	    	"對了...公主遊歷了一段時間，有什麼有趣的見聞嗎？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "player",
 	    "leftPrefab": "player",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	    	"是蛋糕！我還以為姐姐忘記了..."
+	        "在東盟國遊歷時...",
+	        "我的老師跟我說了一個跟天上的流星有關的傳說。"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"姐姐，我不知還有沒有明天...",
-	    	"但我也有一件心事想跟公主說..."
+	    	"公主，快告訴我吧，好想知道啊！"
 	    ]
-	},
-	{
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiaturn"
+	    ]
+	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	""
+	        "在古老的東方有一群龍，她們會像流星一樣在天空飛舞...",
+	        "人們受到這群龍的祝福後，會找到令智慧圓滿的方法...人們稱之為...",
+	        "【龍 星 群】"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"公主，你的眼神看似很堅定, 但若果細心觀察...",
-	    	"就會發現真正的你, 內心一直很孤獨。"
+	    	"好想去東方啊！",
 	    ]
-	},
-	{
+	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	    	"瑪利亞..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	    	"確實如此，公主你一直把所有責任背負在自己身上。",
-	    	"因為不想帶給別人麻煩，平時寧願將自己的感受藏在心底，也不願跟人說。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	    	"你們...",
-	    	"要不要先吃蛋糕..."
+	        "瑪利亞，你相信有龍嗎？",
+	        "人們受到這群龍的祝福後，會找到令智慧圓滿的方法...人們稱之為...",
+	        "【龍 星 群】"
 	    ]
 	},
 	{
 	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	    	"好啊！讓我試試姐姐親手做的蛋糕吧。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	    	"你怎知道是我親手做的..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
-	    "dialogue": [
-	    	"因為只有姐姐的蛋糕才會有這麼多忌廉...還有的是...",
-	    	"蛋糕真的很好吃！"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	    	"鳴鳴..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	    	"自從被植入人工心臟後，我就沒法再感受到温暖的感覺...",
 	    	"不可思議的是，現在我能感受到心臟在温暖地跳動起來...",

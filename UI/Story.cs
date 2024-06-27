@@ -20,6 +20,7 @@ public class StoryController : MonoBehaviour
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
     private bool isStory = false;
+
     private int currentStoryIndex;
     public StoryDataWrapper wrapper;
     public string currentSentence = "";
@@ -29,6 +30,7 @@ public class StoryController : MonoBehaviour
     public Vector2 screenSize;
     GameObject gameUI;
     public bool canPlayerMove = false;
+    public bool onlyOne = false;
     public Button button;
     public void ShowTutor(){
         int showTutor = CacheManager.GetCache(Cache.ShowTutor.ToString());
@@ -82,17 +84,25 @@ public class StoryController : MonoBehaviour
         ShowTutor();
     }
 
-    public void LoadStoryDataFromJSON(){
-        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString());
+    public void LoadStoryDataFromJSON(string suffix, int index){
+        string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString() ) + suffix;
 
-        print(storyFilePath);
+        print(storyFilePath+ index.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
-        print(jsonFile);
+        print(jsonFile );
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
-        LoadStoryDataFromJSONWithPath();
+        if(suffix == ""){
+            currentStoryIndex = 0;
+            onlyOne = false;
+        } else {
+            currentStoryIndex = index;
+            onlyOne = true;
+        }
+        LoadStoryDataFromJSONWithPath(currentStoryIndex);   
     }
 
     public void LoadStoryDataFromTextList(string title, string[] results){
+        onlyOne = false;
         StoryData storyData = new StoryData
         {
             dialogue = results,
@@ -107,12 +117,12 @@ public class StoryController : MonoBehaviour
             }
         }; 
         wrapper = storyDataWrapper;
-        LoadStoryDataFromJSONWithPath();
+        LoadStoryDataFromJSONWithPath(0);
     }
     public void LoadStoryDataFromText(string title, string result){
         LoadStoryDataFromTextList(title, new string[] { result });
     }
-    public void LoadStoryDataFromJSONWithPath()
+    public void LoadStoryDataFromJSONWithPath(int index)
     {
         SetupFadeObject(false);
         if(canPlayerMove == false) {
@@ -122,7 +132,7 @@ public class StoryController : MonoBehaviour
         if(leftPrefab != null) Destroy(leftPrefab);
         if(rightPrefab != null) Destroy(rightPrefab);
         isTyping = false;
-        currentStoryIndex = 0;
+        currentStoryIndex = index;
         StoryData story = wrapper.storyArray[currentStoryIndex];
         isStory = story.name != null && story.name != "";
         dialogueText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;
@@ -209,6 +219,14 @@ public class StoryController : MonoBehaviour
         isTyping = false;
     }
 
+    public void EndStory(){
+
+        SetupFadeObject(true);
+        CacheManager.SetClearFloor();
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<JoystickController>().isFighting = false;
+    }
+
     public void DisplayNextSentence()
     {
         if (isTyping)
@@ -223,16 +241,14 @@ public class StoryController : MonoBehaviour
         if (sentences.Count == 0)
         {
             currentStoryIndex++;
-            if (currentStoryIndex < wrapper.storyArray.Count)
+            var count = onlyOne ? 1 : wrapper.storyArray.Count;
+            if (currentStoryIndex < count)
             {
                 LoadStory(wrapper.storyArray[currentStoryIndex]);
             }
             else
             {
-                SetupFadeObject(true);
-                CacheManager.SetClearFloor();
-                GameObject player = GameObject.Find("Player");
-                player.GetComponent<JoystickController>().isFighting = false;
+                EndStory();
             }
 
             return;
@@ -312,13 +328,17 @@ public class StoryController : MonoBehaviour
             if(leftPrefab.name.Contains(story.name)) {
                 Utils.changeAlpha(leftPrefab, 1f);
                 Utils.changeAlpha(rightPrefab, 0.1f);
-            } else if(rightPrefab.name.Contains(story.name)) {
+            }
+        } else {
+            Utils.changeAlpha(leftPrefab, 0.1f);
+        }
+        if(isStory && rightPrefab != null) {
+            if(rightPrefab.name.Contains(story.name)) {
                 Utils.changeAlpha(leftPrefab, 0.1f);
                 Utils.changeAlpha(rightPrefab, 1f);
-            } else {
-                Utils.changeAlpha(leftPrefab, 0.1f);
-                Utils.changeAlpha(rightPrefab, 0.1f);
-            }
+            } 
+        } else {
+            Utils.changeAlpha(rightPrefab, 0.1f);
         }
         if (bgmAudioSource.clip != null)
         {

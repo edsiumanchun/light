@@ -22,6 +22,12 @@ public class Utils : MonoBehaviour
         Vector2 screenPos = mainCamera.WorldToScreenPoint(size);
         return screenPos;
     }
+    static public Vector2 ScaleToWorld(Vector2 size)
+    {
+        Camera mainCamera = Camera.main;
+        Vector2 screenPos = mainCamera.ScreenToWorldPoint(size);
+        return screenPos;
+    }
 
     static public void MovePrefab(GameObject prefab, float x, float y)
     {
@@ -277,27 +283,6 @@ public class Utils : MonoBehaviour
         return o2;
     }
 
-    public static void AddEffect(GameObject GO, string effectName) {
-        List<string> paths = new List<string>((new[] { effectName}));
-        GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
-        GameObject lightObject = Instantiate(lightPrefab);
-        lightObject.name = "Effect";
-        lightObject.transform.SetParent(GO.transform);
-        lightObject.transform.localPosition = new Vector3(0, 0.8f, -8f);
-    }
-
-    public static void RemoveEffect(Transform transform)
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            GameObject child = transform.GetChild(i).gameObject;
-            ParticleSystem particleSystem = child.GetComponent<ParticleSystem>();
-            if (particleSystem != null)
-            {
-                Destroy(child);
-            }
-        }
-    }
     public static void ChangeAudioClipByName(int sourceIndex)
     {
         PersistentAudioSource.Instance.PlayAudio(sourceIndex);
@@ -324,6 +309,41 @@ public class Utils : MonoBehaviour
             if (spriteRenderer != null)
             {
                 spriteRenderer.DOFade(isFadeOut ? 0f : 1f, 0.3f);
+            }
+        }
+    }
+    // effect
+    public static void AddEffect(GameObject GO, string effectName) {
+        List<string> paths = new List<string>((new[] { effectName}));
+        GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
+        GameObject lightObject = Instantiate(lightPrefab);
+        lightObject.name = "Effect";
+        lightObject.transform.SetParent(GO.transform);
+        lightObject.transform.localPosition = new Vector3(0, 0.8f, -8f);
+    }
+
+    public static void RemoveEffect(Transform transform)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            ParticleSystem particleSystem = child.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                Destroy(child);
+            }
+        }
+    }
+
+    public static void Spawn(Transform transform)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            ParticleSystem particleSystem = child.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                Destroy(child);
             }
         }
     }
