@@ -50,24 +50,25 @@ public class StageController : MonoBehaviour
         {
             tempStage = Mathf.Max(tempStage - 1, 0);
             selectionBarObject.GetComponent<Text>().text = stages[tempStage];
-            foreach(var button in buttons){
-                Destroy(button);
-            }
-            SetupButtons();
+            // foreach(var button in buttons){
+            //     Destroy(button);
+            // }
+            // SetupButtons();
+            updateButtonImages();
         }, () =>
         {
             tempStage = Mathf.Min(tempStage + 1, stages.Count - 1);
             selectionBarObject.GetComponent<Text>().text = stages[tempStage];
-            foreach(var button in buttons){
-                Destroy(button);
-            }
-            SetupButtons();
+            // foreach(var button in buttons){
+            //     Destroy(button);
+            // }
+            // SetupButtons();
+            updateButtonImages();
         });
     }
 
     private void SetupButtons()
     {
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int rowCount = 2;
         int columnCount = 5;
 
@@ -86,15 +87,12 @@ public class StageController : MonoBehaviour
                 float xPos = startX + column * cellSize.x;
                 float yPos = startY - row * cellSize.y;
 
-                var image = currentFloor == index ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];
-                if(tempStage != CacheManager.GetCache(Cache.CurrentStage.ToString())){
-                    image = commonImages[((int)UICommon.CircleButton)];
-                }
-                GameObject cell = Utils.CreateTextButton(image, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
+                GameObject cell = Utils.CreateTextButton(null, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
                     CacheManager.SetCache(Cache.CurrentStage.ToString(), tempStage);
                     CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 2 : (AssetData.goUp ? 2 : 0));
                     MainController.LoadAssetsFromJson(tempStage, index, "HomeScene");
+        updateButtonImages();
                     canvasObject.SetActive(false);
                 });
 
@@ -103,6 +101,21 @@ public class StageController : MonoBehaviour
                 buttons.Add(cell.transform.parent.gameObject);
                 cell.transform.parent.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             }
+        }
+        updateButtonImages();
+    }
+
+    void updateButtonImages() {
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        Debug.Log("???" + currentFloor);
+        int i = 0;
+        foreach(var button in buttons){
+            var image = currentFloor == i ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];
+            if(tempStage != CacheManager.GetCache(Cache.CurrentStage.ToString())){
+                image = commonImages[((int)UICommon.CircleButton)];
+            }
+            button.GetComponent<Image>().sprite = image;
+            i++;
         }
     }
 

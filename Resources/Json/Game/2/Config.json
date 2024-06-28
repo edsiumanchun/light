@@ -1,8 +1,8 @@
 {
   "paths": {
-    "backgrounds": ["ScaleCastle", "ScaleHoly", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleHospital", "ScaleDesert", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
+    "backgrounds": ["ScaleCastle", "ScaleNight", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["Wood", "GoUp", "GoDown","Space"],
-    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateGreen","Gate"],
+    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
     "characters": ["Player","StoryShop","StoryMariaSickSprite","StoryGhostKid","Rosia", "StoryGhostMum"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
@@ -10,8 +10,8 @@
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3"],
-    "walls": ["Brick0", "Brick1", "Brick2"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
+    "walls": ["Rock0", "Rock1", "Rock2"],
     "audios": ["elf","bgm"]
   }
 }
