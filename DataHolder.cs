@@ -75,6 +75,6 @@ public static class DataHolder
     public static Vector2 GetBackgroundSize()
     {
         Sprite sprite = DataHolder.walls[0];
-        return new Vector2(sprite.bounds.size.x, sprite.bounds.size.y * 4);
+        return new Vector2(sprite.bounds.size.x, sprite.bounds.size.y * 5);
     }
 }

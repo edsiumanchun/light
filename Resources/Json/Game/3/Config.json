@@ -1,0 +1,17 @@
+{
+  "paths": {
+    "backgrounds": ["ScaleGold", "ScaleGold", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
+    "plateH": ["Inner", "GoUp", "GoDown","Space"],
+    "plateV": ["Inner","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
+    "characters": ["Player","StoryShop","StoryMariaSickSprite","StoryGhostKid","Rosia", "StoryGhostMum"],
+    "bosses": ["BossMummy"],
+    "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
+    "gems": ["Greed", "Angry", "Silly", "Silly1", "BossFlower"],
+    "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
+    "obstacles": ["Dark"],
+    "triggers": ["TriggerLight", "TriggerDark"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
+    "walls": ["Black0", "Black1", "Black2"],
+    "audios": ["elf","bgm"]
+  }
+}

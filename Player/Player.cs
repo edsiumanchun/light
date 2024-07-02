@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ShowStory(){
-
+        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
         GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
         if(purifyObject != null && purifyObject.name.Contains("Trigger")) {
@@ -101,7 +101,8 @@ public class PlayerController : MonoBehaviour
         }
 
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        if( (CacheManager.IsCleared() && currentFloor == 2)){
+        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
+        if( (CacheManager.IsCleared() && currentFloor == 2 && currentStage <= 1)){
             if(Utils.isUAT){
                 EventController.ShowEvent("shop");
             }

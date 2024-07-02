@@ -15,8 +15,8 @@ public class MainController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
-            CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
+            CacheManager.SetCache(Cache.CurrentStage.ToString(), 3);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 0);
             CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
         }
@@ -150,7 +150,9 @@ public class MainController : MonoBehaviour
 
     static public void LoadFloorAssetsFromJsonWithIsSave(int stage, int floor, string sceneName, bool isSave)
     {
-        CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
+        if(isSave) {
+            CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
+        }
         //print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);

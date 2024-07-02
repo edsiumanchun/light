@@ -31,6 +31,10 @@ public class EventController : MonoBehaviour
         GameObject gameObject;
         switch(name)
         {
+            case "tohospital":
+                CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 0 : 2);
+                MainController.LoadAssetsFromJsonWithIsSave(1, 0, "HomeScene", false);
+                return 1f;
             case "firework":
                 List<string> paths = new List<string>((new[] { "Firework2", "Firework3"}));
                 List<Object> fireworks = Utils.LoadPrefabs("Effect", paths);
@@ -54,6 +58,19 @@ public class EventController : MonoBehaviour
                 storyController.SetIntervative(true);
                 return 0.1f;
             // disappear
+            case "storyleave":
+                TurnAround(story);
+                vector3 = GetVector("38_PlateV_Space", new Vector3(0.8f,0f,1f));
+                vector3 = new Vector3(vector3.x, story.transform.position.y, vector3.z);
+                story.transform.DOMove(vector3, 3);
+                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                return 3;
+            case "nursedisappear":
+                //TurnAround(story);
+                gameObject = GameObject.Find("Nurse");
+                Utils.Fade(gameObject, true);
+                // story.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
+                return 1f;
             case "bossdisappear":
                 boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
@@ -118,13 +135,6 @@ public class EventController : MonoBehaviour
             case "rosiacry":
                 // rosia.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Cry);
                 return 1f;
-            case "storyleave":
-                TurnAround(story);
-                vector3 = GetVector("38_PlateV_Space", new Vector3(0.8f,0f,1f));
-                vector3 = new Vector3(vector3.x, story.transform.position.y, vector3.z);
-                story.transform.DOMove(vector3, 3);
-                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
-                return 3;
                 
             // move
 
@@ -137,7 +147,7 @@ public class EventController : MonoBehaviour
             case "playerattack":
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
                 Utils.AddEffect(boss, "purify");
-                Utils.AddEffect(player, "purify");
+                // Utils.AddEffect(player, "purify");
                 return 1.8f;
             case "rosiacome":
                 vector3 = GetVector("Player",new Vector3(0.8f,0.4f,1f));
@@ -154,11 +164,6 @@ public class EventController : MonoBehaviour
                 // nurse.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
                 AssetData.SetParent(gameObject);
                 return 2f;
-            case "chefcome":
-                story.transform.DOMove(GetVector("Cow", new Vector3(0.8f,0f,1f)), 1);
-                story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
-                AssetData.SetParent(story);
-                return 1f;
             case "rosiacometoplayer": 
                 vector3 = new Vector3(GetVector("Player",new Vector3(-1f,0.4f,1f)).x, player.transform.localPosition.y, 1f);
                 rosia.transform.DOMove(vector3, 2);
@@ -170,12 +175,6 @@ public class EventController : MonoBehaviour
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
                 return 2f;
             case "mariascare":
-                return 1f;
-            case "nurseleave":
-                //TurnAround(story);
-                gameObject = GameObject.Find("Nurse");
-                Utils.Fade(gameObject, true);
-                // story.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
                 return 1f;
             case "ghostseat":
                 return 1f;
@@ -205,6 +204,23 @@ public class EventController : MonoBehaviour
                 gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
                 AssetData.SetParent(gameObject);
                 return 1.8f;
+                // chef and cow
+            case "chefcome":
+                // story.transform.DOMove(GetVector("Cow", new Vector3(0.8f,0f,1f)), 1);
+                // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                // AssetData.SetParent(story);
+                return 1f;
+            case "knifedrop":
+                return 0.1f;
+            case "checkcow":
+                return 0.1f;
+            case "savecows":
+                return 0.1f;
+            case "musicplay":
+                return 0.1f;
+            case "musicplay2":
+                return 0.1f;
+            
         }
         return 0.1f;
     }

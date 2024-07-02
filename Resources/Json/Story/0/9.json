@@ -119,7 +119,7 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "nurseleave",
+	        "nursedisappear",
 	        "mariascare"
 	    ]
 	},

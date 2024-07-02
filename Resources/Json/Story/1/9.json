@@ -173,30 +173,34 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	    	"妹妹啊！我才不是這樣！",
+	    	"妹妹啊！我才不是這樣！"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"羅西亞，你臉蛋紅透了，哈哈！"
+	    	"羅西亞，你的臉蛋為何突然變得這麼紅？"
 	    ]
 	},
 	{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"這個...那個...",
-	    	"對了...公主遊歷了一段時間，有什麼有趣的見聞嗎？"
+	    	"這個...那個..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playerpoint"
+	        "rosiaturn"
+	    ]
+	},{
+	    "name": "maria",
+	    "leftPrefab": "player",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	    	"對了...公主遊歷了一段時間，有什麼有趣的見聞嗎？"
 	    ]
 	},{
 	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
 	    "dialogue": [
 	        "在東盟國遊歷時...",
 	        "我的老師跟我說了一個跟天上的流星有關的傳說。"
@@ -311,11 +315,11 @@
 	    ]
 	},
 	{
-	    "name": "music",
+	    "name": "player",
 	    "leftPrefab": "player",
-	    "rightPrefab": "music",
+	    "rightPrefab": "",
 	    "dialogue": [
-	    	"樂神，我終於想通了。"
+	    	"樂神，關於三毒之石神秘出現之迷團，我有一個有趣的猜測。"
 	    ]
 	},{
 	    "name": "event",
@@ -325,8 +329,10 @@
 	},
 	{
 	    "name": "music",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"啊？直覺告訴我你想到了一些有趣的事情。"
+	    	"不妨說來聽聽。"
 	    ]
 	},
 	{
@@ -336,29 +342,36 @@
 	    ]
 	},
 	{
-	    "name": "player",
+	    "name": "music",
 	    "dialogue": [
 	    	"聖地孤獨園...的包圍網？"
 	    ]
 	},
 	{
-	    "name": "music",
+	    "name": "player",
 	    "dialogue": [
-	    	"對，圍繞聖地的三個重要地段包括失落古墓，中央病院和王都舍衞城。",
+	    	"對，圍繞聖地的三個重要地段包括失落古墓，中央病院...",
+	    	"還有王都舍衞城。",
 	    	"三毒之石均出現在我們相遇的失落古墓和這一所中央病院。",
-	    	"我猜測設石之人的下一個目標將會是王都舍衞城。。"
+	    	"我猜測設石之人的下一個目標將會是王都舍衞城。"
 	    ]
 	},
 	{
-	    "name": "player",
+	    "name": "music",
 	    "dialogue": [
 	    	"如果這推論成立，設石之人難道是為了擾亂聖地孤獨園的靈氣？"
 	    ]
 	},
 	{
-	    "name": "music",
+	    "name": "player",
 	    "dialogue": [
 	    	"大概是...之後他怎盤算就難以估計，多半不是好事情。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"我看這是目前最有可能發生的猜測..."
 	    ]
 	},
 	{

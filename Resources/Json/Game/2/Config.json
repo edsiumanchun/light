@@ -1,8 +1,8 @@
 {
   "paths": {
     "backgrounds": ["ScaleCastle", "ScaleNight", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
-    "plateH": ["Wood", "GoUp", "GoDown","Space"],
-    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
+    "plateH": ["Rock", "GoUp", "GoDown","Space"],
+    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
     "characters": ["Player","StoryShop","StoryMariaSickSprite","StoryGhostKid","Rosia", "StoryGhostMum"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],

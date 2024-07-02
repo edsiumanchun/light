@@ -3,19 +3,19 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "playergotohospital"
+	        "tohospital"
 	    ]
 	},{
-	    "name": "nurse",
+	    "name": "player",
 	    "leftPrefab": "player",
-	    "righttPrefab": "nurse",
+	    "rightPrefab": "nurse",
 	    "dialogue": [
-	    	"這裡是醫院嗎？"
+	    	"發生什麼事？"
 	    ]
 	},{
 	    "name": "nurse",
 	    "dialogue": [
-	    	"公主，是王都的情報組把你送來醫院的。",
+	    	"公主，你進來的時候昏迷了，是一位老人家把你送進醫院的。",
 	    	"你所受的只是皮外傷，幾天後就會康復。",
 	    	"可是，羅西亞就慘了...瑪利亞剛剛過身了..."
 	    ]
@@ -27,69 +27,76 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playergotorosia"
+	        "playergotorosia",
+	        "rosiafall"
 	    ]
 	},{
-	    "name": "rosia",
+	    "name": "player",
+	    "dialogue": [
+	    	"羅西亞!"
+	    ]
+	},{
+	    "name": "nurse",
 	    "leftPrefab": "player",
-	    "righttPrefab": "rosia",
+	    "rightPrefab": "nurse",
 	    "dialogue": [
-	        "妹妹..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"瑪利亞現在很安詳...我們讓她安息吧..."
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "我...我想靜一下..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"羅西亞..."
+	    	"要趕緊為她急救...",
+	    	"公主，請你先迴避一下吧。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "rosialeave"
+	    	"switchscene"
 	    ]
 	},{
 	    "name": "maria",
 	    "leftPrefab": "player",
-	    "righttPrefab": "maria",
+	    "rightPrefab": "maria",
 	    "dialogue": [
 	        "公主..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"瑪利亞？你不是已經病逝嗎？"
+	    	"瑪利亞？跟我說話的是你的靈魂嗎？"
 	    ]
 	},{
 	    "name": "maria",
 	    "dialogue": [
-	        "對，我已經死了。"
+	        "我也不清楚..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"musicappear"
+	    ]
+	},{
+	    "name": "music",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "你們感到很困惑嗎？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"那麼...這是..."
+	    	"樂神，發生什麼事了？"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "是我把瑪利亞的靈魂帶回來。"
+	    	"身體雖死，靈魂不滅。",
+	        "依我看，瑪利亞多半是轉生成天人了。"
 	    ]
 	},{
-	    "name": "player",
+	    "name": "event",
 	    "dialogue": [
-	    	"樂神，謝謝你。"
+	    	"playerpoint"
 	    ]
 	},{
 	    "name": "maria",
+	    "leftPrefab": "maria",
+	    "rightPrefab": "music",
 	    "dialogue": [
 	    	"現在才知道公主旁邊有這麼美麗的守護神保護公主。"
 	    ]
@@ -100,102 +107,80 @@
 	        "世間最苦，不過別離...面對生死，長相漂亮又有何用？"
 	    ]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"嗯...真不敢想像你姐姐現在有多難受...",
-	    ]
-	},{
 	    "name": "maria",
 	    "dialogue": [
-	        "姐姐表面看似堅強，但長期為了我的事情而奔波的她...",
-	        "內心早已經接近崩毀邊緣。",
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"真令人擔心，我還是去看看你姐姐吧。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	        "距離轉生前還有一段時間...",
-	        "如公主不嫌棄，請讓我陪同公主去找姐姐吧。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"好！"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "瑪利亞加入隊伍，在戰鬥中瑪利亞能夠每秒治愈公主5點血量。"
+	    	"真不敢想像姐姐現在有多難受...",
+	        "姐姐平時表面看似堅強，但長期為了我的事情而奔波的她...",
+	        "內心早已經接近崩毀邊緣了。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playergoforrosia"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"姐姐！"
+	    	"playerpoint"
 	    ]
 	},{
 	    "name": "player",
-	    "dialogue": [
-	    	"瑪利亞，我們該如何是好？"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"沒什麼好辦法...只好試試用最真誠的心為姐姐祈福..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"嗯，試試看吧。",
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiadelusion"
-	    ]
-	},{
-	    "name": "rosia",
 	    "leftPrefab": "player",
-	    "righttPrefab": "rosia",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	        "我的一生...真是坎坷...",
+	    	"不用擔心，羅西亞暫時有護士照顧。",
+	    	"要對她們有信心才行。"
 	    ]
 	},{
-	    "name": "maria",
+	    "name": "music",
 	    "dialogue": [
-	    	"姐姐，這一切都是幻境...",
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "你是誰？為何要假扮我的妹妹？我的妹妹已經死了！",
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"沒有生死，靈魂不滅...",
-	    	"別被幻境所蒙騙，破迷啟悟，尋找清淨之藏...",
+	        "對，畢竟我們還要到聖地孤獨園阻止東盟國的陰謀。",
+	        "搞不好很可能會釀成無法想像的禍害...",
+	        "瑪利亞，要不要趁這段時間成為公主的守護神協助我們？"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "rosiathink"
+	    	"playerpoint"
 	    ]
 	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
+	    "name": "maria",
+	    "leftPrefab": "maria",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	        "尋找清淨之藏？",
+	    	"可以啊...可是我還是不放心姐姐...該如此是好？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"瑪麗亞，你可以以願力引導你姐姐的神識去斷惑。"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"我和姐姐時空相隔也能夠產生共鳴嗎？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"誓願的力量是不可思議的。",
+	    	"覺悟者皆擁有凡夫想像不到的力量...",
+	    	"這種共鳴猶如一月麗天，萬川影現。"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"想像自己是照耀姐姐內心深處的明月嗎？"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"唯水清而靜則現，剩下來要看你姐姐的造化。"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"嗯，讓我試試吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "nextscene"
 	    ]
 	}
 ]
