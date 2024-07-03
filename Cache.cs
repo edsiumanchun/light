@@ -133,7 +133,10 @@ public static class CacheManager
 
     public static bool ChangeKey(string cacheKey, int amount){
         int key = CacheManager.GetCache(cacheKey);
-        if(key - amount <= 0) {
+        Debug.Log("KEY: " + cacheKey + key.ToString() + "AMOUNT:" + amount + key);
+        if(key + amount <= 0) {
+            StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+            storyController.LoadStoryDataFromText("", "鑰匙不足。");
             return false;
         } else {
             int margin = amount >= 0 ? 999 : 0;

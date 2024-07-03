@@ -1,79 +1,126 @@
 {
 "storyArray" : [
 	{
+	    "name": "maria",
+	    "dialogue": [
+	        "水清則月現了。",
+	    ]
+	},{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "是瑪利亞嗎？我在做夢嗎？",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	        "人生如夢，何苦執迷於現狀。"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "可以的話真想一直待在這夢境裡...",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	    	"姐姐，你已經盡力了。這是我的命運，已無法改變。"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "對不起，我真的無法放下你...",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
-	    	"我已成為過去，姐姐沒必要如此執著。",
 	    	"這些年來，多謝姐姐的悉心照顧，你為了我確實付出了很多。",
-	    	"在我離世前，只有一個願望，希望姐姐能夠答應..."
+	    	"可是事情發生了就改變不了，我們只可以往前看。",
+	    	"在我轉生前，有一個心願，希望姐姐能夠答應..."
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "說吧，無論是什麼我也會答應！",
 	    ]
 	},{
 	    "name": "maria",
-	    "centerPrefab": "maria",
 	    "dialogue": [
 	    	"我的心願就是...",
-	    	"希望姐姐得到幸福，能快樂地活下去..."
+	    	"希望姐姐得到幸福，並且快樂地活下去..."
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
 	        "瑪利亞...你竟然...",
 	    ]
 	},
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "maria",
 	    "dialogue": [
-	        "羅西亞...放過自己吧...",
+	        "我任何時候也會支持姐姐...",
+	        "這份心意將會永遠刻劃在姐姐的心內，永不磨滅。"
 	    ]
 	},
 	{
-	    "name": "narrator",
-	    "centerPrefab": "narrator",
+	    "name": "rosia",
 	    "dialogue": [
-	        "公主和瑪利亞消失了。",
+	        "可是，你的離去令我失去了人生意義...",
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "將對我的愛擴展到其他小孩身上...",
+	        "努力守護小孩的笑容。",
+	        "你就是我的延續。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "妹妹，你越來越像公主了。",
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "對了，公主需要姐姐的幫助...阻止東盟國的陰謀。",
+	        "若任由他們胡亂在聖地孤獨園設置結界將為人類帶來災難。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "哈哈，那麼這是第二個心願了？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "姐姐，原諒我這麼任性吧。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "妹妹，謝謝你...",
+	        "你的任性都是為了我好..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "差不多時候要走了...姐姐，保重！"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear"
 	    ]
 	}
 ]

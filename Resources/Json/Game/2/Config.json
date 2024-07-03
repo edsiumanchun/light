@@ -3,7 +3,7 @@
     "backgrounds": ["ScaleCastle", "ScaleNight", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["Rock", "GoUp", "GoDown","Space"],
     "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
-    "characters": ["Player","StoryShop","StoryMariaSickSprite","StoryGhostKid","Rosia", "StoryGhostMum"],
+    "characters": ["Player","StoryScout","StoryChef","StoryTeacher"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Greed", "Angry", "Silly", "Silly1", "BossFlower"],

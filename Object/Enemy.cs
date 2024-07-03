@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public int assetIndex = 0;
+    public List<GameObject> gemObjects;
     public List<EnemyData> enemyDatas;
     public List<Sprite> avatars;
     public int enemyHP = 0;
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
     public void ProcessAssetIndex(int index){
         assetIndex = index;
         if(assetIndex >= 1000) { // gem
+            gemObjects = new List<GameObject>();
             int digit1 = assetIndex / 1000 - 1;
             int digit2 = (assetIndex / 100) % 10 - 1;
             int digit3 = (assetIndex / 10) % 10 - 1;
@@ -73,6 +75,7 @@ public class EnemyController : MonoBehaviour
                 if(spriteObject.name.Contains("Boss")) {
                     this.gameObject.name = "BossGem";
                 }
+                gemObjects.Add(spriteObject);
             }
         } else {
             List<string> paths = new List<string>((new[] { enemyDatas[0].name}));
@@ -99,10 +102,10 @@ public class EnemyController : MonoBehaviour
         currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
         Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
-        //if(Utils.isUAT) {
+        if(Utils.isUAT) {
             Die(true);
             return;
-        //}
+        }
         StartCoroutine(DecreaseHPOverTime());
     }
 
@@ -150,18 +153,39 @@ public class EnemyController : MonoBehaviour
                 GameObject player = GameObject.Find("Player");
                 player.GetComponent<PlayerController>().ShowStory();
             } else {
-                Utils.Fade(this.gameObject, true);
-                StartCoroutine(DelayDestroy());
+                if(gemObjects != null) { // gem
+                    StartCoroutine(GemDie());
+                } else {
+                    Utils.Fade(this.gameObject, true);
+                    StartCoroutine(DelayDestroy(this.gameObject));
+                }
             }
         } else {
             Utils.Fade(this.gameObject, true);
-            StartCoroutine(DelayDestroy());
+            StartCoroutine(DelayDestroy(this.gameObject));
         }
     }
 
-    private IEnumerator DelayDestroy(){
+    private IEnumerator DelayDestroy(GameObject GO){
         yield return new WaitForSeconds(0.3f); // Wait for 1 second
-        Destroy(gameObject); 
+        Destroy(GO); 
+    }
+
+    private IEnumerator GemDie()
+    {
+        int i = 0;
+        foreach (GameObject gemObject in gemObjects)
+        {
+            Utils.AddEffect(gemObject, "purify");
+            Utils.Fade(gemObject, true);
+            if(i == gemObjects.Count - 1){
+                StartCoroutine(DelayDestroy(this.gameObject));
+            } else {
+                StartCoroutine(DelayDestroy(gemObject));
+            }
+            yield return new WaitForSeconds(0.3f);
+            i++;
+        }
     }
 
     private void SetupAssetDataNamelist(string name){

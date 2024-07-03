@@ -319,7 +319,7 @@ public class Utils : MonoBehaviour
         GameObject lightObject = Instantiate(lightPrefab);
         lightObject.name = "Effect";
         lightObject.transform.SetParent(GO.transform);
-        lightObject.transform.localPosition = new Vector3(0, 0.8f, -3f);
+        lightObject.transform.localPosition = new Vector3(0, 0f, -3f);
     }
 
     public static void RemoveEffect(Transform transform)

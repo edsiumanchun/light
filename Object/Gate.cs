@@ -32,8 +32,22 @@ public class GateController : MonoBehaviour
         originalColor = gateSpriteRenderer.color;
     }
 
+    public void ResumeBattle(){
+        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(true);
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<JoystickController>().ReleaseFighting();
+        Utils.RemoveEffect(this.gameObject.transform);
+    }
+
+
     public void OpenGateAndDestroy(bool isUp)
     {
+        string keyName = this.gameObject.name.Split("Gate")[1];
+        print("???" + keyName);
+        bool result = CacheManager.ChangeKey(keyName, -1);
+        if(result == false) {
+            return;
+        }
         StartCoroutine(MoveGate(isUp));
         StartCoroutine(FadeOutGate());
     }

@@ -212,6 +212,9 @@ public class AssetData
     }
 
     public void SetupCollider(GameObject newObject, bool isSprite, int cellValue){
+        if(newObject.name.Contains("Fake")){
+            return;
+        }
         BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
         bool isTrigger = (cellValue - 1 >= 50 && cellValue <= 60);
         if (!isSprite)

@@ -157,7 +157,7 @@ public class EventController : MonoBehaviour
                 return 1.3f;
             case "nursecome":
                 vector3 = GetVector("Player",new Vector3(-5f,0f,1f));
-                gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Nurse", vector3);
                 gameObject.name = "Nurse";
                 Utils.Fade(gameObject, false);
                 // nurse.transform.DOMove(GetVector("Story", new Vector3(-0.8f,04f,1f)), 2);
