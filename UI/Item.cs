@@ -17,8 +17,8 @@ public class ItemController : PageIndexController
         totalItems = itemDataList.Count;
         SetupCanvas();
         base.Start();
-        keyImages = DataHolder.keyImages;
         commonImages = DataHolder.commonImages;
+        DisplayPage();
     }
 
     private void SetupCanvas()
@@ -28,7 +28,7 @@ public class ItemController : PageIndexController
         button.onClick.AddListener(OnClickButton);
         Vector2 backgroundPosition = new Vector2(0, 0f);
 
-        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
+        backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel2)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         // Other initialization code...
@@ -42,11 +42,11 @@ public class ItemController : PageIndexController
 
     public string ProcessString(string name, string input)
     {
-        if (name.Contains("Silly"))
-            return "silly" + " (x" + input + ")";
+        if (name.Contains("Delusion"))
+            return "delusion" + " (x" + input + ")";
         else if (name.Contains("Greed"))
             return "greed" + " (x" + input + ")";
-        else if (name.Contains("Angry"))
+        else if (name.Contains("Hatred"))
             return "greed" + " (x" + input + ")";
         else if (name.Contains("Boss"))
             return "hp max" + " (+" + input + ")";
@@ -67,30 +67,36 @@ public class ItemController : PageIndexController
 
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
         float startY = totalHeight / 2 - (cellSize.y / 2) ;
+                Debug.Log("???");
         string reward = "獎勵\n";
+        Debug.Log("abc" + totalItems);
+        Debug.Log("abc" + totalPages);
         for (int row = 0; row < rowCount; row++)
         {
             for (int column = 0; column < columnCount; column++)
             {
+                Debug.Log("???");
                 int index = currentPage * itemsPerPage + row * columnCount + column;
                 ItemData itemData = itemDataList[index];
                 List<Sprite> icons = new List<Sprite>{
                     GetImage(itemData.name),
-                    keyImages[9],
-                    keyImages[10]
+                    GetImage(itemData.item1),
+                    GetImage(itemData.item2),
+                    GetImage(itemData.item3)
                 };
 
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y + 33;
+                float yPos = startY - row * cellSize.y ;
+                List<int> textList = GetTextList(column);
                 List<string> stringList = new List<string>()
                 {
                     itemData.name,
-                    itemData.item1,
-                    itemData.item2,
-                    itemData.item3
+                    textList[0].ToString(),
+                    textList[1].ToString(),
+                    textList[2].ToString()
                 };
                 reward = reward + ProcessString(itemData.name, itemData.desc.ToString());
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard2)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, true);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
                 cell.transform.localScale = new Vector3(1,1,1);
@@ -103,6 +109,27 @@ public class ItemController : PageIndexController
         rowTextObject.GetComponent<Text>().text = reward;
         rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
         UpdateNavigationButtonVisibility();
+    }
+    public List<int> GetTextList(int column)
+    {   
+        List<int> values = new List<int>();
+        if (column == 2)
+        {
+            values.Add(CacheManager.GetCache(Cache.Copper.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Silver.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Gold.ToString()));
+        }
+        else if (column == 1)
+        {
+            values.Add(CacheManager.GetCache(Cache.Greed.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Delusion.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Hatred.ToString()));
+        } else {
+            values.Add(CacheManager.GetCache(Cache.Greed.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Delusion.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Hatred.ToString()));
+        }
+        return values;
     }
 
     private void OnClickButtonWithParameter(int index)

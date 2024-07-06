@@ -15,10 +15,13 @@ public class MainController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
-            CacheManager.SetCache(Cache.CurrentStage.ToString(), 2);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
+            CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 0);
             CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
+            CacheManager.ChangeKey("Gold", 999);
+            CacheManager.ChangeKey("Silver", 999);
+            CacheManager.ChangeKey("Copper", 999);
         }
         CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         LoadItemData();
@@ -26,7 +29,6 @@ public class MainController : MonoBehaviour
         LoadAssetsForButtonsUI();
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
-        LoadAssetsForDashboardUI();
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
     }
@@ -74,23 +76,9 @@ public class MainController : MonoBehaviour
         DataHolder.settingImages = sprites2;
     }
 
-
-    public void LoadAssetsForDashboardUI()
-    {
-        // List<string> paths = new List<string>((new[] { "Heart", "Light", "Dark", "Coin","KeyCopper", "KeySilver", "KeyGold", "KeyFlower", "NameCard", "Dark"}));
-        List<string> paths = new List<string>((new[] { "GemGreed", "GemAngry", "GemSilly","KeyCopper", "KeySilver", "KeyGold", "Dark", "NameCard", "ShopCard", "Heart", "Attack"}));
-        List<Sprite> sprites = LoadSprites("UI/Dashboard", paths);
-        DataHolder.keyImages = sprites;
-
-        List<string> paths3 = new List<string>((new[] { "DashboardPanel", "GoldPlate", "Plate" }));
-        List<Sprite> sprites3 = LoadSprites("UI/Dashboard", paths3);
-        DataHolder.dashboardBackgroundImages = sprites3;
-    }
-
-
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel",  "ShortButton" } ));
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel",  "ShortButton", "NameCard", "NameCard2", "Panel2" } ));
         List<Sprite> sprites = LoadSprites("UI/Common", paths);
         DataHolder.commonImages = sprites;
     }

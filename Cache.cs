@@ -26,8 +26,8 @@ public enum Cache
     ClearStage = 15,
     ClearFloor = 16,
     Greed = 17,
-    Angry = 18,
-    Silly = 19,
+    Hatred = 18,
+    Delusion = 19,
     ShowTutor = 20
 }
 

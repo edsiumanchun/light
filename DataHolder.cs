@@ -17,7 +17,10 @@ public enum UICommon
     Panel=7,
     LongButton = 8,
     ConfirmPanel = 9,
-    ShortButton = 10
+    ShortButton = 10,
+    NameCard = 11,
+    NameCard2 = 12,
+    Panel2=13
 }
 
 public enum UIGameButton
@@ -55,9 +58,7 @@ public static class DataHolder
     public static List<Sprite> gameButtonImages;
     public static List<Sprite> menuButtonImages;
     // ui3
-    public static List<Sprite> keyImages;
     public static List<Sprite> settingImages;
-    public static List<Sprite> dashboardBackgroundImages;
     public static List<Sprite> gems;
 
     public static List<Sprite> storyImages;

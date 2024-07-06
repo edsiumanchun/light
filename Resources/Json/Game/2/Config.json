@@ -6,7 +6,7 @@
     "characters": ["Player","StoryScout","StoryChef","StoryTeacher"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Greed", "Angry", "Silly", "Silly1", "BossFlower"],
+    "gems": ["Greed", "Hatred", "Delusion", "Delusion1", "BossFlower"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark"],

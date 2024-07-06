@@ -167,6 +167,11 @@ public class AssetData
         switch (pathName)
         {
             case "Player":
+            case "PlayerRosia":
+                if(pathName == "PlayerRosia") {
+                    newObject.name = "Player";
+                    pathName = "Player";
+                }
                 newObject.AddComponent<PlayerController>();
                 newObject.AddComponent<JoystickController>();
                 Camera.main.gameObject.GetComponent<CameraViewController>().player = newObject;

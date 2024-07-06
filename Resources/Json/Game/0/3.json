@@ -21,11 +21,11 @@
     },
     {
       "name": "Object",
-      "gridArray0": [0, 24, 11, 1, 0],
-      "gridArray1": [26, 11, 22, 0, 0],
-      "gridArray2": [0, 24, 11, 22, 0],
-      "gridArray3": [26, 11, 26, 0, 0],
-      "gridArray4": [2, 24, 0, 1, 0]
+      "gridArray0": [0, 0, 11, 1, 0],
+      "gridArray1": [0, 11, 0, 0, 0],
+      "gridArray2": [0, 0, 11, 0, 0],
+      "gridArray3": [0, 11, 0, 0, 0],
+      "gridArray4": [2, 0, 0, 1, 0]
     }
   ]
 }

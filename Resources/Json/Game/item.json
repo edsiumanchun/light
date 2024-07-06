@@ -1,5 +1,5 @@
 {
-  "itmes": [
+  "items": [
     {
       "name": "Defilements",
       "item1": "Greed",
@@ -12,14 +12,14 @@
       "item1": "Ethics",
       "item2": "Concentration",
       "item3": "Wisdom",
-      "desc": ""
+      "desc": "減傷害"
     },
     {
-      "name": "key",
-      "item1": "Copper",
-      "item2": "Silver",
-      "item3": "Gold",
-      "desc": ""
+      "name": "Keys",
+      "item1": "KeyCopper",
+      "item2": "KeySilver",
+      "item3": "KeyGold",
+      "desc": "減傷害"
     }
   ]
 }

@@ -1,11 +1,87 @@
 {
 "storyArray" : [
 	{
-	    "name": "sentinel",
-	    "leftPrefab": "player",
-	    "rightPrefab": "sentinel",
+	    "name": "rkid",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "rosiamum",
 	    "dialogue": [
-	        "公主，你終於回來了!"
+	        "公主，你真的要去東盟國尋找解脫之門嗎？!"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	    	"對，在這次體察民情中，我深感受到，賤，"
+	        "世人受種種疾病，離別，死亡痛苦折磨，深感無奈，"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "爸爸去了哪裡？"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "你爸爸已經..."
+	    ]
+	},{
+	    "name": "event",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "mkid",
+	    "dialogue": [
+	        "鳴嘩...鳴嘩嘩..."
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "媽媽，妹妹餓了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "rosiamum",
+	    "dialogue": [
+	        "你把這塊包拿去跟妹妹一起吃吧。"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "媽媽，我想吃米飯。"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "你們先把麵包吃掉吧...",
+	        "日後媽媽找到工作就有錢買米飯給你們了。"
+	    ]
+	},{
+	    "name": "rosia",
+	    "dialogue": [
+	        "嗯..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosia",
+	    "dialogue": [
+	        "為何我當時如此任性..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "nextscene"
 	    ]
 	}
 ]

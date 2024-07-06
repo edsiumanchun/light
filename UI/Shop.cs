@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class ShopController : PageIndexController
 {
-    public List<Sprite> keyImages;
     public int cellCount = 10;
     public int selectedIndex = 0;
 
@@ -14,12 +13,11 @@ public class ShopController : PageIndexController
     public static List<ProductData> productsDataList;
     public void Start()
     {
-        folderName = "UI/Products";
+        folderName = "UI/Items";
         productsDataList = DataHolder.productsDataList;
         totalItems = productsDataList.Count;
         SetupCanvas();
         base.Start();
-        keyImages = DataHolder.keyImages;
         commonImages = DataHolder.commonImages;
         DisplayPage();
     }
@@ -71,18 +69,18 @@ public class ShopController : PageIndexController
                     productData.name
                 };
                 if(productData.greed > 0) {
-                    icons.Add(keyImages[0]);
+                    icons.Add(GetImage("Greed"));
                     stringList.Add(productData.greed.ToString());
                 }
-                if(productData.angry > 0) {
-                    icons.Add(keyImages[1]);
-                    stringList.Add(productData.angry.ToString());
+                if(productData.hatred > 0) {
+                    icons.Add(GetImage("Hatred"));
+                    stringList.Add(productData.hatred.ToString());
                 }
-                if(productData.silly > 0) {
-                    icons.Add(keyImages[2]);
-                    stringList.Add(productData.silly.ToString());
+                if(productData.delusion > 0) {
+                    icons.Add(GetImage("Delusion"));
+                    stringList.Add(productData.delusion.ToString());
                 }
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, false);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
 
@@ -106,9 +104,9 @@ public class ShopController : PageIndexController
     private void Buy(){
         int index = selectedIndex;
         ProductData productData = productsDataList[index];
-        Cache type = productData.name == "Silly" ? Cache.Silly : 
-        productData.name == "Greed" ? Cache.Greed : Cache.Angry;
-        bool result = CacheManager.ChangeCoin(productData.silly, type);
+        Cache type = productData.name == "Delusion" ? Cache.Delusion : 
+        productData.name == "Greed" ? Cache.Greed : Cache.Hatred;
+        bool result = CacheManager.ChangeCoin(productData.delusion, type);
         if (result) {
             switch (index)
             {

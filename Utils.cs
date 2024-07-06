@@ -176,21 +176,22 @@ public class Utils : MonoBehaviour
         return NavBar;
     }
 
-    static public GameObject CreateAvatarAndRows(Sprite sprite, List<Sprite> sprites, List<string> values, Vector2 position, Transform parent)
+    static public GameObject CreateAvatarAndRows(Sprite sprite, List<Sprite> sprites, List<string> values, Vector2 position, Transform parent, bool isTriple)
     {
         GameObject enemyInfo = Utils.CreateImage(sprite, position, parent.transform);
         for (int i = 0; i < values.Count; i++)
         {
             int x = i == 0 ? 0 : -44;
             GameObject cell;
-            int topImageY = 64;
+            int offset = isTriple ? 0 : 30;
+            int topImageY = 94 - offset;
             if(i == 0){
-                cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 44 + topImageY), new Vector2(0, topImageY - 133), enemyInfo.transform, TextAnchor.MiddleCenter);
+                cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 14 + topImageY), new Vector2(0, topImageY - 163 + offset), enemyInfo.transform, TextAnchor.MiddleCenter);
                 Image uiImage = cell.transform.parent.gameObject.GetComponent<Image>();
                 RectTransform uiImageRectTransform = uiImage.rectTransform;
                 uiImageRectTransform.sizeDelta = new Vector2(80f, 80f);
             } else {
-                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 38 + (topImageY - 77)), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
+                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 44 + (topImageY - 77 + offset / 3)), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
             }
             cell.GetComponent<Text>().text = values[i];
         }

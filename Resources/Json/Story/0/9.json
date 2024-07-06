@@ -48,13 +48,13 @@
 	   	"leftPrefab": "rosia",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "在有生之年...我必定會報答公主對我們的恩情的！"
+	        "公主，我欠下你的恩情這輩子都還不完啊！"
 	    ]
 	},
 	{
 	    "name": "maria",
 	    "dialogue": [
-	        "謝謝你，公主。"
+	        "謝謝，公主。"
 	    ]
 	},
 	{

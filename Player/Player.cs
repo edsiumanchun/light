@@ -103,9 +103,7 @@ public class PlayerController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         if( (CacheManager.IsCleared() && currentFloor == 2 && currentStage <= 1)){
-            if(Utils.isUAT){
-                EventController.ShowEvent("shop");
-            }
+            EventController.ShowEvent("shop");
         } else {
             storyController.LoadStoryDataFromJSON("", 0);
         }

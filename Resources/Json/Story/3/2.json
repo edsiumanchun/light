@@ -1,11 +1,89 @@
 {
 "storyArray" : [
-	
 	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	    "name": "rkid",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "rosiamum",
 	    "dialogue": [
-	        "為何這裡變成這樣？"
+	        "媽媽...為何我們要行乞？"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	    	"嵐兒，我們剛從家鄉來到此處避難，先忍耐一下吧。",
+	        "唉，真不知道這場戰爭會持續多久。。"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "爸爸去了哪裡？"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "你爸爸已經..."
+	    ]
+	},{
+	    "name": "event",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "mkid",
+	    "dialogue": [
+	        "鳴嘩...鳴嘩嘩..."
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "媽媽，妹妹餓了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "rosiamum",
+	    "dialogue": [
+	        "你把這塊包拿去跟妹妹一起吃吧。"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "媽媽，我想吃米飯。"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "你們先把麵包吃掉吧...",
+	        "日後媽媽找到工作就有錢買米飯給你們了。"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "嗯..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosia",
+	    "leftPrefab": "rosia",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "為何我當時如此任性..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "nextscene"
 	    ]
 	}
 ]

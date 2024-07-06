@@ -9,17 +9,15 @@
 	    ]
 	},{
 	    "name": "event",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "",
 	    "dialogue": [
-	        "rosiaturn"
+	        "playerturn"
 	    ]
 	},{
 	    "name": "angel",
 	    "leftPrefab": "rosia",
 	    "rightPrefab": "angel",
 	    "dialogue": [
-	        "姐姐，這一切都是幻境...",
+	        "姐姐，這一切都是幻境..."
 	    ]
 	},{
 	    "name": "rosia",
@@ -35,7 +33,7 @@
 	},{
 	    "name": "rosia",
 	    "dialogue": [
-	        "可是...我真的好苦啊！"
+	        "該...如何是好？"
 	    ]
 	},{
 	    "name": "angel",

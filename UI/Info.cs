@@ -8,7 +8,6 @@ public class InfoController : PageIndexController
     public GameObject backgroundImage;
 
     public List<EnemyData> enemyDataList;
-    public List<Sprite> keyImages;
     public void Start()
     {
         SetupCanvas();
@@ -36,11 +35,11 @@ public class InfoController : PageIndexController
 
     public string ProcessString(string name, string input)
     {
-        if (name.Contains("Silly"))
-            return "silly" + " (x" + input + ")";
+        if (name.Contains("Delusion"))
+            return "delusion" + " (x" + input + ")";
         else if (name.Contains("Greed"))
             return "greed" + " (x" + input + ")";
-        else if (name.Contains("Angry"))
+        else if (name.Contains("Hatred"))
             return "greed" + " (x" + input + ")";
         else if (name.Contains("Boss"))
             return "hp max" + " (+" + input + ")";
@@ -57,7 +56,6 @@ public class InfoController : PageIndexController
         enemyDataList = DataHolder.enemyDataList;
         totalItems = enemyDataList.Count;
         totalPages = Mathf.CeilToInt((float)totalItems / itemsPerPage);
-        keyImages = DataHolder.keyImages;
         commonImages = DataHolder.commonImages;
         base.DisplayPage();
         int rowCount = 1;
@@ -77,8 +75,8 @@ public class InfoController : PageIndexController
                 EnemyData enemyData = enemyDataList[index];
                 List<Sprite> icons = new List<Sprite>{
                     GetImage(enemyData.name),
-                    keyImages[9],
-                    keyImages[10]
+                    GetImage("Attack"),
+                    GetImage("Heart"),
                 };
 
                 float xPos = startX + column * cellSize.x;
@@ -90,7 +88,7 @@ public class InfoController : PageIndexController
                     enemyData.damage.ToString(),
                 };
                 reward = reward + ProcessString(enemyData.name, enemyData.reward.ToString());
-                GameObject cell = Utils.CreateAvatarAndRows(keyImages[7], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, false);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
                 cell.transform.localScale = new Vector3(1,1,1);

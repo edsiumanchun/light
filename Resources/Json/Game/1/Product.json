@@ -3,22 +3,22 @@
     {
       "name": "小血瓶",
       "greed": 3,
-      "angry": 3,
-      "silly": 0,
+      "hatred": 3,
+      "delusion": 0,
       "desc": "回復體力至體力上限"
     },
     {
       "name": "小靈藥",
       "greed": 0,
-      "angry": 3,
-      "silly": 3,
+      "hatred": 3,
+      "delusion": 3,
       "desc": "回復靈力至靈力上限"
     },
     {
       "name": "鑰匙",
       "greed": 3,
-      "angry": 0,
-      "silly": 3,
+      "hatred": 0,
+      "delusion": 3,
       "desc": "獲得銅鑰匙（x1）"
     }
   ]

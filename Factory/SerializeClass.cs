@@ -55,9 +55,9 @@ public class ProductDataWrapper
 [System.Serializable]
 public class ProductData
 {
-    public int silly;
+    public int delusion;
     public int greed;
-    public int angry;
+    public int hatred;
     public string desc;
     public string name;
 }

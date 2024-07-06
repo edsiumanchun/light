@@ -94,7 +94,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: h
+  - name: hmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -115,7 +115,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 86, y: 4}
     spritePosition: {x: 12, y: 103}
-  - name: lh
+  - name: lhmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -136,7 +136,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 179}
     spritePosition: {x: 48, y: 65}
-  - name: b
+  - name: bmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -157,7 +157,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 3, y: 40}
-  - name: rh
+  - name: rhmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -178,7 +178,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 109}
     spritePosition: {x: 0, y: 71}
-  - name: rf
+  - name: rfmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -199,7 +199,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 51, y: 109}
     spritePosition: {x: 28, y: 0}
-  - name: lf
+  - name: lfmove
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -256,8 +256,8 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: h
-    spriteName: h
+  - name: hmove
+    spriteName: hmove
     isGroup: 0
     parentIndex: -1
     spriteID: 4df33ecbce9384790a38bc4a3a9c2d92
@@ -266,8 +266,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: lh
-    spriteName: lh
+  - name: lhmove
+    spriteName: lhmove
     isGroup: 0
     parentIndex: -1
     spriteID: bd8538e0e305d4f75a4b7082e77872c0
@@ -276,8 +276,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: b
-    spriteName: b
+  - name: bmove
+    spriteName: bmove
     isGroup: 0
     parentIndex: -1
     spriteID: 2e03c4f5db7284553ae6e559d0ef98e7
@@ -286,8 +286,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: rh
-    spriteName: rh
+  - name: rhmove
+    spriteName: rhmove
     isGroup: 0
     parentIndex: -1
     spriteID: 2a106a0dddd05409da11299a8d7d9689
@@ -296,8 +296,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: rf
-    spriteName: rf
+  - name: rfmove
+    spriteName: rfmove
     isGroup: 0
     parentIndex: -1
     spriteID: 7268ffd740a62433f904db82898621bf
@@ -306,8 +306,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: lf
-    spriteName: lf
+  - name: lfmove
+    spriteName: lfmove
     isGroup: 0
     parentIndex: -1
     spriteID: a6f31505f3b2e4d429c08df2a3063330

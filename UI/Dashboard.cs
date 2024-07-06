@@ -61,14 +61,14 @@
 //         // int flowerKeyCount = CacheManager.GetCache(Cache.Flower.ToString());
 
 //         int greedCount = CacheManager.GetCache(Cache.Greed.ToString());
-//         int sillyCount = CacheManager.GetCache(Cache.Silly.ToString());
-//         int angryCount = CacheManager.GetCache(Cache.Angry.ToString());
+//         int delusionCount = CacheManager.GetCache(Cache.Delusion.ToString());
+//         int hatredCount = CacheManager.GetCache(Cache.Hatred.ToString());
 //         // int damageCount = CacheManager.GetCache(Cache.Damage.ToString());
 //         // int defendCount = CacheManager.GetCache(Cache.Defend.ToString());
 //         // Update the key count texts
 //         keyTextImages[0].GetComponent<Text>().text = greedCount.ToString();
-//         keyTextImages[1].GetComponent<Text>().text = angryCount.ToString();
-//         keyTextImages[2].GetComponent<Text>().text = sillyCount.ToString();
+//         keyTextImages[1].GetComponent<Text>().text = hatredCount.ToString();
+//         keyTextImages[2].GetComponent<Text>().text = delusionCount.ToString();
 //         // keyTextImages[3].GetComponent<Text>().text = coinKeyCount.ToString();
 
 //         keyTextImages[3].GetComponent<Text>().text = copperKeyCount.ToString();
