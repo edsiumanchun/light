@@ -6,90 +6,39 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "這感覺很温暖。你對我做了什麼？"
+	        "這感覺很溫暖舒適，你對我做了什麼?"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "我只是把你內心的戾氣淨化而己。"
+	        "剛剛我淨化掉了你內心的戾氣。"
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "除了煩惱盡失外，我還能感受到温飽。",
-	        "我已經有一百年沒吃飯，長期肌餓令我只剩下這副骨架！"
+	        "除了煩惱盡失，我還感受到了一種溫飽的感覺。",
+	        "我已經有一百年沒有進食了...",
+	        "長期的飢餓使我只剩下這副枯槁的骨架!"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "一百年沒吃飯...難道這就是你們餓鬼的宿命嗎？"
+	        "一百年沒吃飯...這就是你們餓鬼的宿命嗎？"
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "算是吧，我們是來贖罪的。",
-	        "幸好有你，我才不會墮入萬劫不復之淵。"
+	        "是啊，我們這一生就是為了贖罪。",
+	        "幸好遇上你，我才不會陷入萬劫不復的境地。"
 	    ]
 	},{
 	    "name": "event",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "",
 	    "dialogue": [
-	        "bossdisappear",
-	        "musicappear",
-	        "playerturn"
-	    ]
-	},{
-	    "name": "music",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	        "漂亮！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "能夠散發如此令人心曠神怡的香氣，閣下莫非是樂神？"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "真的不簡單，單憑氣味就能夠洞悉一切。"	    
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"過奬了，未知樂神找我是否有要事？"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "沒什麼，只是好奇你為何要干涉骷髏餓鬼的命運..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "因為衪實在太痛苦...我只是略盡綿力給衪一個解脫。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "哈哈...看來佈置三毒之石的人並非是你。",
-	        "那麼，我們就此別過吧！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "musicdisappear"
-	    ]
-	},{
-	    "name": "player",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "",
-	    "dialogue": [
-	        "樂神！！"
+	        "bossdisappear"
 	    ]
 	}
 ]

@@ -3,85 +3,37 @@
 	{
 	    "name": "rkid",
 	    "leftPrefab": "rkid",
-	    "rightPrefab": "rosiamum",
+	    "rightPrefab": "player",
 	    "dialogue": [
-	        "公主，你真的要去東盟國尋找解脫之門嗎？!"
+	        "公主，你真的要去東盟國嗎？"
 	    ]
 	},{
-	    "name": "rosiamum",
+	    "name": "player",
 	    "dialogue": [
-	    	"對，在這次體察民情中，我深感受到，賤，"
-	        "世人受種種疾病，離別，死亡痛苦折磨，深感無奈，"
-	    ]
-	},{
-	    "name": "rkid",
-	    "dialogue": [
-	        "爸爸去了哪裡？"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "你爸爸已經..."
-	    ]
-	},{
-	    "name": "event",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "mkid",
-	    "dialogue": [
-	        "鳴嘩...鳴嘩嘩..."
+	    	"對，在這次體察民情中，我深感受到...",
+	    	"人的痛苦，貴極一時，賤至乞丐，各皆有之。",
+	    	"天災人禍，兵連禍結，生死流轉，真的讓人感到無奈...",
+	        "為了使人們解脫，我決定到東盟國尋找解脫之道。"
 	    ]
 	},{
 	    "name": "rkid",
 	    "dialogue": [
-	        "媽媽，妹妹餓了。"
+	        "這樣做的話，你不得不放棄王室的財富、權力和地位。"
 	    ]
 	},{
-	    "name": "event",
+	    "name": "player",
 	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "rosiamum",
-	    "dialogue": [
-	        "你把這塊包拿去跟妹妹一起吃吧。"
+	        "我早已有覺悟。"
 	    ]
 	},{
 	    "name": "rkid",
 	    "dialogue": [
-	        "媽媽，我想吃米飯。"
+	        "其實我也很想跟公主一同去，可是妹妹年紀還少..."
 	    ]
 	},{
-	    "name": "rosiamum",
+	    "name": "player",
 	    "dialogue": [
-	        "你們先把麵包吃掉吧...",
-	        "日後媽媽找到工作就有錢買米飯給你們了。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "嗯..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "為何我當時如此任性..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nextscene"
+	        "我早已有覺悟。"
 	    ]
 	}
 ]

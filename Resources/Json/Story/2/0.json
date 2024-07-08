@@ -1,72 +1,260 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
+	    "name": "event",
 	    "dialogue": [
-	        "老前輩，竟然在這裡遇見你...很感謝你之前把「淨化術」傳授給我。",
-	        "但我心中一直有個疑問，為何「淨化術」有如此強大的力量？"
-	    ]
-	},{
-	    "name": "sage",
-	    "dialogue": [
-	        "淨化術本質是施食法，其核心除了讓餓鬼飽滿，甚至能令餓鬼解脫。",
-	        "其威力遠超出我們的想像，這種善念甚至乎能夠對人類起作用。",
+	        "storywake"
 	    ]
 	},{
 	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "chef",
 	    "dialogue": [
-	        "原來是這樣，這就能解釋為何每次施法後餓鬼都消失了。"
+	        "看來夢魘的威脅已經解除。"
 	    ]
 	},{
-	    "name": "sage",
+	    "name": "chef",
 	    "dialogue": [
-	        "沒有其他事的話，老夫要去找家人了。"
+	        "嚇死我了...好可怕的惡夢...",
+	        "我竟然被一頭牛吃掉...",
+	        "等等...現在是什麼事候...",
+	        "完蛋了！我竟然在這麼重要的時刻睡著..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "chefcome"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"還沒有找到嗎？如果可以的話，真想能幫上老伯伯的忙..."
+	        "你想對這頭母牛幹什麼事情？"
 	    ]
 	},{
-	    "name": "sage",
+	    "name": "event",
 	    "dialogue": [
-	        "恐怕不容易...我和孫女已失散八年，就算是現在我也未必能靠她的容貌辨認出來了。",
-	        "嵐兒的下落未知，我只能靠這隻兔子了，這是我們之間的約定...",
-	        "特和嵐兒有著特別的羈絆，除了嵐兒，其他人牠不會舔。",
+	        "storyturn"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "dialogue": [
+	        "國王任命我把母牛宰殺，製成佳餚，以供東盟國使者享用。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyturn"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "dialogue": [
+	        "咦，剛剛的牛刀還在...",
+	        "跟公主談話後就不見了，真奇怪...只好到外邊找找看。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear",
+	        "knifedrop"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "為了保護母親，竟然把牛刀含在嘴裡？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"checkcow"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"這兔子真的很有靈性。"
+	        "咽喉都被割破了...這小牛真的很有靈性！"
 	    ]
 	},{
-	    "name": "sage",
+	    "name": "event",
 	    "dialogue": [
-	        "大概是因為那時侯只有嵐兒每天悉心照顧牠，牠才會銘記在心。"
+	        "savecows"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"老伯伯的毅力令我很佩服，若然你的孫女知道，也必定會感到非常欣慰。"
+	        "回歸大自然吧！"
 	    ]
 	},{
-	    "name": "sage",
+	    "name": "event",
 	    "dialogue": [
-	        "就算走到天涯海角，我也要找到嵐兒，直到有一天我雙腿沒法走動。"
+	    	"musicappear",
+	    	"musicplay2"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "能聽到樂神演奏的雅樂真的是人生一大樂事。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "公主過獎了，這是祝福有情生靈得到智慧的鎮昏曲。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"那麼不打擾了，我也有要事在身，先行吿辭了。"
+	        "為何叫鎮昏？"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "就是指鎮壓生靈昏聵不明的習性。"
+	    ]
+	},
+	{
+	    "name": "bro",
+	    "leftPrefab": "player",
+	    "rightPrefab": "bro",
+	    "dialogue": [
+	        "曲有誤。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "師兄！"
 	    ]
 	},{
-	    "name": "sage",
+	    "name": "event",
 	    "dialogue": [
-	        "嗯，有緣再見。"
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "連樂神演奏的曲也發現有誤，看來公子絕非等閒之輩。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "不愧是師兄！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "scout",
+	    "leftPrefab": "scout",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "公瑾，一切準備妥當，可以馬上起行。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "bro",
+	    "leftPrefab": "player",
+	    "rightPrefab": "bro",
+	    "dialogue": [
+	        "兩位，公瑾要先辦正經事，先行告辭了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "師兄，祝你一路順風了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "bro",
+	    "leftPrefab": "music",
+	    "rightPrefab": "bro",
+	    "dialogue": [
+	        "樂神，若果將來能夠跟你鑽研音律，可說是美事一樁。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "隨時能夠奉陪！"
+	    ]
+	},
+	{
+	    "name": "bro",
+	    "dialogue": [
+	        "好，後會有期!"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "公主，你的師兄既然能夠看到我，已經說明他的道行不淺了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "師兄是有一種與眾不同的特質，非筆墨可以形容。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "說起來，剛剛為何不質問他是否設下三毒之石之人？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "既然師兄出現在這裡，那麼十之八九是他設下三毒之石。",
+	        "再說我們這邊還要想出對策...跟他攤牌只會打草驚蛇。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "公主有什麼好對策？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "先處理王都的三毒之石再說吧。"
 	    ]
 	}
 ]

@@ -6,6 +6,10 @@
       "gridArray0": [0]
     },
     {
+      "name": "Audio",
+      "gridArray0": [0]
+    },
+    {
       "name": "PlateH",
       "gridArray0": [4, 4, 4, 4, 4, 4, 4, 4],
       "gridArray1": [0, 0, 0, 0, 0, 0, 0, 0],
