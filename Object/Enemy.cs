@@ -102,10 +102,10 @@ public class EnemyController : MonoBehaviour
         currentHP = enemyHP;
         Utils.AddEffect(this.gameObject, "purify");
         Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
-        if(Utils.isUAT) {
-            Die(true);
-            return;
-        }
+        // if(Utils.isUAT) {
+        //     Die(true);
+        //     return;
+        // }
         StartCoroutine(DecreaseHPOverTime());
     }
 

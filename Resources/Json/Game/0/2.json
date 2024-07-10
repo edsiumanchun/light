@@ -5,7 +5,7 @@
       "gridArray0": [1, 1, 1, 2, 1],
       "gridArray1": [1, 1, 0, 1, 1],
       "gridArray2": [0, 1, 1, 1, 1],
-      "gridArray3": [0, 1, 1, 1, 0],
+      "gridArray3": [0, 1, 1, 0, 1],
       "gridArray4": [1, 1, 1, 1, 0],
       "gridArray5": [1, 1, 1, 1, 3]
     },
@@ -19,11 +19,11 @@
     },
     {
       "name": "Object",
-      "gridArray0": [0, 0, 0, 1, -2],
+      "gridArray0": [24, 0, 0, 1, 25],
       "gridArray1": [0, 11, 0, 11, 0],
       "gridArray2": [0, 0, 11, 0, 0],
       "gridArray3": [0, 11, 0, 11, 0],
-      "gridArray4": [2, 0, 11, 0, 1]
+      "gridArray4": [2, 21, 11, 0, 1]
     }
   ]
 }

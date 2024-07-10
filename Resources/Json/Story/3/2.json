@@ -5,13 +5,13 @@
 	    "leftPrefab": "rkid",
 	    "rightPrefab": "rosiamum",
 	    "dialogue": [
-	        "媽媽...為何我們要行乞？"
+	        "媽媽...為何我們要去行乞呢？"
 	    ]
 	},{
 	    "name": "rosiamum",
 	    "dialogue": [
-	    	"嵐兒，我們剛從家鄉來到此處避難，先忍耐一下吧。",
-	        "唉，真不知道這場戰爭會持續多久。。"
+	    	"小紅，我們剛從家鄉逃難到這裡，先忍耐一下吧。",
+	        "真不知道這場戰爭還要持續多久啊..."
 	    ]
 	},{
 	    "name": "rkid",
@@ -21,19 +21,19 @@
 	},{
 	    "name": "rosiamum",
 	    "dialogue": [
-	        "你爸爸已經..."
+	        "他已經..."
 	    ]
 	},{
 	    "name": "event",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "mkid",
 	    "dialogue": [
 	        "playerturn"
 	    ]
 	},{
 	    "name": "mkid",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "mkid",
 	    "dialogue": [
-	        "鳴嘩...鳴嘩嘩..."
+	        "鳴哇...鳴哇哇..."
 	    ]
 	},{
 	    "name": "rkid",
@@ -47,24 +47,24 @@
 	    ]
 	},{
 	    "name": "rosiamum",
-	    "leftPrefab": "rkid",
+	    "leftPrefab": "rkidsad",
 	    "rightPrefab": "rosiamum",
 	    "dialogue": [
-	        "你把這塊包拿去跟妹妹一起吃吧。"
+	        "你把這個麵包拿去分給妹妹吃吧。"
 	    ]
 	},{
-	    "name": "rkid",
+	    "name": "rkidsad",
 	    "dialogue": [
-	        "媽媽，我想吃米飯。"
+	        "媽媽，我好想吃米飯啊。"
 	    ]
 	},{
 	    "name": "rosiamum",
 	    "dialogue": [
-	        "你們先把麵包吃掉吧...",
-	        "日後媽媽找到工作就有錢買米飯給你們了。"
+	        "你們先把這些麵包吃完吧...",
+	        "將來等媽媽找到工作，就能有錢給你們買米飯了。"
 	    ]
 	},{
-	    "name": "rkid",
+	    "name": "rkidsad",
 	    "dialogue": [
 	        "嗯..."
 	    ]
@@ -78,7 +78,7 @@
 	    "leftPrefab": "rosia",
 	    "rightPrefab": "",
 	    "dialogue": [
-	        "為何我當時如此任性..."
+	        "當時我怎麼會如此任性..."
 	    ]
 	},{
 	    "name": "event",

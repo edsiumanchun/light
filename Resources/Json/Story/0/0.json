@@ -23,6 +23,7 @@
 	        "ghostshow",
 	        "playerturn",
 	        "playerattack",
+	        "bossgoldkey",
 	        "bossdisappear",
 	        "playerturn",
 	        "playeridle"

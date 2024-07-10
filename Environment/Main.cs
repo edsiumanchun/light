@@ -16,12 +16,12 @@ public class MainController : MonoBehaviour
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 0);
-            CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0); // 2 = down, 0 = up
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 1);
+            CacheManager.SetCache(Cache.Exit.ToString(),  2); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
-            CacheManager.ChangeKey("Gold", 999);
-            CacheManager.ChangeKey("Silver", 999);
-            CacheManager.ChangeKey("Copper", 999);
+            CacheManager.ChangeKey("Gold", 1);
+            //CacheManager.ChangeKey("Silver", 999);
+            //CacheManager.ChangeKey("Copper", 999);
         }
         CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         LoadItemData();

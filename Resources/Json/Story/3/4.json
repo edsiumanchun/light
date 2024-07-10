@@ -1,16 +1,85 @@
 {
 "storyArray" : [
 	{
-	    "name": "rkid",
+	    "name": "rosiamumdie",
 	    "leftPrefab": "rkidcry",
 	    "rightPrefab": "rosiamumdie",
 	    "dialogue": [
 	        "媽媽..."
 	    ]
 	},{
-	    "name": "rosiamum",
+	    "name": "event",
 	    "dialogue": [
-	        "媽媽..."
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "player",
+	    "dialogue": [
+	        "別哭了，如果再這樣下去，你如何照顧這個孩子？"
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	        "我只是個小孩..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "mkid",
+	    "leftPrefab": "rkidsad",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	        "鳴哇...鳴哇哇..."
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	        "妹妹別哭，姐姐會儘快找到食物給妳的。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "player",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "player",
+	    "dialogue": [
+	        "唉...真可憐...",
+	        "這樣吧，以後妳來當我的侍女吧",
+	        "這樣妳和妹妹就有地方安身了。"
+
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	    	"你究竟是誰？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "我就是西盟國的公主。"
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	    	"我辦不到...我無法接受殺父仇人的孫女的恩惠。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	    	"我辦不到...我無法接受殺父仇人的孫女的恩惠。"
 	    ]
 	}
 ]

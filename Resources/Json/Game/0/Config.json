@@ -7,7 +7,7 @@
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Greed", "Hatred", "Delusion", "Ethics", "BossFlower"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "Heart","Trigger"],
+    "items": ["KeyCopper","KeySilver","KeyGold", "PotionRed","PotionBlue"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark"],
     "decorations": ["Dark", "Lamp", "Wall"],

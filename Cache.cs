@@ -168,7 +168,7 @@ public static class CacheManager
     {
         int defaultValue = 0;
         if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString() || key == Cache.MPMax.ToString() || key == Cache.MP.ToString()){
-            defaultValue = 5;
+            defaultValue = 50;
         } else if (key == Cache.HPRecover.ToString() || key == Cache.Damage.ToString()){
             defaultValue = 1;
         } else if (key == Cache.ClearFloor.ToString() || key == Cache.ClearStage.ToString()){

@@ -71,6 +71,14 @@ public class EventController : MonoBehaviour
                 Utils.Fade(gameObject, true);
                 // story.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
                 return 1f;
+            case "bossgoldkey":
+                gameObject = new GameObject("GoldKey");
+                SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                spriteRenderer.sprite = (Sprite)DataHolder.items[2];
+                gameObject.AddComponent<KeyController>();
+                gameObject.transform.localPosition = new Vector3(boss.transform.localPosition.x,boss.transform.localPosition.y + 0.5f, -0.3f);
+                AssetData.SetParent(gameObject);
+                return 1f;
             case "bossdisappear":
                 boss.GetComponent<EnemyController>().Die(false);
                 return 1f;
@@ -143,6 +151,7 @@ public class EventController : MonoBehaviour
                 gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
                 gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
                 Utils.Fade(gameObject, false);
+                AssetData.SetParent(gameObject);
                 return 1.8f;
             case "playerattack":
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);

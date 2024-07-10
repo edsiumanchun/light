@@ -75,8 +75,8 @@ public class InfoController : PageIndexController
                 EnemyData enemyData = enemyDataList[index];
                 List<Sprite> icons = new List<Sprite>{
                     GetImage(enemyData.name),
-                    GetImage("Attack"),
                     GetImage("Heart"),
+                    GetImage("Attack")
                 };
 
                 float xPos = startX + column * cellSize.x;
