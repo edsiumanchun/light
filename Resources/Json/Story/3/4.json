@@ -39,7 +39,7 @@
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	        "妹妹別哭，姐姐會儘快找到食物給妳的。"
+	        "妹妹別哭，姐姐很快就會找到食物給你。"
 	    ]
 	},{
 	    "name": "event",
@@ -69,7 +69,8 @@
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	    	"我辦不到...我無法接受殺父仇人的孫女的恩惠。"
+	    	"感謝你的好意..."
+	    	"可是，我無法接受殺父仇人的孫女的恩惠。"
 	    ]
 	},{
 	    "name": "event",
@@ -79,7 +80,77 @@
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	    	"我辦不到...我無法接受殺父仇人的孫女的恩惠。"
+	    	"公主！"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"這一切都是我爺爺惹的禍...",
+	    	"我很痛心自己還小，什麼也做不到。",
+	    	"已經夠了...我已經看過太多無辜的小孩因戰爭而死去。",
+	    	"所有人本應是平等，無分貴賤。",
+	    	"所有人都是值得...",
+	    	"活下來的！",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "mkid",
+	    "leftPrefab": "rkidsad",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	    	"活...下來..."
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	    	"妹妹...竟然..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "player",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "player",
+	    "dialogue": [
+	    	"你可有想過為什麼你的母親多麼不願意...",
+	    	"卻也堅持要帶你們來到西盟國？"
+	    	"因為她不在乎自己的尊嚴...",
+	    	"把她孩子的幸福放在最重要的位置！"
+	    ]
+	},{
+	    "name": "rkid",
+	    "leftPrefab": "rkidsad",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	    	"嗚嗚...公主...我..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"rosiafall"
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosia",
+	    "leftPrefab": "rosia",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"那時，我的心彷彿被公主所融化...",
+	    	"她似乎擁有某種神秘的力量，總是帶給人溫暖。",
+	        "從那以後，我和妹妹搬到了公主的住所一起居住...",
+	        "出乎意料的是，公主的房間竟然非常簡樸。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "nextscene"
 	    ]
 	}
 ]
