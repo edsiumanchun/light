@@ -17,6 +17,7 @@ public class PageIndexController : MonoBehaviour
     public int totalPages;
     public int totalItems;
     public int currentPage = 0;
+    public int selectedIndex = 0;
 
     private GameObject rightButton;
     private GameObject leftButton;
@@ -39,6 +40,7 @@ public class PageIndexController : MonoBehaviour
     {
         if (currentPage < totalPages - 1)
         {
+            selectedIndex = 0;
             currentPage++;
             DisplayPage();
         }
@@ -60,6 +62,7 @@ public class PageIndexController : MonoBehaviour
     {
         if (currentPage > 0)
         {
+            selectedIndex = 0;
             currentPage--;
             DisplayPage();
         }

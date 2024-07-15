@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float knockbackForce = 3f; // The force of knockback when taking damage
 
     public float moveSpeed = 1f;
-    private int currentHealth = 10; // Current HP of the player
     private int attack = 1; // Current HP of the player
     public Rigidbody2D rb;
     public bool isOnFloor = false; // Whether the player is standing on the floor or not
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
-        UpdateLifeBarUI();
         audioSource = GetComponent<AudioSource>();
         int layerIndex = LayerMask.NameToLayer("Player"); // Get the layer index based on the layer name.
         this.gameObject.layer = layerIndex;
@@ -167,7 +165,7 @@ public class PlayerController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         int offset = AssetData.goUp ? 1 : -1; 
         string playerPosition = name.Split('_')[0];
-        Debug.Log(name);
+        // Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
@@ -202,11 +200,6 @@ public class PlayerController : MonoBehaviour
                 this.gameObject.GetComponent<JoystickController>().SetupStopMove();
                 break;
 
-            case string str when str.Contains("Heart"):
-                audioSource.PlayOneShot(heartSound);
-                currentHealth = currentHealth + 10;
-                Destroy(collision.gameObject);
-                break;
             case string str when str.Contains("Light"):
                 audioSource.PlayOneShot(lightSound);
                 attack = attack + 1;
@@ -229,62 +222,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        // Deduct HP and play hurt sound when the player collides with an enemy
-        int trial = currentHealth - damage;
-        audioSource.PlayOneShot(hurtSound);
-
-        if (trial <= 0)
-        {
-            // Play die sound
-            audioSource.PlayOneShot(dieSound);
-            Vector2 forwardDirection = transform.forward;
-            Vector2 backwardDirection = -forwardDirection;
-            rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
-        }
-        else
-        {
-            // Apply knockback force
-            UpdateLifeBarUI();
-            currentHealth = trial;
-            
-            Vector2 forwardDirection = transform.forward;
-            Vector2 backwardDirection = -forwardDirection;
-            rb.AddForce(backwardDirection * knockbackForce, ForceMode2D.Impulse);
-        }
+    private void FullHp(Collider2D collision){
+        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+        CacheManager.ChangeCache(Cache.HP.ToString(), hpMax, hpMax);
+        Camera.main.GetComponent<GameUIController>().DisplayHPMPInfo();
+        audioSource.PlayOneShot(heartSound);
+        Destroy(collision.gameObject);
     }
 
-    void AboutToDie()
-    {
-
-    }
-
-    void UpdateLifeBarUI()
-    {
-        // Update the life bar UI based on currentHealth and maxHealth
+    private void FullMp(Collider2D collision){
+        int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
+        CacheManager.ChangeCache(Cache.MP.ToString(), mpMax, mpMax);
+        Camera.main.GetComponent<GameUIController>().DisplayHPMPInfo();
+        audioSource.PlayOneShot(heartSound);
+        Destroy(collision.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("???" + name);
-        // Check if the colliding object has the specified tag
-        if (collision.name.Contains("Trigger"))
-        {
-            // Perform the desired action here
-            GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
-            gameUIController.showGameButton((int)UIGameButton.Story);
-            status = UIGameButton.Story;
+        switch (collision.name)
+        { 
+            case string str when str.Contains("PotionRed"):
+                FullHp(collision);
+                FullMp(collision);
+                break;
+            case string str when str.Contains("PotionBlue"):
+                FullMp(collision);
+                break;
+            case string str when str.Contains("PotionGreen"):
+                FullHp(collision);
+                break;
+            case string str when str.Contains("Light") || str.Contains("Dark") :
+                GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+                gameUIController.showGameButton((int)UIGameButton.Story);
+                status = UIGameButton.Story;
 
-            GameObject player = GameObject.Find("Player");
-            player.GetComponent<JoystickController>().SetPurifyObject(collision.gameObject);
+                GameObject player = GameObject.Find("Player");
+                player.GetComponent<JoystickController>().SetPurifyObject(collision.gameObject);
+                break;
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.name.Contains("Trigger")){
-            GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
-            gameUIController.hideGameButton();
+        switch (collision.name)
+        {
+            case string str when str.Contains("Light") || str.Contains("Dark") :
+                GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
+                gameUIController.hideGameButton();
+                break;
         }
     }
 

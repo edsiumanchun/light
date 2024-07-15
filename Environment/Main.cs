@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 1);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
             CacheManager.SetCache(Cache.Exit.ToString(),  2); // 2 = down, 0 = up
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
             CacheManager.ChangeKey("Gold", 1);
@@ -78,7 +78,7 @@ public class MainController : MonoBehaviour
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel",  "ShortButton", "NameCard", "NameCard2", "Panel2" } ));
+        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel",  "ShortButton", "NameCard", "NameCard2", "NameCardSel", "Panel2" } ));
         List<Sprite> sprites = LoadSprites("UI/Common", paths);
         DataHolder.commonImages = sprites;
     }

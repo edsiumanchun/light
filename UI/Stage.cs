@@ -42,7 +42,7 @@ public class StageController : MonoBehaviour
     }
     private void SetupBar(){
         tempStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        Utils.CreateNavigationBar("地圖", new Vector2(0f, 198f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("地圖", new Vector2(0f, 206f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
@@ -85,7 +85,7 @@ public class StageController : MonoBehaviour
                 int index = row * columnCount + column;
 
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y;
+                float yPos = startY - row * cellSize.y + 5;
 
                 GameObject cell = Utils.CreateTextButton(null, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
@@ -107,7 +107,7 @@ public class StageController : MonoBehaviour
 
     void updateButtonImages() {
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        Debug.Log("???" + currentFloor);
+        // Debug.Log("???" + currentFloor);
         int i = 0;
         foreach(var button in buttons){
             var image = currentFloor == i ? commonImages[((int)UICommon.SelCircleButton)] : commonImages[((int)UICommon.CircleButton)];

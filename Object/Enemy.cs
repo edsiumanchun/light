@@ -31,6 +31,10 @@ public class EnemyController : MonoBehaviour
         if( this.gameObject.name.Contains("Boss")){
             this.gameObject.name = "Boss";
         }
+    //     LaserBeamCreator.CreateLaserBeam(new Vector3(1,1,0), new Vector3(1,1,0),
+    // 50f,
+    // 0.2f,
+    // Color.red, this.gameObject.transform);
     }
     void Start()
     {
@@ -48,7 +52,17 @@ public class EnemyController : MonoBehaviour
             int digit4 = assetIndex % 10 ;
             float param = 0.5f;
             Vector3[] positions = { new Vector3(-param, param, 0), new Vector3(param, param, 0), new Vector3(param, -param, 0), new Vector3(-param, -param, 0) };
+            
             int[] digits = new[] { digit1, digit2, digit3, digit4 };
+            // if(assetIndex >= 10000) {
+            //     int digit1 = assetIndex / 10000000 - 1;
+            //     int digit2 = (assetIndex / 1000000) % 10 - 1;
+            //     int digit3 = (assetIndex / 100000) % 10 - 1;
+            //     int digit4 = (assetIndex / 10000) % 10 - 1;
+            //     if(digit1 == 1) {
+                    
+            //     }
+            // }
             for (int i = 0; i < 4; i++){
                 int digit = digits[i];
                 // Create a new GameObject and add a SpriteRenderer component
@@ -62,6 +76,10 @@ public class EnemyController : MonoBehaviour
         
                 foreach (var data in DataHolder.enemyDataList)
                 {
+                    // define type
+                    if(spriteObject.name.Contains("2")) {
+                        spriteObject.tag = "Tower";
+                    }
                     if(spriteObject.name.Contains(data.name)) {
                         if(enemyDatas.Contains(data) == false) {
                             enemyDatas.Add(data);
@@ -118,7 +136,9 @@ public class EnemyController : MonoBehaviour
                 ResumeBattle();
                 yield break;
             }
-            currentHP -= CacheManager.GetCache(Cache.Damage.ToString());
+            TowerAttack();
+            currentHP -= CacheManager.GetDamage();
+            currentHP = Mathf.Max(currentHP, 0);
             Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
             yield return new WaitForSeconds(0.4f); // Wait for 1 second
             GameObject gameObject = GameObject.Find("MariaGhost");
@@ -135,7 +155,7 @@ public class EnemyController : MonoBehaviour
                 CacheUsage.cacheDestroyedObject(this.gameObject.name);
                 ResumeBattle();
                 Die(true);
-            }
+            } 
         }
     }
 
@@ -144,6 +164,14 @@ public class EnemyController : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         player.GetComponent<JoystickController>().ReleaseFighting();
         Utils.RemoveEffect(this.gameObject.transform);
+    }
+
+    public void TowerAttack(){
+        GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Tower");
+        foreach (GameObject go in gameObjectsWithTag)
+        {
+            CreateFireBall(go);
+        }
     }
 
     public void Die(bool inGame){
@@ -156,6 +184,7 @@ public class EnemyController : MonoBehaviour
                 if(gemObjects != null) { // gem
                     StartCoroutine(GemDie());
                 } else {
+                    Reward();
                     Utils.Fade(this.gameObject, true);
                     StartCoroutine(DelayDestroy(this.gameObject));
                 }
@@ -179,6 +208,7 @@ public class EnemyController : MonoBehaviour
             Utils.AddEffect(gemObject, "purify");
             Utils.Fade(gemObject, true);
             if(i == gemObjects.Count - 1){
+                Reward();
                 StartCoroutine(DelayDestroy(this.gameObject));
             } else {
                 StartCoroutine(DelayDestroy(gemObject));
@@ -190,5 +220,49 @@ public class EnemyController : MonoBehaviour
 
     private void SetupAssetDataNamelist(string name){
         AssetData.nameList.Add(name);
+    }
+
+    private void Reward() {
+        if(assetIndex >= 1000) { // gem
+            int[] digits = new int[4];
+            digits[0] = assetIndex / 1000 - 1;
+            digits[1] = (assetIndex / 100) % 10 - 1;
+            digits[2] = (assetIndex / 10) % 10 - 1;
+            digits[3] = assetIndex % 10;
+            for (int i = 0; i < digits.Length; i++)
+            {
+                switch (digits[i])
+                {
+                    case 0:
+                        CacheManager.ChangeCache(Cache.Greed.ToString(), 1, 99999);
+                        break;
+                    case 1:
+                        CacheManager.ChangeCache(Cache.Hatred.ToString(), 1, 99999);
+                        break;
+                    case 2:
+                        CacheManager.ChangeCache(Cache.Delusion.ToString(), 1, 99999);
+                        break;
+                    case 3:
+                        CacheManager.ChangeCache(Cache.Ethics.ToString(), 1, 99999);
+                        break;
+                    case 4:
+                        CacheManager.ChangeCache(Cache.Concentration.ToString(), 1, 99999);
+                        break;
+                    case 5:
+                        CacheManager.ChangeCache(Cache.Delusion.ToString(), 1, 99999);
+                        break;
+                }
+            }
+        } else {
+
+        }
+    }
+
+    public void CreateFireBall(GameObject go){
+        GameObject fireBall = new GameObject("Fireball");
+        FireBallController fireBallController = fireBall.AddComponent<FireBallController>();
+        // fireBall.transform.parent = go.transform;
+        fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -3);
+        fireBallController.Fire();
     }
 }

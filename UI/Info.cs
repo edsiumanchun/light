@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InfoController : PageIndexController
-{    public List<Sprite> commonImages;
+{    
+    public List<Sprite> commonImages;
     public AudioSource bgmAudioSource;
     public GameObject backgroundImage;
 
@@ -27,7 +28,7 @@ public class InfoController : PageIndexController
         // Other initialization code...
         canvasObject.SetActive(false);
 
-        Utils.CreateNavigationBar("情報", new Vector2(0f, 198f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("情報", new Vector2(0f, 206f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
@@ -71,8 +72,11 @@ public class InfoController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
+                bool isSelected = selectedIndex == column;
                 int index = currentPage * itemsPerPage + row * columnCount + column;
+                if (index < 0 || index >= enemyDataList.Count) continue;
                 EnemyData enemyData = enemyDataList[index];
+                
                 List<Sprite> icons = new List<Sprite>{
                     GetImage(enemyData.name),
                     GetImage("Heart"),
@@ -80,44 +84,40 @@ public class InfoController : PageIndexController
                 };
 
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y + 33;
+                float yPos = startY - row * cellSize.y + 38;
                 List<string> stringList = new List<string>()
                 {
                     enemyData.name.Replace("Boss", "").Replace("Enemy", ""),
                     enemyData.hp.ToString(),
                     enemyData.damage.ToString(),
-                };
-                reward = reward + ProcessString(enemyData.name, enemyData.reward.ToString());
-                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, false);
+                }; 
+                int imageIndex = isSelected ? (int)UICommon.NameCardSel : (int)UICommon.NameCard;
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[imageIndex], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
                 cell.transform.localScale = new Vector3(1,1,1);
 
                 Button button = cell.AddComponent<Button>();
-                button.onClick.AddListener(() => OnClickButtonWithParameter(index));
+                button.onClick.AddListener(() => OnClickButtonWithParameter(index % itemsPerPage));
+                if(isSelected) {
+                    rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(0, -178), canvasObject.transform, TextAnchor.MiddleCenter);
+                    rowTextObject.GetComponent<Text>().text = ProcessString(enemyData.name, enemyData.reward.ToString());
+                    rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                }
             }
         }
-        rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(0, -178), canvasObject.transform, TextAnchor.MiddleCenter);
-        rowTextObject.GetComponent<Text>().text = reward;
-        rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
         UpdateNavigationButtonVisibility();
     }
 
     private void OnClickButtonWithParameter(int index)
     {
-        switch (index)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
+        if (selectedIndex == index) {
+            return;
         }
-        StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
+        selectedIndex = index;
+        DisplayPage();
+        // StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+        // storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
     }
 
     void OnClickButton()

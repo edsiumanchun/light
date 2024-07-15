@@ -29,7 +29,7 @@ public class Utils : MonoBehaviour
         return screenPos;
     }
 
-    static public void MovePrefab(GameObject prefab, float x, float y)
+    static public void MovePrefab(GameObject prefab, float x, float y) // 角位
     {
         RectTransform imageRectTransform = prefab.GetComponent<RectTransform>();
         float halfHeight = imageRectTransform.rect.height * y * imageRectTransform.localScale.y;
@@ -97,6 +97,9 @@ public class Utils : MonoBehaviour
     static public GameObject CreateImageWithText(Sprite sprite, Vector2 imagePosition, Vector2 textPosition, Transform parent, TextAnchor textAnchor)
     {
         GameObject imageGameObject = CreateImage(sprite, imagePosition, parent);
+        if(sprite == null) {
+            Destroy(imageGameObject.GetComponent<Image>());
+        }
         GameObject rowTextObject = CreateText(new Vector2(200, 50), textPosition, imageGameObject.transform, textAnchor);
         
         return rowTextObject;
@@ -162,7 +165,7 @@ public class Utils : MonoBehaviour
     {
         GameObject NavBar = CreateText(new Vector2(200, 50), position, parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
-        NavBar.GetComponent<Text>().fontSize = 28;
+        NavBar.GetComponent<Text>().fontSize = 26;
         GameObject closeButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Close)], new Vector2(260, 0), NavBar.transform, onClickAction);
         return NavBar;
     }
@@ -171,19 +174,20 @@ public class Utils : MonoBehaviour
     {
         GameObject NavBar = CreateImageWithText(DataHolder.commonImages[((int)UICommon.SelectionBar)], position, new Vector2(0, 0), parent, TextAnchor.MiddleCenter);
         NavBar.GetComponent<Text>().text = title;
+        NavBar.GetComponent<Text>().fontSize = 23;
         GameObject rightButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Right)], new Vector2(144, 0), NavBar.transform, onClickActionRight);
         GameObject leftButton = Utils.CreateButton(DataHolder.commonImages[((int)UICommon.Left)], new Vector2(-144, 0), NavBar.transform, onClickActionLeft);
         return NavBar;
     }
 
-    static public GameObject CreateAvatarAndRows(Sprite sprite, List<Sprite> sprites, List<string> values, Vector2 position, Transform parent, bool isTriple)
+    static public GameObject CreateAvatarAndRows(Sprite sprite, List<Sprite> sprites, List<string> values, Vector2 position, Transform parent)
     {
+        bool isTriple = sprites[0] == null;
         GameObject enemyInfo = Utils.CreateImage(sprite, position, parent.transform);
         for (int i = 0; i < values.Count; i++)
         {
-            int x = i == 0 ? 0 : -44;
             GameObject cell;
-            int offset = isTriple ? 0 : 30;
+            int offset = isTriple ? -42 : 30;
             int topImageY = 94 - offset;
             if(i == 0){
                 cell = CreateImageWithText(sprites[i], new Vector2(0, -1 * i * 14 + topImageY), new Vector2(0, topImageY - 163 + offset), enemyInfo.transform, TextAnchor.MiddleCenter);
@@ -191,11 +195,25 @@ public class Utils : MonoBehaviour
                 RectTransform uiImageRectTransform = uiImage.rectTransform;
                 uiImageRectTransform.sizeDelta = new Vector2(80f, 80f);
             } else {
-                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 44 + (topImageY - 77 + offset / 3)), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
+                cell = CreateImageWithText(sprites[i], new Vector2(-44, -1 * i * 44 + (topImageY - 72)), new Vector2(0, 0), enemyInfo.transform, TextAnchor.MiddleRight);
             }
             cell.GetComponent<Text>().text = values[i];
         }
         return enemyInfo;
+    }
+    static public GameObject CreateRows(List<string> titles, List<string> values, Vector2 position, Transform parent)
+    {
+        GameObject info = new GameObject();
+        info.transform.SetParent(parent.transform);
+        info.transform.localPosition = position;
+        for (int i = 0; i < values.Count; i++){
+            GameObject title, value;
+            title = CreateText(new Vector2(100, 50), new Vector2(-26, -1 * i * 44 ), info.transform, TextAnchor.MiddleLeft);
+            title.GetComponent<Text>().text = titles[i];
+            value = CreateText(new Vector2(100, 50), new Vector2(26, -1 * i * 44 ), info.transform, TextAnchor.MiddleRight);
+            value.GetComponent<Text>().text = values[i];
+        }
+        return info;
     }
 
     public static List<AudioClip> LoadAudios(List<string> paths)
@@ -320,7 +338,13 @@ public class Utils : MonoBehaviour
         GameObject lightObject = Instantiate(lightPrefab);
         lightObject.name = "Effect";
         lightObject.transform.SetParent(GO.transform);
-        lightObject.transform.localPosition = new Vector3(0, 0f, -3f);
+        if(GO.name.Contains("Enemy") || GO.name.Contains("Boss")) {
+            float y = GO.GetComponent<BoxCollider2D>() == null ? 0.9f : GO.GetComponent<BoxCollider2D>().size.y / 2;
+            float height = y / 2;
+            lightObject.transform.localPosition = new Vector3(0, height, -3f);
+        } else {
+            lightObject.transform.localPosition = new Vector3(0, 0f, -3f);
+        }
     }
 
     public static void RemoveEffect(Transform transform)

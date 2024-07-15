@@ -1,57 +1,102 @@
 {
-"storyArray" : [
-	
-	{
+"storyArray" : [{
+	    "name": "king",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "king",
+	    "dialogue": [
+	    	"女兒？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "公主，多年不見，你還是一如既往地散發著動人的氣質。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "女兒，你知道嗎？公謹就是東域大祀官。",
+	        "全靠他，我們才有機會跟東盟國修補關係。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "客氣了，也需要國王的信任才可以達成協議。"
+	    ]
+	},{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "為何這裡變成這樣？"
+	        "話說東盟國國王什麼時候來到？"
 	    ]
-	},
-	{
-	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
+	},{
+	    "name": "dragon",
 	    "dialogue": [
-	        "公主，是這樣的。東域家派了大使與國王進行談判和解",
-	        "這可是近年來兩國關係緊張局勢的一大突破。"
+	    	"快到了，你們在這裡稍後，我過去迎接東盟國國王。"
 	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
+	},{
+	    "name": "event",
 	    "dialogue": [
-	        "父王一直很自責八年前沒有能力阻止國家對東域的入侵。",
-	        "如今有這個破冰的機會，他肯定不惜一切代價也要達成協議。",
+	        "dragonleave"
 	    ]
-	},
-	{
-	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
+	},{
+	    "name": "king",
 	    "dialogue": [
-	        "對，會議完結後，他們便去了聖地進行儀式，然後這裡就有很多餓鬼出沒。",
-	        "我不敢說這些都跟東域有關，但這未免太巧合。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "centerPrefab": "player",
-	    "dialogue": [
-	        "這裡沒有人受傷吧？",
-	    ]
-	},
-	{
-	    "name": "sentinel",
-	    "centerPrefab": "sentinel",
-	    "dialogue": [
-	        "公主有心了，只是現在王都四周都是餓鬼，我們也沒有能力把餓鬼退治。",
-	        "還好餓鬼不會主動攻擊我們。"
+	    	"女兒，你怎麼來到這裡？"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "centerPrefab": "player",
 	    "dialogue": [
-	        "嗯，無論如何，先把這裡回復原狀再說吧。",
+	        "聽說我們要把餓鬼殲滅，這件事請父王三思。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	    	"我們跟東盟國已經口頭上妥協了協議內容。",
+	    	"怎麼可以說收回就收回，現在不是小朋友玩遊戲啊！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "但是現在的情況好像有點不對勁。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	    	"不對勁也要幹了。",
+	    	"我若然反口，就沒有威信令國民聽從於我了！",
+	    	"現在最重要的是要好好招待賓客，別得失人家啊。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "kingleave"
+	    ]
+	},
+	{
+	    "name": "maria",
+	   	"leftPrefab": "music",
+	    "rightPrefab": "ghostmaria",
+	    "dialogue": [
+	        "公主真的料事如神，他們果然有一些陰謀。"
+	    ]
+	},
+	{
+	    "name": "ghostmaria",
+	    "dialogue": [
+	        "就是不知道協議內容是什麼？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "無論如何也要阻止他們，不能再讓悲劇發生。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyleave",
+	        "storydisappear"
 	    ]
 	}
 ]

@@ -6,7 +6,7 @@
     "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Greed", "Hatred", "Delusion", "Delusion1", "BossFlower"],
+    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Ethics2", "BossFlower"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark"],

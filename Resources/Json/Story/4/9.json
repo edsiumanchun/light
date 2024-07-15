@@ -1,186 +1,96 @@
 {
-"storyArray" : [
-	{
-	    "name": "event",
+"storyArray" : [{
+	    "name": "dragon",
+	   	"leftPrefab": "dragon",
+	    "rightPrefab": "king",
 	    "dialogue": [
-	        "nextscene"
+	    	"哈哈，終於大功告成！"
 	    ]
 	},{
-	    "name": "nurse",
-	    "leftPrefab": "player",
-	    "rightPrefab": "nurse",
+	    "name": "king",
 	    "dialogue": [
-	    	"這裡是醫院嗎？"
+	        "公謹，你是否已經得到長生不老之秘方？"
 	    ]
 	},{
-	    "name": "nurse",
+	    "name": "dragon",
 	    "dialogue": [
-	    	"公主，是一位老人家把你送來醫院的。",
-	    	"你所受的只是皮外傷，幾天後就會康復。",
-	    	"可是，羅西亞就慘了...瑪利亞剛剛過身了..."
+	        "長生不老之秘方跟本不存在。"
 	    ]
 	},{
-	    "name": "player",
+	    "name": "king",
 	    "dialogue": [
-	    	"不會吧？我馬上去看看羅西亞！"
+	        "好小子，竟敢戲弄我...人來，把公謹拿下！"
 	    ]
 	},{
-	    "name": "event",
+	    "name": "dragon",
 	    "dialogue": [
-	        "playergotorosia"
-	        "rosiafall"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"羅西亞!"
+	        "你們敢？"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "rosialeave"
-	    ]
-	},{
-	    "name": "maria",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	        "公主..."
+	        "dragonkill"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"瑪利亞？你是生是死？"
+	        "師兄！"
 	    ]
 	},{
-	    "name": "maria",
+	    "name": "dragon",
 	    "dialogue": [
-	        "我也不知道..."
+	        "師妹...我已用盡畢生功力把內裡的邪魔抑壓。",
+	        "都是我的錯，我沒臉當你師兄。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "你變回我熟識的師兄就已經足夠。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "你原諒我嗎？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "絕對境界 把過去 現在 未來 融合為一 這是一種不可思議的覺悟 "
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "我看到 過去的我是天龍人 和現在的我結合 "
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"身體雖死，靈魂不滅。"
+	        "是...是龍星群..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"樂神，發生什麼事了？"
+	        "然後因為我有如此覺悟 我也看到未來的我 "
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "瑪利亞在轉生前，靈魂還未定去向...",
-	        "依我看，多半是轉生成天人。"
+	        "這千萬種琴聲..."
 	    ]
 	},{
-	    "name": "maria",
+	    "name": "player",
 	    "dialogue": [
-	    	"現在才知道公主旁邊有這麼美麗的守護神保護公主。"
+	        "既然有這麼多個我，那個才是真正的我"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "容顏美醜，只是表象...",
-	        "世間最苦，不過別離...面對生死，長相漂亮又有何用？"
+	        "沒有真我，萬法歸一。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"嗯...真不敢想像你姐姐現在有多難受...",
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	        "姐姐表面看似堅強，但長期為了我的事情而奔波的她...",
-	        "內心早已經接近崩毀邊緣。",
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"真令人擔心，我還是去看看你姐姐吧。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	        "距離轉生前還有一段時間...",
-	        "如公主不嫌棄，請讓我陪同公主去找姐姐吧。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"好！"
-	    ]
-	},
-	{
-	    "name": "narrator",
-	    "dialogue": [
-	        "瑪利亞加入隊伍，在戰鬥中瑪利亞能夠每秒治愈公主5點血量。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playergoforrosia"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"姐姐！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"瑪利亞，我們該如何是好？"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"沒什麼好辦法...只好試試用最真誠的心為姐姐祈福..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"嗯，試試看吧。",
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiadelusion"
-	    ]
-	},{
-	    "name": "rosia",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	        "我的一生...真是坎坷...",
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"姐姐，這一切都是幻境...",
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "你是誰？為何要假扮我的妹妹？我的妹妹已經死了！",
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"沒有生死，靈魂不滅...",
-	    	"別被幻境所蒙騙，破迷啟悟，尋找清淨之藏...",
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiathink"
-	    ]
-	},{
-	    "name": "rosia",
-	    "centerPrefab": "rosia",
-	    "dialogue": [
-	        "尋找清淨之藏？",
+	        "哈哈，原來如此。"
 	    ]
 	}
 ]

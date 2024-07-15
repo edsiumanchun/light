@@ -119,7 +119,15 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	        "storydisappear"
+	        "storydisappear",
+	        "nextscene"
+	    ]
+	},{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"終於來到聖地了。"
 	    ]
 	}
 ]

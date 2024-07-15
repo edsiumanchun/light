@@ -141,7 +141,7 @@ public class AssetData
                 return null;
         }
         // --------- //
-        Debug.Log("????" + spriteRenderer.sprite + assetIndex.ToString());
+        // Debug.Log("????" + spriteRenderer.sprite + assetIndex.ToString());
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
@@ -233,7 +233,6 @@ public class AssetData
         } else if(newObject.name.Contains("Gem")){
             boxCollider.size = new Vector2(2f, 2f);
         } else if(isTrigger){
-            boxCollider.size = new Vector2(1f, 1.8f);
             boxCollider.isTrigger = true;
         }
         if (name.Contains("Object"))

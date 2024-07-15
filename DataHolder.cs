@@ -20,7 +20,8 @@ public enum UICommon
     ShortButton = 10,
     NameCard = 11,
     NameCard2 = 12,
-    Panel2=13
+    NameCardSel = 13,
+    Panel2 = 14
 }
 
 public enum UIGameButton

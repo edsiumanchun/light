@@ -10,6 +10,7 @@ public class ItemController : PageIndexController
 
     public List<ItemData> itemDataList;
     public List<Sprite> keyImages;
+    public GameObject dashboard, dashboard2;
     public void Start()
     {
         folderName = "UI/Items";
@@ -17,6 +18,7 @@ public class ItemController : PageIndexController
         totalItems = itemDataList.Count;
         SetupCanvas();
         base.Start();
+        cellSize = new Vector2(203f, 200f);
         commonImages = DataHolder.commonImages;
         DisplayPage();
     }
@@ -34,7 +36,7 @@ public class ItemController : PageIndexController
         // Other initialization code...
         canvasObject.SetActive(false);
 
-        Utils.CreateNavigationBar("背包", new Vector2(0f, 198f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("角色資訊", new Vector2(0f, 206f), canvasObject.transform, () => // profile
         {
             canvasObject.SetActive(false);
         });
@@ -67,7 +69,6 @@ public class ItemController : PageIndexController
 
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
         float startY = totalHeight / 2 - (cellSize.y / 2) ;
-                Debug.Log("???");
         string reward = "獎勵\n";
         Debug.Log("abc" + totalItems);
         Debug.Log("abc" + totalPages);
@@ -75,18 +76,17 @@ public class ItemController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
-                Debug.Log("???");
                 int index = currentPage * itemsPerPage + row * columnCount + column;
                 ItemData itemData = itemDataList[index];
                 List<Sprite> icons = new List<Sprite>{
-                    GetImage(itemData.name),
+                    null,
                     GetImage(itemData.item1),
                     GetImage(itemData.item2),
                     GetImage(itemData.item3)
                 };
 
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y ;
+                float yPos = startY - row * cellSize.y - 130;
                 List<int> textList = GetTextList(column);
                 List<string> stringList = new List<string>()
                 {
@@ -96,7 +96,7 @@ public class ItemController : PageIndexController
                     textList[2].ToString()
                 };
                 reward = reward + ProcessString(itemData.name, itemData.desc.ToString());
-                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard2)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, true);
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard2)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
                 cell.transform.localScale = new Vector3(1,1,1);
@@ -106,10 +106,44 @@ public class ItemController : PageIndexController
             }
         }
         rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(0, -178), canvasObject.transform, TextAnchor.MiddleCenter);
-        rowTextObject.GetComponent<Text>().text = reward;
+        // rowTextObject.GetComponent<Text>().text = reward;
+        rowTextObject.GetComponent<Text>().text = "";
         rowTextObject.transform.localScale = new Vector3(1f, 1f, 1f);
         UpdateNavigationButtonVisibility();
+        DisplayDashboard();
+        DisplayDashboard2();
     }
+    private void DisplayDashboard(){
+        if(dashboard != null) {
+            Destroy(dashboard);
+        }
+        List<string> titles = new List<string> { "每回輸出", "每回耗魔", "傷害減低" };
+        List<string> values = new List<string>
+        {
+            CacheManager.GetDamage().ToString(),
+            CacheManager.GetConsume().ToString(),
+            CacheManager.GetDefend().ToString(),
+        };
+        dashboard = Utils.CreateRows(titles, values, new Vector2(-120, 130), canvasObject.transform);
+        dashboard.transform.localScale = new Vector3(1f, 1f, 1f);
+        dashboard.name = "Dashboard";
+    }
+
+    private void DisplayDashboard2(){
+        if(dashboard2 != null) {
+            Destroy(dashboard2);
+        }
+        List<string> titles = new List<string> { "生命回復", "收穫加成" };
+        List<string> values = new List<string>
+        {
+            CacheManager.GetCache(Cache.HPRecover.ToString()).ToString(),
+            CacheManager.GetCache(Cache.Reward.ToString()).ToString()
+        };
+        dashboard2 = Utils.CreateRows(titles, values, new Vector2(120, 130), canvasObject.transform);
+        dashboard2.transform.localScale = new Vector3(1f, 1f, 1f);
+        dashboard2.name = "Dashboard2";
+    }
+
     public List<int> GetTextList(int column)
     {   
         List<int> values = new List<int>();
@@ -122,12 +156,12 @@ public class ItemController : PageIndexController
         else if (column == 1)
         {
             values.Add(CacheManager.GetCache(Cache.Greed.ToString()));
-            values.Add(CacheManager.GetCache(Cache.Delusion.ToString()));
             values.Add(CacheManager.GetCache(Cache.Hatred.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Delusion.ToString()));
         } else {
-            values.Add(CacheManager.GetCache(Cache.Greed.ToString()));
-            values.Add(CacheManager.GetCache(Cache.Delusion.ToString()));
-            values.Add(CacheManager.GetCache(Cache.Hatred.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Ethics.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Concentration.ToString()));
+            values.Add(CacheManager.GetCache(Cache.Wisdom.ToString()));
         }
         return values;
     }
@@ -145,8 +179,8 @@ public class ItemController : PageIndexController
             case 3:
                 break;
         }
-        StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
+        // StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
+        // storyController.LoadStoryDataFromText("", "體力不足，無法作戰。");
     }
 
     void OnClickButton()

@@ -1,17 +1,17 @@
 {
   "items": [
     {
-      "name": "Defilements",
-      "item1": "Greed",
-      "item2": "Hatred",
-      "item3": "Delusion",
-      "desc": "減傷害"
-    },
-    {
       "name": "Pillars",
       "item1": "Ethics",
       "item2": "Concentration",
       "item3": "Wisdom",
+      "desc": "減傷害"
+    },
+    {
+      "name": "Defilements",
+      "item1": "Greed",
+      "item2": "Hatred",
+      "item3": "Delusion",
       "desc": "減傷害"
     },
     {

@@ -76,6 +76,7 @@ public class GameUIController : MonoBehaviour
         settingButton.SetActive(isHide);
         infoButton.SetActive(isHide);
         stageButton.SetActive(isHide);
+        avatarButton.SetActive(isHide);
     }
 
     // private void Setupavatar()
@@ -176,6 +177,7 @@ public class GameUIController : MonoBehaviour
         int hp = CacheManager.GetCache(Cache.HP.ToString());
         int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
         int mp = CacheManager.GetCache(Cache.MP.ToString());
+        Debug.Log(hp + ":DisplayHPMPInfo:" + mp);
         playerHPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
         playerMPBarText.GetComponent<Text>().text = mp.ToString() + "/" + mpMax.ToString();
         foreach (Transform child in playerHPBar.transform) {

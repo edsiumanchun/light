@@ -6,10 +6,10 @@
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Greed", "Hatred", "Delusion", "Ethics", "BossFlower"],
-    "items": ["KeyCopper","KeySilver","KeyGold", "PotionRed","PotionBlue"],
+    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Greed2", "BossFlower"],
+    "items": ["KeyCopper","KeySilver","KeyGold"],
     "obstacles": ["Dark"],
-    "triggers": ["TriggerLight", "TriggerDark"],
+    "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "decorations": ["Dark", "Lamp", "Wall"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]

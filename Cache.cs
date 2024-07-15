@@ -15,20 +15,25 @@ public enum Cache
     Silver = 4,
     Gold = 5,
     HPRecover = 6,
-  //  MPRecover = 7,
+    // MPRecover = 7, // 加成？
     Destroy = 8,
     HP = 9,
     MP = 10,
     HPMax = 11,
     MPMax = 12,
-    Damage = 13,
-    Defend = 14,
+    Damage = 13, // 加成
+    Defend = 14, // 加成
     ClearStage = 15,
     ClearFloor = 16,
     Greed = 17,
     Hatred = 18,
     Delusion = 19,
-    ShowTutor = 20
+    Ethics = 20, // damage, consume
+    Concentration = 21, // defend
+    Wisdom = 22, // 減 consume
+    Reward = 23, // 加成
+    //Consume = 24 // 減成,
+    ShowTutor = 24 // 
 }
 
 public static class CacheUsage
@@ -103,9 +108,12 @@ public static class CacheManager
             return true;
         }
     }
-    public static bool ChangeHPMP(int hpAmount, bool isCheck){
+    public static bool ChangeHPMP(int hpChange, bool isCheck){ // only for player
+        int consume = CacheManager.GetConsume();
+        int defend = CacheManager.GetCache(Cache.Defend.ToString());
+        int hpAmount = hpChange - defend;
         bool hp = CheckChangeCache(hpAmount, Cache.HP);
-        bool mp = CheckChangeCache(-1, Cache.MP);
+        bool mp = CheckChangeCache(-1 * consume, Cache.MP);
         if(hpAmount > 0){
             mp = true;
         }
@@ -117,7 +125,7 @@ public static class CacheManager
                 } else {
                     int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
                     // Debug.Log("?????" + hpAmount + "?????" + mpMax);
-                    CacheManager.ChangeCache(Cache.MP.ToString(), -1, mpMax);
+                    CacheManager.ChangeCache(Cache.MP.ToString(), -1 * consume, mpMax);
                 }
             } 
         }
@@ -161,15 +169,25 @@ public static class CacheManager
         int currentCache = GetCache(key);
         int newCache = currentCache + amount;
         newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
+        Debug.Log(newCache + ":ChangeCache:" + amount);
         SetCache(key, newCache);
     }
 
+    public static int GetConsume(){
+        return 10 + CacheManager.GetCache(Cache.Ethics.ToString());
+    }
+    public static int GetDamage(){
+        return 10 + CacheManager.GetCache(Cache.Ethics.ToString())  * 2;
+    }
+    public static int GetDefend(){
+        return CacheManager.GetCache(Cache.Concentration.ToString());
+    }
     public static int GetCache(string key)
     {
         int defaultValue = 0;
         if(key == Cache.HPMax.ToString() || key == Cache.HP.ToString() || key == Cache.MPMax.ToString() || key == Cache.MP.ToString()){
             defaultValue = 50;
-        } else if (key == Cache.HPRecover.ToString() || key == Cache.Damage.ToString()){
+        } else if (key == Cache.HPRecover.ToString() || key == Cache.Reward.ToString()){
             defaultValue = 1;
         } else if (key == Cache.ClearFloor.ToString() || key == Cache.ClearStage.ToString()){
             defaultValue = -1;

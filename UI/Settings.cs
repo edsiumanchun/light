@@ -35,7 +35,7 @@ public class SettingsController : MonoBehaviour
         int xPos = 68;
         int yPos = -38;
         int space = 77;
-        Utils.CreateNavigationBar("設定", new Vector2(0f, 198f + 2f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("設定", new Vector2(0f, 206f + 2f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });

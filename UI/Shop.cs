@@ -32,7 +32,7 @@ public class ShopController : PageIndexController
         backgroundImage = Utils.CreateImage(DataHolder.commonImages[((int)UICommon.Panel)], backgroundPosition, canvasObject.transform);
         // Create the audio source
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
-        Utils.CreateNavigationBar("商店", new Vector2(0f, 198f), canvasObject.transform, () =>
+        Utils.CreateNavigationBar("商店", new Vector2(0f, 206f), canvasObject.transform, () =>
         {
             canvasObject.SetActive(false);
         });
@@ -56,9 +56,11 @@ public class ShopController : PageIndexController
         {
             for (int column = 0; column < columnCount; column++)
             {
+                bool isSelected = selectedIndex == column;
                 int index = currentPage * itemsPerPage + row * columnCount + column;
+                if (index < 0 || index >= productsDataList.Count) continue;
                 float xPos = startX + column * cellSize.x;
-                float yPos = startY - row * cellSize.y + 33;
+                float yPos = startY - row * cellSize.y + 38;
                 ProductData productData = productsDataList[index];
 
                 List<Sprite> icons = new List<Sprite>{
@@ -80,12 +82,13 @@ public class ShopController : PageIndexController
                     icons.Add(GetImage("Delusion"));
                     stringList.Add(productData.delusion.ToString());
                 }
-                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[((int)UICommon.NameCard)], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform, false);
+                int imageIndex = isSelected ? (int)UICommon.NameCardSel : (int)UICommon.NameCard;
+                GameObject cell = Utils.CreateAvatarAndRows(DataHolder.commonImages[imageIndex], icons, stringList, new Vector2(xPos, yPos), canvasObject.transform);
                 cell.name = index.ToString();
                 gameObjects.Add(cell);
 
                 Button button = cell.AddComponent<Button>();
-                button.onClick.AddListener(() => OnClickButtonWithParameter(index));
+                button.onClick.AddListener(() => OnClickButtonWithParameter(index % itemsPerPage));
             }
         }
         rowTextObject = Utils.CreateText(new Vector2(300, 100), new Vector2(-100, -178), canvasObject.transform, TextAnchor.MiddleLeft);
@@ -111,7 +114,7 @@ public class ShopController : PageIndexController
             switch (index)
             {
                 case 0:
-                    int hpMax = CacheManager.GetCache(Cache.HP.ToString());
+                    int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
                     CacheManager.ChangeHPMP(hpMax, false);
                     break;
                 case 1:

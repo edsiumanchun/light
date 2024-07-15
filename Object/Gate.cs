@@ -10,6 +10,8 @@ public class GateController : MonoBehaviour
     private SpriteRenderer gateSpriteRenderer;
     private Color originalColor;
 
+    bool isDisappear = false;
+
     public Sprite GetPlateSprite()
     {
         return DataHolder.plateV[0];
@@ -42,10 +44,12 @@ public class GateController : MonoBehaviour
 
     public void OpenGateAndDestroy(bool isUp)
     {
+        if(isDisappear) return;
+        isDisappear = true;
         string keyName = this.gameObject.name.Split("Gate")[1];
-        print("???" + keyName);
         bool result = CacheManager.ChangeKey(keyName, -1);
         if(result == false) {
+            isDisappear = false;
             return;
         }
         StartCoroutine(MoveGate(isUp));

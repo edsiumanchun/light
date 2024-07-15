@@ -29,7 +29,10 @@ public class JoystickController : MonoBehaviour, IDragHandler
     {
         if (Application.isMobilePlatform)
         {
-            return false; 
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                return true;
+            }
         }
         else
         {

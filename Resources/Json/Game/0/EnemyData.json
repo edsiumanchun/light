@@ -19,8 +19,20 @@
       "reward": 1 
     },
     {
-      "name": "Delusion1",
-      "damage": 1,
+      "name": "Ethics",
+      "damage": 0,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "Concentration",
+      "damage": 0,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "Wisdom",
+      "damage": 0,
       "hp": 1,
       "reward": 1
     },
