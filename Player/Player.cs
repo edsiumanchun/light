@@ -262,6 +262,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AttackedBySpell(string name){
+        Utils.AddEffect(this.gameObject, "Stone/" + name);
+    }
+
     private void OnTriggerExit(Collider collision)
     {
         switch (collision.name)

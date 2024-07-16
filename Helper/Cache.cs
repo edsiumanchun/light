@@ -110,10 +110,14 @@ public static class CacheManager
     }
     public static bool ChangeHPMP(int hpChange, bool isCheck){ // only for player
         int consume = CacheManager.GetConsume();
+        return ChangeHPWithMP(hpChange, -1 * consume, isCheck);
+    }
+
+    public static bool ChangeHPWithMP(int hpChange, int mpChange, bool isCheck){ // only for player
         int defend = CacheManager.GetCache(Cache.Defend.ToString());
         int hpAmount = hpChange - defend;
         bool hp = CheckChangeCache(hpAmount, Cache.HP);
-        bool mp = CheckChangeCache(-1 * consume, Cache.MP);
+        bool mp = CheckChangeCache(mpChange, Cache.MP);
         if(hpAmount > 0){
             mp = true;
         }
@@ -125,7 +129,7 @@ public static class CacheManager
                 } else {
                     int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
                     // Debug.Log("?????" + hpAmount + "?????" + mpMax);
-                    CacheManager.ChangeCache(Cache.MP.ToString(), -1 * consume, mpMax);
+                    CacheManager.ChangeCache(Cache.MP.ToString(), mpChange, mpMax);
                 }
             } 
         }
@@ -135,6 +139,14 @@ public static class CacheManager
         } else if(mp == false){
             StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
             storyController.LoadStoryDataFromText("", "靈力不足，無法作戰。");
+        } else {
+            Debug.Log("????" + hp);
+            Debug.Log("????" + mp);
+            string sign = hpAmount < 0 ? "" : "+";
+            int index = hpAmount < 0 ? 0 : 1;
+            Camera.main.GetComponent<GameUIController>().CreateAndAnimateFloatingText(sign + hpAmount.ToString(), index);
+            string sign2 = mpChange < 0 ? "" : "+";
+            Camera.main.GetComponent<GameUIController>().CreateAndAnimateFloatingText(sign2 + mpChange.ToString(), 2);
         }
         return hp == true && mp == true;
     }

@@ -70,8 +70,8 @@ public class ItemController : PageIndexController
         float startX = -(totalWidth / 2) + (cellSize.x / 2);
         float startY = totalHeight / 2 - (cellSize.y / 2) ;
         string reward = "獎勵\n";
-        Debug.Log("abc" + totalItems);
-        Debug.Log("abc" + totalPages);
+        // Debug.Log("abc" + totalItems);
+        // Debug.Log("abc" + totalPages);
         for (int row = 0; row < rowCount; row++)
         {
             for (int column = 0; column < columnCount; column++)

@@ -338,12 +338,12 @@ public class Utils : MonoBehaviour
         GameObject lightObject = Instantiate(lightPrefab);
         lightObject.name = "Effect";
         lightObject.transform.SetParent(GO.transform);
-        if(GO.name.Contains("Enemy") || GO.name.Contains("Boss")) {
+        if(GO.name.Contains("Enemy") || GO.name.Contains("Boss") || GO.name.Contains("Player")) {
             float y = GO.GetComponent<BoxCollider2D>() == null ? 0.9f : GO.GetComponent<BoxCollider2D>().size.y / 2;
             float height = y / 2;
-            lightObject.transform.localPosition = new Vector3(0, height, -3f);
+            lightObject.transform.localPosition = new Vector3(0, height, GO.name.Contains("Player") ? 0.3f : -0.3f);
         } else {
-            lightObject.transform.localPosition = new Vector3(0, 0f, -3f);
+            lightObject.transform.localPosition = new Vector3(0, 0f, -0.3f);
         }
     }
 

@@ -5,24 +5,27 @@ using DG.Tweening;
 
 public class FireBallController : MonoBehaviour
 {
-
-    public int damage = 1; // The damage of the fireball
-    public void Fire()
+    public int totalHP = 0;
+    public int totalMP = 0;
+    public void Fire(string type)
     {
         BoxCollider2D boxCollider2D = this.gameObject.AddComponent<BoxCollider2D>();
-        boxCollider2D.size = new Vector2(0.1f, 0.1f);
+        boxCollider2D.size = new Vector2(0.03f, 0.03f);
         boxCollider2D.isTrigger = true;
         this.gameObject.AddComponent<RectTransform>();
-        Utils.AddEffect(this.gameObject, "PurpleBall");
+        Debug.Log("????" + type + "");
+        Utils.AddEffect(this.gameObject, "Stone/Ball" + type);
         GameObject gameObject = GameObject.Find("Player");
-        transform.DOMove(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, -3), 1);
+        transform.DOMove(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, -3), 1f);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         // If the fireball hits the player, reduce their HP and destroy the fireball
         if (other.name.Contains("Player"))
         {
-            CacheManager.ChangeHPMP(damage, true);
+            if(totalHP != 0 || totalMP != 0){
+                CacheManager.ChangeHPWithMP(-1 * totalHP, -1 * totalMP,true);
+            }
             Destroy(gameObject);
         }
     }

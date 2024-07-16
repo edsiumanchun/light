@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public int assetIndex = 0;
     public List<GameObject> gemObjects;
     public List<EnemyData> enemyDatas;
+    public EnemyData specialEnemyData;
     public List<Sprite> avatars;
     public int enemyHP = 0;
     public int enemyDamage = 0;
@@ -38,8 +39,8 @@ public class EnemyController : MonoBehaviour
     }
     void Start()
     {
-        hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
-        hpTextComponent.textColor = Color.red;
+        // hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
+        // hpTextComponent.textColor = Color.red;
     }
 
     public void ProcessAssetIndex(int index){
@@ -79,7 +80,9 @@ public class EnemyController : MonoBehaviour
                     // define type
                     if(spriteObject.name.Contains("2")) {
                         spriteObject.tag = "Tower";
+                        specialEnemyData = data;
                     }
+                    // define type
                     if(spriteObject.name.Contains(data.name)) {
                         if(enemyDatas.Contains(data) == false) {
                             enemyDatas.Add(data);
@@ -136,16 +139,24 @@ public class EnemyController : MonoBehaviour
                 ResumeBattle();
                 yield break;
             }
-            TowerAttack();
-            currentHP -= CacheManager.GetDamage();
+            // effect 
+            GameObject player = GameObject.Find("Player");
+            if(this.gameObject.name.Contains("Gem")) {
+                player.GetComponent<PlayerController>().AttackedBySpell("Explode");
+            }
+            // effect 
+            int damage = CacheManager.GetDamage();
+            currentHP -= damage;
             currentHP = Mathf.Max(currentHP, 0);
+
             Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
             yield return new WaitForSeconds(0.4f); // Wait for 1 second
+            TowerAttack();
             GameObject gameObject = GameObject.Find("MariaGhost");
             if (gameObject != null)
             {
                 int hpRecover = CacheManager.GetCache(Cache.HPRecover.ToString());
-                Utils.AddEffect(DataHolder.player, "heart");
+                Utils.AddEffect(player, "heart");
                 CacheManager.ChangeHPMP(hpRecover, false);
                 Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
             }
@@ -153,8 +164,9 @@ public class EnemyController : MonoBehaviour
             if (currentHP <= 0)
             {
                 CacheUsage.cacheDestroyedObject(this.gameObject.name);
-                ResumeBattle();
                 Die(true);
+                yield return new WaitForSeconds(0.7f);
+                ResumeBattle();
             } 
         }
     }
@@ -168,9 +180,24 @@ public class EnemyController : MonoBehaviour
 
     public void TowerAttack(){
         GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Tower");
+        int i = 0, totalHP = 0, totalMP = 0;
         foreach (GameObject go in gameObjectsWithTag)
         {
-            CreateFireBall(go);
+            bool isFire = i == gameObjectsWithTag.Length - 1;
+            if(go.name.Contains("Greed")){
+                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+                CreateFireBall(go, "Greed", isFire, totalHP, totalMP);
+            } else if(go.name.Contains("Hatred")){
+                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+                CreateFireBall(go, "Hatred", isFire, totalHP, totalMP); 
+            } else if(go.name.Contains("Delution")){
+                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+                CreateFireBall(go, "Delution", isFire, totalHP, totalMP);
+            }
+            i++;
         }
     }
 
@@ -258,11 +285,15 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void CreateFireBall(GameObject go){
+    public void CreateFireBall(GameObject go, string type, bool isFire, int totalHP, int totalMP){
         GameObject fireBall = new GameObject("Fireball");
         FireBallController fireBallController = fireBall.AddComponent<FireBallController>();
+        if(isFire) {
+            fireBallController.totalHP = totalHP;
+            fireBallController.totalMP = totalMP;
+        }
         // fireBall.transform.parent = go.transform;
         fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -3);
-        fireBallController.Fire();
+        fireBallController.Fire(type);
     }
 }

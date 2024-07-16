@@ -16,7 +16,7 @@ public class GameUIController : MonoBehaviour
 
     private bool isMenuOpen, isavatarOpen, isStageOpen, isInfoOpen, isItemOpen;
     public GameObject canvasObject;
-
+    public FloatingTextController floatingTextController;
 
 
     public Vector2[] buttonPositions = new Vector2[]
@@ -68,6 +68,7 @@ public class GameUIController : MonoBehaviour
         DisplayHPMPInfo();
         HideEnemyHPBar(true);
         // hp
+        floatingTextController = this.avatarButton.AddComponent<FloatingTextController>();
     }
 
     public void HideEnemyHPBar(bool isHide){
@@ -76,7 +77,7 @@ public class GameUIController : MonoBehaviour
         settingButton.SetActive(isHide);
         infoButton.SetActive(isHide);
         stageButton.SetActive(isHide);
-        avatarButton.SetActive(isHide);
+        avatarButton.GetComponent<Button>().enabled = isHide;
     }
 
     // private void Setupavatar()
@@ -170,6 +171,10 @@ public class GameUIController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void CreateAndAnimateFloatingText(string text, int index) {
+        floatingTextController.CreateAndAnimateFloatingText(text, index);
     }
 
     public void DisplayHPMPInfo(){

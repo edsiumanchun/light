@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Laser
-  m_Shader: {fileID: -6465566751694194690, guid: 0dfaccdf5adba46c1acd5758779a71b0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 49478150f04d844cbaf48416eebb50de, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 100
   stringTagMap: {}
   disabledShaderPasses:
   - GRABPASS
@@ -72,10 +72,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Falloff: 0.2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 9.67
+    - _Intensity: 2.33
     - _LaserEdgeSmoothness: 25.4
     - _Metallic: 0
     - _Mode: 0
@@ -87,18 +88,18 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _Width: 2
+    - _Width: 0.288
     - _ZWrite: 1
     - _thickness: 10.45
     m_Colors:
-    - _Color: {r: 0.4433962, g: 0.23085752, b: 0.039738327, a: 1}
-    - _Emission: {r: 0, g: 0.33333334, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.18431373}
+    - _Emission: {r: 0.24692138, g: 0.8301887, b: 0.13705944, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _density: {r: 5, g: 0, b: 0, a: 0}
     - _smooth: {r: 3, g: 1, b: 0, a: 0}
     - _speed: {r: -0.13, g: 0, b: 0, a: 0}
-    - _thickness: {r: 6.34, g: -0.11, b: 0, a: 0}
+    - _thickness: {r: 6.4, g: -0.11, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4461990469086927745
 MonoBehaviour:

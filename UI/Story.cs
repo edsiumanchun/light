@@ -379,3 +379,4 @@ public class StoryController : MonoBehaviour
         DisplayNextSentence();
     }
 }
+ 

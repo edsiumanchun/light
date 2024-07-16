@@ -219,10 +219,10 @@ public class JoystickController : MonoBehaviour, IDragHandler
             }
         } else  {
             // purify
-            bool result = CacheManager.ChangeHPMP(-1 * purifyObject.GetComponent<EnemyController>().enemyDamage,true);
-            if(result == false) {
-                return;
-            }
+            // bool result = CacheManager.ChangeHPMP(-1 * purifyObject.GetComponent<EnemyController>().enemyDamage,true);
+            // if(result == false) {
+            //     return;
+            // }
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);

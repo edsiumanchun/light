@@ -1,12 +1,12 @@
-Shader "Custom/BrightLaserIlluminated"
+Shader "Custom/LaserIlluminated"
 {
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Emission ("Emission", Color) = (0,0,0,1)
-        _Width ("Width", Range(0.01, 2.0)) = 0.1 // Increased maximum width to 2.0
-        _Intensity ("Intensity", Range(0.0, 20.0)) = 4.0
+        _Width ("Width", Range(0.01, 1.0)) = 0.1
+        _Intensity ("Intensity", Range(0.0, 10.0)) = 10.0
     }
     SubShader
     {
@@ -33,9 +33,9 @@ Shader "Custom/BrightLaserIlluminated"
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
             
-            // Brighter laser-like effect with larger width
+            // Laser-like effect
             half dist = 1.0 - abs(IN.uv_MainTex.y - 0.5) / _Width;
-            o.Emission = _Emission.rgb * pow(dist, _Intensity) * 10.0; // Increased emission intensity
+            o.Emission = _Emission.rgb * pow(dist, _Intensity);
             o.Alpha = dist;
         }
         ENDCG
