@@ -90,9 +90,10 @@ public class StageController : MonoBehaviour
                 GameObject cell = Utils.CreateTextButton(null, new Vector2(xPos, yPos + 30f), new Vector2(0, 0), canvasObject.transform, () =>
                 {
                     CacheManager.SetCache(Cache.CurrentStage.ToString(), tempStage);
-                    CacheManager.SetCache(Cache.Exit.ToString(), index == 0 ? 2 : (AssetData.goUp ? 2 : 0));
+                    CacheManager.SetCache(Cache.ExitH.ToString(), index == 0 ? 4 : -2);  // 入口
+                    CacheManager.SetCache(Cache.ExitV.ToString(), -1);  
                     MainController.LoadAssetsFromJson(tempStage, index, "HomeScene");
-        updateButtonImages();
+                    updateButtonImages();
                     canvasObject.SetActive(false);
                 });
 
@@ -105,7 +106,8 @@ public class StageController : MonoBehaviour
         updateButtonImages();
     }
 
-    void updateButtonImages() {
+    public void updateButtonImages() {
+        if(buttons == null) return;
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         // Debug.Log("???" + currentFloor);
         int i = 0;

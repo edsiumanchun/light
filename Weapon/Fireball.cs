@@ -13,7 +13,6 @@ public class FireBallController : MonoBehaviour
         boxCollider2D.size = new Vector2(0.03f, 0.03f);
         boxCollider2D.isTrigger = true;
         this.gameObject.AddComponent<RectTransform>();
-        Debug.Log("????" + type + "");
         Utils.AddEffect(this.gameObject, "Stone/Ball" + type);
         GameObject gameObject = GameObject.Find("Player");
         transform.DOMove(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, -3), 1f);
@@ -24,7 +23,7 @@ public class FireBallController : MonoBehaviour
         if (other.name.Contains("Player"))
         {
             if(totalHP != 0 || totalMP != 0){
-                CacheManager.ChangeHPWithMP(-1 * totalHP, -1 * totalMP,true);
+                CacheManager.ChangeHPWithMP(-1 * totalHP, -1 * totalMP);
             }
             Destroy(gameObject);
         }

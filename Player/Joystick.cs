@@ -15,7 +15,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private int jumpCount = 0;
     private int jumpCap = 2;
     // [TBD]only foot can trigger
-    public float stopMove = 0;
     void Update()
     {
         // jump
@@ -29,7 +28,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
     {
         if (Application.isMobilePlatform)
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && Input.GetTouch(0).deltaPosition.magnitude < 10f)
             {
                 return true;
             }
@@ -143,9 +142,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
     }
 
-    public void SetupStopMove(){
-        stopMove = transform.localScale.x;
-    }
 
     private void MovePlayer(float moveDirection)
     {
@@ -154,16 +150,10 @@ public class JoystickController : MonoBehaviour, IDragHandler
         }
         if (moveDirection > 0)
         {
-            // if(stopMove < 0){
-            //     return;
-            // }
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if(moveDirection < 0)
         {
-            // if(stopMove > 0){
-            //     return;
-            // }
             transform.localScale = new Vector3(1f, 1f, 1f);
         } else {
             if(jumpCount == 0){
@@ -195,11 +185,18 @@ public class JoystickController : MonoBehaviour, IDragHandler
     public void Purify()
     {
         PlayerController playerController = this.gameObject.GetComponent<PlayerController>();
-        if(playerController.status == UIGameButton.Exit){
+        if(playerController.status == UIGameButton.FakeExit){
+            playerController.GoFakeExit();
+            return;
+        } else if(playerController.status == UIGameButton.Exit){
             playerController.GoExit();
             return;
         } else if(playerController.status == UIGameButton.Down){
-            playerController.GoDown();
+            if(AssetData.goUp) {
+                playerController.GoUp();
+            } else {
+                playerController.GoDown();  
+            }
             return;
         } else if(playerController.status == UIGameButton.Story){
             playerController.ShowStory();
@@ -218,11 +215,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
                 this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
             }
         } else  {
-            // purify
-            // bool result = CacheManager.ChangeHPMP(-1 * purifyObject.GetComponent<EnemyController>().enemyDamage,true);
-            // if(result == false) {
-            //     return;
-            // }
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);

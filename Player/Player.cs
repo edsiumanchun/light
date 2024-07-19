@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject maria;
 
+    public string doorName;
+
     public UIGameButton status = UIGameButton.none; // Whether the player is standing on the floor or not
     char exitPosition = '0';
 
@@ -67,10 +69,11 @@ public class PlayerController : MonoBehaviour
         switch (name)
         {
             case string str when str.Contains("GoUp"):
+
                 break;
             case string str when str.Contains("GoDown") ||  str.Contains("Story"):
                 status = UIGameButton.none;
-                gameUIController.hideGameButton();
+                gameUIController.HideGameButton();
                 break;
             case string str when str.Contains("Floor"):
                 break;
@@ -79,12 +82,12 @@ public class PlayerController : MonoBehaviour
             case string str when str.Contains("PlateV"):
                 if(str.Contains("Gate")) {
                     status = UIGameButton.none;
-                    gameUIController.hideGameButton();
+                    gameUIController.HideGameButton();
                 } 
-                this.gameObject.GetComponent<JoystickController>().stopMove = 0;
                 break;
             case string str when str.Contains("Enemy") || str.Contains("Boss") || str.Contains("Gem"):
-                gameUIController.hideGameButton();
+                gameUIController.HideGameButton();
+                gameUIController.HideEnemyButton();
                 break;
         }
     }
@@ -112,21 +115,59 @@ public class PlayerController : MonoBehaviour
     
 
     public void GoDown(){
-        status = UIGameButton.none;
-        CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 2 : 0);
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        int offset = AssetData.goUp ? 1 : -1; 
-        MainController.LoadFloorAssetsFromJson(currentFloor - offset, "HomeScene");
+        Debug.Log("???" + doorName);
+        Debug.Log("???" + doorName);
+        if (int.TryParse(doorName[1].ToString(), out int exitV))
+        {
+            if (int.TryParse(doorName[0].ToString(), out int exitH)){
+                status = UIGameButton.none;
+                CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
+                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+                MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
+            }
+        }
+    }
+
+    public void GoUp(){
+        Debug.Log("???" + doorName);
+        if (int.TryParse(doorName[1].ToString(), out int exitV))
+        {
+            if (int.TryParse(doorName[0].ToString(), out int exitH)){
+                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+                CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
+                MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+            }
+        }
     }
 
     public void GoExit() {
-        int exit = AssetData.exit;
-        status = UIGameButton.none;
-        CacheManager.SetCache(Cache.Exit.ToString(), exit >= 0 ? 3 : 1);
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit), "HomeScene");
+        Debug.Log("???" + doorName);
+        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
+        if (int.TryParse(doorName[1].ToString(), out int exitV))
+        {
+            if (int.TryParse(doorName[0].ToString(), out int exitH)){
+                status = UIGameButton.none;
+                CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
+                MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit), "HomeScene");
+            }
+        }
+    }
+    public void GoFakeExit() {
+        Debug.Log("???" + doorName);
+        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
+        if (int.TryParse(doorName[1].ToString(), out int exitV))
+        {
+            if (int.TryParse(doorName[0].ToString(), out int exitH)){
+                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+                status = UIGameButton.none;
+                CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
+                MainController.LoadFloorAssetsFromJson(currentFloor >= 100 ? currentFloor / 100 : currentFloor * 100, "HomeScene");
+            }
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -163,24 +204,30 @@ public class PlayerController : MonoBehaviour
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int offset = AssetData.goUp ? 1 : -1; 
         string playerPosition = name.Split('_')[0];
         // Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
-                CacheManager.SetCache(Cache.Exit.ToString(),AssetData.goUp ? 0 : 2);
-                MainController.LoadFloorAssetsFromJson(currentFloor + offset, "HomeScene");
+                doorName = collision.gameObject.name;
+                if(AssetData.goUp) {
+                    GoDown();
+                } else {
+                    GoUp();  
+                }
                 break;
             case string str when str.Contains("GoDown"):
+                doorName = collision.gameObject.name;
                 exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Down);
                 status = UIGameButton.Down;
                 break;
-            case string str when str.Contains("GateGreen"):
+            case string str when str.Contains("GateGreen") || str.Contains("GateFake"):
+                doorName = collision.gameObject.name;
                 exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Gate);
-                status = UIGameButton.Exit;
+                status = str.Contains("GateGreen") ? UIGameButton.Exit : UIGameButton.FakeExit;
+                audioSource.PlayOneShot(gateSound);
                 break;
             case string str when str.Contains("Floor"):
                 audioSource.PlayOneShot(landSound);
@@ -197,7 +244,6 @@ public class PlayerController : MonoBehaviour
                 } else {
                     audioSource.PlayOneShot(wallSound);
                 }
-                this.gameObject.GetComponent<JoystickController>().SetupStopMove();
                 break;
 
             case string str when str.Contains("Light"):
@@ -217,6 +263,7 @@ public class PlayerController : MonoBehaviour
                 // infoController.avatars = enemyController.avatars;
                 // infoController.enemyDataList = enemyController.enemyDatas;
                 gameUIController.showGameButton((int)UIGameButton.Purify);
+                gameUIController.ShowEnemyButton(enemyController.currentHP, enemyController.enemyMaxHP, enemyController.avatars[0]);
                 status = UIGameButton.Purify;
                 break;
         }
@@ -272,7 +319,7 @@ public class PlayerController : MonoBehaviour
         {
             case string str when str.Contains("Light") || str.Contains("Dark") :
                 GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
-                gameUIController.hideGameButton();
+                gameUIController.HideGameButton();
                 break;
         }
     }

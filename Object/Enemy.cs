@@ -6,13 +6,14 @@ using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public int assetIndex = 0;
+    public GameObject effect;
     public List<GameObject> gemObjects;
     public List<EnemyData> enemyDatas;
     public EnemyData specialEnemyData;
     public List<Sprite> avatars;
-    public int enemyHP = 0;
+    public int enemyMaxHP = 0;
     public int enemyDamage = 0;
-    int currentHP = 0;
+    public int currentHP = 0;
     HPTextComponent hpTextComponent;
     // Use this for initialization
 
@@ -24,13 +25,10 @@ public class EnemyController : MonoBehaviour
         {
             if(this.gameObject.name.Contains(data.name)) {
                 enemyDatas.Add(data);
-                enemyHP = data.hp;
+                enemyMaxHP = data.hp;
                 enemyDamage = data.damage;
                 SetupAssetDataNamelist(data.name);
             }
-        }
-        if( this.gameObject.name.Contains("Boss")){
-            this.gameObject.name = "Boss";
         }
     //     LaserBeamCreator.CreateLaserBeam(new Vector3(1,1,0), new Vector3(1,1,0),
     // 50f,
@@ -52,7 +50,7 @@ public class EnemyController : MonoBehaviour
             int digit3 = (assetIndex / 10) % 10 - 1;
             int digit4 = assetIndex % 10 ;
             float param = 0.5f;
-            Vector3[] positions = { new Vector3(-param, param, 0), new Vector3(param, param, 0), new Vector3(param, -param, 0), new Vector3(-param, -param, 0) };
+            Vector3[] positions = { new Vector3(param, param, 0), new Vector3(-param, param, 0), new Vector3(-param, -param, 0), new Vector3(param, -param, 0) };
             
             int[] digits = new[] { digit1, digit2, digit3, digit4 };
             // if(assetIndex >= 10000) {
@@ -89,7 +87,7 @@ public class EnemyController : MonoBehaviour
                             avatars.Add(spriteRenderer.sprite);
                             SetupAssetDataNamelist(data.name);
                         }
-                        enemyHP = enemyHP + data.hp;
+                        enemyMaxHP = enemyMaxHP + data.hp;
                         enemyDamage = enemyDamage + data.damage;
                     }
                 }
@@ -103,6 +101,7 @@ public class EnemyController : MonoBehaviour
             Sprite sprite = Utils.LoadSprites("Enemies", paths)[0];
             avatars.Add(sprite);
         }
+        currentHP = enemyMaxHP;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -120,65 +119,70 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        currentHP = enemyHP;
-        Utils.AddEffect(this.gameObject, "purify");
-        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(false);
-        // if(Utils.isUAT) {
-        //     Die(true);
-        //     return;
-        // }
+        effect = Utils.AddEffect(this.gameObject, "purify");
+        Camera.main.GetComponent<GameUIController>().HideBattle(false);
+        CacheManager.SyncHPMP(false);
+
         StartCoroutine(DecreaseHPOverTime());
     }
-
-    private IEnumerator DecreaseHPOverTime()
-    {
-        while (currentHP > 0)
-        {
-            bool result = CacheManager.ChangeHPMP(-1 * enemyDamage, false);
-            if(result == false) {
-                ResumeBattle();
-                yield break;
-            }
+    
+    private void BattleStep(int i = 0) {
+        GameObject player = GameObject.Find("Player");
+        if (i == 0) {
+            CacheManager.ChangeHPMP(-1 * enemyDamage);
+            bool result = TowerAttack();
             // effect 
-            GameObject player = GameObject.Find("Player");
             if(this.gameObject.name.Contains("Gem")) {
                 player.GetComponent<PlayerController>().AttackedBySpell("Explode");
             }
             // effect 
-            int damage = CacheManager.GetDamage();
-            currentHP -= damage;
+            currentHP = currentHP - CacheManager.GetDamage();
             currentHP = Mathf.Max(currentHP, 0);
 
-            Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
-            yield return new WaitForSeconds(0.4f); // Wait for 1 second
-            TowerAttack();
+            Camera.main.GetComponent<GameUIController>().UpdateEnemyBar(currentHP, enemyMaxHP, true);
+        } else if(i==1){
+            // healing
             GameObject gameObject = GameObject.Find("MariaGhost");
             if (gameObject != null)
             {
                 int hpRecover = CacheManager.GetCache(Cache.HPRecover.ToString());
                 Utils.AddEffect(player, "heart");
-                CacheManager.ChangeHPMP(hpRecover, false);
-                Camera.main.GetComponent<GameUIController>().UpdateAllHPMPBar(currentHP, enemyHP);
+                CacheManager.ChangeHPMP(hpRecover);
+                Camera.main.GetComponent<GameUIController>().UpdateEnemyBar(currentHP, enemyMaxHP, true);
             }
-            yield return new WaitForSeconds(0.4f);
-            if (currentHP <= 0)
-            {
-                CacheUsage.cacheDestroyedObject(this.gameObject.name);
-                Die(true);
-                yield return new WaitForSeconds(0.7f);
-                ResumeBattle();
-            } 
+            // healing
         }
+    }
+    private IEnumerator DecreaseHPOverTime()
+    {
+        while (currentHP > 0)
+        {
+            bool result = CacheManager.CheckHPMP(-1 * enemyDamage);
+            if(result == false) {
+                ResumeBattle();
+                yield break;
+            }
+            BattleStep(0);
+            yield return new WaitForSeconds(0.5f); 
+            // healing
+            BattleStep(1);
+            // healing
+            yield return new WaitForSeconds(0.5f);
+        }
+        CacheUsage.cacheDestroyedObject(this.gameObject.name);
+        Die(true);
     }
 
     public void ResumeBattle(){
-        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(true);
+        RemoveFloatingText();
+        Camera.main.GetComponent<GameUIController>().HideBattle(true);
         GameObject player = GameObject.Find("Player");
         player.GetComponent<JoystickController>().ReleaseFighting();
         Utils.RemoveEffect(this.gameObject.transform);
+        CacheManager.SyncHPMP(true); // 真係sync
     }
 
-    public void TowerAttack(){
+    public bool TowerAttack(){
         GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Tower");
         int i = 0, totalHP = 0, totalMP = 0;
         foreach (GameObject go in gameObjectsWithTag)
@@ -191,19 +195,22 @@ public class EnemyController : MonoBehaviour
             } else if(go.name.Contains("Hatred")){
                 totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
                 totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
-                CreateFireBall(go, "Hatred", isFire, totalHP, totalMP); 
-            } else if(go.name.Contains("Delution")){
+                CreateFireBall(go, "Hatred", isFire, totalHP, totalMP);
+            } else if(go.name.Contains("Delusion")){
                 totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
                 totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
-                CreateFireBall(go, "Delution", isFire, totalHP, totalMP);
+                CreateFireBall(go, "Delusion", isFire, totalHP, totalMP);
             }
             i++;
         }
+        return true;
     }
 
     public void Die(bool inGame){
+        if(effect != null) {
+            Destroy(effect);
+        }
         if(inGame) {
-            ResumeBattle();
             if(this.gameObject.name.Contains("Boss")) {
                 GameObject player = GameObject.Find("Player");
                 player.GetComponent<PlayerController>().ShowStory();
@@ -211,20 +218,33 @@ public class EnemyController : MonoBehaviour
                 if(gemObjects != null) { // gem
                     StartCoroutine(GemDie());
                 } else {
+                    // Utils.AddEffect(this.gameObject, "SecureAura");
                     Reward();
                     Utils.Fade(this.gameObject, true);
                     StartCoroutine(DelayDestroy(this.gameObject));
                 }
             }
         } else {
+            // Utils.AddEffect(this.gameObject, "SecureAura");
             Utils.Fade(this.gameObject, true);
             StartCoroutine(DelayDestroy(this.gameObject));
         }
     }
 
+    public void RemoveFloatingText(){
+        Camera.main.GetComponent<GameUIController>().enemyFloatingTextController.StopAllCoroutines();
+        Camera.main.GetComponent<GameUIController>().playerFloatingTextController.StopAllCoroutines();
+        GameObject[] floatTextObjects = GameObject.FindGameObjectsWithTag("FloatText");
+        foreach (GameObject floatTextObject in floatTextObjects)
+        {
+            Destroy(floatTextObject);
+        }
+    }
+
     private IEnumerator DelayDestroy(GameObject GO){
-        yield return new WaitForSeconds(0.3f); // Wait for 1 second
+        yield return new WaitForSeconds(0.7f); // Wait for 1 second
         Destroy(GO); 
+        ResumeBattle();
     }
 
     private IEnumerator GemDie()
@@ -293,7 +313,7 @@ public class EnemyController : MonoBehaviour
             fireBallController.totalMP = totalMP;
         }
         // fireBall.transform.parent = go.transform;
-        fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -3);
+        fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -9.3f);
         fireBallController.Fire(type);
     }
 }

@@ -15,22 +15,23 @@ public class MainController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
-            CacheManager.SetCache(Cache.CurrentStage.ToString(), 0);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
-            CacheManager.SetCache(Cache.Exit.ToString(),  2); // 2 = down, 0 = up
+            CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 101);
+            CacheManager.SetCache(Cache.ExitH.ToString(), 5); 
+            CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
             CacheManager.ChangeKey("Gold", 1);
             //CacheManager.ChangeKey("Silver", 999);
             //CacheManager.ChangeKey("Copper", 999);
         }
-        CacheManager.SetCache(Cache.Exit.ToString(), currentFloor == 0 ? 2 : 0);
         LoadItemData();
         LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
-        LoadAssetsForButtonsUI();
+        LoadAssetsForButtonsUI(); 
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
         LoadAssetsForStoryUI();
         LoadAssetsForCommonUI();
+        LoadAssetsForText();
     }
 
     static public void LoadShopData(int stage)
@@ -74,6 +75,11 @@ public class MainController : MonoBehaviour
         List<string> paths2 = new List<string>((new[] { "Bin"}));
         List<Sprite> sprites2 = LoadSprites("UI/Setting", paths2);
         DataHolder.settingImages = sprites2;
+    }
+    public void LoadAssetsForText()
+    {
+        List<string> paths = new List<string>((new[] { "RedText", "GreenText", "BlueText" }));
+        DataHolder.textPrefabs = LoadPrefabs("Text", paths);
     }
 
     public void LoadAssetsForCommonUI()

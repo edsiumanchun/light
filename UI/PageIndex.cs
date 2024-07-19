@@ -95,7 +95,6 @@ public class PageIndexController : MonoBehaviour
             return itemsPerPage;
         } else {
             int itemsLeft = totalItems % itemsPerPage;
-            Debug.Log("??" + itemsLeft);
             return itemsLeft == 0 ? 3 : itemsLeft;
         }
     }

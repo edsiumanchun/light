@@ -37,6 +37,7 @@ public class AssetData
 {
     public static bool goUp = false;
     public static int exit = 0;
+    public static int fakeExit = 0;
     public static GameObject gameObject;
     public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
@@ -100,6 +101,7 @@ public class AssetData
                     newObject = Utils.InstantiateObject(prefab);
                     AssetData.SetParent(newObject);
                 } else if (assetIndex / 50 >= 1) {
+                    Debug.Log("formattedIndex:" + formattedIndex.ToString());
                     spriteRenderer.sprite = (Sprite)DataHolder.triggers[formattedIndex];
                     TriggerController triggerController = newObject.AddComponent<TriggerController>();
                     triggerController.name = spriteRenderer.sprite.name;
@@ -128,8 +130,8 @@ public class AssetData
                 int index = gridArray0[0];
                 spriteRenderer.sprite = DataHolder.backgrounds[index];
                 // spriteRenderer.drawwMode = index == 0 ? SpriteDrawMode.Tiled : SpriteDrawMode.Simple;
-                spriteRenderer.size = DataHolder.GetBackgroundSize();
-                newObject.transform.localScale = new Vector3(1.27f, 1.27f, 1f);
+                //spriteRenderer.size = DataHolder.GetBackgroundSize();
+                newObject.transform.localScale = new Vector3(1.21f, 1.21f, 1f);
                 break;
             case "Audio":
                 int audioIndex = gridArray0[0];
@@ -138,6 +140,10 @@ public class AssetData
             case "Exit":
                 int exitIndex = gridArray0[0];
                 AssetData.exit = exitIndex;
+                if(gridArray1.Count > 0) {
+                    int fakeExitIndex = gridArray1[0];
+                    AssetData.fakeExit = fakeExitIndex;
+                }
                 return null;
         }
         // --------- //
@@ -160,7 +166,8 @@ public class AssetData
             }
             newObject.name = "Story";
         } else if( pathName.Contains("Boss")){
-            // newObject.name = "Boss"; do it in enemy.js
+            newObject.name = pathName;
+            newObject.tag = "Boss";
         } else {
             newObject.name = id + "_" + pathName;
         }
@@ -197,6 +204,7 @@ public class AssetData
             case "GateSilver":
             case "GateCopper":
             case "GateGreen":
+            case "GateFake":
                 if (CacheUsage.isDestroyObject("|" + id))
                 {
                     return null;
@@ -217,9 +225,17 @@ public class AssetData
     }
 
     public void SetupCollider(GameObject newObject, bool isSprite, int cellValue){
-        if(newObject.name.Contains("Fake")){
+        if(newObject.name.Contains("Fake") && !newObject.name.Contains("Gate") ){
             return;
         }
+        string[] nameParts = newObject.name.Split('_');
+        string lastPart = nameParts[nameParts.Length - 1];
+            // Get the BoxCollider component and set the Y size
+        float multipler = 1f;
+        if (float.TryParse(lastPart, out float heightMultiplier)){
+            multipler = heightMultiplier;
+        }
+
         BoxCollider2D boxCollider = newObject.AddComponent<BoxCollider2D>();
         bool isTrigger = (cellValue - 1 >= 50 && cellValue <= 60);
         if (!isSprite)
@@ -227,7 +243,7 @@ public class AssetData
             if(newObject.name.Contains("Player")) {
                 boxCollider.size = new Vector2(0.5f, 1.8f);
             } else {
-                boxCollider.size = new Vector2(1.5f, 1.8f);
+                boxCollider.size = new Vector2(1.5f, 1.8f * multipler);
             }
             boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
         } else if(newObject.name.Contains("Gem")){
@@ -241,6 +257,7 @@ public class AssetData
                 boxCollider.enabled = false;
             } 
         }
+        
     }
 
     public void CreateObjects(float z, float subStage)
@@ -259,7 +276,7 @@ public class AssetData
         Vector2 backgroundSize = DataHolder.GetBackgroundSize();
         float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
-        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x);
+        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x); // useless
         if (name == "Exit") {
 
             return;
@@ -267,7 +284,7 @@ public class AssetData
         if (name == "Background") {
             newObject = CreateObjectWithAssetIndex(0, z, "");
             int index = gridArray0[0];
-            newObject.transform.position = new Vector3(offsetX, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
+            newObject.transform.position = new Vector3(offsetX - 0.038f, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
             return;
         } 
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
@@ -277,8 +294,9 @@ public class AssetData
             List<int> gridArray = gridArrays[gridIndex];
             for (int column = 0; column < gridArray.Count; column++)
             {
-                bool isFirstPage = gridArray.Count > 7;
-                float startPositionX = isFirstPage ? backgroundSize.x / 2f * 1.58f : backgroundSize.x / 2f;
+                int margin = name == "PlateV" ? 7 : 6;
+                bool isFirstPage = gridArray.Count >= margin;
+                float startPositionX = isFirstPage ? backgroundSize.x / 2f * 6f / 5f : backgroundSize.x / 2f;
                 Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
                 string id = gridIndex.ToString() + column.ToString();
                 int cellValue = Mathf.Abs(gridArray[column]);
@@ -297,12 +315,15 @@ public class AssetData
                     // wall
                     continue;  
                 } else if (cellValue == 1 && name.Contains("Object")){
-                    int playerPosition = CacheManager.GetCache(Cache.Exit.ToString());
-                    if(
-                        (playerPosition == 2 && gridIndex >= 3) 
-                        || (playerPosition == 0 && gridIndex <= 0) 
-                        || (playerPosition == 1 && column >= 1) 
-                        || (playerPosition == 3 && column <= 0) ) {
+                    int exitH = CacheManager.GetCache(Cache.ExitH.ToString());
+                    int exitV = CacheManager.GetCache(Cache.ExitV.ToString());
+                    bool collumnCheck = exitV < 0 ? true : column == exitV;
+                    if(exitH == -2) { // 入口
+                        exitH = AssetData.goUp ? 4 : 0;
+                    }
+                    if( (collumnCheck && gridIndex == exitH) 
+                    || (collumnCheck && gridIndex == exitH - 1) 
+                    || (collumnCheck && gridIndex == exitH - 2)){
                     } else {
                         continue;
                     }
@@ -322,7 +343,7 @@ public class AssetData
                         if(newObject.name.Contains("GoDown")) {
                             newZ = -1.8f;
                         } 
-                        newObject.transform.position = new Vector3(plateSprite.bounds.size.x / 12 + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
+                        newObject.transform.position = new Vector3( gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
                         newObject.tag = "Ground";
                     }
                 }

@@ -332,7 +332,7 @@ public class Utils : MonoBehaviour
         }
     }
     // effect
-    public static void AddEffect(GameObject GO, string effectName) {
+    public static GameObject AddEffect(GameObject GO, string effectName) {
         List<string> paths = new List<string>((new[] { effectName}));
         GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
         GameObject lightObject = Instantiate(lightPrefab);
@@ -341,10 +341,11 @@ public class Utils : MonoBehaviour
         if(GO.name.Contains("Enemy") || GO.name.Contains("Boss") || GO.name.Contains("Player")) {
             float y = GO.GetComponent<BoxCollider2D>() == null ? 0.9f : GO.GetComponent<BoxCollider2D>().size.y / 2;
             float height = y / 2;
-            lightObject.transform.localPosition = new Vector3(0, height, GO.name.Contains("Player") ? 0.3f : -0.3f);
+            lightObject.transform.localPosition = new Vector3(0, height, GO.name.Contains("Player") ? 0.3f : -8f);
         } else {
             lightObject.transform.localPosition = new Vector3(0, 0f, -0.3f);
         }
+        return lightObject;
     }
 
     public static void RemoveEffect(Transform transform)

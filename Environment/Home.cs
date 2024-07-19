@@ -44,9 +44,11 @@ public class HomeController : MonoBehaviour
 
     public static void LoadGame(){
         // Camera.main.gameObject.GetComponent<InfoController>().DisplayPage();
+        Camera.main.gameObject.GetComponent<StageController>().updateButtonImages();
         if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
         AssetData.gameObject = new GameObject();
         AssetData.gameObject.name = "MainGameObject";
+        AssetData.goUp = false;
         int j = 0;
         AssetData.nameList = new HashSet<string>();
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
@@ -97,7 +99,6 @@ public class HomeController : MonoBehaviour
             isLow ? Random.Range(-6, -4) : Random.Range(0, 4),
             -3
         );
-        Debug.Log("????" + isLow);
         // Vector2 worldVector = Utils.ScaleToWorld(spawnPosition);
         GameObject mainGameObject = GameObject.Find("MainGameObject");
         gameObject.transform.SetParent(mainGameObject.transform);

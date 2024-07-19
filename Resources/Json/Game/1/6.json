@@ -1,6 +1,9 @@
 {
   "assets0": [
     {
+      "name": "GoUp"
+    },
+    {
       "name": "PlateH",
       "gridArray0": [1, 1, 1, 2, 1],
       "gridArray1": [0, 1, 1, 1, 0],

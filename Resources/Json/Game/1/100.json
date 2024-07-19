@@ -1,0 +1,36 @@
+﻿{
+  "assets0": [
+    {
+      "name": "Exit",
+      "gridArray0": [10]
+    },
+    {
+      "name": "GoUp"
+    },
+    {
+      "name": "PlateH",
+      "gridArray0": [1, 1, 1, 1, 2],
+      "gridArray1": [0, 1, 1, 0, 1],
+      "gridArray2": [0, 0, 0, 1, 1],
+      "gridArray3": [1, 0, 0, 1, 1],
+      "gridArray4": [0, 1, 1, 1, 0],
+      "gridArray5": [1, 1, 1, 1, 1]
+    },
+    {
+      "name": "PlateV",
+      "gridArray0": [1, 0, 0, 0, 0, 1],
+      "gridArray1": [1, 1, 0, 0, 0, 1],
+      "gridArray2": [1, 0, 0, 0, 2, 1],
+      "gridArray3": [1, 1, 0, 0, 0, 1],
+      "gridArray4": [1, 0, 0, 0, 0, 8]
+    },
+    {
+      "name": "Object",
+      "gridArray0": [0, 0, 0, 0, 1],
+      "gridArray1": [0, 0, 0, 0, 1739],
+      "gridArray2": [0, 0, 0, 0, 9789],
+      "gridArray3": [0, 91, 0, 0, 0],
+      "gridArray4": [0, 0, 0, 0, 1]
+    }
+  ]
+}

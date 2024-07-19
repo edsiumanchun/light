@@ -12,11 +12,11 @@ public class GameUIController : MonoBehaviour
     public List<Sprite> menuButtonImages;
     public List<Sprite> buttonImages;
     public GameObject gameButton, buttonImage;
-    public GameObject avatarButton, settingButton, stageButton, infoButton, bagButton, circleButtonsContainer;
+    public GameObject avatarButton, enemyButton, settingButton, stageButton, infoButton, bagButton, circleButtonsContainer;
 
-    private bool isMenuOpen, isavatarOpen, isStageOpen, isInfoOpen, isItemOpen;
+    private bool isMenuOpen, isStageOpen, isInfoOpen, isItemOpen;
     public GameObject canvasObject;
-    public FloatingTextController floatingTextController;
+    public FloatingTextController enemyFloatingTextController, playerFloatingTextController;
 
 
     public Vector2[] buttonPositions = new Vector2[]
@@ -26,18 +26,20 @@ public class GameUIController : MonoBehaviour
         //new Vector2(0f, 200f),   // Bottom right button position
     };
 
-    public Vector2 avatarButtonPosition, menuButtonPosition, containerPosition;  // Top right menu button position
+    public Vector2 avatarButtonPosition, enemyButtonPosition, menuButtonPosition, containerPosition;  // Top right menu button position
 
     public Vector2 screenSize;
 
     private void Start()
     {
+        CacheManager.SyncHPMP(false);
         float padding = 90;
         float leftPadding = 38;
         canvasObject = Utils.CreateCanvas("GameCanvas", false);
         screenSize = Utils.GetCanvasSize(canvasObject);
         menuButtonPosition = new Vector2(screenSize.x / 2 - padding , screenSize.y / 2 - padding + 10);
         avatarButtonPosition = new Vector2(leftPadding + padding - screenSize.x / 2, screenSize.y / 2 - padding);
+        enemyButtonPosition = new Vector2(avatarButtonPosition.x, avatarButtonPosition.y - 180);
         containerPosition = new Vector2(screenSize.x / 2 - padding, -1 * screenSize.y / 2 + padding);
         buttonImages = DataHolder.gameButtonImages;
         menuButtonImages = DataHolder.menuButtonImages;
@@ -53,7 +55,8 @@ public class GameUIController : MonoBehaviour
         // hp
         float hpBarOffset = -74;
         float xScale = 0.705f;
-        enemyHPBar = CreateBar(true, new Vector2(0, - screenSize.y / 2 ), 5, canvasObject);
+        enemyHPBar = CreateBar(true, new Vector2(0, hpBarOffset), 5, enemyButton);
+        enemyHPBar.transform.localScale = new Vector3(xScale, 1, 1);
         enemyHPBarText = Utils.CreateText(new Vector2(200,50), new Vector2(0,0), enemyHPBar.transform, TextAnchor.MiddleCenter);
         playerHPBar = CreateBar(false, new Vector2(0, hpBarOffset), 4, avatarButton);
         playerHPBar.transform.localScale = new Vector3(xScale, 1, 1);
@@ -66,13 +69,14 @@ public class GameUIController : MonoBehaviour
         playerHPBarText.GetComponent<Text>().fontSize = fontSize;
         playerMPBarText.GetComponent<Text>().fontSize = fontSize;
         DisplayHPMPInfo();
-        HideEnemyHPBar(true);
+        HideBattle(true);
         // hp
-        floatingTextController = this.avatarButton.AddComponent<FloatingTextController>();
+        playerFloatingTextController = this.avatarButton.AddComponent<FloatingTextController>();
+        enemyFloatingTextController = this.enemyButton.AddComponent<FloatingTextController>();
+        
     }
 
-    public void HideEnemyHPBar(bool isHide){
-        enemyHPBar.SetActive(!isHide);
+    public void HideBattle(bool isHide){
         circleButtonsContainer.SetActive(isHide);
         settingButton.SetActive(isHide);
         infoButton.SetActive(isHide);
@@ -120,6 +124,13 @@ public class GameUIController : MonoBehaviour
             itemController.DisplayPage();
             itemController.canvasObject.SetActive(true);
         });
+        enemyButton = Utils.CreateButton(menuButtonImages[7], enemyButtonPosition, canvasObject.transform, () => {
+            isItemOpen = !isItemOpen;
+            ItemController itemController = Camera.main.gameObject.GetComponent<ItemController>();
+            itemController.DisplayPage();
+            itemController.canvasObject.SetActive(true);
+        });
+        enemyButton.SetActive(false);
 
         // Create circle buttons container
         circleButtonsContainer = new GameObject("CircleButtonsContainer");
@@ -137,10 +148,10 @@ public class GameUIController : MonoBehaviour
             gameButton = Utils.CreateButton(image, buttonPositions[i], circleButtonsContainer.transform, () => ButtonAction(buttonIndex));
             buttonImage = Utils.CreateImage(buttonImages[i], new Vector2(0, 0), gameButton.transform);
         }
-        hideGameButton();
+        HideGameButton();
     }
 
-    public void hideGameButton() {
+    public void HideGameButton() {
         if(gameButton != null) gameButton.SetActive(false);
         // if(infoButton != null) infoButton.SetActive(false);
     }
@@ -173,15 +184,19 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void CreateAndAnimateFloatingText(string text, int index) {
-        floatingTextController.CreateAndAnimateFloatingText(text, index);
+    public void CreateAndAnimateEnemyFloatingText(string text, int index) {
+        enemyFloatingTextController.CreateAndAnimateFloatingText(text, index);
+    }
+
+    public void CreateAndAnimatePlayerFloatingText(string text, int index) {
+        playerFloatingTextController.CreateAndAnimateFloatingText(text, index);
     }
 
     public void DisplayHPMPInfo(){
         int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-        int hp = CacheManager.GetCache(Cache.HP.ToString());
+        int hp = CacheManager.GetCache(Cache.TempHP.ToString());
         int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
-        int mp = CacheManager.GetCache(Cache.MP.ToString());
+        int mp = CacheManager.GetCache(Cache.TempMP.ToString());
         Debug.Log(hp + ":DisplayHPMPInfo:" + mp);
         playerHPBarText.GetComponent<Text>().text = hp.ToString() + "/" + hpMax.ToString();
         playerMPBarText.GetComponent<Text>().text = mp.ToString() + "/" + mpMax.ToString();
@@ -197,11 +212,10 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void UpdateAllHPMPBar(int enemyHP, int enemyMaxHP)
-    {
-        DisplayHPMPInfo();
-        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-        int hp = CacheManager.GetCache(Cache.HP.ToString());
+    public void UpdateEnemyBar(int enemyHP, int enemyMaxHP, bool showFloating){
+        if(showFloating) {
+            Camera.main.GetComponent<GameUIController>().CreateAndAnimateEnemyFloatingText( CacheManager.GetDamage().ToString(), 0);
+        }
         enemyHPBarText.GetComponent<Text>().text = enemyHP.ToString() + "/" + enemyMaxHP.ToString();
         foreach (Transform child in enemyHPBar.transform) {
             if (child.name == "HPBar"){
@@ -209,6 +223,19 @@ public class GameUIController : MonoBehaviour
                 child.transform.localScale = new Vector3(ratio, 1f, 1f);
             }
         }
+    }
+
+
+    public void HideEnemyButton(){
+        if(enemyButton != null) {
+            enemyButton.SetActive(false);
+        }
+    }
+
+    public void ShowEnemyButton(int enemyHP, int enemyMaxHP, Sprite sprite){
+        enemyButton.SetActive(true);
+        enemyButton.GetComponent<Image>().sprite = sprite;
+        UpdateEnemyBar(enemyHP, enemyMaxHP, false);
     }
 
     private GameObject CreateBar(bool isEnemy, Vector2 position, int hpbarType, GameObject parent)

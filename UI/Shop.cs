@@ -115,12 +115,14 @@ public class ShopController : PageIndexController
             {
                 case 0:
                     int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-                    CacheManager.ChangeHPMP(hpMax, false);
+                    CacheManager.ChangeHPWithMP(hpMax, 0);
                     break;
                 case 1:
-                    CacheManager.ChangeCache(Cache.Damage.ToString(), 1, 9999999);
+                    int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
+                    CacheManager.ChangeHPWithMP(0, mpMax);
                     break;
                 case 2:
+                    CacheManager.ChangeCache(Cache.Damage.ToString(), 1, 9999999);
                     break;
                 case 3:
                     break;

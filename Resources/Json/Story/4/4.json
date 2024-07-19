@@ -1,5 +1,10 @@
 {
 "storyArray" : [{
+	    "name": "event",
+	    "dialogue": [
+	        "playerhide"
+	    ]
+	},{
 	    "name": "dragon",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "king",
@@ -64,6 +69,11 @@
 	    "name": "dragon",
 	    "dialogue": [
 	        "那麼事不宜遲，我們現在就去結界準備儀式吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerdizzy"
 	    ]
 	}
 ]

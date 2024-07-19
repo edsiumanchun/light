@@ -15,7 +15,7 @@ public class StoryController : MonoBehaviour
     public GameObject centerPrefab;
 
     public GameObject backgroundImage;
-    public GameObject dialogueText;
+    public GameObject titleText, dialogueText;
     public GameObject dialoguePanel;
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
@@ -68,7 +68,10 @@ public class StoryController : MonoBehaviour
         RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
         dialogueText = Utils.CreateText(
             new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 6.6f / 8.8f),
-            imageRectTransform.localPosition, canvasObject.transform, TextAnchor.UpperLeft);
+            new Vector2(imageRectTransform.localPosition.x, imageRectTransform.localPosition.y - 33f), canvasObject.transform, TextAnchor.UpperLeft);
+        titleText = Utils.CreateText(
+            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, 30),
+            new Vector2(0,-368), canvasObject.transform, TextAnchor.UpperLeft);
         
 
         dialoguePanel = new GameObject("DialoguePanel");
@@ -136,6 +139,7 @@ public class StoryController : MonoBehaviour
         StoryData story = wrapper.storyArray[currentStoryIndex];
         isStory = story.name != null && story.name != "";
         dialogueText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;
+        titleText.GetComponent<Text>().alignment = isStory ? TextAnchor.UpperLeft : TextAnchor.UpperCenter;
 
         if(isStory) {
             backgroundImage.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -184,10 +188,14 @@ public class StoryController : MonoBehaviour
 
     void SetupFadeObject(bool isStart){
         canvasObject.SetActive(!isStart);
-        if(canPlayerMove) {
+        if(canPlayerMove) { // for real and fake stone
             gameUI.SetActive(true);
         } else {
-            gameUI.SetActive(isStart);
+            if(titleText.GetComponent<Text>().text == "") { // reminder
+                Camera.main.GetComponent<GameUIController>().HideBattle(isStart);
+            } else {
+                gameUI.SetActive(isStart);
+            }
         }
     }
 
@@ -360,9 +368,12 @@ public class StoryController : MonoBehaviour
             if(leftPrefab != null) leftPrefab.SetActive(true);
             if(rightPrefab != null) rightPrefab.SetActive(true);
             if(dialogueText != null) dialogueText.transform.parent.gameObject.SetActive(true);
+
+            titleText.GetComponent<Text>().text = story.name;
             foreach (string sentence in story.dialogue)
             {
-                sentences.Enqueue(story.name + "\n" + sentence);
+                sentences.Enqueue(sentence);
+                // sentences.Enqueue(story.name + "\n" + sentence);
                 i++;
             }
             DisplayNextSentence();

@@ -35,7 +35,7 @@ public class GateController : MonoBehaviour
     }
 
     public void ResumeBattle(){
-        Camera.main.GetComponent<GameUIController>().HideEnemyHPBar(true);
+        Camera.main.GetComponent<GameUIController>().HideBattle(true);
         GameObject player = GameObject.Find("Player");
         player.GetComponent<JoystickController>().ReleaseFighting();
         Utils.RemoveEffect(this.gameObject.transform);

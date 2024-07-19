@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8354589599449365638}
   - component: {fileID: 4113836489908307716}
   m_Layer: 0
-  m_Name: BallDelution
+  m_Name: BallDelusion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

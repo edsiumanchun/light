@@ -7,18 +7,16 @@ using System.Collections;
 
 public class FloatingTextController : MonoBehaviour
 {
-    public List<Object> texts;
+    List<int> offsetIndex;
 
-    private void Start()
-    {
-        List<string> paths = new List<string>((new[] { "RedText", "GreenText", "BlueText" }));
-        texts = Utils.LoadPrefabs("Text", paths);
+    public void Awake(){
+        offsetIndex = new List<int>(){1, 1, 1};
     }
-
     public void CreateAndAnimateFloatingText(string text, int index)
     {
+        offsetIndex[index] = offsetIndex[index] == 0 ? 1 : 0;
+        List<Object> texts = DataHolder.textPrefabs;
         var textGO = Utils.InstantiateObject((GameObject)texts[index]);
-        textGO.name = "FloatingText";
 
         TMP_Text textComponent = textGO.GetComponent<TMP_Text>();
         // Get the Text component
@@ -27,13 +25,14 @@ public class FloatingTextController : MonoBehaviour
         textComponent.outlineWidth = 0.23f;
          
         textGO.transform.SetParent(this.gameObject.transform);
-        textGO.transform.localPosition = new Vector3(0, offset, textGO.transform.localPosition.z);
+        textGO.transform.localPosition = new Vector3(offsetIndex[index] * 38, offset, textGO.transform.localPosition.z);
         // Set the text, font style, and size
         textComponent.text = text;
         textComponent.fontStyle = FontStyles.Bold;
         textComponent.fontSize = index == 0 ? 57 : 39;
         textGO.transform.localScale = new Vector3(0.78f, 1f, 1f);
-
+        textGO.name = "FloatingText" + index.ToString() + ":" + text;
+        textGO.tag = "FloatText";
 
         // Animate the text
         StartCoroutine(MoveAndFadeText(textGO));

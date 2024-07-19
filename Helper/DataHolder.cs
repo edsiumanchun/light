@@ -30,6 +30,7 @@ public enum UIGameButton
     Down = 1,
     Story = 2,
     Gate = 3,
+    FakeExit = 97,
     Exit = 98,
     none = 99
 }
@@ -46,6 +47,7 @@ public static class DataHolder
     public static List<Sprite> decorations;
     public static List<Object> characters;
     public static List<Object> storyPrefabs;
+    public static List<Object> textPrefabs;
     public static List<Sprite> plateH;
     public static List<Sprite> plateV;
     public static List<Sprite> backgrounds;

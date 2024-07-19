@@ -3,54 +3,59 @@
 	{
 	    "name": "event",
 	    "dialogue": [
-	    	"firework"
+	        "ghostkidshow"
 	    ]
-	},
-	{
-	    "name": "maria",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "maria",
+	},{
+	    "name": "ghostkid",
+	   	"leftPrefab": "",
+	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	    	"好漂亮的花火啊！"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"瑪利亞，要是時間能在這一刻停留下來就太好了？"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"姐姐，我可以告訴你一件心事嗎？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"什麼事？即管說吧！"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "我明白，您一直無法釋懷那次令我身體癱瘓的醫療意外。。",
-	        "老實說，我沒有因為這一生命途不順而感到難過...",
-	        "真正讓我無時無刻感到難過的...是您不在我身邊的時候...",
-	        "我好害怕...失去姐姐。",
-	    	"我很想...很想每年...有姐姐陪伴我看花火！"
+	        "媽媽！！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "rosiacry"
+	    	"storyturn"
 	    ]
 	},
 	{
-	    "name": "rosia",
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	    	"瑪利亞...你不會有事的，我們還有很多看花火的日子。"
+	        "孩兒？我是不是在做夢？"
+	    ]
+	},
+	{
+	    "name": "ghostkid",
+	    "dialogue": [
+	        "媽媽，這些年你也飽受饑餓之苦嗎？"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "是的，我已經盡了力去尋找食物...",
+	        "可是每當我得到些許食物，食物便會化為灰燼...",
+	        "好不容易得到一口不淨之食，卻被其他餓鬼阻攔我回來找你。"
+	    ]
+	},{
+	    "name": "ghostkid",
+	    "dialogue": [
+	    	"全靠這位姐姐...我才得以與媽媽重聚。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"這位姑娘，真的很感謝你。"
 	    ]
 	},{
 	    "name": "event",
@@ -60,286 +65,95 @@
 	},
 	{
 	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"羅西亞，這些年來你為妹妹付出了這麼多...",
-	    	"真是一位稱職的好姐姐啊。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"母親臨終時託付我要好好照顧妹妹，我定當守下這個諾言。",
-	    	"當年母親過世後，我和妹妹陷入了絕境，幾乎走投無路...",
-	    	"幸好遇上了公主才讓我們得救。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"轉眼間就八年了。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"說起來，公主是否已經在東域修行有所成就了？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"很遺憾，到目前為止我還是沒有任何顯著的成就。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"公主，別小看自己啊！",
-	    	"不少人因為你而獲得幸福，你絕對是一個值得信賴的人！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"瑪利亞真的很會安撫人心。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"除了姐姐，就只有公主能讓我敞開心扉，把內心的話說出來。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"瑪利亞，你還有話想說嗎？"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"有啊...你知道嗎？",
-	    	"姐姐平時的眼神看似很堅定，但若仔細觀察...",
-	    	"就會發現她一直內心很孤獨。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"瑪利亞！"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"姐姐一直獨自背負照顧我的責任。",
-	    	"她很怕給別人添麻煩...",
-	    	"平時她寧願將自己的感受藏於心底，也不願意跟人說。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"我的妹啊！我才不是這樣！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"羅西亞，你的臉蛋怎麼突然變得這麼紅？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"這個...那個...",
-	    	"對了，公主到東域修行時有什麼有趣的見聞嗎?"
-
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},{
-	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	        "在東域遊歷時...",
-	        "我的老師跟我講了一個關於天上流星的傳說。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"公主，快告訴我吧，我好想知道啊！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "據說在古老的東方有一群不可思議的龍像流星一樣在空中飛舞。",
-	        "受到這群龍的祝福後，人們會找到讓自己智慧圓滿的方法。",
-	        "人們將其尊稱為...",
-	        "【龍 星 群】"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"好想去東方看龍啊！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"瑪利亞，待你痊愈後，姐姐一定帶你到東方去看龍！"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"嗯，一言為定了！"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"好，一言為定！"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"太好了！",
-	    	"很久沒有這麼開心了！",
-	    	"真是太感謝姐姐和公主，給了我這樣難忘的回憶。",
-	    	"這段回憶無論如何我也不會忘記！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nursecome"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "leftPrefab": "nurse",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"瑪利亞，差不多時候要回醫院去了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"護士姐姐，一直以來真是非常感謝您的照顧。"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "dialogue": [
-	    	"瑪利亞確實是個好孩子啊。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "player",
-	    "dialogue": [
-	    	"公主，那麼我們失陪了，之後再聯繫吧。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"好的！你們保重了！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "storydisappear"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "leftPrefab": "player",
+	   	"leftPrefab": "player",
 	    "rightPrefab": "",
 	    "dialogue": [
-	    	"樂神，我好像掌握了一些關於三毒之石的線索。"
+	    	"不必客氣，舉手之勞而已。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "musicappear"
+	        "playerIdle",
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"對了，我從垃圾堆中撿到了些許剩餘的食物殘渣...",
+	    	"孩子，快來吃吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostmumcome",
+	        "ghostcome"
+	    ]
+	},{
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkideat",
+	    "name": "ghostkideat",
+	    "dialogue": [
+	    	"很好吃！"
+	    ]
+	},{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"別著急，我這裡還有很多。"
+	    ]
+	},{
+	    "name": "ghostkideat",
+	    "dialogue": [
+	    	"媽媽，你也吃點吧！"
+	    ]
+	},{
+	    "name": "ghostmum",
+	    "dialogue": [
+	    	"媽媽已經飽了..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostsleave",
+	    	"musicappear",
+	    	"musicplay"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "樂神，此旋律寧靜安詳，卻又令人隱隱生悲。"
 	    ]
 	},
 	{
 	    "name": "music",
-	    "leftPrefab": "player",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"那真是太好了，願聞其詳。"
+	    	"此乃是滋養靈魂的安魂曲。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"只要我們一起到王都舍衛城去,答案就自然水落石出了。"
+	        "真是妙不可言的音樂！樂神，你的琴藝實在太精湛了。"
 	    ]
-	},{
-	    "name": "event",
+	},
+	{
+	    "name": "music",
 	    "dialogue": [
-	        "nextscene"
+	    	"你可知道嗎？當我手指輕彈，七種琴音能夠剎時同出。",
+	    	"可是...天外有天...",
+	    	"據說大覺者指尖撥一弦，旋即現出千萬種琴聲。",
+	    	"此琴聲婉妙清徹，聽者歡心喜悅，難以言喻。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	    	"是...是夢魘？"
+	        "七種琴音已經這麼優美，真難想像千萬種琴聲是多麼的悅耳啊。"
 	    ]
 	}
 ]

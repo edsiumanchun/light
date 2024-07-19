@@ -10,7 +10,6 @@ public enum Cache
 {
     CurrentStage = 0,
     CurrentFloor = 1,
-    Exit = 2,
     Copper = 3,
     Silver = 4,
     Gold = 5,
@@ -33,7 +32,12 @@ public enum Cache
     Wisdom = 22, // 減 consume
     Reward = 23, // 加成
     //Consume = 24 // 減成,
-    ShowTutor = 24 // 
+    ShowTutor = 24, // 
+
+    TempHP = 25,
+    TempMP = 26,
+    ExitH = 27,
+    ExitV = 28,
 }
 
 public static class CacheUsage
@@ -108,30 +112,28 @@ public static class CacheManager
             return true;
         }
     }
-    public static bool ChangeHPMP(int hpChange, bool isCheck){ // only for player
-        int consume = CacheManager.GetConsume();
-        return ChangeHPWithMP(hpChange, -1 * consume, isCheck);
+    public static void SyncHPMP(bool fromTemp){
+        Cache hp = fromTemp ? Cache.TempHP : Cache.HP;
+        Cache mp = fromTemp ? Cache.TempMP : Cache.MP;
+        Cache toHp = fromTemp ? Cache.HP : Cache.TempHP;
+        Cache toMp = fromTemp ? Cache.MP : Cache.TempMP;
+        int cacheHP = CacheManager.GetCache(hp.ToString());
+        int cacheMP = CacheManager.GetCache(mp.ToString());
+        CacheManager.SetCache(toHp.ToString(),cacheHP);
+        CacheManager.SetCache(toMp.ToString(),cacheMP);
     }
 
-    public static bool ChangeHPWithMP(int hpChange, int mpChange, bool isCheck){ // only for player
+    public static bool CheckHPMP(int hpChange){ // only for player
+        int consume = CacheManager.GetConsume();
+        return CheckHPWithMP(hpChange, -1 * consume);
+    }
+    public static bool CheckHPWithMP(int hpChange, int mpDeduct) {
         int defend = CacheManager.GetCache(Cache.Defend.ToString());
-        int hpAmount = hpChange - defend;
-        bool hp = CheckChangeCache(hpAmount, Cache.HP);
-        bool mp = CheckChangeCache(mpChange, Cache.MP);
-        if(hpAmount > 0){
+        int hpDeduct = hpChange - defend;
+        bool hp = CheckChangeCache(hpDeduct, Cache.TempHP);
+        bool mp = CheckChangeCache(mpDeduct, Cache.TempMP);
+        if(hpDeduct > 0){
             mp = true;
-        }
-        if(!isCheck) {
-            if(hp == true && mp == true) {
-                int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
-                CacheManager.ChangeCache(Cache.HP.ToString(), hpAmount, hpMax);
-                if(hpAmount > 0){
-                } else {
-                    int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
-                    // Debug.Log("?????" + hpAmount + "?????" + mpMax);
-                    CacheManager.ChangeCache(Cache.MP.ToString(), mpChange, mpMax);
-                }
-            } 
         }
         if(hp == false){
             StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
@@ -139,21 +141,34 @@ public static class CacheManager
         } else if(mp == false){
             StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
             storyController.LoadStoryDataFromText("", "靈力不足，無法作戰。");
-        } else {
-            Debug.Log("????" + hp);
-            Debug.Log("????" + mp);
-            string sign = hpAmount < 0 ? "" : "+";
-            int index = hpAmount < 0 ? 0 : 1;
-            Camera.main.GetComponent<GameUIController>().CreateAndAnimateFloatingText(sign + hpAmount.ToString(), index);
-            string sign2 = mpChange < 0 ? "" : "+";
-            Camera.main.GetComponent<GameUIController>().CreateAndAnimateFloatingText(sign2 + mpChange.ToString(), 2);
         }
         return hp == true && mp == true;
     }
 
+    public static void ChangeHPMP(int hpChange){ // only for player
+        int consume = CacheManager.GetConsume();
+        ChangeHPWithMP(hpChange, -1 * consume);
+    }
+    public static void ChangeHPWithMP(int hpChange, int mpDeduct){ // only for player
+        int defend = CacheManager.GetCache(Cache.Defend.ToString());
+        int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
+        int hpDeduct = hpChange - defend;
+        CacheManager.ChangeCache(Cache.TempHP.ToString(), hpDeduct, hpMax);
+        int mpMax = CacheManager.GetCache(Cache.MPMax.ToString());
+        CacheManager.ChangeCache(Cache.TempMP.ToString(), mpDeduct, mpMax);
+        if(hpDeduct != 0) {
+            string sign = hpDeduct < 0 ? "" : "+";
+            int index = hpDeduct < 0 ? 0 : 1;
+            Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign + hpDeduct.ToString(), index);
+        }
+        string sign2 = mpDeduct < 0 ? "" : "+";
+        Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign2 + mpDeduct.ToString(), 2);
+        Camera.main.GetComponent<GameUIController>().DisplayHPMPInfo();
+    }
+
     public static bool ChangeKey(string cacheKey, int amount){
         int key = CacheManager.GetCache(cacheKey);
-        Debug.Log("KEY: " + cacheKey + key.ToString() + "AMOUNT:" + amount );
+        // Debug.Log("KEY: " + cacheKey + key.ToString() + "AMOUNT:" + amount );
         if(key + amount <= -1) {
             StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
             storyController.LoadStoryDataFromText("", "鑰匙不足。");
@@ -181,7 +196,7 @@ public static class CacheManager
         int currentCache = GetCache(key);
         int newCache = currentCache + amount;
         newCache = Mathf.Clamp(newCache, 0, maxCache); // Clamp the newCache value within the range of 0 to maxCache
-        Debug.Log(newCache + ":ChangeCache:" + amount);
+        // Debug.Log(newCache + ":ChangeCache:" + amount);
         SetCache(key, newCache);
     }
 

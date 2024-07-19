@@ -21,7 +21,7 @@ public class EventController : MonoBehaviour
     { 
         GameObject player = GameObject.Find("Player");
         GameObject story = GameObject.Find("Story");
-        GameObject boss = GameObject.Find("Boss");
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
         GameObject bossGem = GameObject.Find("BossGem");
         GameObject rosia = GameObject.Find("Rosia");
         GameObject music = GameObject.Find("Music");
@@ -32,7 +32,8 @@ public class EventController : MonoBehaviour
         switch(name)
         {
             case "tohospital":
-                CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 0 : 2);
+                CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
                 MainController.LoadAssetsFromJsonWithIsSave(1, 0, "HomeScene", false);
                 return 1f;
             case "firework":
@@ -45,11 +46,13 @@ public class EventController : MonoBehaviour
                 }
                 return 0.1f;
             case "nextscene":
-                CacheManager.SetCache(Cache.Exit.ToString(), AssetData.goUp ? 0 : 2);
+                CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), -1);
                 MainController.LoadAssetsFromJsonWithIsSave(currentStage + 1, 0, "HomeScene", false);
                 return 1f;
             case "savescene":
-                CacheManager.SetCache(Cache.Exit.ToString(), currentStage);
+                CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
+                CacheManager.SetCache(Cache.ExitV.ToString(), -1);
                 CacheManager.SetCache(Cache.CurrentFloor.ToString(), currentFloor);
                 return 1f;
             case "completeTutor":
@@ -60,9 +63,9 @@ public class EventController : MonoBehaviour
             // disappear
             case "storyleave":
                 TurnAround(story);
-                vector3 = GetVector("38_PlateV_Space", new Vector3(0.8f,0f,1f));
+                vector3 = GetVector("36_PlateV_Space", new Vector3(0.8f,0f,1f));
                 vector3 = new Vector3(vector3.x, story.transform.position.y, vector3.z);
-                story.transform.DOMove(vector3, 3);
+                story.transform.DOMove(vector3, 1.8f);
                 // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
                 return 3;
             case "nursedisappear":
@@ -209,7 +212,7 @@ public class EventController : MonoBehaviour
                 vector3 = GetVector("Player",new Vector3(1.3f,0.4f,1f));
                 gameObject = Utils.LoadPrefabAndInstantObject("Enemies", "Enemy0", vector3);
                 gameObject.AddComponent<EnemyController>();
-                gameObject.name = "Boss";
+                gameObject.tag = "Boss";
                 gameObject.transform.DOMove(GetVector("Player", new Vector3(1.3f,0f,1f)), 1.8f);
                 AssetData.SetParent(gameObject);
                 return 1.8f;
@@ -225,8 +228,13 @@ public class EventController : MonoBehaviour
                 return 0.1f;
             case "savecows":
                 return 0.1f;
-            case "musicplay":
+            case "musicplaybgm":
+                Utils.ChangeAudioClipByName(0);
                 return 0.1f;
+            case "musicplay":
+                Utils.ChangeAudioClipByName(1);
+                return 0.1f;
+                Utils.ChangeAudioClipByName(2);
             case "musicplay2":
                 return 0.1f;
             

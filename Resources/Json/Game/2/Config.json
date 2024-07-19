@@ -4,7 +4,7 @@
     "plateH": ["Rock", "GoUp", "GoDown","Space"],
     "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
     "characters": ["Player","StoryScout","StoryChef","StoryTeacher"],
-    "bosses": ["BossMummy"],
+    "bosses": ["BossMummy_3"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Ethics2", "BossFlower"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
