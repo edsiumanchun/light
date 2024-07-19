@@ -15,6 +15,9 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private int jumpCount = 0;
     private int jumpCap = 2;
     // [TBD]only foot can trigger
+
+    private bool isJumpButtonPressed = false;
+    private bool[] isUserDraggingArray = new bool[64];
     void Update()
     {
         // jump
@@ -23,16 +26,45 @@ public class JoystickController : MonoBehaviour, IDragHandler
             Jump();
         }
     }
+    public void OnDrag(PointerEventData eventData)
+    {
+        Vector3 newPosition = transform.position + (Vector3)eventData.delta;
 
+        float clampedX = Mathf.Clamp(newPosition.x, -xBounds, xBounds);
+        float yPosition = transform.position.y;
+        float zPosition = transform.position.z;
+
+        transform.position = new Vector3(clampedX, yPosition, zPosition);
+    }
+    
     private bool IsJumpButtonDown()
     {
         if (Application.isMobilePlatform)
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && Input.GetTouch(0).deltaPosition.magnitude < 10f)
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                return true;
+                Touch touch = Input.GetTouch(i);
+                bool isOverUIElement = EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+                if (isOverUIElement)
+                {
+                    // The touch is on a UI element, so we don't want to process it further
+                    continue;
+                }
+                if (touch.phase == TouchPhase.Began && touch.deltaPosition.magnitude < 10f)
+                {
+                    isUserDraggingArray[i] = false;
+                }
+                else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    return !isUserDraggingArray[i];
+                }
+                else if (touch.phase == TouchPhase.Moved)
+                {
+                    isUserDraggingArray[i] = true;
+                }
             }
         }
+
         else
         {
             if (Input.GetButtonDown("Jump"))
@@ -96,17 +128,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Vector3 newPosition = transform.position + (Vector3)eventData.delta;
-
-        float clampedX = Mathf.Clamp(newPosition.x, -xBounds, xBounds);
-        float yPosition = transform.position.y;
-        float zPosition = transform.position.z;
-
-        transform.position = new Vector3(clampedX, yPosition, zPosition);
     }
 
     private void FixedUpdate()

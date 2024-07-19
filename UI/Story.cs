@@ -90,7 +90,7 @@ public class StoryController : MonoBehaviour
     public void LoadStoryDataFromJSON(string suffix, int index){
         string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString() ) + suffix;
 
-        print(storyFilePath+ index.ToString());
+        print(storyFilePath + "/" + index.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
         print(jsonFile );
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
@@ -191,11 +191,10 @@ public class StoryController : MonoBehaviour
         if(canPlayerMove) { // for real and fake stone
             gameUI.SetActive(true);
         } else {
-            if(titleText.GetComponent<Text>().text == "") { // reminder
-                Camera.main.GetComponent<GameUIController>().HideBattle(isStart);
-            } else {
-                gameUI.SetActive(isStart);
-            }
+            //if(titleText.GetComponent<Text>().text == "") { // reminder
+             //   Camera.main.GetComponent<GameUIController>().HideBattle(isStart);
+            //} 
+            gameUI.SetActive(isStart);
         }
     }
 

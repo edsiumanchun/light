@@ -130,9 +130,9 @@
 	    ]
 	},
 	{
-	    "name": "bro",
+	    "name": "dragon",
 	    "leftPrefab": "player",
-	    "rightPrefab": "bro",
+	    "rightPrefab": "dragon",
 	    "dialogue": [
 	        "曲有誤。"
 	    ]
@@ -181,9 +181,9 @@
 	    ]
 	},
 	{
-	    "name": "bro",
+	    "name": "dragon",
 	    "leftPrefab": "player",
-	    "rightPrefab": "bro",
+	    "rightPrefab": "dragon",
 	    "dialogue": [
 	        "兩位，公瑾要先辦正經事，先行告辭了。"
 	    ]
@@ -200,9 +200,9 @@
 	    ]
 	},
 	{
-	    "name": "bro",
+	    "name": "dragon",
 	    "leftPrefab": "music",
-	    "rightPrefab": "bro",
+	    "rightPrefab": "dragon",
 	    "dialogue": [
 	        "樂神，若果將來能夠跟你鑽研音律，可說是美事一樁。"
 	    ]
@@ -214,7 +214,7 @@
 	    ]
 	},
 	{
-	    "name": "bro",
+	    "name": "dragon",
 	    "dialogue": [
 	        "好，後會有期!"
 	    ]
