@@ -8,7 +8,7 @@
     },
     {
       "name": "Hatred",
-      "damage": 1,
+      "damage": 3,
       "hp": 1,
       "reward": 1 
     },
@@ -20,19 +20,19 @@
     },
     {
       "name": "Ethics",
-      "damage": 1,
+      "damage": 0,
       "hp": 1,
       "reward": 1
     },
     {
       "name": "Concentration",
-      "damage": 1,
+      "damage": 0,
       "hp": 1,
       "reward": 1
     },
     {
       "name": "Wisdom",
-      "damage": 1,
+      "damage": 0,
       "hp": 1,
       "reward": 1
     },
@@ -51,11 +51,43 @@
     {
       "name": "EnemyBone",
       "damage": 0,
-      "hp": 1,
+      "hp": 20,
       "reward": 1 
     },
     {
-      "name": "BossMummy",
+      "name": "EnemyBat",
+      "damage": 0,
+      "hp": 5,
+      "reward": 1 
+    },{
+      "name": "Greed2",
+      "damage": 1,
+      "hp": 3,
+      "reward": 1
+    },{
+      "name": "Hatred2",
+      "damage": 1,
+      "hp": 3,
+      "reward": 1
+    },{
+      "name": "Delusion2",
+      "damage": 1,
+      "hp": 3,
+      "reward": 1
+    },{
+      "name": "Arrogant",
+      "damage": 1,
+      "hp": 3,
+      "reward": 3
+    },
+    {
+      "name": "BossEye",
+      "damage": 0,
+      "hp": 10,
+      "reward": 1 
+    },
+    {
+      "name": "BossBigEye",
       "damage": 0,
       "hp": 10,
       "reward": 1 

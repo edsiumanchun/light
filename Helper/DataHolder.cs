@@ -30,6 +30,7 @@ public enum UIGameButton
     Down = 1,
     Story = 2,
     Gate = 3,
+    Teleport = 4,
     FakeExit = 97,
     Exit = 98,
     none = 99

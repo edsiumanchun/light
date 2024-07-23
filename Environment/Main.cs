@@ -16,16 +16,20 @@ public class MainController : MonoBehaviour
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 2);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 0);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
             CacheManager.SetCache(Cache.ExitH.ToString(), 5); 
             CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
-            CacheManager.ChangeKey("Gold", 1);
-            //CacheManager.ChangeKey("Silver", 999);
-            //CacheManager.ChangeKey("Copper", 999);
+            CacheManager.SetCache(Cache.HPMax.ToString(), 9999);
+            CacheManager.SetCache(Cache.HP.ToString(), 9999);
+            CacheManager.SetCache(Cache.MPMax.ToString(), 9999);
+            CacheManager.SetCache(Cache.MP.ToString(), 9999);
+            CacheManager.ChangeKey("Gold", 999);
+            CacheManager.ChangeKey("Silver", 999);
+            CacheManager.ChangeKey("Copper", 999);
         }
         LoadItemData();
-        LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()), "HomeScene");
+        LoadAssetsFromJson(CacheManager.GetCache(Cache.CurrentStage.ToString()), CacheManager.GetCache(Cache.CurrentFloor.ToString()));
         LoadAssetsForButtonsUI(); 
         LoadAssetsForMenuUI();
         LoadAssetsForSettingsUI();
@@ -58,7 +62,7 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForButtonsUI()
     {
         //List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
-        List<string> paths = new List<string>((new[] { "Purify", "Down", "Chat", "Gate"}));
+        List<string> paths = new List<string>((new[] { "Purify", "Down", "Chat", "Gate", "Teleport"}));
         List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
         DataHolder.gameButtonImages = sprites;
     }
@@ -98,11 +102,11 @@ public class MainController : MonoBehaviour
         DataHolder.storyPrefabs = LoadPrefabs("Story", prefabPaths);
     }
 
-    static public void LoadAssetsFromJson(int stage, int floor, string sceneName) {
-        LoadAssetsFromJsonWithIsSave(stage, floor, sceneName, true);
+    static public void LoadAssetsFromJson(int stage, int floor) {
+        LoadAssetsFromJsonWithIsSave(stage, floor, true);
     }
 
-    static public void LoadAssetsFromJsonWithIsSave(int stage, int floor, string sceneName, bool isSave)
+    static public void LoadAssetsFromJsonWithIsSave(int stage, int floor, bool isSave)
     {
         if(isSave) {
             CacheManager.SetCache(Cache.CurrentStage.ToString(), stage);
@@ -129,7 +133,7 @@ public class MainController : MonoBehaviour
             DataHolder.bosses = LoadPrefabs("Bosses", paths.bosses);
             DataHolder.backgrounds = LoadSprites("Background", paths.backgrounds);
             DataHolder.gems = LoadSprites("Enemies", paths.gems);
-            LoadFloorAssetsFromJsonWithIsSave(stage, floor, sceneName, isSave);
+            LoadFloorAssetsFromJsonWithIsSave(stage, floor, isSave);
             Debug.Log("LoadFloorAssetsFromJson");
         }
         else
@@ -138,16 +142,16 @@ public class MainController : MonoBehaviour
         }
     }
 
-    static public void LoadFloorAssetsFromJson(int floor, string sceneName){
-        LoadFloorAssetsFromJsonWithIsSave(CacheManager.GetCache(Cache.CurrentStage.ToString()), floor, sceneName, true);
+    static public void LoadFloorAssetsFromJson(int floor){
+        LoadFloorAssetsFromJsonWithIsSave(CacheManager.GetCache(Cache.CurrentStage.ToString()), floor, true);
     }
 
-    static public void LoadFloorAssetsFromJsonWithIsSave(int stage, int floor, string sceneName, bool isSave)
+    static public void LoadFloorAssetsFromJsonWithIsSave(int stage, int floor, bool isSave)
     {
         if(isSave) {
             CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
         }
-        //print("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
+        Debug.Log("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage + "/" + floor.ToString());
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
@@ -163,7 +167,7 @@ public class MainController : MonoBehaviour
         if(HomeController.loaded) {
             HomeController.LoadGame();
         } else {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene("HomeScene");
         }
     }
 

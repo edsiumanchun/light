@@ -37,7 +37,7 @@ public class AssetData
 {
     public static bool goUp = false;
     public static int exit = 0;
-    public static int fakeExit = 0;
+    public static int teleport = 0;
     public static GameObject gameObject;
     public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
@@ -76,6 +76,11 @@ public class AssetData
 
     public GameObject CreateObjectWithAssetIndex(int assetIndex, float z, string id)
     {
+        if(DataHolder.player != null) {
+            if(name == "Object" && assetIndex == 0) {
+                return null;
+            }
+        }
         isSprite = true;
         GameObject newObject = new GameObject();
         AssetData.SetParent(newObject);
@@ -93,7 +98,7 @@ public class AssetData
                 if (assetIndex / 1000 >= 1) {
                     newObject.name = "Gem";
                     EnemyController enemyController = newObject.AddComponent<EnemyController>();
-                    enemyController.ProcessAssetIndex(assetIndex);
+                    enemyController.ProcessAssetIndex(assetIndex + 1);
                     return newObject;
                 } else if (assetIndex / 90 >= 1) {
                     isSprite = false;
@@ -120,6 +125,7 @@ public class AssetData
                     isSprite = false;
                     GameObject prefab = (GameObject)DataHolder.characters[formattedIndex];
                     newObject = Utils.InstantiateObject(prefab);
+                    newObject.transform.localPosition = prefab.transform.localPosition;
                     AssetData.SetParent(newObject);
                     //newObject.GetComponent<RectTransform>().pivot = new Vector2(0f, 0.5f);
                     //offsetY = GetCombinedHeight(newObject) / 2;
@@ -140,10 +146,10 @@ public class AssetData
             case "Exit":
                 int exitIndex = gridArray0[0];
                 AssetData.exit = exitIndex;
-                if(gridArray1.Count > 0) {
-                    int fakeExitIndex = gridArray1[0];
-                    AssetData.fakeExit = fakeExitIndex;
-                }
+                return null;
+            case "Teleport":
+                int teleportIndex = gridArray0[0];
+                AssetData.teleport = teleportIndex;
                 return null;
         }
         // --------- //
@@ -253,11 +259,111 @@ public class AssetData
         }
         if (name.Contains("Object"))
         {
-            if (( cellValue <= 90  && cellValue - 1 >= 40 ) && !isTrigger && !newObject.name.Contains("Solid")){ // add box collider for non-solid decoration
+            if (( (cellValue <= 90  && cellValue - 1 >= 40 ) && !isTrigger) || newObject.name.Contains("NoBox")){ // add box collider for non-solid decoration
                 boxCollider.enabled = false;
             } 
         }
         
+    }
+
+
+    public void CreateObject(float z, float subStage, int column, int gridIndex, int cellValue, List<int> gridArray, int teleport){
+        GameObject newObject;
+        Sprite plateSprite = GetPlateSprite();
+        Vector2 backgroundSize = DataHolder.GetBackgroundSize();
+        float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
+        float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
+        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x); // useless
+        float offset = plateSprite.bounds.size.x / 2;
+
+        if (name == "Background") {
+            newObject = CreateObjectWithAssetIndex(0, z, "");
+            int index = gridArray[gridIndex];
+            newObject.transform.position = new Vector3(offsetX - 0.038f, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
+            return;
+        } 
+
+        int margin = name == "PlateV" ? 7 : 6;
+        bool isFirstPage = gridArray.Count >= margin;
+        float startPositionX = isFirstPage ? backgroundSize.x / 2f * 6f / 5f : backgroundSize.x / 2f;
+        Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
+        string id = gridIndex.ToString() + column.ToString();
+        bool isRight = gridArray[column] >= 0;
+        if(name.Contains("Object") && column == 0 && !isFirstPage) {
+            Vector3 vector3 = new Vector3(offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
+            
+            GameObject wall = new GameObject();
+            wall.name = "Wall" + id;
+            SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
+            wall.transform.position = vector3;
+            AssetData.SetParent(wall);
+        }
+        if (cellValue == 0) { 
+            // wall
+            return;  
+        } else if (cellValue == 1 && name.Contains("Object")){  // player
+            if(teleport >= 1) {
+                return;
+            }
+            int exitH = CacheManager.GetCache(Cache.ExitH.ToString());
+            int exitV = CacheManager.GetCache(Cache.ExitV.ToString());
+            bool collumnCheck = exitV < 0 ? true : column == exitV;
+            if(exitH == -2) { // 入口
+                exitH = AssetData.goUp ? 4 : 0;
+            }
+            if(teleport >= 0) {
+
+                if( (collumnCheck && gridIndex == exitH) 
+                || (collumnCheck && gridIndex == exitH - 1) 
+                || (collumnCheck && gridIndex == exitH - 2)){
+                } else {
+                    return;
+                }
+            }
+        }
+        newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
+        if (newObject == null) return;
+        SetupCollider(newObject, isSprite, cellValue);
+        if (name.Contains("PlateV") || name.Contains("PlateH"))
+        {
+            if (name.Contains("PlateV"))
+            {
+                newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z * 0.01f - 4);
+            }
+            else
+            {
+                float newZ = z * 0.01f - 7 ;
+                if(newObject.name.Contains("GoDown")) {
+                    newZ = -1.8f;
+                } 
+                newObject.transform.position = new Vector3( gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
+                newObject.tag = "Ground";
+            }
+        }
+        else if (name.Contains("Object"))
+        {
+            BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
+            float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
+            float newZ = z * 0.01f - 1 ;
+            if (newObject.name.Contains("Player")) {
+                newZ = -9.3f;
+            }
+            newObject.transform.position = new Vector3(newObject.transform.localPosition.x + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
+            if(isRight) { // flip
+                newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
+            }
+        }
+        newObject.transform.rotation = Quaternion.identity;
+        // create player for teleport
+        if(newObject.name.Contains("Teleport")) {
+            if(teleport == 1 && newObject.name.Contains("Teleport")
+            || teleport == 2 && newObject.name.Contains("TeleportExit")) {
+                Debug.Log("?????");
+                CreateObject(z, subStage, column, gridIndex, 1, gridArray, -8);
+                CacheManager.SetCache(Cache.Teleport.ToString(), 0); 
+            } 
+        }
     }
 
     public void CreateObjects(float z, float subStage)
@@ -266,101 +372,19 @@ public class AssetData
             AssetData.goUp = true;
             return;
         }
-        if (name == "Audio" || name == "Exit")
+        if (name == "Audio" || name == "Exit" || name == "Teleport")
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;
         }
-        GameObject newObject;
-        Sprite plateSprite = GetPlateSprite();
-        Vector2 backgroundSize = DataHolder.GetBackgroundSize();
-        float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
-        float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
-        float offsetX = +subStage * (backgroundSize.x - plateSprite.bounds.size.x); // useless
-        if (name == "Exit") {
-
-            return;
-        }
-        if (name == "Background") {
-            newObject = CreateObjectWithAssetIndex(0, z, "");
-            int index = gridArray0[0];
-            newObject.transform.position = new Vector3(offsetX - 0.038f, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
-            return;
-        } 
+        int teleport = CacheManager.GetCache(Cache.Teleport.ToString());
         List<List<int>> gridArrays = new List<List<int>> { gridArray0, gridArray1, gridArray2, gridArray3, gridArray4, gridArray5, gridArray6 };
-        float offset = plateSprite.bounds.size.x / 2;
-        for (int gridIndex = 0; gridIndex < gridArrays.Count; gridIndex++)
+        for (int gridIndex =  gridArrays.Count - 1; gridIndex >= 0; gridIndex--)
         {
             List<int> gridArray = gridArrays[gridIndex];
             for (int column = 0; column < gridArray.Count; column++)
             {
-                int margin = name == "PlateV" ? 7 : 6;
-                bool isFirstPage = gridArray.Count >= margin;
-                float startPositionX = isFirstPage ? backgroundSize.x / 2f * 6f / 5f : backgroundSize.x / 2f;
-                Vector2 gridStartPosition = DataHolder.backgrounds[0].bounds.center - new Vector3(startPositionX, -backgroundSize.y / 2f);
-                string id = gridIndex.ToString() + column.ToString();
-                int cellValue = Mathf.Abs(gridArray[column]);
-                bool isRight = gridArray[column] >= 0;
-                if(name.Contains("Object") && column == 0 && !isFirstPage) {
-                    Vector3 vector3 = new Vector3(offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
-                    
-                    GameObject wall = new GameObject();
-                    wall.name = "Wall" + id;
-                    SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
-                    spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
-                    wall.transform.position = vector3;
-                    AssetData.SetParent(wall);
-                }
-                if (cellValue == 0) { 
-                    // wall
-                    continue;  
-                } else if (cellValue == 1 && name.Contains("Object")){
-                    int exitH = CacheManager.GetCache(Cache.ExitH.ToString());
-                    int exitV = CacheManager.GetCache(Cache.ExitV.ToString());
-                    bool collumnCheck = exitV < 0 ? true : column == exitV;
-                    if(exitH == -2) { // 入口
-                        exitH = AssetData.goUp ? 4 : 0;
-                    }
-                    if( (collumnCheck && gridIndex == exitH) 
-                    || (collumnCheck && gridIndex == exitH - 1) 
-                    || (collumnCheck && gridIndex == exitH - 2)){
-                    } else {
-                        continue;
-                    }
-                }
-                newObject = CreateObjectWithAssetIndex(cellValue - 1, z, id);
-                if (newObject == null) continue;
-                SetupCollider(newObject, isSprite, cellValue);
-                if (name.Contains("PlateV") || name.Contains("PlateH"))
-                {
-                    if (name.Contains("PlateV"))
-                    {
-                        newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - offset, z * 0.01f - 4);
-                    }
-                    else
-                    {
-                        float newZ = z * 0.01f - 7 ;
-                        if(newObject.name.Contains("GoDown")) {
-                            newZ = -1.8f;
-                        } 
-                        newObject.transform.position = new Vector3( gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex) - offset, newZ);
-                        newObject.tag = "Ground";
-                    }
-                }
-                else if (name.Contains("Object"))
-                {
-                    BoxCollider2D boxCollider = newObject.GetComponent<BoxCollider2D>();
-                    float objectHeight = isSprite ? boxCollider.size.y / 2 : 0;
-                    float newZ = z * 0.01f - 1 ;
-                    if (newObject.name.Contains("Player")) {
-                        newZ = -9.3f;
-                    }
-                    newObject.transform.position = new Vector3(gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
-                    if(isRight) { // flip
-                        newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
-                    }
-                }
-                newObject.transform.rotation = Quaternion.identity;
+                CreateObject(z, subStage, column, gridIndex, Mathf.Abs(gridArray[column]), gridArray, teleport);
             }
         }
     }

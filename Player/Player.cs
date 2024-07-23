@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
                 int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                MainController.LoadFloorAssetsFromJson(currentFloor + 1, "HomeScene");
+                MainController.LoadFloorAssetsFromJson(currentFloor + 1);
             }
         }
     }
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
-                MainController.LoadFloorAssetsFromJson(currentFloor - 1, "HomeScene");
+                MainController.LoadFloorAssetsFromJson(currentFloor - 1);
             }
         }
     }
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 status = UIGameButton.none;
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
-                MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit), "HomeScene");
+                MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit));
             }
         }
     }
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
                 status = UIGameButton.none;
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
-                MainController.LoadFloorAssetsFromJson(currentFloor >= 100 ? currentFloor / 100 : currentFloor * 100, "HomeScene");
+                MainController.LoadFloorAssetsFromJson(currentFloor >= 100 ? currentFloor / 100 : currentFloor * 100);
             }
         }
     }
@@ -298,11 +298,11 @@ public class PlayerController : MonoBehaviour
             case string str when str.Contains("PotionGreen"):
                 FullHp(collision);
                 break;
-            case string str when str.Contains("Light") || str.Contains("Dark") :
+            case string str when str.Contains("Light") || str.Contains("Dark")
+            || str.Contains("Teleport") || str.Contains("TeleportExit") :
+                status = collision.name.Contains("Teleport") ? UIGameButton.Teleport : UIGameButton.Story;
                 GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
-                gameUIController.showGameButton((int)UIGameButton.Story);
-                status = UIGameButton.Story;
-
+                gameUIController.showGameButton((int)status);
                 GameObject player = GameObject.Find("Player");
                 player.GetComponent<JoystickController>().SetPurifyObject(collision.gameObject);
                 break;
@@ -317,7 +317,8 @@ public class PlayerController : MonoBehaviour
     {
         switch (collision.name)
         {
-            case string str when str.Contains("Light") || str.Contains("Dark") :
+            case string str when str.Contains("Light") || str.Contains("Dark") 
+            || str.Contains("Teleport") || str.Contains("TeleportExit") :
                 GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
                 gameUIController.HideGameButton();
                 break;

@@ -2,15 +2,15 @@
   "paths": {
     "backgrounds": ["ScaleCastle", "ScaleNight", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["Rock", "GoUp", "GoDown","Space"],
-    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray"],
-    "characters": ["Player","StoryScout","StoryChef","StoryTeacher"],
-    "bosses": ["BossMummy_3"],
+    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray","GateFake"],
+    "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf"],
+    "bosses": ["BossEye", "BossBigEye"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Ethics2", "BossFlower"],
+    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2", "Arrogant"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
-    "triggers": ["TriggerLight", "TriggerDark"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
+    "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed", "Teleport", "TeleportExit", "TeleportFak"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Rock"],
     "walls": ["Rock0", "Rock1", "Rock2"],
     "audios": ["elf","bgm"]
   }

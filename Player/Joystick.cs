@@ -222,20 +222,21 @@ public class JoystickController : MonoBehaviour, IDragHandler
         } else if(playerController.status == UIGameButton.Story){
             playerController.ShowStory();
             return;
-        }
-
+        } 
         if (purifyObject == null) return;
         if(playerController.status == UIGameButton.Gate){
             if(purifyObject.gameObject.name.Contains("GateGreen")) {
-                // int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                // HomeController.subStage = HomeController.subStage == 0 ? 1 : 0;
-                // MainController.LoadFloorAssetsFromJson(currentFloor, "HomeScene");
             } else {
                 Utils.showChildrenWithName("move", transform);
                 purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
                 this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
             }
-        } else  {
+        } else if(playerController.status == UIGameButton.Teleport){
+            Debug.Log("purifyObject" + purifyObject.name);
+            CacheManager.SetCache(Cache.Teleport.ToString(), 2);
+            MainController.LoadFloorAssetsFromJson(AssetData.teleport);
+            return;
+        } else {
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);

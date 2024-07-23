@@ -1,0 +1,13 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "dialogue": [
+	    	"是...是夢魘？"
+	    ]
+	}
+]
+}
+
+

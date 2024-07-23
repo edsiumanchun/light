@@ -85,7 +85,7 @@ public class SettingsController : MonoBehaviour
                     confirmController.SetupAction(()=>{
                         Caching.ClearCache();
                         PlayerPrefs.DeleteAll();
-                        MainController.LoadAssetsFromJson(0, 0 , "HomeScene");
+                        MainController.LoadAssetsFromJson(0, 0);
                     }, "Confirm to delete records permanently?",
                     new List<string>(){
                         "Cancel", "Confirm"

@@ -68,10 +68,10 @@ public class StoryController : MonoBehaviour
         RectTransform imageRectTransform = backgroundImage.GetComponent<RectTransform>();
         dialogueText = Utils.CreateText(
             new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, imageRectTransform.sizeDelta.y * 6.6f / 8.8f),
-            new Vector2(imageRectTransform.localPosition.x, imageRectTransform.localPosition.y - 33f), canvasObject.transform, TextAnchor.UpperLeft);
+            new Vector2(imageRectTransform.localPosition.x, imageRectTransform.localPosition.y - 28f), canvasObject.transform, TextAnchor.UpperLeft);
         titleText = Utils.CreateText(
-            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, 30),
-            new Vector2(0,-368), canvasObject.transform, TextAnchor.UpperLeft);
+            new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, 38),
+            new Vector2(0,-218), canvasObject.transform, TextAnchor.UpperLeft);
         
 
         dialoguePanel = new GameObject("DialoguePanel");

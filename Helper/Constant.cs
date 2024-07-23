@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿// using UnityEngine;
+// using System.Collections;
 
-public class Constant
-{
-    public const int ROSIA = 3;
-}
+// public class Constant
+// {
+//     public const int ROSIA = 3;
+// }

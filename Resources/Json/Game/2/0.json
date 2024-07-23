@@ -10,13 +10,17 @@
       "gridArray0": [0]
     },
     {
+      "name": "Exit",
+      "gridArray0": [1]
+    },
+    {
       "name": "PlateH",
       "gridArray0": [4, 4, 4, 4, 4, 4],
       "gridArray1": [0, 0, 0, 0, 0, 0],
       "gridArray2": [0, 0, 0, 0, 0, 0],
       "gridArray3": [0, 0, 0, 0, 0, 0],
-      "gridArray4": [1, 1, 1, 1, 1, 1],
-      "gridArray5": [1, 1, 1, 1, 1, 1]
+      "gridArray4": [1, 1, 3, 1, 1, 1],
+      "gridArray5": [1, 1, 0, 1, 1, 1]
     },
     {
       "name": "PlateV",
@@ -28,11 +32,11 @@
     },
     {
       "name": "Object",
-      "gridArray0": [1, 0, 0, 0, 0, 0],
+      "gridArray0": [0, 0, 1, 0, 0, 0],
       "gridArray1": [0, 0, 0, 0, 0, 0],
       "gridArray2": [0, 0, 0, 0, 0, 0],
-      "gridArray3": [1, 0, 3, 0, 0, 0],
-      "gridArray4": [31, 31, 31, 31, 31, 31]
+      "gridArray3": [0, 0, 1, 0, 0, 0],
+      "gridArray4": [31, 31, 0, 31, 31, 31]
     }
   ]
 }                 

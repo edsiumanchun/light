@@ -38,6 +38,7 @@ public enum Cache
     TempMP = 26,
     ExitH = 27,
     ExitV = 28,
+    Teleport = 29
 }
 
 public static class CacheUsage

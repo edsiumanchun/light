@@ -64,7 +64,7 @@ public class Utils : MonoBehaviour
         Text text = textObj.AddComponent<Text>();
 
         text.font = (Font)Resources.GetBuiltinResource(typeof(Font), "LegacyRuntime.ttf");
-        text.fontSize = 23;
+        text.fontSize = 26;
         text.color = Color.white;
         text.alignment = textAnchor;
         text.lineSpacing = 1.08f;

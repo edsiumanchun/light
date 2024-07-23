@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
+    public GameObject eventSystemObject;
     private GameObject playerHPBar;
     private GameObject playerMPBar;
     private GameObject enemyHPBar;
@@ -46,9 +47,13 @@ public class GameUIController : MonoBehaviour
         // Create Canvas object
 
         // Create EventSystem object VERY IMPORTANT!!!
-        GameObject eventSystemObject = new GameObject("EventSystem");
-        eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
-        eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+
+        GameObject gateObject = GameObject.Find("EventSystem");
+        if(gateObject == null ){
+            eventSystemObject = new GameObject("EventSystem");
+            eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
+            eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+        }
         // Create EventSystem object VERY IMPORTANT!!!
 
         SetupButton();

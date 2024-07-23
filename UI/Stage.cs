@@ -92,7 +92,7 @@ public class StageController : MonoBehaviour
                     CacheManager.SetCache(Cache.CurrentStage.ToString(), tempStage);
                     CacheManager.SetCache(Cache.ExitH.ToString(), index == 0 ? 4 : -2);  // 入口
                     CacheManager.SetCache(Cache.ExitV.ToString(), -1);  
-                    MainController.LoadAssetsFromJson(tempStage, index, "HomeScene");
+                    MainController.LoadAssetsFromJson(tempStage, index);
                     updateButtonImages();
                     canvasObject.SetActive(false);
                 });

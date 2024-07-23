@@ -34,7 +34,7 @@ public class EventController : MonoBehaviour
             case "tohospital":
                 CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
-                MainController.LoadAssetsFromJsonWithIsSave(1, 0, "HomeScene", false);
+                MainController.LoadAssetsFromJsonWithIsSave(1, 0, false);
                 return 1f;
             case "firework":
                 List<string> paths = new List<string>((new[] { "Firework2", "Firework3"}));
@@ -48,7 +48,7 @@ public class EventController : MonoBehaviour
             case "nextscene":
                 CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), -1);
-                MainController.LoadAssetsFromJsonWithIsSave(currentStage + 1, 0, "HomeScene", false);
+                MainController.LoadAssetsFromJsonWithIsSave(currentStage + 1, 0, false);
                 return 1f;
             case "savescene":
                 CacheManager.SetCache(Cache.ExitH.ToString(), 4); 

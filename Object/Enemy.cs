@@ -48,11 +48,18 @@ public class EnemyController : MonoBehaviour
             int digit1 = assetIndex / 1000 - 1;
             int digit2 = (assetIndex / 100) % 10 - 1;
             int digit3 = (assetIndex / 10) % 10 - 1;
-            int digit4 = assetIndex % 10 ;
+            int digit4 = assetIndex % 10 - 1;
             float param = 0.5f;
+            if(assetIndex == 10000) {
+
+            } 
             Vector3[] positions = { new Vector3(param, param, 0), new Vector3(-param, param, 0), new Vector3(-param, -param, 0), new Vector3(param, -param, 0) };
             
             int[] digits = new[] { digit1, digit2, digit3, digit4 };
+            if(assetIndex == 10000) {
+                positions = new [] { new Vector3(0, 0, 0)};
+                digits = new [] {assetIndex / 1000 - 1};
+            } 
             // if(assetIndex >= 10000) {
             //     int digit1 = assetIndex / 10000000 - 1;
             //     int digit2 = (assetIndex / 1000000) % 10 - 1;
@@ -62,9 +69,10 @@ public class EnemyController : MonoBehaviour
                     
             //     }
             // }
-            for (int i = 0; i < 4; i++){
+            for (int i = 0; i < digits.Length; i++){
                 int digit = digits[i];
                 // Create a new GameObject and add a SpriteRenderer component
+                if(digit < 0) continue;
                 GameObject spriteObject = new GameObject();
                 SpriteRenderer spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
                 spriteRenderer.sprite = DataHolder.gems[digit];

@@ -46,6 +46,7 @@ public class HomeController : MonoBehaviour
         // Camera.main.gameObject.GetComponent<InfoController>().DisplayPage();
         Camera.main.gameObject.GetComponent<StageController>().updateButtonImages();
         if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
+        DataHolder.player = null;
         AssetData.gameObject = new GameObject();
         AssetData.gameObject.name = "MainGameObject";
         AssetData.goUp = false;

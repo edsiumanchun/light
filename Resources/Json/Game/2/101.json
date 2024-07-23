@@ -1,0 +1,34 @@
+﻿
+{
+  "assets0": [
+    {
+      "name": "Teleport",
+      "gridArray0": [100]
+    },
+    {
+      "name": "PlateH",
+      "gridArray0": [1, 1, 1, 1, 1],
+      "gridArray1": [0, 1, 0, 1, 0],
+      "gridArray2": [0, 1, 1, 1, 0],
+      "gridArray3": [0, 1, 1, 1, 0],
+      "gridArray4": [1, 1, 1, 1, 1],
+      "gridArray5": [1, 1, 1, 1, 1]
+    },
+    {
+      "name": "PlateV",
+      "gridArray0": [1, 0, 0, 0, 0, 1],
+      "gridArray1": [1, 0, 0, 0, 0, 1],
+      "gridArray2": [1, 0, 3, 3, 0, 1],
+      "gridArray3": [1, 0, 0, 0, 0, 0],
+      "gridArray4": [1, 0, 4, 4, 0, 1]
+    },
+    {
+      "name": "Object",
+      "gridArray0": [0, 0, 0, 0, 0],
+      "gridArray1": [0, -92, 57, 92, 0],
+      "gridArray2": [0, 51, 10000, 52, 0],
+      "gridArray3": [0, 5885, 8855, 8558, 0],
+      "gridArray4": [58, 6996, 58, 9669, 56]
+    }
+  ]
+}                 
