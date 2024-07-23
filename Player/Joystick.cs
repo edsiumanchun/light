@@ -233,8 +233,10 @@ public class JoystickController : MonoBehaviour, IDragHandler
             }
         } else if(playerController.status == UIGameButton.Teleport){
             Debug.Log("purifyObject" + purifyObject.name);
-            CacheManager.SetCache(Cache.Teleport.ToString(), 2);
-            MainController.LoadFloorAssetsFromJson(AssetData.teleport);
+            int teleport = purifyObject.name.Contains("TeleportExit") ? AssetData.teleportExit : AssetData.teleport;
+            int index = purifyObject.name.Contains("TeleportExit") ? 1 : 2;
+            CacheManager.SetCache(Cache.Teleport.ToString(), index);
+            MainController.LoadFloorAssetsFromJson(teleport);
             return;
         } else {
             isFighting = true;

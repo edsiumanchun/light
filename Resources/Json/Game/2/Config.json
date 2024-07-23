@@ -1,6 +1,6 @@
 {
   "paths": {
-    "backgrounds": ["ScaleCastle", "ScaleNight", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
+    "backgrounds": ["ScaleCastle", "ScaleBamboo"],
     "plateH": ["Rock", "GoUp", "GoDown","Space"],
     "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray","GateFake"],
     "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf"],

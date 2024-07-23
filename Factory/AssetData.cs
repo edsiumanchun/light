@@ -38,6 +38,7 @@ public class AssetData
     public static bool goUp = false;
     public static int exit = 0;
     public static int teleport = 0;
+    public static int teleportExit = 0;
     public static GameObject gameObject;
     public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
@@ -150,6 +151,10 @@ public class AssetData
             case "Teleport":
                 int teleportIndex = gridArray0[0];
                 AssetData.teleport = teleportIndex;
+                return null;
+            case "TeleportExit":
+                int teleportExitIndex = gridArray0[0];
+                AssetData.teleportExit = teleportExitIndex;
                 return null;
         }
         // --------- //
@@ -359,7 +364,6 @@ public class AssetData
         if(newObject.name.Contains("Teleport")) {
             if(teleport == 1 && newObject.name.Contains("Teleport")
             || teleport == 2 && newObject.name.Contains("TeleportExit")) {
-                Debug.Log("?????");
                 CreateObject(z, subStage, column, gridIndex, 1, gridArray, -8);
                 CacheManager.SetCache(Cache.Teleport.ToString(), 0); 
             } 
@@ -372,7 +376,7 @@ public class AssetData
             AssetData.goUp = true;
             return;
         }
-        if (name == "Audio" || name == "Exit" || name == "Teleport")
+        if (name == "Audio" || name == "Exit" || name == "Teleport" || name == "TeleportExit")
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;

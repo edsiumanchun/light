@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
         Utils.AddEffect(this.gameObject, "Stone/" + name);
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         switch (collision.name)
         {

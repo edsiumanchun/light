@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 2);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 2);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 201);
             CacheManager.SetCache(Cache.ExitH.ToString(), 5); 
             CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);

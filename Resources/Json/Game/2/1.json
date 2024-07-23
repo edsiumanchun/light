@@ -5,6 +5,10 @@
       "gridArray0": [2]
     },
     {
+      "name": "TeleportExit",
+      "gridArray0": [2]
+    },
+    {
       "name": "PlateH",
       "gridArray0": [1, 1, 2, 1, 1],
       "gridArray1": [0, 1, 1, 1, 1],
@@ -27,7 +31,7 @@
       "gridArray1": [1, 91, 57, -91, 0],
       "gridArray2": [1, 4447, 10000, 4474, 0],
       "gridArray3": [0, 7470, 4477, 4707, 1],
-      "gridArray4": [1, 5566, 5566, 5566, 0]
+      "gridArray4": [1, 5566, 5566, 5566, 1]
     }
   ]
 }

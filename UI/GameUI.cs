@@ -49,11 +49,11 @@ public class GameUIController : MonoBehaviour
         // Create EventSystem object VERY IMPORTANT!!!
 
         GameObject gateObject = GameObject.Find("EventSystem");
-        if(gateObject == null ){
-            eventSystemObject = new GameObject("EventSystem");
-            eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
-            eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
-        }
+        Destroy(gateObject);
+        eventSystemObject = new GameObject("GameEventSystem");
+        eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
+        eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+        Debug.Log("?!?!?!");
         // Create EventSystem object VERY IMPORTANT!!!
 
         SetupButton();

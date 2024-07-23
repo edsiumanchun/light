@@ -10,7 +10,7 @@
     },
     {
       "name": "Exit",
-      "gridArray0": [1]
+      "gridArray0": [-1]
     },
     {
       "name": "PlateH",
@@ -24,7 +24,7 @@
     {
       "name": "PlateV",
       "gridArray0": [1, 0, 0, 0, 0, 8],
-      "gridArray1": [1, 0, 1, 0, 0, 8],
+      "gridArray1": [1, 0, 1, 0, 0, 1],
       "gridArray2": [1, 0, 1, 0, 0, 1],
       "gridArray3": [5, 0, 0, 0, 0, 8],
       "gridArray4": [5, 0, 0, 1, 0, 8]
