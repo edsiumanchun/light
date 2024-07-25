@@ -6,7 +6,7 @@
     },
     {
       "name": "PlateH",
-      "gridArray0": [2, 1, 1, 1, 1],
+      "gridArray0": [1, 2, 1, 2, 1],
       "gridArray1": [1, 1, 0, 1, 0],
       "gridArray2": [0, 1, 1, 1, 0],
       "gridArray3": [0, 0, 0, 0, 1],
@@ -15,18 +15,18 @@
     },
     {
       "name": "PlateV",
-      "gridArray0": [1, 4, 0, 0, 0, 1],
+      "gridArray0": [1, 0, 0, 1, 0, 1],
       "gridArray1": [1, 0, 0, 0, 0, 1],
-      "gridArray2": [1, 0, 0, 0, 0, 1],
+      "gridArray2": [1, 0, 0, 1, 0, 1],
       "gridArray3": [7, 0, 0, 0, 0, 1],
       "gridArray4": [1, 0, 0, 0, 0, 7]
     },
     {
       "name": "Object",
-      "gridArray0": [1, 0, 0, 0, 0],
+      "gridArray0": [56, 1, 0, 1, 0],
       "gridArray1": [0, 91, 0, -91, 0],
       "gridArray2": [0, 0, 0, 0, 0],
-      "gridArray3": [0, -6, -4, -7, 0],
+      "gridArray3": [0, -4, -6, -7, 0],
       "gridArray4": [53, 54, 53, 54, 1]
     }
   ]

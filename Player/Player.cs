@@ -124,7 +124,8 @@ public class PlayerController : MonoBehaviour
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
                 int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                MainController.LoadFloorAssetsFromJson(currentFloor + 1);
+                int offset = doorName.Contains("Revert") ? -1 : 1;
+                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit") ? Mathf.Abs(AssetData.exit) : currentFloor + offset);
             }
         }
     }
@@ -137,7 +138,8 @@ public class PlayerController : MonoBehaviour
                 int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
-                MainController.LoadFloorAssetsFromJson(currentFloor - 1);
+                int offset = doorName.Contains("Revert") ? 1 : -1;
+                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit") ? Mathf.Abs(AssetData.exit) : currentFloor + offset);
             }
         }
     }
@@ -151,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 status = UIGameButton.none;
                 CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
                 CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
-                MainController.LoadFloorAssetsFromJson(Mathf.Abs(AssetData.exit));
+                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit2") ? Mathf.Abs(AssetData.exit2) : Mathf.Abs(AssetData.exit));
             }
         }
     }
@@ -222,11 +224,11 @@ public class PlayerController : MonoBehaviour
                 gameUIController.showGameButton((int)UIGameButton.Down);
                 status = UIGameButton.Down;
                 break;
-            case string str when str.Contains("GateGreen") || str.Contains("GateFake"):
+            case string str when str.Contains("GateExit") || str.Contains("GateFake"):
                 doorName = collision.gameObject.name;
                 exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Gate);
-                status = str.Contains("GateGreen") ? UIGameButton.Exit : UIGameButton.FakeExit;
+                status = str.Contains("GateExit") ? UIGameButton.Exit : UIGameButton.FakeExit;
                 audioSource.PlayOneShot(gateSound);
                 break;
             case string str when str.Contains("Floor"):

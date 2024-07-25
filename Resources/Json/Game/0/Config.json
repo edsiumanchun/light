@@ -2,7 +2,7 @@
   "paths": {
     "backgrounds": ["ScaleHoly"],
     "plateH": ["City", "GoUp", "GoDown","Space"],
-    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateGreen","Space"],
+    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateExit","Space"],
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],

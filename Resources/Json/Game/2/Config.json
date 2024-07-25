@@ -1,8 +1,8 @@
 {
   "paths": {
-    "backgrounds": ["ScaleCastle", "ScaleBamboo"],
-    "plateH": ["Rock", "GoUp", "GoDown","Space"],
-    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray","GateFake"],
+    "backgrounds": ["ScaleCastle", "ScaleBamboo", "ScaleSky"],
+    "plateH": ["Rock", "GoUp", "GoDown","Space", "GoDownExit", "GoDownRevert"],
+    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake","RockFake", "GateExit2"],
     "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf"],
     "bosses": ["BossEye", "BossBigEye"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
@@ -10,7 +10,7 @@
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed", "Teleport", "TeleportExit", "TeleportFak"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Rock"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Ceiling"],
     "walls": ["Rock0", "Rock1", "Rock2"],
     "audios": ["elf","bgm"]
   }

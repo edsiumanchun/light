@@ -50,6 +50,10 @@ public class HomeController : MonoBehaviour
         AssetData.gameObject = new GameObject();
         AssetData.gameObject.name = "MainGameObject";
         AssetData.goUp = false;
+        AssetData.wallSkip = null;
+        AssetData.teleportExit = 0;
+        AssetData.teleport = 0;
+        AssetData.exit = 0;
         int j = 0;
         AssetData.nameList = new HashSet<string>();
         foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)

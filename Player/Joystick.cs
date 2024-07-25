@@ -225,7 +225,7 @@ public class JoystickController : MonoBehaviour, IDragHandler
         } 
         if (purifyObject == null) return;
         if(playerController.status == UIGameButton.Gate){
-            if(purifyObject.gameObject.name.Contains("GateGreen")) {
+            if(purifyObject.gameObject.name.Contains("GateExit")) {
             } else {
                 Utils.showChildrenWithName("move", transform);
                 purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);

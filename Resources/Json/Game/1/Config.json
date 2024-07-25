@@ -1,8 +1,8 @@
 {
   "paths": {
-    "backgrounds": ["ScaleNight"],
+    "backgrounds": ["ScaleNight", "ScaleNight2"],
     "plateH": ["Wood", "GoUp", "GoDown","Space"],
-    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray","GateFake"],
+    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake"],
     "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
     "bosses": ["BossMummy_3"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],

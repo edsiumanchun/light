@@ -37,8 +37,10 @@ public class AssetData
 {
     public static bool goUp = false;
     public static int exit = 0;
+    public static int exit2 = 0;
     public static int teleport = 0;
     public static int teleportExit = 0;
+    public static List<int> wallSkip;
     public static GameObject gameObject;
     public static HashSet<string> nameList;
     public string name = ""; // Name of the asset
@@ -148,6 +150,10 @@ public class AssetData
                 int exitIndex = gridArray0[0];
                 AssetData.exit = exitIndex;
                 return null;
+            case "Exit2":
+                int exit2Index = gridArray0[0];
+                AssetData.exit2 = exit2Index;
+                return null;
             case "Teleport":
                 int teleportIndex = gridArray0[0];
                 AssetData.teleport = teleportIndex;
@@ -155,6 +161,9 @@ public class AssetData
             case "TeleportExit":
                 int teleportExitIndex = gridArray0[0];
                 AssetData.teleportExit = teleportExitIndex;
+                return null;
+            case "WallSkip":
+                AssetData.wallSkip = gridArray0;
                 return null;
         }
         // --------- //
@@ -214,7 +223,7 @@ public class AssetData
             case "GateGold":
             case "GateSilver":
             case "GateCopper":
-            case "GateGreen":
+            case "GateExit":
             case "GateFake":
                 if (CacheUsage.isDestroyObject("|" + id))
                 {
@@ -284,7 +293,7 @@ public class AssetData
         if (name == "Background") {
             newObject = CreateObjectWithAssetIndex(0, z, "");
             int index = gridArray[gridIndex];
-            newObject.transform.position = new Vector3(offsetX - 0.038f, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
+            newObject.transform.position = new Vector3(offsetX, cellHeight / 2 + plateSprite.bounds.size.x / 2, z);
             return;
         } 
 
@@ -295,14 +304,24 @@ public class AssetData
         string id = gridIndex.ToString() + column.ToString();
         bool isRight = gridArray[column] >= 0;
         if(name.Contains("Object") && column == 0 && !isFirstPage) {
-            Vector3 vector3 = new Vector3(offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
-            
-            GameObject wall = new GameObject();
-            wall.name = "Wall" + id;
-            SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
-            wall.transform.position = vector3;
-            AssetData.SetParent(wall);
+            bool showWall = false;
+            if(AssetData.wallSkip != null) {
+                if(AssetData.wallSkip.Contains(gridIndex)) {
+                } else {
+                    showWall = true;
+                }
+            } else {
+                showWall = true;
+            }
+            if(showWall) {
+                Vector3 vector3 = new Vector3(offsetX, gridStartPosition.y - cellHeight * (gridIndex + 0.5f) - plateSprite.bounds.size.x / 2 , z * -0.01f - 1);
+                GameObject wall = new GameObject();
+                wall.name = "Wall" + id;
+                SpriteRenderer spriteRenderer = wall.AddComponent<SpriteRenderer>();
+                spriteRenderer.sprite = (Sprite)DataHolder.walls[gridIndex % 3];
+                wall.transform.position = vector3;
+                AssetData.SetParent(wall);
+            }
         }
         if (cellValue == 0) { 
             // wall
@@ -376,7 +395,7 @@ public class AssetData
             AssetData.goUp = true;
             return;
         }
-        if (name == "Audio" || name == "Exit" || name == "Teleport" || name == "TeleportExit")
+        if (name == "Audio" || name == "Exit" || name == "Exit2" || name == "Teleport" || name == "TeleportExit" || name == "WallSkip")
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;

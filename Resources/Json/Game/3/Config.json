@@ -2,7 +2,7 @@
   "paths": {
     "backgrounds": ["ScaleGold", "ScaleGold", "ScaleGrave", "ScaleCity", "ScaleHospital", "ScaleCastle", "ScaleHospital", "ScaleDesert2", "ScaleNight", "ScaleMountain"],
     "plateH": ["Inner", "GoUp", "GoDown","Space", "InnerFake"],
-    "plateV": ["Inner","GateCopper","GateSilver","GateGold", "GateGreen","Space","GateGray", "InnerFake"],
+    "plateV": ["Inner","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray", "InnerFake"],
     "characters": ["PlayerRosia","StoryRosia","RosiaMum","StoryTeacher"],
     "bosses": ["BossMummy"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
