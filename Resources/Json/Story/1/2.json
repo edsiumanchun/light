@@ -2,23 +2,25 @@
 "storyArray" : [
 	{
 	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
 	    "dialogue": [
 	        "musicappear"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"這熟悉的氣...難道您就是傳說中的樂神嗎？"
+	    	"是熟悉的氣味...難道您就是樂神嗎？"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "憑氣味而洞悉一切，實在不簡單啊。"	    
+	        "單憑氣味而洞悉一切，實在不簡單啊。"	    
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"過獎了，不知樂神找我所為何事?"
+	    	"過獎了，未知樂神找我所為何事?"
 	    ]
 	},{
 	    "name": "music",
@@ -30,48 +32,39 @@
 	    "name": "player",
 	    "dialogue": [
 	        "因為我實在不忍心看到餓鬼受苦...",
-	        "所以才盡微薄之力給衪們一點解脫。"
+	        "所以才盡略微薄之力給衪們一點解脫。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "另外，你知道是誰設下三毒之石嗎？"
+	    	"妙哉！"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "很抱歉，我暫時並不知道具體情況...",
-	        "但我必須要阻止設石之人繼續製造禍害。"
+	        "可是，現在狀況猶如抱薪救火。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "很好！看來我們的目標是一致的！",
-	        "既然如此，從今以後我就成為你的守護神！"
+	    	"為何？"
 	    ]
-	},
-	{
+	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"得到樂神的眷顧實在令我受寵若驚...可是..."
+	        "最近三毒之石的出現擾亂了眾靈的本性。"
+	        "若果要切底根治問題，則必須阻止設石之人繼續製造禍害。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"嗯，以後多多指教了。"
+	        "很好！看來我們是志同道合了！",
+	        "就讓我成為你的守護神吧！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "musicdisappear"
-	    ]
-	},
-	{
-	    "name": "player",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "shopowner",
-	    "dialogue": [
-	    	"請等等..."
 	    ]
 	},{
 	    "name": "event",
@@ -80,22 +73,29 @@
 	    ]
 	},
 	{
-	    "name": "shopowner",
-	    "dialogue": [
-	        "樂神大多時候都不會顯現本尊，而是默默守護著她所敬重的人...",
-	        "姑娘，您是否感到有些害怕？"
-	    ]
-	},{
 	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "shopowner",
 	    "dialogue": [
-	    	"樂神是代表歡樂吉祥的神祇，喜歡行善積德，又怎會害怕。"
+	    	"樂神..."
 	    ]
 	},
 	{
 	    "name": "shopowner",
 	    "dialogue": [
-	    	"得能得到樂神賞識的人，定是氣宇不凡...",
-	        "今天我特意破例，讓你用三毒之石來交換一些好東西吧！"
+	    	"樂神是代表歡樂吉祥的神祇，喜歡在旁默默守護著配受敬重的人。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"不敢當，自問還是有很多不足之處，但我仍會盡力不負樂神所望。"
+	    ]
+	},
+	{
+	    "name": "shopowner",
+	    "dialogue": [
+	    	"能得到樂神賞識的人，定是氣宇不凡...",
+	        "我就破例讓你以三毒之石換取一些好東西吧！"
 	    ]
 	},{
 	    "name": "event",

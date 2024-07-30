@@ -85,22 +85,20 @@ public class StoryController : MonoBehaviour
         // Other initialization code...
         canvasObject.SetActive(false);
         ShowTutor();
+        if(AssetData.showStory){
+            LoadStoryDataFromJSON("S", false, 0);
+        }
     }
 
-    public void LoadStoryDataFromJSON(string suffix, int index){
+    public void LoadStoryDataFromJSON(string suffix, bool _onlyOne, int index){
         string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString() ) + suffix;
 
         print(storyFilePath + "/" + index.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
         print(jsonFile );
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
-        if(suffix == ""){
-            currentStoryIndex = 0;
-            onlyOne = false;
-        } else {
-            currentStoryIndex = index;
-            onlyOne = true;
-        }
+        currentStoryIndex = index;
+        onlyOne = _onlyOne;
         LoadStoryDataFromJSONWithPath(currentStoryIndex);   
     }
 
@@ -130,7 +128,9 @@ public class StoryController : MonoBehaviour
         SetupFadeObject(false);
         if(canPlayerMove == false) {
             GameObject player = GameObject.Find("Player");
-            player.GetComponent<JoystickController>().isFighting = true;
+            if(player != null) {
+                player.GetComponent<JoystickController>().isFighting = true;
+            }
         }
         if(leftPrefab != null) Destroy(leftPrefab);
         if(rightPrefab != null) Destroy(rightPrefab);

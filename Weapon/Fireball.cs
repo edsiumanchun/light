@@ -13,7 +13,7 @@ public class FireBallController : MonoBehaviour
         boxCollider2D.size = new Vector2(0.03f, 0.03f);
         boxCollider2D.isTrigger = true;
         this.gameObject.AddComponent<RectTransform>();
-        Utils.AddEffect(this.gameObject, "Stone/Ball" + type);
+        Effects.AddEffect(this.gameObject, "Stone/Ball" + type);
         GameObject gameObject = GameObject.Find("Player");
         transform.DOMove(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, -3), 1f);
     }

@@ -280,8 +280,6 @@ public static class CacheManager
         // Caching.ClearCache();
         // Retrieve the JSON string from PlayerPrefs
         string dictionaryJson = PlayerPrefs.GetString(key);
-        Debug.Log(key);
-        Debug.Log(dictionaryJson);
         SerializableDictionary serializableDictionary = JsonUtility.FromJson<SerializableDictionary>(dictionaryJson);
         Dictionary<string, string> dictionary;
         if (serializableDictionary == null)

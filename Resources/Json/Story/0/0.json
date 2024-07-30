@@ -6,13 +6,6 @@
 	        "completeTutor"
 	    ]
 	},{
-	    "name": "player",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "sage",
-	    "dialogue": [
-	    	"您是從東方來的前輩嗎？"
-	    ]
-	},{
 	    "name": "sage",
 	    "dialogue": [
 	        "姑娘，快離開這裡，這裡有可怕的餓鬼..."
@@ -31,12 +24,12 @@
 	},{
 	    "name": "sage",
 	    "dialogue": [
-	        "這...這是...天罡淨魔術！?"
+	        "這...這是...天罡淨化術！?"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"沒錯，這就是能讓餓鬼飽食並自我解脫的天罡淨魔術。"
+	    	"沒錯，這就是能讓餓鬼飽食並自我解脫的天罡淨化術。"
 	    ]
 	},{
 	    "name": "sage",

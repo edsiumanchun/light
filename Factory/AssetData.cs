@@ -35,6 +35,7 @@ public class Path
 [System.Serializable]
 public class AssetData 
 {
+    public static bool showStory = false;
     public static bool goUp = false;
     public static int exit = 0;
     public static int exit2 = 0;
@@ -164,6 +165,14 @@ public class AssetData
                 return null;
             case "WallSkip":
                 AssetData.wallSkip = gridArray0;
+                return null;
+            case "Effect":
+                List<int> effectIndexes = gridArray0;
+                for (int i = 0; i < effectIndexes.Count; i++)
+                {
+                    int effectIndex = effectIndexes[i];
+                    Effects.AddEffectIndex(effectIndex);
+                }
                 return null;
         }
         // --------- //
@@ -373,12 +382,11 @@ public class AssetData
             if (newObject.name.Contains("Player")) {
                 newZ = -9.3f;
             }
-            newObject.transform.position = new Vector3(newObject.transform.localPosition.x + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX, gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
+            newObject.transform.position = new Vector3(newObject.transform.localPosition.x + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX,newObject.transform.localPosition.y + gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
             if(isRight) { // flip
                 newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
             }
         }
-        newObject.transform.rotation = Quaternion.identity;
         // create player for teleport
         if(newObject.name.Contains("Teleport")) {
             if(teleport == 1 && newObject.name.Contains("Teleport")
@@ -391,11 +399,17 @@ public class AssetData
 
     public void CreateObjects(float z, float subStage)
     {
+        if( name == "ShowStory") {
+            // if(!Utils.isUAT) {
+                AssetData.showStory = true;
+                return;
+            // }
+        }
         if (name == "GoUp") {
             AssetData.goUp = true;
             return;
         }
-        if (name == "Audio" || name == "Exit" || name == "Exit2" || name == "Teleport" || name == "TeleportExit" || name == "WallSkip")
+        if (name == "Audio" || name == "Exit" || name == "Exit2" || name == "Teleport" || name == "TeleportExit" || name == "WallSkip" || name == "Effect")
         {
             CreateObjectWithAssetIndex(0, z, "");
             return;

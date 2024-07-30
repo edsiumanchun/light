@@ -20,6 +20,10 @@
       "name": "GoUp"
     },
     {
+      "name": "Effect",
+      "gridArray0": [0]
+    },
+    {
       "name": "PlateH",
       "gridArray0": [2, 2, 2, 2, 2],
       "gridArray1": [1, 1, 1, 1, 1],

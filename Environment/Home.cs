@@ -50,6 +50,7 @@ public class HomeController : MonoBehaviour
         AssetData.gameObject = new GameObject();
         AssetData.gameObject.name = "MainGameObject";
         AssetData.goUp = false;
+        AssetData.showStory = false;
         AssetData.wallSkip = null;
         AssetData.teleportExit = 0;
         AssetData.teleport = 0;

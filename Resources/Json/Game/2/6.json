@@ -13,7 +13,15 @@
       "gridArray0": [-5]
     },
     {
+      "name": "Exit2",
+      "gridArray0": [9]
+    },
+    {
       "name": "GoUp"
+    },
+    {
+      "name": "Effect",
+      "gridArray0": [0]
     },
     {
       "name": "PlateH",
@@ -21,23 +29,23 @@
       "gridArray1": [0, 0, 0, 0, 0],
       "gridArray2": [1, 1, 1, 1, 1],
       "gridArray3": [0, 0, 0, 0, 0],
-      "gridArray4": [5, 1, 1, 1, 1],
+      "gridArray4": [1, 1, 1, 1, 1],
       "gridArray5": [1, 6, 1, 1, 1]
     },
     {
       "name": "PlateV",
       "gridArray0": [6, 0, 0, 0, 0, 6],
-      "gridArray1": [1, 0, 0, 0, 0, 1],
+      "gridArray1": [6, 0, 0, 0, 0, 6],
       "gridArray2": [1, 9, 9, 9, 9, 1],
-      "gridArray3": [1, 9, 9, 9, 9, 1],
+      "gridArray3": [10, 9, 9, 9, 9, 1],
       "gridArray4": [1, 0, 0, 0, 0, 5]
     },
     {
       "name": "Object",
       "gridArray0": [0, 0, 0, 0, 0],
-      "gridArray1": [0, 0, 45, 0, 0],
-      "gridArray2": [57, -11, 0, 0, 0],
-      "gridArray3": [1, 0, -11, 0, 1],
+      "gridArray1": [0, 0, 0, 0, 0],
+      "gridArray2": [0, 0, 0, 0, 0],
+      "gridArray3": [1, 0, 8, 0, 1],
       "gridArray4": [0, 1, 0, 0, 1]
     }
   ]

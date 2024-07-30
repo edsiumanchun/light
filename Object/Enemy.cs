@@ -127,7 +127,7 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        effect = Utils.AddEffect(this.gameObject, "purify");
+        effect = Effects.AddEffect(this.gameObject, "purify");
         Camera.main.GetComponent<GameUIController>().HideBattle(false);
         CacheManager.SyncHPMP(false);
 
@@ -154,7 +154,7 @@ public class EnemyController : MonoBehaviour
             if (gameObject != null)
             {
                 int hpRecover = CacheManager.GetCache(Cache.HPRecover.ToString());
-                Utils.AddEffect(player, "heart");
+                Effects.AddEffect(player, "heart");
                 CacheManager.ChangeHPMP(hpRecover);
                 Camera.main.GetComponent<GameUIController>().UpdateEnemyBar(currentHP, enemyMaxHP, true);
             }
@@ -226,14 +226,14 @@ public class EnemyController : MonoBehaviour
                 if(gemObjects != null) { // gem
                     StartCoroutine(GemDie());
                 } else {
-                    // Utils.AddEffect(this.gameObject, "SecureAura");
+                    // Effects.AddEffect(this.gameObject, "SecureAura");
                     Reward();
                     Utils.Fade(this.gameObject, true);
                     StartCoroutine(DelayDestroy(this.gameObject));
                 }
             }
         } else {
-            // Utils.AddEffect(this.gameObject, "SecureAura");
+            // Effects.AddEffect(this.gameObject, "SecureAura");
             Utils.Fade(this.gameObject, true);
             StartCoroutine(DelayDestroy(this.gameObject));
         }
@@ -260,7 +260,7 @@ public class EnemyController : MonoBehaviour
         int i = 0;
         foreach (GameObject gemObject in gemObjects)
         {
-            Utils.AddEffect(gemObject, "purify");
+            Effects.AddEffect(gemObject, "purify");
             Utils.Fade(gemObject, true);
             if(i == gemObjects.Count - 1){
                 Reward();

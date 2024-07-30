@@ -3,10 +3,10 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-public class JoystickController : MonoBehaviour, IDragHandler
+public class JoystickController : MonoBehaviour
 {
     public bool isFighting = false;
-    [SerializeField] private float moveSpeed = 6;
+    [SerializeField] private float moveSpeed = 5f;
     // [SerializeField] private float jumpForce = 6.8f;
     [SerializeField] private float jumpForce = 7f;
     private Rigidbody2D rb;
@@ -18,23 +18,52 @@ public class JoystickController : MonoBehaviour, IDragHandler
 
     private bool isJumpButtonPressed = false;
     private bool[] isUserDraggingArray = new bool[64];
-    void Update()
+
+    private bool isPlayerMoving = false;
+    private int moveDirection = 0;
+
+    private void FixedUpdate()
     {
-        // jump
         if (IsJumpButtonDown())
         {
             Jump();
         }
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        Vector3 newPosition = transform.position + (Vector3)eventData.delta;
+        if(isPlayerMoving) {
+            MovePlayer(moveDirection);
+        }
+        if (Application.isMobilePlatform)
+        {
+            Touch touch = Input.GetTouch(0);
 
-        float clampedX = Mathf.Clamp(newPosition.x, -xBounds, xBounds);
-        float yPosition = transform.position.y;
-        float zPosition = transform.position.z;
 
-        transform.position = new Vector3(clampedX, yPosition, zPosition);
+            if (touch.phase == TouchPhase.Began) {
+                isPlayerMoving = true;
+
+            } else if (touch.phase == TouchPhase.Moved)
+            {
+                // Start moving the player
+                float touchDelta = touch.deltaPosition.x;
+                if (touchDelta < 0)
+                {
+                    moveDirection = -1;
+                }
+                else if (touchDelta > 0)
+                {
+                    moveDirection = 1;
+                }
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                isPlayerMoving = false;
+                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+            }
+        }
+        else
+        {
+            // for edit mode
+            float horizontalInput = Input.GetAxis("Horizontal");
+            MovePlayer(horizontalInput);
+        }
     }
     
     private bool IsJumpButtonDown()
@@ -95,7 +124,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
         if (collisionNormal == Vector2.up){
             // The player is touching the ground, so they can jump again
             jumpCount = 0;
-            print("joystickenter2d");
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
             Utils.showChildrenWithName("move", transform);
         }
@@ -128,39 +156,6 @@ public class JoystickController : MonoBehaviour, IDragHandler
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
-    {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                float touchDelta = touch.deltaPosition.x;
-
-                if (touchDelta < 0)
-                {
-                    MovePlayer(-1);
-                }
-                else if (touchDelta > 0)
-                {
-                    MovePlayer(1);
-                }
-                else
-                {
-                }
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-            }
-        }
-        else
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            MovePlayer(horizontalInput);
-        }
     }
 
 

@@ -53,7 +53,6 @@ public class GameUIController : MonoBehaviour
         eventSystemObject = new GameObject("GameEventSystem");
         eventSystemObject.AddComponent<UnityEngine.EventSystems.EventSystem>();
         eventSystemObject.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
-        Debug.Log("?!?!?!");
         // Create EventSystem object VERY IMPORTANT!!!
 
         SetupButton();

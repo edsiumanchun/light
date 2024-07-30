@@ -20,9 +20,9 @@
       "name": "PlateV",
       "gridArray0": [1, 0, 0, 0, 0, 1],
       "gridArray1": [5, 2, 0, 0, 0, 1],
-      "gridArray2": [5, 0, 2, 0, 0, 8],
-      "gridArray3": [5, 0, 0, 2, 0, 1],
-      "gridArray4": [1, 0, 0, 0, 2, 1]
+      "gridArray2": [5, 0, 0, 0, 0, 8],
+      "gridArray3": [5, 0, 0, 0, 0, 1],
+      "gridArray4": [1, 0, 0, 0, 0, 1]
     },
     {
       "name": "Object",

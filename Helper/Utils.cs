@@ -251,7 +251,7 @@ public class Utils : MonoBehaviour
 
     static public GameObject InstantiateObject(GameObject prefab)
     {
-        GameObject gameObject = Instantiate(prefab, Vector2.zero, Quaternion.identity);
+        GameObject gameObject = Instantiate(prefab, prefab.transform.localPosition, prefab.transform.localRotation);
 
         return gameObject;
     }
@@ -330,22 +330,6 @@ public class Utils : MonoBehaviour
                 spriteRenderer.DOFade(isFadeOut ? 0f : 1f, 0.3f);
             }
         }
-    }
-    // effect
-    public static GameObject AddEffect(GameObject GO, string effectName) {
-        List<string> paths = new List<string>((new[] { effectName}));
-        GameObject lightPrefab = (GameObject)Utils.LoadPrefabs("Effect", paths)[0];
-        GameObject lightObject = Instantiate(lightPrefab);
-        lightObject.name = "Effect";
-        lightObject.transform.SetParent(GO.transform);
-        if(GO.name.Contains("Enemy") || GO.name.Contains("Boss") || GO.name.Contains("Player")) {
-            float y = GO.GetComponent<BoxCollider2D>() == null ? 0.9f : GO.GetComponent<BoxCollider2D>().size.y / 2;
-            float height = y / 2;
-            lightObject.transform.localPosition = new Vector3(0, height, GO.name.Contains("Player") ? 0.3f : -8f);
-        } else {
-            lightObject.transform.localPosition = new Vector3(0, 0f, -0.3f);
-        }
-        return lightObject;
     }
 
     public static void RemoveEffect(Transform transform)

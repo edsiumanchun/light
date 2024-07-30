@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
         GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
         if(purifyObject != null && purifyObject.name.Contains("Trigger")) {
-            storyController.LoadStoryDataFromJSON("T", purifyObject.name.Contains("Light") ? 0 : 1);
+            storyController.LoadStoryDataFromJSON("T", true, purifyObject.name.Contains("Light") ? 0 : 1);
             return;
         }
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         if( (CacheManager.IsCleared() && currentFloor == 2 && currentStage <= 1)){
             EventController.ShowEvent("shop");
         } else {
-            storyController.LoadStoryDataFromJSON("", 0);
+            storyController.LoadStoryDataFromJSON("", false, 0);
         }
         audioSource.PlayOneShot(wallSound);
         // VideoPlayerController videoController = Camera.main.gameObject.GetComponent<VideoPlayerController>();  
@@ -181,11 +181,11 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs (direction.x) > Mathf.Abs (direction.y)) {
                 if(isRight) {
                     if(direction.x>0){
-                        print("collision is to the right" + name);
+                        print("collision is to the righta" + name);
                         return;
                     }
                     else{
-                        print("collision is to the left"  + name);
+                        print("collision is to the lefta"  + name);
                     }
                 } else {
                     if(direction.x>0){print("collision is to the right" + name);
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
         int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string playerPosition = name.Split('_')[0];
-        // Debug.Log(name);
+        Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
@@ -312,7 +312,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void AttackedBySpell(string name){
-        Utils.AddEffect(this.gameObject, "Stone/" + name);
+        Effects.AddEffect(this.gameObject, "Stone/" + name);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

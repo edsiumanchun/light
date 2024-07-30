@@ -6,37 +6,44 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "這感覺很溫暖舒適，你對我做了什麼?"
+	        "為何沒了肌餓感？你對我做了什麼？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "剛剛我淨化掉了你內心的戾氣。"
+	        "我只是驅散了你內心的戾氣而己。"
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "除了煩惱盡失，我還感受到了一種溫飽的感覺。",
-	        "我已經有一百年沒有進食了...",
-	        "長期的飢餓使我只剩下這副枯槁的骨架!"
+	        "真的很感恩，這十年來我一口飯也沒吃過..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "一百年沒吃飯...這就是你們餓鬼的宿命嗎？"
+	        "十年沒吃飯...騙人的吧..."
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "是啊，我們這一生就是為了贖罪。",
-	        "幸好遇上你，我才不會陷入萬劫不復的境地。"
+	        "沒騙你的，你看我餓到只剩下一副骨架就知道了...",
+	        "要不是你讓我得到温飽，我甚至連說話的氣力也沒有啊。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "這就是餓鬼的宿命？"
+	    ]
+	},
+	{
+	    "name": "BossBone",
+	    "dialogue": [
+	        "算是吧，我們這一生就是為了贖罪。"
 	    ]
 	},{
 	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "",
 	    "dialogue": [
 	        "bossdisappear"
 	    ]

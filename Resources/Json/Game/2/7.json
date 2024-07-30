@@ -7,27 +7,27 @@
     {
       "name": "PlateH",
       "gridArray0": [1, 2, 1, 1, 1],
-      "gridArray1": [0, 1, 1, 1, 0],
-      "gridArray2": [0, 1, 1, 1, 1],
-      "gridArray3": [0, 1, 1, 1, 0],
-      "gridArray4": [0, 1, 1, 1, 0],
-      "gridArray5": [1, 1, 1, 1, 3]
+      "gridArray1": [1, 0, 0, 1, 1],
+      "gridArray2": [0, 1, 1, 1, 0],
+      "gridArray3": [1, 0, 1, 1, 1],
+      "gridArray4": [0, 1, 1, 0, 1],
+      "gridArray5": [1, 1, 1, 1, 1]
     },
     {
       "name": "PlateV",
-      "gridArray0": [1, 2, 0, 0, 3, 1],
-      "gridArray1": [1, 0, 0, 0, 1, 1],
-      "gridArray2": [1, 0, 2, 0, 0, 1],
-      "gridArray3": [1, 0, 0, 0, 0, 1],
-      "gridArray4": [5, 0, 0, 2, 0, 1]
+      "gridArray0": [1, 0, 1, 0, 0, 1],
+      "gridArray1": [1, 0, 3, 0, 0, 1],
+      "gridArray2": [1, 0, 1, 0, 0, 1],
+      "gridArray3": [1, 0, 0, 1, 0, 1],
+      "gridArray4": [5, 2, 0, 0, 0, 1]
     },
     {
       "name": "Object",
-      "gridArray0": [0, 1, 1, 0, 23],
-      "gridArray1": [0, 3, 0, 21, 23],
-      "gridArray2": [0, 0, 3, 3, 0],
-      "gridArray3": [0, 3, 3, 3, 0],
-      "gridArray4": [1, 0, 0, 0, 1]
+      "gridArray0": [53, 1, 1, 0, 2222],
+      "gridArray1": [0, 0, 0, 3333, 0],
+      "gridArray2": [0, 0, 7777, 8888, 23],
+      "gridArray3": [0, 0, -5, 0, 54],
+      "gridArray4": [1, 3333, 2222, 1111, 9999]
     }
   ]
 }

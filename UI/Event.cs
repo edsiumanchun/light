@@ -158,8 +158,8 @@ public class EventController : MonoBehaviour
                 return 1.8f;
             case "playerattack":
                 player.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
-                Utils.AddEffect(boss, "purify");
-                // Utils.AddEffect(player, "purify");
+                Effects.AddEffect(boss, "purify");
+                // Effects.AddEffect(player, "purify");
                 return 1.8f;
             case "rosiacome":
                 vector3 = GetVector("Player",new Vector3(0.8f,0.4f,1f));

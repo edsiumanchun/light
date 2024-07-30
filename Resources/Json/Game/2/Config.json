@@ -1,9 +1,9 @@
 {
   "paths": {
-    "backgrounds": ["ScaleCastle", "ScaleBamboo", "ScaleSky"],
+    "backgrounds": ["ScaleCastle", "ScaleBamboo", "ScaleSky", "ScaleMoon"],
     "plateH": ["Rock", "GoUp", "GoDown","Space", "GoDownExit", "GoDownRevert"],
     "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake","RockFake", "GateExit2"],
-    "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf"],
+    "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf", "StorySister"],
     "bosses": ["BossEye", "BossBigEye"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2", "Arrogant"],

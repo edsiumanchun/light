@@ -17,7 +17,7 @@ public class MainController : MonoBehaviour
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 2);
             CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
-            CacheManager.SetCache(Cache.ExitH.ToString(), 5); 
+            CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
             CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);
             CacheManager.SetCache(Cache.HPMax.ToString(), 9999);
@@ -113,8 +113,6 @@ public class MainController : MonoBehaviour
             MainController.LoadShopData(stage);
             MainController.LoadEnemyData(stage);
         }
-        Debug.Log(stage);
-        Debug.Log(floor);
         TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/Config");
         AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
         if (jsonFile != null)
