@@ -26,6 +26,7 @@ public class Path
     public List<string> obstacles;
     public List<string> triggers;
     public List<string> walls;
+    public List<string> bullets;
     public List<string> enemies;
     public List<string> gems;
     public List<string> bosses;

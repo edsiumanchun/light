@@ -7,6 +7,8 @@
 	    ]
 	},{
 	    "name": "sage",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "sage",
 	    "dialogue": [
 	        "姑娘，快離開這裡，這裡有可怕的餓鬼..."
 	    ]

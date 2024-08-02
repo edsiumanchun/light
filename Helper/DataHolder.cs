@@ -43,7 +43,6 @@ public static class DataHolder
     public static List<List<AssetData>> loadedAssets;
     public static List<AssetData> loadedSound;
     public static List<AssetData> loadedGameObject;
-
     public static List<Sprite> items;
     public static List<Sprite> decorations;
     public static List<Object> characters;

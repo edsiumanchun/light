@@ -18,8 +18,6 @@ public class GameUIController : MonoBehaviour
     private bool isMenuOpen, isStageOpen, isInfoOpen, isItemOpen;
     public GameObject canvasObject;
     public FloatingTextController enemyFloatingTextController, playerFloatingTextController;
-
-
     public Vector2[] buttonPositions = new Vector2[]
     {
         new Vector2(0f, 0f),  // Bottom right button position
@@ -188,12 +186,12 @@ public class GameUIController : MonoBehaviour
         }
     }
 
-    public void CreateAndAnimateEnemyFloatingText(string text, int index) {
-        enemyFloatingTextController.CreateAndAnimateFloatingText(text, index);
+    public void CreateAndAnimateEnemyFloatingText(string text, int type) {
+        enemyFloatingTextController.CreateAndAnimateFloatingText(text, type, 0);
     }
 
-    public void CreateAndAnimatePlayerFloatingText(string text, int index) {
-        playerFloatingTextController.CreateAndAnimateFloatingText(text, index);
+    public void CreateAndAnimatePlayerFloatingText(string text, int type, int xFactor) {
+        playerFloatingTextController.CreateAndAnimateFloatingText(text, type, xFactor);
     }
 
     public void DisplayHPMPInfo(){

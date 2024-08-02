@@ -6,8 +6,8 @@
       "gridArray0": [1, 2, 1, 1, 1],
       "gridArray1": [1, 1, 0, 1, 0],
       "gridArray2": [0, 0, 1, 1, 1],
-      "gridArray3": [1, 1, 0, 1, 0],
-      "gridArray4": [0, 0, 1, 0, 1],
+      "gridArray3": [0, 1, 1, 1, 0],
+      "gridArray4": [1, 0, 1, 0, 1],
       "gridArray5": [1, 1, 3, 1, 1]
     },
     {
@@ -22,7 +22,7 @@
       "name": "Object",
       "gridArray0": [3213, 1, 0, 21, 0],
       "gridArray1": [0, 0, 0, 0, 23],
-      "gridArray2": [2, 0, 0, 23, 0],
+      "gridArray2": [0, 0, -2, 23, 0],
       "gridArray3": [0, 0, 0, 0, 23],
       "gridArray4": [1231, 42, 1, 23, 22]
     }

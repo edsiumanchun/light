@@ -146,11 +146,11 @@ public static class CacheManager
         return hp == true && mp == true;
     }
 
-    public static void ChangeHPMP(int hpChange){ // only for player
+    public static void ChangeHPMP(int hpChange, int xFactor){ // only for player
         int consume = CacheManager.GetConsume();
-        ChangeHPWithMP(hpChange, -1 * consume);
+        ChangeHPWithMP(hpChange, -1 * consume, xFactor);
     }
-    public static void ChangeHPWithMP(int hpChange, int mpDeduct){ // only for player
+    public static void ChangeHPWithMP(int hpChange, int mpDeduct, int xFactor){ // only for player
         int defend = CacheManager.GetCache(Cache.Defend.ToString());
         int hpMax = CacheManager.GetCache(Cache.HPMax.ToString());
         int hpDeduct = hpChange - defend;
@@ -160,10 +160,10 @@ public static class CacheManager
         if(hpDeduct != 0) {
             string sign = hpDeduct < 0 ? "" : "+";
             int index = hpDeduct < 0 ? 0 : 1;
-            Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign + hpDeduct.ToString(), index);
+            Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign + hpDeduct.ToString(), index, xFactor);
         }
         string sign2 = mpDeduct < 0 ? "" : "+";
-        Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign2 + mpDeduct.ToString(), 2);
+        Camera.main.GetComponent<GameUIController>().CreateAndAnimatePlayerFloatingText(sign2 + mpDeduct.ToString(), 2, xFactor); // mp
         Camera.main.GetComponent<GameUIController>().DisplayHPMPInfo();
     }
 

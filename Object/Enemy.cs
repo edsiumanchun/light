@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject skull;
     public int assetIndex = 0;
     public GameObject effect;
     public List<GameObject> gemObjects;
@@ -14,10 +15,14 @@ public class EnemyController : MonoBehaviour
     public int enemyMaxHP = 0;
     public int enemyDamage = 0;
     public int currentHP = 0;
+
+    public bool sidePlayerText;
+
     HPTextComponent hpTextComponent;
     // Use this for initialization
 
     void Awake (){
+        sidePlayerText = true;
         enemyDatas = new List<EnemyData>();
         avatars = new List<Sprite>();
 
@@ -137,8 +142,8 @@ public class EnemyController : MonoBehaviour
     private void BattleStep(int i = 0) {
         GameObject player = GameObject.Find("Player");
         if (i == 0) {
-            CacheManager.ChangeHPMP(-1 * enemyDamage);
-            bool result = TowerAttack();
+            CacheManager.ChangeHPMP(-1 * enemyDamage, 0);
+            StartCoroutine(TowerAttack());
             // effect 
             if(this.gameObject.name.Contains("Gem")) {
                 player.GetComponent<PlayerController>().AttackedBySpell("Explode");
@@ -155,7 +160,7 @@ public class EnemyController : MonoBehaviour
             {
                 int hpRecover = CacheManager.GetCache(Cache.HPRecover.ToString());
                 Effects.AddEffect(player, "heart");
-                CacheManager.ChangeHPMP(hpRecover);
+                CacheManager.ChangeHPMP(hpRecover, 0);
                 Camera.main.GetComponent<GameUIController>().UpdateEnemyBar(currentHP, enemyMaxHP, true);
             }
             // healing
@@ -181,6 +186,12 @@ public class EnemyController : MonoBehaviour
         Die(true);
     }
 
+    public int getXFactor() {
+        sidePlayerText = !sidePlayerText;
+        int xFactor = sidePlayerText ? 1 : -1;
+        return xFactor;
+    }
+
     public void ResumeBattle(){
         RemoveFloatingText();
         Camera.main.GetComponent<GameUIController>().HideBattle(true);
@@ -190,29 +201,40 @@ public class EnemyController : MonoBehaviour
         CacheManager.SyncHPMP(true); // 真係sync
     }
 
-    public bool TowerAttack(){
+    public IEnumerator TowerAttack()
+    {
         GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Tower");
         int i = 0, totalHP = 0, totalMP = 0;
         foreach (GameObject go in gameObjectsWithTag)
         {
             bool isFire = i == gameObjectsWithTag.Length - 1;
-            if(go.name.Contains("Greed")){
-                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+            if (go.name.Contains("Greed"))
+            {
+                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
                 CreateFireBall(go, "Greed", isFire, totalHP, totalMP);
-            } else if(go.name.Contains("Hatred")){
-                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+            }
+            else if (go.name.Contains("Hatred"))
+            {
+                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
                 CreateFireBall(go, "Hatred", isFire, totalHP, totalMP);
-            } else if(go.name.Contains("Delusion")){
-                totalHP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP += go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
+            }
+            else if (go.name.Contains("Delusion"))
+            {
+                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
+                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
                 CreateFireBall(go, "Delusion", isFire, totalHP, totalMP);
             }
             i++;
+
+            // Add a 0.03 second delay
+            yield return new WaitForSeconds(0.1f);
         }
-        return true;
+
+        yield return null;
     }
+
 
     public void Die(bool inGame){
         if(effect != null) {
@@ -314,14 +336,32 @@ public class EnemyController : MonoBehaviour
     }
 
     public void CreateFireBall(GameObject go, string type, bool isFire, int totalHP, int totalMP){
-        GameObject fireBall = new GameObject("Fireball");
-        FireBallController fireBallController = fireBall.AddComponent<FireBallController>();
-        if(isFire) {
-            fireBallController.totalHP = totalHP;
-            fireBallController.totalMP = totalMP;
+        Transform effectObject = go.transform.Find("effect");
+        Transform effectObject2 = go.transform.Find("effect2");
+        if(effectObject == null) {
+            GameObject effect = Effects.AddEffect(go, "Stone/Skull" + type);
+            effect.name = "effect";
+            GameObject effect2 = Effects.AddEffect(go, "Stone/Spiral" + type);
+            effect2.name = "effect2";
+        } else {
+            effectObject.gameObject.GetComponent<ParticleSystem>().Play();
+            effectObject2.gameObject.GetComponent<ParticleSystem>().Play();
         }
-        // fireBall.transform.parent = go.transform;
-        fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -9.3f);
-        fireBallController.Fire(type);
+        GameObject player = GameObject.Find("Player");
+        GameObject effect3 = Effects.AddEffect(player, "Stone/Hit");
+        effect3.name = "effect3";
+        effect3.transform.rotation = Random.rotationUniform;
+        CacheManager.ChangeHPWithMP(-1 * totalHP, -1 * totalMP, getXFactor());
+
+
+        // GameObject fireBall = new GameObject("Fireball");
+        // FireBallController fireBallController = fireBall.AddComponent<FireBallController>();
+        // if(isFire) {
+        //     fireBallController.totalHP = totalHP;
+        //     fireBallController.totalMP = totalMP;
+        // }
+        // // fireBall.transform.parent = go.transform;
+        // fireBall.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -9.3f);
+        // fireBallController.Fire(type);
     }
 }

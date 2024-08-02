@@ -67,9 +67,9 @@ public class Effects : MonoBehaviour
         if(GO.name.Contains("Enemy") || GO.name.Contains("Boss") || GO.name.Contains("Player")) {
             float y = GO.GetComponent<BoxCollider2D>() == null ? 0.9f : GO.GetComponent<BoxCollider2D>().size.y / 2;
             float height = y / 2;
-            lightObject.transform.localPosition = new Vector3(0, height, GO.name.Contains("Player") ? 0.3f : -8f);
+            lightObject.transform.localPosition = new Vector3(lightObject.transform.position.x, lightObject.transform.position.y + height, GO.name.Contains("Player") ? 0.3f : -8f);
         } else {
-            lightObject.transform.localPosition = new Vector3(0, 0f, -0.3f);
+            lightObject.transform.localPosition = new Vector3(lightObject.transform.position.x, lightObject.transform.position.y, -0.3f);
         }
         return lightObject;
     }

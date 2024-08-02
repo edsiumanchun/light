@@ -84,9 +84,21 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6629528604789967287, guid: 02d5c468571ad49b9bb255f3c6bc0d9c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.16078429
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629528604789967287, guid: 02d5c468571ad49b9bb255f3c6bc0d9c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.18914442
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629528604789967287, guid: 02d5c468571ad49b9bb255f3c6bc0d9c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.65882355
+      objectReference: {fileID: 0}
     - target: {fileID: 6629528604808286423, guid: 02d5c468571ad49b9bb255f3c6bc0d9c, type: 3}
       propertyPath: m_Name
-      value: CFX2_EnemyDeathSkull Variant
+      value: SkullHatred
       objectReference: {fileID: 0}
     - target: {fileID: 6629528604808318199, guid: 02d5c468571ad49b9bb255f3c6bc0d9c, type: 3}
       propertyPath: m_LocalPosition.x

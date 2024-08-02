@@ -15,8 +15,8 @@ public class MainController : MonoBehaviour
         int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
-            CacheManager.SetCache(Cache.CurrentStage.ToString(), 2);
-            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 9);
+            CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
+            CacheManager.SetCache(Cache.CurrentFloor.ToString(), 8);
             CacheManager.SetCache(Cache.ExitH.ToString(), 4); 
             CacheManager.SetCache(Cache.ExitV.ToString(), -1); 
             CacheManager.SetCache(Cache.ShowTutor.ToString(), 1);

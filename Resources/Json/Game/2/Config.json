@@ -10,6 +10,7 @@
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed", "Teleport", "TeleportExit", "TeleportFak"],
+    "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
     "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Ceiling"],
     "walls": ["Rock0", "Rock1", "Rock2"],
     "audios": ["elf","bgm"]

@@ -15,10 +15,9 @@
 	},{
 	    "name": "chef",
 	    "dialogue": [
-	        "嚇死我了...好可怕的惡夢...",
-	        "我竟然在夢中被一頭牛吃掉...",
-	        "等等...現在到底是什麼情況？",
-	        "完蛋了！我竟然在如此重要的時刻竟然睡著了！"
+	        "嚇死我了...好可怕的惡夢啊！",
+	        "我竟然在夢中被一頭牛吃掉。",
+	        "對了！我還要趕緊去牢牛！"
 	    ]
 	},{
 	    "name": "event",
@@ -33,9 +32,9 @@
 	    ]
 	},
 	{
-	    "name": "chef",
+	    "name": "player",
 	    "dialogue": [
-	        "且慢，你是打算幹什麼了？"
+	        "等等，你是想要把這頭乳牛殺掉嗎？"
 	    ]
 	},{
 	    "name": "event",
@@ -46,7 +45,8 @@
 	{
 	    "name": "chef",
 	    "dialogue": [
-	        "是國王任命我將這頭乳牛宰殺，然後製成佳餚款待貴賓。"
+	        "是的公主，我要把它製成佳餚款待東盟國大祀官。",
+	        "如果怠慢了客人，就遭糕了。"
 	    ]
 	},{
 	    "name": "event",
@@ -57,76 +57,77 @@
 	{
 	    "name": "chef",
 	    "dialogue": [
-	        "咦，剛剛用來宰牛的那把刀竟然還在這裡...",
-	        "怎麼不見踪影了，太奇怪了...只好出去找找看吧。"
+	        "咦，我的屠刀怎麼突然不見了？難道在外邊掉失了？"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "storydisappear",
+	        "cowmove",
 	        "knifedrop"
 	    ]
 	},
 	{
 	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	        "為了保護兒子，竟然把牛刀含在嘴裡？"
+	    	"吽吽...吽吽..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "原來如此！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	    	"checkcow"
 	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "咽喉都被割破了...真的很有靈性！"
-	    ]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "savecows"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "回歸大自然吧！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	    	"musicappear",
-	    	"musicplay2"
-	    ]
-	},
-	{
 	    "name": "player",
 	    "leftPrefab": "player",
 	    "rightPrefab": "music",
 	    "dialogue": [
-	        "能聽到樂神演奏的優雅樂曲，真是人生一大樂事。"
+	    	"樂神，你聽得懂這頭牛在說什麼嗎？"
 	    ]
 	},
 	{
 	    "name": "music",
 	    "dialogue": [
-	        "公主過獎了，這其實是一首祝福有情生靈得到智慧的滅昏曲。"
+	        "懂，只要用心感受就行。",
+	        "這頭牛告訴了我屠刀在那裡。"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "為何叫滅昏？"
+	    	"是它把屠刀藏了哵？"
 	    ]
 	},
 	{
 	    "name": "music",
 	    "dialogue": [
-	        "因為它的作用就是熄滅生靈那些昏聵不明的習性。"
+	        "對，就藏在它的肚子裏。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "原來如此...",
+	        "母牛之所以吞刀，是因為不看忍見自己的孩子被牢殺。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "或許牠們還擁有轉生前的記憶。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "dragoncome"
 	    ]
 	},
 	{
@@ -134,26 +135,20 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "dragon",
 	    "dialogue": [
-	        "曲有誤。"
+	        "確實是有轉生前的記憶。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "師兄，別來無恙吧"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "師兄！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	    	"playerpoint"
-	    ]
-	},
-	{
-	    "name": "music",
-	    "leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	        "連樂神演奏的曲也發現有誤，看來公子絕非等閒之輩。"
+	        "師妹，最近忙死了，。",
+	        "如果你不介意嫌棄，就讓我收養這對牛母子吧。"
 	    ]
 	},
 	{

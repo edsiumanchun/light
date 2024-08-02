@@ -10,6 +10,7 @@
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
+    "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
     "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
     "walls": ["Brick0", "Brick1", "Brick2"],
     "audios": ["elf","bgm"]
