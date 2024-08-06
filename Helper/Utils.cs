@@ -210,8 +210,10 @@ public class Utils : MonoBehaviour
             GameObject title, value;
             title = CreateText(new Vector2(100, 50), new Vector2(-26, -1 * i * 44 ), info.transform, TextAnchor.MiddleLeft);
             title.GetComponent<Text>().text = titles[i];
+            title.GetComponent<Text>().fontSize = 24;
             value = CreateText(new Vector2(100, 50), new Vector2(26, -1 * i * 44 ), info.transform, TextAnchor.MiddleRight);
             value.GetComponent<Text>().text = values[i];
+            value.GetComponent<Text>().fontSize = 24;
         }
         return info;
     }

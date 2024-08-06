@@ -124,7 +124,7 @@ public class ItemController : PageIndexController
             CacheManager.GetConsume().ToString(),
             CacheManager.GetDefend().ToString(),
         };
-        dashboard = Utils.CreateRows(titles, values, new Vector2(-120, 130), canvasObject.transform);
+        dashboard = Utils.CreateRows(titles, values, new Vector2(0, 130), canvasObject.transform);
         dashboard.transform.localScale = new Vector3(1f, 1f, 1f);
         dashboard.name = "Dashboard";
     }
@@ -139,7 +139,7 @@ public class ItemController : PageIndexController
             CacheManager.GetCache(Cache.HPRecover.ToString()).ToString(),
             CacheManager.GetCache(Cache.Reward.ToString()).ToString()
         };
-        dashboard2 = Utils.CreateRows(titles, values, new Vector2(120, 130), canvasObject.transform);
+        dashboard2 = Utils.CreateRows(titles, values, new Vector2(193, 130), canvasObject.transform);
         dashboard2.transform.localScale = new Vector3(1f, 1f, 1f);
         dashboard2.name = "Dashboard2";
     }

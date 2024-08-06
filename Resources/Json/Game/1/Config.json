@@ -5,7 +5,7 @@
     "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake"],
     "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
     "bosses": ["BossMummy_3"],
-    "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
+    "enemies": ["EnemyMummy", "EnemyBat", "Enemy1"],
     "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],

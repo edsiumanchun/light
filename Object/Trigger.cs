@@ -10,8 +10,8 @@ public class TriggerController : MonoBehaviour
 
         // Customize the Rigidbody 2D properties as needed
         rb2D.mass = 1f;
-        rb2D.drag = 0f;
-        rb2D.angularDrag = 0.05f;
+        rb2D.linearDamping = 0f;
+        rb2D.angularDamping = 0.05f;
         rb2D.useAutoMass = false;
         rb2D.isKinematic = false;
         rb2D.freezeRotation = true;

@@ -69,10 +69,12 @@ public class EventController : MonoBehaviour
                 // story.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
                 return 3;
             case "nursedisappear":
-                //TurnAround(story);
                 gameObject = GameObject.Find("Nurse");
                 Utils.Fade(gameObject, true);
-                // story.transform.DOMove(GetVector("Player", new Vector3(0.8f,0f,1f)), 1);
+                return 1f;
+            case "dragondisappear":
+                gameObject = GameObject.Find("Dragon");
+                Utils.Fade(gameObject, true);
                 return 1f;
             case "bossgoldkey":
                 gameObject = new GameObject("GoldKey");
@@ -171,6 +173,15 @@ public class EventController : MonoBehaviour
                 vector3 = GetVector("Player",new Vector3(-5f,0f,1f));
                 gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Nurse", vector3);
                 gameObject.name = "Nurse";
+                Utils.Fade(gameObject, false);
+                // nurse.transform.DOMove(GetVector("Story", new Vector3(-0.8f,04f,1f)), 2);
+                // nurse.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+                AssetData.SetParent(gameObject);
+                return 2f;
+            case "dragoncome":
+                vector3 = GetVector("Player",new Vector3(-5f,0f,1f));
+                gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Dragon", vector3);
+                gameObject.name = "Dragon";
                 Utils.Fade(gameObject, false);
                 // nurse.transform.DOMove(GetVector("Story", new Vector3(-0.8f,04f,1f)), 2);
                 // nurse.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);

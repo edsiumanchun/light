@@ -132,29 +132,47 @@
 	},
 	{
 	    "name": "dragon",
-	    "leftPrefab": "player",
-	    "rightPrefab": "dragon",
+	    "leftPrefab": "dragon",
+	    "rightPrefab": "",
 	    "dialogue": [
 	        "確實是有轉生前的記憶。"
 	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playpoint"
+	    ]
 	},
 	{
-	    "name": "dragon",
+	    "name": "player",
+	    "leftPrefab": "playersurprise",
+	    "rightPrefab": "dragon",
 	    "dialogue": [
-	        "師兄，別來無恙吧"
+	        "是師兄！"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "師妹，最近忙死了，。",
-	        "如果你不介意嫌棄，就讓我收養這對牛母子吧。"
+	        "我實在不忍看到這牛犢被牢殺...",
+	        "小師妹，如果你不嫌棄，就讓我收養這對牛母子吧。",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playpoint"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "不愧是師兄！"
+	        "感謝師兄，有你照顧牠們我就放心了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "我也只是盡力為小師妹分憂。",
 	    ]
 	},{
 	    "name": "event",
@@ -180,7 +198,7 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "dragon",
 	    "dialogue": [
-	        "兩位，公瑾要先辦正經事，先行告辭了。"
+	        "小師妹，我要先辦正經事，先行告辭了。"
 	    ]
 	},
 	{
@@ -193,26 +211,6 @@
 	    "dialogue": [
 	    	"playerpoint"
 	    ]
-	},
-	{
-	    "name": "dragon",
-	    "leftPrefab": "music",
-	    "rightPrefab": "dragon",
-	    "dialogue": [
-	        "樂神，若果將來能夠跟你鑽研音律，可說是美事一樁。"
-	    ]
-	},
-	{
-	    "name": "music",
-	    "dialogue": [
-	        "隨時能夠奉陪！"
-	    ]
-	},
-	{
-	    "name": "dragon",
-	    "dialogue": [
-	        "好，後會有期!"
-	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -221,35 +219,20 @@
 	},
 	{
 	    "name": "music",
-	    "leftPrefab": "player",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	        "公主，你的師兄既然能夠看到我，已經說明他的道行不淺了。"
+	        "公主，你就是懷疑他設下三毒之石嗎？"
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "師兄是有一種與眾不同的特質，非筆墨可以形容。"
+	        "嗯，十之八九是他。"
 	    ]
 	},
 	{
 	    "name": "music",
 	    "dialogue": [
-	        "說起來，剛剛為何不質問他是否設下三毒之石之人？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "既然師兄出現在這裡，那麼十之八九是他設下三毒之石。",
-	        "再說我們這邊還要想出對策...跟他攤牌只會打草驚蛇。"
-	    ]
-	},
-	{
-	    "name": "music",
-	    "dialogue": [
-	        "公主有什麼好對策？"
+	        "那麼，公主有什麼好對策？"
 	    ]
 	},
 	{

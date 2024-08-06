@@ -71,7 +71,7 @@ public class StoryController : MonoBehaviour
             new Vector2(imageRectTransform.localPosition.x, imageRectTransform.localPosition.y - 28f), canvasObject.transform, TextAnchor.UpperLeft);
         titleText = Utils.CreateText(
             new Vector2(imageRectTransform.sizeDelta.x * 7.0f / 8.8f, 38),
-            new Vector2(0,-218), canvasObject.transform, TextAnchor.UpperLeft);
+            new Vector2(0, imageRectTransform.localPosition.y + 44f), canvasObject.transform, TextAnchor.UpperLeft);
         
 
         dialoguePanel = new GameObject("DialoguePanel");
