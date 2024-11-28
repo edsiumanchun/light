@@ -1,11 +1,26 @@
 {
 "storyArray" : [
 	{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "",
+	    "name": "rkid",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "rosiamum",
 	    "dialogue": [
-	        "這是什麼地方？有人在嗎？"
+	        "媽媽...為何我們要去行乞？"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	    	"小紅，生活雖不如意，但這樣的日子很快就會過去。"
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "為何我們不能回家？爸爸去了哪裡？"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "這個..."
 	    ]
 	},{
 	    "name": "event",
@@ -13,32 +28,65 @@
 	        "playerturn"
 	    ]
 	},{
-	    "name": "angel",
+	    "name": "mkid",
+	    "leftPrefab": "rkid",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	        "鳴哇...鳴哇哇..."
+	    ]
+	},{
+	    "name": "rkid",
+	    "dialogue": [
+	        "媽媽，妹妹餓了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "leftPrefab": "rkidsad",
+	    "rightPrefab": "rosiamum",
+	    "dialogue": [
+	        "你把這個麵包拿去分給妹妹吃吧。"
+	    ]
+	},{
+	    "name": "rkidsad",
+	    "dialogue": [
+	        "妹妹吃不慣這種麵包，我去找找其他食物吧。"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "小紅，別亂跑啊！"
+	    ]
+	},{
+	    "name": "rkidsad",
+	    "dialogue": [
+	        "交給我吧。"
+	    ]
+	},{
+	    "name": "rosiamum",
+	    "dialogue": [
+	        "等等！咳咳..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosia",
 	    "leftPrefab": "rosia",
-	    "rightPrefab": "angel",
+	    "rightPrefab": "",
 	    "dialogue": [
-	        "姐姐，這一切都是幻境..."
+	        "媽媽！"
 	    ]
 	},{
-	    "name": "rosia",
+	    "name": "event",
 	    "dialogue": [
-	        "是妹妹？"
-	    ]
-	},{
-	    "name": "angel",
-	    "dialogue": [
-	        "生死一事，早已注定...",
-	        "姐姐再消沉下去也是於事無補。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "該...如何是好？"
-	    ]
-	},{
-	    "name": "angel",
-	    "dialogue": [
-	        "尋找清淨的寶藏。"
+	        "nextscene"
 	    ]
 	}
 ]

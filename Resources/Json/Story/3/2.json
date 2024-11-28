@@ -1,89 +1,87 @@
 {
 "storyArray" : [
 	{
-	    "name": "rkid",
+	    "name": "rkidcry",
+	    "leftPrefab": "rkidcry",
+	    "rightPrefab": "rosiamumdie",
+	    "dialogue": [
+	        "媽媽..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "孩子，你沒事嗎..."
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	        "我肚子好餓..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"我現在手上只有這個橘子，若不嫌棄，請你收下吧。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"謝謝你，姐姐。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"趕緊吃吧，不然餓壞肚子了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"我的母親還在等我，我決不能獨自享樂...",
+	    	"我要把這個橘子帶回給母親。",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"好孩子，你真的是很懂事。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
+	    "name": "rosiamum",
 	    "leftPrefab": "rkid",
-	    "rightPrefab": "rosiamum",
+	    "rightPrefab": "player",
 	    "dialogue": [
-	        "媽媽...為何我們要去行乞呢？"
+	    	"天快黑了，我有點怕..."
+	    	"姐姐可以陪我回去找媽媽嗎？"
 	    ]
-	},{
-	    "name": "rosiamum",
+	},
+	{
+	    "name": "player",
 	    "dialogue": [
-	    	"小紅，我們剛從家鄉逃難到這裡，先忍耐一下吧。",
-	        "真不知道這場戰爭還要持續多久啊..."
-	    ]
-	},{
-	    "name": "rkid",
-	    "dialogue": [
-	        "爸爸去了哪裡？"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "他已經..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "mkid",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	        "鳴哇...鳴哇哇..."
-	    ]
-	},{
-	    "name": "rkid",
-	    "dialogue": [
-	        "媽媽，妹妹餓了。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "rosiamum",
-	    "dialogue": [
-	        "你把這個麵包拿去分給妹妹吃吧。"
-	    ]
-	},{
-	    "name": "rkidsad",
-	    "dialogue": [
-	        "媽媽，我好想吃米飯啊。"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "你們先把這些麵包吃完吧...",
-	        "將來等媽媽找到工作，就能有錢給你們買米飯了。"
-	    ]
-	},{
-	    "name": "rkidsad",
-	    "dialogue": [
-	        "嗯..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "",
-	    "dialogue": [
-	        "當時我怎麼會如此任性..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nextscene"
+	        "當然可以啊。"
 	    ]
 	}
 ]

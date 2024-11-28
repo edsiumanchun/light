@@ -6,12 +6,12 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "為何沒了肌餓感？你對我做了什麼？"
+	        "為何沒了肌餓感？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "我只是驅散了你內心的戾氣而己。"
+	        "你的內心已被潔淨了。"
 	    ]
 	},
 	{

@@ -1,6 +1,24 @@
+
 {
 "storyArray" : [
 	{
+	    "name": "mkid",
+	    "leftPrefab": "rkidsad",
+	    "rightPrefab": "mkid",
+	    "dialogue": [
+	        "鳴哇...鳴哇哇..."
+	    ]
+	},{
+	    "name": "rkidcry",
+	    "dialogue": [
+	        "妹妹餓壞了，先把這個橘子吃下吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn"
+	    ]
+	},{
 	    "name": "rosiamumdie",
 	    "leftPrefab": "rkidcry",
 	    "rightPrefab": "rosiamumdie",
@@ -17,29 +35,13 @@
 	    "leftPrefab": "rkid",
 	    "rightPrefab": "player",
 	    "dialogue": [
-	        "別哭了，如果再這樣下去，你如何照顧這個孩子？"
+	        "唉，真可憐..."
 	    ]
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	        "我只是個小孩..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "mkid",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	        "鳴哇...鳴哇哇..."
-	    ]
-	},{
-	    "name": "rkidcry",
-	    "dialogue": [
-	        "妹妹別哭，姐姐很快就會找到食物給你。"
+	        "姐姐，你可以代我照顧妹妹嗎？",
+	        "我無法照顧妹妹。"
 	    ]
 	},{
 	    "name": "event",
@@ -51,26 +53,40 @@
 	    "leftPrefab": "rkid",
 	    "rightPrefab": "player",
 	    "dialogue": [
-	        "唉...真可憐...",
-	        "這樣吧，以後妳來當我的侍女吧",
-	        "這樣妳和妹妹就有地方安身了。"
+	        "可以啊，但是你要來我家好好工作。",
+	        "我也會為你媽媽好好禮葬。"
 
 	    ]
 	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	    	"你究竟是誰？"
+	    	"真的..."
+	    	"很感謝你..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "我就是西盟國的公主。"
+	        "振作啊！"
 	    ]
 	},{
-	    "name": "rkidcry",
+	    "name": "event",
 	    "dialogue": [
-	    	"感謝你的好意...",
-	    	"可是，我無法接受殺父仇人的孫女的恩惠。"
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "soilder",
+	    "dialogue": [
+	        "公主，怎樣了？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "快把這兩個孩子帶去醫院檢查！"
 	    ]
 	},{
 	    "name": "event",
@@ -80,62 +96,7 @@
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	    	"公主！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"這一切都是我爺爺惹的禍...",
-	    	"我很痛心自己還小，什麼也做不到。",
-	    	"已經夠了...我已經看過太多無辜的小孩因戰爭而死去。",
-	    	"所有人本應是平等，無分貴賤。",
-	    	"所有人都是值得...",
-	    	"活下來的！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "mkid",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	    	"活...下來..."
-	    ]
-	},{
-	    "name": "rkid",
-	    "dialogue": [
-	    	"妹妹...竟然..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "player",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "player",
-	    "dialogue": [
-	    	"你可有想過為什麼你的母親多麼不願意...",
-	    	"卻也堅持要帶你們來到西盟國？",
-	    	"因為她不在乎自己的尊嚴...",
-	    	"把她孩子的幸福放在最重要的位置！"
-	    ]
-	},{
-	    "name": "rkid",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	    	"嗚嗚...公主...我..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	    	"rosiafall",
-	        "playerturn"
+	    	"你是...公主？"
 	    ]
 	},{
 	    "name": "rosia",
@@ -146,11 +107,6 @@
 	    	"她似乎擁有某種神秘的力量，總是帶給人溫暖。",
 	        "從那以後，我和妹妹搬到了公主的住所一起居住...",
 	        "出乎意料的是，公主的房間竟然非常簡樸。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nextscene"
 	    ]
 	}
 ]
