@@ -11,41 +11,99 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "你的內心已被潔淨了。"
+	        "你已經得到了解脫。"
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "真的很感恩，這十年來我一口飯也沒吃過..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "十年沒吃飯...騙人的吧..."
-	    ]
-	},
-	{
-	    "name": "BossBone",
-	    "dialogue": [
-	        "沒騙你的，你看我餓到只剩下一副骨架就知道了...",
-	        "要不是你讓我得到温飽，我甚至連說話的氣力也沒有啊。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "這就是餓鬼的宿命？"
-	    ]
-	},
-	{
-	    "name": "BossBone",
-	    "dialogue": [
-	        "算是吧，我們這一生就是為了贖罪。"
+	        "這十年來我一口飯也沒吃過...",
+	        "很感謝你..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "bossdisappear"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "唉..."
+	    ]
+	},{
+	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "musicappear"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"呃..."
+	    ]
+	},{
+	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "playerbow"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "不必多禮。"	    
+	    ]
+	},{
+	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "playerresume"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"能在這裡遇上八部樂神是我的榮幸。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "餓鬼轉生前過於吝嗇慳貪...才會淪為餓鬼。",
+	        "這也是餓鬼注定的命運，何以感到惋惜？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "這些餓鬼無論是過往生還是今生，也有家人。",
+	        "衪們的母親必定不希望自己的兒女飽受折磨...",
+	        "真不敢想像衪們的母親有多難受..."
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"在這五濁惡世，難得有大善人！",
+	        "願你得到平安喜樂！"
+	    ]
+	},{
+	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "musicdisappear"
+	        "playerbow"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "樂神...",
+	    ]
+	},{
+	    "name": "event",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "playerresume"
 	    ]
 	}
 ]

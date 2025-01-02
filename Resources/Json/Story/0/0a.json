@@ -1,0 +1,81 @@
+母親13歲 黃金血 卡牌
+七寶樹 拜佛 symmetric asymmetric
+{
+"storyArray" : [
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "completeTutor"
+	    ]
+	},{
+	    "name": "sage",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "sage",
+	    "dialogue": [
+	        "是...是餓鬼..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "ghostshow",
+	        "playerturn",
+	        "playerattack",
+	        "bossgoldkey",
+	        "bossdisappear",
+	        "playerturn",
+	        "playeridle"
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	    	"姑娘竟然能夠降伏餓鬼。"
+	        "這...這是...何等不可思議的境界啊？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"這是能夠喚醒靈魂深處的阿賴耶識的秘法。",
+	        "還好我在這裡，不然後果不堪設想。"
+	        "前輩若沒特別事情，還是別久留此處吧。"
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	        "嗯，有心了，我也正要離開..."
+	        "這鑰匙就交給你，以作答謝吧。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "我還在苦惱怎樣進入古墓，真的行感恩。"
+	    ]
+	},{
+	    "name": "sage",
+	    "dialogue": [
+	        "不用客氣，雖然姑娘擁有力量，但也不能在古墓掉以輕心。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "我有我必要去的理由。"
+	    ]
+	},
+	{
+	    "name": "sage",
+	    "dialogue": [
+	        "好吧，那麼一路順風了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyleave",
+	        "storydisappear"
+	    ]
+	}
+]
+}
+
+

@@ -1,0 +1,74 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosiasad",
+	    "dialogue": [
+	        "羅西亞！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"公主...我好痛苦..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "不要亂動...先喝下小血瓶再說吧。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playerkneel",
+	        "rosiawake"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	    	"我看你傷勢不輕，還是先帶你到醫院好好療養吧！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"不必了，有這小血瓶就足夠了。",
+	    	"再說，我必須要把曼陀羅花帶回給妹妹..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "你是想用曼陀羅花醫治妹妹的癱瘓症嗎？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "沒錯，據說把此花以甘露水滋潤一年後服用，便能醫治百病。",
+	        "可是..."
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiadown"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "看來藥力已經起了作用...",
+	        "羅西亞，我會為你找到曼陀羅花的！"
+	    ]
+	}
+]
+}

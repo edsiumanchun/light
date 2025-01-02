@@ -25,7 +25,7 @@
 	{
 	    "name": "rosia",
 	    "dialogue": [
-	        "這裡是醫院，公主大這裡已經昏迷了好幾天。"
+	        "這裡是醫務所，公主在這裡已經昏迷了好幾天。"
 	    ]
 	},
 	{
@@ -47,9 +47,7 @@
 	   	"leftPrefab": "rosia",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "公主，真的很感謝你。",
-	        "公主總是在我有困難的時後出手相助...",
-	        "這恩情我必定會銘記在心。"
+	        "公主，真的很感謝你。"
 	    ]
 	},
 	{
@@ -70,7 +68,8 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "maria",
 	    "dialogue": [
-	        "瑪利亞，你才八歲就已經如此懂事，實在難能可貴。"
+	    	"瑪利亞，六年前你還是個不懂說話的嬰兒。"
+	        "沒想到，你現在已經變得如此懂事。"
 	    ]
 	},
 	{
@@ -78,6 +77,39 @@
 	    "dialogue": [
 	        "羅西亞是這世上最好的姐姐...",
 	        "我決不能像個小孩一樣給她添麻煩。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	    	"說起來，公主怎麼突然回來了？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"從昨天起，我就沒法再感應到4位守護神的氣息。",
+	    	"這種異常狀況非常罕見，相信是人為所致。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"可能跟在古墓裡出現的三毒石相關..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"嗯，看來你也看得很透徹。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"我最近在醫務所地牢也發現了三毒石..."
 	    ]
 	},
 	{
@@ -91,7 +123,19 @@
 	   	"leftPrefab": "nurse",
 	   	"rightPrefab": "",
 	    "dialogue": [
-	        "瑪麗亞，再過10分鐘就輪到你了，我現在去手術室檢查儀器。"
+	        "瑪麗亞，輪到你了，我現在去手術室準備一下。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "姐姐，我有些害怕..."
+	    ]
+	},
+	{
+	    "name": "nurse",
+	    "dialogue": [
+	        "羅西亞，你也進來陪伴她吧。"
 	    ]
 	},
 	{
@@ -102,72 +146,23 @@
 	    ]
 	},
 	{
-	    "name": "maria",
-	   	"leftPrefab": "rosia",
-	    "rightPrefab": "mariascare",
-	    "dialogue": [
-	        "姐姐，我有些害怕..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "別怕...姐姐會一直在這裡陪伴著你的..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "真的嗎？姐姐不會騙我吧？"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "姐姐什麼時候騙過你？你放心好了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "好吧。"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn",
-	        "ghostmumcry"
-	    ]
-	},
-	{
 	    "name": "rosia",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	        "發生了什麼事？"
+	        "公主，闊別多年，難得重逢，可惜沒機會跟公主好好聊一聊..."
 	    ]
 	},
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "又出現了這種不尋常的氣息...",
-	        "羅西亞，你就在這裡陪伴你的妹妹吧。"
+	    	"來日方長，待一切安頓好再談吧。"
 	    ]
 	},
 	{
 	    "name": "rosia",
-	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "公主，萬事要小心。"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "savescene",
-	        "playerturn",
-	        "ghostmumcry"
+	    	"好的，公主，失陪了。"
 	    ]
 	}
 ]

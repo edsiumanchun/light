@@ -1,0 +1,176 @@
+{
+"storyArray" : [
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "bossgemdisappear",
+	        "playerdown",
+	        "nextscene"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	        "公主，你終於醒來了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "這裡是什麼地方？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "這裡是醫院，公主大這裡已經昏迷了好幾天。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "對了，羅西亞...我已經替你找到曼陀羅花。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint",
+	        "rosiacometoplayer",
+	    	"playerIdle"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "rosia",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	        "公主，真的很感謝你。",
+	        "公主總是在我有困難的時後出手相助...",
+	        "這恩情我必定會銘記在心。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "大家能平安回來就好了，但說實話...",
+	        "我寧可自己一輩子臥病在床，也不願再看到姐姐為我冒險啊。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playersay"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	        "瑪利亞，你才八歲就已經如此懂事，實在難能可貴。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "羅西亞是這世上最好的姐姐...",
+	        "我決不能像個小孩一樣給她添麻煩。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "nursecome"
+	    ]
+	},
+	{
+	    "name": "nurse",
+	   	"leftPrefab": "nurse",
+	   	"rightPrefab": "",
+	    "dialogue": [
+	        "瑪麗亞，再過10分鐘就輪到你了，我現在去手術室檢查儀器。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "nursedisappear",
+	        "mariascare"
+	    ]
+	},
+	{
+	    "name": "maria",
+	   	"leftPrefab": "rosia",
+	    "rightPrefab": "mariascare",
+	    "dialogue": [
+	        "姐姐，我有些害怕..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "別怕...姐姐會一直在這裡陪伴著你的..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "真的嗎？姐姐不會騙我吧？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "姐姐什麼時候騙過你？你放心好了。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "好吧。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playerturn",
+	        "ghostmumcry"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	        "發生了什麼事？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "又出現了這種不尋常的氣息...",
+	        "羅西亞，你就在這裡陪伴你的妹妹吧。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "centerPrefab": "rosia",
+	    "dialogue": [
+	        "公主，萬事要小心。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "savescene",
+	        "playerturn",
+	        "ghostmumcry"
+	    ]
+	}
+]
+}
+
+

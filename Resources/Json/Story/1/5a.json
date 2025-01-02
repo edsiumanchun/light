@@ -1,0 +1,113 @@
+{
+"storyArray" : [
+	{
+	    "name": "soldier",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "soldier",
+	    "dialogue": [
+	        "這究竟是什麼回事？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    "這是天罡淨化術。",
+	        "如無意外，你得到温飽後就會得到解脫。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "soldiercry"
+	    ]
+	},{
+	    "name": "soldier",
+	    "dialogue": [
+	        "真的嗎？可是我是罪無可赦之人。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "你生前有什麼過失嗎？"
+	    ]
+	},{
+	    "name": "soldier",
+	    "dialogue": [
+	    	"確實是有...想當年身為騎士的我參與了侵略東盟國的戰役...",
+	        "在成功佔領一條村莊後，上級命令我把一名不願投降的教師殺掉。",
+	        "教師的孩子帶著失明母親來求情，長官卻不為所動。",
+	        "那時候，我不敢違抗上級的命令，最終那名教師被我牢殺了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},{
+	    "name": "player",
+	   	"leftPrefab": "playersad",
+	    "rightPrefab": "soldier",
+	    "dialogue": [
+	        "那場戰役令很多孩子失去了父母。",
+	        "我永遠沒法忘記那些小孩悲痛的樣子。"
+	    ]
+	},{
+	    "name": "soldier",
+	    "dialogue": [
+	    	"還記得教師的妻兒當時已經哭成淚人。",
+	        "此事令我深受煎熬，整日心神不寧，不久之後染上了怪病而離逝。",
+	        "接著，我的靈魂就進入了這副軀體，一直活到現在。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerturn",
+	        "bossdisappear"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"女人和兩名小孩...莫非是她？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "musicappear"
+	    ]
+	},
+	{
+	    "name": "music",
+	   	"leftPrefab": "playersad",
+	   	"rightPrefab": "music",
+	    "dialogue": [
+	    	"公主，你看起來似乎有點哀傷..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"因為始作俑者正是我的親祖父。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"早有定數，沒必要放在心上。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"也是。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "musicdisappear"
+	    ]
+	}
+]
+}
+
+
