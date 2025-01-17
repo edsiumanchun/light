@@ -1,0 +1,136 @@
+{
+"storyArray" : [
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "水清則月現了。"
+	    ]
+	},{
+	    "name": "rosia",
+	    "dialogue": [
+	        "是瑪利亞嗎？我在做夢嗎？"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	        "人生如夢，何苦執迷於現狀？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "只要能見到妹妹，我寧可一直待在這夢境中。"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"姐姐，別再為我而沉淪，好嗎？"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "對不起，我真的無法放下你..."
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"這些年來，已經盡了最大努力對我悉心照顧。",
+	    	"可是這是我的命運，無法改變。",
+	    	"在我轉生前，有一個心願，希望姐姐能夠答應..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "說吧，無論是什麼我也會答應！"
+	    ]
+	},{
+	    "name": "maria",
+	    "dialogue": [
+	    	"我的心願就是...",
+	    	"希望姐姐能夠幸福快樂地活下去..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "瑪利亞...你竟然..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "姐姐曾經說過，你從來不會欺騙我...",
+	    	"所以姐姐一定要遵守諾言！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"瑪利亞...",
+	    	"你令我無言了..."
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"媽媽最喜歡看到的是姐姐的笑容。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"你怎麼知道？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"因為天下每個媽媽都愛看到自己孩子的笑容。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"瑪利亞...你現在不僅像公主，更像媽媽一樣温柔。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "因為我就是媽媽的延續，姐姐也要成為媽媽的延續才行...",
+	        "將對我的愛延伸到其他小孩身上...",
+	        "所以，請努力守護每個小孩的笑容。"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	        "對，就像當年公主守護我們的笑容一樣。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "振作吧！公主需要姐姐的幫助，她就在聖地等著你！"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear",
+	        "nextscene"
+	    ]
+	},{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "",
+	    "dialogue": [
+	    	"終於來到聖地了。"
+	    ]
+	}
+]
+}
+
+

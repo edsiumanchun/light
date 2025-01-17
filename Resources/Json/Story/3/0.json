@@ -1,6 +1,13 @@
 {
 "storyArray" : [
 	{
+	    "name": "player",
+	    "leftPrefab": "",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "這...這是八年前..."
+	    ]
+	},{
 	    "name": "rkid",
 	    "leftPrefab": "rkid",
 	    "rightPrefab": "rosiamum",
@@ -77,11 +84,10 @@
 	        "playerturn"
 	    ]
 	},{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "",
+	    "name": "rosiaspirit",
+	    "leftPrefab": "rosiaspirit",
 	    "dialogue": [
-	        "媽媽！"
+	        "媽媽..."
 	    ]
 	},{
 	    "name": "event",

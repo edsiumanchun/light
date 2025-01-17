@@ -5,24 +5,7 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"除了三毒石之外，這裡還散發著夢魘的氣息。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "musicappear"
-	    ]
-	},
-	{
-	    "name": "music",
-	    "dialogue": [
-	    	"公主，你早就知道王都被設下三毒石嗎？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"我只是憑直覺去猜測而己。"
+	    	"是獸皮病？"
 	    ]
 	}
 ]

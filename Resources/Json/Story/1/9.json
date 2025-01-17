@@ -10,7 +10,7 @@
 	   	"leftPrefab": "",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "媽媽！！"
+	        "媽媽！我終於找到你了！"
 	    ]
 	},{
 	    "name": "event",
@@ -23,28 +23,7 @@
 	   	"leftPrefab": "ghostmum",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "孩兒？我是不是在做夢？"
-	    ]
-	},
-	{
-	    "name": "ghostkid",
-	    "dialogue": [
-	        "媽媽，這些年你也飽受饑餓之苦嗎？"
-	    ]
-	},
-	{
-	    "name": "ghostmum",
-	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
-	        "是的，我已經盡了力去尋找食物...",
-	        "可是每當我得到些許食物，食物便會化為灰燼...",
-	        "好不容易得到一口不淨之食，卻被其他餓鬼阻攔我回來找你。"
-	    ]
-	},{
-	    "name": "ghostkid",
-	    "dialogue": [
-	    	"全靠這位姐姐...我才得以與媽媽重聚。"
+	        "孩兒！我在做夢嗎？",
 	    ]
 	},{
 	    "name": "event",
@@ -54,36 +33,44 @@
 	},
 	{
 	    "name": "ghostmum",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	    	"這位姑娘，真的很感謝你。"
+	        "善女子，辛苦你把我的孩兒帶過來了。"
+	    	"可惜我手上只有這些不淨之食，無法好好報答恩人。"
 	    ]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},
-	{
 	    "name": "player",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "",
 	    "dialogue": [
-	    	"不必客氣，舉手之勞而已。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerIdle",
-	    	"storyturn"
+	    	"不用客氣。",
+	    	"聽聞餓鬼每次得到食物後，食物卻總是瞬間化為灰燼...",
+	    	"所以說，你們不得不以不淨之食為食吧。"
 	    ]
 	},
 	{
 	    "name": "ghostmum",
-	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "",
 	    "dialogue": [
-	    	"對了，我從垃圾堆中撿到了些許剩餘的食物殘渣...",
-	    	"孩子，快來吃吧。"
+	        "是的，這只是贖罪的過程。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyturn"
+	    ]
+	},
+	{
+	    "name": "ghostkid",
+	   	"leftPrefab": "ghostmum",
+	    "rightPrefab": "ghostkid",
+	    "dialogue": [
+	        "媽媽，我總是夢到凶殘的野獸要把我吃掉...我好怕。"
+	    ]
+	},
+	{
+	    "name": "ghostmum",
+	    "dialogue": [
+	        "這只是夢而己，不用怕...",
+	        "對了，孩兒，快過來嚐嚐媽媽為你找到的食物吧。"
 	    ]
 	},{
 	    "name": "event",
@@ -97,15 +84,6 @@
 	    "name": "ghostkideat",
 	    "dialogue": [
 	    	"很好吃！"
-	    ]
-	},{
-	    "name": "ghostmum",
-	    "dialogue": [
-	    	"別著急，我這裡還有很多。"
-	    ]
-	},{
-	    "name": "ghostkideat",
-	    "dialogue": [
 	    	"媽媽，你也吃點吧！"
 	    ]
 	},{
@@ -116,9 +94,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "ghostsleave",
-	    	"musicappear",
-	    	"musicplay"
+	        "ghostsleave"
 	    ]
 	},
 	{
@@ -126,19 +102,7 @@
 	   	"leftPrefab": "playersad",
 	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"樂神，這是什麼樂曲？"
-	    ]
-	},
-	{
-	    "name": "music",
-	    "dialogue": [
-	    	"此乃是洗滌心靈的安魂曲。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	        "此旋律寧靜安詳，卻又令人隱隱生悲。"
+	    	"唉，我還能為衪們做些什麼嗎..."
 	    ]
 	}
 ]

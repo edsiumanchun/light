@@ -1,0 +1,121 @@
+{
+"storyArray" : [
+	{
+	    "name": "player",
+	    "leftPrefab": "playersurprise",
+	    "rightPrefab": "dragon",
+	    "dialogue": [
+	        "是師兄！"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "這隻小乳牛一臉無助，含着宰牛刀來找我..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "原來是小乳牛把宰牛刀藏起來..."
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "從牠的眼神中，我能看出牠真的很苦。",
+	        "小乳牛之所以吞刀，是因為它不忍看見自己的母親被牢殺。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "真不愧是師兄！"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"沒什麼，我只是謹遵老師的教誨。",
+	        "用平靜的心感受外界的一草一木。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"dragonpoint"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "dragon",
+	    "dialogue": [
+	        "小師妹，如果你不嫌棄，就讓我收養牠們吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "嗯，有師兄照顧牠們，我就放心了。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "能為小師妹分憂是我的福氣。",
+	        "但為何小師妹還是如此神色凝重？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"最近，城內出現了不少來歷不明的三毒石..."
+	        "這些三毒石的負面影響遠比我所想像的要嚴重。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "世人要承受的惡果是命中注定的...",
+	        "我和你無論如何也無法挽回局面。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"這個...我無論如何也無法袖手旁觀。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"嗯，這樣吧..."
+	        "待我安頓好一切後，就回來幫助小師妹吧。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"好的！"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"告辭了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyleave"
+	    ]
+	}
+]
+}
+
+

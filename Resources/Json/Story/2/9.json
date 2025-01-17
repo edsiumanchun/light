@@ -8,29 +8,41 @@
 	},{
 	    "name": "player",
 	    "leftPrefab": "player",
-	    "rightPrefab": "nurse",
+	    "rightPrefab": "doctor",
 	    "dialogue": [
 	    	"這裡是什麼地方？"
 	    ]
 	},{
-	    "name": "nurse",
+	    "name": "doctor",
 	    "dialogue": [
 	    	"公主，這裡是醫院，是王都的人把你送過來的。",
 	    ]
 	},{
-	    "name": "player",
+	    "name": "event",
 	    "dialogue": [
-	    	"醫院？...你可以帶我去找羅西亞和瑪利亞嗎？"
+	        "nursecome"
 	    ]
 	},{
 	    "name": "nurse",
 	    "dialogue": [
-	    	"可以...公主，可是的傷勢不輕，要不要先多休息一點？"
+	    	"醫生，瑪利亞快不行了..."
 	    ]
 	},{
-	    "name": "player",
+	    "name": "event",
 	    "dialogue": [
-	    	"我沒事，只是皮外傷而己。"
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "nurse",
+	    "leftPrefab": "player",
+	    "rightPrefab": "doctor",
+	    "dialogue": [
+	    	"不會吧！？"
+	    ]
+	},{
+	    "name": "doctor",
+	    "dialogue": [
+	    	"我馬上去看看！"
 	    ]
 	},{
 	    "name": "event",
@@ -41,142 +53,91 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"羅西亞!"
-	    ]
-	},{
-	    "name": "nurse",
-	    "leftPrefab": "player",
-	    "rightPrefab": "nurse",
-	    "dialogue": [
-	    	"必須趕緊為她施救...",
-	    	"公主，請你先迴避一下吧。"
+	    	"羅西亞！"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	    	"switchscene"
+	        "doctorpoint",
 	    ]
 	},{
-	    "name": "maria",
-	    "leftPrefab": "player",
-	    "rightPrefab": "maria",
+	    "name": "doctor",
+	    "leftPrefab": "doctor",
+	    "rightPrefab": "nurse",
 	    "dialogue": [
-	        "公主..."
+	    	"必須趕快把這個小孩帶到急救室！",
+	    ]
+	},{
+	    "name": "nurse",
+	    "dialogue": [
+	    	"了解！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"storyleave"
+	    ]
+	},{
+	    "name": "nurse",
+	    "leftPrefab": "player",
+	    "dialogue": [
+	    	"為何會變成這樣的？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerturn"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"瑪利亞？發生什麼事了？"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	        "我也不清楚..."
+	    	"咦，這種香氣..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	    	"musicappear"
+	    	"playerbow"
 	    ]
 	},{
 	    "name": "music",
-	    "leftPrefab": "music",
-	    "rightPrefab": "maria",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
 	    "dialogue": [
-	        "小妹妹，恐怕你已經不在人世了。"
+	    	"善女子，無須多禮了。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"這個...太突然了吧..."
+	    	"樂神大人，我終於明白人類是多渺小。",
+	    	"面對命運，我什麼也做不了。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "這是她的命運，下輩子要成為天人。"
+	    	"命運是掌握在自己的手中。",
 	    ]
 	},{
-	    "name": "event",
+	    "name": "player",
 	    "dialogue": [
-	    	"playerpoint"
-	    ]
-	},{
-	    "name": "maria",
-	    "leftPrefab": "maria",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	    	"樂神，你好漂亮啊！"
+	    	"我還是有點不太懂，請樂神大人再給我一點指示。",
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "面對生死時，相貌漂亮又有何用？"
-	        "要知道容顏美醜，只是表象...世間最苦，莫過於別離...",
+	        "用平靜的心感受外界的一草一木。"
 	    ]
 	},{
-	    "name": "maria",
+	    "name": "player",
 	    "dialogue": [
-	    	"姐姐剛剛昏倒了..."
-	    	"雖說生離死別是每個人必經階段...",
-	    	"但我仍然希望能為姐姐做些什麼。"
+	    	"是老師的教誨...",
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"瑪麗亞，你可以運用內心的願力，引導姐姐回來。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"這個我不會..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	    	"playerpoint"
-	    ]
-	},{
-	    "name": "maria",
-	    "leftPrefab": "maria",
-	    "rightPrefab": "player",
-	    "dialogue": [
-	    	"說起心意，讓我想起東方民間流傳的「嚙指心痛」故事。"
-	    	"母親為了讓孩子，於是心生一計...。",
-	    	"她知道母子的血脈是相通，於是將自己的一根手指咬破。",
-	    	"結果那個孩子立即就感到一陣心痛，心想一定是母親出事了，立刻快步趕回家裡。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"這就是心意相通嗎？"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	    	"playerpoint"
-	    ]
-	},{
-	    "name": "music",
-	    "leftPrefab": "maria",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	    	"對，依照此法試試跟你姐姐感應就行。",
-	    	"這種共鳴猶如一月麗天，萬川影現。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"想像自己是照耀姐姐內心的明月嗎？"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	    	"唯水清而靜則現，關鍵在於你姐姐自身的造化。"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"好的，讓我試試看吧。"
+	    	"觀想自己是照耀別人內心的明月...",
+	    	"而這種共鳴猶如一月麗天，萬川影現。",
+	    	"唯水清而靜則現..."
 	    ]
 	},{
 	    "name": "event",

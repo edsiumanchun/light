@@ -31,17 +31,21 @@
 	        "playerturn"
 	    ]
 	},{
-	    "name": "rosiamum",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "player",
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "rkid",
 	    "dialogue": [
-	        "唉，真可憐..."
+	        "都是戰爭的禍害..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerkneel"
 	    ]
 	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	        "姐姐，你可以代我照顧妹妹嗎？",
-	        "我無法照顧妹妹。"
+	        "姐姐，我的媽媽離開了，我也不想活了..."
 	    ]
 	},{
 	    "name": "event",
@@ -50,63 +54,42 @@
 	    ]
 	},{
 	    "name": "player",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "rkid",
 	    "dialogue": [
-	        "可以啊，但是你要來我家好好工作。",
-	        "我也會為你媽媽好好禮葬。"
+	        "那麼，你的妹妹怎麼辦...",
+	        "你有想過你的妹妹失去你後，她會有多傷心嗎？"
 
 	    ]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
 	    "name": "rkidcry",
 	    "dialogue": [
-	    	"真的..."
-	    	"很感謝你..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "振作啊！"
+	    	"嗯..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playerpoint"
+	        "rosiafall"
 	    ]
 	},{
 	    "name": "soilder",
+	    "leftPrefab": "player",
+	    "rightPrefab": "soilder",
 	    "dialogue": [
 	        "公主，怎樣了？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "快把這兩個孩子帶去醫院檢查！"
+	        "快把這兩個孩子帶去醫院檢查吧！"
 	    ]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "rkidcry",
-	    "dialogue": [
-	    	"你是...公主？"
-	    ]
-	},{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
+	    "name": "rosiaspirit",
+	    "leftPrefab": "rosiaspirit",
 	    "rightPrefab": "",
 	    "dialogue": [
-	    	"那時，我的心彷彿被公主所融化...",
-	    	"她似乎擁有某種神秘的力量，總是帶給人溫暖。",
-	        "從那以後，我和妹妹搬到了公主的住所一起居住...",
-	        "出乎意料的是，公主的房間竟然非常簡樸。"
+	    	"公主...真的感恩...",
+	    	"讓我遇上了你..."
 	    ]
 	}
 ]

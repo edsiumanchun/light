@@ -1,0 +1,91 @@
+兩女 獸皮的故事
+{
+"storyArray" : [
+	{
+	    "name": "veteran",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "veteran",
+	    "dialogue": [
+	    	"是...是天罡淨化術嗎？太不可思議了。"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	    	"依我看，你已經擺脫了三毒石的控制。"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	        "實在太感謝你了，公主。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "不必客氣。"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	        "公主如果不介意，老夫還有一事相求，望公主再出手相助。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "即管說吧。"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	    	"王都現在內外亂象環生，都是由三毒石所引起的禍。",
+	    	"而最令老夫擔憂的是對聖地形成的包圍網。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"聖地包圍網？"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	        "對，東盟國眾人先後在包圍聖地的醫院，古墓和王都設置三毒石。",
+	        "目的就是擾亂聖地的靈氣，召喚出能把餓鬼一網打盡的結界",
+	        "他們相信只有遵循此道，人類才能免於轉生為餓鬼。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "轉生的去向不僅僅只有餓鬼，這樣做定必遭到反噬。"
+	    ]
+	},
+	{
+	    "name": "veteran",
+	    "dialogue": [
+	    	"無論我怎勸說，也沒法改變國王的想法。",
+	    	"當年那場惡名昭彰的東征，令我國和東盟國的關係急轉直下。",
+	    	"為求修復兩國關係...",
+	    ]
+	},{
+     	    "name": "event",
+      	    "dialogue": [
+      	        "completeTutor"
+   		]
+  	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"是夢魘！？"
+	    ]
+	}
+]
+}
+
+
+很親和，很慈祥，好寧靜，氣場影響，接觸就煩惱盡失

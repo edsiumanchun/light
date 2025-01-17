@@ -1,0 +1,279 @@
+{
+"storyArray" : [
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "storywake"
+	    ]
+	},{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "chef",
+	    "dialogue": [
+	        "醒過來啊！"
+	    ]
+	},{
+	    "name": "chef",
+	    "dialogue": [
+	    	"公主...真失禮，竟然在這裡睡著了。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"看你滿頭大汗的，沒問題嗎？"
+	    ]
+	},{
+	    "name": "chef",
+	    "dialogue": [
+	    	"沒什麼大礙，只是發了一個被無頭牛索命的惡夢...",
+	    	"對了，還不趕快開工，就要被罵了..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "chefcome"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "你兒子患的是什麼病？"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "dialogue": [
+	    	"我的兒子剛出生不久就患上了獸皮病...",
+	    	"如果我付不起醫藥費，醫生就不會再替我的小孩治病...",
+	    	"那麼，我的小孩就凶多吉少了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyturn"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "dialogue": [
+	        "原諒我吧，我也只是按照主人的意思去做。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyturn"
+	    ]
+	},
+	{
+	    "name": "chef",
+	    "dialogue": [
+	        "咦，我的屠刀怎麼突然不見了？難道在外邊掉失了？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear",
+	        "cowmove",
+	        "knifedrop"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"吽吽...吽吽..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "原來如此！",
+	        "公主，它就是小乳牛的母親。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"checkcow"
+	    ]
+	},{
+	    "name": "player",
+	    "leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"樂神，你怎麼知道母牛在說什麼？"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "將神識定下來，然後用心感受就行。",
+	        "這是每個生靈與生俱來的能力，可是多數人已把它遺忘了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"吽吽...吽吽..."
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	    	"竟然是你把屠刀藏了..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"樂神，牠把屠刀藏在哪裡？"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "就藏在它的肚子裏。"
+	        "母牛之所以吞刀，是因為它不忍看見自己的孩子被牢殺。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "什麼...唉...",
+	        "你雖已投生蓄道，卻保留着人性。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "dragoncome"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "leftPrefab": "dragon",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "小師妹，你還是一如往常的多愁善感。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "playersurprise",
+	    "rightPrefab": "dragon",
+	    "dialogue": [
+	        "是師兄！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "唉...我實在不忍看到這牛犢被牢殺...",
+	        "小師妹，如果你不嫌棄，就讓我收養這對牛母子吧。",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "師兄，有你照顧牠們，我就放心了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "我也只是略盡綿力為小師妹分憂。",
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "scout",
+	    "leftPrefab": "scout",
+	    "rightPrefab": "",
+	    "dialogue": [
+	        "都督，一切準備妥當，可以馬上起行。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "leftPrefab": "player",
+	    "rightPrefab": "dragon",
+	    "dialogue": [
+	        "小師妹，我有要事在身，先行告退了。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "雖說有點可惜，但既然師兄主意已決，我也不多作挽留了。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "感謝小師妹體諒..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "年輕人，我們走吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storydisappear"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "公主，我聞到三毒石的氣息，就在你的師兄身上散發著..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "看來我們找對了方向。"
+	    ]
+	},
+	{
+	    "name": "music",
+	    "dialogue": [
+	        "那麼，公主有什麼好對策？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "不焦急，先把王都的三毒石拆掉吧。"
+	    ]
+	}
+]
+}
+
+
