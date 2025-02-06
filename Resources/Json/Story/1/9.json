@@ -100,9 +100,8 @@
 	{
 	    "name": "player",
 	   	"leftPrefab": "playersad",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"唉，我還能為衪們做些什麼嗎..."
+	    	"我...我還能為衪們做些什麼嗎..."
 	    ]
 	}
 ]

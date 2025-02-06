@@ -1,0 +1,105 @@
+{
+"storyArray" : [{
+	    "name": "king",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "king",
+	    "dialogue": [
+	    	"女兒？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "公主，多年不見，你還是一如既往地散發著動人的氣質。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "女兒，你知道嗎？公謹就是東盟國外使。",
+	        "全靠他，我們才有機會跟東盟國修補關係。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "客氣了，也需要國王的信任才可以達成協議。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "話說東盟國國王什麼時候來到？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"快到了，你們在這裡稍後，我過去迎接東盟國國王。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "dragonleave"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	    	"女兒，你怎麼來到這裡？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "聽說我們要把餓鬼殲滅，這件事請父王三思。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	    	"我們跟東盟國已經口頭上妥協了協議內容。",
+	    	"怎麼可以說收回就收回，現在不是小朋友玩遊戲啊！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "但是現在的情況好像有點不對勁。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	    	"不對勁也要幹了。",
+	    	"我若然反口，就沒有威信令國民聽從於我了！",
+	    	"現在最重要的是要好好招待賓客，別得失人家啊。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "kingleave"
+	    ]
+	},
+	{
+	    "name": "maria",
+	   	"leftPrefab": "music",
+	    "rightPrefab": "ghostmaria",
+	    "dialogue": [
+	        "公主真的料事如神，他們果然有一些陰謀。"
+	    ]
+	},
+	{
+	    "name": "ghostmaria",
+	    "dialogue": [
+	        "就是不知道協議內容是什麼？"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "無論如何也要阻止他們，不能再讓悲劇發生。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "storyleave",
+	        "storydisappear"
+	    ]
+	}
+]
+}
+
+

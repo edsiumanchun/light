@@ -65,23 +65,35 @@
 	    "leftPrefab": "doctor",
 	    "rightPrefab": "nurse",
 	    "dialogue": [
-	    	"必須趕快把這個小孩帶到急救室！",
+	    	"這種狀況，病人這次是凶多吉少...",
+	    	"如果病人意志堅定，也只能讓她安靜長眠。"
 	    ]
 	},{
 	    "name": "nurse",
 	    "dialogue": [
-	    	"了解！"
+	    	"怎麼會這樣..."
+	    ]
+	},{
+	    "name": "doctor",
+	    "dialogue": [
+	    	"先帶她到急症室再說吧..."
+	    ]
+	},{
+	    "name": "nurse",
+	    "dialogue": [
+	    	"嗯..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	    	"storyleave"
+	    	"storyleave",
+	    	"playcome"
 	    ]
 	},{
 	    "name": "nurse",
 	    "leftPrefab": "player",
 	    "dialogue": [
-	    	"為何會變成這樣的？"
+	    	"羅西亞...瑪利亞..."
 	    ]
 	},{
 	    "name": "event",
@@ -128,9 +140,9 @@
 	        "用平靜的心感受外界的一草一木。"
 	    ]
 	},{
-	    "name": "player",
+	    "name": "event",
 	    "dialogue": [
-	    	"是老師的教誨...",
+	        "musicpoint",
 	    ]
 	},{
 	    "name": "music",

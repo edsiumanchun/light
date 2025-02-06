@@ -1,21 +1,18 @@
+斷罪之花 應該是
 {
 "storyArray" : [{
 	    "name": "king",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "king",
 	    "dialogue": [
-	    	"女兒？"
-	    ]
-	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "公主，多年不見，你還是一如既往地散發著動人的氣質。"
+	    	"父王！你沒事吧？"
 	    ]
 	},{
 	    "name": "king",
 	    "dialogue": [
-	        "女兒，你知道嗎？公謹就是東盟國外使。",
-	        "全靠他，我們才有機會跟東盟國修補關係。"
+	        "女兒，我沒事...",
+	        "是惡名昭彰的琉璃王。"
+	        "獸人樣子雖凶狠，但他們卻對我相敬如賓。"
 	    ]
 	},{
 	    "name": "dragon",

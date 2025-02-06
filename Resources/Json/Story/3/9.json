@@ -1,4 +1,4 @@
-講完立刻助化
+
 {
 "storyArray" : [
 	{
@@ -24,20 +24,6 @@
 	    "name": "rosiaspirit",
 	    "dialogue": [
 	        "只要能再見到你，我願意一直待在這幻像中..."
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "storydisappear",
-	        "nextscene"
-	    ]
-	},
-	{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "是我惹的禍，要不是我大意，斷罪之花就不會被搶去。",
-	        "瑪利亞，你的病就不會急劇惡化。"
 	    ]
 	},{
 	    "name": "maria",
@@ -126,16 +112,36 @@
 	},{
 	    "name": "player",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	    	"什麼！？",
-	    	"聖地有一股不尋常的氣息，這一切都是有人精心䇿劃！"
+	    	"羅西亞...瑪利亞...",
+	    	"我絕不會辜負你們對我的期望的！"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "veterancome"
 	    ]
 	},{
-	    "name": "music",
+	    "name": "veteran",
+	   	"leftPrefab": "player",
+	   	"rightPrefab": "veteran",
+	    "dialogue": [
+	    	"公主...不妙了...",
+	    	"琉璃王脅持著國王到聖地去了！"
+	    	"不會吧！",
+	    ]
+	},{
+	    "name": "player",
+	   	"leftPrefab": "player",
 	    "dialogue": [
 	    	"什麼！？",
-	    	"聖地有一股不尋常的氣息，這一切都是有人精心䇿劃！"
+	    	"我馬上去看看...也請你派人來支援吧！"
+	    ]
+	},{
+	    "name": "veteran",
+	    "dialogue": [
+	    	"了解！"
 	    ]
 	}
 ]

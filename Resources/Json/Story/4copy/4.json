@@ -1,0 +1,82 @@
+{
+"storyArray" : [{
+	    "name": "event",
+	    "dialogue": [
+	        "playerhide"
+	    ]
+	},{
+	    "name": "dragon",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "king",
+	    "dialogue": [
+	    	"琉璃國王，辛苦你了。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "公謹，這個結界真的可以讓人長生不老嗎？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "我們替天行道，自然會受到天人的庇佑。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "那麼，我們只借用聖地孤獨園一天就足夠嗎？"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "你是懷疑我嗎？"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "沒有這回事，要不是公謹當年遊說東盟國來抵制西盟國...",
+	        "我們早就完蛋了，也不會有如今二分天下之局面。",
+	        "因此，我對絕對信任你的。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "kingcome"
+	    ]
+	},{
+	    "name": "king",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "king",
+	    "dialogue": [
+	        "壞傢伙，多年不見了，還是老而彌堅啊！"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "壞傢伙，你也長胖了不少。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "關於協議上要我們開放港口跟你們貿易，你想什麼時候開始？"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "不焦急，你們在聖地把事情辦完再說吧。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "那麼事不宜遲，我們現在就去結界準備儀式吧。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerdizzy"
+	    ]
+	}
+]
+}
+
+

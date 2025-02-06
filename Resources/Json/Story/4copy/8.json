@@ -1,0 +1,76 @@
+{
+"storyArray" : [{
+	    "name": "king",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "king",
+	    "dialogue": [
+	    	"只需要再多一個小時，結界就準備好。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "不可以！"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "女兒，你來幹什麼？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "這結界猶如潘朵拉的盒子，一旦打開了就禍不單行。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "女兒啊！我們跟東盟國已經花了不少時間才能夠達成共識。",
+	        "現在是無法打退堂鼓了，這樣會得失東盟國的。"
+	    ]
+	},{
+	    "name": "eastking",
+	    "dialogue": [
+	        "餓鬼生前作惡多端，死有餘辜，當中不乏貪官、強盜、淫賊...",
+	        "我們只是為受害人出一口氣，替天行道，豈不是大快人心？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "這樣只會增長餓鬼會對我們的仇恨。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "餓鬼只是在被滅掉時痛一刻，總比一直涯餓好。",
+	        "我們是為他們脫苦，何罪之有？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "他們的罪不會因此而贖清的，也許會轉生到更痛苦的環境生活。"
+	    ]
+	},{
+	    "name": "eastking",
+	    "dialogue": [
+	        "公謹，別再跟婦孺一般見識了。"
+	    ]
+	},{
+	    "name": "king",
+	    "dialogue": [
+	        "守衛，先護送公主回去吧。"
+	    ]
+	},{
+	    "name": "dragon",
+	    "dialogue": [
+	        "不要緊，沒有耽誤了時間，現在開始施法"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "父王啊！"
+	    ]
+	}
+]
+}
+
+

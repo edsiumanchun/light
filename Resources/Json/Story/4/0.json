@@ -1,1 +1,122 @@
-{}
+{
+	"storyArray" : [
+		{
+		    "name": "player",
+		    "leftPrefab": "player",
+		    "rightPrefab": "dragon",
+		    "dialogue": [
+		        "是師兄？你怎麼會在這裡出現？"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "公主，今次我來到西方目的只有一個...",
+		        "就是幫助所有「獸皮病」病人，讓他們重獲新生。"
+		    ]
+		},
+		{
+		    "name": "player",
+		    "dialogue": [
+		        "恩師曾說過，「獸皮病」病人轉生前絕大多數是蓄牲。",
+		        "他們轉生後還未適應人類的身體，導致他們還保留像野獸一樣的皮膚。",
+		        "師兄有什麼良策？"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "斷罪之花可以把人類過往的罪滅清。",
+		        "可是這種花非常罕有，也是多虧小師妹，我才有了根治問題的方法。"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "實不相瞞，你父王跟我一直有聯絡。",
+		        "在得知小師妹拿到斷罪之花後，醫院就跟我配合，把斷罪之花交給我。"
+		    ]
+		},
+		{
+		    "name": "player",
+		    "dialogue": [
+		        "那麼，不就是要把瑪利亞送死？"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "瑪利亞？是那位小妹妹吧？",
+		        "她得知我的計劃後，同意把斷罪之花交給我。"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "我告訴她，你想不想所有「獸皮病」病人得救。",
+		        "只要在受過祝福的土地裡培育斷罪之花，就能夠繁衍更多斷罪之花了。"
+		    ]
+		},
+		{
+		    "name": "soilder",
+		    "dialogue": [
+		        "先生，斷罪之花出現異常，請你過去看看情況。"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "什麼狀況？"
+		    ]
+		},
+		{
+		    "name": "event",
+		    "dialogue": [
+		        "soidlercome"
+		    ]
+		},
+		{
+		    "name": "soilder",
+		    "dialogue": [
+		        "聖地出現了三毒石，令斷罪之花長得越來越可怕。"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "糟了！我馬上去看看！"
+		    ]
+		},
+		{
+		    "name": "player",
+		    "dialogue": [
+		        "讓我陪你過去吧..."
+		    ]
+		},
+		{
+		    "name": "event",
+		    "dialogue": [
+		        "dragonattack"
+		    ]
+		},
+		{
+		    "name": "dragon",
+		    "dialogue": [
+		        "小師妹，我不想讓你冒險。"
+		    ]
+		},
+		{
+		    "name": "event",
+		    "dialogue": [
+		        "storyleave",
+		        "nextscene"
+		    ]
+		},
+		{
+		    "name": "player",
+		    "dialogue": [
+		        "師兄！"
+		    ]
+		}
+	]
+}
