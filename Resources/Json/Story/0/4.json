@@ -1,109 +1,103 @@
 {
 "storyArray" : [
-	
 	{
 	    "name": "BossBone",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "為何沒了肌餓感？"
+	        "沒有...餓..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "我的修為尚淺，這種解脫的感覺只是一瞬而已。"
-	    ]
-	},
-	{
-	    "name": "BossBone",
-	    "dialogue": [
-	        "這十年來我一口飯也沒吃過...",
-	        "很感謝你..."
+	       	"聖光咒能令你有飽滿的感覺，可是這種感覺只是一瞬而已。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "bossdisappear"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "這..."
-	    ]
-	},{
-	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
 	        "musicappear"
 	    ]
 	},{
-	    "name": "player",
+	    "name": "music",
 	    "dialogue": [
-	    	"呃..."
+	        "前輩，我已經把老人家安頓好了。"
 	    ]
 	},{
-	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
+	    "name": "player",
 	    "dialogue": [
-	        "playerbow"
+	        "小師妹，你平安回來就好了。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "不必多禮。"	    
+	        "多謝前輩關心。"
 	    ]
 	},{
 	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	        "playerresume"
+	        "playerpoint"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"能在這裡遇上八部樂神是我的榮幸。"
+	        "前輩，剛剛的餓鬼就如老師所言一樣..."
+	        "衪們終日生活在飢渴之中，雖然有食物，但卻無法食用，十分可憐...",
+	        "如果可以的話，我希望我能夠跟師兄一樣，能夠使用聖光咒幫助餓鬼。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"沒問題，我可以毫無保留將聖光咒傳授給你。",
+	    	"要知道...每個人心裡都有一塊明境...",
+	    	"卻被慾望蒙蔽了，心鏡就沒法照耀別人。",
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "餓鬼轉生前過於吝嗇慳貪...才會淪為餓鬼。",
-	        "這也是餓鬼注定的命運，何以感到惋惜？"
+	    	"嗯..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "這些餓鬼無論是過往生還是今生，也有家人。",
-	        "衪們的母親必定不希望自己的兒女飽受折磨...",
-	        "真不敢想像衪們的母親有多難受..."
+	    	"八大覺悟的第一覺知需要時間體悟..."
+	    	"回去道場後，我們再深入深討箇中玄機吧。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"在這五濁惡世，難得有大善人！",
-	        "願你得到平安喜樂！"
-	    ]
-	},{
-	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "",
-	    "dialogue": [
-	        "musicdisappear"
-	        "playerbow"
+	    	"感謝前輩！雖然現在我還沒有能力去幫助餓鬼...",
+	    	"但至少我也希望能夠幫上前輩的忙。",
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "樂神...",
+	    	"哈哈！小師妹真的越來越懂事了。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"慚愧了。"
 	    ]
 	},{
 	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
 	    "dialogue": [
-	        "playerresume"
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "那麼，拜託小師妹幫忙保管三毒結晶吧。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"沒問題，交給我吧！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "managegem"
 	    ]
 	}
 ]
