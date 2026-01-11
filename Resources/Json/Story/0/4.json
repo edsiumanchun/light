@@ -5,7 +5,7 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "沒有...餓..."
+	        "不...餓...了..."
 	    ]
 	},{
 	    "name": "player",
@@ -15,23 +15,25 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "bossdisappear"
+	        "bossdisappear",
 	        "musicappear"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "前輩，我已經把老人家安頓好了。"
+	        "師傅，我已經把老人家安頓好了。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "小師妹，你平安回來就好了。"
+	        "徒兒，你平安回來就好了。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "多謝前輩關心。"
+	        "話說師傅的聖光咒真的不可思議。",
+	        "如果可以的話...",
+			"我真的希望有朝一日能夠跟師傅一樣，能夠使用聖光咒幫助餓鬼。"
 	    ]
 	},{
 	    "name": "event",
@@ -41,58 +43,44 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "前輩，剛剛的餓鬼就如老師所言一樣..."
-	        "衪們終日生活在飢渴之中，雖然有食物，但卻無法食用，十分可憐...",
-	        "如果可以的話，我希望我能夠跟師兄一樣，能夠使用聖光咒幫助餓鬼。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"沒問題，我可以毫無保留將聖光咒傳授給你。",
-	    	"要知道...每個人心裡都有一塊明境...",
-	    	"卻被慾望蒙蔽了，心鏡就沒法照耀別人。",
+			"徒兒，你本來就具有這種能力。",
+	    	"每個人心裡都有一塊明鏡。只是人的慾望把它遮蔽了。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"嗯..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"八大覺悟的第一覺知需要時間體悟..."
-	    	"回去道場後，我們再深入深討箇中玄機吧。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	    	"感謝前輩！雖然現在我還沒有能力去幫助餓鬼...",
-	    	"但至少我也希望能夠幫上前輩的忙。",
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"哈哈！小師妹真的越來越懂事了。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	    	"慚愧了。"
+	    	"那麼，我嘗試放下心裡的雜念吧。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playerpoint"
+	        "bossdisappear",
+	        "musicappear"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "那麼，拜託小師妹幫忙保管三毒結晶吧。"
+			"不錯啊，看來你已經領悟了八大覺悟的第一覺知。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"沒問題，交給我吧！"
+	    	"能夠得到師傅的認同，實在是我的榮幸。"
+	    ]
+	},{
+	    "name": "",
+	    "dialogue": [
+			"啊！！！"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	    	"還有其他人在嗎？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"我們過去看看吧？"
 	    ]
 	},{
 	    "name": "event",

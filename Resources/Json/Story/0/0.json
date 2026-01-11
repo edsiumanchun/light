@@ -160,19 +160,7 @@ game: 碎片狀態
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"都給你吧！"
-	    ]
-	},{
-	    "name": "music",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	        "前輩，這可是我們僅餘的食物..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "小師妹，我們把老人家帶回卡西亞村安頓好再說吧。"
+	    	"老伯伯，若不嫌棄，請你收下這些乾糧吧！"
 	    ]
 	},{
 	    "name": "event",
@@ -188,34 +176,40 @@ game: 碎片狀態
  	},{
 	    "name": "sage",
 	    "dialogue": [
-	    	"這是來自東方的聖光咒嗎？"
-	    	"剛剛伴隨著聖光消失的...就是餓鬼嗎？"
+	    	"難道這是聖光咒嗎？"
 	    ]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	        "是的，餓鬼得到聖光咒的祝福後就會得到解脫。"
-	    ]
-	},{
-	    "name": "event",
- 	    "dialogue": [
-	        "playerpoint",
-	        "playerturn",
-	        "playerattack",
-	        "bossgoldkey",
-	        "bossdisappear",
-	        "playerturn",
-	        "playeridle"
- 	    ]
- 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "竟然有如此不尋常的餓鬼，三毒結晶很可能就在古洞內。"
+			"沒錯，這就是能讓餓鬼得到解脫的聖光咒。"
+	    ]
+	},{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	        "餓鬼的氣息消散了。"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "這實在不尋常，餓鬼本來不應該在人間示現的。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "小師妹的直覺一向很準，確實值得進去一看。"
+	        "或許能制造各種亂象的三毒結晶就在附近。"
+	    ]
+	},{
+	    "name": "music",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "師傅，我們該怎麼辦才好。"
 	    ]
 	},{
 	    "name": "event",
@@ -225,13 +219,12 @@ game: 碎片狀態
  	},{
 	    "name": "player",
 	    "dialogue": [
-	        "要不這樣吧...小師妹先把老人家送回村莊...",
-	        "這山洞內的三毒結晶就讓我來調查吧。"
+	        "徒兒，這地方很危險，我看你先把老人家送回村莊吧。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "好的，前輩，就交給我吧！"
+	        "好的，交給我吧！"
 	    ]
 	}
 ]
