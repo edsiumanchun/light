@@ -2,15 +2,16 @@
 "storyArray" : [
 	{
 	    "name": "BossBone",
-	   	"leftPrefab": "player",
+	    "leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "不...餓...了..."
+	        "不...不餓了...",
+	        "這十年來...第一次..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	       	"聖光咒能令你有飽滿的感覺，可是這種感覺只是一瞬而已。"
+	        "這是能幫助餓鬼得到解脫的「聖光咒」"
 	    ]
 	},{
 	    "name": "event",
@@ -21,19 +22,8 @@
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "師傅，我已經把老人家安頓好了。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "徒兒，你平安回來就好了。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "話說師傅的聖光咒真的不可思議。",
-	        "如果可以的話...",
-			"我真的希望有朝一日能夠跟師傅一樣，能夠使用聖光咒幫助餓鬼。"
+	        "前輩所使用的「聖光咒」實在是不可思議。",
+	        "如果可以的話，我真的希望像前輩一樣，能夠幫助那些受苦的餓鬼。"
 	    ]
 	},{
 	    "name": "event",
@@ -43,44 +33,48 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-			"徒兒，你本來就具有這種能力。",
-	    	"每個人心裡都有一塊明鏡。只是人的慾望把它遮蔽了。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	    	"那麼，我嘗試放下心裡的雜念吧。"
+			"要知道，每個人原本就具備照耀別人的能力，",
+	        "心裡的明鏡，只是被慾望所蒙蔽而己。"
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "bossdisappear",
-	        "musicappear"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-			"不錯啊，看來你已經領悟了八大覺悟的第一覺知。"
+	        "musiccast"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"能夠得到師傅的認同，實在是我的榮幸。"
+	        "是這樣嗎？"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	        "很好，看來你已領悟了八大覺悟的初覺。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playerpoint"
+	    ]
+	},{
+	    "name": "music",
+	    "dialogue": [
+	        "謝謝前輩的指導。"
 	    ]
 	},{
 	    "name": "",
 	    "dialogue": [
-			"啊！！！"
+	        "啊！！！"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"還有其他人在嗎？"
+	        "這是...什麼聲音？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"我們過去看看吧？"
+	        "我們過去看看吧！"
 	    ]
 	},{
 	    "name": "event",

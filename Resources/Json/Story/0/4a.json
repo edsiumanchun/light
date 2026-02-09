@@ -1,117 +1,76 @@
 {
 "storyArray" : [
-	
 	{
 	    "name": "BossBone",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
-	        "為何沒了肌餓感？"
+	        "我...我感覺到了溫暖...",
+	        "這十年來...第一次..."
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "你已經得到了解脫。"
+	        "你現在感覺如何？"
 	    ]
 	},
 	{
 	    "name": "BossBone",
 	    "dialogue": [
-	        "這十年來我一口飯也沒吃過...",
+	        "不...不餓了...",
 	        "很感謝你..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "bossdisappear"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "唉..."
-	    ]
-	},{
-	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
+	        "bossdisappear",
 	        "musicappear"
 	    ]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"呃..."
-	    ]
-	},{
-	    "name": "event",
+	    "name": "music",
 	   	"leftPrefab": "player",
 	    "rightPrefab": "music",
 	    "dialogue": [
-	        "playerbow"
+	        "老師..."
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"你來了。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "不必多禮。"	    
-	    ]
-	},{
-	    "name": "event",
-	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	        "playerresume"
+	        "我感覺到這裡有不尋常的氣息...",
+	        "所以趕過來了。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"能在這裡遇上八部守護神是我的榮幸。"
+	        "剛才幫助了一個餓鬼。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "餓鬼轉生前過於吝嗇慳貪...才會淪為餓鬼。",
-	        "這也是餓鬼注定的命運，何以感到惋惜？"
+	        "老師總是這樣...",
+	        "即使面對餓鬼，也充滿慈悲。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "這些餓鬼無論是過往生還是今生，也有家人。",
-	        "衪們的母親必定不希望自己的兒女飽受折磨...",
-	        "真不敢想像衪們的母親有多難受..."
+	        "他們也有家人，也會痛苦。",
+	        "我只是做了該做的事。"
 	    ]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"在這個五濁惡世，難得有大善人！",
-	        "就讓我陪伴在你身邊吧！"
+	    	"老師，讓我陪伴在你身邊吧。",
+	        "我想幫助你。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	        "真的是！",
-	    ]
-	},
-	{
-	    "name": "BossBone",
-	    "dialogue": [
-	        "沒騙你的，你看我餓到只剩下一副骨架就知道了...",
-	        "要不是你讓我得到温飽，我甚至連說話的氣力也沒有啊。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "這就是餓鬼的宿命？"
-	    ]
-	},
-	{
-	    "name": "BossBone",
-	    "dialogue": [
-	        "算是吧，我們這一生就是為了贖罪。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "bossdisappear"
+	        "謝謝你。"
 	    ]
 	}
 ]
