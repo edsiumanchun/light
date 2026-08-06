@@ -258,7 +258,7 @@ public class EnemyController : MonoBehaviour
                     StartCoroutine(GemDie());
                 } else {
                     // Effects.AddEffect(this.gameObject, "SecureAura");
-                    Reward();
+                    EnemyRewardService.Grant(assetIndex);
                     Utils.Fade(this.gameObject, true);
                     StartCoroutine(DelayDestroy(this.gameObject));
                 }
@@ -294,7 +294,7 @@ public class EnemyController : MonoBehaviour
             Effects.AddEffect(gemObject, "purify");
             Utils.Fade(gemObject, true);
             if(i == gemObjects.Count - 1){
-                Reward();
+                EnemyRewardService.Grant(assetIndex);
                 StartCoroutine(DelayDestroy(this.gameObject));
             } else {
                 StartCoroutine(DelayDestroy(gemObject));
@@ -306,42 +306,6 @@ public class EnemyController : MonoBehaviour
 
     private void SetupAssetDataNamelist(string name){
         AssetData.nameList.Add(name);
-    }
-
-    private void Reward() {
-        if(assetIndex >= 1000) { // gem
-            int[] digits = new int[4];
-            digits[0] = assetIndex / 1000 - 1;
-            digits[1] = (assetIndex / 100) % 10 - 1;
-            digits[2] = (assetIndex / 10) % 10 - 1;
-            digits[3] = assetIndex % 10;
-            for (int i = 0; i < digits.Length; i++)
-            {
-                switch (digits[i])
-                {
-                    case 0:
-                        CacheManager.ChangeCache(Cache.Greed.ToString(), 1, 99999);
-                        break;
-                    case 1:
-                        CacheManager.ChangeCache(Cache.Hatred.ToString(), 1, 99999);
-                        break;
-                    case 2:
-                        CacheManager.ChangeCache(Cache.Delusion.ToString(), 1, 99999);
-                        break;
-                    case 3:
-                        CacheManager.ChangeCache(Cache.Ethics.ToString(), 1, 99999);
-                        break;
-                    case 4:
-                        CacheManager.ChangeCache(Cache.Concentration.ToString(), 1, 99999);
-                        break;
-                    case 5:
-                        CacheManager.ChangeCache(Cache.Delusion.ToString(), 1, 99999);
-                        break;
-                }
-            }
-        } else {
-
-        }
     }
 
     public void CreateFireBall(GameObject go, string type, bool isFire, int totalHP, int totalMP){

@@ -220,51 +220,13 @@ public class Utils : MonoBehaviour
     }
 
     public static List<AudioClip> LoadAudios(List<string> paths)
-    {
-        List<AudioClip> temp = new List<AudioClip>();
-        if (paths == null) return temp;
-        foreach (string path in paths)
-        {
-            AudioClip asset = (AudioClip)Resources.Load("Audios/" + path, typeof(AudioClip));
-            print("Audios/" + path);
-            if (asset != null)
-            {
-                temp.Add(asset);
-            } else {
-                temp.Add(null);
-            }
-        }
-        return temp;
-    }
+        => ResourceLoader.LoadAudio(paths);
+
     public static List<Sprite> LoadSprites(string folder, List<string> paths)
-    {
-        List<Sprite> temp = new List<Sprite>();
-        if (paths == null) return temp;
-        foreach (string path in paths)
-        {
-            Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
-            //print("Sprites/" + folder + "/" + path);
-            if (asset != null)
-            {
-                temp.Add(asset);
-            } else {
-                temp.Add(null);
-            }
-        }
-        return temp;
-    }
+        => ResourceLoader.LoadSprites(folder, paths);
 
     static public GameObject InstantiateObject(GameObject prefab)
-    {
-        if (prefab == null)
-        {
-            Debug.LogError("Cannot instantiate a missing prefab.");
-            return null;
-        }
-        GameObject gameObject = Instantiate(prefab, prefab.transform.localPosition, prefab.transform.localRotation);
-
-        return gameObject;
-    }
+        => ResourceLoader.Instantiate(prefab);
 
     static public void showChildrenWithName(string name, Transform transform) {
         foreach (Transform child in transform)
@@ -289,25 +251,7 @@ public class Utils : MonoBehaviour
     }
     
     public static List<Object> LoadPrefabs(string folder, List<string> paths)
-    {
-        List<Object> temp = new List<Object>();
-        if (paths == null) return temp;
-        foreach (string path in paths)
-        {
-            Object asset = Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", ""));
-            //print("Sprites/" + folder + "/" + path);
-            if (asset != null)
-            {
-                temp.Add(asset);
-            }
-            else
-            {
-                Debug.LogError("Missing prefab resource: Prefabs/" + folder + "/" + path.Replace("_p", ""));
-                temp.Add(null);
-            }
-        }
-        return temp;
-    }
+        => ResourceLoader.LoadPrefabs(folder, paths);
 
     public static GameObject LoadPrefabAndInstantObject(string folder, string name, Vector3 vector3){
         List<string> prefabPaths = new List<string>((new[] {name}));

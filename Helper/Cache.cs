@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 using System.Collections.Generic;
-using System.Linq;
 
 
 public enum Cache
@@ -39,57 +38,6 @@ public enum Cache
     ExitH = 27,
     ExitV = 28,
     Teleport = 29
-}
-
-public static class CacheUsage
-{
-    public static void cacheDestroyedObject(string id)
-    {
-        Dictionary<string, string> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
-
-        // If the dictionary is null, assign an empty dictionary
-        if (dictionary == null)
-        {
-            dictionary = new Dictionary<string, string>();
-        }
-
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        string key = CurrentStage.ToString() + "/" + currentFloor.ToString();
-
-        List<string> list;
-
-        // If the dictionary doesn't contain the key or the list is null, assign an empty list
-        if (!dictionary.ContainsKey(key) || dictionary[key] == null)
-        {
-            list = new List<string>();
-        }
-        else
-        {
-            list = CacheManager.ConvertJsonToList(dictionary[key]);
-        }
-        string [] firstTwoCharacters = id.Split("_");
-        list.Add(firstTwoCharacters[0]);
-
-        dictionary[key] = CacheManager.ConvertListToJson(list);
-        CacheManager.SaveDictionary(Cache.Destroy.ToString(), dictionary);
-    }
-
-    public static bool isDestroyObject(string id)
-    {
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        string key = CurrentStage.ToString() + "/" + currentFloor.ToString();
-        Dictionary<string, string> dictionary = CacheManager.LoadDictionary(Cache.Destroy.ToString());
-        if (dictionary.ContainsKey(key) == true)
-        {
-            return CacheManager.ConvertJsonToList(dictionary[key]).Contains(id);
-        } else
-        {
-            return false;
-        }
-        
-    }
 }
 
 public static class CacheManager
@@ -299,31 +247,5 @@ public static class CacheManager
     private class Wrapper
     {
         public List<string> List;
-    }
-}
-
-[System.Serializable]
-public class SerializableDictionary
-{
-    public List<string> keys;
-    public List<string> values;
-
-    public SerializableDictionary(Dictionary<string, string> dictionary)
-    {
-        keys = dictionary.Keys.ToList();
-        values = dictionary.Values.ToList();
-    }
-
-    public Dictionary<string, string> ToDictionary()
-    {
-        Dictionary<string, string> dictionary = new Dictionary<string, string>();
-        if (keys == null || values == null) return dictionary;
-        int count = Mathf.Min(keys.Count, values.Count);
-        for (int i = 0; i < count; i++)
-        {
-            dictionary[keys[i]] = values[i];
-        }
-
-        return dictionary;
     }
 }

@@ -184,23 +184,6 @@ public class MainController : MonoBehaviour
     }
 
     private static T LoadJson<T>(string resourcePath) where T : class
-    {
-        TextAsset jsonFile = Resources.Load<TextAsset>(resourcePath);
-        if (jsonFile == null)
-        {
-            Debug.LogError("Missing JSON resource: " + resourcePath);
-            return null;
-        }
-
-        try
-        {
-            return JsonUtility.FromJson<T>(jsonFile.text);
-        }
-        catch (System.Exception exception)
-        {
-            Debug.LogError("Invalid JSON resource " + resourcePath + ": " + exception.Message);
-            return null;
-        }
-    }
+        => JsonResourceLoader.Load<T>(resourcePath);
 
 }

@@ -94,13 +94,7 @@ public class StoryController : MonoBehaviour
         string storyFilePath = "Json/Story/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + CacheManager.GetCache(Cache.CurrentFloor.ToString() ) + suffix;
 
         print(storyFilePath + "/" + index.ToString());
-        TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
-        if (jsonFile == null)
-        {
-            Debug.LogError("Missing story JSON resource: " + storyFilePath);
-            return;
-        }
-        wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
+        wrapper = JsonResourceLoader.Load<StoryDataWrapper>(storyFilePath);
         if (wrapper == null || wrapper.storyArray == null || wrapper.storyArray.Count == 0)
         {
             Debug.LogError("Story JSON has no dialogue: " + storyFilePath);
