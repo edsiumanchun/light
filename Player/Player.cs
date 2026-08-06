@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public bool isOnFloor = false; // Whether the player is standing on the floor or not
     private AudioSource audioSource;
+    private AnimatorController animatorController;
+    private JoystickController joystickController;
     public AudioClip gateSound;
     public AudioClip landSound;
     public AudioClip panelSound;
@@ -26,8 +27,6 @@ public class PlayerController : MonoBehaviour
     public string doorName;
 
     public UIGameButton status = UIGameButton.none; // Whether the player is standing on the floor or not
-    char exitPosition = '0';
-
     void Awake()
     {
         DataHolder.player = this.gameObject;
@@ -36,22 +35,25 @@ public class PlayerController : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
         audioSource = GetComponent<AudioSource>();
+        animatorController = GetComponent<AnimatorController>();
         int layerIndex = LayerMask.NameToLayer("Player"); // Get the layer index based on the layer name.
         this.gameObject.layer = layerIndex;
     }
     void Start()
     {
+        joystickController = GetComponent<JoystickController>();
         int CurrentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
         if(CurrentStage >= 0){
 
 
-            List<string> myList = new List<string>();
-            myList.Add("MariaGhost");
-            GameObject prefabs = (GameObject)Utils.LoadPrefabs("Characters",myList)[0];
+            GameObject prefabs = (GameObject)Utils.LoadPrefabs("Characters", new List<string> { "MariaGhost" })[0];
             maria = Utils.InstantiateObject(prefabs);
-            maria.name = "MariaGhostMoveJump";
-            maria.transform.SetParent(this.gameObject.transform);
-            maria.transform.localPosition = new Vector2(-0.8f,0.8f); 
+            if (maria != null)
+            {
+                maria.name = "MariaGhostMoveJump";
+                maria.transform.SetParent(transform);
+                maria.transform.localPosition = new Vector2(-0.8f, 0.8f);
+            }
         }
         hpTextComponent = this.gameObject.AddComponent<HPTextComponent>();
         hpTextComponent.textColor = Color.white;
@@ -64,38 +66,23 @@ public class PlayerController : MonoBehaviour
         if(Camera.main == null) return;
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         if(gameUIController == null) return;
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         string name = collision.gameObject.name;
-        switch (name)
+        if (ContainsAny(name, "GoDown", "Story", "Gate"))
         {
-            case string str when str.Contains("GoUp"):
-
-                break;
-            case string str when str.Contains("GoDown") ||  str.Contains("Story"):
-                status = UIGameButton.none;
-                gameUIController.HideGameButton();
-                break;
-            case string str when str.Contains("Floor"):
-                break;
-            case string str when str.Contains("Panel"):
-                break;
-            case string str when str.Contains("PlateV"):
-                if(str.Contains("Gate")) {
-                    status = UIGameButton.none;
-                    gameUIController.HideGameButton();
-                } 
-                break;
-            case string str when str.Contains("Enemy") || str.Contains("Boss") || str.Contains("Gem"):
-                gameUIController.HideGameButton();
-                gameUIController.HideEnemyButton();
-                break;
+            status = UIGameButton.none;
+            gameUIController.HideGameButton();
+        }
+        if (ContainsAny(name, "Enemy", "Boss", "Gem"))
+        {
+            gameUIController.HideGameButton();
+            gameUIController.HideEnemyButton();
         }
     }
 
     public void ShowStory(){
-        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+        animatorController.SetAnimationStatus(AnimationStatus.Idle);
         StoryController storyController = Camera.main.gameObject.GetComponent<StoryController>();
-        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
+        GameObject purifyObject = joystickController.purifyObject;
         if(purifyObject != null && purifyObject.name.Contains("Trigger")) {
             storyController.LoadStoryDataFromJSON("T", true, purifyObject.name.Contains("Light") ? 0 : 1);
             return;
@@ -114,100 +101,54 @@ public class PlayerController : MonoBehaviour
     }
     
 
-    public void GoDown(){
-        Debug.Log("???" + doorName);
-        Debug.Log("???" + doorName);
-        if (int.TryParse(doorName[1].ToString(), out int exitV))
-        {
-            if (int.TryParse(doorName[0].ToString(), out int exitH)){
-                status = UIGameButton.none;
-                CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
-                CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
-                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                int offset = doorName.Contains("Revert") ? -1 : 1;
-                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit") ? Mathf.Abs(AssetData.exit) : currentFloor + offset);
-            }
-        }
+    public void GoDown() => MoveBetweenFloors(1);
+    public void GoUp() => MoveBetweenFloors(-1);
+    public void GoExit() => MoveThroughExit(false);
+    public void GoFakeExit() => MoveThroughExit(true);
+
+    private bool TryGetDoorCoordinates(out int exitH, out int exitV)
+    {
+        exitH = exitV = 0;
+        return !string.IsNullOrEmpty(doorName) && doorName.Length >= 2
+            && int.TryParse(doorName[0].ToString(), out exitH)
+            && int.TryParse(doorName[1].ToString(), out exitV);
     }
 
-    public void GoUp(){
-        Debug.Log("???" + doorName);
-        if (int.TryParse(doorName[1].ToString(), out int exitV))
-        {
-            if (int.TryParse(doorName[0].ToString(), out int exitH)){
-                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4); 
-                CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
-                int offset = doorName.Contains("Revert") ? 1 : -1;
-                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit") ? Mathf.Abs(AssetData.exit) : currentFloor + offset);
-            }
-        }
+    private void MoveBetweenFloors(int direction)
+    {
+        if (!TryGetDoorCoordinates(out int exitH, out int exitV)) return;
+        status = UIGameButton.none;
+        CacheManager.SetCache(Cache.ExitH.ToString(), exitH >= 4 ? 0 : 4);
+        CacheManager.SetCache(Cache.ExitV.ToString(), exitV);
+        int offset = doorName.Contains("Revert") ? -direction : direction;
+        int target = doorName.Contains("Exit")
+            ? Mathf.Abs(AssetData.exit)
+            : CacheManager.GetCache(Cache.CurrentFloor.ToString()) + offset;
+        MainController.LoadFloorAssetsFromJson(target);
     }
 
-    public void GoExit() {
-        Debug.Log("???" + doorName);
-        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
-        if (int.TryParse(doorName[1].ToString(), out int exitV))
-        {
-            if (int.TryParse(doorName[0].ToString(), out int exitH)){
-                status = UIGameButton.none;
-                CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
-                CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
-                MainController.LoadFloorAssetsFromJson(doorName.Contains("Exit2") ? Mathf.Abs(AssetData.exit2) : Mathf.Abs(AssetData.exit));
-            }
-        }
-    }
-    public void GoFakeExit() {
-        Debug.Log("???" + doorName);
-        GameObject purifyObject = this.gameObject.GetComponent<JoystickController>().purifyObject;
-        if (int.TryParse(doorName[1].ToString(), out int exitV))
-        {
-            if (int.TryParse(doorName[0].ToString(), out int exitH)){
-                int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-                status = UIGameButton.none;
-                CacheManager.SetCache(Cache.ExitH.ToString(), exitH); 
-                CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
-                MainController.LoadFloorAssetsFromJson(currentFloor >= 100 ? currentFloor / 100 : currentFloor * 100);
-            }
-        }
+    private void MoveThroughExit(bool fake)
+    {
+        if (!TryGetDoorCoordinates(out int exitH, out int exitV)) return;
+        status = UIGameButton.none;
+        CacheManager.SetCache(Cache.ExitH.ToString(), exitH);
+        CacheManager.SetCache(Cache.ExitV.ToString(), exitV >= 4 ? 0 : 4);
+        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
+        int target = fake
+            ? (currentFloor >= 100 ? currentFloor / 100 : currentFloor * 100)
+            : Mathf.Abs(doorName.Contains("Exit2") ? AssetData.exit2 : AssetData.exit);
+        MainController.LoadFloorAssetsFromJson(target);
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
         string name = collision.gameObject.name;
         Vector3 direction = transform.position - collision.gameObject.transform.position;
-        bool isRight = collision.gameObject.transform.localScale.x > 0;
-        if(name.Contains("Enemy") || name.Contains("Boss") || name.Contains("Story")) {
-            if (Mathf.Abs (direction.x) > Mathf.Abs (direction.y)) {
-                if(isRight) {
-                    if(direction.x>0){
-                        print("collision is to the righta" + name);
-                        return;
-                    }
-                    else{
-                        print("collision is to the lefta"  + name);
-                    }
-                } else {
-                    if(direction.x>0){print("collision is to the right" + name);
-                    }else{
-                        print("collision is to the left"  + name);
-                        return;
-                    }
-                }
-            
-            }else{
-                if(direction.y>0){print("collision is up"  + name);}
-                else{print("collision is down"  + name);}
-                return;
-
-            }
-        }
+        if (ContainsAny(name, "Enemy", "Boss", "Story") &&
+            (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x) ||
+             (collision.transform.localScale.x > 0) == (direction.x > 0))) return;
 
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
-        int currentStage = CacheManager.GetCache(Cache.CurrentStage.ToString());
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
-        string playerPosition = name.Split('_')[0];
-        Debug.Log(name);
         switch (name)
         {
             case string str when str.Contains("GoUp"):
@@ -220,13 +161,11 @@ public class PlayerController : MonoBehaviour
                 break;
             case string str when str.Contains("GoDown"):
                 doorName = collision.gameObject.name;
-                exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Down);
                 status = UIGameButton.Down;
                 break;
             case string str when str.Contains("GateExit") || str.Contains("GateFake"):
                 doorName = collision.gameObject.name;
-                exitPosition = playerPosition[1];
                 gameUIController.showGameButton((int)UIGameButton.Gate);
                 status = str.Contains("GateExit") ? UIGameButton.Exit : UIGameButton.FakeExit;
                 audioSource.PlayOneShot(gateSound);
@@ -305,14 +244,20 @@ public class PlayerController : MonoBehaviour
                 status = collision.name.Contains("Teleport") ? UIGameButton.Teleport : UIGameButton.Story;
                 GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
                 gameUIController.showGameButton((int)status);
-                GameObject player = GameObject.Find("Player");
-                player.GetComponent<JoystickController>().SetPurifyObject(collision.gameObject);
+                joystickController.SetPurifyObject(collision.gameObject);
                 break;
         }
     }
 
     public void AttackedBySpell(string name){
         Effects.AddEffect(this.gameObject, "Stone/" + name);
+    }
+
+    private static bool ContainsAny(string value, params string[] terms)
+    {
+        foreach (string term in terms)
+            if (value.Contains(term)) return true;
+        return false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

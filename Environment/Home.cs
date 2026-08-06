@@ -1,9 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using System.IO;
 
 public class HomeController : MonoBehaviour
 {
@@ -21,25 +18,16 @@ public class HomeController : MonoBehaviour
 
     void Start()
     {
-        this.gameObject.AddComponent<CameraViewController>();
-        this.gameObject.AddComponent<GameUIController>();
-        this.gameObject.AddComponent<StoryController>();
-        this.gameObject.AddComponent<SettingsController>();
-        this.gameObject.AddComponent<ConfirmController>();
-        // this.gameObject.AddComponent<DashboardController>();
-        this.gameObject.AddComponent<StageController>();
-        this.gameObject.AddComponent<InfoController>();
-        this.gameObject.AddComponent<ItemController>();
-        this.gameObject.AddComponent<ShopController>();
-        this.gameObject.AddComponent<VideoPlayerController>();
+        System.Type[] controllers = {
+            typeof(CameraViewController), typeof(GameUIController), typeof(StoryController),
+            typeof(SettingsController), typeof(ConfirmController), typeof(StageController),
+            typeof(InfoController), typeof(ItemController), typeof(ShopController),
+            typeof(VideoPlayerController)
+        };
+        foreach (System.Type controller in controllers)
+            if (GetComponent(controller) == null) gameObject.AddComponent(controller);
         loaded = true;
         LoadGame();
-        // Set up boss death event
-        // int currentHealth = boss.GetComponent<BossController>().currentHealth;
-        // if (currentHealth != null)
-        // {
-        //     currentHealth.OnBossDeath += PlayEndingStory;
-        // }
     }
 
     public static void LoadGame(){
@@ -53,34 +41,26 @@ public class HomeController : MonoBehaviour
         if (stageController != null) stageController.updateButtonImages();
         if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
         DataHolder.player = null;
-        AssetData.gameObject = new GameObject();
-        AssetData.gameObject.name = "MainGameObject";
+        AssetData.gameObject = new GameObject("MainGameObject");
         AssetData.goUp = false;
         AssetData.showStory = false;
         AssetData.wallSkip = null;
         AssetData.teleportExit = 0;
         AssetData.teleport = 0;
         AssetData.exit = 0;
-        int j = 0;
         AssetData.nameList = new HashSet<string>();
-        foreach (List<AssetData> assetDataList in DataHolder.loadedAssets)
+        for (int groupIndex = 0; groupIndex < DataHolder.loadedAssets.Count; groupIndex++)
         {
-            int i = 0;
-            foreach (AssetData asset in assetDataList)
+            List<AssetData> assetDataList = DataHolder.loadedAssets[groupIndex];
+            for (int assetIndex = 0; assetIndex < assetDataList.Count; assetIndex++)
             {
+                AssetData asset = assetDataList[assetIndex];
                 if (asset == null) continue;
-                if(i == 0 && asset.name != "Audio") {
-                    AssetData audioAsset = new AssetData
-                    {
-                        name = "Audio",
-                        gridArray0 = new List<int> { 0 }
-                    };
-                    audioAsset.CreateObjects(-1 * i, j);
-                }  
-                asset.CreateObjects(-1 * i, j);
-                i++;
+                if (assetIndex == 0 && asset.name != "Audio")
+                    new AssetData { name = "Audio", gridArray0 = new List<int> { 0 } }
+                        .CreateObjects(0, groupIndex);
+                asset.CreateObjects(-assetIndex, groupIndex);
             }
-            j++;
         }
     }
 
@@ -93,15 +73,8 @@ public class HomeController : MonoBehaviour
         while (true)
         {
             GameObject gameObject = Instantiate(fireworkPrefab);
-            // ParticleSystem particleEffect = gameObject.GetComponent<ParticleSystem>();
-            // particleEffect.Stop();
-
-            // particleEffect.Clear();
-            // particleEffect.time = 0f;
-            // particleEffect.Play();
             SpawnFireworkNow(gameObject, isLow);
-            float delay = Random.Range(6.6f, 8.8f);
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(Random.Range(6.6f, 8.8f));
         }
     }
 

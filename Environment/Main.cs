@@ -1,15 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
     private void Start()
     {
-        int currentFloor = CacheManager.GetCache(Cache.CurrentFloor.ToString());
         if(Utils.isUAT) {
             PlayerPrefs.DeleteAll();
             CacheManager.SetCache(Cache.CurrentStage.ToString(), 1);
@@ -62,44 +58,32 @@ public class MainController : MonoBehaviour
     public void LoadAssetsForButtonsUI()
     {
         //List<string> paths = new List<string>((new[] { "Purify", "Crouch", "Jump" }));
-        List<string> paths = new List<string>((new[] { "Purify", "Down", "Chat", "Gate", "Teleport"}));
-        List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
-        DataHolder.gameButtonImages = sprites;
+        DataHolder.gameButtonImages = LoadSprites("UI/GameUI", "Purify", "Down", "Chat", "Gate", "Teleport");
     }
 
     public void LoadAssetsForMenuUI()
     {
-        List<string> paths = new List<string>((new[] { "Setting", "Floor", "Info", "HPBar", "BarGreen", "BarRed", "BarBlue", "Avatar", "Bag" }));
-        List<Sprite> sprites = LoadSprites("UI/GameUI", paths);
-        DataHolder.menuButtonImages = sprites;
+        DataHolder.menuButtonImages = LoadSprites("UI/GameUI", "Setting", "Floor", "Info", "HPBar", "BarGreen", "BarRed", "BarBlue", "Avatar", "Bag");
     }
 
     public void LoadAssetsForSettingsUI()
     {
-        List<string> paths2 = new List<string>((new[] { "Bin"}));
-        List<Sprite> sprites2 = LoadSprites("UI/Setting", paths2);
-        DataHolder.settingImages = sprites2;
+        DataHolder.settingImages = LoadSprites("UI/Setting", "Bin");
     }
     public void LoadAssetsForText()
     {
-        List<string> paths = new List<string>((new[] { "RedText", "GreenText", "BlueText" }));
-        DataHolder.textPrefabs = LoadPrefabs("Text", paths);
+        DataHolder.textPrefabs = LoadPrefabs("Text", "RedText", "GreenText", "BlueText");
     }
 
     public void LoadAssetsForCommonUI()
     {
-        List<string> paths = new List<string>((new[] { "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel",  "ShortButton", "NameCard", "NameCard2", "NameCardSel", "Panel2" } ));
-        List<Sprite> sprites = LoadSprites("UI/Common", paths);
-        DataHolder.commonImages = sprites;
+        DataHolder.commonImages = LoadSprites("UI/Common", "Close", "Left", "Right", "BigCircleButton", "CircleButton", "SelCircleButton", "SelectionBar", "Panel", "LongButton", "ConfirmPanel", "ShortButton", "NameCard", "NameCard2", "NameCardSel", "Panel2");
     }
 
     public void LoadAssetsForStoryUI()
     {
-        List<string> paths = new List<string>((new[] { "ChatPanel"}));
-        List<Sprite> sprites = LoadSprites("UI/Story", paths);
-        DataHolder.storyImages = sprites;
-        List<string> prefabPaths = new List<string>((new[] { "Player"}));
-        DataHolder.storyPrefabs = LoadPrefabs("Story", prefabPaths);
+        DataHolder.storyImages = LoadSprites("UI/Story", "ChatPanel");
+        DataHolder.storyPrefabs = LoadPrefabs("Story", "Player");
     }
 
     static public void LoadAssetsFromJson(int stage, int floor) {
@@ -183,10 +167,16 @@ public class MainController : MonoBehaviour
         return Utils.LoadSprites(folder, paths);
     }
 
+    private static List<Sprite> LoadSprites(string folder, params string[] paths)
+        => Utils.LoadSprites(folder, new List<string>(paths));
+
     public static List<Object> LoadPrefabs(string folder, List<string> paths)
     {
         return Utils.LoadPrefabs(folder, paths);
     }
+
+    private static List<Object> LoadPrefabs(string folder, params string[] paths)
+        => Utils.LoadPrefabs(folder, new List<string>(paths));
 
     public static List<AudioClip> LoadAudios(string folder, List<string> paths)
     {

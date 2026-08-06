@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 using System.Collections.Generic;
 
 public class JoystickController : MonoBehaviour
@@ -10,59 +9,43 @@ public class JoystickController : MonoBehaviour
     // [SerializeField] private float jumpForce = 6.8f;
     [SerializeField] private float jumpForce = 7f;
     private Rigidbody2D rb;
-    private float xBounds;
+    private AnimatorController animatorController;
+    private PlayerController playerController;
     public GameObject purifyObject;
     private int jumpCount = 0;
     private int jumpCap = 2;
     // [TBD]only foot can trigger
 
-    private bool isJumpButtonPressed = false;
-    private bool[] isUserDraggingArray = new bool[64];
+    private readonly HashSet<int> draggingFingers = new HashSet<int>();
 
     private bool isPlayerMoving = false;
     private int moveDirection = 0;
 
     private void FixedUpdate()
     {
-        if (IsJumpButtonDown())
-        {
-            Jump();
-        }
-        if(isPlayerMoving) {
-            MovePlayer(moveDirection);
-        }
+        if (IsJumpButtonDown()) Jump();
+        if (isPlayerMoving) MovePlayer(moveDirection);
         if (Application.isMobilePlatform && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
 
-            if (touch.phase == TouchPhase.Began) {
+            if (touch.phase == TouchPhase.Began)
                 isPlayerMoving = true;
-
-            } else if (touch.phase == TouchPhase.Moved)
+            else if (touch.phase == TouchPhase.Moved)
             {
-                // Start moving the player
-                float touchDelta = touch.deltaPosition.x;
-                if (touchDelta < 0)
-                {
-                    moveDirection = -1;
-                }
-                else if (touchDelta > 0)
-                {
-                    moveDirection = 1;
-                }
+                moveDirection = (int)Mathf.Sign(touch.deltaPosition.x);
             }
             else if (touch.phase == TouchPhase.Ended)
             {
                 isPlayerMoving = false;
-                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+                animatorController.SetAnimationStatus(AnimationStatus.Idle);
             }
         }
         else
         {
             // for edit mode
-            float horizontalInput = Input.GetAxis("Horizontal");
-            MovePlayer(horizontalInput);
+            MovePlayer(Input.GetAxis("Horizontal"));
         }
     }
     
@@ -81,25 +64,23 @@ public class JoystickController : MonoBehaviour
                 }
                 if (touch.phase == TouchPhase.Began && touch.deltaPosition.magnitude < 10f)
                 {
-                    isUserDraggingArray[i] = false;
+                    draggingFingers.Remove(touch.fingerId);
                 }
                 else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                 {
-                    return !isUserDraggingArray[i];
+                    bool wasDragging = draggingFingers.Remove(touch.fingerId);
+                    return !wasDragging;
                 }
                 else if (touch.phase == TouchPhase.Moved)
                 {
-                    isUserDraggingArray[i] = true;
+                    draggingFingers.Add(touch.fingerId);
                 }
             }
         }
 
         else
         {
-            if (Input.GetButtonDown("Jump"))
-            {
-                return true;
-            }
+            return Input.GetButtonDown("Jump");
         }
 
         return false;
@@ -107,10 +88,8 @@ public class JoystickController : MonoBehaviour
 
     public void Jump()
     {
-        if(jumpCount >= jumpCap || isFighting == true){
-            return;
-        }
-        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Jump);
+        if (jumpCount >= jumpCap || isFighting) return;
+        animatorController.SetAnimationStatus(AnimationStatus.Jump);
         Utils.showChildrenWithName("jump", transform);
         
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
@@ -124,46 +103,22 @@ public class JoystickController : MonoBehaviour
         if (collisionNormal == Vector2.up){
             // The player is touching the ground, so they can jump again
             jumpCount = 0;
-            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+            animatorController.SetAnimationStatus(AnimationStatus.Idle);
             Utils.showChildrenWithName("move", transform);
         }
-    }
-
-    private bool IsCollidingWithUpperObject()
-    {
-        // Get all the colliders involved in the collision
-        ContactPoint2D[] contacts = new ContactPoint2D[10];
-        int numContacts = rb.GetContacts(contacts);
-
-        int groundCount = 0;
-
-        for (int i = 0; i < numContacts; i++)
-        {
-            // Check if the contact point is with an upper object
-            if (contacts[i].collider.CompareTag("Ground"))
-            {
-                groundCount++;
-            }
-        }
-        return groundCount >= 4;
-    }
-
-    public Sprite GetPlateSprite()
-    {
-        return DataHolder.plateV[0];
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animatorController = GetComponent<AnimatorController>();
+        playerController = GetComponent<PlayerController>();
     }
 
 
     private void MovePlayer(float moveDirection)
     {
-        if(isFighting){
-            return;
-        }
+        if (isFighting) return;
         if (moveDirection > 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -173,17 +128,15 @@ public class JoystickController : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f);
         } else {
             if(jumpCount == 0){
-                if(this.gameObject.GetComponent<AnimatorController>().animator.GetInteger("status") == (int)AnimationStatus.Action) {
-                    return;
-                }
-                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+                if (animatorController.animator.GetInteger("status") == (int)AnimationStatus.Action) return;
+                animatorController.SetAnimationStatus(AnimationStatus.Idle);
                 Utils.showChildrenWithName("move", transform);
             }
             return;
         }
         transform.Translate(Vector3.right * moveDirection * moveSpeed * Time.deltaTime);
         if(jumpCount == 0){
-            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Move);
+            animatorController.SetAnimationStatus(AnimationStatus.Move);
             Utils.showChildrenWithName("move", transform);
         }
     }
@@ -191,7 +144,7 @@ public class JoystickController : MonoBehaviour
 
     public void ReleaseFighting(){
         isFighting = false;
-        this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Idle);
+        animatorController.SetAnimationStatus(AnimationStatus.Idle);
         Utils.showChildrenWithName("move", transform);
     }
     public void Crouch()
@@ -200,23 +153,14 @@ public class JoystickController : MonoBehaviour
 
     public void Purify()
     {
-        PlayerController playerController = this.gameObject.GetComponent<PlayerController>();
-        if(playerController.status == UIGameButton.FakeExit){
-            playerController.GoFakeExit();
-            return;
-        } else if(playerController.status == UIGameButton.Exit){
-            playerController.GoExit();
-            return;
-        } else if(playerController.status == UIGameButton.Down){
-            if(AssetData.goUp) {
-                playerController.GoUp();
-            } else {
-                playerController.GoDown();  
-            }
-            return;
-        } else if(playerController.status == UIGameButton.Story){
-            playerController.ShowStory();
-            return;
+        switch (playerController.status)
+        {
+            case UIGameButton.FakeExit: playerController.GoFakeExit(); return;
+            case UIGameButton.Exit: playerController.GoExit(); return;
+            case UIGameButton.Down:
+                if (AssetData.goUp) playerController.GoUp(); else playerController.GoDown();
+                return;
+            case UIGameButton.Story: playerController.ShowStory(); return;
         } 
         if (purifyObject == null) return;
         if(playerController.status == UIGameButton.Gate){
@@ -226,7 +170,7 @@ public class JoystickController : MonoBehaviour
                 GateController gate = purifyObject.GetComponent<GateController>();
                 if (gate == null) return;
                 gate.OpenGateAndDestroy(true);
-                this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
+                animatorController.SetAnimationStatus(AnimationStatus.Action);
             }
         } else if(playerController.status == UIGameButton.Teleport){
             Debug.Log("purifyObject" + purifyObject.name);
@@ -238,7 +182,7 @@ public class JoystickController : MonoBehaviour
         } else {
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
-            this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
+            animatorController.SetAnimationStatus(AnimationStatus.Attack);
             EnemyController enemy = purifyObject.GetComponent<EnemyController>();
             if (enemy == null)
             {
@@ -252,14 +196,6 @@ public class JoystickController : MonoBehaviour
 
     public void SetPurifyObject(GameObject gameObject)
     {
-        this.purifyObject = gameObject;
-        if (gameObject == null)
-        {
-            // hide button
-        } else
-        {
-            // show button
-        }
-
+        purifyObject = gameObject;
     }
 }

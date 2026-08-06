@@ -224,28 +224,17 @@ public class EnemyController : MonoBehaviour
     public IEnumerator TowerAttack()
     {
         GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Tower");
-        int i = 0, totalHP = 0, totalMP = 0;
+        int i = 0;
         foreach (GameObject go in gameObjectsWithTag)
         {
             bool isFire = i == gameObjectsWithTag.Length - 1;
-            if (go.name.Contains("Greed"))
-            {
-                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
-                CreateFireBall(go, "Greed", isFire, totalHP, totalMP);
-            }
-            else if (go.name.Contains("Hatred"))
-            {
-                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
-                CreateFireBall(go, "Hatred", isFire, totalHP, totalMP);
-            }
-            else if (go.name.Contains("Delusion"))
-            {
-                totalHP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.hp;
-                totalMP = go.transform.parent.gameObject.GetComponent<EnemyController>().specialEnemyData.damage;
-                CreateFireBall(go, "Delusion", isFire, totalHP, totalMP);
-            }
+            EnemyController owner = go.GetComponentInParent<EnemyController>();
+            EnemyData towerData = owner != null ? owner.specialEnemyData : null;
+            string type = go.name.Contains("Greed") ? "Greed"
+                : go.name.Contains("Hatred") ? "Hatred"
+                : go.name.Contains("Delusion") ? "Delusion" : null;
+            if (type != null && towerData != null)
+                CreateFireBall(go, type, isFire, towerData.hp, towerData.damage);
             i++;
 
             // Add a 0.03 second delay
