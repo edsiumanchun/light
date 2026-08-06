@@ -95,8 +95,17 @@ public class StoryController : MonoBehaviour
 
         print(storyFilePath + "/" + index.ToString());
         TextAsset jsonFile = Resources.Load<TextAsset>(storyFilePath);
-        print(jsonFile );
+        if (jsonFile == null)
+        {
+            Debug.LogError("Missing story JSON resource: " + storyFilePath);
+            return;
+        }
         wrapper = JsonUtility.FromJson<StoryDataWrapper>(jsonFile.text);
+        if (wrapper == null || wrapper.storyArray == null || wrapper.storyArray.Count == 0)
+        {
+            Debug.LogError("Story JSON has no dialogue: " + storyFilePath);
+            return;
+        }
         currentStoryIndex = index;
         onlyOne = _onlyOne;
         LoadStoryDataFromJSONWithPath(currentStoryIndex);   
@@ -125,11 +134,16 @@ public class StoryController : MonoBehaviour
     }
     public void LoadStoryDataFromJSONWithPath(int index)
     {
+        if (wrapper == null || wrapper.storyArray == null || index < 0 || index >= wrapper.storyArray.Count)
+        {
+            Debug.LogError("Invalid story index: " + index);
+            return;
+        }
         SetupFadeObject(false);
         if(canPlayerMove == false) {
             GameObject player = GameObject.Find("Player");
-            if(player != null) {
-                player.GetComponent<JoystickController>().isFighting = true;
+            if(player != null && player.TryGetComponent(out JoystickController joystickController)) {
+                joystickController.isFighting = true;
             }
         }
         if(leftPrefab != null) Destroy(leftPrefab);
@@ -231,7 +245,10 @@ public class StoryController : MonoBehaviour
         SetupFadeObject(true);
         CacheManager.SetClearFloor();
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<JoystickController>().isFighting = false;
+        if (player != null && player.TryGetComponent(out JoystickController joystickController))
+        {
+            joystickController.isFighting = false;
+        }
     }
 
     public void DisplayNextSentence()

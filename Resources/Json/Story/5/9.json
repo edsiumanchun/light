@@ -27,7 +27,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "playergotorosia"
+	        "playergotorosia",
 	        "rosiafall"
 	    ]
 	},{
@@ -87,14 +87,12 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"嗯...真不敢想像你姐姐現在有多難受...",
-	    ]
+	    	"嗯...真不敢想像你姐姐現在有多難受..."]
 	},{
 	    "name": "maria",
 	    "dialogue": [
 	        "姐姐表面看似堅強，但長期為了我的事情而奔波的她...",
-	        "內心早已經接近崩毀邊緣。",
-	    ]
+	        "內心早已經接近崩毀邊緣。"]
 	},{
 	    "name": "player",
 	    "dialogue": [
@@ -140,8 +138,7 @@
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"嗯，試試看吧。",
-	    ]
+	    	"嗯，試試看吧。"]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -152,25 +149,21 @@
 	    "leftPrefab": "player",
 	    "rightPrefab": "rosia",
 	    "dialogue": [
-	        "我的一生...真是坎坷...",
-	    ]
+	        "我的一生...真是坎坷..."]
 	},{
 	    "name": "maria",
 	    "dialogue": [
-	    	"姐姐，這一切都是幻境...",
-	    ]
+	    	"姐姐，這一切都是幻境..."]
 	},{
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "你是誰？為何要假扮我的妹妹？我的妹妹已經死了！",
-	    ]
+	        "你是誰？為何要假扮我的妹妹？我的妹妹已經死了！"]
 	},{
 	    "name": "maria",
 	    "dialogue": [
 	    	"沒有生死，靈魂不滅...",
-	    	"別被幻境所蒙騙，破迷啟悟，尋找清淨之藏...",
-	    ]
+	    	"別被幻境所蒙騙，破迷啟悟，尋找清淨之藏..."]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -180,10 +173,8 @@
 	    "name": "rosia",
 	    "centerPrefab": "rosia",
 	    "dialogue": [
-	        "尋找清淨之藏？",
-	    ]
+	        "尋找清淨之藏？"]
 	}
 ]
 }
-
 

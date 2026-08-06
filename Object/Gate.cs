@@ -4,7 +4,7 @@ using System.Collections;
 public class GateController : MonoBehaviour
 {
     private float gateOpenHeight; // Height at which the gate will open
-    public float gateMoveSpeed = 0f; // Speed at which the gate moves up
+    public float gateMoveSpeed = 1f; // Speed at which the gate moves up
     public float fadeSpeed = 1f; // Speed at which the gate fades out
 
     private SpriteRenderer gateSpriteRenderer;
@@ -46,11 +46,16 @@ public class GateController : MonoBehaviour
     {
         if(isDisappear) return;
         isDisappear = true;
-        string keyName = this.gameObject.name.Split("Gate")[1];
-        bool result = CacheManager.ChangeKey(keyName, -1);
-        if(result == false) {
-            isDisappear = false;
-            return;
+        string[] nameParts = this.gameObject.name.Split(new[] { "Gate" }, System.StringSplitOptions.None);
+        string keyName = nameParts.Length > 1 ? nameParts[1] : "";
+        if (!string.IsNullOrEmpty(keyName) && !keyName.Contains("Exit") && !keyName.Contains("Fake"))
+        {
+            bool result = CacheManager.ChangeKey(keyName, -1);
+            if (!result)
+            {
+                isDisappear = false;
+                return;
+            }
         }
         StartCoroutine(MoveGate(isUp));
         StartCoroutine(FadeOutGate());
@@ -89,13 +94,13 @@ public class GateController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<JoystickController>().SetPurifyObject(gameObject);
+        if (collision.gameObject.TryGetComponent(out JoystickController joystickController))
+            joystickController.SetPurifyObject(gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<JoystickController>().SetPurifyObject(null);
+        if (collision.gameObject.TryGetComponent(out JoystickController joystickController))
+            joystickController.SetPurifyObject(null);
     }
 }

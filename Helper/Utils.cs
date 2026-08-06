@@ -8,7 +8,8 @@ using TMPro;
 using DG.Tweening;
 public class Utils : MonoBehaviour
 {
-    public static bool isUAT = true;
+    // Keep destructive test initialization opt-in. Enabling this deletes PlayerPrefs on startup.
+    public static bool isUAT = false;
     public static float referenceResolution = 1200;
 
     public static bool IsMobilePlatform()
@@ -221,6 +222,7 @@ public class Utils : MonoBehaviour
     public static List<AudioClip> LoadAudios(List<string> paths)
     {
         List<AudioClip> temp = new List<AudioClip>();
+        if (paths == null) return temp;
         foreach (string path in paths)
         {
             AudioClip asset = (AudioClip)Resources.Load("Audios/" + path, typeof(AudioClip));
@@ -237,6 +239,7 @@ public class Utils : MonoBehaviour
     public static List<Sprite> LoadSprites(string folder, List<string> paths)
     {
         List<Sprite> temp = new List<Sprite>();
+        if (paths == null) return temp;
         foreach (string path in paths)
         {
             Sprite asset = (Sprite)Resources.Load("Sprites/" + folder + "/" + path, typeof(Sprite));
@@ -253,6 +256,11 @@ public class Utils : MonoBehaviour
 
     static public GameObject InstantiateObject(GameObject prefab)
     {
+        if (prefab == null)
+        {
+            Debug.LogError("Cannot instantiate a missing prefab.");
+            return null;
+        }
         GameObject gameObject = Instantiate(prefab, prefab.transform.localPosition, prefab.transform.localRotation);
 
         return gameObject;
@@ -283,6 +291,7 @@ public class Utils : MonoBehaviour
     public static List<Object> LoadPrefabs(string folder, List<string> paths)
     {
         List<Object> temp = new List<Object>();
+        if (paths == null) return temp;
         foreach (string path in paths)
         {
             Object asset = Resources.Load<GameObject>("Prefabs/" + folder + "/" + path.Replace("_p", ""));
@@ -290,6 +299,11 @@ public class Utils : MonoBehaviour
             if (asset != null)
             {
                 temp.Add(asset);
+            }
+            else
+            {
+                Debug.LogError("Missing prefab resource: Prefabs/" + folder + "/" + path.Replace("_p", ""));
+                temp.Add(null);
             }
         }
         return temp;

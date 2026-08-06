@@ -76,7 +76,7 @@ public class AssetData
 
     public Sprite GetPlateSprite()
     {
-        return DataHolder.plateV[0];
+        return DataHolder.plateV != null && DataHolder.plateV.Count > 0 ? DataHolder.plateV[0] : null;
     }
 
     public GameObject CreateObjectWithAssetIndex(int assetIndex, float z, string id)
@@ -178,6 +178,12 @@ public class AssetData
         }
         // --------- //
         // Debug.Log("????" + spriteRenderer.sprite + assetIndex.ToString());
+        if (newObject == null || (isSprite && spriteRenderer.sprite == null))
+        {
+            Debug.LogError("Unable to create asset " + name + " at index " + assetIndex);
+            if (newObject != null) Object.Destroy(newObject);
+            return null;
+        }
         string pathName = isSprite ? spriteRenderer.sprite.name : newObject.name.Replace("(Clone)","");
         if(name.Contains("PlateV") || name.Contains("PlateH")) {
             newObject.name = id + "_" + name + "_" + pathName;
@@ -294,6 +300,11 @@ public class AssetData
     public void CreateObject(float z, float subStage, int column, int gridIndex, int cellValue, List<int> gridArray, int teleport){
         GameObject newObject;
         Sprite plateSprite = GetPlateSprite();
+        if (plateSprite == null || DataHolder.backgrounds == null || DataHolder.backgrounds.Count == 0 || DataHolder.backgrounds[0] == null)
+        {
+            Debug.LogError("Cannot generate floor without a plate and background sprite.");
+            return;
+        }
         Vector2 backgroundSize = DataHolder.GetBackgroundSize();
         float cellHeight = (backgroundSize.y - plateSprite.bounds.size.x) / numRows;
         float cellWidth = (backgroundSize.x - plateSprite.bounds.size.x) / numColumns;
@@ -420,6 +431,10 @@ public class AssetData
         for (int gridIndex =  gridArrays.Count - 1; gridIndex >= 0; gridIndex--)
         {
             List<int> gridArray = gridArrays[gridIndex];
+            if (gridArray == null)
+            {
+                continue;
+            }
             for (int column = 0; column < gridArray.Count; column++)
             {
                 CreateObject(z, subStage, column, gridIndex, Mathf.Abs(gridArray[column]), gridArray, teleport);

@@ -21,8 +21,7 @@
 	    "centerPrefab": "player",
 	    "dialogue": [
 	        "父王一直很自責八年前沒有能力阻止國家對東盟國的入侵。",
-	        "如今有這個破冰的機會，他肯定不惜一切代價也要達成協議。",
-	    ]
+	        "如今有這個破冰的機會，他肯定不惜一切代價也要達成協議。"]
 	},
 	{
 	    "name": "sentinel",
@@ -36,8 +35,7 @@
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "這裡沒有人受傷吧？",
-	    ]
+	        "這裡沒有人受傷吧？"]
 	},
 	{
 	    "name": "sentinel",
@@ -51,10 +49,8 @@
 	    "name": "player",
 	    "centerPrefab": "player",
 	    "dialogue": [
-	        "嗯，無論如何，先把這裡回復原狀再說吧。",
-	    ]
+	        "嗯，無論如何，先把這裡回復原狀再說吧。"]
 	}
 ]
 }
-
 

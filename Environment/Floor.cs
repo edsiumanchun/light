@@ -10,12 +10,12 @@ public class FloatingPlateController : MonoBehaviour
 
     private void Start()
     {
-        BoxCollider2D boxCollider = this.gameObject.AddComponent<BoxCollider2D>();
+        boxCollider = this.gameObject.AddComponent<BoxCollider2D>();
         boxCollider.usedByEffector = true;
         boxCollider.enabled = false;
-        PlatformEffector2D effector = this.gameObject.AddComponent<PlatformEffector2D>();
-        effector.useColliderMask = true;
-        effector.colliderMask = LayerMask.GetMask("Player"); 
+        platformEffector = this.gameObject.AddComponent<PlatformEffector2D>();
+        platformEffector.useColliderMask = true;
+        platformEffector.colliderMask = LayerMask.GetMask("Player"); 
         // effector.rotationalOffset = 180; // Adjust the rotational offset as needed
     }
 

@@ -23,8 +23,7 @@
 	   	"leftPrefab": "ghostmum",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "孩兒！我在做夢嗎？",
-	    ]
+	        "孩兒！我在做夢嗎？"]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -36,7 +35,7 @@
 	   	"leftPrefab": "ghostmum",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "善女子，辛苦你把我的孩兒帶過來了。"
+	        "善女子，辛苦你把我的孩兒帶過來了。",
 	    	"可惜我手上只有這些不淨之食，無法好好報答恩人。"
 	    ]
 	},{
@@ -83,7 +82,7 @@
 	    "rightPrefab": "ghostkideat",
 	    "name": "ghostkideat",
 	    "dialogue": [
-	    	"很好吃！"
+	    	"很好吃！",
 	    	"媽媽，你也吃點吧！"
 	    ]
 	},{
@@ -106,4 +105,3 @@
 	}
 ]
 }
-

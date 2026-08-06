@@ -43,8 +43,14 @@ public class HomeController : MonoBehaviour
     }
 
     public static void LoadGame(){
+        if (Camera.main == null || DataHolder.loadedAssets == null)
+        {
+            Debug.LogError("Cannot load game: camera or floor data is missing.");
+            return;
+        }
         // Camera.main.gameObject.GetComponent<InfoController>().DisplayPage();
-        Camera.main.gameObject.GetComponent<StageController>().updateButtonImages();
+        StageController stageController = Camera.main.gameObject.GetComponent<StageController>();
+        if (stageController != null) stageController.updateButtonImages();
         if(AssetData.gameObject != null) Destroy(AssetData.gameObject);
         DataHolder.player = null;
         AssetData.gameObject = new GameObject();
@@ -62,6 +68,7 @@ public class HomeController : MonoBehaviour
             int i = 0;
             foreach (AssetData asset in assetDataList)
             {
+                if (asset == null) continue;
                 if(i == 0 && asset.name != "Audio") {
                     AssetData audioAsset = new AssetData
                     {
@@ -107,6 +114,11 @@ public class HomeController : MonoBehaviour
         );
         // Vector2 worldVector = Utils.ScaleToWorld(spawnPosition);
         GameObject mainGameObject = GameObject.Find("MainGameObject");
+        if (mainGameObject == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         gameObject.transform.SetParent(mainGameObject.transform);
         gameObject.transform.localPosition = spawnPosition;
     }

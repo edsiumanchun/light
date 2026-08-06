@@ -1,6 +1,3 @@
-//gitlab: glpat-FBMK5PA9Nqe2cMz8edpx
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,23 +37,26 @@ public class MainController : MonoBehaviour
 
     static public void LoadShopData(int stage)
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/Product");
-        ProductDataWrapper assetsData = JsonUtility.FromJson<ProductDataWrapper>(jsonFile.text);
-        DataHolder.productsDataList = assetsData.products;
+        ProductDataWrapper assetsData = LoadJson<ProductDataWrapper>("Json/Game/" + stage + "/Product");
+        DataHolder.productsDataList = assetsData != null && assetsData.products != null
+            ? assetsData.products
+            : new List<ProductData>();
     }
 
     static public void LoadItemData()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/Item");
-        ItemDataWrapper assetsData = JsonUtility.FromJson<ItemDataWrapper>(jsonFile.text);
-        DataHolder.itemDataList = assetsData.items;
+        ItemDataWrapper assetsData = LoadJson<ItemDataWrapper>("Json/Game/Item");
+        DataHolder.itemDataList = assetsData != null && assetsData.items != null
+            ? assetsData.items
+            : new List<ItemData>();
     }
 
     static public void LoadEnemyData(int stage)
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/EnemyData");
-        EnemyDataWrapper assetsData = JsonUtility.FromJson<EnemyDataWrapper>(jsonFile.text);
-        DataHolder.enemyDataList = assetsData.targets;
+        EnemyDataWrapper assetsData = LoadJson<EnemyDataWrapper>("Json/Game/" + stage + "/EnemyData");
+        DataHolder.enemyDataList = assetsData != null && assetsData.targets != null
+            ? assetsData.targets
+            : new List<EnemyData>();
     }
 
     public void LoadAssetsForButtonsUI()
@@ -113,9 +113,9 @@ public class MainController : MonoBehaviour
             MainController.LoadShopData(stage);
             MainController.LoadEnemyData(stage);
         }
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage.ToString() + "/Config");
-        AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
-        if (jsonFile != null)
+        string configPath = "Json/Game/" + stage + "/Config";
+        AssetsData assetsData = LoadJson<AssetsData>(configPath);
+        if (assetsData != null && assetsData.paths != null)
         {
             Path paths = assetsData.paths;
             DataHolder.walls = LoadSprites("Walls", paths.walls);
@@ -136,7 +136,7 @@ public class MainController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + stage.ToString() + "/" + floor.ToString());
+            Debug.LogError("Failed to load stage config: " + configPath);
         }
     }
 
@@ -150,9 +150,9 @@ public class MainController : MonoBehaviour
             CacheManager.SetCache( Cache.CurrentFloor.ToString(), floor);
         }
         Debug.Log("Json/Game/" + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
-        TextAsset jsonFile = Resources.Load<TextAsset>("Json/Game/" + stage + "/" + floor.ToString());
-        AssetsData assetsData = JsonUtility.FromJson<AssetsData>(jsonFile.text);
-        if (jsonFile != null)
+        string floorPath = "Json/Game/" + stage + "/" + floor;
+        AssetsData assetsData = LoadJson<AssetsData>(floorPath);
+        if (assetsData != null)
         {
             List<List<AssetData>> assetDatas = new List<List<AssetData>>((new[] { assetsData.assets0, assetsData.assets1, assetsData.assets2 }));
             assetDatas.RemoveAll(list => list == null);
@@ -160,7 +160,8 @@ public class MainController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + CacheManager.GetCache(Cache.CurrentStage.ToString()) + "/" + floor.ToString());
+            Debug.LogError("Failed to load floor data: " + floorPath);
+            return;
         }
         if(HomeController.loaded) {
             HomeController.LoadGame();
@@ -190,6 +191,26 @@ public class MainController : MonoBehaviour
     public static List<AudioClip> LoadAudios(string folder, List<string> paths)
     {
         return Utils.LoadAudios(paths);
+    }
+
+    private static T LoadJson<T>(string resourcePath) where T : class
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>(resourcePath);
+        if (jsonFile == null)
+        {
+            Debug.LogError("Missing JSON resource: " + resourcePath);
+            return null;
+        }
+
+        try
+        {
+            return JsonUtility.FromJson<T>(jsonFile.text);
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogError("Invalid JSON resource " + resourcePath + ": " + exception.Message);
+            return null;
+        }
     }
 
 }

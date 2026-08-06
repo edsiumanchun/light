@@ -15,8 +15,7 @@
 	},{
 	    "name": "doctor",
 	    "dialogue": [
-	    	"公主，這裡是醫院，是王都的人把你送過來的。",
-	    ]
+	    	"公主，這裡是醫院，是王都的人把你送過來的。"]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -58,8 +57,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "doctorpoint",
-	    ]
+	        "doctorpoint"]
 	},{
 	    "name": "doctor",
 	    "leftPrefab": "doctor",
@@ -108,7 +106,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	    	"musicappear"
+	    	"musicappear",
 	    	"playerbow"
 	    ]
 	},{
@@ -127,13 +125,11 @@
 	},{
 	    "name": "music",
 	    "dialogue": [
-	    	"命運是掌握在自己的手中。",
-	    ]
+	    	"命運是掌握在自己的手中。"]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"我還是有點不太懂，請樂神大人再給我一點指示。",
-	    ]
+	    	"我還是有點不太懂，請樂神大人再給我一點指示。"]
 	},{
 	    "name": "music",
 	    "dialogue": [
@@ -142,8 +138,7 @@
 	},{
 	    "name": "event",
 	    "dialogue": [
-	        "musicpoint",
-	    ]
+	        "musicpoint"]
 	},{
 	    "name": "music",
 	    "dialogue": [
@@ -159,5 +154,4 @@
 	}
 ]
 }
-
 

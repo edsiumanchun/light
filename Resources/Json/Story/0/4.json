@@ -20,67 +20,16 @@
 	        "musicappear"
 	    ]
 	},{
-	    "name": "music",
-	    "dialogue": [
-	        "前輩所使用的「聖光咒」實在是不可思議。",
-	        "如果可以的話，我真的希望像前輩一樣，能夠幫助那些受苦的餓鬼。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-			"要知道，每個人原本就具備照耀別人的能力，",
-	        "心裡的明鏡，只是被慾望所蒙蔽而己。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "musiccast"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "是這樣嗎？"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "很好，看來你已領悟了八大覺悟的初覺。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "謝謝前輩的指導。"
-	    ]
-	},{
 	    "name": "",
 	    "dialogue": [
 	        "啊！！！"
 	    ]
 	},{
-	    "name": "music",
-	    "dialogue": [
-	        "這是...什麼聲音？"
-	    ]
-	},{
 	    "name": "player",
 	    "dialogue": [
-	        "我們過去看看吧！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "managegem"
+	        "這是...什麼聲音？"
 	    ]
 	}
 ]
 }
+

@@ -31,7 +31,7 @@ public class JoystickController : MonoBehaviour
         if(isPlayerMoving) {
             MovePlayer(moveDirection);
         }
-        if (Application.isMobilePlatform)
+        if (Application.isMobilePlatform && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -73,7 +73,7 @@ public class JoystickController : MonoBehaviour
             for (int i = 0; i < Input.touchCount; i++)
             {
                 Touch touch = Input.GetTouch(i);
-                bool isOverUIElement = EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+                bool isOverUIElement = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId);
                 if (isOverUIElement)
                 {
                     // The touch is on a UI element, so we don't want to process it further
@@ -223,7 +223,9 @@ public class JoystickController : MonoBehaviour
             if(purifyObject.gameObject.name.Contains("GateExit")) {
             } else {
                 Utils.showChildrenWithName("move", transform);
-                purifyObject.GetComponent<GateController>().OpenGateAndDestroy(true);
+                GateController gate = purifyObject.GetComponent<GateController>();
+                if (gate == null) return;
+                gate.OpenGateAndDestroy(true);
                 this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Action);
             }
         } else if(playerController.status == UIGameButton.Teleport){
@@ -237,7 +239,13 @@ public class JoystickController : MonoBehaviour
             isFighting = true;
             Utils.showChildrenWithName("move", transform);
             this.gameObject.GetComponent<AnimatorController>().SetAnimationStatus(AnimationStatus.Attack);
-            purifyObject.GetComponent<EnemyController>().DestroyEnemy();
+            EnemyController enemy = purifyObject.GetComponent<EnemyController>();
+            if (enemy == null)
+            {
+                isFighting = false;
+                return;
+            }
+            enemy.DestroyEnemy();
         }
     }
 

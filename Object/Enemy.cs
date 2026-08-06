@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
         enemyDatas = new List<EnemyData>();
         avatars = new List<Sprite>();
 
+        if (DataHolder.enemyDataList == null) return;
         foreach (var data in DataHolder.enemyDataList)
         {
             if(this.gameObject.name.Contains(data.name)) {
@@ -80,6 +81,12 @@ public class EnemyController : MonoBehaviour
                 if(digit < 0) continue;
                 GameObject spriteObject = new GameObject();
                 SpriteRenderer spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
+                if (DataHolder.gems == null || digit >= DataHolder.gems.Count || DataHolder.gems[digit] == null)
+                {
+                    Debug.LogError("Missing gem sprite at index " + digit);
+                    Destroy(spriteObject);
+                    continue;
+                }
                 spriteRenderer.sprite = DataHolder.gems[digit];
                 spriteObject.name = spriteRenderer.sprite.name;
                 // Set the position of the SpriteRenderer
@@ -110,8 +117,21 @@ public class EnemyController : MonoBehaviour
                 gemObjects.Add(spriteObject);
             }
         } else {
+            if (enemyDatas.Count == 0)
+            {
+                Debug.LogError("No enemy data matches prefab " + gameObject.name);
+                enabled = false;
+                return;
+            }
             List<string> paths = new List<string>((new[] { enemyDatas[0].name}));
-            Sprite sprite = Utils.LoadSprites("Enemies", paths)[0];
+            List<Sprite> sprites = Utils.LoadSprites("Enemies", paths);
+            if (sprites.Count == 0 || sprites[0] == null)
+            {
+                Debug.LogError("Missing enemy avatar for " + enemyDatas[0].name);
+                enabled = false;
+                return;
+            }
+            Sprite sprite = sprites[0];
             avatars.Add(sprite);
         }
         currentHP = enemyMaxHP;
@@ -119,14 +139,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<JoystickController>().SetPurifyObject(this.gameObject);
+        if (collision.gameObject.TryGetComponent(out JoystickController joystickController))
+            joystickController.SetPurifyObject(this.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<JoystickController>().SetPurifyObject(null);
+        if (collision.gameObject.TryGetComponent(out JoystickController joystickController))
+            joystickController.SetPurifyObject(null);
     }
 
 

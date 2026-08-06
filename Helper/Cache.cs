@@ -96,11 +96,10 @@ public static class CacheManager
 {
     public static bool ChangeCoin(int amount, Cache type){
         int coin = CacheManager.GetCache(type.ToString());
-        if(coin - amount <= 0) {
+        if (amount < 0 || coin < amount) {
             return false;
         } else {
-            int margin = amount >= 0 ? 9999999 : 0;
-            CacheManager.ChangeCache(type.ToString(), amount, margin);
+            CacheManager.ChangeCache(type.ToString(), -amount, 9999999);
             return true;
         }
     }
@@ -188,8 +187,9 @@ public static class CacheManager
 
     public static List<string> ConvertJsonToList(string json)
     {
+        if (string.IsNullOrEmpty(json)) return new List<string>();
         Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
-        return wrapper.List;
+        return wrapper != null && wrapper.List != null ? wrapper.List : new List<string>();
     }
 
     public static void ChangeCache(string key, int amount, int maxCache)
@@ -317,9 +317,11 @@ public class SerializableDictionary
     public Dictionary<string, string> ToDictionary()
     {
         Dictionary<string, string> dictionary = new Dictionary<string, string>();
-        for (int i = 0; i < keys.Count; i++)
+        if (keys == null || values == null) return dictionary;
+        int count = Mathf.Min(keys.Count, values.Count);
+        for (int i = 0; i < count; i++)
         {
-            dictionary.Add(keys[i], values[i]);
+            dictionary[keys[i]] = values[i];
         }
 
         return dictionary;
