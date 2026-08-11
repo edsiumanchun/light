@@ -13,8 +13,14 @@ public class EventController : MonoBehaviour
     }
 
     public static void TurnAround(GameObject gameObject){
-        Transform transform = gameObject.transform;
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        AnimatorController animator = gameObject.GetComponent<AnimatorController>();
+        if (animator != null)
+            animator.TurnAround();
+        else
+        {
+            Transform transform = gameObject.transform;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     public static float ShowEvent(string name)
@@ -154,7 +160,8 @@ public class EventController : MonoBehaviour
             case "musicappear":
                 vector3 = GetVector("Player",new Vector3(1.8f,0f,1f));
                 gameObject = Utils.LoadPrefabAndInstantObject("Characters", "Music", vector3);
-                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+                AnimatorController musicAnimator = gameObject.GetComponent<AnimatorController>();
+                if (musicAnimator != null) musicAnimator.SetFacing(true);
                 Utils.Fade(gameObject, false);
                 AssetData.SetParent(gameObject);
                 return 1.8f;

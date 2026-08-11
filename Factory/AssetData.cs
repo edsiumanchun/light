@@ -364,7 +364,11 @@ public class AssetData
             }
             newObject.transform.position = new Vector3(newObject.transform.localPosition.x + gridStartPosition.x + cellWidth * (column + 0.5f) + offset + offsetX,newObject.transform.localPosition.y + gridStartPosition.y - cellHeight * (gridIndex + 1) + objectHeight, newZ);
             if(isRight) { // flip
-                newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
+                AnimatorController characterAnimator = newObject.GetComponent<AnimatorController>();
+                if (characterAnimator != null)
+                    characterAnimator.SetFacing(true);
+                else
+                    newObject.transform.localScale = new Vector3(-newObject.transform.localScale.x, newObject.transform.localScale.y, newObject.transform.localScale.z);
             }
         }
         // create player for teleport

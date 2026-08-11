@@ -35,10 +35,16 @@ public class AnimatorController : MonoBehaviour
 {
     // Dictionary<AnimationStatus, List<Sprite>> animationSprites = new Dictionary<AnimationStatus, List<Sprite>>();
     public Animator animator;
+    private CharacterVisual3D visual3D;
+    public bool FacingRight { get; private set; }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        visual3D = CharacterVisual3D.FindOrCreate(gameObject);
+        animator = visual3D != null && visual3D.ModelAnimator != null
+            ? visual3D.ModelAnimator
+            : GetComponent<Animator>();
+        FacingRight = transform.localScale.x < 0f;
         
         // animationSprites.Add(AnimationStatus.Idle, attackSprites);
         
@@ -54,7 +60,37 @@ public class AnimatorController : MonoBehaviour
     public void SetAnimationStatus(AnimationStatus status)
     {
         // ReplacePrefab(status);
-        animator.SetInteger("status", (int)status);
+        if (visual3D != null && visual3D.IsConfigured)
+            visual3D.SetAnimation(status);
+        else if (HasStatusParameter())
+            animator.SetInteger("status", (int)status);
+    }
+
+    public void SetFacing(bool faceRight)
+    {
+        FacingRight = faceRight;
+        if (visual3D != null && visual3D.IsConfigured)
+        {
+            visual3D.SetFacing(faceRight);
+            return;
+        }
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (faceRight ? -1f : 1f);
+        transform.localScale = scale;
+    }
+
+    public void TurnAround() => SetFacing(!FacingRight);
+
+    public bool IsInStatus(AnimationStatus status)
+        => HasStatusParameter() && animator.GetInteger("status") == (int)status;
+
+    private bool HasStatusParameter()
+    {
+        if (animator == null) return false;
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+            if (parameter.name == "status" && parameter.type == AnimatorControllerParameterType.Int)
+                return true;
+        return false;
     }
 
     public static List<Sprite> LoadSprites(string folder, List<string> paths)

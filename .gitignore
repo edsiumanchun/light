@@ -1,0 +1,51 @@
+# Godot-generated cache and imported-resource metadata
+.godot/
+*.import
+
+# Godot C# generated data (kept for safety if C# is used again)
+.mono/
+
+# Unity-generated directories
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+Recordings/
+
+# Local builds and exports
+[Bb]uild/
+[Bb]uilds/
+[Ee]xports/
+[Dd]ist/
+
+# Generated IDE/project files
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Operating-system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*~

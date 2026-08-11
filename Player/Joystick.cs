@@ -121,14 +121,14 @@ public class JoystickController : MonoBehaviour
         if (isFighting) return;
         if (moveDirection > 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            animatorController.SetFacing(true);
         }
         else if(moveDirection < 0)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            animatorController.SetFacing(false);
         } else {
             if(jumpCount == 0){
-                if (animatorController.animator.GetInteger("status") == (int)AnimationStatus.Action) return;
+                if (animatorController.IsInStatus(AnimationStatus.Action)) return;
                 animatorController.SetAnimationStatus(AnimationStatus.Idle);
                 Utils.showChildrenWithName("move", transform);
             }

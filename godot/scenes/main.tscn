@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource path="res://godot/scripts/main.gd" type="Script" id="1"]
+[ext_resource path="res://godot/scripts/level_builder.gd" type="Script" id="2"]
+[ext_resource path="res://godot/scripts/hud.gd" type="Script" id="3"]
+[ext_resource path="res://godot/scripts/dialogue_ui.gd" type="Script" id="4"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Level" type="Node2D" parent="."]
+script = ExtResource("2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(600, 337.5)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3")
+
+[node name="Margin" type="MarginContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 1180.0
+offset_bottom = 100.0
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Margin"]
+layout_mode = 2
+
+[node name="Stats" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="Help" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="InteractButton" type="Button" parent="HUD"]
+z_index = 20
+offset_left = 1010.0
+offset_top = 570.0
+offset_right = 1170.0
+offset_bottom = 635.0
+theme_override_font_sizes/font_size = 18
+text = "Interact / Next"
+
+[node name="Dialogue" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4")
+
+[node name="Panel" type="PanelContainer" parent="HUD/Dialogue"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 460.0
+offset_right = 1090.0
+offset_bottom = 640.0
+
+[node name="Margin" type="MarginContainer" parent="HUD/Dialogue/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Dialogue/Panel/Margin"]
+layout_mode = 2
+
+[node name="Speaker" type="Label" parent="HUD/Dialogue/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="Dialogue" type="RichTextLabel" parent="HUD/Dialogue/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 95)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+fit_content = true

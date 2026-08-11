@@ -144,9 +144,13 @@ public class PlayerController : MonoBehaviour
     {
         string name = collision.gameObject.name;
         Vector3 direction = transform.position - collision.gameObject.transform.position;
+        AnimatorController targetAnimator = collision.gameObject.GetComponent<AnimatorController>();
+        bool targetFacesRight = targetAnimator != null
+            ? targetAnimator.FacingRight
+            : collision.transform.localScale.x < 0f;
         if (ContainsAny(name, "Enemy", "Boss", "Story") &&
             (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x) ||
-             (collision.transform.localScale.x > 0) == (direction.x > 0))) return;
+             targetFacesRight != (direction.x > 0))) return;
 
         GameUIController gameUIController = Camera.main.GetComponent<GameUIController>();
         switch (name)

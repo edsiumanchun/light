@@ -6,12 +6,12 @@
 	   	"leftPrefab": "player",
 	    "rightPrefab": "shopowner",
 	    "dialogue": [
-			"這是三毒石的氣味？"
+			"年輕人，你好，你身上好像散發著三垢石的氣味。"
 		]
 	},{
 	    "name": "music",
 	    "dialogue": [
-	        "先生，你的觀察力真好啊！"
+	        "善人，"
 	    ]
 	},{
 		"name": "shopowner",
