@@ -1,32 +1,68 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://w3lujkrwq28i"]
 
-[ext_resource path="res://godot/scripts/main.gd" type="Script" id="1"]
-[ext_resource path="res://godot/scripts/level_builder.gd" type="Script" id="2"]
-[ext_resource path="res://godot/scripts/hud.gd" type="Script" id="3"]
-[ext_resource path="res://godot/scripts/dialogue_ui.gd" type="Script" id="4"]
+[ext_resource type="Script" uid="uid://0v5g1qyu23o2" path="res://godot/scripts/main.gd" id="1"]
+[ext_resource type="Script" uid="uid://beihd7kpq8j00" path="res://godot/scripts/level_builder.gd" id="2"]
+[ext_resource type="Script" uid="uid://1xakq408vtdg" path="res://godot/scripts/hud.gd" id="3"]
+[ext_resource type="Script" uid="uid://bguu8ee4tt1vj" path="res://godot/scripts/dialogue_ui.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://drkp2obh8xo6b" path="res://Resources/Sprites/UI/GameUI/Avatar.png" id="5_avatar"]
+[ext_resource type="Texture2D" uid="uid://d3w7vqaggbnhd" path="res://Resources/Sprites/UI/GameUI/HPBar.png" id="6_bar_bg"]
+[ext_resource type="Texture2D" uid="uid://i6fpv8ftbmfa" path="res://Resources/Sprites/UI/GameUI/BarRed.png" id="7_hp"]
+[ext_resource type="Texture2D" uid="uid://dm08cq8oiyx7y" path="res://Resources/Sprites/UI/GameUI/BarBlue.png" id="8_mp"]
+[ext_resource type="Texture2D" uid="uid://bhwq5qneqyql5" path="res://Resources/Sprites/UI/Items/KeyCopper.png" id="9_copper"]
+[ext_resource type="Texture2D" uid="uid://t8mcjn5ff8wc" path="res://Resources/Sprites/UI/Items/KeySilver.png" id="10_silver"]
+[ext_resource type="Texture2D" uid="uid://c8igv24r5ynod" path="res://Resources/Sprites/UI/Items/KeyGold.png" id="11_gold"]
+[ext_resource type="Texture2D" uid="uid://tjhb61300h10" path="res://Resources/Sprites/UI/Common/LongButton.png" id="12_button"]
+[ext_resource type="Texture2D" path="res://Resources/Sprites/UI/Items/Greed.png" id="13_greed"]
+[ext_resource type="Texture2D" path="res://Resources/Sprites/UI/Items/Hatred.png" id="14_hatred"]
+[ext_resource type="Texture2D" path="res://Resources/Sprites/UI/Items/Delusion.png" id="15_delusion"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chat"]
+bg_color = Color(0.035, 0.05, 0.065, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dashboard"]
+bg_color = Color(0.035, 0.05, 0.065, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.65, 0.72, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Main" type="Node2D" unique_id=394376706]
 script = ExtResource("1")
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." unique_id=1374857893]
 script = ExtResource("2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2122439913]
 position = Vector2(600, 337.5)
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1409641293]
 script = ExtResource("3")
 
-[node name="Margin" type="MarginContainer" parent="HUD"]
-offset_left = 20.0
-offset_top = 18.0
+[node name="Avatar" type="TextureButton" parent="HUD" unique_id=331890083]
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 96.0
+offset_bottom = 92.0
+tooltip_text = "Inventory"
+texture_normal = ExtResource("5_avatar")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Margin" type="MarginContainer" parent="HUD" unique_id=1177426285]
+offset_left = 108.0
+offset_top = 16.0
 offset_right = 1180.0
 offset_bottom = 100.0
 
-[node name="VBox" type="VBoxContainer" parent="HUD/Margin"]
+[node name="VBox" type="VBoxContainer" parent="HUD/Margin" unique_id=72426204]
 layout_mode = 2
 
-[node name="Stats" type="Label" parent="HUD/Margin/VBox"]
+[node name="Stats" type="Label" parent="HUD/Margin/VBox" unique_id=743966323]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -34,21 +70,333 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
 
-[node name="Help" type="Label" parent="HUD/Margin/VBox"]
+[node name="Help" type="Label" parent="HUD/Margin/VBox" unique_id=260742061]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 
-[node name="InteractButton" type="Button" parent="HUD"]
-z_index = 20
-offset_left = 1010.0
-offset_top = 570.0
-offset_right = 1170.0
-offset_bottom = 635.0
-theme_override_font_sizes/font_size = 18
-text = "Interact / Next"
+[node name="HPBar" type="TextureProgressBar" parent="HUD" unique_id=1548365733]
+offset_left = 108.0
+offset_top = 44.0
+offset_right = 283.0
+offset_bottom = 60.0
+texture_under = ExtResource("6_bar_bg")
+texture_progress = ExtResource("7_hp")
 
-[node name="Dialogue" type="Control" parent="HUD"]
+[node name="MPBar" type="TextureProgressBar" parent="HUD" unique_id=946955449]
+offset_left = 108.0
+offset_top = 64.0
+offset_right = 283.0
+offset_bottom = 80.0
+texture_under = ExtResource("6_bar_bg")
+texture_progress = ExtResource("8_mp")
+
+[node name="HPText" type="Label" parent="HUD" unique_id=1525820878]
+offset_left = 150.0
+offset_top = 41.0
+offset_right = 245.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="MPText" type="Label" parent="HUD" unique_id=686555648]
+offset_left = 150.0
+offset_top = 61.0
+offset_right = 245.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="Keys" type="HBoxContainer" parent="HUD" unique_id=1066773191]
+offset_left = 305.0
+offset_top = 42.0
+offset_right = 470.0
+offset_bottom = 86.0
+theme_override_constants/separation = 8
+
+[node name="CopperIcon" type="TextureRect" parent="HUD/Keys" unique_id=72219420]
+custom_minimum_size = Vector2(18, 40)
+layout_mode = 2
+texture = ExtResource("9_copper")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Copper" type="Label" parent="HUD/Keys" unique_id=1334549248]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+
+[node name="SilverIcon" type="TextureRect" parent="HUD/Keys" unique_id=446849881]
+custom_minimum_size = Vector2(18, 40)
+layout_mode = 2
+texture = ExtResource("10_silver")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Silver" type="Label" parent="HUD/Keys" unique_id=1787159390]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+
+[node name="GoldIcon" type="TextureRect" parent="HUD/Keys" unique_id=1578550066]
+custom_minimum_size = Vector2(21, 40)
+layout_mode = 2
+texture = ExtResource("11_gold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gold" type="Label" parent="HUD/Keys" unique_id=1044767875]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+
+[node name="InteractButton" type="TextureButton" parent="HUD" unique_id=881484603]
+z_index = 20
+offset_left = 970.0
+offset_top = 585.0
+offset_right = 1170.0
+offset_bottom = 645.0
+texture_normal = ExtResource("12_button")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HUD/InteractButton" unique_id=1163029850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 18
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dashboard" type="Control" parent="HUD"]
+z_index = 40
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dismiss" type="Button" parent="HUD/Dashboard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="Panel" type="PanelContainer" parent="HUD/Dashboard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -220.0
+offset_right = 180.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dashboard")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Dashboard/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Dashboard/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.117647, 0.588235, 0.588235, 1)
+theme_override_font_sizes/font_size = 26
+text = "Inventory"
+
+[node name="Close" type="Button" parent="HUD/Dashboard/Panel/Margin/VBox/Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "×"
+flat = true
+
+[node name="Separator" type="HSeparator" parent="HUD/Dashboard/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Greed" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Greed"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("13_greed")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Greed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Greed"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Greed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Hatred" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Hatred"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("14_hatred")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Hatred"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Hatred"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Hatred"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Delusion" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Delusion"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("15_delusion")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Delusion"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Delusion"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Delusion"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="KeySeparator" type="HSeparator" parent="HUD/Dashboard/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Copper" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Copper"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("9_copper")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Copper"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Copper Key"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Copper"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Silver" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Silver"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("10_silver")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Silver"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Silver Key"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Silver"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Gold" type="HBoxContainer" parent="HUD/Dashboard/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Dashboard/Panel/Margin/VBox/Gold"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("11_gold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Gold Key"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Dashboard/Panel/Margin/VBox/Gold"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Dialogue" type="Control" parent="HUD" unique_id=358806665]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,29 +406,80 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4")
 
-[node name="Panel" type="PanelContainer" parent="HUD/Dialogue"]
+[node name="LeftPortrait" type="TextureRect" parent="HUD/Dialogue" unique_id=417405554]
+z_index = 10
 layout_mode = 0
-offset_left = 110.0
-offset_top = 460.0
-offset_right = 1090.0
-offset_bottom = 640.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -300.0
+offset_right = -240.0
+offset_bottom = 0.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Margin" type="MarginContainer" parent="HUD/Dialogue/Panel"]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 16
+[node name="RightPortrait" type="TextureRect" parent="HUD/Dialogue" unique_id=1053032065]
+z_index = 10
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
 
-[node name="VBox" type="VBoxContainer" parent="HUD/Dialogue/Panel/Margin"]
+[node name="ChatBackground" type="Panel" parent="HUD/Dialogue" unique_id=1490530468]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -185.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_chat")
+
+[node name="Panel" type="PanelContainer" parent="HUD/Dialogue" unique_id=902421456]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -185.0
+offset_right = 240.0
+grow_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="HUD/Dialogue/Panel" unique_id=2049778971]
+layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Dialogue/Panel/Margin" unique_id=1257597180]
 layout_mode = 2
 
-[node name="Speaker" type="Label" parent="HUD/Dialogue/Panel/Margin/VBox"]
+[node name="Speaker" type="Label" parent="HUD/Dialogue/Panel/Margin/VBox" unique_id=1021306129]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.117647, 0.588235, 0.588235, 1)
 theme_override_font_sizes/font_size = 22
 
-[node name="Dialogue" type="RichTextLabel" parent="HUD/Dialogue/Panel/Margin/VBox"]
-custom_minimum_size = Vector2(0, 95)
+[node name="Dialogue" type="RichTextLabel" parent="HUD/Dialogue/Panel/Margin/VBox" unique_id=256973665]
+custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 fit_content = true

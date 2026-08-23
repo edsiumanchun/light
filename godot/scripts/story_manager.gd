@@ -1,7 +1,7 @@
 extends Node
 
 signal opened
-signal line_changed(speaker: String, text: String)
+signal line_changed(speaker: String, text: String, left_portrait: String, right_portrait: String)
 signal closed
 
 var lines: Array[Dictionary] = []
@@ -25,12 +25,23 @@ func start_story(suffix := "", story_index := 0) -> void:
 	if stories.is_empty():
 		return
 	lines.clear()
+	var left_portrait := ""
+	var right_portrait := ""
 	for index in range(story_index, stories.size()):
 		var story: Dictionary = stories[index]
 		var speaker := str(story.get("name", ""))
+		if story.has("leftPrefab"):
+			left_portrait = str(story.leftPrefab)
+		if story.has("rightPrefab"):
+			right_portrait = str(story.rightPrefab)
 		for dialogue in story.get("dialogue", []):
 			if speaker != "event":
-				lines.append({"speaker": speaker, "text": str(dialogue)})
+				lines.append({
+					"speaker": speaker,
+					"text": str(dialogue),
+					"left_portrait": left_portrait,
+					"right_portrait": right_portrait,
+				})
 	if lines.is_empty():
 		return
 	active = true
@@ -47,4 +58,9 @@ func next_line() -> void:
 		closed.emit()
 		return
 	var line: Dictionary = lines[current_index]
-	line_changed.emit(str(line.speaker), str(line.text))
+	line_changed.emit(
+		str(line.speaker),
+		str(line.text),
+		str(line.left_portrait),
+		str(line.right_portrait),
+	)

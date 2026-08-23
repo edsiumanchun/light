@@ -6,28 +6,30 @@
 	    "rightPrefab": "BossBone",
 	    "dialogue": [
 	        "不...不餓了...",
-	        "這十年來...第一次..."
 	    ]
 	},{
-	    "name": "player",
+	    "leftPrefab": "player",
 	    "dialogue": [
-	        "這是能幫助餓鬼得到解脫的「聖光咒」"
+	        "看你這一身嶙峋白骨，大概是已經受了百年飢寒吧？"
+	    ]
+	}{
+	    "name": "BossBone",
+	    "leftPrefab": "player",
+	    "rightPrefab": "BossBone",
+	    "dialogue": [
+	        "千百年飢苦，困於無量劫，喉細如針、食物入口即化烈火...",
+	        "幸得恩公出手相助..."
 	    ]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "bossdisappear",
-	        "musicappear"
+	        "playerpray"
 	    ]
 	},{
-	    "name": "",
+	    "leftPrefab": "player",
 	    "dialogue": [
-	        "啊！！！"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "這是...什麼聲音？"
+	        "但願逝者此去，早日能夠魂安故土..."
 	    ]
 	}
 ]

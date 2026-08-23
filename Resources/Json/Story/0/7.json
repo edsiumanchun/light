@@ -1,75 +1,176 @@
 {
 "storyArray" : [
 	{
+		"name": "event",
+	    "dialogue": [
+	        "rosiaawake"
+	    ]
+	},{
 	    "name": "rosia",
 		"leftPrefab": "player",
 	    "rightPrefab": "rosiasad",
 	    "dialogue": [
-			"可以救救我嗎？我...我被石頭壓傷了..."
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-			"稍微忍耐一下吧。"
-	    ]
-	},{
-		"name": "event",
-	    "dialogue": [
-	        "rosiaawake"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"是少主嗎？幸好你們來了..."
-	    ]
-	},{
-		"name": "event",
-	    "dialogue": [
-	        "rosiaawake"
+	    	"靈藏，真的是你嗎？"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-			"羅西亞！你怎麼來到這麼危險的地方？"
+			"藥師！此地凶險萬分，你怎可孤身一人過來？"
 	    ]
 	},{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"我在尋找麻醉藥...去為小孩做外科手術。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-			"師傅，她 。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-			"我的妹妹...瑪利亞...",
-	    	"她患有獸皮症，最近因為手術出了意外，一直昏迷不醒...",
-			"我想試試看，能不能用罌粟來減輕她的痛苦..."
+	    	"我只是想找到這些稀缺的藥材...去醫治那個飽受病痛折磨的小孩...",
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"獸皮症...我聽說過這種病。"
+			"孩子？"
 	    ]
 	},{
 	    "name": "rosia",
 	    "dialogue": [
-			"瑪利亞才八歲...",
-	    	"但她很懂事，從來不抱怨...",
-			"如果...如果我能找到治療的方法..."
+			"那孩子年方八歲。雖自幼飽受『獸皮病』折磨，卻懂事得讓人心疼，從不怨天尤人.",
+			"但願有朝一日，能將她的頑疾徹底根治。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"如果你在附近發現罌粟，我會告訴你的。"
+			"數年未見，你當真變得沉穩可靠了，令人刮目相看！",
 	    ]
 	},{
 	    "name": "rosia",
 	    "dialogue": [
-	    	"謝謝你...真的非常感謝..."
+			"哪裡...你過譽了。"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+			"rosiahurt。"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+			"藥師，你的腿傷要緊嗎？我先扶你回去吧。"
+	    ]
+	},{
+	    "name": "rosia",
+	    "dialogue": [
+			"靈藏...有勞你了。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "gotohospital"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "藥師哥哥...你先前明明答應過我不再亂來的。",
+	        "我寧可自己抱病終身，也不願見你為了幫我採藥，一次又一次地去冒險..."
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "playersay"
+	    ]
+	},
+	{
+	    "name": "player",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "maria",
+	    "dialogue": [
+	    	"好懂事的孩子。小妹妹，能告訴姐姐你叫什麼名字嗎？"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"姐姐好，我叫芷燕，今年剛滿八歲..."
+	        "藥師哥哥是這世上最善良的人，但他為我付出實在太多...",
+	        "我真的不想再成為他的負擔了..."
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"芷燕，你爺爺臨終前將你託付於我，叮囑我務必將你治癒..."
+	        "他可是我的恩師，所以...無論如何，我定不負他當日所託。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	    	"自從爺爺離世後，我便成了孤兒...",
+	    	"如今在這世上，唯有藥師哥哥待我最好了..."
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "mariacry"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	    "dialogue": [
+	    	"芷燕..."
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "nursecome"
+	    ]
+	},
+	{
+	    "name": "nurse",
+	   	"leftPrefab": "nurse",
+	   	"rightPrefab": "",
+	    "dialogue": [
+	        "藥師先生，大事不妙！三號病房的病人已無故失蹤三日。",
+	        "根據最後的目擊線索，有人看見他潛入了地庫深處的禁室！"
+	    ]
+	},
+	{
+	    "name": "rosia",
+	   	"leftPrefab": "player",
+	    "rightPrefab": "rosia",
+	    "dialogue": [
+	        "那地方非同小可，我必須親自去確認一下。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "rosiapain"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"你舊傷未癒，切莫逞強。這件事便交由我去徹查吧...",
+	    	"況且，芷燕現時更需要你的陪伴。"
+	    ]
+	},{
+	    "name": "rosia",
+	    "dialogue": [
+			"既然如此...那便萬事拜託你了。"
+	    ]
+	},
+	{
+	    "name": "maria",
+	    "dialogue": [
+	        "姐姐，你一定要多加小心。"
+	    ]
+	},
+	{
+	    "name": "event",
+	    "dialogue": [
+	        "gotobase"
 	    ]
 	}
 ]

@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7")
 
 GameState="*res://godot/scripts/game_state.gd"
 StoryManager="*res://godot/scripts/story_manager.gd"
+MusicManager="*res://godot/scripts/music_manager.gd"
 
 [display]
 
@@ -63,3 +64,4 @@ interact={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://Assets/walking.fbx" type="PackedScene" id="1_model"]
+
+[node name="CharacterVisual" type="SubViewportContainer"]
+z_index = 5
+offset_left = -80.0
+offset_top = -145.0
+offset_right = 880.0
+offset_bottom = 755.0
+scale = Vector2(0.166667, 0.166667)
+mouse_filter = 2
+
+[node name="Viewport3D" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 900)
+msaa_3d = 3
+own_world_3d = true
+render_target_update_mode = 4
+
+[node name="PlayerModel" parent="Viewport3D" instance=ExtResource("1_model")]
+
+[node name="KeyLight" type="DirectionalLight3D" parent="Viewport3D"]
+rotation_degrees = Vector3(-35, -25, 0)
+light_color = Color(0.82, 0.9, 1, 1)
+light_energy = 1.35
+shadow_enabled = true
+
+[node name="FillLight" type="DirectionalLight3D" parent="Viewport3D"]
+rotation_degrees = Vector3(25, 155, 0)
+light_color = Color(1, 0.72, 0.52, 1)
+light_energy = 0.65
+
+[node name="Camera3D" type="Camera3D" parent="Viewport3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.095, 4)
+projection = 1
+current = true
+size = 2.35

@@ -7,27 +7,21 @@
 	        "storywake"
 	    ]
 	},{
-	    "name": "player",
+	    "name": "chef",
 	    "leftPrefab": "player",
 	    "rightPrefab": "chef",
 	    "dialogue": [
-	        "醒過來啊！"
+	        "過來！今天算你倒霉！"
 	    ]
 	},{
-	    "name": "chef",
+	    "name": "event",
 	    "dialogue": [
-	    	"公主...真失禮，竟然在這裡睡著了。"
+	        "cowkneel"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"看你滿頭大汗的，沒問題嗎？"
-	    ]
-	},{
-	    "name": "chef",
-	    "dialogue": [
-	    	"沒什麼大礙，只是發了一個被無頭牛索命的惡夢...",
-	    	"對了，我還得要為那個患上「獸皮病」的兒子幹活。"
+	    	"牠都下跪求饒了，便放牠一馬，好嗎？"
 	    ]
 	},{
 	    "name": "event",
@@ -38,7 +32,7 @@
 	{
 	    "name": "player",
 	    "dialogue": [
-	        "原諒我吧，我也只是按照主人的意思去做。"
+	        "莫要怪我，我亦是奉主人之命行事。"
 	    ]
 	},{
 	    "name": "event",
@@ -49,13 +43,152 @@
 	{
 	    "name": "chef",
 	    "dialogue": [
-	        "咦，我的宰牛刀怎麼突然不見了？難道在外邊掉失了？"]
+	        "咦？我的屠刀怎麼不見了？莫非是在外邊掉失了？"]
 	},{
 	    "name": "event",
 	    "dialogue": [
 	        "storydisappear",
 	        "cowmove",
 	        "knifedrop"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"吽吽...吽吽..."
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	        "playergoinside"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "leftPrefab": "player",
+	    "rightPrefab": "dragon",
+	    "dialogue": [
+	    	"小師妹，你終於來了？"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"checkcow"
+	    ]
+	},{
+	    "name": "player",
+	    "dialogue": [
+	    	"是大師兄！你怎會來到這裡？"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"實不相瞞，我是奉掌門之命前來傳口信，這才在府上候你多時。",
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"願聞其詳。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"那我直說了...此番遠行，我們本來就是要追查三垢石的來歷...",
+	    	"掌門擔心會出意外，再三叮囑我們務必要請黛苓前輩出山，化解這次災害。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"可是黛苓老師，。",
+	    	"既然那是主家禁地，主人家定不願外人擅闖，我又豈能強行進入？"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+			"掌門果真料事如神，深知你性情耿直，這才派我前來勸助。",
+	    	"你要知道，若再對三垢石放任不管，日後恐怕連掌門也沒辦法控制局面的。"
+
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"可那裡是一位大仁大義的醫者所創的善堂，向來不收貧苦分文，義務懸壺濟世。",
+	    	"我敢保證，禁室絕不可能藏有傷天害理之物。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"是這樣嗎？那或許是我們多慮了...師妹莫怪。"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"師兄，言重了..."
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	    	"說起來，令尊也是好客之人，安排我在此處小憩。怎料方才這小牛竟銜著一柄屠刀來找我..."
+	        "想必牠是為了營救母親，心中正悲痛萬分。"
+	    ]
+	},
+
+	{
+	    "name": "player",
+	    "leftPrefab": "cow",
+	    "rightPrefab": "music",
+	    "dialogue": [
+	    	"吽吽...吽吽..."
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	    	"竟然是你把那屠刀給藏了起來。真沒想到你雖投生畜道，卻是這般有靈性。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "leftPrefab": "dragon",
+	    "rightPrefab": "",
+	    "dialogue": [
+		    "既然這小牛懂得向我求助，足見你我與牠緣分不淺。",
+	        "小師妹，你若不嫌棄，便讓我收養這對牛母子吧！"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "大師兄仁厚，有你代為照顧牠們，我便放心了。"
+	    ]
+	},
+	{
+	    "name": "dragon",
+	    "dialogue": [
+	        "時候不早，我便先行告退了。",
+	        "小師妹，萬望多加保重！"
+	    ]
+	},{
+	    "name": "event",
+	    "dialogue": [
+	    	"playerpoint"
+	    ]
+	},
+	{
+	    "name": "player",
+	    "dialogue": [
+	        "大師兄，就此別過，一路順風。"
 	    ]
 	}
 ]

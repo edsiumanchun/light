@@ -1,40 +1,61 @@
-﻿{
+{
+  "layout": {
+    "columns": 5,
+    "rows": 5,
+    "cellWidth": 131,
+    "cellHeight": 170
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerY": true,
+    "verticalDeadZone": 55
+  },
   "assets0": [
     {
       "name": "Exit",
-      "gridArray0": [2]
+      "gridArray0": [
+        2
+      ]
     },
     {
       "name": "TeleportExit",
-      "gridArray0": [2]
+      "gridArray0": [
+        2
+      ]
     },
     {
       "name": "ShowStory"
     },
     {
       "name": "PlateH",
-      "gridArray0": [1, 1, 2, 1, 1],
-      "gridArray1": [0, 1, 1, 1, 1],
-      "gridArray2": [1, 1, 1, 1, 1],
-      "gridArray3": [1, 1, 1, 1, 1],
-      "gridArray4": [1, 1, 1, 1, 1],
-      "gridArray5": [1, 1, 1, 1, 1]
+      "grid": [
+        [1, 1, 2, 1, 1],
+        [0, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]
+      ]
     },
     {
       "name": "PlateV",
-      "gridArray0": [1, 0, 0, 1, 0, 5],
-      "gridArray1": [8, 1, 0, 0, 0, 1],
-      "gridArray2": [8, 0, 0, 0, 0, 1],
-      "gridArray3": [1, 0, 0, 0, 0, 5],
-      "gridArray4": [8, 0, 0, 0, 0, 5]
+      "grid": [
+        [1, 0, 0, 1, 0, 5],
+        [8, 1, 0, 0, 0, 1],
+        [8, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 5],
+        [8, 0, 0, 0, 0, 5]
+      ]
     },
     {
       "name": "Object",
-      "gridArray0": [0, 0, 1, 0, 1],
-      "gridArray1": [1, 91, 57, -91, 0],
-      "gridArray2": [1, 4447, 10000, 4474, 0],
-      "gridArray3": [0, 7470, 4477, 4707, 1],
-      "gridArray4": [1, 5566, 5566, 5566, 1]
+      "grid": [
+        [0, 0, 1, 0, 1],
+        [1, 91, 57, -91, 0],
+        [1, 4447, 10000, 4474, 0],
+        [0, 7470, 4477, 4707, 1],
+        [1, 5566, 5566, 5566, 1]
+      ]
     }
   ]
 }

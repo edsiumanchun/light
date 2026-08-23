@@ -1,4 +1,4 @@
-{
+-{
 "storyArray" : [
 	{
 	    "name": "event",
@@ -10,7 +10,7 @@
 	   	"leftPrefab": "",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "媽媽！我終於找到你了！"
+	        "娘親！孩兒總算找到您了！"
 	    ]
 	},{
 	    "name": "event",
@@ -23,7 +23,7 @@
 	   	"leftPrefab": "ghostmum",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "孩兒！我在做夢嗎？"]
+	        "孩兒！果真是我的孩兒！"]
 	},{
 	    "name": "event",
 	    "dialogue": [
@@ -35,21 +35,13 @@
 	   	"leftPrefab": "ghostmum",
 	    "rightPrefab": "ghostkid",
 	    "dialogue": [
-	        "善女子，辛苦你把我的孩兒帶過來了。",
-	    	"可惜我手上只有這些不淨之食，無法好好報答恩人。"
+	        "多謝恩公一路護送，才讓我母子得以團聚。。",
+	    	"可惜我手中只有這些不淨之食，實在無以為報。"
 	    ]
 	},{
 	    "name": "player",
 	    "dialogue": [
-	    	"不用客氣。",
-	    	"聽聞餓鬼每次得到食物後，食物卻總是瞬間化為灰燼...",
-	    	"所以說，你們不得不以不淨之食為食吧。"
-	    ]
-	},
-	{
-	    "name": "ghostmum",
-	    "dialogue": [
-	        "是的，這只是贖罪的過程。"
+	    	"不必客氣，能見您母子重逢，便是最好的回報。"
 	    ]
 	},{
 	    "name": "event",
@@ -58,18 +50,9 @@
 	    ]
 	},
 	{
-	    "name": "ghostkid",
-	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
-	        "媽媽，我總是夢到凶殘的野獸要把我吃掉...我好怕。"
-	    ]
-	},
-	{
 	    "name": "ghostmum",
 	    "dialogue": [
-	        "這只是夢而己，不用怕...",
-	        "對了，孩兒，快過來嚐嚐媽媽為你找到的食物吧。"
+	        "那麼，孩兒...都給你吧。",
 	    ]
 	},{
 	    "name": "event",
@@ -82,13 +65,13 @@
 	    "rightPrefab": "ghostkideat",
 	    "name": "ghostkideat",
 	    "dialogue": [
-	    	"很好吃！",
-	    	"媽媽，你也吃點吧！"
+	    	"真好吃！",
+	    	"娘親，您也一起吃吧！"
 	    ]
 	},{
 	    "name": "ghostmum",
 	    "dialogue": [
-	    	"媽媽已經飽了..."
+	    	"娘親已經飽了..."
 	    ]
 	},{
 	    "name": "event",
@@ -100,7 +83,7 @@
 	    "name": "player",
 	   	"leftPrefab": "playersad",
 	    "dialogue": [
-	    	"我...我還能為衪們做些什麼嗎..."
+	    	"..."
 	    ]
 	}
 ]

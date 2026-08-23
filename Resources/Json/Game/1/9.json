@@ -1,41 +1,61 @@
-﻿
 {
+  "layout": {
+    "columns": 6,
+    "rows": 5,
+    "cellWidth": 131,
+    "cellHeight": 170
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerY": true,
+    "verticalDeadZone": 55
+  },
   "assets0": [
     {
       "name": "GoUp"
     },
     {
       "name": "Background",
-      "gridArray0": [1]
+      "gridArray0": [
+        1
+      ]
     },
     {
       "name": "Effect",
-      "gridArray0": [1]
+      "gridArray0": [
+        1
+      ]
     },
     {
       "name": "PlateH",
-      "gridArray0": [4, 4, 4, 4, 4, 4],
-      "gridArray1": [0, 0, 0, 0, 0, 0],
-      "gridArray2": [0, 0, 0, 0, 0, 0],
-      "gridArray3": [0, 0, 0, 0, 0, 0],
-      "gridArray4": [1, 3, 1, 1, 1, 1],
-      "gridArray5": [1, 0, 1, 1, 1, 1]
+      "grid": [
+        [4, 4, 4, 4, 4, 4],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [1, 3, 1, 1, 1, 1],
+        [1, 0, 1, 1, 1, 1]
+      ]
     },
     {
       "name": "PlateV",
-      "gridArray0": [6, 0, 0, 0, 0, 0, 0],
-      "gridArray1": [6, 0, 0, 0, 0, 0, 0],
-      "gridArray2": [6, 0, 0, 0, 0, 0, 0],
-      "gridArray3": [6, 0, 0, 0, 0, 0, 0],
-      "gridArray4": [6, 0, 0, 0, 0, 0, 0]
+      "grid": [
+        [6, 0, 0, 0, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0]
+      ]
     },
     {
       "name": "Object",
-      "gridArray0": [0, 1, 0, 0, 0, 0],
-      "gridArray1": [0, 0, 0, 0, 0, 0],
-      "gridArray2": [0, 0, 0, 0, 0, 0],
-      "gridArray3": [0, 1, 0, -6, 0, 0],
-      "gridArray4": [31, 0, 31, 31, 31, 31]
+      "grid": [
+        [0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, -6, 0, 0],
+        [31, 0, 31, 31, 31, 31]
+      ]
     }
   ]
-}                 
+}
