@@ -1,11 +1,19 @@
-# Godot-generated cache and imported-resource metadata
+# Godot generated files
 .godot/
+.import/
 *.import
-
-# Godot C# generated data (kept for safety if C# is used again)
 .mono/
+export.cfg
+export_presets.cfg
+*.translation
 
-# Unity-generated directories
+# Keep the customized 3D character import settings used by this project.
+!Assets/player/base_basic_pbr.fbx.import
+!Assets/player/base_basic_pbr_*.png.import
+!Assets/walking.fbx.import
+!Assets/walking_0.png.import
+
+# Unity generated files retained from the original project
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -14,15 +22,16 @@
 MemoryCaptures/
 Recordings/
 
-# Local builds and exports
+# Builds and exports
 [Bb]uild/
 [Bb]uilds/
 [Ee]xports/
 [Dd]ist/
 
-# Generated IDE/project files
+# IDE and generated project files
 .idea/
 .vscode/
+.vs/
 *.csproj
 *.sln
 *.suo
@@ -37,15 +46,23 @@ Recordings/
 *.opendb
 *.VC.db
 
-# Operating-system files
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Test, log, crash, and temporary files
+TestResults/
+*.log
+crash_dump*.txt
+*.tmp
+*.temp
+*.bak
+*~
+
+# Operating-system metadata
 .DS_Store
 .AppleDouble
 .LSOverride
 Thumbs.db
 Desktop.ini
-
-# Temporary and backup files
-*.tmp
-*.temp
-*.bak
-*~
