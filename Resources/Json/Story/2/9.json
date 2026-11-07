@@ -9,12 +9,12 @@
 		"name": "player",
 		"rightPrefab": "rosia",
 		"dialogue": [
-	    	"芷燕...燕燕她..."
+	    	"小雁...小雁她..."
 		]
 	},{
 		"name": "player",
 		"dialogue": [
-	    	"芷燕怎麼了？"
+	    	"小雁怎麼了？"
 		]
 	},{
 		"name": "event",
@@ -24,7 +24,7 @@
 	},{
 		"name": "nurse",
 		"dialogue": [
-	    	"藥師，芷燕的獸皮病特然急速惡化，恐怕她過不了今晚..."
+	    	"藥師，小雁的獸皮病特然急速惡化，恐怕她過不了今晚..."
 		]
 	},{
 		"name": "event",
