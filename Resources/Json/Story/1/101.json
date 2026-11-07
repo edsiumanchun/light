@@ -1,360 +1,303 @@
-
 {
-"storyArray" : [
-	{
-	    "name": "event",
-	    "dialogue": [
-	    	"firework"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"好漂亮啊！",
-	    	"藥師哥哥，感謝你專程帶我出來看煙火！"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"這...我不過是覺得，獨自看煙火未免太冷清了些...才順道帶你出來啊。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerpoint"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"咦，是靈藏姐姐！"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"小雁，你怎麼會知道我的名字？"
-	    ]
-	},{
-	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"這很容易猜呀，爺爺和藥師哥哥平日裡，總是一直提起靈藏姐姐呢。",
-	    	"當年要不是靈藏姐姐救了落難的藥師哥哥，將他送到我爺爺身邊照顧，哪有今天的他呀。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"小雁...靈藏向來行善不欲人知，我真不該把這些告訴你。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"那倒與我爺爺的脾性十分相似。難怪這麼多年過去，藥師哥哥依舊念念不忘。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"哈哈，你這丫頭別瞎說。我只是心裡仰慕，絕不敢有半點非分之想。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"靈藏姐姐，藥師哥哥生得這般俊俏，你難道就沒有過一絲心動嗎？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"小雁啊，我心中確實是喜歡...",
-	    	"但是這種喜歡是平等的，對所有萬物，有情眾，都是愛護著的。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"那可真有些可惜了。靈藏姐姐容貌如此出眾，藥師哥哥這回怕是錯失良緣了。。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"外相不過是一場表象，皮囊之下，終究也只是一具白骨。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"真不愧是我最敬重的靈藏！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"唉...其實我剛才只是在開玩笑罷了...",
-	    	"因為明天就要做手術了，心裡總有些忐忑...才想說些輕鬆的話來寬慰自己..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"放心吧，小雁。藥師哥哥行醫至今，經手過十幾次這樣的手術，從未有過任何差池。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"我心裡明白...只是這獸皮病在我身體內蔓延得實在太快了...",
-	    	"大家都說，是我上輩子造了深重的罪孽，本該投生成畜...",
-	    	"卻陰錯陽差成了一個人，這才會空有人身，皮膚卻依然形同野獸。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"小雁..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"這，或許是我這輩子最後一次看煙火了吧。",
-	    	"老天爺為什麼...為什麼要讓我活得這麼命苦...",
-	    	"爺爺丟下我走了...而我又染上了這等怪病..."
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"小雁，你可知道？行醫這些年，我見過太多生離死別了。",
-	    	"命運無常，生死之事，向來半點不由人。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"半點不由人...的確如此，",
-	    	"有時我甚至在想，若這次大限難逃，倒也不失為一件壞事。",
-	    	"至少...我便能去到天上，與爺爺重逢了。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"縱使軀殼會敗壞，靈魂卻是長存不滅的。",
-	    	"小雁，我能感受到你爺爺的氣息...",
-	    	"他只不過是換了另一種模樣，在你的身邊守護著你。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"真的嗎？爺爺！你究竟在哪？",
-	    	"小雁還有話要跟你說啊！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"他是無法現身相見的，一旦現了身，便要離去了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"靈藏姐姐，你可不許騙我呀？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"我怎會欺騙好孩子呢？",
-	    	"你爺爺一生懸壺濟世、廣積陰德，他定然有一個好去向。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"嘻嘻，聽姐姐這麼說，我便安心了！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"小雁，無論如何，我定會竭盡所學，將你的獸皮病徹底根治。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"藥師哥哥當真是世間少有的好人。",
-	    	"只不過呀，他只是個外表堅強，內心卻是很脆弱的老實人。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"傻丫頭，哪有這回事。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"藥師哥哥平日裡最怕給旁人添麻煩了...",
-	    	"滿腹的心事與委屈寧可獨自藏在心底，也不願向任何人透露半分。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"小雁...你..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nursecome"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "leftPrefab": "nurse",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	    	"小雁！該回去了！",
-	    	"若再不按時回去服藥，可就要把自己的身子給熬壞了。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"院長，多謝你今日破例通融，讓我出來看這場煙火。",
-	    	"小雁定會珍重此生，絕不辜負你多年來的悉心照料。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "leftPrefab": "player",
-	    "leftPrefab": "nurse",
-	    "dialogue": [
-	    	"小雁這丫頭..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "nurse",
-	    "dialogue": [
-	    	"真的服了你。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},{
-	    "name": "maria",
-	    "leftPrefab": "rosia",
-	    "dialogue": [
-	        "那麼...我便與院長先行回去了。",
-	    	"今夜能有兩位相伴，對我而言，命途雖多舛，此生倒也算是不虛此行。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"這孩子...真叫人疼惜。"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "rosiaturn"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rosia",
-	    "dialogue": [
-	    	"靈藏，你剛剛真能感知到我師父的在天之靈嗎？"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"當然是不能的，我方才只是扯了個謊，確實是破了戒。",
-	    	"可是當我見到小雁那般神傷，我實在於心不忍，這才出此下策。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "哈哈，真有你的。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"不過是盡了些綿薄之力，何足掛齒。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"靈藏，我看你這一路上風塵僕僕，想必累壞了吧？不如到我府上作客，好好歇息？",
-	        "這樣也能讓我與小雁向你討教如何順應天道、福澤眾生。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"你的好意我心領了，這次出行本來是要拜訪黛苓老師的。",
-	    	"只是剛好路經此地，就過來看看你是否安康。"
-	    ]
-	},{
-	    "name": "rosia",
-	    "dialogue": [
-	        "原來如此，那我便不多加挽留了...祝你此去一路順風！"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"你與小雁也多加保重！"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "nextscene"
-	    ]
-	}
-]
+  "storyArray": [
+    {
+      "name": "event",
+      "dialogue": [
+        "firework"
+      ]
+    },
+    {
+      "name": "maria",
+      "leftPrefab": "rosia",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "好漂亮……",
+        "藥師哥哥，謝謝你帶我出來。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "你念了好些日子，總不能讓你只聽見聲響。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "是送你回來的那位姐姐！"
+      ]
+    },
+    {
+      "name": "rosia",
+      "leftPrefab": "player",
+      "rightPrefab": "rosia",
+      "dialogue": [
+        "靈藏？打聽到父親的消息了嗎？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "遇見一位與爹同修城牆的人。",
+        "聽說爹後來被調去了北邊的工營。",
+        "雖然還沒見著，總算知道該往哪裡走。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "真好，事情開始變得明朗了。",
+        "先歇一歇吧，煙火才剛開始。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "多謝。走了這麼長的路，也想停下來稍作休息。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "nursecome"
+      ]
+    },
+    {
+      "name": "nurse",
+      "leftPrefab": "nurse",
+      "rightPrefab": "player",
+      "dialogue": [
+        "小雁，藥帶來了，待會兒記得服下。",
+        "咦……靈藏姐姐？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你認得我？"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "我是霜月！當年嬤嬤被石頭壓住，是你留下幫忙的。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "霜月……原來是你。",
+        "沒想到再見時，你已在照顧別人了。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "嬤嬤後來養好了傷，總念著你們的恩情。",
+        "我便想，也學些照顧人的本事。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "知道她安好，我便放心了。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "你還記得替嬤嬤治傷的老先生嗎？",
+        "小雁就是他的孫女。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "小雁……是那天抱在懷裡的孩子？"
+      ]
+    },
+    {
+      "name": "maria",
+      "leftPrefab": "player",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "姐姐見過我爺爺？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你剛出生時，他還請黛苓老師替你取名。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "爺爺說，名字是個小姐姐替我取的。",
+        "原來是姐姐替我取的？我很喜歡這名字。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你喜歡就好。",
+        "那天，你爺爺抱著你，也是這樣笑著。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "原來你們早就見過我了……",
+        "爺爺以前也常帶我看煙火。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "rosiaturn"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "明天又要治療了。",
+        "我一閉上眼，就怕再也看不到這些光。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "小雁，別怕...我會陪著你，也會盡力把你治好。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "爺爺在的時候，也這樣說。",
+        "我好想再聽他叫我一聲。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "有些聲音，離開很久，仍會留在心裡。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "對啊，你爺爺最盼望的，是你平安長大。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "可我還是怕……"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "那便先不想明天。",
+        "今晚的煙火還沒散，我們都在這裡陪你。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "那你們陪我看完，好不好？"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "好，一起看完。"
+      ]
+    },
+    {
+      "name": "",
+      "dialogue": [
+        "煙火一朵接著一朵，映亮小雁仰起的臉。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "leftPrefab": "nurse",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "夜深了，我們該回去了。",
+        "小雁，來，慢慢走。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "靈藏姐姐，下回再一起看吧。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我也盼著那一天。路上小心。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "rosiaturn"
+      ]
+    },
+    {
+      "name": "rosia",
+      "leftPrefab": "player",
+      "rightPrefab": "rosia",
+      "dialogue": [
+        "她平日愛說笑，心裡卻一直害怕。",
+        "多謝你今晚陪著她。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我也在等一場重逢，多少懂得她的心情。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "往北去的路不好走，先到府上歇一晚吧。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那便打擾一晚，明日我再往北邊打聽。",
+        "若有爹的消息，還請替我留意。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "一定。你也多保重。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你與小雁也是。願往後再見，多些好消息。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "nextscene"
+      ]
+    }
+  ]
 }
-

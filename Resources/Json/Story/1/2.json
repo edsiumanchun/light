@@ -1,26 +1,57 @@
 {
-"storyArray" : [
-	{
-		"name": "shopowner",
-	   	"leftPrefab": "player",
-		"rightPrefab": "shopowner",
-		"dialogue": [
-			"年輕人，我能察覺到在你身邊守護神暗流湧動的餘香。",
-	    	"看來你身負著不凡的宿命。"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	    	"晚輩不過是凡夫俗子，實不敢居功，"
-		]
-	},
-	{
-		"name": "shopowner",
-		"dialogue": [
-			"不驕不躁，心如止水，當真後生可畏！",
-	    	"單憑你這份心性，老夫這雙俗眼，絕不會看錯人。"
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "ghostkid",
+      "leftPrefab": "player",
+      "rightPrefab": "ghostkid",
+      "dialogue": [
+        "這是甚麼光？好暖……"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "這是斷罪聖光，願能讓你暫離飢苦。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "bosskneel"
+      ]
+    },
+    {
+      "name": "ghostkid",
+      "dialogue": [
+        "恩公，求你幫我找回媽媽，她就在城外。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "既然知道她在哪裡，為甚麼不能去見她？"
+      ]
+    },
+    {
+      "name": "ghostkid",
+      "dialogue": [
+        "媽媽怕我挨餓，出城替我找吃的。",
+        "我等了好多年，都沒等到她回來。",
+        "後來才知道，有個大力鬼攔著她，不讓她進城。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那便跟我走吧。",
+        "別讓你媽媽也一直等著。"
+      ]
+    },
+    {
+      "name": "ghostkid",
+      "dialogue": [
+        "謝謝你……我終於能見到媽媽了！"
+      ]
+    }
+  ]
 }

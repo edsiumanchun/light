@@ -1,90 +1,138 @@
 {
-"storyArray" : [
-	{
-		"name": "event",
-		"dialogue": [
-	        "ghostkidshow"
-		]
-	},{
-		"name": "ghostkid",
-	   	"leftPrefab": "",
-		"rightPrefab": "ghostkid",
-		"dialogue": [
-	        "娘親！孩兒總算找到您了！"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	    	"storyturn"
-		]
-	},
-	{
-		"name": "ghostmum",
-	   	"leftPrefab": "ghostmum",
-		"rightPrefab": "ghostkid",
-		"dialogue": [
-			"孩兒！果真是我的孩兒！"]
-	},{
-		"name": "event",
-		"dialogue": [
-	    	"storyturn"
-		]
-	},
-	{
-		"name": "ghostmum",
-	   	"leftPrefab": "ghostmum",
-		"rightPrefab": "ghostkid",
-		"dialogue": [
-			"多謝恩公一路護送，才讓我母子得以團聚。。",
-	    	"可惜我手中只有這些不淨之食，實在無以為報。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	    	"不必客氣，能見您母子重逢，便是最好的回報。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	    	"storyturn"
-		]
-	},
-	{
-		"name": "ghostmum",
-		"dialogue": [
-			"那麼，孩兒...都給你吧。",
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"ghostmumcome",
-	        "ghostcome"
-		]
-	},{
-	   	"leftPrefab": "ghostmum",
-		"rightPrefab": "ghostkideat",
-		"name": "ghostkideat",
-		"dialogue": [
-			"真好吃！",
-	    	"娘親，您也一起吃吧！"
-		]
-	},{
-		"name": "ghostmum",
-		"dialogue": [
-	    	"娘親已經飽了..."
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "ghostsleave"
-		]
-	},
-	{
-		"name": "player",
-	   	"leftPrefab": "playersad",
-		"dialogue": [
-	    	"..."
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "event",
+      "dialogue": [
+        "ghostkidshow"
+      ]
+    },
+    {
+      "name": "ghostkid",
+      "leftPrefab": "",
+      "rightPrefab": "ghostkid",
+      "dialogue": [
+        "媽媽！我終於找到你了！"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "storyturn"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "leftPrefab": "ghostmum",
+      "rightPrefab": "ghostkid",
+      "dialogue": [
+        "孩子！真的是你……",
+        "姑娘，多謝你把他帶回我身邊。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "能見你們重逢，這一路便沒有白走。"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "dialogue": [
+        "這些年，讓你等得苦了。"
+      ]
+    },
+    {
+      "name": "ghostkid",
+      "dialogue": [
+        "媽媽，這些年你也飽受饑餓之苦嗎？"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "leftPrefab": "ghostmum",
+      "rightPrefab": "ghostkid",
+      "dialogue": [
+        "我一直在找能讓你吃的東西。",
+        "可食物到了手裡，總會化成灰。",
+        "好不容易留下一點，又有人攔著，不讓我回來。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "player",
+      "leftPrefab": "player",
+      "rightPrefab": "",
+      "dialogue": [
+        "往後有甚麼話，你們便能親口告訴對方了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerIdle",
+        "storyturn"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "leftPrefab": "ghostmum",
+      "rightPrefab": "",
+      "dialogue": [
+        "孩子，來，把這些吃了。",
+        "媽媽替你留著的。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "ghostmumcome",
+        "ghostcome"
+      ]
+    },
+    {
+      "leftPrefab": "ghostmum",
+      "rightPrefab": "ghostkideat",
+      "name": "ghostkideat",
+      "dialogue": [
+        "很好吃！"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "dialogue": [
+        "別著急，我這裡還有很多。"
+      ]
+    },
+    {
+      "name": "ghostkideat",
+      "dialogue": [
+        "媽媽，你也吃點吧！"
+      ]
+    },
+    {
+      "name": "ghostmum",
+      "dialogue": [
+        "媽媽已經飽了..."
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "ghostsleave"
+      ]
+    },
+    {
+      "name": "player",
+      "leftPrefab": "playersad",
+      "rightPrefab": "",
+      "dialogue": [
+        "最難得的，不過是有人還肯等你回家。"
+      ]
+    }
+  ]
 }
