@@ -1,216 +1,235 @@
-
 {
-"storyArray" : [
-	{
-		"name": "player",
-	   	"leftPrefab": "teacher",
-		"rightPrefab": "player",
-		"dialogue": [
-	    	"黛苓老師！"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-	    	"靈藏！果真是你..."
-		]
-	},{
-		"name": "player",
-	   	"leftPrefab": "teacher",
-		"rightPrefab": "player",
-		"dialogue": [
-			"老師，您身子可有大礙？",
-	    	"門外那男子大概是受了三垢石的蠱惑，蔽了心智，才會把老師禁錮起來。"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-	    	"無恙。我在此靜候冥思，已歷三日，倒也清靜..."
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"睽違多年，老師依舊是這般高風亮節。"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-			"當不得這般讚譽...",
-			"八年間，不過彈指一瞬，未料你我重逢已是今朝。",
-	    	"靈藏...你在天山這些年來，過得可還安好？"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"天山上下對我皆甚是關懷備至...只是近來，大家都在為三垢石而憂心。"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-	    	"此地近來魔石頻現，邪氣漸盛，只怕此番...乃是命中難逃之劫。"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	    	"掌門亦曾提及，三十年前此石現世，令人間生靈塗炭、滿目瘡痍。"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-			"正是。此物乃第六天魔王之爪牙，專以世人的貪婪、憎怨與愚痴三毒為食。",
-	        "昔日傾盡天山全門之力，方將三垢石徹底封印，未料這塵世浩劫竟又捲土重來。"   
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"如今魔石已侵蝕無數生魂與走獸，若再放任不管，後果不堪設想。",
-			"正因如此，掌門特遣弟子前來，懇請老師下山，共商對策..."
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-			"靈藏啊...",
-			"你既已言及蒼生大義，這次我怕是推諉不得了。"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-        	"感謝黛苓老師！"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-			"只是，我曾答應小雁這幾天要再探望她...",
-			"此去天山，行程可算緊迫？"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"時間還充裕，況且百草堂就在去天山的路上，剛好順道。"
-		]
-	},
-	{
-		"name": "teacher",
-		"dialogue": [
-			"如此甚好，那我們便先去百草堂，隨後再啟程前往天山，如何？"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"全聽老師安排。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"playerpoint"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師，我們回來了！"
-		]
-	},{
-		"name": "rosia",
-		"rightPrefab": "rosia",
-		"dialogue": [
-			"小雁...小雁她..."
-		]
-	},{
-		"name": "teacher",
-		"dialogue": [
-			"小雁怎麼了？"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"playerpoint"
-		]
-	},{
-		"name": "nurse",
-		"dialogue": [
-			"藥師！小雁的獸皮病不知為何突然急速惡化，怕是...熬不過今夜了..."
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"playerpoint"
-		]
-	},{
-		"name": "maria",
-		"leftPrefab": "rosia",
-		"rightPrefab": "maria",
-		"dialogue": [
-			"藥師哥哥，你在哪兒？",
-			"我的眼前...怎麼一片漆黑，什麼都看不見了...我真的要死了嗎？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"小雁，別怕！我定會將你救回來。"
-		]
-	},{
-		"name": "maria",
-		"dialogue": [
-			"藥師哥哥，莫要難過...我這殘軀病骨，早就不作他想了。",
-			"再說，老天爺待我已然不薄...",
-			"臨終之際，能得諸位朝夕相伴，此生無憾。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師！你學醫這麼多年，難道當真束手無策，只能眼睜睜看著小雁離去嗎？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"這幾年，我承襲恩師遺志，歷盡千辛萬苦方才煉成這枚百年一遇的陽丹。",
-			"若能將其與陰丹合璧，便可化為能醫百病的『陰陽丹』。",
-			"如此一來，小雁或許能有一線生機..."
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"這麼說來，我們如今只差那枚陰丹了？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"陰丹正封存於百草堂地底的禁室之中。",
-			"只是那禁室遍布致命機關，若不通曉機關布局之人貿然闖入，必是九死一生。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"playerpoint"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"我明白了！小雁，你且再忍耐片刻，我馬上就會回來！"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"playerpoint"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"靈藏！快回來！那地方去不得啊！"
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "player",
+      "leftPrefab": "teacher",
+      "rightPrefab": "player",
+      "dialogue": [
+        "黛苓老師！"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏！果真是你..."
+      ]
+    },
+    {
+      "name": "player",
+      "leftPrefab": "teacher",
+      "rightPrefab": "player",
+      "dialogue": [
+        "老師，您身子可有大礙？",
+        "門外那男子大概是受了三垢石的蠱惑，蔽了心智，才會把老師禁錮起來。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "我沒有受傷，只是困了三日。",
+        "聽著外面的動靜，總掛念那些還沒能歸家的人。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "多年未聞，再聽老師說話，心便安定了。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "一別八年，再看你，才知歲月已走了這麼遠。",
+        "靈藏，這些年在天山，過得可好？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "天山上下對我皆甚是關懷備至...只是近來，大家都在為三垢石而憂心。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "近來魔石頻現，人心也愈發不安。",
+        "只怕風波未歇，又要添上幾家離散。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "掌門亦曾提及，三十年前此石現世，令人間生靈塗炭、滿目瘡痍。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "正是。此物乃第六天魔王之爪牙，專以世人的貪婪、憎怨與愚痴三毒為食。",
+        "昔日傾盡天山全門之力，方將三垢石徹底封印，未料這塵世浩劫竟又捲土重來。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "如今魔石已侵蝕無數生魂與走獸，若再放任不管，後果不堪設想。",
+        "正因如此，掌門特遣弟子前來，懇請老師下山，共商對策..."
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏啊...",
+        "你既已言及蒼生大義，這次我怕是推諉不得了。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "感謝黛苓老師！"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "只是，我曾答應小雁這幾天要再探望她...",
+        "此去天山，行程可算緊迫？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "時間還充裕，況且百草堂就在去天山的路上，剛好順道。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "如此甚好，那我們便先去百草堂，隨後再啟程前往天山，如何？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "全聽老師安排。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "藥師，我們回來了！"
+      ]
+    },
+    {
+      "name": "rosia",
+      "rightPrefab": "rosia",
+      "dialogue": [
+        "小雁...小雁她..."
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "小雁怎麼了？"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "藥師！小雁的獸皮病不知為何突然急速惡化，怕是...熬不過今夜了..."
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "maria",
+      "leftPrefab": "rosia",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "藥師哥哥，你在哪兒？",
+        "我的眼前...怎麼一片漆黑，什麼都看不見了...我真的要死了嗎？"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "小雁，別怕！我定會將你救回來。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "藥師哥哥，莫要難過...我這殘軀病骨，早就不作他想了。",
+        "再說，老天爺待我已然不薄...",
+        "臨終之際，能得諸位朝夕相伴，此生無憾。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "藥師！你學醫這麼多年，難道當真束手無策，只能眼睜睜看著小雁離去嗎？"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "這幾年，我承襲恩師遺志，歷盡千辛萬苦方才煉成這枚百年一遇的陽丹。",
+        "若能將其與陰丹合璧，便可化為能醫百病的『陰陽丹』。",
+        "如此一來，小雁或許能有一線生機..."
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "這麼說來，我們如今只差那枚陰丹了？"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "陰丹正封存於百草堂地底的禁室之中。",
+        "只是那禁室遍布致命機關，若不通曉機關布局之人貿然闖入，必是九死一生。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我明白了！小雁，你且再忍耐片刻，我馬上就會回來！"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "靈藏！快回來！那地方去不得啊！"
+      ]
+    }
+  ]
 }

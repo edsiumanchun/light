@@ -30,6 +30,12 @@
         "bossdisappear",
         "playerpray"
       ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "願長夜有盡，漂泊的魂，也能等到天明。"
+      ]
     }
   ]
 }
