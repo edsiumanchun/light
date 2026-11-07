@@ -1,0 +1,184 @@
+{
+  "storyArray": [
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏，霜月已把事情告訴我了...",
+        "你先帶她退到旁邊，接下來交給大人就好。"
+      ]
+    },
+    {
+      "name": "teachernpc",
+      "dialogue": [
+        "老師，人已抬出來了，傷得很重！"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "嬤嬤流了好多血……她會不會醒不過來？"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "霜月，先退開些，讓老朽看看嬤嬤的傷。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "savegrandma"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "傷勢暫時穩住了。",
+        "靈藏，你搬了這麼多石塊，也應該累了，要不先回家吧。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "嗯，天色已晚，你的爹肯定很擔心...靈藏，我陪你回去吧。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "嗯，好的。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "timefly"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "爹，你收拾行李要去哪裡？"
+      ]
+    },
+    {
+      "name": "playerdad",
+      "dialogue": [
+        "官府徵我去邊境修補城牆，今日便要起程了。",
+        "這一去，何時能回來，還得等官府放人。",
+        "黛苓老師，希望你能代為照顧靈藏。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "爹，你的左腿連走路都吃力，怎能搬石修牆？"
+      ]
+    },
+    {
+      "name": "soilder",
+      "dialogue": [
+        "每戶須出一丁，傷病也不得免役。你爹的名字既在冊上，就得隨隊。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "黛苓老師，你能替我爹向官府求情嗎？",
+        "我可以陪你去，把他的傷說清楚..."
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "官爺，請容我們先去呈明傷情，再作定奪。"
+      ]
+    },
+    {
+      "name": "soilder",
+      "dialogue": [
+        "要呈情，自去衙門。今日點齊人就得走，誰也不能耽擱！"
+      ]
+    },
+    {
+      "name": "playerdad",
+      "dialogue": [
+        "官大爺，求你再寬限一晚，讓我安頓好孩子..."
+      ]
+    },
+    {
+      "name": "soilder",
+      "dialogue": [
+        "我只是奉命行事。"
+      ]
+    },
+    {
+      "name": "playerdad",
+      "dialogue": [
+        "別追來。去邊境的路上不太平，山賊又多...",
+        "你一個孩子，爹怎放心得下？留在老師身邊，等爹回來。",
+        "靈藏，夜裡回自己的被窩睡，別再替爹暖床了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "dadleave",
+        "playerkneel"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "老師，爹的腿……他怎麼受得住？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "我知道你擔心。我會託人打聽，也會再替他呈明傷情。",
+        "去修城不等於一去不返，有消息，我一定告訴你。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那我現在能做甚麼？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏，我打算帶你赴天山，那裡清靜，你能更精進修學。",
+        "那裡的師兄會照顧你，也會教你些本事。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那爹回來時，你一定要告訴他，我在哪裡。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "一定。"
+      ]
+    },
+    {
+      "name": "",
+      "dialogue": [
+        "此後，靈藏隨黛苓老師前往天山修學。",
+        "修學多年後，靈藏下山，來到邊境。",
+        "她要尋找當年被徵去修城的父親。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playergrow"
+      ]
+    }
+  ]
+}

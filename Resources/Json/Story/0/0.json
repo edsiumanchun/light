@@ -1,58 +1,84 @@
 {
-"storyArray" : [
-	{
-		"name": "event",
-		"dialogue": [
-	        "completeTutor"
-		]
-	},{
-		"name": "sage",
-	   	"leftPrefab": "player",
-		"rightPrefab": "sage",
-		"dialogue": [
-			"咳咳...年輕人...我多日沒吃的，不知可否討口飯吃？",
-		]
-	},{
-		"name": "event",
- 		"dialogue": [
-	        "donate"
- 		]
- 	},{
-		"name": "sage",
-		"dialogue": [
-	    	"謝謝你...萍水相逢，難得遇上好心人。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	    	"伯伯，借問一聲，您近日可曾見過一位年輕男子路經此地？"
-		]
-	},{
-		"name": "sage",
-		"dialogue": [
-	    	"前些日子，確實有一位少年潛進了這個古穴，可是一直沒有出來..."
-		]
-	},{
-		"name": "event",
- 		"dialogue": [
-			"ghostshow",
-			"playerturn",
-			"playerattack",
-			"bossgoldkey",
-			"bossdisappear",
-			"playerturn",
-	        "playeridle"
- 		]
- 	},{
-		"name": "sage",
-		"dialogue": [
-	    	"是...是...失傳已久的「聖光術」嗎...?"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	    	"沒錯，這是為亡靈斷罪的聖光。"
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "sage",
+      "leftPrefab": "player",
+      "rightPrefab": "sage",
+      "dialogue": [
+        "咳咳……姑娘，我多日沒吃東西了。",
+        "可否討口飯吃？"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "donate"
+      ]
+    },
+    {
+      "name": "sage",
+      "dialogue": [
+        "謝謝你...萍水相逢，難得遇上好心人。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "伯伯，我想打聽我爹的下落。",
+        "他多年前被徵來修城，左腿有傷。",
+        "走起路來不方便，您可曾見過他？"
+      ]
+    },
+    {
+      "name": "sage",
+      "dialogue": [
+        "當年的事，老朽知道得不多。",
+        "不過，有人常替修城的人看傷。",
+        "你或可向他打聽。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "他如今在哪裡？"
+      ]
+    },
+    {
+      "name": "sage",
+      "dialogue": [
+        "前些日子，他進了這座古穴採藥。",
+        "可一直沒見他出來……"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那我進去找找。多謝伯伯。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "ghostshow",
+        "playerturn",
+        "playerattack",
+        "bossgoldkey",
+        "bossdisappear",
+        "playerturn",
+        "playeridle"
+      ]
+    },
+    {
+      "name": "sage",
+      "dialogue": [
+        "是...是...失傳已久的「聖光術」嗎...?"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "沒錯，這是為亡靈斷罪的聖光。"
+      ]
+    }
+  ]
 }

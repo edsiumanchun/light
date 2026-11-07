@@ -1,197 +1,219 @@
 {
-"storyArray" : [
-	{
-		"name": "event",
-		"dialogue": [
-	        "rosiaawake"
-		]
-	},{
-		"name": "rosia",
-		"leftPrefab": "player",
-		"rightPrefab": "rosiasad",
-		"dialogue": [
-	    	"靈藏，真的是你嗎？"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師！很久沒見了，別來無恙吧？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"我還好吧...只是小雁她..."
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"是小雁？難道她得了什麼重病嗎？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-		  "是的，最近醫生們發現她患上了『獸皮病』...", 
-		  "所以，我才過來碰碰運氣，看看能否找到治癒『獸皮病』的藥材。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"rosiahurt。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師，你的腿傷要緊嗎？我先扶你回去吧。"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"剛才採藥時刷傷了...回去包紮一下就好。"
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "gotohospital"
-		]
-	},
-	{
-		"name": "maria",
-		"dialogue": [
-			"藥師哥哥...你先前不是答應過我不會再亂來嗎？",
-	        "我寧可抱病終身，也不願見你為了幫我採藥，一次又一次地去冒險..."
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "playersay"
-		]
-	},
-	{
-		"name": "player",
-	   	"leftPrefab": "player",
-		"rightPrefab": "maria",
-		"dialogue": [
-	    	"小雁，你長大了不少，已經變得這麼懂事了。"
-		]
-	},
-	{
-		"name": "maria",
-		"dialogue": [
-	    	"姐姐，你怎麼知道我叫小雁？",
-			"藥師哥哥是這世上最善良的人，但他為我付出實在太多...",
-	        "我真的不想再成為他的負擔了..."
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"藥師沒告訴你嗎？只是當你剛出生時，我便離開了。"
-		]
-	},
-	{
-		"name": "rosia",
-		"dialogue": [
-	        "小雁，這就是我常提起的靈藏姐姐啊。"
-		]
-	},
-	{
-		"name": "rosia",
-		"dialogue": [
-	    	"小雁，你爺爺臨終前將你託付於我，叮囑我務必將你治癒...",
-	        "他可是我的恩師，所以...無論如何，我定不負他當日所託。"
-		]
-	},
-	{
-		"name": "maria",
-		"dialogue": [
-			"自從爺爺離世後，我便成了孤兒...",
-	    	"如今在這世上，唯有藥師哥哥待我最好了..."
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "mariacry"
-		]
-	},
-	{
-		"name": "rosia",
-		"dialogue": [
-	    	"小雁..."
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "nursecome"
-		]
-	},
-	{
-		"name": "nurse",
-		"dialogue": [
-			"靈藏姐姐？是你回來了！我是霜月，當年屋子倒塌時，你還替我披過被子呢。"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"霜月？原來是你。那時你一直守著受傷的嬤嬤，如今已在這裡照顧病人了。"
-		]
-	},
-	{
-		"name": "nurse",
-		"dialogue": [
-			"嗯，後來便跟著藥師先生學著照顧病人。姐姐，我正有急事要找你們。"
-		]
-	},
-	{
-		"name": "nurse",
-	   	"leftPrefab": "nurse",
-	   	"rightPrefab": "",
-		"dialogue": [
-			"藥師先生，大事不妙！三號病房的病人已無故失蹤三日。",
-	        "根據最後的目擊線索，有人看見他潛入了地庫深處的禁室！"
-		]
-	},
-	{
-		"name": "rosia",
-	   	"leftPrefab": "player",
-		"rightPrefab": "rosia",
-		"dialogue": [
-	        "那地方非同小可，我必須親自去確認一下。"
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "rosiapain"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"你舊傷未癒，切莫逞強。這件事便交由我去徹查吧...",
-	    	"況且，小雁現時更需要你的陪伴。"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"既然如此...那便萬事拜託你了。"
-		]
-	},
-	{
-		"name": "maria",
-		"dialogue": [
-	        "姐姐，你一定要多加小心。"
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	        "gotobase"
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "event",
+      "dialogue": [
+        "rosiaawake"
+      ]
+    },
+    {
+      "name": "rosia",
+      "leftPrefab": "player",
+      "rightPrefab": "rosiasad",
+      "dialogue": [
+        "是你救了我？多謝姑娘。",
+        "不知姑娘怎麼稱呼？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我叫靈藏，剛從天山下來。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "在下藥師。姑娘怎會來這古穴？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "聽說你常替修城的人看傷，我想向你打聽消息。",
+        "我爹左腿有傷，多年前被徵來修城。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "回去後，我替你打聽..."
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "rosiahurt。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你的腿也受傷了，我先扶你回去吧。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "剛才採藥時擦傷了，回去包紮一下就好。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "gotohospital"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "藥師哥哥...你先前不是答應過我不會再亂來嗎？",
+        "我寧可抱病終身，也不願見你為了幫我採藥，一次又一次地去冒險..."
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playersay"
+      ]
+    },
+    {
+      "name": "player",
+      "leftPrefab": "player",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "小雁...我。"
+      ]
+    },
+    {
+      "name": "player",
+      "leftPrefab": "player",
+      "rightPrefab": "maria",
+      "dialogue": [
+        "你就是小雁？都長這麼大了。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "姐姐，你認識我？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你剛出生時，我見過你和你爺爺。",
+        "小雁這名字，還是我替你取的。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "原來你認識恩師。這可真是緣分。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "她爺爺是我的恩師。",
+        "臨終前，他將小雁託付給我。",
+        "我答應過他，一定會盡力治好她。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "爺爺走後，都是藥師哥哥在照顧我。",
+        "可他為我冒了那麼多次險……",
+        "我真的不想再成為他的負擔了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "mariacry"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "小雁..."
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "nursecome"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "靈藏姐姐？我是霜月，你還記得嗎？",
+        "當年嬤嬤受困，是你留下幫忙搬石頭的。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "霜月？原來是你。",
+        "如今你也在這裡照顧病人了。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "嗯，我跟著藥師先生學了些本事。",
+        "姐姐，我正有急事要找你們。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "leftPrefab": "nurse",
+      "rightPrefab": "",
+      "dialogue": [
+        "藥師先生，大事不妙！三號病房的病人已無故失蹤三日。",
+        "根據最後的目擊線索，有人看見他潛入了地庫深處的禁室！"
+      ]
+    },
+    {
+      "name": "rosia",
+      "leftPrefab": "player",
+      "rightPrefab": "rosia",
+      "dialogue": [
+        "那地方非同小可，我必須親自去確認一下。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "rosiapain"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "你的腿傷還沒好，別勉強。",
+        "我先去看看，小雁這裡還需要你。"
+      ]
+    },
+    {
+      "name": "rosia",
+      "dialogue": [
+        "既然如此...那便萬事拜託你了。"
+      ]
+    },
+    {
+      "name": "maria",
+      "dialogue": [
+        "姐姐，你一定要多加小心。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "gotobase"
+      ]
+    }
+  ]
 }
