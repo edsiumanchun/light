@@ -1,0 +1,127 @@
+{
+  "storyArray": [
+    {
+      "name": "event",
+      "dialogue": [
+        "completeTutor"
+      ]
+    },
+    {
+      "name": "teacher",
+      "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
+      "dialogue": [
+        "今日就學到這裡。靈藏，把書收好，歇一會吧。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "老師慢走。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "免送了！"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "teacherleave",
+        "playersleep",
+        "teacherback"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "瞧我，連傘都忘了拿。",
+        "咦，怎麼躺到你爹的床上去了？自己的被窩不暖和嗎？"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "我只是睏了，借爹的床躺一會……",
+        "外頭這麼冷，他一回來就能睡個暖和的被窩，也挺好的。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "原來如此。那你也蓋好被子，別只顧著替他暖床，自己倒著了涼。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "知道啦。老師，你的手也凍紅了，傘旁邊還有熱茶，你喝了再走吧。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "timefly"
+      ]
+    },
+    {
+      "name": "teachernpc",
+      "dialogue": [
+        "黛苓老師，時候不早了，大家都在聚賢莊等著聽課呢。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "知道了...",
+        "靈藏，我要先行離去，晚些時候再回來看你。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "好的，老師慢走。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "timefly"
+      ]
+    },
+    {
+      "name": "father",
+      "dialogue": [
+        "靈藏，又替爹暖被了？來，往裡挪一挪，你的腳都露在外頭了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerwake"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "才不是特意等你，我剛好睡著了。",
+        "爹，今天腿還疼嗎？你坐下，我替你把鞋上的雪拍掉。"
+      ]
+    },
+    {
+      "name": "father",
+      "dialogue": [
+        "慢些，雪都拍到你自己身上了。爹坐一會就好。",
+        "對了，方才遇見黛苓老師，她說在聚賢莊備了道題，等你歇夠了再去試試。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "又有新題目？那我去看看，晚些便回來。"
+      ]
+    }
+  ]
+}

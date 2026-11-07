@@ -2,99 +2,97 @@
 {
 "storyArray" : [
 	{
-	    "name": "mkid",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	        "鳴哇...鳴哇哇..."
-	    ]
+		"name": "mkid",
+		"leftPrefab": "rkidsad",
+		"rightPrefab": "mkid",
+		"dialogue": [
+	        "藥師，..."
+		]
 	},{
-	    "name": "rkidcry",
-	    "dialogue": [
+		"name": "rkidcry",
+		"dialogue": [
 	        "妹妹餓壞了，先把這個橘子吃下吧。"
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "playerturn"
-	    ]
+		]
 	},{
-	    "name": "rosiamumdie",
-	    "leftPrefab": "rkidcry",
-	    "rightPrefab": "rosiamumdie",
-	    "dialogue": [
+		"name": "rosiamumdie",
+		"leftPrefab": "rkidcry",
+		"rightPrefab": "rosiamumdie",
+		"dialogue": [
 	        "媽媽..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "playerturn"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rkid",
-	    "dialogue": [
+		"name": "player",
+		"leftPrefab": "player",
+		"rightPrefab": "rkid",
+		"dialogue": [
 	        "都是戰爭的禍害..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "playerkneel"
-	    ]
+		]
 	},{
-	    "name": "rkidcry",
-	    "dialogue": [
+		"name": "rkidcry",
+		"dialogue": [
 	        "姐姐，我的媽媽離開了，我也不想活了..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "playerpoint"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "leftPrefab": "player",
-	    "rightPrefab": "rkid",
-	    "dialogue": [
-	        "那麼，你的妹妹怎麼辦...",
+		"name": "player",
+		"leftPrefab": "player",
+		"rightPrefab": "rkid",
+		"dialogue": [
+			"那麼，你的妹妹怎麼辦...",
 	        "你有想過你的妹妹失去你後，她會有多傷心嗎？"
 
-	    ]
+		]
 	},{
-	    "name": "rkidcry",
-	    "dialogue": [
+		"name": "rkidcry",
+		"dialogue": [
 	    	"嗯..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "rosiafall"
-	    ]
+		]
 	},{
-	    "name": "soilder",
-	    "leftPrefab": "player",
-	    "rightPrefab": "soilder",
-	    "dialogue": [
+		"name": "soilder",
+		"leftPrefab": "player",
+		"rightPrefab": "soilder",
+		"dialogue": [
 	        "公主，怎樣了？"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	        "快把這兩個孩子帶去醫院檢查吧！"
-	    ]
+		]
 	},{
-	    "name": "rosia",
-	    "leftPrefab": "rosia",
-	    "rightPrefab": "",
-	    "dialogue": [
-	    	"那時，我的心彷彿被公主所融化...",
-	    	"她似乎擁有某種神秘的力量，總是帶給人溫暖。",
-	        "從那以後，我和妹妹搬到了公主的住所一起居住...",
+		"name": "rosia",
+		"leftPrefab": "rosia",
+		"rightPrefab": "",
+		"dialogue": [
+			"那時，我的心彷彿被公主所融化...",
+			"她似乎擁有某種神秘的力量，總是帶給人溫暖。",
+			"從那以後，我和妹妹搬到了公主的住所一起居住...",
 	        "出乎意料的是，公主的房間竟然非常簡樸。"
-	    ]
+		]
 	}
 ]
 }
-
-

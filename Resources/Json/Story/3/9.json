@@ -1,148 +1,41 @@
-
 {
 "storyArray" : [
 	{
-	    "name": "maria",
-	    "leftPrefab": "rosiaspirit",
-	    "rightPrefab": "maria",
-	    "dialogue": [
-	        "水清則月現..."
-	    ]
+		"name": "nurse",
+		"dialogue": [
+	    	"藥師，芷燕已經昏睡了，不知能否再醒來..."
+		]
 	},{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "你...真的是...瑪利亞嗎？"
-	    ]
+		"name": "rosia",
+		"dialogue": [
+			"如月，我們現在把所有東西壓在陰陽丹上...",
+			"本來想去禁室找陰丹，卻發現陰丹被人奪去...",
+	        "你曾說過三號病房的病人偷偷去了禁室，你可知道他長什麼模樣嗎？"
+		]
 	},{
-	    "name": "maria",
-	    "dialogue": [
-	        "這大概只是羅西亞姐姐的幻像...",
-	        "或許我已經不在人世了。"
-	    ]
-	},
-	{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "只要能再見到你，我願意一直待在這幻像中..."
-	    ]
+		"name": "nurse",
+		"dialogue": [
+	    	"三號病房的病人是個公子哥兒，身穿像靈藏姑娘的服裝。"
+		]
 	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"這是無法改變的命運。",
-	    	"我現有在只有最後一個請求，希望羅西亞姐姐能夠答應..."
-	    ]
+		"name": "player",
+		"dialogue": [
+	    	"莫非是彌生師兄..."
+		]
 	},
 	{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "說吧，無論是什麼我也會答應！"
-	    ]
-	},{
-	    "name": "maria",
-	    "dialogue": [
-	    	"我的心願就是...",
-	    	"希望姐姐能夠幸福快樂地活下去..."
-	    ]
-	},
-	{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "瑪利亞...你竟然..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "羅西亞姐姐曾經說過，你從來不會欺騙我...",
-	    	"所以姐姐一定要遵守諾言！"
-	    ]
-	},
-	{
-	    "name": "rosiaspirit",
-	    "dialogue": [
-	        "呃..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"你知道嗎？媽媽最喜歡看到的是羅西亞姐姐的笑容。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"你沒可能知道這些的..."
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	    	"不用驚訝...這是因為...",
-	    	"天下每個媽媽都愛看到自己孩子的笑容。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	    	"瑪利亞...",
-	    	"你現在不僅像公主，更像媽媽一樣温柔。"
-	    ]
-	},
-	{
-	    "name": "maria",
-	    "dialogue": [
-	        "因為我就是媽媽的延續，姐姐也要成為媽媽的延續才行...",
-	        "將對我的愛延伸到其他小孩身上...",
-	        "所以，請努力守護每個小孩的笑容。"
-	    ]
-	},
-	{
-	    "name": "rosia",
-	    "dialogue": [
-	        "對，就像當年公主守護我們的笑容一樣。"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "storydisappear",
+		"name": "event",
+		"dialogue": [
+			"storydisappear",
 	        "nextscene"
-	    ]
+		]
 	},{
-	    "name": "player",
+		"name": "player",
 	   	"leftPrefab": "player",
-	    "dialogue": [
-	    	"羅西亞...瑪利亞...",
-	    	"我絕不會辜負你們對我的期望的！"
-	    ]
-	},
-	{
-	    "name": "event",
-	    "dialogue": [
-	        "veterancome"
-	    ]
-	},{
-	    "name": "veteran",
-	   	"leftPrefab": "player",
-	   	"rightPrefab": "veteran",
-	    "dialogue": [
-	    	"公主...不妙了...",
-	    	"琉璃王脅持著國王到聖地去了！",
-	    	"不會吧！"]
-	},{
-	    "name": "player",
-	   	"leftPrefab": "player",
-	    "dialogue": [
-	    	"什麼！？",
-	    	"我馬上去看看...也請你派人來支援吧！"
-	    ]
-	},{
-	    "name": "veteran",
-	    "dialogue": [
-	    	"了解！"
-	    ]
+		"rightPrefab": "",
+		"dialogue": [
+	    	"終於來到聖地了。"
+		]
 	}
 ]
 }
-

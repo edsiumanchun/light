@@ -1,43 +1,41 @@
 {
 "storyArray" : [{
-	    "name": "player",
+		"name": "player",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "ghostmaria",
-	    "dialogue": [
+		"rightPrefab": "ghostmaria",
+		"dialogue": [
 	    	"咳咳。"
-	    ]
+		]
 	},{
-	    "name": "maria",
-	    "dialogue": [
+		"name": "maria",
+		"dialogue": [
 	        "公主，你最近氣息好差，要不要先休息一下。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	        "不用擔心，可能是最近消耗過度。",
+		"name": "player",
+		"dialogue": [
+			"不用擔心，可能是最近消耗過度。",
 	        "喝一瓶藥水就可以，以我的命換取。"
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "kingcome"
-	    ]
+		]
 	},{
-	    "name": "music",
+		"name": "music",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "music",
-	    "dialogue": [
-	        "公主長期收集三毒石，不慎被石塊震傷也不足為奇。",
+		"rightPrefab": "music",
+		"dialogue": [
+			"公主長期收集三毒石，不慎被石塊震傷也不足為奇。",
 	        "這並非喝藥水就可以解決得了。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	        "不管這麼多了，我要趕緊到師兄哪裏。",
+		"name": "player",
+		"dialogue": [
+			"不管這麼多了，我要趕緊到師兄哪裏。",
 	        "不可以再讓他錯下去。"
-	    ]
+		]
 	}
 ]
 }
-
-

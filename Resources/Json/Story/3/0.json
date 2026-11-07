@@ -1,101 +1,60 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
-	    "leftPrefab": "",
-	    "rightPrefab": "",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
+	        "poison"
+		]
+	},{
+		"name": "player",
+		"leftPrefab": "",
+		"rightPrefab": "",
+		"dialogue": [
 	        "這...這是八年前..."
-	    ]
+		]
 	},{
-	    "name": "rkid",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "rosiamum",
-	    "dialogue": [
-	        "媽媽...為何我們要去行乞？"
-	    ]
+		"name": "kid",
+		"leftPrefab": "kid",
+		"rightPrefab": "mum",
+		"dialogue": [
+	        "孩兒，今次來了很多剩菜，都給你吃吧？"
+		]
 	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	    	"小紅，生活雖不如意，但這樣的日子很快就會過去。"
-	    ]
+		"name": "kid",
+		"dialogue": [
+	        "媽媽，為何我們要在這裡行乞？為什麼我們不能回家？"
+		]
 	},{
-	    "name": "rkid",
-	    "dialogue": [
-	        "為何我們不能回家？爸爸去了哪裡？"
-	    ]
+		"name": "mum",
+		"dialogue": [
+	    	"孩兒，你和我都患了獸皮病，村民以為這病會傳染，所以把我們放逐了。"
+		]
 	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "這個..."
-	    ]
+		"name": "kid",
+		"dialogue": [
+	    	"根本沒有這種說法和證實，他們實在太過份了！"
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
+		"name": "mum",
+		"dialogue": [
+			"人心動蕩，只是他們不想招惹麻煩，也不能全怪他們。",
+	    	"孩兒，我們的生活雖不如意，但這樣的日子很快就會過去的。"
+		]
 	},{
-	    "name": "mkid",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "mkid",
-	    "dialogue": [
-	        "鳴哇...鳴哇哇..."
-	    ]
+		"name": "event",
+		"dialogue": [
+	        "rosiacry"
+		]
 	},{
-	    "name": "rkid",
-	    "dialogue": [
-	        "媽媽，妹妹餓了。"
-	    ]
+		"name": "mum",
+		"dialogue": [
+	    	"無可奈何，只要安命..."
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "leftPrefab": "rkidsad",
-	    "rightPrefab": "rosiamum",
-	    "dialogue": [
-	        "你把這個麵包拿去分給妹妹吃吧。"
-	    ]
-	},{
-	    "name": "rkidsad",
-	    "dialogue": [
-	        "妹妹吃不慣這種麵包，我去找找其他食物吧。"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "小紅，別亂跑啊！"
-	    ]
-	},{
-	    "name": "rkidsad",
-	    "dialogue": [
-	        "交給我吧。"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "dialogue": [
-	        "等等！咳咳..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosiaspirit",
-	    "leftPrefab": "rosiaspirit",
-	    "dialogue": [
-	        "媽媽..."
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "nextscene"
-	    ]
+		]
 	}
 ]
 }
-
-

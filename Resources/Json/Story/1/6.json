@@ -1,52 +1,50 @@
 {
 	"storyArray" : [
 	{
-	    "name": "player",
+		"name": "player",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
+		"rightPrefab": "ghostkid",
+		"dialogue": [
 	        "這是什麼光？很温暖啊。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	        "這是斷罪聖光，願逝者能早日安寧得樂..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "bosskneel"
-	    ]
+		]
 	},
 	{
-	    "name": "ghostkid",
-	    "dialogue": [
+		"name": "ghostkid",
+		"dialogue": [
 	        "恩公，求你幫我尋回母親...她就在城外..."
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	        "既然如此，你為何不親自出城找她？"
-	    ]
+		]
 	},
 	{
-	    "name": "ghostkid",
-	    "dialogue": [
-	    	"說來話長...幾十年前，母親不忍見我挨餓而出城覓食。",
+		"name": "ghostkid",
+		"dialogue": [
+			"說來話長...幾十年前，母親不忍見我挨餓而出城覓食。",
 	        "我苦苦守候，卻始終不見她歸來。後來才知，是那大力鬼攔阻，不許母親回來。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	        "原來如此，那麼我就帶你出城，護你與母親相聚。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	    	"恩公！真的感激不盡！"
-	    ]
+		]
 	}
 ]
 }
-
-

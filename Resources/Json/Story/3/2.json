@@ -1,88 +1,90 @@
 {
 "storyArray" : [
 	{
-	    "name": "rkidcry",
-	    "leftPrefab": "rkidcry",
-	    "rightPrefab": "rosiamumdie",
-	    "dialogue": [
-	        "媽媽..."
-	    ]
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
+		"dialogue": [
+	        "真是對可憐母子..."
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
+		"name": "event",
+		"dialogue": [
+	        "playerpoint"
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	        "孩子，你沒事嗎..."
-	    ]
+		"name": "mom",
+		"dialogue": [
+	        "恩公，求您救救我的孩子...他身染惡疾，如今已陷入昏厥了。"
+		]
 	},{
-	    "name": "rkidcry",
-	    "dialogue": [
-	        "我肚子好餓..."
-	    ]
+		"name": "grandpa",
+		"dialogue": [
+	        "莫慌，老夫身上恰好有一枚能療癒百病的『陰陽丹』，便贈與這孩子吧。"
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	    	"我現在手上只有這個橘子，若不嫌棄，請你收下吧。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"謝謝你，姐姐。"
-	    ]
+		"name": "teacher2",
+		"dialogue": [
+			"前輩，此丹乃曠世靈藥，世上就只有這一顆...",
+	    	"晚輩未曾想過，您竟捨得將如此珍寶拱手讓人，而不留待自用。"
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
+		"name": "grandpa",
+		"dialogue": [
+			"黛苓啊，老夫已半截入土，縱有靈丹妙藥，亦不過苟延殘喘一兩載光陰。",
+	        "可這孩子若無此丹，怕是熬不過今夜。若作壁上觀，老夫定會遺憾終生。"
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	    	"趕緊吃吧，不然餓壞肚子了。"
-	    ]
-	},
-	{
-	    "name": "player",
-	    "dialogue": [
-	    	"我的母親還在等我，我決不能獨自享樂...",
-	    	"我要把這個橘子帶回給母親。"]
+		"name": "teacher2",
+		"dialogue": [
+	    	"前輩這風骨...真讓人佩服。"
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
+		"name": "event",
+		"dialogue": [
+	        "passpill"
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	    	"好孩子，你真的是很懂事。"
-	    ]
+		"name": "mom",
+		"dialogue": [
+	    	"大恩大德，如同再生父母，我實在無以為報..."
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "playerturn"
-	    ]
-	},{
-	    "name": "rosiamum",
-	    "leftPrefab": "rkid",
-	    "rightPrefab": "player",
-	    "dialogue": [
-	    	"天快黑了，我有點怕...",
-	    	"姐姐可以陪我回去找媽媽嗎？"
-	    ]
+		"name": "event",
+		"dialogue": [
+	        "eatpill"
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
-	        "當然可以啊。"
-	    ]
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
+		"dialogue": [
+	        "方才未曾細看...難道，你們母子身染的是傳聞中的『獸皮病』？"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+			"正是，我已是病入膏肓，無藥可醫...",
+	    	"恩公，我此生別無所求，唯願您能垂憐這苦命孩子，將他收留撫養。"
+		]
+	},
+	{
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
+		"dialogue": [
+	        "你兒子叫什麼名字？"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+			"他叫做...",
+	    	"藥師。"
+		]
 	}
 ]
 }
-

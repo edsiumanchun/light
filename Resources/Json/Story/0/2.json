@@ -2,10 +2,10 @@
 {
 "storyArray" : [
 	{
-	    "name": "player",
+		"name": "player",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "shopowner",
-	    "dialogue": [
+		"rightPrefab": "shopowner",
+		"dialogue": [
 	        "掌管，你可知道這些石塊藏著什麼來歷嗎？"
 		]
 	},{
@@ -14,44 +14,41 @@
 			"老客官，稍等...先讓我翻閱這本塵封已久的古籍..."
 		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "shopbook"
-	    ]
+		]
 	},{
 		"name": "shopowner",
 		"dialogue": [
 			"沒錯，這便是以世人的貪婪、憎怨與愚痴歷年供養而成的『三垢石』。"
 		]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"三垢石...果真如此...",
-	    	"怪不得近日內心難以得到一刻清靜..."
-	    ]
+		"name": "player",
+		"dialogue": [
+			"三垢石...看來事態遠比想像中棘手..."
+		]
 	},{
-	    "name": "shopowner",
-	    "dialogue": [
-			"連你都這麼說了，難怪最近人心都變得敗壞。"
-	    ]
+		"name": "shopowner",
+		"dialogue": [
+			"此石既出，恐怕一場毀滅性的天災人禍，已然近在眼前了。"
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"天道流轉，這也許是五濁惡世下，人們要面對的共同宿命。"
-	    ]
+		"name": "player",
+		"dialogue": [
+	    	"這也許是五濁惡世下，人們要面對的共同宿命。"
+		]
 	},{
-	    "name": "shopowner",
-	    "dialogue": [
+		"name": "shopowner",
+		"dialogue": [
 			"雖說三垢石不是什麼好東西，但它也有些許重煉造化的價值。",
-			"客官，你要不要用三垢石換取小店的幾件奇珍異寶？"
-	    ]
+			"客官，你要不要用三垢石換取小店的奇珍異寶？"
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "shop"
-	    ]
+		]
 	}
 ]
 }
-
-

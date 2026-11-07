@@ -1,0 +1,18 @@
+{
+"storyArray" : [
+	{
+		"name": "shopowner",
+	   	"leftPrefab": "player",
+		"rightPrefab": "shopowner",
+		"dialogue": [
+	    	"一切言動，都要安詳。"
+		]
+	},
+	{
+		"name": "player",
+		"dialogue": [
+	    	"芷燕，很好，還記得我教你的東西！"
+		]
+	}
+]
+}

@@ -11,6 +11,7 @@ const START_FLOOR_ENV := "CASTLE_START_FLOOR"
 
 var current_stage := 0
 var current_floor := 0
+var previous_floor := -1
 var exit_h := 4
 var exit_v := -1
 var hp := 50
@@ -57,6 +58,8 @@ func apply_start_location_override() -> void:
 		return
 	current_stage = stage
 	current_floor = floor
+	# A manually selected test floor was not entered through a door.
+	previous_floor = -1
 
 func parse_env_value(contents: String, key: String) -> String:
 	for source_line in contents.split("\n"):
@@ -78,6 +81,7 @@ func parse_env_value(contents: String, key: String) -> String:
 	return ""
 
 func change_floor(floor: int, entrance_h := 4, entrance_v := -1) -> void:
+	previous_floor = current_floor
 	current_floor = floor
 	exit_h = entrance_h
 	exit_v = entrance_v
@@ -119,6 +123,7 @@ func save_game() -> void:
 	if file:
 		file.store_string(JSON.stringify({
 			"stage": current_stage, "floor": current_floor,
+			"previous_floor": previous_floor,
 			"exit_h": exit_h, "exit_v": exit_v,
 			"hp": hp, "hp_max": hp_max, "mp": mp, "mp_max": mp_max,
 			"inventory": inventory, "destroyed": destroyed,
@@ -133,6 +138,7 @@ func load_game() -> void:
 		return
 	current_stage = int(data.get("stage", current_stage))
 	current_floor = int(data.get("floor", current_floor))
+	previous_floor = int(data.get("previous_floor", previous_floor))
 	exit_h = int(data.get("exit_h", exit_h))
 	exit_v = int(data.get("exit_v", exit_v))
 	hp = int(data.get("hp", hp))

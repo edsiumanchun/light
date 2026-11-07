@@ -1,0 +1,291 @@
+Searching 68 files for "imagePath" (regex)
+
+~/Myproject/Assets/Resources/Json/Story/0/0.json:
+    3  	{
+    4  	    "name": "player",
+    5: 	    "imagePath": "player",
+    6  	    "backgroundPath": "forest",
+    7  	    "bgmPath": "forest",
+    .
+   12  	{
+   13  	    "name": "sage",
+   14: 	    "imagePath": "sage",
+   15  	    "dialogue": [
+   16  	        "公主...老夫失明多年，已經無法再看到你的容顏..."
+   ..
+   19  	{
+   20  	    "name": "player",
+   21: 	    "imagePath": "player",
+   22  	    "dialogue": [
+   23  	        "..."
+   ..
+   26  	{
+   27  	    "name": "sage",
+   28: 	    "imagePath": "sage",
+   29  	    "dialogue": [
+   30  	        "話說公主到此險地, 所為何事?"
+   ..
+   33  	{
+   34  	    "name": "player",
+   35: 	    "imagePath": "player",
+   36  	    "dialogue": [
+   37  	        "最近不知什麼原因...「餓鬼古墓」突然打開，令國家面臨前所未有的危機。",
+   ..
+   42  	{
+   43  	    "name": "sage",
+   44: 	    "imagePath": "sage",
+   45  	    "dialogue": [
+   46  	        "原來如此，此地險象環生，以公主現時的力量恐怕是九死一生。",
+   ..
+   51  	{
+   52  	    "name": "player",
+   53: 	    "imagePath": "player",
+   54  	    "dialogue": [
+   55  	        "非常感謝前輩。我願意接受你的指導..."
+   ..
+   58  	{
+   59  	    "name": "narrator",
+   60: 	    "imagePath": "",
+   61  	    "dialogue": [
+   62  	        "數小時後..."
+   ..
+   65  	{
+   66  	    "name": "sage",
+   67: 	    "imagePath": "sage",
+   68  	    "dialogue": [
+   69  	        "使用「淨化術」的人必須為人正直，宅心仁厚。",
+   ..
+   73  	{
+   74  	    "name": "player",
+   75: 	    "imagePath": "player",
+   76  	    "dialogue": [
+   77  	        "前輩過奬了。"
+   ..
+   80  	{
+   81  	    "name": "sage",
+   82: 	    "imagePath": "sage",
+   83  	    "dialogue": [
+   84  	        "可惜我已經無法視物，沒法陪伴公主左右。",
+   ..
+   88  	{
+   89  	    "name": "player",
+   90: 	    "imagePath": "player",
+   91  	    "dialogue": [
+   92  	        "好的...待我回來後，定必答謝前輩的恩德！"
+   ..
+   95  	{
+   96  	    "name": "sage",
+   97: 	    "imagePath": "sage",
+   98  	    "dialogue": [
+   99  	        "不必了，老夫早已看淡世間的一切種種..."
+  ...
+  102  	{
+  103  	    "name": "player",
+  104: 	    "imagePath": "player",
+  105  	    "dialogue": [
+  106  	        "嗯...晚輩不打擾前輩了。希望日後能夠再跟前輩學習。"
+
+~/Myproject/Assets/Resources/Json/Story/0/1.json:
+    3  	{
+    4  	    "name": "player",
+    5: 	    "imagePath": "player",
+    6  	    "backgroundPath": "forest",
+    7  	    "bgmPath": "forest",
+    .
+   12  	{
+   13  	    "name": "story00",
+   14: 	    "imagePath": "story00",
+   15  	    "dialogue": [
+   16  	        "客人，你好。我好像見過一些人類在「餓鬼古墓」出現，但很遺憾，他們恐怕是凶多吉少。"
+   ..
+   19  	{
+   20  	    "name": "player",
+   21: 	    "imagePath": "player",
+   22  	    "backgroundPath": "forest",
+   23  	    "bgmPath": "forest",
+   ..
+   28  	{
+   29  	    "name": "story00",
+   30: 	    "imagePath": "story00",
+   31  	    "dialogue": [
+   32  	        "是這樣的...「餓鬼古墓」的看守鬼是「塚間食熱灰土鬼」，以燒屍處熱灰土為食。",
+   ..
+   37  	{
+   38  	    "name": "player",
+   39: 	    "imagePath": "player",
+   40  	    "backgroundPath": "forest",
+   41  	    "bgmPath": "forest",
+   ..
+   46  	{
+   47  	    "name": "story00",
+   48: 	    "imagePath": "story00",
+   49  	    "dialogue": [
+   50  	        "不是的，我只是在一個商人。",
+   ..
+   55  	{
+   56  	    "name": "player",
+   57: 	    "imagePath": "player",
+   58  	    "backgroundPath": "forest",
+   59  	    "bgmPath": "forest",
+
+~/Myproject/Assets/Resources/Json/Story/0/2.json:
+    3  	{
+    4  	    "name": "rosia",
+    5: 	    "imagePath": "rosia",
+    6  	    "backgroundPath": "forest",
+    7  	    "bgmPath": "forest",
+    .
+   12  	{
+   13  	    "name": "player",
+   14: 	    "imagePath": "player",
+   15  	    "dialogue": [
+   16  	        "我們跟你們餓鬼無仇無怨，為什麼你們要傷害我的子民？"
+   ..
+   19  	{
+   20  	    "name": "rosia",
+   21: 	    "imagePath": "rosia",
+   22  	    "dialogue": [
+   23  	        "這與我們無關，是你們人類在自傷殘殺而己。"
+   ..
+   26  	{
+   27  	    "name": "player",
+   28: 	    "imagePath": "player",
+   29  	    "dialogue": [
+   30  	        "什麼意思？"
+   ..
+   33  	{
+   34  	    "name": "rosia",
+   35: 	    "imagePath": "rosia",
+   36  	    "dialogue": [
+   37  	        "都怪你們設下的黑暗結界，將這裡的餓鬼變得凶殘暴戾，無法自控。。",
+   ..
+   41  	{
+   42  	    "name": "narrator",
+   43: 	    "imagePath": "",
+   44  	    "dialogue": [
+   45  	        "餓鬼消失了..."
+   ..
+   48  	{
+   49  	    "name": "player",
+   50: 	    "imagePath": "player",
+   51  	    "dialogue": [
+   52  	        "(每次使用淨化術後，餓鬼隔一陣子就消失了...是巧合嗎?)",  
+
+~/Myproject/Assets/Resources/Json/Story/0/3.json:
+    3  	{
+    4  	    "name": "story02",
+    5: 	    "imagePath": "story02",
+    6  	    "backgroundPath": "forest",
+    7  	    "bgmPath": "forest",
+    .
+   12  	{
+   13  	    "name": "player",
+   14: 	    "imagePath": "player",
+   15  	    "dialogue": [
+   16  	        "你受了重傷...先趕快幫你處理傷口吧！"
+   ..
+   19  	{
+   20  	    "name": "story02",
+   21: 	    "imagePath": "story02",
+   22  	    "dialogue": [
+   23  	        "公主，不必了...我命不久矣...",
+   ..
+   28  	{
+   29  	    "name": "player",
+   30: 	    "imagePath": "player",
+   31  	    "dialogue": [
+   32  	        "你為了母親所做的一切實在是了不起。",
+   ..
+   36  	{
+   37  	    "name": "story02",
+   38: 	    "imagePath": "story02",
+   39  	    "dialogue": [
+   40  	    	"我不能接受公主的重生藥，況且我的命不及公主重要...公主是國家的信仰和希望。",
+   ..
+   44  	{
+   45  	    "name": "player",
+   46: 	    "imagePath": "player",
+   47  	    "dialogue": [
+   48  	        "每個人的生命都是非常寶貴的，我不能視而不見...",
+   ..
+   52  	{
+   53  	    "name": "story02",
+   54: 	    "imagePath": "story02",
+   55  	    "dialogue": [
+   56  	    	"公主，請別今我為難..."
+   ..
+   59  	{
+   60  	    "name": "player",
+   61: 	    "imagePath": "player",
+   62  	    "dialogue": [
+   63  	        "就當是為了你的母親，請你好好活下去。"
+   ..
+   66  	{
+   67  	    "name": "story02",
+   68: 	    "imagePath": "story02",
+   69  	    "dialogue": [
+   70  	    	"一直有傳閒說公主愛民如子果然是真的...",
+   ..
+   74  	{
+   75  	    "name": "player",
+   76: 	    "imagePath": "player",
+   77  	    "dialogue": [
+   78  	        "別多說話了，請你好好休息，等待「重生藥」發揮效果吧。"
+   ..
+   81  	{
+   82  	    "name": "story02",
+   83: 	    "imagePath": "story02",
+   84  	    "dialogue": [
+   85  	    	"感謝你，公主。"
+
+~/Myproject/Assets/Resources/Json/Story/0/4.json:
+    3  	{
+    4  	    "name": "story04",
+    5: 	    "imagePath": "story04",
+    6  	    "dialogue": [
+    7  	        "竟然能夠抵擋住我的力量，真是讓我難以置信。"
+    .
+    9  	},{
+   10  	    "name": "player",
+   11: 	    "imagePath": "player",
+   12  	    "dialogue": [
+   13  	        "還差一點便成功了..."
+   ..
+   16  	{
+   17  	    "name": "narrator",
+   18: 	    "imagePath": "",
+   19  	    "dialogue": [
+   20  	        "(戰鬥激烈進行，公主受了致命傷，無法再施法）"
+   ..
+   23  	{
+   24  	    "name": "player",
+   25: 	    "imagePath": "player",
+   26  	    "dialogue": [
+   27  	        "一切也完了...我愧對父王和國民..."
+   ..
+   30  	{
+   31  	    "name": "narrator",
+   32: 	    "imagePath": "narrator",
+   33  	    "dialogue": [
+   34  	        "(塚間食熱灰土鬼突然消失）"
+   ..
+   37  	{
+   38  	    "name": "player",
+   39: 	    "imagePath": "player",
+   40  	    "dialogue": [
+   41  	        "(又是這樣子消失...是天意要我活下去嗎？)",
+
+~/Myproject/Assets/Resources/Json/Story/0/5.json:
+    3  	{
+    4  	    "name": "player",
+    5: 	    "imagePath": "player",
+    6  	    "dialogue": [
+    7  	    	"嗯？"
+    .
+   10  	{
+   11  	    "name": "rosia",
+   12: 	    "imagePath": "rosia",
+   13  	    "dialogue": [
+   14  	        "公主。我是羅莤亞"
+
+47 matches across 6 files

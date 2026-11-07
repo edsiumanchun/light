@@ -8,6 +8,7 @@ const GATE_SCRIPT := preload("res://godot/scripts/gate.gd")
 const PICKUP_SCRIPT := preload("res://godot/scripts/pickup.gd")
 const EXIT_SCRIPT := preload("res://godot/scripts/level_exit.gd")
 const STORY_SCRIPT := preload("res://godot/scripts/story_interaction.gd")
+const STORY_EVENT_SCRIPT := preload("res://godot/scripts/story_event.gd")
 const DOOR_SCRIPT := preload("res://godot/scripts/door.gd")
 
 const FALLBACK_GRID_ROWS := 5
@@ -33,6 +34,10 @@ var camera_follow_player_x := false
 var camera_follow_player_y := false
 var camera_horizontal_dead_zone := 55.0
 var camera_vertical_dead_zone := 55.0
+var fallback_player_position := Vector2.ZERO
+var has_fallback_player_position := false
+var door_player_position := Vector2.ZERO
+var has_door_player_position := false
 
 func build(stage: int, floor: int) -> CastlePlayer:
 	clear_level()
@@ -50,6 +55,7 @@ func build(stage: int, floor: int) -> CastlePlayer:
 		build_group_background(assets, group_index)
 		for asset in assets:
 			build_asset(asset, group_index)
+	spawn_player_at_entrance()
 	build_background_margin_masks()
 	return player
 
@@ -94,7 +100,7 @@ func detect_grid_size(floor_definition: Dictionary) -> Vector2i:
 		var assets: Array = floor_definition.get("assets%d" % group_index, [])
 		for asset in assets:
 			var type := str(asset.get("name", ""))
-			if type not in ["PlateH", "PlateV", "Object", "Door"]:
+			if type not in ["PlateH", "PlateV", "Object", "Door", "Event"]:
 				continue
 			var grid := asset_grid(asset)
 			var row_count: int = grid.size() - 1 if type == "PlateH" else grid.size()
@@ -117,6 +123,8 @@ func clear_level() -> void:
 	for child in get_children():
 		child.queue_free()
 	player = null
+	has_fallback_player_position = false
+	has_door_player_position = false
 
 func index_enemy_data(data: Dictionary) -> void:
 	enemy_definitions.clear()
@@ -162,13 +170,16 @@ func build_asset(asset: Dictionary, group_index: int) -> void:
 						horizontal_plate_surface_y(boundary_y)
 					)
 					build_object(position, signed_value, "%d_%d_%d" % [group_index, row, column])
-				"Door":
+				"Door", "Event":
 					var boundary_y := (row + 1.0) * cell_size.y
 					var position := Vector2(
 						content_origin_x + (column + 0.5) * cell_size.x + group_index * group_width,
 						horizontal_plate_surface_y(boundary_y)
 					)
-					build_door(position, absi(signed_value))
+					if type == "Event" and signed_value < 0:
+						build_story_event(position, absi(signed_value))
+					else:
+						build_door(position, absi(signed_value))
 
 func horizontal_plate_surface_y(boundary_y: float) -> float:
 	# Outer plates are clamped inside the world. Ground objects against the
@@ -322,10 +333,9 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 func build_object(position: Vector2, signed_value: int, id: String) -> void:
 	var index := absi(signed_value) - 1
 	if index == 0:
-		if player == null:
-			player = PLAYER_SCENE.instantiate()
-			player.position = position
-			add_child(player)
+		if not has_fallback_player_position:
+			fallback_player_position = position
+			has_fallback_player_position = true
 		return
 	if GameState.is_destroyed(id):
 		return
@@ -396,6 +406,34 @@ func build_door(position: Vector2, target_floor: int) -> void:
 	# Detection only: Area2D never blocks the player's movement.
 	add_collision_at(door, visible_rect.size, Vector2(0, -visible_rect.size.y * 0.5))
 	door.call("setup", target_floor)
+	if not has_door_player_position and target_floor == GameState.previous_floor:
+		door_player_position = position
+		has_door_player_position = true
+
+func build_story_event(position: Vector2, story_floor: int) -> void:
+	var event := Area2D.new()
+	event.name = "StoryEvent%d" % story_floor
+	event.set_script(STORY_EVENT_SCRIPT)
+	event.position = position
+	event.collision_layer = 0
+	event.collision_mask = 2
+	add_collision_at(
+		event,
+		Vector2(cell_size.x * 0.8, cell_size.y * 0.8),
+		Vector2(0.0, -cell_size.y * 0.4)
+	)
+	add_child(event)
+	event.call("setup", story_floor)
+
+func spawn_player_at_entrance() -> void:
+	if player != null:
+		return
+	if not has_door_player_position and not has_fallback_player_position:
+		push_warning("Floor has no matching entrance door and no Object value 1 player spawn.")
+		return
+	player = PLAYER_SCENE.instantiate()
+	player.position = door_player_position if has_door_player_position else fallback_player_position
+	add_child(player)
 
 func build_story_character(position: Vector2, index: int, _id: String) -> void:
 	var names: Array = paths.get("characters", [])

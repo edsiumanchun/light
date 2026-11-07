@@ -1,90 +1,90 @@
--{
+{
 "storyArray" : [
 	{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "ghostkidshow"
-	    ]
+		]
 	},{
-	    "name": "ghostkid",
+		"name": "ghostkid",
 	   	"leftPrefab": "",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
+		"rightPrefab": "ghostkid",
+		"dialogue": [
 	        "娘親！孩兒總算找到您了！"
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	    	"storyturn"
-	    ]
+		]
 	},
 	{
-	    "name": "ghostmum",
+		"name": "ghostmum",
 	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
-	        "孩兒！果真是我的孩兒！"]
+		"rightPrefab": "ghostkid",
+		"dialogue": [
+			"孩兒！果真是我的孩兒！"]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	    	"storyturn"
-	    ]
+		]
 	},
 	{
-	    "name": "ghostmum",
+		"name": "ghostmum",
 	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "ghostkid",
-	    "dialogue": [
-	        "多謝恩公一路護送，才讓我母子得以團聚。。",
+		"rightPrefab": "ghostkid",
+		"dialogue": [
+			"多謝恩公一路護送，才讓我母子得以團聚。。",
 	    	"可惜我手中只有這些不淨之食，實在無以為報。"
-	    ]
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	    	"不必客氣，能見您母子重逢，便是最好的回報。"
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	    	"storyturn"
-	    ]
+		]
 	},
 	{
-	    "name": "ghostmum",
-	    "dialogue": [
-	        "那麼，孩兒...都給你吧。",
-	    ]
+		"name": "ghostmum",
+		"dialogue": [
+			"那麼，孩兒...都給你吧。",
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
-	        "ghostmumcome",
+		"name": "event",
+		"dialogue": [
+			"ghostmumcome",
 	        "ghostcome"
-	    ]
+		]
 	},{
 	   	"leftPrefab": "ghostmum",
-	    "rightPrefab": "ghostkideat",
-	    "name": "ghostkideat",
-	    "dialogue": [
-	    	"真好吃！",
+		"rightPrefab": "ghostkideat",
+		"name": "ghostkideat",
+		"dialogue": [
+			"真好吃！",
 	    	"娘親，您也一起吃吧！"
-	    ]
+		]
 	},{
-	    "name": "ghostmum",
-	    "dialogue": [
+		"name": "ghostmum",
+		"dialogue": [
 	    	"娘親已經飽了..."
-	    ]
+		]
 	},{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "ghostsleave"
-	    ]
+		]
 	},
 	{
-	    "name": "player",
+		"name": "player",
 	   	"leftPrefab": "playersad",
-	    "dialogue": [
+		"dialogue": [
 	    	"..."
-	    ]
+		]
 	}
 ]
 }

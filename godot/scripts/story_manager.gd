@@ -19,7 +19,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func start_story(suffix := "", story_index := 0) -> void:
-	var path := "%s/Story/%d/%d%s.json" % [DataLoader.JSON_ROOT, GameState.current_stage, GameState.current_floor, suffix]
+	start_story_at_floor(GameState.current_floor, suffix, story_index)
+
+func start_story_at_floor(story_floor: int, suffix := "", story_index := 0) -> void:
+	var path := "%s/Story/%d/%d%s.json" % [DataLoader.JSON_ROOT, GameState.current_stage, story_floor, suffix]
 	var wrapper := DataLoader.load_json(path)
 	var stories: Array = wrapper.get("storyArray", [])
 	if stories.is_empty():

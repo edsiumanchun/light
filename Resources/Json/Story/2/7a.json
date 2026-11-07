@@ -2,21 +2,21 @@
 {
 "storyArray" : [
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "veteran",
+	    "rightPrefab": "teacher",
 	    "dialogue": [
 	    	"是...是天罡淨化術嗎？太不可思議了。"
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	    	"依我看，你已經擺脫了三毒石的控制。"
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	        "實在太感謝你了，公主。"
 	    ]
@@ -28,7 +28,7 @@
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	        "公主如果不介意，老夫還有一事相求，望公主再出手相助。"
 	    ]
@@ -40,7 +40,7 @@
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	    	"王都現在內外亂象環生，都是由三毒石所引起的禍。",
 	    	"而最令老夫擔憂的是對聖地形成的包圍網。"
@@ -53,7 +53,7 @@
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	        "對，東盟國眾人先後在包圍聖地的醫院，古墓和王都設置三毒石。",
 	        "目的就是擾亂聖地的靈氣，召喚出能把餓鬼一網打盡的結界",
@@ -66,7 +66,7 @@
 	    ]
 	},
 	{
-	    "name": "veteran",
+	    "name": "teacher",
 	    "dialogue": [
 	    	"無論我怎勸說，也沒法改變國王的想法。",
 	    	"當年那場惡名昭彰的東征，令我國和東盟國的關係急轉直下。",

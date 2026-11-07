@@ -73,8 +73,13 @@ func _initialize() -> void:
 		return
 	level_builder.call("build", 0, 0)
 	var door := level_builder.get_node_or_null("Door") as Area2D
+	var story_event := level_builder.get_node_or_null("StoryEvent3") as Area2D
 	if door == null or not door.is_in_group("interactable"):
 		push_error("JSON door was not created as an interactable Area2D")
+		quit(1)
+		return
+	if story_event == null or int(story_event.get("story_floor")) != 3 or story_event.collision_mask != 2:
+		push_error("Negative Event value did not create the expected player story trigger")
 		quit(1)
 		return
 	if door.collision_layer != 4 or door.collision_mask != 0 or int(door.get("target_floor")) != 1:
@@ -91,9 +96,20 @@ func _initialize() -> void:
 		push_error("Door grid values did not create destinations 2, 3, and 4")
 		quit(1)
 		return
-	level_builder.call("build", 0, 2)
+	var game_state := root.get_node("GameState")
+	game_state.set("previous_floor", 1)
+	var door_spawned_player = level_builder.call("build", 0, 2)
 	if level_builder.get_node_or_null("LeftBackgroundMask") == null or level_builder.get_node_or_null("RightBackgroundMask") == null:
 		push_error("Centered level did not mask both outside background margins")
+		quit(1)
+		return
+	var matching_door: Area2D
+	for child in level_builder.get_children():
+		if child is Area2D and not child.is_queued_for_deletion() and child.get("target_floor") != null and int(child.get("target_floor")) == 1:
+			matching_door = child
+			break
+	if matching_door == null or door_spawned_player == null or door_spawned_player.position != matching_door.position:
+		push_error("Player did not spawn at the door leading back to the previous floor")
 		quit(1)
 		return
 	print("Alignment test passed: grounded objects and tiled wall background.")

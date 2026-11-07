@@ -1,59 +1,57 @@
 {
 "storyArray" : [
 	{
-	    "name": "event",
-	    "dialogue": [
+		"name": "event",
+		"dialogue": [
 	        "completeTutor"
-	    ]
+		]
 	},{
-	    "name": "sage",
+		"name": "sage",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "sage",
-	    "dialogue": [
-	        "咳咳...年輕人...我多日沒吃的，不知可否討口乾糧充肌？",
-	    ]
+		"rightPrefab": "sage",
+		"dialogue": [
+			"咳咳...年輕人...我多日沒吃的，不知可否討口飯吃？",
+		]
 	},{
-	    "name": "event",
- 	    "dialogue": [
+		"name": "event",
+ 		"dialogue": [
 	        "donate"
- 	    ]
+ 		]
  	},{
-	    "name": "sage",
-	    "dialogue": [
-	    	"謝謝你...萍水相逢，難得有這般好心人。"
-	    ]
+		"name": "sage",
+		"dialogue": [
+	    	"謝謝你...萍水相逢，難得遇上好心人。"
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	    	"伯伯，借問一聲，您近日可曾見過一位年輕男子路經此地？"
-	    ]
+		]
 	},{
-	    "name": "sage",
-	    "dialogue": [
+		"name": "sage",
+		"dialogue": [
 	    	"前些日子，確實有一位少年潛進了這個古穴，可是一直沒有出來..."
-	    ]
+		]
 	},{
-	    "name": "event",
- 	    "dialogue": [
-	        "ghostshow",
-	        "playerturn",
-	        "playerattack",
-	        "bossgoldkey",
-	        "bossdisappear",
-	        "playerturn",
+		"name": "event",
+ 		"dialogue": [
+			"ghostshow",
+			"playerturn",
+			"playerattack",
+			"bossgoldkey",
+			"bossdisappear",
+			"playerturn",
 	        "playeridle"
- 	    ]
+ 		]
  	},{
-	    "name": "sage",
-	    "dialogue": [
-	    	"是...是...「聖光術」嗎...?"
-	    ]
+		"name": "sage",
+		"dialogue": [
+	    	"是...是...失傳已久的「聖光術」嗎...?"
+		]
 	},{
-	    "name": "player",
-	    "dialogue": [
-	    	"是的，這是為亡靈斷罪的至聖法光。",
-	    	"得聞聖號者，雖能求得片刻清明、妄心暫歇...",
-			"若要得究竟解脫，唯有自渡方能化解。"
+		"name": "player",
+		"dialogue": [
+	    	"沒錯，這是為亡靈斷罪的聖光。"
 		]
 	}
 ]

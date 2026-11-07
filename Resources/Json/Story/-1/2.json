@@ -1,0 +1,20 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
+      "dialogue": [
+        "黛苓老師，爹說你又備了道題。這次是甚麼？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "來得正好，這裡新布了一座機關迷宮。",
+        "你手上只有一柄銅匙，試試能不能取出裡面的靈珠。",
+        "先看清周圍，再決定怎麼走；遇上機關，可別急著硬闖。"
+      ]
+    }
+  ]
+}

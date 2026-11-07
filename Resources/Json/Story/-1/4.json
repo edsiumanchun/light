@@ -1,0 +1,159 @@
+{
+  "storyArray": [
+    {
+      "name": "teacher",
+      "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
+      "dialogue": [
+        "出來了？可有哪一處把你難住？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "有啊，我還以為拿著銅匙就能一路走到底呢。",
+        "後來才知道，光盯著眼前的門不成，還得看看別處。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "grandpacome"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "黛苓老師！老朽冒昧前來，有要事相求！",
+        "這是我那剛降世的孫女，尚缺個福名，老師可願賜名？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "事出突然，容我三思...",
+        "靈藏，你向來心思細敏，可有甚麼好主意？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "嗯……『芷燕』好聽。",
+        "不過，我又想起昨日那個故事了。叫『小雁』，好不好？"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "小雁？你想起甚麼故事了？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "莫非...是因昨日課堂上，所提及的那則靈雁捨身的故事？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "嗯，我一直記著那隻雁。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "哦？那是一段怎樣的故事？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏，便由你代為分享吧。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "有一群旅人在荒漠裡迷了路，餓得走不動了。看見一隻雁飛過，就求牠給些肉吃。",
+        "故事裡，那隻雁真的落了下來，捨了性命給他們充飢。",
+        "他們活了下來，可是……那隻雁就再也飛不起來了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "grandpacome"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "那隻雁，真叫人心疼。",
+        "可我替這孩子取名，只盼她平平安安，像雁兒一樣自在長大。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "那便叫小雁吧。等她大些，我帶她去看天上的雁。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "好啊。小雁，你聽見了嗎？有人約你去玩呢。"
+      ]
+    },
+    {
+      "name": "baby",
+      "dialogue": [
+        "咩咩..."
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "呵呵，那就這樣定了，往後你就叫『小雁』。"
+      ]
+    },
+    {
+      "name": "teachernpc",
+      "dialogue": [
+        "老師！鄰村有屋子塌了，逃出來的人剛到村口，還有人困在那邊！"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "快去叫人，帶上藥箱和棉被。",
+        "靈藏，你隨我來，幫忙送水、帶路。倒塌的屋子不可自己進去。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "好的，老師。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "黛苓老師，待老朽安頓好孫女，也來盡一份綿薄之力。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "timefly"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "靈藏，你沿這邊看看，有人需要幫忙就回來叫我。",
+        "記住，先看清四周，別走近鬆動的牆。"
+      ]
+    }
+  ]
+}

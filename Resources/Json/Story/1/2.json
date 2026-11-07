@@ -1,27 +1,26 @@
 {
 "storyArray" : [
 	{
-	    "name": "shopowner",
+		"name": "shopowner",
 	   	"leftPrefab": "player",
-	    "rightPrefab": "shopowner",
-	    "dialogue": [
-	    	"年輕人，我能察覺到在你身邊守護神暗流湧動的餘香。",
+		"rightPrefab": "shopowner",
+		"dialogue": [
+			"年輕人，我能察覺到在你身邊守護神暗流湧動的餘香。",
 	    	"看來你身負著不凡的宿命。"
-	    ]
+		]
 	},
 	{
-	    "name": "player",
-	    "dialogue": [
+		"name": "player",
+		"dialogue": [
 	    	"晚輩不過是凡夫俗子，實不敢居功，"
-	    ]
+		]
 	},
 	{
-	    "name": "shopowner",
-	    "dialogue": [
-	    	"不驕不躁，心如止水，當真後生可畏！",
+		"name": "shopowner",
+		"dialogue": [
+			"不驕不躁，心如止水，當真後生可畏！",
 	    	"單憑你這份心性，老夫這雙俗眼，絕不會看錯人。"
-	    ]
+		]
 	}
 ]
 }
-
