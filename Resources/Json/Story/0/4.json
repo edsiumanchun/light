@@ -1,36 +1,35 @@
 {
-"storyArray" : [
-	{
-		"name": "BossBone",
-		"leftPrefab": "player",
-		"rightPrefab": "BossBone",
-		"dialogue": [
-			"不...不餓了...",
-			"這是什麼回事？"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"我只能為你求得片刻清明、妄心暫歇...",
-			"若要得究竟解脫，唯有自渡方能化解。"
-		]
-	},{
-		"name": "BossBone",
-		"dialogue": [
-	        "幸得恩公出手相助..."
-			"千百年飢苦，困於無量劫，喉細如針、食物入口即化烈火...",
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-			"bossdisappear",
-	        "playerpray"
-		]
-	},{
-		"leftPrefab": "player",
-		"dialogue": [
-	        "但願逝者早日能夠魂安故土..."
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "BossBone",
+      "leftPrefab": "player",
+      "rightPrefab": "BossBone",
+      "dialogue": [
+        "不...不餓了...",
+        "這是什麼回事？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "這聖光只能讓妄念暫歇，還你片刻清明。",
+        "若要真正得到解脫，仍須靠自力自渡。"
+      ]
+    },
+    {
+      "name": "BossBone",
+      "dialogue": [
+        "幸得恩公出手相助……",
+        "千百年來，我飢渴難耐。",
+        "食物一入口，便化作烈火……"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "bossdisappear",
+        "playerpray"
+      ]
+    }
+  ]
 }
