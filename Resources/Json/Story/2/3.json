@@ -1,168 +1,166 @@
-
 {
-"storyArray" : [
-	{
-		"name": "event",
-		"dialogue": [
-	        "storywake"
-		]
-	},{
-		"name": "chef",
-		"leftPrefab": "player",
-		"rightPrefab": "chef",
-		"dialogue": [
-	        "過來！今天算你倒霉了！"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "cowkneel"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	    	"牠既已屈膝乞憐，便放牠一馬吧。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "chefcome"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	        "莫要怪我，我只是奉主人之命行事。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "storyturn"
-		]
-	},
-	{
-		"name": "chef",
-		"dialogue": [
-			"奇怪，我那柄屠刀怎麼不翼而飛？莫非是在外邊掉失了？"]
-	},{
-		"name": "event",
-		"dialogue": [
-			"storydisappear",
-			"cowmove",
-	        "knifedrop"
-		]
-	},
-	{
-		"name": "player",
-		"leftPrefab": "cow",
-		"rightPrefab": "music",
-		"dialogue": [
-	    	"吽吽...吽吽..."
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "playergoinside"
-		]
-	},
-	{
-		"name": "dragon",
-		"leftPrefab": "player",
-		"rightPrefab": "dragon",
-		"dialogue": [
-	    	"小師妹，你總算來了。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	    	"checkcow"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	    	"彌生師兄！你怎會來到這裡？"
-		]
-	},
-	{
-		"name": "dragon",
-		"dialogue": [
-	    	"掌門憂心恭請黛苓前輩出山一事橫生枝節，特命我前來接應，以策萬全。"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-			"師兄請放心，這樁事情交給我就好了。",
-	    	"黛苓老師素來以濟世為懷，定必樂意出山，助我等化解三垢石的災劫。"
-		]
-	},
-	{
-		"name": "dragon",
-		"dialogue": [
-	    	"嗯，有你這番話，我便安心了。" 
-		]
-	},
-
-	{
-		"name": "player",
-		"leftPrefab": "cow",
-		"rightPrefab": "music",
-		"dialogue": [
-	    	"吽吽...吽吽..."
-		]
-	},
-	{
-		"name": "event",
-		"dialogue": [
-	    	"dragonwalk"
-		]
-	},
-	{
-		"name": "dragon",
-		"dialogue": [
-	    	"對了，這犢兒方才竟口中含著一柄屠刀來找我，是什麼緣故？"
-		]
-	},
-	{
-		"name": "dragon",
-		"dialogue": [
-	    	"原來是你這小傢伙將屠刀藏匿了起來..."
-	        "想必是為了營救將被屠宰的母牛...寸草之心，悲愴難抑。"
-		]
-	},
-	{
-		"name": "dragon",
-		"leftPrefab": "dragon",
-		"rightPrefab": "",
-		"dialogue": [
-	    	"真沒想到你雖投生畜道，卻是這般通靈有情..."
-			"這樣吧...既然你懂得向我哀鳴求助，足見你我與牠緣分不淺。",
-	        "小師妹若不嫌棄，便由我將這對牛母子收養在座下，如何？"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	        "師兄仁厚，有你悉心庇護牠們，我便放心了。"
-		]
-	},
-	{
-		"name": "dragon",
-		"dialogue": [
-			"時候不早，我便先行告退了。",
-	        "小師妹，萬望多加保重！"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	    	"playerpoint"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	        "師兄，就此別過，一路順風。"
-		]
-	}
-]
+  "storyArray": [
+    {
+      "name": "event",
+      "dialogue": [
+        "oldmanstopandwatch"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "老人家，我想打聽一個人。",
+        "他半年前從敦煌城關調來修城，左腿有傷。"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "左腿有傷……你是他的甚麼人？"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我是他女兒，靈藏。"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "原來是你。你爹常說起這個名字。",
+        "先到工棚坐坐吧。"
+      ]
+    },
+    {
+      "name": "",
+      "dialogue": [
+        "gotofactorywithcrutch"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "杖柄這圈布，是我替爹纏的...",
+        "老人家，他如今在哪裡？"
+      ]
+    },
+    {
+      "name": "",
+      "dialogue": [
+        "老人看著她手裡的拐杖，半晌沒有作聲。"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "半個月前，河邊的腳架塌了。",
+        "你爹掉進河裡，被水沖走。",
+        "我們沿岸找了幾日，只找回這根拐杖。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "gotocrutch。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "他腿不好，最怕走濕滑的路……"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerturn。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "這些日子，有勞你們費心找人，也替爹收好了拐杖。"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "附近幾處村子，我們也問過，還沒有他的消息。",
+        "可役夫不能擅離，官差又催著復工。",
+        "更遠的村落，便沒能再去問。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playercry"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "世事無常，聚散難料。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "dogcome"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "你爹半年前剛調來時，便開始餵牠。",
+        "這半年，每逢午飯，總坐在這裡，留一口飯給牠。",
+        "如今到了飯點，牠還是照常來等。",
+        "你爹常說，牠大概是來報恩的。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playertouchdog"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "前緣如何，我不敢妄言。",
+        "只是換了一副模樣，也未必忘得了曾受過的恩..."
+      ]
+    },
+    {
+      "name": "dog",
+      "dialogue": [
+        "汪汪..."
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "一飯之恩，牠倒記得長久。",
+        "歲月不言，這份牽掛卻從未老去。"
+      ]
+    },
+    {
+      "name": "worker",
+      "dialogue": [
+        "姑娘，先吃些東西吧...如要往下游走，還有一段路。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "好。我吃過便去問問沿河的村子。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "timefly"
+      ]
+    }
+  ]
 }
