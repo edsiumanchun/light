@@ -5,13 +5,7 @@
       "leftPrefab": "player",
       "rightPrefab": "ghostkid",
       "dialogue": [
-        "這是甚麼光？好暖……"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "這是斷罪聖光，願能讓你暫離飢苦。"
+        "恩公..."
       ]
     },
     {
@@ -23,7 +17,7 @@
     {
       "name": "ghostkid",
       "dialogue": [
-        "恩公，求你幫我找回媽媽，她就在城外。"
+        "求你幫我找回媽媽，她就在城外。"
       ]
     },
     {
