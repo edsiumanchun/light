@@ -1,0 +1,141 @@
+{
+"storyArray" : [
+	{
+		"name": "player",
+		"dialogue": [
+	    	"藥師，我和黛苓老師回來了。"
+		]
+	},{
+		"name": "player",
+		"rightPrefab": "rosia",
+		"dialogue": [
+	    	"小雁...小雁她..."
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+	    	"小雁怎麼了？"
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+	        "playerpoint"
+		]
+	},{
+		"name": "nurse",
+		"dialogue": [
+	    	"藥師，小雁的獸皮病特然急速惡化，恐怕她過不了今晚..."
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+	        "playerpoint"
+		]
+	},{
+		"name": "rosia",
+		"leftPrefab": "player",
+		"rightPrefab": "rosia",
+		"dialogue": [
+	    	"生死雖不由人，但我總希望試試把這孩子救回來。"
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+	    	"我們陪你一同前去吧。"
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+	        "playerpoint"
+		]
+	},{
+		"name": "maria",
+		"leftPrefab": "rosia",
+		"rightPrefab": "maria",
+		"dialogue": [
+	    	"藥師哥哥，我的眼睛怎麼越來越矇，快要看不見東西了。"
+		]
+	},{
+		"name": "rosia",
+		"dialogue": [
+	    	"沒事的，我很快就回把你救回來。"
+		]
+	},{
+		"name": "maria",
+		"dialogue": [
+			"藥師哥哥，不用難過，我早就看淡生死。",
+			"老天爺還算待我不薄...",
+	    	"在我臨終前有藥師哥哥，靈藏姐姐和黛苓老師相伴，也算是不往此生。"
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+	    	"藥師！你學醫這麼多年，難道真的一點辦法也沒有嗎？"
+		]
+	},{
+		"name": "rosia",
+		"dialogue": [
+			"我是沒有辦法，但禁室內或許有當年師傅的靈藥。",
+	    	"但禁室內的機關從沒有人打開過。"
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+	    	"嗯，請讓我去查看吧，？"
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+	    	"嗯，請讓我去查看吧，？"
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+			"playerun",
+	        "rosiafall"
+		]
+	},{
+		"name": "music",
+		"leftPrefab": "player",
+		"rightPrefab": "music",
+		"dialogue": [
+	    	"善女子，無須多禮了。"
+		]
+	},{
+		"name": "player",
+		"dialogue": [
+			"樂神大人，我終於明白人類是多渺小。",
+	    	"面對命運，我什麼也做不了。"
+		]
+	},{
+		"name": "music",
+		"dialogue": [
+			"命運是掌握在自己的手中。"]
+	},{
+		"name": "player",
+		"dialogue": [
+			"我還是有點不太懂，請樂神大人再給我一點指示。"]
+	},{
+		"name": "music",
+		"dialogue": [
+	        "用平靜的心感受外界的一草一木。"
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+			"musicpoint"]
+	},{
+		"name": "music",
+		"dialogue": [
+			"觀想自己是照耀別人內心的明月...",
+			"而這種共鳴猶如一月麗天，萬川影現。",
+	    	"唯水清而靜則現..."
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+	        "nextscene"
+		]
+	}
+]
+}
