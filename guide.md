@@ -244,11 +244,23 @@ Example: `3` creates a door that calls `GameState.change_floor(3)`.
 | Value | Meaning |
 |---:|---|
 | `0` | No event |
-| Positive integer | A door leading to that floor number |
+| Positive integer | An interaction that reads `Resources/Json/Story/<stage>/<floor>-<value>.json` |
 | Negative integer | A story trigger using `abs(value)` as the story floor/id |
 
 Example: `-4` starts the story data for story floor/id `4` when the player
 enters the trigger.
+
+In Stage 0/Floor 0, put `1` in the teacher's cell to load `0-1.json` and
+`2` in the bed's cell to load `0-2.json`. The player presses Interact
+within range of the cell. Each numbered event can be completed once per room load.
+
+`layout.lockedEvents: [2]` starts event 2 locked. In a story's `event` block,
+add `"unlocknext"` to unlock the following event number or `"unlock:5"` to
+unlock event 5 directly. Omit the command when the story should unlock nothing.
+Events omitted from `lockedEvents` are available from the start.
+
+`layout.sleepEvent: 2` uses event 2's floor position for the sleep animation.
+Set door destinations in the separate `Door` grid.
 
 ## Non-spatial asset values
 

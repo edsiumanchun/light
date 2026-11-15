@@ -1,0 +1,82 @@
+{
+  "storyArray": [
+	{
+	  "name": "event",
+	  "dialogue": [
+		"playersleep",
+		"teacherback"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "leftPrefab": "playerkid",
+	  "rightPrefab": "teacher",
+	  "dialogue": [
+		"瞧我，竟把傘忘在這裡了。",
+        "怎麼睡到你爹的床上？自己的被窩不暖嗎？"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+		"我只是睏了，借爹的床歇一會……",
+        "外頭這麼冷，總想讓他回來時，被窩是暖的。"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+		"心裡惦記著爹，也別忘了照顧自己。",
+        "把被子蓋好，別讓這份心意換來一身寒氣。"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+			"知道了，老師。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "teacherleave",
+        "timefly",
+        "fatherarrive"
+	  ]
+	},
+	{
+	  "name": "father",
+	  "rightPrefab": "father",
+	  "dialogue": [
+        "靈藏，又替爹暖被了？"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playerwake"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+				"我...我只是剛好睡著了",
+        "爹，今天腿還疼嗎？"
+	  ]
+	},
+	{
+	  "name": "father",
+	  "dialogue": [
+				"沒事。爹坐一會就好。",
+        "對了，方才遇見黛苓老師...",
+        "她說在聚賢莊備了道題，等你歇夠了再去試試。"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+        "又有新題？那我去看看，晚些就回來。"
+	  ]
+	}
+  ]
+}

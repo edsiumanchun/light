@@ -1,0 +1,11 @@
+{
+  "locations": [
+    { "name": "六和道場", "position": [340, 192], "stage": 0, "floor": 2 },
+    { "name": "月牙泉村", "position": [577, 192] },
+    { "name": "敦煌城關", "position": [577, 338] },
+    { "name": "玉門山莊", "position": [340, 338] }
+  ],
+  "west": "樓蘭古城",
+  "grottoSites": ["敦煌石窟崖下", "敦煌石窟", "敦煌藏書閣", "天山"],
+  "home": { "name": "返回住處", "currentLabel": "住處", "stage": 0, "floor": 0 }
+}

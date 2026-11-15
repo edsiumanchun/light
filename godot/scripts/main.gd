@@ -1,16 +1,29 @@
 extends Node2D
 
 const INTERACTION_ZOOM := Vector2(1.7, 1.7)
+const CAMERA_FADE_SECONDS := 0.45
+const TIME_SKIP_HOLD_SECONDS := 1.2
 
 @onready var level: LevelBuilder = $Level
 @onready var camera: Camera2D = $Camera2D
 
 var player: CastlePlayer
 var camera_tween: Tween
+var camera_fade: ColorRect
 
 func _ready() -> void:
+	var fade_layer := CanvasLayer.new()
+	fade_layer.layer = 100
+	add_child(fade_layer)
+	camera_fade = ColorRect.new()
+	camera_fade.color = Color(0, 0, 0, 0)
+	camera_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade_layer.add_child(camera_fade)
+	camera_fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	GameState.floor_changed.connect(_on_floor_changed)
-	StoryManager.opened.connect(_focus_on_player)
+	StoryManager.opening.connect(_focus_on_player)
+	StoryManager.leaving_dialogue.connect(_show_story_action)
+	StoryManager.time_skip_requested.connect(_show_time_skip)
 	StoryManager.closed.connect(_restore_camera)
 	load_floor(GameState.current_stage, GameState.current_floor)
 
@@ -33,6 +46,9 @@ func _process(delta: float) -> void:
 			camera.position.y = move_toward(camera.position.y, clamp_camera_y(target_y, camera.zoom.y), 650.0 * delta)
 
 func load_floor(stage: int, floor: int) -> void:
+	if camera_tween != null and camera_tween.is_valid():
+		camera_tween.kill()
+	camera_fade.color.a = 0.0
 	player = level.build(stage, floor)
 	if player != null:
 		camera.zoom = level.gameplay_zoom()
@@ -43,11 +59,25 @@ func _on_floor_changed(stage: int, floor: int) -> void:
 
 func _focus_on_player() -> void:
 	if not is_instance_valid(player):
+		StoryManager.reveal_dialogue()
 		return
-	animate_camera(player.global_position + Vector2(0, -70), INTERACTION_ZOOM, 0.4)
+	var focus := player.global_position + Vector2(0, -70)
+	if is_instance_valid(level.teacher_exit_door) and (level.sleep_event == 0 or StoryManager.current_suffix != "-%d" % level.sleep_event):
+		var half_width := level.view_size.x / INTERACTION_ZOOM.x * 0.5
+		focus.x = maxf(focus.x, level.teacher_exit_door.global_position.x - half_width + 48.0)
+	fade_camera_to(focus, INTERACTION_ZOOM)
+	camera_tween.tween_callback(StoryManager.reveal_dialogue)
 
 func _restore_camera() -> void:
-	animate_camera(gameplay_camera_position(), level.gameplay_zoom(), 0.32)
+	fade_camera_to(gameplay_camera_position(), level.gameplay_zoom())
+
+func _show_story_action() -> void:
+	_restore_camera()
+	camera_tween.tween_callback(StoryManager.run_current_cue)
+
+func _show_time_skip() -> void:
+	fade_camera_to(gameplay_camera_position(), level.gameplay_zoom(), TIME_SKIP_HOLD_SECONDS)
+	camera_tween.tween_callback(StoryManager.finish_story_cue)
 
 func gameplay_camera_position() -> Vector2:
 	var target_x := level.view_size.x * 0.5
@@ -71,9 +101,16 @@ func clamp_camera_y(target_y: float, zoom_y: float) -> float:
 		return level.world_size.y * 0.5
 	return clampf(target_y, half_visible_height, level.world_size.y - half_visible_height)
 
-func animate_camera(target_position: Vector2, target_zoom: Vector2, duration: float) -> void:
+func fade_camera_to(target_position: Vector2, target_zoom: Vector2, hold_seconds := 0.0) -> void:
 	if camera_tween != null and camera_tween.is_valid():
 		camera_tween.kill()
-	camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	camera_tween.tween_property(camera, "position", target_position, duration)
-	camera_tween.tween_property(camera, "zoom", target_zoom, duration)
+	camera_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	camera_tween.tween_property(camera_fade, "color:a", 1.0, CAMERA_FADE_SECONDS)
+	camera_tween.tween_callback(func() -> void:
+		camera.position = target_position
+		camera.zoom = target_zoom
+		camera.force_update_scroll()
+	)
+	if hold_seconds > 0.0:
+		camera_tween.tween_interval(hold_seconds)
+	camera_tween.tween_property(camera_fade, "color:a", 0.0, CAMERA_FADE_SECONDS)

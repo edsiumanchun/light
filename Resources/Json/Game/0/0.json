@@ -1,60 +1,95 @@
 
 {
   "layout": {
-	"columns": 6,
-	"rows": 5,
+	"columns": 9,
+	"rows": 4,
 	"cellWidth": 131,
-	"cellHeight": 170
+	"cellHeight": 75,
+	"backgroundMode": "plain_panels",
+	"teacherExitDoorFloor": 1,
+	"lockedEvents": [2],
+	"sleepEvent": 2,
+	"backgroundLighting": {
+	  "lantern_light": [589.5, 204],
+	  "window_center": [589.5, 112.5],
+	  "bed_feet": [196.5, 283],
+	  "pot_feet": [720.5, 283],
+	  "table_feet": [982.5, 283]
+	},
+	"verticalAlign": "bottom",
+	"cameraZoom": 1.0,
+	"hidePlates": true,
+	"assetScales": {
+	  "Decorations/BedStory25DPlain": 0.68,
+	  "Decorations/TeachingTableStory25D": 0.5,
+	  "Decorations/LampStory25D": 0.46,
+	  "Decorations/WindowStory25DMoonlit": 0.48,
+	  "Decorations/PotStory25D": 0.5
+	}
   },
   "camera": {
 	"visibleRows": 4,
-	"followPlayerY": true,
-	"verticalDeadZone": 55
+	"followPlayerX": false,
+	"followPlayerY": false
   },
   "assets0": [
 	{
-	  "name": "Background",
-	  "gridArray0": [0]
+	  "name": "Audio",
+	  "gridArray0": [2]
 	},
 	{
 	  "name": "PlateH",
 	  "grid": [
-		[4, 4, 4, 4, 4, 4],
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 3, 0, 0, 0, 0],
-		[1, 1, 1, 1, 1, 1]
+		[4, 4, 4, 4, 4, 4, 4, 4, 4],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1]
 	  ]
 	},
 	{
 	  "name": "PlateV",
 	  "grid": [
-		[6, 0, 0, 0, 0, 0, 6],
-		[6, 0, 0, 0, 0, 0, 6],
-		[6, 0, 0, 0, 0, 0, 6],
-		[6, 0, 0, 0, 0, 0, 6],
-		[6, 0, 0, 0, 0, 0, 6]
+		[6, 0, 0, 0, 0, 0, 0, 0, 0, 6],
+		[6, 0, 0, 0, 0, 0, 0, 0, 0, 6],
+		[6, 0, 0, 0, 0, 0, 0, 0, 0, 6],
+		[6, 0, 0, 0, 0, 0, 0, 0, 0, 6]
+	  ]
+	},
+	{
+	  "name": "Backdrop",
+	  "grid": [
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 8, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0]
 	  ]
 	},
 	{
 	  "name": "Object",
 	  "grid": [
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 1, 0, 0, 3, 0],
-		[31, 0, 31, 31, 31, 31]
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 46, 0, 1, 47, 49, 3, 50, 5]
 	  ]
 	},
 	{
 	  "name": "Event",
 	  "grid": [
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, -3, 1],
-		[0, 0, 0, 0, 0, 0]
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 2, 0, 0, 0, 0, 1, 0, 0]
+	  ]
+	},
+	{
+	  "name": "Door",
+	  "grid": [
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 1]
 	  ]
 	}
   ]

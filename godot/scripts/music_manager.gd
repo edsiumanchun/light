@@ -24,12 +24,17 @@ func play_track(track_name: String) -> void:
 		return
 	var path := "%s/%s.mp3" % [AUDIO_DIR, track_name]
 	if not ResourceLoader.exists(path):
+		path = "%s/%s.wav" % [AUDIO_DIR, track_name]
+	if not ResourceLoader.exists(path):
 		push_warning("Missing music track: " + path)
 		return
 	var stream := load(path) as AudioStream
 	if stream == null:
 		push_warning("Unable to load music track: " + path)
 		return
+	if stream is AudioStreamWAV:
+		stream.loop_end = roundi(stream.get_length() * stream.mix_rate)
+		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	current_track = track_name
 	player.stream = stream
 	player.play()

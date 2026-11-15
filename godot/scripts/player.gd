@@ -9,6 +9,9 @@ var jumps := 0
 var interaction_targets: Array[Node] = []
 var animation_time := 0.0
 var facing := 1.0
+var story_walking := false
+var story_sleeping := false
+var upright_story_transform := Transform3D.IDENTITY
 
 @onready var visual: SubViewportContainer = $Visual
 @onready var model: Node3D = $Visual/Viewport3D/PlayerModel
@@ -25,7 +28,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if StoryManager.active:
 		velocity = Vector2.ZERO
-		animate_model(delta, 0.0)
+		if not story_sleeping:
+			animate_model(delta, facing if story_walking else 0.0)
 		return
 	if not is_on_floor():
 		velocity.y += float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)) * delta
@@ -44,6 +48,37 @@ func _physics_process(delta: float) -> void:
 		interact()
 	move_and_slide()
 	animate_model(delta, direction)
+
+func walk_to_story_bed(destination: Vector2) -> Tween:
+	story_walking = true
+	facing = -1.0 if destination.x < position.x else 1.0
+	var tween := create_tween()
+	tween.tween_property(self, "position", destination, position.distance_to(destination) / 150.0)
+	tween.tween_callback(func() -> void: story_walking = false)
+	tween.tween_interval(0.08)
+	tween.tween_callback(func() -> void:
+		upright_story_transform = model.transform
+		story_sleeping = true
+		rotate_story_pose(PI * 0.5)
+	)
+	tween.tween_interval(0.65)
+	return tween
+
+func get_up_from_story_bed(destination: Vector2) -> Tween:
+	var tween := create_tween().set_parallel()
+	if story_sleeping:
+		tween.tween_method(rotate_story_pose, PI * 0.5, 0.0, 0.36)
+	tween.tween_property(self, "position", destination, 0.36)
+	tween.chain().tween_callback(func() -> void: story_sleeping = false)
+	return tween
+
+func rotate_story_pose(angle: float) -> void:
+	var pivot := Vector3(0.0, 0.95, 0.0)
+	var roll := Basis(Vector3.BACK, angle)
+	model.transform = Transform3D(
+		roll * upright_story_transform.basis,
+		pivot + roll * (upright_story_transform.origin - pivot)
+	)
 
 func animate_model(delta: float, direction: float) -> void:
 	animation_time += delta

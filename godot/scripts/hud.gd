@@ -17,6 +17,9 @@ extends CanvasLayer
 @onready var dashboard_close: Button = $Dashboard/Panel/Margin/VBox/Header/Close
 
 var dashboard_values: Dictionary = {}
+const WORLD_MAP := preload("res://godot/scripts/world_map.gd")
+var world_map: Control
+var map_button: Button
 
 func _ready() -> void:
 	GameState.stats_changed.connect(refresh)
@@ -33,14 +36,39 @@ func _ready() -> void:
 	for item_name in ["Greed", "Hatred", "Delusion", "Copper", "Silver", "Gold"]:
 		dashboard_values[item_name] = dashboard.get_node("Panel/Margin/VBox/%s/Value" % item_name)
 	dashboard.visible = false
+	world_map = WORLD_MAP.new()
+	world_map.name = "WorldMap"
+	world_map.z_index = 50
+	add_child(world_map)
+	map_button = Button.new()
+	map_button.text = "地圖 / M"
+	map_button.custom_minimum_size = Vector2(112, 36)
+	add_child(map_button)
+	map_button.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	map_button.offset_left = -132
+	map_button.offset_right = -20
+	map_button.offset_top = 18
+	map_button.offset_bottom = 54
+	map_button.pressed.connect(open_world_map)
 	refresh()
 
 func _process(_delta: float) -> void:
+	map_button.visible = not StoryManager.active
 	if StoryManager.active:
-		interact_button.visible = true
+		interact_button.visible = StoryManager.dialogue_visible
 		return
 	var player := get_tree().get_first_node_in_group("player")
 	interact_button.visible = player != null and player.has_method("can_interact") and player.can_interact()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_M:
+		open_world_map()
+		get_viewport().set_input_as_handled()
+
+func open_world_map() -> void:
+	if not StoryManager.active:
+		close_dashboard()
+		world_map.open_map()
 
 func on_interact_pressed() -> void:
 	if StoryManager.active:

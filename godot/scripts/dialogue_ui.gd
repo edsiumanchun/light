@@ -8,6 +8,9 @@ const INACTIVE_PORTRAIT_ALPHA := 0.35
 const PORTRAIT_ALIASES := {
 	"ghostmaria": "mariaghost",
 	"soilder": "soldier",
+	"playerkid": "rkid",
+	"teacher": "sage",
+	"teachernpc": "scout",
 }
 
 @onready var left_portrait: TextureRect = $LeftPortrait
@@ -23,11 +26,13 @@ func _ready() -> void:
 	_index_portraits()
 	StoryManager.opened.connect(func(): visible = true)
 	StoryManager.closed.connect(_close)
+	StoryManager.dialogue_paused.connect(func(): visible = false)
 	StoryManager.line_changed.connect(show_line)
 	visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func show_line(name: String, text: String, left_name: String, right_name: String) -> void:
+	visible = true
 	speaker.text = name
 	dialogue.text = text
 	var active_key := _portrait_key(name)
