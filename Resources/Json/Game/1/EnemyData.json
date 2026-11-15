@@ -49,7 +49,7 @@
       "reward": 1
     },
     {
-      "name": "EnemyMummy",
+      "name": "EnemyBone",
       "damage": 0,
       "hp": 20,
       "reward": 1 
@@ -64,22 +64,6 @@
       "damage": 1,
       "hp": 3,
       "reward": 1
-    },{
-      "name": "Hatred2",
-      "damage": 1,
-      "hp": 3,
-      "reward": 1
-    },{
-      "name": "Delusion2",
-      "damage": 1,
-      "hp": 3,
-      "reward": 1
-    },
-    {
-      "name": "BossMummy_3",
-      "damage": 0,
-      "hp": 10,
-      "reward": 1 
     }
   ]
 }

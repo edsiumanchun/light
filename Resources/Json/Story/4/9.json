@@ -1,99 +1,41 @@
 {
-"storyArray" : [{
-	    "name": "dragon",
-	   	"leftPrefab": "dragon",
-	    "rightPrefab": "king",
-	    "dialogue": [
-	    	"哈哈，終於大功告成！"
-	    ]
+"storyArray" : [
+	{
+		"name": "nurse",
+		"dialogue": [
+	    	"藥師，小雁已經昏睡了，不知能否再醒來..."
+		]
 	},{
-	    "name": "king",
-	    "dialogue": [
-	        "公謹，你是否已經得到長生不老之秘方？"
-	    ]
+		"name": "rosia",
+		"dialogue": [
+			"霜月，我們現在把所有東西壓在陰陽丹上...",
+			"本來想去禁室找陰丹，卻發現陰丹被人奪去...",
+	        "你曾說過三號病房的病人偷偷去了禁室，你可知道他長什麼模樣嗎？"
+		]
 	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "長生不老之秘方跟本不存在。"
-	    ]
+		"name": "nurse",
+		"dialogue": [
+	    	"三號病房的病人是個公子哥兒，身穿像靈藏姑娘的服裝。"
+		]
 	},{
-	    "name": "king",
-	    "dialogue": [
-	        "好小子，竟敢戲弄我...人來，把公謹拿下！"
-	    ]
+		"name": "player",
+		"dialogue": [
+	    	"莫非是無苦師兄..."
+		]
+	},
+	{
+		"name": "event",
+		"dialogue": [
+			"storydisappear",
+	        "nextscene"
+		]
 	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "你們敢？"
-	    ]
-	},{
-	    "name": "event",
-	    "dialogue": [
-	        "dragonkill"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "師兄！"
-	    ]
-	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "師妹...我已用盡畢生功力把內裡的邪魔抑壓。",
-	        "都是我的錯，我沒臉當你師兄。"
-	    ]
-	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "你變回我熟識的師兄就已經足夠。"
-	    ]
-	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "你原諒我嗎？"
-	    ]
-	},{
-	    "name": "dragon",
-	    "dialogue": [
-	        "絕對境界，把過去，現在，未來，融合為一，這是一種不可思議的覺悟 "
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "我看到，過去的我是天龍人，和現在的我結合。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "是...是龍星群..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "然後因為我有如此覺悟，我也看到未來的我。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "這千萬種琴聲..."
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "既然有這麼多個我，那個才是真正的我。"
-	    ]
-	},{
-	    "name": "music",
-	    "dialogue": [
-	        "沒有真我，萬法歸一。"
-	    ]
-	},{
-	    "name": "player",
-	    "dialogue": [
-	        "哈哈，原來如此。"
-	    ]
+		"name": "player",
+	   	"leftPrefab": "player",
+		"rightPrefab": "",
+		"dialogue": [
+	    	"終於來到聖地了。"
+		]
 	}
 ]
 }
-
-

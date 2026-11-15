@@ -1,101 +1,161 @@
 {
-"storyArray" : [
+  "storyArray": [
 	{
-		"name": "rkid",
-		"leftPrefab": "rkid",
-		"rightPrefab": "player",
-		"dialogue": [
-	        "靈藏，你當真要遠赴天山，隱世苦修嗎？"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"人的痛苦，貴極一時，賤至乞丐，各皆有之。",
-			"天災人禍，兵連禍結，生死流轉，實令人徒留無助與絕望...",
-	        "為了天下蒼生，我必順要去，方不負黛苓老師的厚望。"
-		]
-	},{
-		"name": "rkid",
-		"dialogue": [
-			"靈藏，既然你心意已決，我便不再多加挽留。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師，你何不與我同行，共赴天山？"
-		]
-	},{
-		"name": "rkid",
-		"dialogue": [
-			"靈藏，我不能去的...",
-			"恩師臨終之際，將年幼的小雁託付於我，我豈能棄之不顧？",
-			"且待小雁長大成人，我定當遠赴天山，與你相會。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"好，那麼你要答應我，好好照顧小雁。"
-		]
-	},{
-		"name": "rkid",
-		"dialogue": [
-			"對...我必須要把..."
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"把小雁救回來！"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"藥師，你總算大夢初醒，回復神智了。"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"我竟然忘記了此處藏有『鎖靈陣』...",
-			"恩師生前所設的奇門遁甲，當真玄妙莫測、不可思議...",
-			"靈藏，莫非你是沒有受『鎖靈陣』所惑？"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"人心本如明鏡，奈何陷於迷途，暫被浮生無明所掩。",
-			"若能撥雲見日，復歸本心，則心海澄澈，水清則月現..."
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"靈藏，這次我是真的服了。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"微末之言不足掛齒，當務之急是營救小雁...",
-			"只是當我趕至這密室時，並沒看到『陰丹』。"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"怎...怎會這樣...",
-			"難道是三號病房的病人？都怪我太疏忽了..."
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-			"你可知道那病人是長什麼模樣嗎？"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"確實記不清了，或許霜月姑娘還記得些許特徵。"
-		]
-	},{
-		"name": "rosia",
-		"dialogue": [
-			"與其在此苦思，不如我們先回去找她問個明白吧。"
-		]
+	  "name": "event",
+	  "dialogue": [
+        "playercome"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "leftPrefab": "player",
+	  "rightPrefab": "dragon",
+	  "dialogue": [
+        "常樂師叔？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+		"小師侄，總算見到你了。",
+		"你獨自走這麼遠，我不大放心，便下山來看看。",
+        "一路從玉門山莊問到工棚，終於在這裡遇上你。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"感謝師叔關心...",
+        "師叔，你可有聽到有人墮河的消息？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "有位落水的傷者，我正在照看...你進來看看。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "是爹！"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playerrun"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"真的是爹！",
+        "爹，你醒醒啊！"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playershake"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+		"你爹雖傷得很重，但性命總算保住了。",
+        "如今還需靜養，醒來恐怕尚需些時日。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "感謝師叔救父之恩！"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "慚愧，師叔醫術有限，還未能讓你爹醒來。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"師叔不必自責。",
+        "得知爹尚在人世，靈藏已經心足。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "dragonsit"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+		"只是他元氣虧損不少，我怕往後落下病根。",
+		"尤其是那條傷腿，往後能否行走自如，還是未知之數。",
+        "若能取些月牙天參，腿傷或有轉機。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "還請師叔指點，如何求得月牙天參？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "玉門山莊的藥庫或許有，你去問問便好。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "好，我去取藥。只是爹身邊……"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "我會留在這裡照料，你放心去吧。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"playertuckin",
+        "playerkneel"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "師叔，爹便拜託你了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"playerleave",
+        "playerturn"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"爹，有些話，我先留在心裡...",
+        "等你醒來再慢慢說給你聽。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "timefly"
+	  ]
 	}
-]
+  ]
 }

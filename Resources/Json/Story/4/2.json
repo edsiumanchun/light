@@ -1,102 +1,90 @@
-斷罪之花 應該是
 {
-"storyArray" : [{
-		"name": "king",
-	   	"leftPrefab": "player",
-		"rightPrefab": "king",
+"storyArray" : [
+	{
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
 		"dialogue": [
-	    	"父王！你沒事吧？"
-		]
-	},{
-		"name": "king",
-		"dialogue": [
-			"女兒，我沒事...",
-	        "是惡名昭彰的琉璃王。"
-	        "獸人樣子雖凶狠，但他們卻對我相敬如賓。"
-		]
-	},{
-		"name": "dragon",
-		"dialogue": [
-	        "客氣了，也需要國王的信任才可以達成協議。"
-		]
-	},{
-		"name": "player",
-		"dialogue": [
-	        "話說東盟國國王什麼時候來到？"
-		]
-	},{
-		"name": "dragon",
-		"dialogue": [
-	    	"快到了，你們在這裡稍後，我過去迎接東盟國國王。"
+	        "真是對可憐母子..."
 		]
 	},{
 		"name": "event",
 		"dialogue": [
-	        "dragonleave"
+	        "playerpoint"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+	        "恩公，求您看看我的孩子。他發了一夜高熱，方才昏了過去。"
 		]
 	},{
-		"name": "king",
+		"name": "grandpa",
 		"dialogue": [
-	    	"女兒，你怎麼來到這裡？"
+	        "莫慌，老夫身上恰好有一枚能療癒百病的『陰陽丹』，便贈與這孩子吧。"
 		]
 	},
 	{
-		"name": "player",
+		"name": "teacher2",
 		"dialogue": [
-	        "聽說我們要把餓鬼殲滅，這件事請父王三思。"
+			"前輩，此丹乃曠世靈藥，世上就只有這一顆...",
+	    	"晚輩未曾想過，您竟捨得將如此珍寶拱手讓人，而不留待自用。"
 		]
 	},{
-		"name": "king",
+		"name": "grandpa",
 		"dialogue": [
-			"我們跟東盟國已經口頭上妥協了協議內容。",
-	    	"怎麼可以說收回就收回，現在不是小朋友玩遊戲啊！"
+			"黛苓啊，老夫已半截入土，縱有靈丹妙藥，亦不過苟延殘喘一兩載光陰。",
+	        "可這孩子若無此丹，怕是熬不過今夜。若作壁上觀，老夫定會遺憾終生。"
 		]
 	},
 	{
-		"name": "player",
+		"name": "teacher2",
 		"dialogue": [
-	        "但是現在的情況好像有點不對勁。"
-		]
-	},{
-		"name": "king",
-		"dialogue": [
-			"不對勁也要幹了。",
-			"我若然反口，就沒有威信令國民聽從於我了！",
-	    	"現在最重要的是要好好招待賓客，別得失人家啊。"
-		]
-	},{
-		"name": "event",
-		"dialogue": [
-	        "kingleave"
-		]
-	},
-	{
-		"name": "maria",
-	   	"leftPrefab": "music",
-		"rightPrefab": "ghostmaria",
-		"dialogue": [
-	        "公主真的料事如神，他們果然有一些陰謀。"
-		]
-	},
-	{
-		"name": "ghostmaria",
-		"dialogue": [
-	        "就是不知道協議內容是什麼？"
-		]
-	},
-	{
-		"name": "player",
-		"dialogue": [
-	        "無論如何也要阻止他們，不能再讓悲劇發生。"
+	    	"前輩這風骨...真讓人佩服。"
 		]
 	},{
 		"name": "event",
 		"dialogue": [
-			"storyleave",
-	        "storydisappear"
+	        "passpill"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+	    	"大恩大德，如同再生父母，我實在無以為報..."
+		]
+	},{
+		"name": "event",
+		"dialogue": [
+	        "eatpill"
+		]
+	},
+	{
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
+		"dialogue": [
+	        "孩子暫且穩住了。你們怎麼會在外頭過夜？"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+			"村裡不容我們留下，一路也沒人肯收留。",
+	    	"恩公，我此生別無所求，唯願您能垂憐這苦命孩子，將他收留撫養。"
+		]
+	},
+	{
+		"name": "grandpa",
+		"leftPrefab": "grandpa",
+		"dialogue": [
+	        "你兒子叫什麼名字？"
+		]
+	},
+	{
+		"name": "mom",
+		"dialogue": [
+			"他叫做...",
+	    	"藥師。"
 		]
 	}
 ]
 }
-
-{"storyArray": []}

@@ -1,185 +1,47 @@
 {
   "storyArray": [
-    {
-      "name": "event",
-      "dialogue": [
-        "rosiaawake"
-      ]
-    },
-    {
-      "name": "rosia",
-      "leftPrefab": "player",
-      "rightPrefab": "rosiasad",
-      "dialogue": [
-        "是你救了我？多謝姑娘。",
-        "不知姑娘怎麼稱呼？"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "我叫靈藏，剛從天山下來。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "在下藥師。姑娘怎會來這古穴？"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "聽說你常替修城的人治傷，我想向你打聽我爹的下落。",
-        "他左腿有傷，多年前被徵來修城，如今下落不明。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "這個不好說，待我回去後，替你打聽一下吧..."
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "rosiahurt。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "你的腿也受了傷。先讓我扶你回去，餘下的慢慢再說。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "剛才採藥時擦傷了，回去包紮一下就好。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "gotohospital"
-      ]
-    },
-    {
-      "name": "maria",
-      "dialogue": [
-        "藥師哥哥，你又受傷了？",
-        "我寧可抱病終身，也不想你再去冒險。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "playersay"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "不知這孩子患了甚麼病，竟讓你這樣掛心？"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "她患了獸皮病，我才冒險去找藥。",
-        "幸好，這次總算找到了。"
-      ]
-    },
-    {
-      "name": "maria",
-      "dialogue": [
-        "爺爺走後，都是藥師哥哥在照顧我。",
-        "可他為我冒了那麼多次險……",
-        "我真的不想再成為他的負擔了。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "mariacry"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "別這樣說。你爺爺是我的恩師。",
-        "他臨終將你託付給我，我怎能不盡力？"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "自己帶著傷，卻還一心顧著她。",
-        "病苦能耗損身子，卻沒能耗盡這份牽掛。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "見笑了...",
-        "說起來，隔壁有座廢棄病院...從前修城受傷的人，都送到那裡。",
-        "或許有甚麼蛛絲馬跡，你可以去看看。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "多謝指點，我去那裡查看一下。",
-        "願來日再會，少些病苦，多些安好。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "playerleave"
-      ]
-    },
-    {
-      "name": "maria",
-      "dialogue": [
-        "那位姐姐還沒找到爹，卻先送你回來了。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "是啊。希望她早日找到父親。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "nursecome"
-      ]
-    },
-    {
-      "name": "nurse",
-      "dialogue": [
-        "小雁，該服藥了。"
-      ]
-    },
-    {
-      "name": "maria",
-      "dialogue": [
-        "霜月姐姐，你回來了。"
-      ]
-    },
-    {
-      "name": "rosia",
-      "dialogue": [
-        "霜月，有勞你了。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "gotobase"
-      ]
-    }
+	{
+	  "name": "player",
+	  "dialogue": [
+        "你受傷了嗎？怎麼獨自站在這裡？"
+	  ]
+	},
+	{
+	  "name": "nurse",
+	  "dialogue": [
+        "我沒事……嬤嬤被石頭壓住了！求你救救她！"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "嬤嬤，你聽得見嗎？我去請黛苓老師來！"
+	  ]
+	},
+	{
+	  "name": "grandmom",
+	  "dialogue": [
+        "孩子，能不能先幫我搬開一點石頭……我快受不住了……"
+	  ]
+	},
+	{
+	  "name": "nurse",
+	  "dialogue": [
+        "嬤嬤……"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"我叫靈藏，會留在這裡陪著你的嬤嬤。",
+        "你快去外面，請大人來幫忙吧。"
+	  ]
+	},
+	{
+	  "name": "nurse",
+	  "dialogue": [
+        "好……靈藏姐姐，我叫霜月，我很快就回來！"
+	  ]
+	}
   ]
 }

@@ -1,0 +1,41 @@
+{
+  "storyArray": [
+	{
+	  "name": "BossBone",
+	  "leftPrefab": "player",
+	  "rightPrefab": "BossBone",
+	  "dialogue": [
+		"不...不餓了...",
+        "這是什麼回事？"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"這聖光只能讓妄念暫歇，還你片刻清明。",
+        "若要真正得到解脫，仍須靠自力自渡。"
+	  ]
+	},
+	{
+	  "name": "BossBone",
+	  "dialogue": [
+		"幸得恩公出手相助……",
+		"千百年來，我飢渴難耐。",
+        "食物一入口，便化作烈火……"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"bossdisappear",
+        "playerpray"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "願長夜有盡，漂泊的魂，也能等到天明。"
+	  ]
+	}
+  ]
+}

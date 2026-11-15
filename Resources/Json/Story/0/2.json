@@ -1,64 +1,20 @@
 {
   "storyArray": [
-    {
-      "name": "player",
-      "leftPrefab": "player",
-      "rightPrefab": "shopowner",
-      "dialogue": [
-        "掌櫃，不知這些石塊藏著怎樣的來歷？"
-      ]
-    },
-    {
-      "name": "shopowner",
-      "dialogue": [
-        "客官，稍等，讓我翻翻古籍。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "shopbook"
-      ]
-    },
-    {
-      "name": "shopowner",
-      "dialogue": [
-        "這便是世人的貪念、憎怨與愚痴，歷年凝成的三垢石。",
-        "古籍說，它能放大這些念頭，讓心魔具現。",
-        "不論生者亡者，都可能受它侵擾。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "三垢石……看不見的人心，竟也有了形貌。"
-      ]
-    },
-    {
-      "name": "shopowner",
-      "dialogue": [
-        "這種石頭一旦出現，恐怕一場毀滅性的天災人禍，已然近在眼前了。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "世間紛擾，眾人都在其中浮沉。",        
-        "但願仍有化解的餘地，不必再添離散..."
-      ]
-    },
-    {
-      "name": "shopowner",
-      "dialogue": [
-        "雖說三垢石不是什麼好東西，但它也有些許重煉造化的價值。",
-        "客官，你要不要用三垢石換取小店的奇珍異寶？"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "shop"
-      ]
-    }
+	{
+	  "name": "player",
+	  "leftPrefab": "playerkid",
+	  "rightPrefab": "teacher",
+	  "dialogue": [
+        "黛苓老師，爹說你又準備了新題。這回考甚麼？"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+		"來得正好，這裡新設了一座機關迷宮。",
+		"你手裡只有一柄銅匙，試著取出裡面的靈珠吧。",
+        "先看清四周，再作決定...遇上機關，別急著硬闖。"
+	  ]
+	}
   ]
 }

@@ -1,86 +1,129 @@
-// 如設成 老師一直為三垢石奔波 在找誰在研究這 各國都禁止的東西? 然後阻止 為了蒼生之類? 因為 三垢石最終會令人變成妖魔
-
 {
   "storyArray": [
-    {
-      "name": "sage",
-      "leftPrefab": "player",
-      "rightPrefab": "sage",
-      "dialogue": [
-        "咳咳……姑娘，我多日沒吃東西了。",
-        "可否討口飯吃？"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "donate"
-      ]
-    },
-    {
-      "name": "sage",
-      "dialogue": [
-        "謝謝你...萍水相逢，難得遇上好心人。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "老人家，我想向您打聽我爹的下落。",
-        "他多年前被徵來修城，左腿有傷。",
-        "走路不方便，不知您是否見過他？"
-      ]
-    },
-    {
-      "name": "sage",
-      "dialogue": [
-        "當年的事，老朽知道得不多。",
-        "不過，有人常替修城的人看傷……你或可向他打聽。"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "不知現在能到哪裡找他？"
-      ]
-    },
-    {
-      "name": "sage",
-      "dialogue": [
-        "前些日子，他進了這座古穴採藥……可一直沒見他出來……"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "多謝指點，願您平安。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "ghostshow",
-        "playerturn",
-        "playerattack",
-        "bossgoldkey",
-        "bossdisappear",
-        "playerturn",
-        "playeridle"
-      ]
-    },
-    {
-      "name": "sage",
-      "dialogue": [
-        "是...是...失傳已久的「聖光術」嗎...?"
-      ]
-    },
-    {
-      "name": "player",
-      "dialogue": [
-        "是的...",
-        "這就是能為亡靈斷罪...斷除一切困惑的..."
-        "瑪哈嘎魯那聖光！"
-      ]
-    }
+	{
+	  "name": "event",
+	  "dialogue": [
+        "completeTutor"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "leftPrefab": "playerkid",
+	  "rightPrefab": "teacher",
+	  "dialogue": [
+        "今天的功課就到這裡。靈藏，把書收好，歇一歇吧。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "老師慢走。"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+        "不用送了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"teacherleave",
+		"playersleep",
+        "teacherback"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+		"瞧我，竟把傘忘在這裡了。",
+        "怎麼睡到你爹的床上？自己的被窩不暖嗎？"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+		"我只是睏了，借爹的床歇一會……",
+        "外頭這麼冷，總想讓他回來時，被窩是暖的。"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+		"心裡惦記著爹，也別忘了照顧自己。",
+        "把被子蓋好，別讓這份心意換來一身寒氣。"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+		"我記住了。老師，你的手也凍紅了。",
+        "傘旁還有熱茶，喝暖了身子再走吧。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "timefly"
+	  ]
+	},
+	{
+	  "name": "teachernpc",
+	  "dialogue": [
+        "黛苓老師，時候不早了，大家都在聚賢莊等著聽課呢。"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+		"知道了。",
+        "靈藏，我先走了，晚些再來看你。"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+        "好，老師慢走。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "timefly"
+	  ]
+	},
+	{
+	  "name": "father",
+	  "dialogue": [
+        "靈藏，又替爹暖被了？來，往裡挪一挪，你的腳都露在外頭了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playerwake"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+		"我只是剛好睡著了，沒有特意等你。",
+        "爹，今天腿還疼嗎？你先坐，鞋上的雪讓我來拍。"
+	  ]
+	},
+	{
+	  "name": "father",
+	  "dialogue": [
+		"慢些，雪都拍到你自己身上了。爹坐一會就好。",
+        "對了，方才遇見黛苓老師，她說在聚賢莊備了道題，等你歇夠了再去試試。"
+	  ]
+	},
+	{
+	  "name": "playerkid",
+	  "dialogue": [
+        "又有新題？那我去看看，晚些就回來。"
+	  ]
+	}
   ]
 }

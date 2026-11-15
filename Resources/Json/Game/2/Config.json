@@ -1,18 +1,18 @@
 {
   "paths": {
-    "backgrounds": ["ScaleCastle", "ScaleBamboo", "ScaleSky", "ScaleMoon"],
-    "plateH": ["Rock", "GoUp", "GoDown","Space", "GoDownExit", "GoDownRevert"],
-    "plateV": ["Rock","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake","RockFake", "GateExit2"],
-    "characters": ["Player", "StoryShop","StoryScout","StoryChef","StoryTeacher", "Cow", "Calf", "StorySister"],
-    "bosses": ["BossEye", "BossBigEye"],
-    "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
-    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2", "Arrogant"],
+    "backgrounds": ["ScaleNight", "ScaleNight2"],
+    "plateH": ["Wood", "GoUp", "GoDown","Space"],
+    "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake"],
+    "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
+    "bosses": ["BossMummy_3"],
+    "enemies": ["EnemyMummy", "EnemyBat", "Enemy1"],
+    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
     "obstacles": ["Dark"],
-    "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed", "Teleport", "TeleportExit", "TeleportFak"],
+    "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Ceiling"],
-    "walls": ["Rock0", "Rock1", "Rock2"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
+    "walls": ["Brick0", "Brick1", "Brick2"],
     "audios": ["elf","bgm"]
   }
 }

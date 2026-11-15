@@ -1,7 +1,7 @@
 class_name CastlePlayer
 extends CharacterBody2D
 
-@export var speed := 260.0
+@export var speed := 360.0
 @export var jump_velocity := -520.0
 @export var max_jumps := 2
 
