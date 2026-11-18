@@ -20,10 +20,14 @@ var dashboard_values: Dictionary = {}
 const WORLD_MAP := preload("res://godot/scripts/world_map.gd")
 var world_map: Control
 var map_button: Button
+var unlock_all_button: Button
+var test_controls: VBoxContainer
 
 func _ready() -> void:
 	GameState.stats_changed.connect(refresh)
 	GameState.floor_changed.connect(func(_stage, _floor): refresh())
+	StoryManager.story_selected.connect(refresh)
+	StoryManager.closed.connect(refresh)
 	StoryManager.opened.connect(func(): interact_label.text = "Next")
 	StoryManager.opened.connect(close_dashboard)
 	StoryManager.closed.connect(func(): interact_label.text = "Interact")
@@ -50,15 +54,74 @@ func _ready() -> void:
 	map_button.offset_top = 18
 	map_button.offset_bottom = 54
 	map_button.pressed.connect(open_world_map)
+	build_test_controls()
 	refresh()
 
+func build_test_controls() -> void:
+	test_controls = VBoxContainer.new()
+	add_child(test_controls)
+	test_controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+	test_controls.offset_left = 20
+	test_controls.offset_right = 158
+	test_controls.offset_top = -134
+	test_controls.offset_bottom = -18
+
+	var jump_dialog := AcceptDialog.new()
+	jump_dialog.title = "Jump to Floor"
+	jump_dialog.dialog_hide_on_ok = false
+	add_child(jump_dialog)
+	var fields := VBoxContainer.new()
+	fields.custom_minimum_size.x = 240
+	jump_dialog.add_child(fields)
+	var floor_input := LineEdit.new()
+	floor_input.placeholder_text = "Floor in current location (e.g. 0a)"
+	fields.add_child(floor_input)
+	var error_label := Label.new()
+	fields.add_child(error_label)
+	jump_dialog.register_text_enter(floor_input)
+	jump_dialog.confirmed.connect(func():
+		if GameState.jump_to_floor_for_testing(floor_input.text.strip_edges().to_lower()):
+			jump_dialog.hide()
+		else:
+			error_label.text = "That floor does not exist here."
+	)
+	add_test_button("Jump to Floor").pressed.connect(func():
+		error_label.text = ""
+		floor_input.text = DataLoader.floor_label(GameState.current_stage, GameState.current_floor)
+		jump_dialog.popup_centered()
+		floor_input.grab_focus()
+		floor_input.select_all()
+	)
+
+	var reset_dialog := ConfirmationDialog.new()
+	reset_dialog.title = "Reset Progress"
+	reset_dialog.dialog_text = "Reset all progress, items, and unlocks in this save slot?"
+	add_child(reset_dialog)
+	reset_dialog.confirmed.connect(GameState.reset_progress_for_testing)
+	add_test_button("Reset All").pressed.connect(func(): reset_dialog.popup_centered())
+	unlock_all_button = add_test_button("Unlock All")
+	unlock_all_button.pressed.connect(GameState.unlock_all_stages_for_testing)
+
+func add_test_button(label: String) -> Button:
+	var button := Button.new()
+	button.text = label
+	button.custom_minimum_size.y = 36
+	test_controls.add_child(button)
+	return button
+
 func _process(_delta: float) -> void:
+	test_controls.visible = not StoryManager.active and not world_map.visible
+	unlock_all_button.disabled = GameState.unlock_all_for_testing
+	unlock_all_button.text = "All Unlocked" if GameState.unlock_all_for_testing else "Unlock All"
 	map_button.visible = not StoryManager.active
 	if StoryManager.active:
 		interact_button.visible = StoryManager.dialogue_visible
 		return
-	var player := get_tree().get_first_node_in_group("player")
-	interact_button.visible = player != null and player.has_method("can_interact") and player.can_interact()
+	var player := get_tree().get_first_node_in_group("player") as CastlePlayer
+	var target := player.nearest_interaction() if player != null else null
+	interact_button.visible = target != null
+	var door := target as CastleDoor
+	interact_label.text = "Locked" if door != null and door.is_locked() else "Interact"
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_M:
@@ -87,7 +150,12 @@ func close_dashboard() -> void:
 	dashboard.visible = false
 
 func refresh() -> void:
-	stats.text = "Stage %d   Floor %d" % [GameState.current_stage, GameState.current_floor]
+	var stage := GameState.current_stage
+	var floor := GameState.current_floor
+	var location: String = world_map.location_name_for(stage, floor)
+	stats.text = "%s · Floor %s" % [location, DataLoader.floor_label(stage, floor)] if not location.is_empty() else "Stage %d   Floor %d" % [stage, floor]
+	if StoryManager.active:
+		stats.text += " · Story %s" % StoryManager.current_story_id
 	hp_bar.max_value = maxf(GameState.hp_max, 1)
 	hp_bar.value = GameState.hp
 	mp_bar.max_value = maxf(GameState.mp_max, 1)

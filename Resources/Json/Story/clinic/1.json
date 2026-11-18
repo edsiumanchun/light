@@ -1,0 +1,121 @@
+{
+  "storyArray": [
+	{
+	  "name": "maria",
+	  "dialogue": [
+		"藥師哥哥，你又受傷了？",
+        "我寧可抱病終身，也不想你再去冒險。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playersay"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "不知這孩子患了甚麼病，竟讓你這樣掛心？"
+	  ]
+	},
+	{
+	  "name": "rosia",
+	  "dialogue": [
+		"她患了獸皮病，我才冒險去找藥。",
+        "幸好，這次總算找到了。"
+	  ]
+	},
+	{
+	  "name": "maria",
+	  "dialogue": [
+		"爺爺走後，都是藥師哥哥在照顧我。",
+		"可他為我冒了那麼多次險……",
+        "我真的不想再成為他的負擔了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "mariacry"
+	  ]
+	},
+	{
+	  "name": "rosia",
+	  "dialogue": [
+		"別這樣說。你爺爺是我的恩師。",
+        "他臨終將你託付給我，我怎能不盡力？"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"自己帶著傷，卻還一心顧著她。",
+        "病苦能耗損身子，卻沒能耗盡這份牽掛。"
+	  ]
+	},
+	{
+	  "name": "rosia",
+	  "dialogue": [
+		"見笑了...",
+		"說起來，隔壁有座廢棄病院...從前修城受傷的人，都送到那裡。",
+        "或許有甚麼蛛絲馬跡，你可以去看看。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"多謝指點，我去那裡查看一下。",
+        "願來日再會，少些病苦，多些安好。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playerleave"
+	  ]
+	},
+	{
+	  "name": "maria",
+	  "dialogue": [
+        "那位姐姐還沒找到爹，卻先送你回來了。"
+	  ]
+	},
+	{
+	  "name": "rosia",
+	  "dialogue": [
+        "是啊。希望她早日找到父親。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "nursecome"
+	  ]
+	},
+	{
+	  "name": "nurse",
+	  "dialogue": [
+        "小雁，該服藥了。"
+	  ]
+	},
+	{
+	  "name": "maria",
+	  "dialogue": [
+        "霜月姐姐，你回來了。"
+	  ]
+	},
+	{
+	  "name": "rosia",
+	  "dialogue": [
+        "霜月，有勞你了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "gotobase"
+	  ]
+	}
+  ]
+}

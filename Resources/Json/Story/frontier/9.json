@@ -1,0 +1,30 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "leftPrefab": "playerkid",
+      "dialogue": [
+        "楔石已經抵穩了。嬤嬤，低頭，我用風把石頭推開。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "moverock"
+      ]
+    },
+    {
+      "name": "grandmom",
+      "rightPrefab": "grandmom",
+      "dialogue": [
+        "石頭鬆開了……孩子，多謝你。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "先別勉強站起來，等霜月帶人回來。"
+      ]
+    }
+  ]
+}

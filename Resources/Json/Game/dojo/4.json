@@ -1,0 +1,80 @@
+{
+  "layout": {
+    "columns": 4,
+    "rows": 3,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "plateFinish": "timber",
+    "doorDecoration": "Liuhe/LatticeDoor",
+    "gateDecoration": "Liuhe/Gate",
+    "objectIdPrefix": "dojo-layout-v2/",
+    "assetScales": {
+      "Decorations/Liuhe/LatticeDoor": 0.108
+    },
+    "doorDestinations": {
+      "2": {
+        "floor": 2
+      },
+      "10": {
+        "floor": 1
+      },
+      "11": {
+        "floor": "0b",
+        "requiresGates": [
+          "gateV_0_0_2",
+          "gateV_0_2_2",
+          "gateV_0_2_3"
+        ]
+      }
+    }
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerY": true,
+    "verticalDeadZone": 55
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [5]
+    },
+    {
+      "name": "Audio",
+      "gridArray0": [1]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [5, 5, 5, 5],
+        [5, 5, 5, 0],
+        [0, 5, 5, 5],
+        [5, 5, 5, 5]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [7, 0, 3, 0, 7],
+        [7, 0, 0, 0, 7],
+        [7, 0, 2, 4, 7]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [21, 21, 0, 0],
+        [0, 0, 0, 0],
+        [1, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [2, 0, 0, 1]
+      ]
+    }
+  ]
+}

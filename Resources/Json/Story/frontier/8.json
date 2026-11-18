@@ -1,0 +1,19 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "leftPrefab": "playerkid",
+      "dialogue": [
+        "這塊巨石壓著她，頂上還卡著碎石。直接用風打上去，反而會把它們吹落。",
+        "用這塊扁石楔住上方的石縫，再從左邊把巨石平推向右邊的空地。"
+      ]
+    },
+    {
+      "name": "grandmom",
+      "rightPrefab": "grandmom",
+      "dialogue": [
+        "好……我會伏低身子，等你動手。"
+      ]
+    }
+  ]
+}

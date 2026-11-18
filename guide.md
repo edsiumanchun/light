@@ -244,23 +244,58 @@ Example: `3` creates a door that calls `GameState.change_floor(3)`.
 | Value | Meaning |
 |---:|---|
 | `0` | No event |
-| Positive integer | An interaction that reads `Resources/Json/Story/<stage>/<floor>-<value>.json` |
-| Negative integer | A story trigger using `abs(value)` as the story floor/id |
+| Positive integer | An interaction that reads `Resources/Json/Story/<location>/<value>.json` |
+| Negative integer | A walk-in trigger for the signed story number, with the unsigned file as a fallback |
 
-Example: `-4` starts the story data for story floor/id `4` when the player
-enters the trigger.
+In `Game/home/1.json`, put `1` in the teacher's cell to load `Story/home/1.json` and
+`2` in the bed's cell to load `Story/home/2.json`. The player presses Interact
 
-In Stage 0/Floor 0, put `1` in the teacher's cell to load `0-1.json` and
-`2` in the bed's cell to load `0-2.json`. The player presses Interact
+Set `"initStory": true` inside a game file's `layout` to automatically load the
+story with the same location and filename when that floor is entered. For example,
+`Game/dojo/3.json` reads `Story/dojo/3.json`. You may instead use an explicit
+number such as `"initStory": 5`. When the conversation finishes, that number is
+saved as the location's story progress. Returning to the location, or interacting
+with an NPC for the same story number, will not replay it. Reset Progress clears
+this saved value.
 within range of the cell. Each numbered event can be completed once per room load.
+For example, walking into `-1` at the dojo starts `Story/dojo/-1.json`.
 
-`layout.lockedEvents: [2]` starts event 2 locked. In a story's `event` block,
-add `"unlocknext"` to unlock the following event number or `"unlock:5"` to
-unlock event 5 directly. Omit the command when the story should unlock nothing.
-Events omitted from `lockedEvents` are available from the start.
+In a story's `event` block, add `"unlocknext"` to emit the current event
+number plus one, or `"unlock:5"` to emit unlock number 5 directly. Omit the
+command when the story should unlock nothing. Unlock numbers are saved per
+location and floor.
+
+Use `"unlockhome"`, `"unlockdojo"`, or `"unlockfrontier"` in a story
+`event` block to add one to that location's saved progress. A location
+becomes available on the map at 1. Higher values make positive event numbers
+up to that value available across the location's floors, subject to any local
+requirements. Event 1 is available inside a location, including during direct
+test starts, and negative walk-in events use their existing trigger rules.
+Home starts at 1. Replaying the same unlock cue does not add progress again.
+
+`"gotodojo"` sends the player to `Game/dojo/1.json` after the current
+story finishes. Use `"gotohome"` and `"gotofrontier"` the same way.
+Use an unlock cue as well if that destination should become available on the map.
+
+`layout.eventUnlocks: { "2": 5 }` locks the interaction for event 2 until
+a story emits unlock number 5 on that floor. The older `lockedEvents: [2]`
+is equivalent to `eventUnlocks: { "2": 2 }`. Use
+`layout.eventRequires: { "2": 1 }` if event 2 should require completion
+of event 1 without a separate unlock cue.
 
 `layout.sleepEvent: 2` uses event 2's floor position for the sleep animation.
 Set door destinations in the separate `Door` grid.
+`layout.doorDestinations` can map a door number to a different floor or
+location. For example, `{ "1": { "location": "dojo", "floor": 1 } }`
+sends door 1 to `Game/dojo/1.json`. Add `"requiresEvent": 1` to the
+destination to lock the door until event 1 on the source floor is completed.
+Add `"unlockEvent": 5` to require unlock number 5 on that floor. The same
+cue can open several doors and enable story interactions. If both requirements
+are configured, the player must meet both. Add `"requiresLocationProgress": 2`
+to a door destination to require progress 2 in the source location.
+Start a test run with
+`CASTLE_START_LOCATION=home`, `dojo`, or `frontier` and set
+`CASTLE_START_FLOOR` to the layout number.
 
 ## Non-spatial asset values
 

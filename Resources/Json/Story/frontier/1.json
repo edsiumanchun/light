@@ -1,0 +1,52 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "leftPrefab": "playerkid",
+      "dialogue": [
+        "你受傷了嗎？怎麼獨自站在這裡？"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "我沒事……嬤嬤被石頭壓住了！求你救救她！"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "嬤嬤，你聽得見嗎？我去請黛苓老師來！"
+      ]
+    },
+    {
+      "name": "grandmom",
+      "rightPrefab": "grandmom",
+      "dialogue": [
+        "孩子，能不能先幫我搬開一點石頭……我快受不住了……"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "嬤嬤……"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我叫靈藏，會留在這裡陪著你的嬤嬤。",
+        "你快去外面，請大人來幫忙吧。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "好……靈藏姐姐，我叫霜月，我很快就回來！",
+        "我記得旁邊有塊扁石。靈藏姐姐，你先看看石縫，別讓上面的碎石再塌下來。"
+      ]
+    }
+  ]
+}

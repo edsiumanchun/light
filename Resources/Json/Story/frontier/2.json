@@ -1,0 +1,74 @@
+{
+  "storyArray": [
+    {
+      "name": "teacher",
+      "leftPrefab": "teacher",
+      "rightPrefab": "playerkid",
+      "dialogue": [
+        "靈藏，事情的經過，霜月已經告訴我了。",
+        "先陪她退到一旁，接下來有我們。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "savegrandma"
+      ]
+    },
+    {
+      "name": "teachernpc",
+      "rightPrefab": "scout",
+      "dialogue": [
+        "老師，人已抬出來了，傷得很重！"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "嬤嬤流了好多血……她會不會醒不過來？"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "rightPrefab": "grandpa",
+      "dialogue": [
+        "霜月，先退開些，讓老朽看看嬤嬤的傷。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "savegrandma2"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "傷勢暫時穩住了。",
+        "靈藏，你搬了這麼多石塊，也應該累了，要不先回家吧。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "leftPrefab": "teacher",
+      "rightPrefab": "playerkid",
+      "dialogue": [
+        "天色晚了，你爹也該等得心焦了。",
+        "靈藏，我陪你回去。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "好，謝謝老師。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "gotohome"
+      ]
+    }
+  ]
+}

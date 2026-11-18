@@ -1,11 +1,12 @@
 {
   "locations": [
-    { "name": "六和道場", "position": [340, 192], "stage": 0, "floor": 2 },
-    { "name": "月牙泉村", "position": [577, 192] },
-    { "name": "敦煌城關", "position": [577, 338] },
-    { "name": "玉門山莊", "position": [340, 338] }
+    { "name": "靈藏的住處", "coordinates": [94.44, 40.108], "labelOffset": [0, 32], "approximate": true, "location": "home", "floor": 1 },
+    { "name": "六和道場", "coordinates": [94.53, 40.20], "labelOffset": [0, -32], "approximate": true, "location": "dojo", "floor": 1 },
+    { "name": "月牙泉村", "coordinates": [94.6694, 40.0874], "labelOffset": [0, 37] },
+    { "name": "敦煌邊境", "coordinates": [94.6639, 40.1411], "labelOffset": [4, -32], "location": "frontier", "floor": 1 },
+    { "name": "玉門藥谷", "coordinates": [94.35, 40.22], "labelOffset": [0, 32], "approximate": true }
   ],
   "west": "樓蘭古城",
-  "grottoSites": ["敦煌石窟崖下", "敦煌石窟", "敦煌藏書閣", "天山"],
-  "home": { "name": "返回住處", "currentLabel": "住處", "stage": 0, "floor": 0 }
+  "grottoAnchor": { "name": "莫高窟", "coordinates": [94.81667, 40.13333], "labelOffset": [29, -32] },
+  "grottoSites": ["敦煌石窟崖下", "敦煌石窟", "敦煌藏書閣", "天山"]
 }

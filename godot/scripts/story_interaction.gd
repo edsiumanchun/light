@@ -4,9 +4,11 @@ extends StaticBody2D
 @export var suffix := ""
 @export var story_index := 0
 var require_proximity := false
+var event_number := 0
 var interaction_enabled := true
 const WALK_SPEED := 150.0
 const WALK_ANIMATION := "mixamo_com"
+const INTERACTION_LAYER := 4
 
 var home_position := Vector2.ZERO
 var exit_position := Vector2.ZERO
@@ -14,6 +16,9 @@ var model: Node3D
 var animation: AnimationPlayer
 
 func _ready() -> void:
+	# The player's interaction detector sees this layer, but the player body does not.
+	collision_layer = INTERACTION_LAYER
+	collision_mask = 0
 	add_to_group("interactable")
 
 func setup_exit(destination: Vector2) -> void:
@@ -39,9 +44,8 @@ func walk_to(destination: Vector2, delay := 0.0, hide_on_arrival := false) -> Tw
 		tween.tween_interval(delay)
 	tween.tween_callback(func() -> void:
 		show()
-		if home_position != exit_position:
-			collision_layer = 5
-			input_pickable = interaction_enabled
+		collision_layer = INTERACTION_LAYER
+		input_pickable = interaction_enabled
 		face_direction(signf(destination.x - position.x))
 		set_walking(true)
 	)
@@ -73,7 +77,10 @@ func interact(player: CastlePlayer) -> void:
 		return
 	if require_proximity and (player == null or not player.interaction_targets.has(self)):
 		return
-	StoryManager.start_story(suffix, story_index)
+	if event_number != 0:
+		StoryManager.start_event(event_number)
+	else:
+		StoryManager.start_story(suffix, story_index)
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_index: int) -> void:
 	var clicked: bool = false

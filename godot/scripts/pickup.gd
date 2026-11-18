@@ -10,6 +10,8 @@ func setup(name: String, id: String) -> void:
 	add_to_group("interactable")
 
 func interact(_player: CastlePlayer) -> void:
+	if is_queued_for_deletion():
+		return
 	if pickup_name.begins_with("Key"):
 		GameState.change_key(pickup_name.trim_prefix("Key"), 1)
 	elif pickup_name == "PotionRed":

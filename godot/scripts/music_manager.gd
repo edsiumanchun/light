@@ -22,9 +22,9 @@ func play_track(track_name: String) -> void:
 		if not player.playing and player.stream != null:
 			player.play()
 		return
-	var path := "%s/%s.mp3" % [AUDIO_DIR, track_name]
+	var path := "%s/%s.wav" % [AUDIO_DIR, track_name]
 	if not ResourceLoader.exists(path):
-		path = "%s/%s.wav" % [AUDIO_DIR, track_name]
+		path = "%s/%s.mp3" % [AUDIO_DIR, track_name]
 	if not ResourceLoader.exists(path):
 		push_warning("Missing music track: " + path)
 		return

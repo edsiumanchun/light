@@ -53,6 +53,13 @@ func load_floor(stage: int, floor: int) -> void:
 	if player != null:
 		camera.zoom = level.gameplay_zoom()
 		camera.position = gameplay_camera_position()
+	if level.init_story > 0:
+		_start_initial_story.call_deferred(stage, level.init_story)
+
+func _start_initial_story(stage: int, story_number: int) -> void:
+	if stage != GameState.current_stage or StoryManager.active:
+		return
+	StoryManager.start_initial_story(story_number)
 
 func _on_floor_changed(stage: int, floor: int) -> void:
 	load_floor(stage, floor)
@@ -62,7 +69,7 @@ func _focus_on_player() -> void:
 		StoryManager.reveal_dialogue()
 		return
 	var focus := player.global_position + Vector2(0, -70)
-	if is_instance_valid(level.teacher_exit_door) and (level.sleep_event == 0 or StoryManager.current_suffix != "-%d" % level.sleep_event):
+	if is_instance_valid(level.teacher_exit_door) and (level.sleep_event == 0 or StoryManager.current_event_number != level.sleep_event):
 		var half_width := level.view_size.x / INTERACTION_ZOOM.x * 0.5
 		focus.x = maxf(focus.x, level.teacher_exit_door.global_position.x - half_width + 48.0)
 	fade_camera_to(focus, INTERACTION_ZOOM)

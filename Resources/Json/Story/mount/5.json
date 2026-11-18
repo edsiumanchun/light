@@ -1,0 +1,148 @@
+{
+  "storyArray": [
+    {
+      "name": "grandpa",
+      "leftPrefab": "grandpa",
+      "dialogue": [
+        "這對母子怎麼會倒在這裡？"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "playerpoint"
+      ]
+    },
+    {
+      "name": "mom",
+      "dialogue": [
+        "恩公，求您看看我的孩子。他發了一夜高熱，方才昏了過去。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "讓我看看。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "grandpacome"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "是瘟疫……",
+        "莫慌，老夫身上恰好有一枚『月牙天參』，便讓這孩子服用吧。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "老爺爺，您說過月牙天參很珍貴。只剩這一枚，您真的要給他嗎？"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "靈藏，老夫還能走、還能說。這孩子卻未必撐得過今夜。",
+        "眼前能救一個人，便先救他。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "不愧是前輩..."
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "靈藏，你代老夫把『月牙天參』餵給那孩子吧..."
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "好的。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "夫人，您的手在抖。我來扶著孩子。"
+      ]
+    },
+    {
+      "name": "mom",
+      "dialogue": [
+        "手有點冷罷了。藥都給他吧。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "passpill"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "孩子暫且穩住了。夫人，您也坐下歇一歇吧。"
+      ]
+    },
+    {
+      "name": "mom",
+      "dialogue": [
+        "恩公，若我照顧不了他了，能不能請您替我照看他？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "你兒子叫甚麼名字？"
+      ]
+    },
+    {
+      "name": "mom",
+      "dialogue": [
+        "他叫藥師。等他醒了，請告訴他，娘一直陪著他。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "grandpacometomom",
+        "mumfall"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "夫人……小心！",
+        "這脈象……妳也染了瘟疫？"
+      ]
+    },
+    {
+      "name": "mom",
+      "dialogue": [
+        "我若說了，您就會把藥分給我。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "……"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "夫人？……靈藏，她沒有呼吸了。",
+        "妳放心。等藥師醒了，我會在這裡。"
+      ]
+    }
+  ]
+}

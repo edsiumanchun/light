@@ -1,0 +1,161 @@
+{
+  "storyArray": [
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playercome"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "leftPrefab": "player",
+	  "rightPrefab": "dragon",
+	  "dialogue": [
+        "常樂師叔？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+		"小師侄，總算見到你了。",
+		"你獨自走這麼遠，我不大放心，便下山來看看。",
+        "一路從玉門藥谷問到工棚，終於在這裡遇上你。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"感謝師叔關心...",
+        "師叔，你可有聽到有人墮河的消息？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "有位落水的傷者，我正在照看...你進來看看。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "是爹！"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playerrun"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"真的是爹！",
+        "爹，你醒醒啊！"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "playershake"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+		"你爹雖傷得很重，但性命總算保住了。",
+        "如今還需靜養，醒來恐怕尚需些時日。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "感謝師叔救父之恩！"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "慚愧，師叔醫術有限，還未能讓你爹醒來。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"師叔不必自責。",
+        "得知爹尚在人世，靈藏已經心足。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "dragonsit"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+			"只是他元氣虧損不少，我怕往後落下病根。",
+			"尤其是那條傷腿，往後能否行走自如，還是未知之數。",
+      "若能取得『月牙天參』，腿傷或有轉機。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "還請師叔指點，如何求得『月牙天參』？"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "玉門藥谷的藥庫或許有，你去問問便好。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "好，我去取藥。只是爹身邊……"
+	  ]
+	},
+	{
+	  "name": "dragon",
+	  "dialogue": [
+        "我會留在這裡照料，你放心去吧。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"playertuckin",
+        "playerkneel"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "師叔，爹便拜託你了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"playerleave",
+        "playerturn"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+		"爹，有些話，我先留在心裡...",
+        "等你醒來再慢慢說給你聽。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+        "timefly"
+	  ]
+	}
+  ]
+}

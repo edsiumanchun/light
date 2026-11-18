@@ -8,7 +8,7 @@ signal time_skip_requested
 signal dialogue_paused
 signal leaving_dialogue
 signal closed
-signal completed(stage: int, floor: int, suffix: String)
+signal completed(stage: int, floor: int, event_number: int)
 signal event_unlocked(stage: int, floor: int, event_number: int)
 
 var lines: Array[Dictionary] = []
@@ -16,9 +16,14 @@ var current_index := -1
 var active := false
 var waiting_for_cue := false
 var dialogue_visible := false
-var current_suffix := ""
+var current_event_number := 0
+var current_story_id := ""
 var story_stage := -1
 var source_floor := -1
+var pending_destination := -1
+var pending_story_event := 0
+var starting_initial_story := false
+signal story_selected
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not active:
@@ -34,18 +39,42 @@ func start_story(suffix := "", story_index := 0) -> void:
 	start_story_at_floor(GameState.current_floor, suffix, story_index)
 
 func start_story_at_floor(story_floor: int, suffix := "", story_index := 0) -> void:
+	_start_story(str(story_floor) + suffix, 0, story_index)
+
+func start_event(event_number: int) -> bool:
+	if event_number > 0 and GameState.has_completed_location_story(GameState.current_stage, event_number):
+		return false
+	var story_id := str(event_number)
+	if event_number < 0 and not FileAccess.file_exists(DataLoader.story_path(GameState.current_stage, story_id)):
+		story_id = str(absi(event_number))
+	return _start_story(story_id, event_number, 0)
+
+func start_initial_story(event_number: int) -> bool:
+	if event_number <= 0 or GameState.has_completed_location_story(GameState.current_stage, event_number):
+		return false
+	if GameState.has_completed_story_event(GameState.current_stage, GameState.current_floor, event_number):
+		GameState.complete_location_story(GameState.current_stage, event_number)
+		return false
+	starting_initial_story = true
+	var started := start_event(event_number)
+	if not started:
+		starting_initial_story = false
+	return started
+
+func _start_story(story_id: String, event_number: int, story_index: int) -> bool:
 	if active:
-		return
-	var path := "%s/Story/%d/%d%s.json" % [DataLoader.JSON_ROOT, GameState.current_stage, story_floor, suffix]
+		return false
+	var path := DataLoader.story_path(GameState.current_stage, story_id)
 	var wrapper := DataLoader.load_json(path)
 	var stories: Array = wrapper.get("storyArray", [])
 	if stories.is_empty():
-		return
+		return false
 	lines.clear()
-	var use_room_cues := GameState.current_stage == 0 and story_floor == 0 and not story_cue.get_connections().is_empty()
+	var use_room_cues := not story_cue.get_connections().is_empty()
 	var left_portrait := ""
 	var right_portrait := ""
-	for index in range(story_index, stories.size()):
+	var location_unlock_counts: Dictionary = {}
+	for index in range(stories.size()):
 		var story: Dictionary = stories[index]
 		var speaker := str(story.get("name", ""))
 		if story.has("leftPrefab"):
@@ -54,14 +83,38 @@ func start_story_at_floor(story_floor: int, suffix := "", story_index := 0) -> v
 			right_portrait = str(story.rightPrefab)
 		for dialogue in story.get("dialogue", []):
 			if speaker == "event":
-				var unlock_number := get_unlock_number(str(dialogue), suffix)
+				var command := str(dialogue).strip_edges().to_lower()
+				var unlock_number := get_unlock_number(command, event_number)
+				var unlock_location := command.trim_prefix("unlock")
+				var destination := command.trim_prefix("goto")
+				if command.begins_with("unlock") and DataLoader.stage_for_location(unlock_location) >= 0:
+					var occurrence := int(location_unlock_counts.get(unlock_location, 0)) + 1
+					location_unlock_counts[unlock_location] = occurrence
+					if index >= story_index:
+						var cue_id := "%s/%s/%s/%d" % [
+							DataLoader.location_for_stage(GameState.current_stage), story_id, unlock_location, occurrence
+						]
+						lines.append({"unlock_location": unlock_location, "cue_id": cue_id})
+					continue
+				if index < story_index:
+					continue
 				if unlock_number > 0:
 					lines.append({"unlock": unlock_number})
+				elif command.begins_with("goto") and DataLoader.stage_for_location(destination) >= 0:
+					var stage := DataLoader.stage_for_location(destination)
+					if FileAccess.file_exists(DataLoader.floor_path(stage, DataLoader.ENTRY_FLOOR)):
+						lines.append({"destination": stage})
+				elif command.begins_with("start"):
+					var next_story := parse_story_destination(command.trim_prefix("start"))
+					if not next_story.is_empty():
+						lines.append(next_story)
 				elif dialogue == "timefly" and not time_skip_requested.get_connections().is_empty():
 					lines.append({"cue": "timefly"})
-				elif use_room_cues and dialogue in ["teacherleave", "teacherback", "playersleep", "fatherarrive", "playerwake"]:
+				elif command == "playerattack":
+					lines.append({"cue": command})
+				elif use_room_cues and dialogue in ["teacherleave", "teacherback", "playersleep", "fatherarrive", "playerwake", "moverock"]:
 					lines.append({"cue": str(dialogue)})
-			else:
+			elif index >= story_index:
 				lines.append({
 					"speaker": speaker,
 					"text": str(dialogue),
@@ -69,14 +122,19 @@ func start_story_at_floor(story_floor: int, suffix := "", story_index := 0) -> v
 					"right_portrait": right_portrait,
 				})
 	if lines.is_empty():
-		return
-	current_suffix = suffix
+		return false
+	current_event_number = event_number
+	current_story_id = story_id
 	story_stage = GameState.current_stage
-	source_floor = story_floor
+	source_floor = GameState.current_floor
+	pending_destination = -1
+	pending_story_event = 0
 	active = true
 	dialogue_visible = false
 	current_index = -1
+	story_selected.emit()
 	_advance_story()
+	return true
 
 func reveal_dialogue() -> void:
 	if not active or waiting_for_cue or dialogue_visible or not lines[current_index].has("speaker"):
@@ -92,14 +150,32 @@ func next_line() -> void:
 
 func _advance_story() -> void:
 	current_index += 1
-	while current_index < lines.size() and lines[current_index].has("unlock"):
-		event_unlocked.emit(story_stage, source_floor, int(lines[current_index].unlock))
+	while current_index < lines.size():
+		var command := lines[current_index]
+		if command.has("unlock"):
+			var unlock_number := int(command.unlock)
+			GameState.record_story_unlock(story_stage, source_floor, unlock_number)
+			event_unlocked.emit(story_stage, source_floor, unlock_number)
+		elif command.has("unlock_location"):
+			GameState.advance_location(str(command.unlock_location), str(command.cue_id))
+		elif command.has("destination"):
+			pending_destination = int(command.destination)
+			pending_story_event = int(command.get("story_event", 0))
+		else:
+			break
 		current_index += 1
 	if current_index >= lines.size():
 		active = false
 		dialogue_visible = false
+		GameState.record_story_completion(story_stage, source_floor, current_event_number)
+		if starting_initial_story:
+			GameState.complete_location_story(story_stage, current_event_number)
+		starting_initial_story = false
 		closed.emit()
-		completed.emit(story_stage, source_floor, current_suffix)
+		completed.emit(story_stage, source_floor, current_event_number)
+		if pending_destination >= 0:
+			# Travel after the end of the source scene, including any remaining dialogue.
+			open_story_destination.call_deferred(pending_destination, pending_story_event)
 		return
 	var line: Dictionary = lines[current_index]
 	if line.has("cue"):
@@ -118,11 +194,34 @@ func _advance_story() -> void:
 	else:
 		opening.emit()
 
+func parse_story_destination(target: String) -> Dictionary:
+	for location in DataLoader.LOCATIONS:
+		if not target.begins_with(location):
+			continue
+		var event := target.trim_prefix(location)
+		if not event.is_valid_int() or int(event) <= 0:
+			continue
+		var stage := DataLoader.stage_for_location(location)
+		if FileAccess.file_exists(DataLoader.floor_path(stage, DataLoader.ENTRY_FLOOR)) and FileAccess.file_exists(DataLoader.story_path(stage, str(int(event)))):
+			return {"destination": stage, "story_event": int(event)}
+	return {}
+
+func open_story_destination(stage: int, event_number: int) -> void:
+	GameState.travel_to(stage, DataLoader.ENTRY_FLOOR)
+	if event_number > 0:
+		start_event(event_number)
+
 func run_current_cue() -> void:
 	if active and waiting_for_cue:
 		var cue := str(lines[current_index].cue)
 		if cue == "timefly":
 			time_skip_requested.emit()
+		elif cue == "playerattack":
+			var player := get_tree().get_first_node_in_group("player") as CastlePlayer
+			if is_instance_valid(player):
+				var cast := player.cast_story_spell()
+				await cast.finished
+			finish_story_cue()
 		else:
 			story_cue.emit(cue)
 
@@ -134,11 +233,9 @@ func _emit_dialogue_line(line: Dictionary) -> void:
 		str(line.right_portrait),
 	)
 
-func get_unlock_number(command: String, suffix: String) -> int:
-	if command == "unlocknext" and suffix.begins_with("-"):
-		var event_number := suffix.substr(1)
-		if event_number.is_valid_int() and int(event_number) > 0:
-			return int(event_number) + 1
+func get_unlock_number(command: String, event_number: int) -> int:
+	if command == "unlocknext" and event_number > 0:
+		return event_number + 1
 	if command.begins_with("unlock:"):
 		var target := command.trim_prefix("unlock:").strip_edges()
 		if target.is_valid_int():

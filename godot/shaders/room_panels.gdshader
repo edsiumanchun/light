@@ -3,6 +3,7 @@ render_mode unshaded;
 
 uniform vec2 room_size = vec2(1179.0, 300.0);
 uniform float panel_width = 393.0;
+uniform bool quiet_plaster = false;
 uniform vec2 lantern_light = vec2(-1000.0);
 uniform vec2 window_center = vec2(-1000.0);
 uniform vec2 bed_feet = vec2(-1000.0);
@@ -38,7 +39,11 @@ void fragment() {
 	float post_shadow = smoothstep(0.0, 22.0, max(post_x - post_width, 0.0));
 	color *= (0.67 + 0.33 * ceiling_shadow) * (0.65 + 0.35 * post_shadow);
 
-	if (p.y > floor_y) {
+	if (quiet_plaster) {
+		float inward = smoothstep(0.0, 0.28, UV.x) * (1.0 - smoothstep(0.72, 1.0, UV.x));
+		float falloff = 0.85 + 0.15 * sin(UV.y * 3.14159);
+		color = mix(vec3(0.22, 0.17, 0.14), vec3(0.40, 0.32, 0.25), inward * falloff + mottling);
+	} else if (p.y > floor_y) {
 		float depth = (p.y - floor_y) / (room_size.y - floor_y);
 		float row = sqrt(depth) * 4.0;
 		float seam = smoothstep(0.0, 0.10, fract(row));

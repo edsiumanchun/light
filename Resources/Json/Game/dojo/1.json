@@ -1,0 +1,110 @@
+{
+  "layout": {
+    "initStory": 1,
+    "disableNpcInteraction": true,
+    "columns": 9,
+    "rows": 4,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "plateFinish": "timber",
+    "backgroundPropInset": 16,
+    "doorDecoration": "Liuhe/LatticeDoor",
+    "horizontalGateDecoration": "Liuhe/DojoCopperHatch",
+    "switchGateDecoration": "Liuhe/SwitchGate",
+    "verticalGateMinWidth": 38,
+    "switchSprite": "LiuheGateSwitch",
+    "doorDestinations": {
+      "2": {
+        "floor": 2
+      },
+      "4": {
+        "floor": -1,
+        "arrivalFrom": [4]
+      }
+    },
+    "gateSwitches": {
+      "gateV_0_1_5": 1
+    },
+    "assetScales": {
+    "Decorations/Liuhe/LatticeDoor": 0.108,
+      "Decorations/Liuhe/EntranceGate": 0.132,
+      "Decorations/WindowStory25DMoonlit": 0.34,
+      "Decorations/TeachingTableStory25D": 0.45
+    }
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerX": true,
+    "verticalDeadZone": 55
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [5]
+    },
+    {
+      "name": "Audio",
+      "gridArray0": [1]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [5, 5, 5, 5, 5, 5, 5, 5, 5],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [5, 5, 5, 5, 5, 5, 5, 5, 6],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [5, 5, 5, 5, 5, 5, 5, 5, 5]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [7, 0, 0, 0, 0, 7, 0, 0, 0, 7],
+        [7, 0, 0, 0, 0, 5, 0, 0, 0, 7],
+        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7]
+      ]
+    },
+    {
+      "name": "Backdrop",
+      "grid": [
+        [0, 0, 8, 0, 0, 0, 8, 0, 0]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [21, 0, 0, 1, 3, 0, 47, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [6666, 54, 22, 0, 23, 53, 0, 0, 6666]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 50, 47, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0, 0, 4, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Switch",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}

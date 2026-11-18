@@ -5,11 +5,12 @@ const SIDE_PADDING := 0.0
 const CHAT_WIDTH := 480.0
 const PORTRAIT_WIDTH := 360.0
 const INACTIVE_PORTRAIT_ALPHA := 0.35
+const SPEAKER_DISPLAY_NAMES := {
+	"frontier_shopkeeper": "絲綢商人",
+}
 const PORTRAIT_ALIASES := {
 	"ghostmaria": "mariaghost",
 	"soilder": "soldier",
-	"playerkid": "rkid",
-	"teacher": "sage",
 	"teachernpc": "scout",
 }
 
@@ -33,9 +34,9 @@ func _ready() -> void:
 
 func show_line(name: String, text: String, left_name: String, right_name: String) -> void:
 	visible = true
-	speaker.text = name
 	dialogue.text = text
 	var active_key := _portrait_key(name)
+	speaker.text = SPEAKER_DISPLAY_NAMES.get(active_key, name)
 	var left_key := _portrait_key(left_name)
 	var right_key := _portrait_key(right_name)
 	left_portrait.texture = _portrait_texture(left_key)

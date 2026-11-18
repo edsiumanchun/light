@@ -2,10 +2,11 @@ class_name CastlePlayer
 extends CharacterBody2D
 
 @export var speed := 360.0
-@export var jump_velocity := -520.0
-@export var max_jumps := 2
 
-var jumps := 0
+const JUMP_CLEARANCE_RATIO := 1.1
+const SPELL_BURST := preload("res://godot/scripts/spell_burst.gd")
+
+var floor_height := 170.0
 var interaction_targets: Array[Node] = []
 var animation_time := 0.0
 var facing := 1.0
@@ -31,23 +32,31 @@ func _physics_process(delta: float) -> void:
 		if not story_sleeping:
 			animate_model(delta, facing if story_walking else 0.0)
 		return
-	if not is_on_floor():
-		velocity.y += float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)) * delta
-	else:
-		jumps = 0
+	var grounded := is_on_floor()
+	var gravity := float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0))
+	if not grounded:
+		velocity.y += gravity * delta
 
 	var direction := Input.get_axis("move_left", "move_right")
 	velocity.x = move_toward(velocity.x, direction * speed, speed * 8.0 * delta)
 	if direction != 0.0:
 		facing = signf(direction)
 
-	if Input.is_action_just_pressed("jump") and jumps < max_jumps:
-		velocity.y = jump_velocity
-		jumps += 1
+	if grounded and Input.is_action_just_pressed("jump"):
+		# Leave enough clearance to move sideways onto the next platform.
+		velocity.y = -sqrt(2.0 * gravity * floor_height * JUMP_CLEARANCE_RATIO)
 	if Input.is_action_just_pressed("interact"):
 		interact()
 	move_and_slide()
 	animate_model(delta, direction)
+
+func cast_story_spell() -> Tween:
+	var burst := SPELL_BURST.new()
+	burst.name = "SpellBurst"
+	burst.position = Vector2(58.0 * facing, -68.0)
+	burst.scale.x = facing
+	add_child(burst)
+	return burst.play()
 
 func walk_to_story_bed(destination: Vector2) -> Tween:
 	story_walking = true
@@ -107,16 +116,20 @@ func animate_model(delta: float, direction: float) -> void:
 	model.rotation_degrees.z = lerpf(model.rotation_degrees.z, roll, minf(delta * 14.0, 1.0))
 
 func interact() -> void:
-	interaction_targets = interaction_targets.filter(func(node): return is_instance_valid(node))
-	if interaction_targets.is_empty():
-		return
-	var target := interaction_targets[0]
-	if target.has_method("interact"):
+	var target := nearest_interaction()
+	if target != null and target.has_method("interact"):
 		target.interact(self)
 
-func can_interact() -> bool:
+func nearest_interaction() -> Node2D:
 	interaction_targets = interaction_targets.filter(func(node): return is_instance_valid(node))
-	return not interaction_targets.is_empty()
+	var nearest: Node2D
+	var nearest_distance := INF
+	for candidate: Node2D in interaction_targets:
+		var distance := global_position.distance_squared_to(candidate.global_position)
+		if distance < nearest_distance:
+			nearest_distance = distance
+			nearest = candidate
+	return nearest
 
 func _on_detector_body_entered(body: Node) -> void:
 	if body.is_in_group("interactable") and not interaction_targets.has(body):

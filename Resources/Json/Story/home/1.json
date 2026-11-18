@@ -1,0 +1,37 @@
+{
+  "storyArray": [
+	{
+	  "name": "event",
+	  "dialogue": [
+        "completeTutor"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "leftPrefab": "playerkid",
+	  "rightPrefab": "teacher",
+	  "dialogue": [
+        "今天的功課就到這裡。靈藏，把書收好，歇一歇吧。"
+	  ]
+	},
+	{
+	  "name": "player",
+	  "dialogue": [
+        "老師慢走。"
+	  ]
+	},
+	{
+	  "name": "teacher",
+	  "dialogue": [
+        "免送了。"
+	  ]
+	},
+	{
+	  "name": "event",
+	  "dialogue": [
+		"teacherleave",
+		"unlockhome"
+	  ]
+	}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "paths": {
+    "backgrounds": ["ScaleHoly", "Frontier/DesertCave"],
+    "plateH": ["City", "GoUp", "GoDown","Space"],
+    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateExit","Space"],
+    "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
+    "bosses": ["BossBone"],
+    "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
+    "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Greed2", "BossFlower"],
+    "items": ["KeyCopper","KeySilver","KeyGold"],
+    "obstacles": ["Dark"],
+    "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
+    "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
+    "decorations": ["Dark", "Lamp", "Wall", "Frontier/CaveRocks"],
+    "walls": ["Blue0", "Blue1", "Blue2"],
+    "audios": ["elf","bgm"]
+  }
+}

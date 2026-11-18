@@ -1,0 +1,24 @@
+{
+  "storyArray": [
+    {
+      "name": "teacher",
+      "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
+      "dialogue": [
+        "靈藏，來得正好。桌上是道場的圖樣，你先看看腳下的通道。"
+      ]
+    },
+    {
+      "name": "playerkid",
+      "dialogue": [
+        "老師，這回的功課，是要我自己找路嗎？"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "是。從右邊的缺口下去。遇上鎖門，先留心鑰匙的顏色，再想下一步。"
+      ]
+    }
+  ]
+}
