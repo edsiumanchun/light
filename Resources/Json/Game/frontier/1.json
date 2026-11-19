@@ -5,7 +5,9 @@
     "cellWidth": 131,
     "cellHeight": 170,
     "backgroundMode": "image",
+    "hidePlates": true,
     "backgroundFocusY": 0.4,
+    "backgroundCropTop": 0.32,
     "rockRescue": {
       "cell": [
         5,
@@ -44,7 +46,7 @@
     {
       "name": "Background",
       "gridArray0": [
-        1
+        2
       ]
     },
     {

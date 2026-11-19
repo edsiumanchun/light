@@ -54,6 +54,7 @@ func _ready() -> void:
 	map_button.offset_top = 18
 	map_button.offset_bottom = 54
 	map_button.pressed.connect(open_world_map)
+	GameState.world_map_requested.connect(open_world_map)
 	build_test_controls()
 	refresh()
 
@@ -63,7 +64,7 @@ func build_test_controls() -> void:
 	test_controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	test_controls.offset_left = 20
 	test_controls.offset_right = 158
-	test_controls.offset_top = -134
+	test_controls.offset_top = -174
 	test_controls.offset_bottom = -18
 
 	var jump_dialog := AcceptDialog.new()
@@ -99,6 +100,7 @@ func build_test_controls() -> void:
 	add_child(reset_dialog)
 	reset_dialog.confirmed.connect(GameState.reset_progress_for_testing)
 	add_test_button("Reset All").pressed.connect(func(): reset_dialog.popup_centered())
+	add_test_button("999 Keys").pressed.connect(GameState.grant_test_keys)
 	unlock_all_button = add_test_button("Unlock All")
 	unlock_all_button.pressed.connect(GameState.unlock_all_stages_for_testing)
 
@@ -121,7 +123,12 @@ func _process(_delta: float) -> void:
 	var target := player.nearest_interaction() if player != null else null
 	interact_button.visible = target != null
 	var door := target as CastleDoor
-	interact_label.text = "Locked" if door != null and door.is_locked() else "Interact"
+	interact_label.text = "Interact"
+	if door != null:
+		if door.is_locked():
+			interact_label.text = "Locked"
+		elif door.opens_world_map:
+			interact_label.text = "Open Map"
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_M:

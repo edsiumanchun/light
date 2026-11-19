@@ -12,9 +12,15 @@ void fragment() {
 	vec3 face = vec3(0.31, 0.19, 0.14);
 	vec3 shade = vec3(0.14, 0.09, 0.075);
 	vec3 color = mix(top, face, smoothstep(0.08, 0.24, edge));
-	color = mix(color, shade, smoothstep(0.61, 0.97, edge));
+	if (vertical_post) {
+		color = mix(color, shade, smoothstep(0.61, 0.97, edge));
+	} else {
+		color = mix(color, face, smoothstep(0.36, 0.56, edge));
+	}
 	float joint = 1.0 - smoothstep(0.015, 0.045, min(wood_uv.x, 1.0 - wood_uv.x));
 	float trim = smoothstep(0.31, 0.38, edge) * (1.0 - smoothstep(0.44, 0.50, edge));
-	color += vec3(0.035, 0.022, 0.016) * trim;
+	if (vertical_post) {
+		color += vec3(0.035, 0.022, 0.016) * trim;
+	}
 	COLOR = vec4(color * (1.0 + grain - (vertical_post ? 0.18 : 0.04) * joint), 1.0);
 }

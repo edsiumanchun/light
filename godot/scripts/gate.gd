@@ -4,7 +4,13 @@ extends StaticBody2D
 @export var key_name := ""
 var persistent_id := ""
 var switch_controlled := false
+var gate_sprite: Sprite2D
+var opening_window: Rect2
+var retracts_down := false
 var opening := false
+var motion: Tween
+var closed_sprite_y := 0.0
+var clipped := false
 
 func _ready() -> void:
 	if not switch_controlled:
@@ -22,9 +28,39 @@ func open() -> void:
 		return
 	opening = true
 	remove_from_group("interactable")
-	collision_layer = 0
-	var tween := create_tween().set_parallel(true)
-	tween.tween_property(self, "position:y", position.y - 120.0, 0.5)
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
-	await tween.finished
-	queue_free()
+	set_retracted(true)
+
+func set_retracted(retracted: bool, animate := true) -> void:
+	if motion != null and motion.is_valid():
+		motion.kill()
+	if is_instance_valid(gate_sprite) and gate_sprite.visible:
+		prepare_clip()
+		var travel := opening_window.size.y if retracts_down else -opening_window.size.y
+		var target_y := closed_sprite_y + (travel if retracted else 0.0)
+		if animate:
+			motion = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+			motion.tween_property(gate_sprite, "position:y", target_y, 0.65)
+			motion.tween_callback(_finish_motion.bind(retracted))
+			return
+		gate_sprite.position.y = target_y
+	_finish_motion(retracted)
+
+func prepare_clip() -> void:
+	if not clipped:
+		var clip := Polygon2D.new()
+		clip.polygon = PackedVector2Array([
+			opening_window.position,
+			Vector2(opening_window.end.x, opening_window.position.y),
+			opening_window.end,
+			Vector2(opening_window.position.x, opening_window.end.y),
+		])
+		clip.clip_children = CanvasItem.CLIP_CHILDREN_ONLY
+		add_child(clip)
+		gate_sprite.reparent(clip)
+		closed_sprite_y = gate_sprite.position.y
+		clipped = true
+
+func _finish_motion(retracted: bool) -> void:
+	collision_layer = 0 if retracted else 5
+	if retracted and not switch_controlled:
+		queue_free()

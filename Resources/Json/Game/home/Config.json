@@ -11,7 +11,7 @@
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Dark", "Lamp", "Wall", "Bed", "Mirror", "BedStory25DPlain", "LampStory25D", "WindowStory25DMoonlit", "PotStory25D", "TeachingTableStory25D", "Liuhe/Altar"],
+    "decorations": ["Dark", "Lamp", "Wall", "Bed", "Mirror", "BedStory25DPlain", "LampStory25D", "Home/WinterWindowFrame", "PotStory25D", "TeachingTableStory25D", "Liuhe/Altar"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm","MoonlitTemple","DesertTempleTheme","TempleAfterDusk","SwordAmongClouds"]
   }

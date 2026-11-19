@@ -53,11 +53,14 @@ var gate_decoration := ""
 var horizontal_gate_decoration := ""
 var switch_gate_decoration := ""
 var switch_sprite := "TriggerLight"
+var switch_handle_sprite := ""
 var vertical_gate_min_width := 0.0
 var door_destinations: Dictionary = {}
 var gate_switches: Dictionary = {}
 var camera_zoom_override := 0.0
 var background_focus_y := 0.5
+var background_crop_top := 0.0
+var roof_exterior: Dictionary = {}
 var background_lighting: Dictionary = {}
 var background_prop_inset := 0.0
 var fallback_player_position := Vector2.ZERO
@@ -91,11 +94,13 @@ func build(stage: int, floor: int) -> CastlePlayer:
 	paths = config.get("paths", {})
 	index_enemy_data(DataLoader.enemy_data(stage))
 	var floor_definition := DataLoader.floor_data(stage, floor)
+	var layout: Dictionary = floor_definition.get("layout", {})
 	configure_grid(
 		floor_definition,
-		floor_definition.get("layout", {}),
+		layout,
 		floor_definition.get("camera", {})
 	)
+	build_roof_exterior(roof_exterior)
 	for group_index in range(3):
 		var assets: Array = floor_definition.get("assets%d" % group_index, [])
 		if assets.is_empty():
@@ -107,7 +112,7 @@ func build(stage: int, floor: int) -> CastlePlayer:
 		teacher.setup_exit(teacher_exit_door.position)
 		StoryManager.story_cue.connect(play_room_story_cue)
 	spawn_player_at_entrance()
-	var rescue: Dictionary = floor_definition.get("layout", {}).get("rockRescue", {})
+	var rescue: Dictionary = layout.get("rockRescue", {})
 	if not rescue.is_empty():
 		build_rock_rescue(rescue)
 		if not StoryManager.story_cue.is_connected(play_room_story_cue):
@@ -184,13 +189,17 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	horizontal_gate_decoration = str(layout.get("horizontalGateDecoration", ""))
 	switch_gate_decoration = str(layout.get("switchGateDecoration", ""))
 	switch_sprite = str(layout.get("switchSprite", "TriggerLight"))
+	switch_handle_sprite = str(layout.get("switchHandleSprite", ""))
 	vertical_gate_min_width = float(layout.get("verticalGateMinWidth", 0.0))
 	door_destinations = layout.get("doorDestinations", {})
 	gate_switches = layout.get("gateSwitches", {})
 	camera_zoom_override = float(layout.get("cameraZoom", 0.0))
 	background_focus_y = clampf(float(layout.get("backgroundFocusY", 0.5)), 0.0, 1.0)
+	background_crop_top = clampf(float(layout.get("backgroundCropTop", 0.0)), 0.0, 0.9)
+	roof_exterior = layout.get("roofExterior", {})
 	background_lighting = layout.get("backgroundLighting", {})
-	background_prop_inset = maxf(0.0, float(layout.get("backgroundPropInset", 0.0)))
+	var default_prop_inset := -TIMBER_DEPTH.y * 0.75 if timber_finish else 0.0
+	background_prop_inset = maxf(0.0, float(layout.get("backgroundPropInset", default_prop_inset)))
 
 func detect_grid_size(floor_definition: Dictionary) -> Vector2i:
 	var detected_columns := 0
@@ -344,6 +353,51 @@ func play_floor_audio(asset: Dictionary) -> void:
 		return
 	MusicManager.play_track(str(audio_names[index]))
 
+func build_roof_exterior(exterior: Dictionary) -> void:
+	if exterior.is_empty() or content_origin_y <= 0.0:
+		return
+	var width := group_width * group_count
+	var center_x := content_origin_x + width * 0.5
+	var scenery_texture := DataLoader.texture("Background", str(exterior.get("mountains", "")))
+	if scenery_texture != null:
+		var mountains := Sprite2D.new()
+		mountains.name = "RoofMountains"
+		mountains.texture = scenery_texture
+		var source := roof_texture_region(scenery_texture, exterior.get("mountainRegion", [0, 0, 1, 1]))
+		var scale_factor := maxf(width / source.size.x, content_origin_y / source.size.y)
+		var crop_size := Vector2(width, content_origin_y) / scale_factor
+		mountains.region_enabled = true
+		mountains.region_rect = Rect2(source.get_center() - crop_size * 0.5, crop_size)
+		mountains.scale = Vector2.ONE * scale_factor
+		mountains.position = Vector2(center_x, content_origin_y * 0.5)
+		mountains.z_index = -110
+		add_child(mountains)
+	var roof_texture := DataLoader.texture("Decorations", str(exterior.get("roof", "")))
+	if roof_texture != null:
+		var roof := Node2D.new()
+		roof.name = "SnowRoof"
+		roof.position = Vector2(content_origin_x, content_origin_y + 6.0)
+		roof.z_index = -95
+		add_child(roof)
+		var source := roof_texture_region(roof_texture, exterior.get("roofTileRegion", [0, 0, 1, 1]))
+		var tile_count := maxi(1, int(exterior.get("roofTiles", 1)))
+		var tile_width := width / tile_count
+		var tile_height := minf(source.size.y * tile_width / source.size.x, content_origin_y * 0.45)
+		for column in range(tile_count):
+			var tile := Sprite2D.new()
+			tile.texture = roof_texture
+			tile.region_enabled = true
+			tile.region_rect = source
+			tile.region_filter_clip_enabled = true
+			tile.flip_h = column % 2 == 1
+			tile.scale = Vector2(tile_width, tile_height) / source.size
+			tile.position = Vector2((column + 0.5) * tile_width, -tile_height * 0.5)
+			roof.add_child(tile)
+
+func roof_texture_region(texture: Texture2D, region: Array) -> Rect2:
+	var size := texture.get_size()
+	return Rect2(Vector2(float(region[0]), float(region[1])) * size, Vector2(float(region[2]), float(region[3])) * size)
+
 func build_group_background(assets: Array, group_index: int) -> void:
 	if background_mode == "plain_panels" or quiet_plaster:
 		build_plain_panel_background(group_index)
@@ -378,17 +432,19 @@ func build_group_background(assets: Array, group_index: int) -> void:
 	# Crop the source without stretching it. A per-level vertical focus lets a
 	# short room favor its wall/floor instead of centering on ceiling beams.
 	var texture_size := texture.get_size()
+	var source_top := texture_size.y * background_crop_top
+	var source_height := texture_size.y - source_top
 	var target_aspect := group_width / content_height
-	var source_aspect := texture_size.x / texture_size.y
-	var source_rect := Rect2(Vector2.ZERO, texture_size)
+	var source_aspect := texture_size.x / source_height
+	var source_rect: Rect2
 	if target_aspect > source_aspect:
 		var crop_height := texture_size.x / target_aspect
-		var focus_center := texture_size.y * background_focus_y
-		var crop_y := clampf(focus_center - crop_height * 0.5, 0.0, texture_size.y - crop_height)
+		var focus_center := source_top + source_height * background_focus_y
+		var crop_y := clampf(focus_center - crop_height * 0.5, source_top, texture_size.y - crop_height)
 		source_rect = Rect2(0.0, crop_y, texture_size.x, crop_height)
 	else:
-		var crop_width := texture_size.y * target_aspect
-		source_rect = Rect2((texture_size.x - crop_width) * 0.5, 0.0, crop_width, texture_size.y)
+		var crop_width := source_height * target_aspect
+		source_rect = Rect2((texture_size.x - crop_width) * 0.5, source_top, crop_width, source_height)
 	background.region_enabled = true
 	background.region_rect = source_rect
 	background.scale = Vector2(group_width / source_rect.size.x, content_height / source_rect.size.y)
@@ -454,9 +510,7 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 	var asset_name := str(names[index])
 	var has_gate := asset_name.begins_with("Gate")
 	var switch_number := int(gate_switches.get(gate_id, 0))
-	if has_gate and (GameState.is_destroyed(gate_id) or (
-		switch_number > 0 and GameState.is_destroyed("switch_%d" % switch_number)
-	)):
+	if has_gate and switch_number == 0 and GameState.is_destroyed(gate_id):
 		return
 	var body := StaticBody2D.new()
 	body.position = position
@@ -538,6 +592,10 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 	if has_gate:
 		body.set_script(GATE_SCRIPT)
 		body.collision_layer = 5
+		var art_top_depth := -TIMBER_DEPTH.y if horizontal_gate and timber_finish and not horizontal_gate_decoration.is_empty() else 0.0
+		body.set("gate_sprite", sprite)
+		body.set("opening_window", Rect2(-plate_size * 0.5 - Vector2(0.0, art_top_depth), plate_size + Vector2(0.0, art_top_depth)))
+		body.set("retracts_down", horizontal_gate)
 		body.set("key_name", asset_name.trim_prefix("Gate"))
 		body.set("persistent_id", gate_id)
 		body.set("switch_controlled", switch_number > 0)
@@ -550,6 +608,8 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 		body.collision_layer = 5
 		body.set("direction", -1)
 	add_child(body)
+	if has_gate and switch_number > 0 and GameState.is_destroyed("switch_%d" % switch_number):
+		(body as CastleGate).set_retracted(true, false)
 
 func add_timber_post_side(parent: Node2D, width: float, height: float) -> void:
 	var top := Vector2(width * 0.5, -height * 0.5)
@@ -675,7 +735,9 @@ func build_door(position: Vector2, target_floor: int) -> void:
 	var destination_floor := DataLoader.floor_number(destination_stage, destination.get("floor", target_floor))
 	door.set("target_stage", destination_stage)
 	door.set("target_floor", destination_floor)
-	if destination_floor < 0:
+	var opens_world_map := bool(destination.get("openMap", false))
+	door.set("opens_world_map", opens_world_map)
+	if destination_floor < 0 and not opens_world_map:
 		door.remove_from_group("interactable")
 	door.set("required_event", int(destination.get("requiresEvent", 0)))
 	door.set("unlock_event", int(destination.get("unlockEvent", 0)))
@@ -694,26 +756,41 @@ func build_door(position: Vector2, target_floor: int) -> void:
 
 func build_door_switch(position: Vector2, switch_number: int) -> void:
 	var id := "switch_%d" % switch_number
-	if GameState.is_destroyed(id):
+	var reusable := gate_switches.values().any(func(value): return int(value) == switch_number)
+	var is_on := GameState.is_destroyed(id)
+	if is_on and not reusable:
 		return
 	var trigger := DOOR_SWITCH_SCRIPT.new()
 	trigger.position = position
 	trigger.persistent_id = id
-	trigger.activated.connect(_open_switch_gates.bind(switch_number))
+	trigger.reusable = reusable
+	trigger.is_on = is_on
+	trigger.changed.connect(_set_switch_gates.bind(switch_number))
 	trigger.collision_layer = 4
 	trigger.collision_mask = 0
 	var sprite := add_sprite(trigger, "Triggers", switch_sprite)
+	trigger.artwork = sprite
 	var bounds := sprite_visible_rect(sprite)
 	sprite.scale *= minf(56.0 / bounds.size.x, 64.0 / bounds.size.y)
 	bounds = sprite_visible_rect(sprite)
 	sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y - background_prop_inset)
+	if reusable and not switch_handle_sprite.is_empty():
+		var pivot := Node2D.new()
+		pivot.position.y = -bounds.size.y - background_prop_inset + 6.0
+		trigger.add_child(pivot)
+		trigger.handle = pivot
+		var handle_art := add_sprite(pivot, "Triggers", switch_handle_sprite)
+		var handle_bounds := sprite_visible_rect(handle_art)
+		handle_art.scale *= 30.0 / handle_bounds.size.y
+		handle_bounds = sprite_visible_rect(handle_art)
+		handle_art.position = Vector2(-handle_bounds.get_center().x, -handle_bounds.end.y + 3.0)
 	add_collision_at(trigger, bounds.size, Vector2(0.0, -bounds.size.y * 0.5))
 	add_child(trigger)
 
-func _open_switch_gates(switch_number: int) -> void:
+func _set_switch_gates(is_on: bool, switch_number: int) -> void:
 	for child in get_children():
-		if child is CastleGate and int(gate_switches.get(child.persistent_id, 0)) == switch_number:
-			child.open()
+		if child is CastleGate and not child.is_queued_for_deletion() and int(gate_switches.get(child.persistent_id, 0)) == switch_number:
+			child.set_retracted(is_on)
 
 func build_story_event(position: Vector2, story_floor: int) -> void:
 	var event := Area2D.new()
@@ -781,7 +858,9 @@ func build_visual(position: Vector2, asset_name: String, folder: String, solid: 
 	if solid:
 		add_collision_at(node, visual_size, Vector2.ZERO)
 	else:
-		sprite.position.y -= background_prop_inset
+		var bounds := sprite_visible_rect(sprite)
+		node.position = position
+		sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y - background_prop_inset)
 func on_event_story_completed(stage: int, floor: int, event_number: int) -> void:
 	if stage != GameState.current_stage or floor != GameState.current_floor:
 		return
@@ -903,7 +982,23 @@ func build_backdrop(position: Vector2, signed_value: int) -> void:
 	node.position = position
 	node.z_index = -20
 	add_child(node)
-	add_sprite(node, "Decorations", str(names[index]))
+	var asset_name := str(names[index])
+	var frame := add_sprite(node, "Decorations", asset_name)
+	if asset_name == str(roof_exterior.get("windowFrame", "")):
+		var scenery := DataLoader.texture("Background", str(roof_exterior.get("mountains", "")))
+		if scenery != null:
+			var view := Sprite2D.new()
+			view.name = "WindowMountains"
+			view.texture = scenery
+			var pane_size := frame.texture.get_size() * frame.scale * Vector2(0.90, 0.81)
+			var source := roof_texture_region(scenery, roof_exterior.get("windowRegion", [0, 0, 1, 1]))
+			var zoom := maxf(pane_size.x / source.size.x, pane_size.y / source.size.y)
+			var crop := pane_size / zoom
+			view.region_enabled = true
+			view.region_rect = Rect2(source.get_center() - crop * 0.5, crop)
+			view.scale = Vector2.ONE * zoom
+			view.z_index = -1
+			node.add_child(view)
 
 func add_sprite(parent: Node, folder: String, asset_name: String, fallback := Color.WHITE) -> Sprite2D:
 	var sprite := Sprite2D.new()

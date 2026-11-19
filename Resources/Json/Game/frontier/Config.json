@@ -1,6 +1,6 @@
 {
   "paths": {
-    "backgrounds": ["ScaleHoly", "Frontier/DesertCave"],
+    "backgrounds": ["ScaleHoly", "Frontier/DesertCave", "Frontier/OpenDesert"],
     "plateH": ["City", "GoUp", "GoDown","Space"],
     "plateV": ["City","GateCopper","GateSilver","GateGold", "GateExit","Space"],
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],

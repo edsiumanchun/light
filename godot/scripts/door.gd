@@ -11,6 +11,7 @@ var source_floor := -1
 var key_name := ""
 var persistent_id := ""
 var required_gates: Array = []
+var opens_world_map := false
 
 func setup(destination_floor: int) -> void:
 	target_floor = destination_floor
@@ -30,6 +31,9 @@ func is_locked() -> bool:
 
 func interact(_player: CastlePlayer) -> void:
 	if is_locked():
+		return
+	if opens_world_map:
+		GameState.world_map_requested.emit()
 		return
 	var stage := GameState.current_stage if target_stage < 0 else target_stage
 	if target_floor < 0 or (stage == GameState.current_stage and target_floor == GameState.current_floor):

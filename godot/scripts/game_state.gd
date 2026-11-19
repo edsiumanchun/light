@@ -3,6 +3,7 @@ extends Node
 signal stats_changed
 signal floor_changed(stage: int, floor: int)
 signal location_progress_changed(location: String)
+signal world_map_requested
 
 const DEFAULT_SAVE_PATH := "user://castle-save.json"
 const ENV_PATH := "res://.env"
@@ -151,6 +152,12 @@ func change_health(amount: int) -> bool:
 func change_key(key_name: String, amount: int) -> bool:
 	return change_inventory(key_name, amount)
 
+func grant_test_keys() -> void:
+	for key_name in ["Copper", "Silver", "Gold"]:
+		inventory[key_name] = maxi(int(inventory.get(key_name, 0)), 999)
+	save_game()
+	stats_changed.emit()
+
 func open_key_lock(id: String, key_name: String) -> bool:
 	var save_id := object_id(current_stage, current_floor, id)
 	if destroyed.has(save_id):
@@ -178,7 +185,14 @@ func object_id(stage: int, floor: int, id: String) -> String:
 	return "%s/%d/%s" % [DataLoader.location_for_stage(stage), floor, id]
 
 func mark_destroyed(id: String) -> void:
-	destroyed[object_id(current_stage, current_floor, id)] = true
+	set_destroyed(id, true)
+
+func set_destroyed(id: String, value: bool) -> void:
+	var save_id := object_id(current_stage, current_floor, id)
+	if value:
+		destroyed[save_id] = true
+	else:
+		destroyed.erase(save_id)
 	save_game()
 
 func is_destroyed(id: String) -> bool:

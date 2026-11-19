@@ -7,8 +7,17 @@
 	"cellWidth": 131,
 	"cellHeight": 75,
 	"backgroundMode": "plain_panels",
+	"roofExterior": {
+	  "roof": "Home/SnowRoof",
+	  "mountains": "Home/SnowMountains",
+	  "windowRegion": [0.04, 0.04, 0.56, 0.76],
+	  "roofTileRegion": [0.325, 0.35, 0.35, 0.334],
+	  "roofTiles": 3,
+	  "windowFrame": "Home/WinterWindowFrame"
+	},
 	"teacherExitDoorFloor": 1,
-	"doorDestinations": { "1": { "location": "dojo", "floor": 1 } },
+	"doorDestinations": { "1": { "floor": -1, "openMap": true, "decoration": "OutdoorLatticeDoor" } },
+	"backgroundPropInset": 8,
 	"sleepEvent": 2,
 	"backgroundLighting": {
 	  "lantern_light": [720.5, 204],
@@ -21,10 +30,11 @@
 	"cameraZoom": 1.0,
 	"hidePlates": true,
 	"assetScales": {
+	  "Decorations/OutdoorLatticeDoor": 0.46,
 	  "Decorations/BedStory25DPlain": 0.68,
 	  "Decorations/TeachingTableStory25D": 0.5,
 	  "Decorations/LampStory25D": 0.46,
-	  "Decorations/WindowStory25DMoonlit": 0.48,
+	  "Decorations/Home/WinterWindowFrame": 0.48,
 	  "Decorations/PotStory25D": 0.5
 	}
   },
