@@ -2,6 +2,11 @@
   "layout": {
     "initStory": 1,
     "disableNpcInteraction": true,
+    "grandpaEntrance": {
+      "row": 1,
+      "fromColumn": 8,
+      "toColumn": 6
+    },
     "columns": 9,
     "rows": 4,
     "cellWidth": 131,
@@ -11,14 +16,16 @@
     "doorDecoration": "Liuhe/LatticeDoor",
     "horizontalGateDecoration": "Liuhe/DojoCopperHatch",
     "switchGateDecoration": "Liuhe/SwitchGate",
-    "verticalGateMinWidth": 38,
-    "switchSprite": "LiuheGateLeverBase",
-    "switchHandleSprite": "LiuheGateLeverHandle",
+    "verticalGateMinWidth": 32,
+    "switchSprite": "LiuheGearLeverBase",
+    "switchHandleSprite": "LiuheGearLeverHandle",
+    "switchHandlePivot": [0.44, 0.47],
+    "switchHandleLength": 48,
     "doorDestinations": {
       "10": {
         "floor": -1,
         "openMap": true,
-        "decoration": "OutdoorLatticeDoor"
+        "decoration": "ClosedMapExitDoor"
       },
       "2": {
         "floor": 2
@@ -31,8 +38,12 @@
     "gateSwitches": {
       "gateV_0_1_5": 1
     },
+    "eventProgress": {
+      "2": 1
+    },
+    "onceEvents": [1, 2],
     "assetScales": {
-      "Decorations/OutdoorLatticeDoor": 0.46,
+      "Decorations/ClosedMapExitDoor": 0.414,
     "Decorations/Liuhe/LatticeDoor": 0.108,
       "Decorations/Liuhe/EntranceGate": 0.132,
       "Decorations/WindowStory25DMoonlit": 0.34,
@@ -101,6 +112,15 @@
         [10, 2, 0, 0, 0, 0, 0, 4, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Event",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0]
       ]
     },
     {

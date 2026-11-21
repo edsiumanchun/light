@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource path="res://godot/scripts/player.gd" type="Script" id="1"]
 [ext_resource path="res://godot/scenes/character_visual.tscn" type="PackedScene" id="2"]
@@ -6,9 +6,6 @@
 [sub_resource type="CapsuleShape2D" id="PlayerShape"]
 radius = 18.0
 height = 120.0
-
-[sub_resource type="CircleShape2D" id="DetectorShape"]
-radius = 100.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -27,7 +24,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
 position = Vector2(0, -60)
-shape = SubResource("DetectorShape")
+shape = SubResource("PlayerShape")
 
 [connection signal="body_entered" from="InteractionDetector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="InteractionDetector" to="." method="_on_detector_body_exited"]

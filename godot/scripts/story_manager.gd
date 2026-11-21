@@ -112,7 +112,7 @@ func _start_story(story_id: String, event_number: int, story_index: int) -> bool
 					lines.append({"cue": "timefly"})
 				elif command == "playerattack":
 					lines.append({"cue": command})
-				elif use_room_cues and dialogue in ["teacherleave", "teacherback", "playersleep", "fatherarrive", "playerwake", "moverock"]:
+				elif use_room_cues and dialogue in ["teacherleave", "teacherback", "playersleep", "fatherarrive", "playerwake", "moverock", "grandpacome"]:
 					lines.append({"cue": str(dialogue)})
 			elif index >= story_index:
 				lines.append({

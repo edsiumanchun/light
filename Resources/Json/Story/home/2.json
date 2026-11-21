@@ -81,8 +81,7 @@
 		{
 		  "name": "event",
 		  "dialogue": [
-				"unlockdojo",
-        "gotodojo"
+				"unlockdojo"
 		  ]
 		}
   ]

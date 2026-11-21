@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
+  <defs>
+    <linearGradient id="stone" x2="0%" y2="100%">
+      <stop stop-color="#b48a60"/><stop offset="1" stop-color="#6c4933"/>
+    </linearGradient>
+    <linearGradient id="depth" x2="0%" y2="100%">
+      <stop stop-color="#110e10"/><stop offset="1" stop-color="#35271f"/>
+    </linearGradient>
+  </defs>
+  <path d="M22 270 28 44 48 25 241 25 255 38 260 269z" fill="#533928" stroke="#493021" stroke-width="4"/>
+  <path d="M43 255V49h197v206z" fill="url(#stone)" stroke="#d4a777" stroke-width="4"/>
+  <path d="M76 250V83h129v167z" fill="url(#depth)" stroke="#422b21" stroke-width="7"/>
+  <path d="m78 85 24 20v122l-24 22zm125 0-24 20v122l24 22z" fill="#634535"/>
+  <path d="m103 227-25 22h125l-25-22z" fill="#886349"/>
+  <path d="M42 110h34m-34 51h34m-34 49h34m129-100h35m-35 51h35m-35 49h35M103 49v32m77-32v32" stroke="#674330" stroke-width="4"/>
+  <path d="M29 256h225l13 12-2 8H16v-8z" fill="url(#stone)" stroke="#543827" stroke-width="4"/>
+</svg>

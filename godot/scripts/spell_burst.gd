@@ -1,7 +1,7 @@
 extends Node2D
 
 const CHARGE_SECONDS := 0.42
-const BURST_SECONDS := 1.25
+const BURST_SECONDS := 1.55
 const WIND_COLOR := Color("#76f1ff")
 const GOLD_COLOR := Color("#ffda88")
 
@@ -27,15 +27,16 @@ func _ready() -> void:
 	glow.fill_to = Vector2(1.0, 0.5)
 	light = PointLight2D.new()
 	light.texture = glow
+	light.texture_scale = 1.8
 	light.color = Color("#ffe3ad")
 	light.energy = 0.0
 	add_child(light)
 
 	var random := RandomNumberGenerator.new()
 	random.randomize()
-	for index in range(88):
+	for index in range(128):
 		streaks.append(Vector4(
-			random.randf_range(-1.35, 1.35), random.randf_range(100.0, 365.0),
+			random.randf_range(-1.35, 1.35), random.randf_range(160.0, 580.0),
 			random.randf_range(0.0, 0.32), random.randf_range(0.8, 3.3)
 		))
 
@@ -60,17 +61,29 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, layer * (5.0 + pulse * 6.0), _tint(GOLD_COLOR, pulse * 0.07), true, -1.0, true)
 	draw_circle(Vector2.ZERO, 3.0 + pulse * 11.0, _tint(Color.WHITE, pulse), true, -1.0, true)
 	if burst < 0.0:
+		draw_arc(Vector2.ZERO, lerpf(82.0, 21.0, charge), 0.0, TAU, 48, _tint(GOLD_COLOR, charge * 0.75), 3.0, true)
 		for index in range(4):
 			var angle := index * TAU / 4.0 + elapsed * 11.0
 			var radius := lerpf(46.0, 13.0, charge)
 			draw_arc(Vector2.ZERO, radius, angle, angle + 0.85, 12, _tint(WIND_COLOR, charge * 0.7), 2.0, true)
 		return
 
-	for index in range(3):
+	if burst < 0.46:
+		var impact := burst / 0.46
+		var reach := lerpf(75.0, 490.0, ease(minf(impact * 3.0, 1.0), 0.6))
+		var flare := (1.0 - impact) * (1.0 - impact)
+		for layer in range(3, 0, -1):
+			var width := layer * 18.0 * flare
+			draw_colored_polygon(PackedVector2Array([
+				Vector2(-18.0, 0.0), Vector2(reach * 0.24, -width),
+				Vector2(reach, 0.0), Vector2(reach * 0.24, width),
+			]), _tint(Color.WHITE if layer == 1 else GOLD_COLOR, flare * 0.64))
+
+	for index in range(5):
 		var wave := (burst - index * 0.09) / 0.70
 		if wave < 0.0 or wave >= 1.0:
 			continue
-		var radius := 12.0 + 115.0 * ease(wave, 0.6)
+		var radius := 12.0 + 165.0 * ease(wave, 0.6)
 		draw_set_transform(Vector2(radius * 0.87, 0.0), 0.0, Vector2(0.30, 1.0))
 		draw_arc(Vector2.ZERO, radius, -2.0, 2.0, 36, _tint(WIND_COLOR, (1.0 - wave) * 0.75), 3.0, true)
 		draw_set_transform(Vector2.ZERO)

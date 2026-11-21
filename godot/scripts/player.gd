@@ -17,6 +17,7 @@ var upright_story_transform := Transform3D.IDENTITY
 @onready var visual: SubViewportContainer = $Visual
 @onready var model: Node3D = $Visual/Viewport3D/PlayerModel
 @onready var animation_player: AnimationPlayer = $Visual/Viewport3D/PlayerModel/AnimationPlayer
+@onready var body_collider: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	add_to_group("player")
@@ -121,7 +122,7 @@ func interact() -> void:
 		target.interact(self)
 
 func nearest_interaction() -> Node2D:
-	interaction_targets = interaction_targets.filter(func(node): return is_instance_valid(node))
+	interaction_targets = interaction_targets.filter(func(node): return is_instance_valid(node) and node.is_in_group("interactable"))
 	var nearest: Node2D
 	var nearest_distance := INF
 	for candidate: Node2D in interaction_targets:
@@ -129,7 +130,20 @@ func nearest_interaction() -> Node2D:
 		if distance < nearest_distance:
 			nearest_distance = distance
 			nearest = candidate
-	return nearest
+	if nearest != null:
+		return nearest
+	# Solid gates stop the body just short of overlap. Allow the physics
+	# contact margin when checking those bodies, while areas use the capsule.
+	var contact := PhysicsShapeQueryParameters2D.new()
+	contact.shape = body_collider.shape
+	contact.transform = body_collider.global_transform
+	contact.margin = 0.5
+	contact.collision_mask = $InteractionDetector.collision_mask
+	for hit in get_world_2d().direct_space_state.intersect_shape(contact):
+		var body := hit.collider as Node2D
+		if is_instance_valid(body) and body.is_in_group("interactable"):
+			return body
+	return null
 
 func _on_detector_body_entered(body: Node) -> void:
 	if body.is_in_group("interactable") and not interaction_targets.has(body):

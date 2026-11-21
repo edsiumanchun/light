@@ -20,7 +20,6 @@ var dashboard_values: Dictionary = {}
 const WORLD_MAP := preload("res://godot/scripts/world_map.gd")
 var world_map: Control
 var map_button: Button
-var unlock_all_button: Button
 var test_controls: VBoxContainer
 
 func _ready() -> void:
@@ -64,7 +63,7 @@ func build_test_controls() -> void:
 	test_controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	test_controls.offset_left = 20
 	test_controls.offset_right = 158
-	test_controls.offset_top = -174
+	test_controls.offset_top = -134
 	test_controls.offset_bottom = -18
 
 	var jump_dialog := AcceptDialog.new()
@@ -100,8 +99,8 @@ func build_test_controls() -> void:
 	add_child(reset_dialog)
 	reset_dialog.confirmed.connect(GameState.reset_progress_for_testing)
 	add_test_button("Reset All").pressed.connect(func(): reset_dialog.popup_centered())
-	add_test_button("999 Keys").pressed.connect(GameState.grant_test_keys)
-	unlock_all_button = add_test_button("Unlock All")
+	var unlock_all_button := add_test_button("Unlock All + Keys")
+	unlock_all_button.tooltip_text = "Unlock all stages and top up Copper, Silver, and Gold keys to 999 each."
 	unlock_all_button.pressed.connect(GameState.unlock_all_stages_for_testing)
 
 func add_test_button(label: String) -> Button:
@@ -113,8 +112,6 @@ func add_test_button(label: String) -> Button:
 
 func _process(_delta: float) -> void:
 	test_controls.visible = not StoryManager.active and not world_map.visible
-	unlock_all_button.disabled = GameState.unlock_all_for_testing
-	unlock_all_button.text = "All Unlocked" if GameState.unlock_all_for_testing else "Unlock All"
 	map_button.visible = not StoryManager.active
 	if StoryManager.active:
 		interact_button.visible = StoryManager.dialogue_visible

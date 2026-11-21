@@ -51,7 +51,7 @@ static func enemy_data(stage: int) -> Dictionary:
 	return load_json("%s/Game/%s/EnemyData.json" % [JSON_ROOT, location_for_stage(stage)])
 
 static func sprite_path(folder: String, asset_name: String) -> String:
-	for extension in ["png", "jpg", "jpeg"]:
+	for extension in ["png", "jpg", "jpeg", "svg"]:
 		var path := "res://Resources/Sprites/%s/%s.%s" % [folder, asset_name, extension]
 		if ResourceLoader.exists(path):
 			return path

@@ -1,4 +1,8 @@
 {
+  "rockSkins": {
+    "base": "Frontier/RoadblockNormal",
+    "runes": ["Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion"]
+  },
   "paths": {
     "backgrounds": ["ScaleHoly", "Frontier/DesertCave", "Frontier/OpenDesert"],
     "plateH": ["City", "GoUp", "GoDown","Space"],
@@ -11,7 +15,7 @@
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Dark", "Lamp", "Wall", "Frontier/CaveRocks"],
+    "decorations": ["Dark", "Lamp", "Wall", "Frontier/RoadblockNormal", "Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion", "Frontier/CrescentMoonInn"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]
   }

@@ -48,12 +48,15 @@ var timber_finish := false
 var hide_plates := false
 var invisible_plates: Array = []
 var asset_scales := {}
+var interaction_texture_bounds: Dictionary = {}
 var door_decoration := "Door"
 var gate_decoration := ""
 var horizontal_gate_decoration := ""
 var switch_gate_decoration := ""
 var switch_sprite := "TriggerLight"
 var switch_handle_sprite := ""
+var switch_handle_pivot := Vector2(0.5, 0.0)
+var switch_handle_length := 30.0
 var vertical_gate_min_width := 0.0
 var door_destinations: Dictionary = {}
 var gate_switches: Dictionary = {}
@@ -62,7 +65,7 @@ var background_focus_y := 0.5
 var background_crop_top := 0.0
 var roof_exterior: Dictionary = {}
 var background_lighting: Dictionary = {}
-var background_prop_inset := 0.0
+var door_inset := 0.0
 var fallback_player_position := Vector2.ZERO
 var has_fallback_player_position := false
 var door_player_position := Vector2.ZERO
@@ -71,6 +74,7 @@ var teacher_exit_floor := -1
 var teacher: StoryInteraction
 var teacher_exit_door: CastleDoor
 var father: StoryInteraction
+var grandpa_entrance: Dictionary = {}
 var story_bed_position := Vector2.ZERO
 var sleep_event := 0
 var init_story := 0
@@ -85,6 +89,7 @@ var rescue_rock_offset := Vector2.ZERO
 const RESCUE_ROCK_ID := "rescue_rock"
 var object_id_prefix := ""
 var event_cells: Array[Dictionary] = []
+var switches_by_position: Dictionary = {}
 var event_interactions: Array[StoryInteraction] = []
 var completed_events: Dictionary = {}
 
@@ -112,9 +117,11 @@ func build(stage: int, floor: int) -> CastlePlayer:
 		teacher.setup_exit(teacher_exit_door.position)
 		StoryManager.story_cue.connect(play_room_story_cue)
 	spawn_player_at_entrance()
+	grandpa_entrance = layout.get("grandpaEntrance", {})
 	var rescue: Dictionary = layout.get("rockRescue", {})
 	if not rescue.is_empty():
 		build_rock_rescue(rescue)
+	if not rescue.is_empty() or not grandpa_entrance.is_empty():
 		if not StoryManager.story_cue.is_connected(play_room_story_cue):
 			StoryManager.story_cue.connect(play_room_story_cue)
 	if not event_cells.is_empty():
@@ -190,6 +197,9 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	switch_gate_decoration = str(layout.get("switchGateDecoration", ""))
 	switch_sprite = str(layout.get("switchSprite", "TriggerLight"))
 	switch_handle_sprite = str(layout.get("switchHandleSprite", ""))
+	var handle_pivot: Array = layout.get("switchHandlePivot", [0.5, 0.0])
+	switch_handle_pivot = Vector2(float(handle_pivot[0]), float(handle_pivot[1]))
+	switch_handle_length = float(layout.get("switchHandleLength", 30.0))
 	vertical_gate_min_width = float(layout.get("verticalGateMinWidth", 0.0))
 	door_destinations = layout.get("doorDestinations", {})
 	gate_switches = layout.get("gateSwitches", {})
@@ -198,8 +208,8 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	background_crop_top = clampf(float(layout.get("backgroundCropTop", 0.0)), 0.0, 0.9)
 	roof_exterior = layout.get("roofExterior", {})
 	background_lighting = layout.get("backgroundLighting", {})
-	var default_prop_inset := -TIMBER_DEPTH.y * 0.75 if timber_finish else 0.0
-	background_prop_inset = maxf(0.0, float(layout.get("backgroundPropInset", default_prop_inset)))
+	var default_door_inset := -TIMBER_DEPTH.y * 0.75 if timber_finish else 0.0
+	door_inset = maxf(0.0, float(layout.get("doorInset", layout.get("backgroundPropInset", default_door_inset))))
 
 func detect_grid_size(floor_definition: Dictionary) -> Vector2i:
 	var detected_columns := 0
@@ -244,6 +254,7 @@ func clear_level() -> void:
 	father = null
 	story_bed_position = Vector2.ZERO
 	event_cells.clear()
+	switches_by_position.clear()
 	event_interactions.clear()
 	completed_events.clear()
 	for child in get_children():
@@ -309,7 +320,7 @@ func build_asset(asset: Dictionary, group_index: int) -> void:
 						horizontal_plate_surface_y(boundary_y)
 					)
 					if type == "Door":
-						build_door(position, absi(signed_value))
+						build_door(position, absi(signed_value), boundary_y - cell_size.y)
 					elif type == "Switch":
 						build_door_switch(position, absi(signed_value))
 					elif type == "Decoration":
@@ -556,9 +567,20 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 		sprite.material = finish
 		if vertical:
 			sprite.scale.y *= cell_size.y / plate_size.y
+			plate_size.y = cell_size.y
+			var row := floori((position.y - content_origin_y) / cell_size.y)
+			# Put posts above the platform at their feet and below the beam above.
+			body.z_index = -3 * row - 4
 			if sprite.visible:
-				add_timber_post_side(body, plate_size.x, cell_size.y)
+				var lower_boundary := position.y + cell_size.y * 0.5
+				var lower_beam_bottom := horizontal_plate_surface_y(lower_boundary) + platform_half_thickness * 2.0
+				var extension := maxf(0.0, lower_beam_bottom - lower_boundary)
+				sprite.scale.y *= (cell_size.y + extension) / cell_size.y
+				sprite.position.y += extension * 0.5
+				add_timber_post_side(body, plate_size.x, cell_size.y, extension)
 		else:
+			var row := roundi((position.y - content_origin_y) / cell_size.y)
+			body.z_index = -3 * row - 2
 			sprite.scale.x *= cell_size.x / plate_size.x
 			if sprite.visible:
 				add_timber_floor_surface(body, cell_size.x, plate_size.y)
@@ -611,9 +633,9 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 	if has_gate and switch_number > 0 and GameState.is_destroyed("switch_%d" % switch_number):
 		(body as CastleGate).set_retracted(true, false)
 
-func add_timber_post_side(parent: Node2D, width: float, height: float) -> void:
+func add_timber_post_side(parent: Node2D, width: float, height: float, extension: float) -> void:
 	var top := Vector2(width * 0.5, -height * 0.5)
-	var bottom := top + Vector2(0, height)
+	var bottom := top + Vector2(0, height + extension)
 	var side := Polygon2D.new()
 	side.name = "TimberPostSide"
 	side.z_index = -1
@@ -708,12 +730,11 @@ func build_pickup(position: Vector2, asset_name: String, folder: String, id: Str
 	pickup.collision_mask = 2
 	add_child(pickup)
 	var sprite := add_sprite(pickup, folder, asset_name, Color(0.3, 0.9, 0.5))
-	var visible_rect := sprite_visible_rect(sprite)
-	sprite.position = Vector2(-visible_rect.get_center().x, -visible_rect.end.y - background_prop_inset)
-	add_collision_at(pickup, visible_rect.size, Vector2(0, -visible_rect.size.y * 0.5))
+	var visible_rect := interaction_sprite_rect(sprite)
+	seat_interactable_art(pickup, sprite, visible_rect)
 	pickup.call("setup", asset_name, id)
 
-func build_door(position: Vector2, target_floor: int) -> void:
+func build_door(position: Vector2, target_floor: int, ceiling_boundary_y: float) -> void:
 	var destination: Dictionary = door_destinations.get(str(target_floor), {})
 	var door := Area2D.new()
 	door.name = "Door"
@@ -723,11 +744,33 @@ func build_door(position: Vector2, target_floor: int) -> void:
 	door.collision_mask = 0
 	add_child(door)
 	var sprite := add_sprite(door, "Decorations", str(destination.get("decoration", door_decoration)))
-	var visible_rect := sprite_visible_rect(sprite)
-	sprite.position = Vector2(-visible_rect.get_center().x, -visible_rect.end.y - background_prop_inset)
-	sprite.z_index = -1
-	# Detection only: Area2D never blocks the player's movement.
-	add_collision_at(door, visible_rect.size, Vector2(0, -visible_rect.size.y * 0.5))
+	var visible_rect := interaction_sprite_rect(sprite)
+	var ceiling_bottom := horizontal_plate_surface_y(ceiling_boundary_y) + platform_half_thickness * 2.0
+	var max_height := maxf(1.0, position.y - door_inset - ceiling_bottom - 6.0)
+	if visible_rect.size.y > max_height:
+		sprite.scale *= max_height / visible_rect.size.y
+		visible_rect = interaction_sprite_rect(sprite)
+	seat_interactable_art(door, sprite, visible_rect, door_inset)
+	sprite.z_index = int(destination.get("artZ", -1))
+	var notice_text := str(destination.get("notice", ""))
+	if not notice_text.is_empty():
+		var notice := Label.new()
+		notice.text = notice_text
+		notice.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		notice.add_theme_font_size_override("font_size", 13)
+		notice.add_theme_color_override("font_color", Color("#ffe0ae"))
+		var plaque := StyleBoxFlat.new()
+		plaque.bg_color = Color("#4b261e")
+		plaque.border_color = Color("#a87546")
+		plaque.set_border_width_all(1)
+		plaque.content_margin_left = 6.0
+		plaque.content_margin_right = 6.0
+		plaque.content_margin_top = 3.0
+		plaque.content_margin_bottom = 3.0
+		notice.add_theme_stylebox_override("normal", plaque)
+		door.add_child(notice)
+		notice.size = notice.get_minimum_size()
+		notice.position = Vector2(-notice.size.x * 0.5, sprite.position.y + visible_rect.position.y - notice.size.y - 6.0)
 	door.call("setup", target_floor)
 	var destination_stage := GameState.current_stage
 	if destination.has("location"):
@@ -748,7 +791,7 @@ func build_door(position: Vector2, target_floor: int) -> void:
 	if target_floor == teacher_exit_floor:
 		teacher_exit_door = door as CastleDoor
 	var arrival_from: Array = destination.get("arrivalFrom", []).map(func(floor_number): return DataLoader.floor_number(GameState.current_stage, floor_number))
-	if destination_stage == GameState.current_stage and not has_door_player_position and (
+	if GameState.previous_floor >= 0 and destination_stage == GameState.current_stage and not has_door_player_position and (
 		destination_floor == GameState.previous_floor or arrival_from.has(GameState.previous_floor)
 	):
 		door_player_position = position
@@ -770,22 +813,29 @@ func build_door_switch(position: Vector2, switch_number: int) -> void:
 	trigger.collision_mask = 0
 	var sprite := add_sprite(trigger, "Triggers", switch_sprite)
 	trigger.artwork = sprite
-	var bounds := sprite_visible_rect(sprite)
+	var bounds := interaction_sprite_rect(sprite)
 	sprite.scale *= minf(56.0 / bounds.size.x, 64.0 / bounds.size.y)
-	bounds = sprite_visible_rect(sprite)
-	sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y - background_prop_inset)
+	bounds = interaction_sprite_rect(sprite)
+	seat_interactable_art(trigger, sprite, bounds)
 	if reusable and not switch_handle_sprite.is_empty():
 		var pivot := Node2D.new()
-		pivot.position.y = -bounds.size.y - background_prop_inset + 6.0
+		pivot.position = Vector2(
+			bounds.size.x * (switch_handle_pivot.x - 0.5),
+			-bounds.size.y * (1.0 - switch_handle_pivot.y)
+		)
 		trigger.add_child(pivot)
 		trigger.handle = pivot
 		var handle_art := add_sprite(pivot, "Triggers", switch_handle_sprite)
 		var handle_bounds := sprite_visible_rect(handle_art)
-		handle_art.scale *= 30.0 / handle_bounds.size.y
+		handle_art.scale *= switch_handle_length / handle_bounds.size.y
 		handle_bounds = sprite_visible_rect(handle_art)
 		handle_art.position = Vector2(-handle_bounds.get_center().x, -handle_bounds.end.y + 3.0)
-	add_collision_at(trigger, bounds.size, Vector2(0.0, -bounds.size.y * 0.5))
 	add_child(trigger)
+	switches_by_position[position] = trigger
+
+func seat_interactable_art(area: Area2D, sprite: Sprite2D, bounds: Rect2, inset: float = 0.0) -> void:
+	sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y - inset)
+	add_collision_at(area, bounds.size, sprite.position + bounds.get_center())
 
 func _set_switch_gates(is_on: bool, switch_number: int) -> void:
 	for child in get_children():
@@ -852,7 +902,11 @@ func add_character_visual(parent: Node) -> Node:
 func build_visual(position: Vector2, asset_name: String, folder: String, solid: bool) -> void:
 	var node: Node2D = StaticBody2D.new() if solid else Node2D.new()
 	add_child(node)
-	var sprite := add_sprite(node, folder, asset_name)
+	var rock_skins: Dictionary = config.get("rockSkins", {})
+	var runes: Array = rock_skins.get("runes", [])
+	var has_rune := folder == "Decorations" and runes.has(asset_name)
+	var base_asset := str(rock_skins.get("base", asset_name)) if has_rune else asset_name
+	var sprite := add_sprite(node, folder, base_asset)
 	var visual_size := sprite.texture.get_size() * sprite.scale.abs()
 	node.position = Vector2(position.x, position.y - visual_size.y * 0.5)
 	if solid:
@@ -860,7 +914,15 @@ func build_visual(position: Vector2, asset_name: String, folder: String, solid: 
 	else:
 		var bounds := sprite_visible_rect(sprite)
 		node.position = position
-		sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y - background_prop_inset)
+		sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y)
+	if has_rune:
+		var stone_bounds := sprite_visible_rect(sprite)
+		var rune := add_sprite(node, folder, asset_name)
+		var rune_bounds := sprite_visible_rect(rune)
+		rune.scale *= minf(0.54 * stone_bounds.size.x / rune_bounds.size.x, 0.54 * stone_bounds.size.y / rune_bounds.size.y)
+		rune_bounds = sprite_visible_rect(rune)
+		rune.position = sprite.position + stone_bounds.get_center() + Vector2(0.0, stone_bounds.size.y * 0.05) - rune_bounds.get_center()
+		rune.self_modulate = Color(0.8, 0.8, 0.8, 0.9)
 func on_event_story_completed(stage: int, floor: int, event_number: int) -> void:
 	if stage != GameState.current_stage or floor != GameState.current_floor:
 		return
@@ -883,8 +945,11 @@ func refresh_event_interactions() -> void:
 		var cell := event_cells[index]
 		var number := int(cell.number)
 		var interaction := event_interactions[index]
+		var lever = switches_by_position.get(cell.position)
 		if completed_events.has(number) or (once_events.any(func(event_number): return int(event_number) == number)
 			and GameState.has_completed_story_event(GameState.current_stage, GameState.current_floor, number)):
+			if is_instance_valid(lever):
+				lever.set_story_event(0)
 			if is_instance_valid(interaction):
 				interaction.queue_free()
 			continue
@@ -902,6 +967,9 @@ func refresh_event_interactions() -> void:
 			GameState.current_stage, GameState.current_floor, required_event, unlock_event
 		):
 			continue
+		if is_instance_valid(lever):
+			lever.set_story_event(number)
+			continue
 		interaction = STORY_SCRIPT.new()
 		interaction.name = "StoryEvent%d" % number
 		interaction.event_number = number
@@ -915,8 +983,22 @@ func refresh_event_interactions() -> void:
 func play_room_story_cue(cue: String) -> void:
 	var action: Tween
 	match cue:
+		"grandpacome":
+			if not grandpa_entrance.is_empty():
+				var y := horizontal_plate_surface_y(content_origin_y + (float(grandpa_entrance.row) + 1.0) * cell_size.y)
+				var grandpa := STORY_SCRIPT.new() as StoryInteraction
+				grandpa.name = "Grandpa"
+				grandpa.position = Vector2(content_origin_x + (float(grandpa_entrance.fromColumn) + 0.5) * cell_size.x, y)
+				grandpa.interaction_enabled = false
+				add_character_visual(grandpa)
+				add_child(grandpa)
+				grandpa.remove_from_group("interactable")
+				grandpa.setup_pose(-1.0)
+				var destination := Vector2(content_origin_x + (float(grandpa_entrance.toColumn) + 0.5) * cell_size.x, y)
+				action = grandpa.walk_to(destination)
 		"teacherleave":
-			action = teacher.play_exit_cue(cue)
+			if is_instance_valid(teacher):
+				action = teacher.play_exit_cue(cue)
 		"teacherback":
 			if story_bed_position != Vector2.ZERO:
 				action = teacher.walk_to(story_bed_position + Vector2(210.0, 0.0), 0.65)
@@ -967,7 +1049,7 @@ func build_rock_rescue(config: Dictionary) -> void:
 	if GameState.is_destroyed(RESCUE_ROCK_ID):
 		rescue_rock.position += rescue_rock_offset
 	add_child(rescue_rock)
-	var rock := add_sprite(rescue_rock, "Decorations", "Frontier/CaveRocks")
+	var rock := add_sprite(rescue_rock, "Decorations", "Frontier/RoadblockNormal")
 	var rock_rect := sprite_visible_rect(rock)
 	rock.scale *= 156.0 / rock_rect.size.x
 	rock_rect = sprite_visible_rect(rock)
@@ -985,7 +1067,7 @@ func build_backdrop(position: Vector2, signed_value: int) -> void:
 	var asset_name := str(names[index])
 	var frame := add_sprite(node, "Decorations", asset_name)
 	if asset_name == str(roof_exterior.get("windowFrame", "")):
-		var scenery := DataLoader.texture("Background", str(roof_exterior.get("mountains", "")))
+		var scenery := DataLoader.texture("Background", str(roof_exterior.get("windowScenery", roof_exterior.get("mountains", ""))))
 		if scenery != null:
 			var view := Sprite2D.new()
 			view.name = "WindowMountains"
@@ -1024,6 +1106,28 @@ func sprite_visible_rect(sprite: Sprite2D) -> Rect2:
 		(used_rect.position - texture_size * 0.5) * sprite.scale,
 		used_rect.size * sprite.scale
 	)
+
+func interaction_sprite_rect(sprite: Sprite2D) -> Rect2:
+	var texture := sprite.texture
+	var texture_id := texture.get_instance_id()
+	if not interaction_texture_bounds.has(texture_id):
+		var image := texture.get_image()
+		var bounds := Rect2(Vector2.ZERO, texture.get_size())
+		if image != null and not image.is_compressed():
+			var used := image.get_used_rect()
+			var first := used.end
+			var last := used.position
+			for y in range(used.position.y, used.end.y):
+				for x in range(used.position.x, used.end.x):
+					if image.get_pixel(x, y).a >= 0.2:
+						var pixel := Vector2i(x, y)
+						first = first.min(pixel)
+						last = last.max(pixel + Vector2i.ONE)
+			if last.x > first.x and last.y > first.y:
+				bounds = Rect2(Vector2(first), Vector2(last - first))
+		interaction_texture_bounds[texture_id] = bounds
+	var bounds: Rect2 = interaction_texture_bounds[texture_id]
+	return Rect2((bounds.position - texture.get_size() * 0.5) * sprite.scale, bounds.size * sprite.scale)
 
 func add_collision(parent: Node, size: Vector2) -> void:
 	add_collision_at(parent, size, Vector2(0, -size.y * 0.5))

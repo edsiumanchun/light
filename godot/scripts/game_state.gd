@@ -152,12 +152,6 @@ func change_health(amount: int) -> bool:
 func change_key(key_name: String, amount: int) -> bool:
 	return change_inventory(key_name, amount)
 
-func grant_test_keys() -> void:
-	for key_name in ["Copper", "Silver", "Gold"]:
-		inventory[key_name] = maxi(int(inventory.get(key_name, 0)), 999)
-	save_game()
-	stats_changed.emit()
-
 func open_key_lock(id: String, key_name: String) -> bool:
 	var save_id := object_id(current_stage, current_floor, id)
 	if destroyed.has(save_id):
@@ -185,14 +179,7 @@ func object_id(stage: int, floor: int, id: String) -> String:
 	return "%s/%d/%s" % [DataLoader.location_for_stage(stage), floor, id]
 
 func mark_destroyed(id: String) -> void:
-	set_destroyed(id, true)
-
-func set_destroyed(id: String, value: bool) -> void:
-	var save_id := object_id(current_stage, current_floor, id)
-	if value:
-		destroyed[save_id] = true
-	else:
-		destroyed.erase(save_id)
+	destroyed[object_id(current_stage, current_floor, id)] = true
 	save_game()
 
 func is_destroyed(id: String) -> bool:
@@ -248,10 +235,13 @@ func complete_location_story(stage: int, story_number: int) -> void:
 	save_game()
 
 func unlock_all_stages_for_testing() -> void:
-	if unlock_all_for_testing:
-		return
-	unlock_all_for_testing = true
-	location_progress_changed.emit(DataLoader.location_for_stage(current_stage))
+	if not unlock_all_for_testing:
+		unlock_all_for_testing = true
+		location_progress_changed.emit(DataLoader.location_for_stage(current_stage))
+	for key_name in ["Copper", "Silver", "Gold"]:
+		inventory[key_name] = maxi(int(inventory.get(key_name, 0)), 999)
+	save_game()
+	stats_changed.emit()
 
 func advance_location(location: String, cue_id: String) -> void:
 	if DataLoader.stage_for_location(location) < 0 or applied_location_unlocks.has(cue_id):
