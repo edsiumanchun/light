@@ -744,13 +744,14 @@ func build_door(position: Vector2, target_floor: int, ceiling_boundary_y: float)
 	door.collision_mask = 0
 	add_child(door)
 	var sprite := add_sprite(door, "Decorations", str(destination.get("decoration", door_decoration)))
+	var inset := door_inset + float(destination.get("artLift", 0.0))
 	var visible_rect := interaction_sprite_rect(sprite)
 	var ceiling_bottom := horizontal_plate_surface_y(ceiling_boundary_y) + platform_half_thickness * 2.0
-	var max_height := maxf(1.0, position.y - door_inset - ceiling_bottom - 6.0)
-	if visible_rect.size.y > max_height:
+	var max_height := maxf(1.0, position.y - inset - ceiling_bottom - 6.0)
+	if bool(destination.get("fitUnderPlate", true)) and visible_rect.size.y > max_height:
 		sprite.scale *= max_height / visible_rect.size.y
 		visible_rect = interaction_sprite_rect(sprite)
-	seat_interactable_art(door, sprite, visible_rect, door_inset)
+	seat_interactable_art(door, sprite, visible_rect, inset)
 	sprite.z_index = int(destination.get("artZ", -1))
 	var notice_text := str(destination.get("notice", ""))
 	if not notice_text.is_empty():
@@ -1089,8 +1090,11 @@ func add_sprite(parent: Node, folder: String, asset_name: String, fallback := Co
 		var image := Image.create(64, 96, false, Image.FORMAT_RGBA8)
 		image.fill(fallback)
 		sprite.texture = ImageTexture.create_from_image(image)
-	var scale_value := float(asset_scales.get("%s/%s" % [folder, asset_name], GRID_ASSET_SCALE))
-	sprite.scale = Vector2.ONE * scale_value
+	var art_scale = asset_scales.get("%s/%s" % [folder, asset_name], GRID_ASSET_SCALE)
+	if art_scale is Array and art_scale.size() == 2:
+		sprite.scale = Vector2(float(art_scale[0]), float(art_scale[1]))
+	else:
+		sprite.scale = Vector2.ONE * float(art_scale)
 	parent.add_child(sprite)
 	return sprite
 

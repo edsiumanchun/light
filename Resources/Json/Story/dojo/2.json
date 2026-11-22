@@ -132,8 +132,8 @@
 	{
 	  "name": "event",
 	  "dialogue": [
-        "unlockfrontier",
-        "gotofrontier"
+        "unlockinn",
+        "gotoinn"
 	  ]
 	},
 	{

@@ -130,14 +130,16 @@ func jump_to_floor_for_testing(label: String) -> bool:
 func change_floor(floor: int, entrance_h := 4, entrance_v := -1) -> void:
 	travel_to(current_stage, floor, entrance_h, entrance_v)
 
-func travel_to(stage: int, floor: int, entrance_h := 4, entrance_v := -1) -> void:
+func travel_to(stage: int, floor: int, entrance_h := 4, entrance_v := -1, arrival_from := -1) -> void:
 	if DataLoader.location_for_stage(stage).is_empty() or not FileAccess.file_exists(DataLoader.floor_path(stage, floor)):
 		return
-	previous_floor = current_floor if stage == current_stage else -1
+	previous_floor = arrival_from if arrival_from >= 0 else (current_floor if stage == current_stage else -1)
 	current_stage = stage
 	current_floor = floor
 	exit_h = entrance_h
 	exit_v = entrance_v
+	if DataLoader.location_for_stage(stage) == "frontier" and floor == 2:
+		advance_location("frontier", "discover_frontier_entrance")
 	save_game()
 	floor_changed.emit(current_stage, current_floor)
 
@@ -284,6 +286,9 @@ func load_game() -> void:
 				saved_floor = maxi(saved_floor - 1, 0)
 			1:
 				saved_stage = 2
+	var legacy_inn_save := saved_location == "frontier" and saved_floor == 1
+	if legacy_inn_save:
+		saved_stage = DataLoader.stage_for_location("inn")
 	if saved_floor == 0 and saved_stage >= 0 and not FileAccess.file_exists(DataLoader.floor_path(saved_stage, saved_floor)):
 		saved_floor = DataLoader.ENTRY_FLOOR
 	if saved_stage >= 0 and FileAccess.file_exists(DataLoader.floor_path(saved_stage, saved_floor)):
@@ -308,6 +313,11 @@ func load_game() -> void:
 				records.erase(key)
 	location_progress = data.get("location_progress", {"home": 1})
 	applied_location_unlocks = data.get("applied_location_unlocks", {})
+	if legacy_inn_save or int(location_progress.get("frontier", 0)) > 0:
+		location_progress["inn"] = maxi(int(location_progress.get("inn", 0)), 1)
+	if DataLoader.location_for_stage(current_stage) == "frontier" and current_floor >= 2:
+		location_progress["frontier"] = maxi(int(location_progress.get("frontier", 0)), 1)
+		applied_location_unlocks["discover_frontier_entrance"] = true
 	location_story_progress = data.get("location_story_progress", {})
 	if not data.has("location_progress"):
 		if has_unlocked_story_event(0, DataLoader.ENTRY_FLOOR, 2):

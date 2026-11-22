@@ -1,0 +1,69 @@
+{
+  "targets": [
+    {
+      "name": "Greed",
+      "damage": 1,
+      "hp": 3,
+      "reward": 1
+    },
+    {
+      "name": "Hatred",
+      "damage": 3,
+      "hp": 1,
+      "reward": 1 
+    },
+    {
+      "name": "Delusion",
+      "damage": 2,
+      "hp": 2,
+      "reward": 1 
+    },
+    {
+      "name": "Ethics",
+      "damage": 0,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "Concentration",
+      "damage": 0,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "Wisdom",
+      "damage": 0,
+      "hp": 1,
+      "reward": 1
+    },
+    {
+      "name": "BossFlower",
+      "damage": 0,
+      "hp": 0,
+      "reward": 1 
+    },
+    {
+      "name": "BossBone",
+      "damage": 0,
+      "hp": 30,
+      "reward": 1
+    },
+    {
+      "name": "EnemyBone",
+      "damage": 0,
+      "hp": 20,
+      "reward": 1 
+    },
+    {
+      "name": "EnemyBat",
+      "damage": 0,
+      "hp": 5,
+      "reward": 1 
+    },{
+      "name": "Greed2",
+      "damage": 1,
+      "hp": 3,
+      "reward": 1
+    }
+  ]
+}

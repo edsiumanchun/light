@@ -3,27 +3,104 @@
     {
       "name": "player",
       "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
       "dialogue": [
-        "楔石已經抵穩了。嬤嬤，低頭，我用風把石頭推開。"
+        "老師，繃帶和布拿來了。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "來得正好，放在這裡吧。"
       ]
     },
     {
       "name": "event",
       "dialogue": [
-        "moverock"
+        "savegrandma2"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "rightPrefab": "grandpa",
+      "dialogue": [
+        "血止住了，傷勢也穩住了。霜月的傷較輕，已經包紮好了。",
+        "往後好好靜養，老朽會再來看你們。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "嬤嬤……你先睡，我在這裡。"
       ]
     },
     {
       "name": "grandmom",
       "rightPrefab": "grandmom",
       "dialogue": [
-        "石頭鬆開了……孩子，多謝你。"
+        "好孩子，你也歇一歇。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "老先生，往後……我也能學著幫忙嗎？"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "rightPrefab": "grandpa",
+      "dialogue": [
+        "可以。等你的傷好了，老朽教你。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "謝謝您。下次有人受傷，我也想幫得上忙。"
+      ]
+    },
+    {
+      "name": "grandmom",
+      "rightPrefab": "grandmom",
+      "dialogue": [
+        "多虧各位相救……這份恩情，我們會記在心裡。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "老師、靈藏姐姐，謝謝你們。",
+        "等我和嬤嬤好了，你們再來坐坐。"
       ]
     },
     {
       "name": "player",
       "dialogue": [
-        "先別勉強站起來，等霜月帶人回來。"
+        "好，等你們養好傷，我再來看你們。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "rightPrefab": "teacher",
+      "dialogue": [
+        "你們安心休養，我們便先告辭了。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "風沙漸歇，靈藏將餘下的布收好，隨老師離開客棧。"
+      ]
+    },
+    {
+      "name": "event",
+      "dialogue": [
+        "gotohome"
       ]
     }
   ]

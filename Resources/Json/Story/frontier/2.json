@@ -1,12 +1,24 @@
 {
   "storyArray": [
     {
-      "name": "teacher",
-      "leftPrefab": "teacher",
-      "rightPrefab": "playerkid",
+      "name": "nurse",
+      "rightPrefab": "nurse",
       "dialogue": [
-        "靈藏，事情的經過，霜月已經告訴我了。",
-        "先陪她退到一旁，接下來有我們。"
+        "老師，求你救救嬤嬤……她流了好多血。"
+      ]
+    },
+    {
+      "name": "grandmom",
+      "rightPrefab": "grandmom",
+      "dialogue": [
+        "好痛……"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "rightPrefab": "grandpa",
+      "dialogue": [
+        "先別動，老朽替你看看。"
       ]
     },
     {
@@ -16,58 +28,51 @@
       ]
     },
     {
-      "name": "teachernpc",
-      "rightPrefab": "scout",
+      "name": "teacher",
+      "leftPrefab": "teacher",
+      "rightPrefab": "nurse",
       "dialogue": [
-        "老師，人已抬出來了，傷得很重！"
+        "霜月，你的手也擦傷了。先坐下，我替你包好。"
       ]
     },
     {
       "name": "nurse",
-      "rightPrefab": "nurse",
       "dialogue": [
-        "嬤嬤流了好多血……她會不會醒不過來？"
+        "我不要緊……嬤嬤會好起來嗎？"
       ]
     },
     {
       "name": "grandpa",
       "rightPrefab": "grandpa",
       "dialogue": [
-        "霜月，先退開些，讓老朽看看嬤嬤的傷。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "savegrandma2"
-      ]
-    },
-    {
-      "name": "grandpa",
-      "dialogue": [
-        "傷勢暫時穩住了。",
-        "靈藏，你搬了這麼多石塊，也應該累了，要不先回家吧。"
+        "老朽會盡力。黛苓，請替我按住這裡。"
       ]
     },
     {
       "name": "teacher",
-      "leftPrefab": "teacher",
       "rightPrefab": "playerkid",
       "dialogue": [
-        "天色晚了，你爹也該等得心焦了。",
-        "靈藏，我陪你回去。"
+        "好。靈藏，乾淨的布快用完了，還得再取些來。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "地庫還有繃帶和乾淨的布，放在樓梯旁的木櫃裡。"
       ]
     },
     {
       "name": "player",
+      "leftPrefab": "playerkid",
       "dialogue": [
-        "好，謝謝老師。"
+        "我去取來。霜月，你先安心歇著。"
       ]
     },
     {
-      "name": "event",
+      "name": "teacher",
       "dialogue": [
-        "gotohome"
+        "我留在這裡幫老先生，你留心腳下。"
       ]
     }
   ]

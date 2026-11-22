@@ -196,12 +196,15 @@ func travel_to(entry: Dictionary) -> void:
 	if not can_travel(entry):
 		return
 	close_map()
-	GameState.travel_to(DataLoader.stage_for_location(str(entry.location)), floor)
+	GameState.travel_to(DataLoader.stage_for_location(str(entry.location)), floor, 4, -1, int(entry.get("arrivalFrom", -1)))
 
 func can_travel(entry: Dictionary) -> bool:
 	var location := str(entry.get("location", ""))
 	var stage := DataLoader.stage_for_location(location)
 	var floor := int(entry.floor)
+	var discovery := str(entry.get("discovery", ""))
+	if not discovery.is_empty() and not GameState.unlock_all_for_testing and not GameState.applied_location_unlocks.has(discovery):
+		return false
 	return stage >= 0 and GameState.progress_for_location(location) >= 1 and (
 		stage != GameState.current_stage or floor != GameState.current_floor
 	) and FileAccess.file_exists(DataLoader.floor_path(stage, floor))
