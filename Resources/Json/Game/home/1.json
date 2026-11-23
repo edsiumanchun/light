@@ -1,6 +1,7 @@
 
 {
   "layout": {
+	"dayNightBase": "night",
 	"initStory": true,
 	"columns": 9,
 	"rows": 4,

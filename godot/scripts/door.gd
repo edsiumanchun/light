@@ -20,6 +20,8 @@ func setup(destination_floor: int) -> void:
 	add_to_group("interactable")
 
 func is_locked() -> bool:
+	if GameState.unlock_all_for_testing:
+		return false
 	if GameState.progress_for_location(DataLoader.location_for_stage(source_stage)) < required_location_progress:
 		return true
 	for gate_id in required_gates:
@@ -40,6 +42,6 @@ func interact(_player: CastlePlayer) -> void:
 		return
 	if not FileAccess.file_exists(DataLoader.floor_path(stage, target_floor)):
 		return
-	if not key_name.is_empty() and not GameState.open_key_lock(persistent_id, key_name):
+	if not GameState.unlock_all_for_testing and not key_name.is_empty() and not GameState.open_key_lock(persistent_id, key_name):
 		return
 	GameState.travel_to(stage, target_floor)

@@ -71,7 +71,9 @@ func build_map(config: Dictionary) -> void:
 			add_travel_button(entry, bounds)
 		else:
 			add_panel(bounds, Color("#46362b"), Color("#91744f"))
-			add_caption(str(entry.name), bounds, 18, INK, HORIZONTAL_ALIGNMENT_CENTER)
+			var label := add_caption(str(entry.get("shortName", entry.name)), bounds, 18, INK, HORIZONTAL_ALIGNMENT_CENTER)
+			label.mouse_filter = Control.MOUSE_FILTER_PASS
+			label.tooltip_text = str(entry.name)
 	if not grotto.is_empty():
 		var bounds := landmark_label_bounds(grotto)
 		add_panel(bounds, Color("#46362b"), Color("#91744f"))
@@ -125,7 +127,8 @@ func draw_landmark(canvas: Node2D, entry: Dictionary) -> void:
 func landmark_label_bounds(entry: Dictionary) -> Rect2:
 	var offset: Array = entry.labelOffset
 	var center := map_point(entry.coordinates) + Vector2(float(offset[0]), float(offset[1]))
-	return Rect2(center - Vector2(73, 17), Vector2(146, 34))
+	var width := 70.0 if entry.has("shortName") else 146.0
+	return Rect2(center - Vector2(width * 0.5, 17), Vector2(width, 34))
 
 func map_point(coordinates: Array) -> Vector2:
 	var west_fraction := (float(coordinates[0]) - TERRAIN_BOUNDS.position.x) / TERRAIN_BOUNDS.size.x
@@ -187,7 +190,8 @@ func place(control: Control, bounds: Rect2) -> void:
 func add_travel_button(entry: Dictionary, bounds: Rect2) -> void:
 	if not entry.has("floor"):
 		return
-	var button := add_button(str(entry.name), bounds)
+	var button := add_button(str(entry.get("shortName", entry.name)), bounds)
+	button.tooltip_text = str(entry.name)
 	travel_buttons[button] = entry
 	button.pressed.connect(func(): travel_to(entry))
 

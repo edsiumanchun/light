@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "columns": 9,
+    "rows": 1,
+    "cellWidth": 131,
+    "cellHeight": 375,
+    "jumpReferenceHeight": 170,
+    "verticalAlign": "center",
+    "cameraZoom": 1.0,
+    "backgroundMode": "image",
+    "backgroundRepeatRegion": [0, 0, 1, 1],
+    "plateFinish": "timber",
+    "doorDecoration": "Liuhe/LatticeDoor",
+    "doorDestinations": {
+      "10": { "floor": -1, "openMap": true }
+    },
+    "assetScales": {
+      "Decorations/Liuhe/LatticeDoor": 0.108,
+      "Decorations/Clinic/MedicineCabinet": 0.125,
+      "Decorations/Clinic/HerbRack": 0.09,
+      "Decorations/Clinic/ConsultationDesk": 0.085,
+      "Decorations/Clinic/MedicinePot": 0.053,
+      "Decorations/Clinic/TreatmentBed": 0.105
+    }
+  },
+  "camera": {
+    "visibleRows": 1,
+    "followPlayerX": false,
+    "followPlayerY": false
+  },
+  "assets0": [
+    { "name": "Background", "gridArray0": [2] },
+    { "name": "PlateH", "grid": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ] },
+    { "name": "PlateV", "grid": [[1, 0, 0, 0, 0, 0, 0, 0, 0, 1]] },
+    { "name": "Object", "grid": [[0, 0, 1, 0, 0, 0, 0, 0, 0]] },
+    { "name": "Door", "grid": [[10, 0, 0, 0, 0, 0, 0, 0, 0]] },
+    { "name": "Decoration", "grid": [[0, 7, 0, 6, 9, 8, 0, 10, 0]] }
+  ]
+}

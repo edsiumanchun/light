@@ -1,13 +1,13 @@
 {
   "locations": [
-    { "name": "靈藏的住處", "coordinates": [94.44, 40.108], "labelOffset": [0, 32], "approximate": true, "location": "home", "floor": 1 },
-    { "name": "六和道場", "coordinates": [94.53, 40.20], "labelOffset": [0, -32], "approximate": true, "location": "dojo", "floor": 1 },
-    { "name": "月牙泉村", "coordinates": [94.6694, 40.0874], "labelOffset": [0, 37] },
-    { "name": "月牙客棧", "coordinates": [94.6639, 40.1411], "labelOffset": [-56, -33], "approximate": true, "location": "inn", "floor": 1 },
-    { "name": "敦煌邊境・地穴", "coordinates": [94.71, 40.156], "labelOffset": [69, 25], "approximate": true, "location": "frontier", "floor": 2, "arrivalFrom": 3, "discovery": "discover_frontier_entrance" },
-    { "name": "玉門藥谷", "coordinates": [94.35, 40.22], "labelOffset": [0, 32], "approximate": true }
+    { "name": "靈藏的住處", "shortName": "住處", "coordinates": [94.44, 40.108], "labelOffset": [-13, 53], "approximate": true, "location": "home", "floor": 1 },
+    { "name": "六和道場", "shortName": "道場", "coordinates": [94.53, 40.20], "labelOffset": [10, -16], "approximate": true, "location": "dojo", "floor": 1 },
+    { "name": "月牙泉村", "shortName": "泉村", "coordinates": [94.6694, 40.0874], "labelOffset": [7, 98] },
+    { "name": "月牙客棧", "shortName": "客棧", "coordinates": [94.6639, 40.1411], "labelOffset": [-42, -13], "approximate": true, "location": "inn", "floor": 1 },
+    { "name": "敦煌邊境・地穴", "shortName": "地穴", "coordinates": [94.71, 40.156], "labelOffset": [97, 107], "approximate": true, "location": "frontier", "floor": 2, "arrivalFrom": 3, "discovery": "discover_frontier_entrance" },
+    { "name": "玉門藥谷", "shortName": "藥谷", "coordinates": [94.35, 40.22], "labelOffset": [-15, 42], "approximate": true, "location": "clinic", "floor": 11 }
   ],
   "west": "樓蘭古城",
-  "grottoAnchor": { "name": "莫高窟", "coordinates": [94.81667, 40.13333], "labelOffset": [29, -32] },
+  "grottoAnchor": { "name": "莫高窟", "coordinates": [94.81667, 40.13333], "labelOffset": [52, -47] },
   "grottoSites": ["敦煌石窟崖下", "敦煌石窟", "敦煌藏書閣", "天山"]
 }

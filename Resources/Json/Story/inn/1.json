@@ -1,0 +1,39 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "dialogue": [
+        "老師，婆婆昏過去了！"
+      ],
+      "leftPrefab": "playerkid",
+      "rightPrefab": "teacher"
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "還有氣息。黛苓，幫我按住她的傷口。"
+      ],
+      "rightPrefab": "grandpa"
+    },
+    {
+      "name": "？？？",
+      "dialogue": [
+        "……有人嗎？我在下面……"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "樓下有人呼救。我去看看。"
+      ],
+      "leftPrefab": "playerkid"
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "帶上燈。需要幫忙就朝樓梯喊，我聽得見。"
+      ],
+      "rightPrefab": "teacher"
+    }
+  ]
+}

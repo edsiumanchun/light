@@ -4,18 +4,18 @@
     "runes": ["Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion"]
   },
   "paths": {
-    "backgrounds": ["ScaleHoly", "Frontier/DesertCave", "Frontier/OpenDesert"],
-    "plateH": ["City", "GoUp", "GoDown","Space"],
-    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateExit","Space"],
+    "backgrounds": ["ScaleHoly", "Frontier/DesertCave", "Frontier/OpenDesert", "Liuhe/WoodWall", "Inn/CourtyardHall", "Inn/NightDesert", "Inn/InteriorWall"],
+    "plateH": ["City", "GoUp", "GoDown","Space","Wood"],
+    "plateV": ["City","GateCopper","GateSilver","GateGold", "GateExit","Space","Wood"],
     "characters": ["Player","StoryShop","StorySage","StoryRosiaSleep"],
     "bosses": ["BossBone"],
     "enemies": ["EnemyBone", "EnemyBat", "Enemy1"],
     "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion",  "Greed2", "BossFlower"],
     "items": ["KeyCopper","KeySilver","KeyGold"],
-    "obstacles": ["Dark"],
+    "obstacles": ["Dark", "Frontier/RoadblockNormal"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Dark", "Lamp", "Wall", "Frontier/RoadblockNormal", "Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion", "Frontier/CrescentMoonInn"],
+    "decorations": ["Dark", "Lamp", "Wall", "Frontier/RoadblockNormal", "Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion", "Inn/CrescentMoonInnNight", "LampStory25D", "TeachingTableStory25D", "Clinic/HerbRack", "PotStory25D", "Home/WinterWindowFrame", "Inn/DiningTable", "Inn/InnkeeperCounter"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]
   }

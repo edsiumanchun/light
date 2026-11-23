@@ -1,0 +1,25 @@
+{
+  "storyArray": [
+    {
+      "name": "nurse",
+      "dialogue": [
+        "老師，繃帶和藥材拿來了。"
+      ],
+      "leftPrefab": "nurse",
+      "rightPrefab": "teacher"
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "霜月，遞給我一卷繃帶。靈藏，把藥材放在桌上。"
+      ]
+    },
+    {
+      "name": "grandpa",
+      "dialogue": [
+        "好，血止住了。讓她先躺著，我在這兒守著。"
+      ],
+      "rightPrefab": "grandpa"
+    }
+  ]
+}

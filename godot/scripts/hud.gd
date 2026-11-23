@@ -63,7 +63,7 @@ func build_test_controls() -> void:
 	test_controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	test_controls.offset_left = 20
 	test_controls.offset_right = 158
-	test_controls.offset_top = -134
+	test_controls.offset_top = -174
 	test_controls.offset_bottom = -18
 
 	var jump_dialog := AcceptDialog.new()
@@ -100,8 +100,15 @@ func build_test_controls() -> void:
 	reset_dialog.confirmed.connect(GameState.reset_progress_for_testing)
 	add_test_button("Reset All").pressed.connect(func(): reset_dialog.popup_centered())
 	var unlock_all_button := add_test_button("Unlock All + Keys")
-	unlock_all_button.tooltip_text = "Unlock all stages and top up Copper, Silver, and Gold keys to 999 each."
+	unlock_all_button.tooltip_text = "Unlock all available destinations and bypass door and gate requirements. Top up each key type to 999."
 	unlock_all_button.pressed.connect(GameState.unlock_all_stages_for_testing)
+	var lighting_button := add_test_button("日夜預覽 · 原景")
+	lighting_button.tooltip_text = "切換原景、日景與夜景。適用於靈藏的住處、月牙客棧與敦煌邊境外景。"
+	lighting_button.pressed.connect(GameState.cycle_lighting_preview)
+	GameState.day_night_preview_changed.connect(func():
+		var labels := ["原景", "日景", "夜景"]
+		lighting_button.text = "日夜預覽 · " + labels[GameState.lighting_preview]
+	)
 
 func add_test_button(label: String) -> Button:
 	var button := Button.new()
@@ -126,6 +133,8 @@ func _process(_delta: float) -> void:
 			interact_label.text = "Locked"
 		elif door.opens_world_map:
 			interact_label.text = "Open Map"
+	elif target is CastleLevelExit and target.target_floor >= 0:
+		interact_label.text = "Locked" if target.is_locked() else "Enter Cellar"
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_M:

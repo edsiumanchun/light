@@ -1,13 +1,18 @@
 {
   "layout": {
     "columns": 7,
-    "rows": 13,
+    "rows": 4,
     "cellWidth": 131,
     "cellHeight": 170,
     "doorDestinations": {
       "10": {
-        "floor": 2
+        "floor": 2,
+        "decoration": "Frontier/TombEntrance"
       }
+    },
+    "backgroundMode": "cellar",
+    "assetScales": {
+      "Decorations/Frontier/TombEntrance": 0.4
     }
   },
   "camera": {

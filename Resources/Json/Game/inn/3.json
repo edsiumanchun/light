@@ -1,0 +1,112 @@
+{
+  "layout": {
+    "columns": 8,
+    "rows": 3,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "backgroundLanterns": [[0.1875, 0.83], [0.6875, 0.83]],
+    "plateFinish": "timber",
+    "doorDecoration": "Liuhe/LatticeDoor",
+    "assetScales": {
+      "Decorations/Frontier/RoadblockNormal": 0.17,
+      "Decorations/LampStory25D": 0.42,
+      "Decorations/Clinic/HerbRack": 0.14,
+      "Decorations/PotStory25D": 0.36,
+      "Decorations/Liuhe/LatticeDoor": 0.108
+    },
+    "doorDestinations": {
+      "1": {
+        "floor": 2
+      }
+    },
+    "eventProgress": {
+      "2": 1,
+      "3": 1
+    },
+    "eventRequires": {
+      "3": 2
+    },
+    "onceEvents": [2, 3],
+    "switchGateDecoration": "Inn/StorehouseGate",
+    "verticalGateMinWidth": 60,
+    "gateSwitches": {
+      "gateV_0_2_6": 1
+    },
+    "switchSprite": "LiuheGearLeverBase",
+    "switchHandleSprite": "LiuheGearLeverHandle",
+    "switchHandlePivot": [0.44, 0.47],
+    "switchHandleLength": 48,
+    "eventRequiresOpened": {
+      "3": {
+        "floor": 3,
+        "id": "switch_1"
+      }
+    },
+    "disableNpcInteraction": true
+  },
+  "camera": {
+    "visibleRows": 3,
+    "followPlayerY": false
+  },
+  "assets0": [
+    { "name": "Background", "gridArray0": [3] },
+    {
+      "name": "PlateH",
+      "grid": [
+        [5, 5, 5, 5, 5, 5, 5, 5],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [5, 5, 5, 5, 5, 5, 5, 5]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [7, 0, 0, 0, 0, 0, 7, 0, 7],
+        [7, 0, 0, 0, 0, 0, 7, 0, 7],
+        [7, 0, 0, 0, 0, 0, 2, 0, 7]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 32, 0, 0, 2, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 9, 0, 0, 0, 9, 0, 11]
+      ]
+    },
+    {
+      "name": "Event",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0, 3, 0]
+      ]
+    },
+    {
+      "name": "Switch",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0]
+      ]
+    }
+  ]
+}

@@ -13,8 +13,14 @@ var closed_sprite_y := 0.0
 var clipped := false
 
 func _ready() -> void:
+	GameState.location_progress_changed.connect(_on_location_progress_changed)
 	if not switch_controlled:
 		add_to_group("interactable")
+
+func _on_location_progress_changed(_location: String) -> void:
+	if GameState.unlock_all_for_testing:
+		collision_layer = 0
+		open()
 
 func interact(_player: CastlePlayer) -> void:
 	if opening or switch_controlled:
@@ -31,6 +37,8 @@ func open() -> void:
 	set_retracted(true)
 
 func set_retracted(retracted: bool, animate := true) -> void:
+	if GameState.unlock_all_for_testing and not retracted:
+		return
 	if motion != null and motion.is_valid():
 		motion.kill()
 	if is_instance_valid(gate_sprite) and gate_sprite.visible:

@@ -4,6 +4,7 @@ signal stats_changed
 signal floor_changed(stage: int, floor: int)
 signal location_progress_changed(location: String)
 signal world_map_requested
+signal day_night_preview_changed
 
 const DEFAULT_SAVE_PATH := "user://castle-save.json"
 const ENV_PATH := "res://.env"
@@ -32,6 +33,8 @@ var location_progress: Dictionary = {"home": 1}
 var applied_location_unlocks: Dictionary = {}
 var location_story_progress: Dictionary = {}
 var unlock_all_for_testing := false
+enum LightingPreview { ORIGINAL, DAY, NIGHT }
+var lighting_preview := LightingPreview.ORIGINAL
 var music_muted := true
 var save_path := DEFAULT_SAVE_PATH
 
@@ -235,6 +238,13 @@ func complete_location_story(stage: int, story_number: int) -> void:
 		return
 	location_story_progress[location] = story_number
 	save_game()
+
+func cycle_lighting_preview() -> void:
+	match lighting_preview:
+		LightingPreview.ORIGINAL: lighting_preview = LightingPreview.DAY
+		LightingPreview.DAY: lighting_preview = LightingPreview.NIGHT
+		LightingPreview.NIGHT: lighting_preview = LightingPreview.ORIGINAL
+	day_night_preview_changed.emit()
 
 func unlock_all_stages_for_testing() -> void:
 	if not unlock_all_for_testing:

@@ -1,5 +1,7 @@
 {
   "layout": {
+    "dayNightBase": "night",
+    "dayNightFacade": "Inn/CrescentMoonInnNight",
     "columns": 10,
     "rows": 5,
     "cellWidth": 131,
@@ -7,7 +9,7 @@
     "backgroundMode": "image",
     "hidePlates": true,
     "backgroundFocusY": 0.4,
-    "backgroundCropTop": 0.32,
+    "backgroundCropTop": 0.12,
     "doorDestinations": {
       "1": {
         "floor": -1,
@@ -16,10 +18,8 @@
       },
       "2": {
         "floor": 2,
-        "location": "frontier",
         "decoration": "Frontier/CrescentMoonInnDoor",
         "artZ": 0,
-        "artLift": 21,
         "fitUnderPlate": false
       },
       "3": {
@@ -28,9 +28,12 @@
         "decoration": "Frontier/DangerSign"
       }
     },
+    "decorationGroundOffsets": {
+      "Inn/CrescentMoonInnNight": 10
+    },
     "assetScales": {
-      "Decorations/Frontier/CrescentMoonInn": [0.65, 0.70],
-      "Decorations/Frontier/CrescentMoonInnDoor": 0.30
+      "Decorations/Inn/CrescentMoonInnNight": 0.62,
+      "Decorations/Frontier/CrescentMoonInnDoor": 0.35
     }
   },
   "camera": {
@@ -51,7 +54,7 @@
     },
     {
       "name": "Background",
-      "gridArray0": [2]
+      "gridArray0": [5]
     },
     {
       "name": "PlateH",

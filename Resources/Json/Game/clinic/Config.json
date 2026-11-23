@@ -1,6 +1,6 @@
 {
   "paths": {
-    "backgrounds": ["ScaleNight", "ScaleNight2"],
+    "backgrounds": ["ScaleNight", "ScaleNight2", "Clinic/ApothecaryWall"],
     "plateH": ["Wood", "GoUp", "GoDown","Space"],
     "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake"],
     "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
@@ -11,7 +11,7 @@
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed", "Clinic/MedicineCabinet", "Clinic/HerbRack", "Clinic/ConsultationDesk", "Clinic/MedicinePot", "Clinic/TreatmentBed"],
     "walls": ["Brick0", "Brick1", "Brick2"],
     "audios": ["elf","bgm"]
   }

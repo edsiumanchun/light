@@ -1,0 +1,18 @@
+{
+  "storyArray": [
+    {
+      "name": "nurse",
+      "dialogue": [
+        "門開了！繃帶在我這裡，藥材也帶上。婆婆怎樣了？"
+      ],
+      "leftPrefab": "playerkid",
+      "rightPrefab": "nurse"
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "老師和爺爺在照看她。我們一起上去。"
+      ]
+    }
+  ]
+}

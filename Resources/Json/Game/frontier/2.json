@@ -1,5 +1,6 @@
 {
   "layout": {
+    "dayNightBase": "day",
     "columns": 8,
     "rows": 5,
     "cellWidth": 131,
@@ -27,13 +28,18 @@
         "decoration": "Frontier/TombEntrance",
         "requiresGates": [
           "rescue_rock"
-        ]
+        ],
+        "artZ": 1
       },
       "2": {
         "floor": 1,
         "location": "inn",
         "decoration": "Frontier/RouteSign"
       }
+    },
+    "assetScales": {
+      "Decorations/Frontier/CaveRocks": 0.16,
+      "Decorations/Frontier/TombEntrance": 0.5
     }
   },
   "camera": {
@@ -94,6 +100,16 @@
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [2, 0, 0, 0, 0, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 9],
         [0, 0, 0, 0, 0, 0, 0, 0]
       ]
     }

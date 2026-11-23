@@ -48,6 +48,8 @@ var timber_finish := false
 var hide_plates := false
 var invisible_plates: Array = []
 var asset_scales := {}
+var background_lanterns: Array = []
+var decoration_ground_offsets: Dictionary = {}
 var interaction_texture_bounds: Dictionary = {}
 var door_decoration := "Door"
 var gate_decoration := ""
@@ -59,10 +61,13 @@ var switch_handle_pivot := Vector2(0.5, 0.0)
 var switch_handle_length := 30.0
 var vertical_gate_min_width := 0.0
 var door_destinations: Dictionary = {}
+var plate_destinations: Dictionary = {}
 var gate_switches: Dictionary = {}
 var camera_zoom_override := 0.0
+var jump_reference_height := 170.0
 var background_focus_y := 0.5
 var background_crop_top := 0.0
+var background_repeat_region: Array = []
 var roof_exterior: Dictionary = {}
 var background_lighting: Dictionary = {}
 var door_inset := 0.0
@@ -93,6 +98,26 @@ var switches_by_position: Dictionary = {}
 var event_interactions: Array[StoryInteraction] = []
 var completed_events: Dictionary = {}
 
+var daylight_base := ""
+var daylight_facade := ""
+var daylight_material := ShaderMaterial.new()
+
+func _ready() -> void:
+	daylight_material.shader = preload("res://godot/shaders/day_night_preview.gdshader")
+	GameState.day_night_preview_changed.connect(update_daylight_preview)
+
+func update_daylight_preview() -> void:
+	var grade := 0
+	if GameState.lighting_preview == GameState.LightingPreview.DAY and daylight_base == "night":
+		grade = 1
+	elif GameState.lighting_preview == GameState.LightingPreview.NIGHT and daylight_base == "day":
+		grade = 2
+	daylight_material.set_shader_parameter("grade", grade)
+
+func preview_daylight_on(sprite: Sprite2D) -> void:
+	if not daylight_base.is_empty() and sprite.material == null:
+		sprite.material = daylight_material
+
 func build(stage: int, floor: int) -> CastlePlayer:
 	clear_level()
 	config = DataLoader.stage_config(stage)
@@ -100,6 +125,9 @@ func build(stage: int, floor: int) -> CastlePlayer:
 	index_enemy_data(DataLoader.enemy_data(stage))
 	var floor_definition := DataLoader.floor_data(stage, floor)
 	var layout: Dictionary = floor_definition.get("layout", {})
+	daylight_base = str(layout.get("dayNightBase", ""))
+	daylight_facade = str(layout.get("dayNightFacade", ""))
+	update_daylight_preview()
 	configure_grid(
 		floor_definition,
 		layout,
@@ -155,6 +183,7 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 			platform_half_thickness = reference_texture.get_height() * GRID_ASSET_SCALE * 0.5
 	column_width = float(layout.get("cellWidth", column_width))
 	cell_size = Vector2(column_width, row_height)
+	jump_reference_height = float(layout.get("jumpReferenceHeight", row_height))
 	group_count = 1
 	for group_index in range(3):
 		if not floor_definition.get("assets%d" % group_index, []).is_empty():
@@ -164,7 +193,10 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	var total_content_width := group_width * group_count
 	world_size = Vector2(maxf(view_size.x, total_content_width), maxf(view_size.y, content_height))
 	content_origin_x = maxf((world_size.x - total_content_width) * 0.5, 0.0)
-	content_origin_y = maxf(world_size.y - content_height, 0.0) if str(layout.get("verticalAlign", "top")).to_lower() == "bottom" else 0.0
+	content_origin_y = 0.0
+	match str(layout.get("verticalAlign", "top")).to_lower():
+		"bottom": content_origin_y = world_size.y - content_height
+		"center": content_origin_y = (world_size.y - content_height) * 0.5
 	camera_visible_rows = maxf(float(camera_config.get("visibleRows", grid_rows)), 1.0)
 	camera_follow_player_x = bool(camera_config.get("followPlayerX", false))
 	camera_follow_player_y = bool(camera_config.get("followPlayerY", false))
@@ -191,6 +223,7 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	hide_plates = bool(layout.get("hidePlates", false))
 	invisible_plates = layout.get("invisiblePlates", [])
 	asset_scales = layout.get("assetScales", {})
+	decoration_ground_offsets = layout.get("decorationGroundOffsets", {})
 	door_decoration = str(layout.get("doorDecoration", "Door"))
 	gate_decoration = str(layout.get("gateDecoration", ""))
 	horizontal_gate_decoration = str(layout.get("horizontalGateDecoration", ""))
@@ -202,12 +235,15 @@ func configure_grid(floor_definition: Dictionary, layout: Dictionary, camera_con
 	switch_handle_length = float(layout.get("switchHandleLength", 30.0))
 	vertical_gate_min_width = float(layout.get("verticalGateMinWidth", 0.0))
 	door_destinations = layout.get("doorDestinations", {})
+	plate_destinations = layout.get("plateDestinations", {})
 	gate_switches = layout.get("gateSwitches", {})
 	camera_zoom_override = float(layout.get("cameraZoom", 0.0))
 	background_focus_y = clampf(float(layout.get("backgroundFocusY", 0.5)), 0.0, 1.0)
 	background_crop_top = clampf(float(layout.get("backgroundCropTop", 0.0)), 0.0, 0.9)
+	background_repeat_region = layout.get("backgroundRepeatRegion", [])
 	roof_exterior = layout.get("roofExterior", {})
 	background_lighting = layout.get("backgroundLighting", {})
+	background_lanterns = layout.get("backgroundLanterns", [])
 	var default_door_inset := -TIMBER_DEPTH.y * 0.75 if timber_finish else 0.0
 	door_inset = maxf(0.0, float(layout.get("doorInset", layout.get("backgroundPropInset", default_door_inset))))
 
@@ -382,8 +418,9 @@ func build_roof_exterior(exterior: Dictionary) -> void:
 		mountains.scale = Vector2.ONE * scale_factor
 		mountains.position = Vector2(center_x, content_origin_y * 0.5)
 		mountains.z_index = -110
+		preview_daylight_on(mountains)
 		add_child(mountains)
-	var roof_texture := DataLoader.texture("Decorations", str(exterior.get("roof", "")))
+	var roof_texture := DataLoader.texture(str(exterior.get("roofFolder", "Decorations")), str(exterior.get("roof", "")))
 	if roof_texture != null:
 		var roof := Node2D.new()
 		roof.name = "SnowRoof"
@@ -410,7 +447,7 @@ func roof_texture_region(texture: Texture2D, region: Array) -> Rect2:
 	return Rect2(Vector2(float(region[0]), float(region[1])) * size, Vector2(float(region[2]), float(region[3])) * size)
 
 func build_group_background(assets: Array, group_index: int) -> void:
-	if background_mode == "plain_panels" or quiet_plaster:
+	if background_mode in ["plain_panels", "cellar"] or quiet_plaster:
 		build_plain_panel_background(group_index)
 		return
 	var wall_names: Array = paths.get("walls", [])
@@ -431,6 +468,11 @@ func build_group_background(assets: Array, group_index: int) -> void:
 	var texture := DataLoader.texture("Background", str(names[background_index]))
 	if texture == null:
 		return
+	if background_repeat_region.size() == 4:
+		var source := roof_texture_region(texture, background_repeat_region)
+		if source.has_area():
+			build_repeated_image_background(texture, source, group_index)
+			return
 	var background := Sprite2D.new()
 	background.name = "ImageBackground%d" % group_index
 	background.texture = texture
@@ -460,7 +502,37 @@ func build_group_background(assets: Array, group_index: int) -> void:
 	background.region_rect = source_rect
 	background.scale = Vector2(group_width / source_rect.size.x, content_height / source_rect.size.y)
 	background.z_index = -100
+	if background_lanterns.size() == 2:
+		var material := ShaderMaterial.new()
+		material.shader = preload("res://godot/shaders/lantern_wall.gdshader")
+		material.set_shader_parameter("source_region", Vector4(
+			source_rect.position.x / texture_size.x, source_rect.position.y / texture_size.y,
+			source_rect.size.x / texture_size.x, source_rect.size.y / texture_size.y
+		))
+		for index in range(2):
+			var point: Array = background_lanterns[index]
+			material.set_shader_parameter("lantern_%d" % index, Vector2(float(point[0]), float(point[1])))
+		background.material = material
+	if roof_exterior.is_empty():
+		preview_daylight_on(background)
 	add_child(background)
+
+func build_repeated_image_background(texture: Texture2D, source: Rect2, group_index: int) -> void:
+	var natural_width := source.size.x * content_height / source.size.y
+	var tile_count := maxi(1, roundi(group_width / natural_width))
+	var tile_width := group_width / tile_count
+	var left := content_origin_x + group_index * group_width
+	for index in range(tile_count):
+		var tile := Sprite2D.new()
+		tile.texture = texture
+		tile.region_enabled = true
+		tile.region_filter_clip_enabled = true
+		tile.region_rect = source
+		tile.centered = false
+		tile.position = Vector2(left + index * tile_width, content_origin_y)
+		tile.scale = Vector2(tile_width, content_height) / source.size
+		tile.z_index = -100
+		add_child(tile)
 
 func build_plain_panel_background(group_index: int) -> void:
 	var background := ColorRect.new()
@@ -470,6 +542,12 @@ func build_plain_panel_background(group_index: int) -> void:
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	background.z_index = -100
 	var material := ShaderMaterial.new()
+	if background_mode == "cellar":
+		material.shader = preload("res://godot/shaders/cellar_wall.gdshader")
+		material.set_shader_parameter("room_size", background.size)
+		background.material = material
+		add_child(background)
+		return
 	material.shader = preload("res://godot/shaders/room_panels.gdshader")
 	material.set_shader_parameter("room_size", background.size)
 	material.set_shader_parameter("panel_width", cell_size.x * 3.0)
@@ -520,6 +598,8 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 		return
 	var asset_name := str(names[index])
 	var has_gate := asset_name.begins_with("Gate")
+	if has_gate and GameState.unlock_all_for_testing:
+		return
 	var switch_number := int(gate_switches.get(gate_id, 0))
 	if has_gate and switch_number == 0 and GameState.is_destroyed(gate_id):
 		return
@@ -527,14 +607,16 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 	body.position = position
 	body.collision_layer = 1
 	body.collision_mask = 2
-	var horizontal_gate := not vertical and asset_name.begins_with("Gate")
+	var destination: Dictionary = plate_destinations.get(gate_id, {})
+	var horizontal_gate := not vertical and has_gate
+	var horizontal_hatch := horizontal_gate or (not vertical and asset_name.begins_with("GoDown") and not destination.is_empty())
 	var gate_width_scale: Dictionary = config.get("gateWidthScale", {})
 	var sprite := add_sprite(body, "PlateV" if vertical or horizontal_gate else "PlateH", asset_name)
 	sprite.visible = not hide_plates and not invisible_plates.has(asset_name)
 	# All imported 2D grid artwork uses the same Unity-style scale.
 	var texture_size := sprite.texture.get_size()
 	var plate_size := texture_size * sprite.scale.abs()
-	if horizontal_gate:
+	if horizontal_hatch:
 		var hatch_width := minf(cell_size.x * float(gate_width_scale.get("horizontal", 1.0)), group_width)
 		plate_size = Vector2(hatch_width, platform_half_thickness * 2.0)
 		var hatch := DataLoader.texture("Decorations", horizontal_gate_decoration) if not horizontal_gate_decoration.is_empty() else null
@@ -625,6 +707,13 @@ func build_plate(position: Vector2, signed_value: int, vertical: bool, group_ind
 		body.set_script(EXIT_SCRIPT)
 		body.collision_layer = 5
 		body.set("direction", -1 if asset_name.contains("Revert") else 1)
+		if not destination.is_empty():
+			var destination_floor := DataLoader.floor_number(GameState.current_stage, destination.get("floor", -1))
+			body.set("target_floor", destination_floor)
+			body.set("required_event", int(destination.get("requiresEvent", 0)))
+			if destination_floor >= 0 and destination_floor == GameState.previous_floor and not has_door_player_position:
+				door_player_position = position - Vector2(0, plate_size.y * 0.5)
+				has_door_player_position = true
 	elif asset_name == "GoUp":
 		body.set_script(EXIT_SCRIPT)
 		body.collision_layer = 5
@@ -702,7 +791,10 @@ func build_from_list(position: Vector2, index: int, list_name: String, folder: S
 	match kind:
 		"enemy": build_enemy(position, asset_name, id)
 		"pickup": build_pickup(position, asset_name, folder, id)
-		"solid": build_visual(position, asset_name, folder, true)
+		"solid":
+			var rock_skins: Dictionary = config.get("rockSkins", {})
+			var art_folder := "Decorations" if asset_name == str(rock_skins.get("base", "")) else folder
+			build_visual(position, asset_name, art_folder, true)
 		_: build_visual(position, asset_name, folder, false)
 
 func build_enemy(position: Vector2, asset_name: String, id: String) -> void:
@@ -842,6 +934,7 @@ func _set_switch_gates(is_on: bool, switch_number: int) -> void:
 	for child in get_children():
 		if child is CastleGate and not child.is_queued_for_deletion() and int(gate_switches.get(child.persistent_id, 0)) == switch_number:
 			child.set_retracted(is_on)
+	refresh_event_interactions()
 
 func build_story_event(position: Vector2, story_floor: int) -> void:
 	var event := Area2D.new()
@@ -865,7 +958,7 @@ func spawn_player_at_entrance() -> void:
 		push_warning("Floor has no matching entrance door and no Object value 1 player spawn.")
 		return
 	player = PLAYER_SCENE.instantiate()
-	player.floor_height = cell_size.y
+	player.floor_height = jump_reference_height
 	player.position = door_player_position if has_door_player_position else fallback_player_position
 	add_child(player)
 
@@ -908,14 +1001,20 @@ func build_visual(position: Vector2, asset_name: String, folder: String, solid: 
 	var has_rune := folder == "Decorations" and runes.has(asset_name)
 	var base_asset := str(rock_skins.get("base", asset_name)) if has_rune else asset_name
 	var sprite := add_sprite(node, folder, base_asset)
+	if folder == "Decorations" and asset_name == daylight_facade:
+		preview_daylight_on(sprite)
 	var visual_size := sprite.texture.get_size() * sprite.scale.abs()
 	node.position = Vector2(position.x, position.y - visual_size.y * 0.5)
 	if solid:
-		add_collision_at(node, visual_size, Vector2.ZERO)
+		var solid_bounds := sprite_visible_rect(sprite)
+		node.position = position
+		sprite.position = Vector2(-solid_bounds.get_center().x, -solid_bounds.end.y)
+		add_collision_at(node, solid_bounds.size, sprite.position + solid_bounds.get_center())
 	else:
 		var bounds := sprite_visible_rect(sprite)
 		node.position = position
-		sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y)
+		var ground_offset := float(decoration_ground_offsets.get(asset_name, 0.0))
+		sprite.position = Vector2(-bounds.get_center().x, -bounds.end.y + ground_offset)
 	if has_rune:
 		var stone_bounds := sprite_visible_rect(sprite)
 		var rune := add_sprite(node, folder, asset_name)
@@ -954,18 +1053,27 @@ func refresh_event_interactions() -> void:
 			if is_instance_valid(interaction):
 				interaction.queue_free()
 			continue
-		var required_event := int(event_requirements.get(str(number), 0))
+		var requirement = event_requirements.get(str(number), 0)
+		var required_floor := GameState.current_floor
+		var required_event: int
+		if requirement is Dictionary:
+			required_floor = DataLoader.floor_number(GameState.current_stage, requirement.get("floor", required_floor))
+			required_event = int(requirement.get("event", 0))
+		else:
+			required_event = int(requirement)
 		var unlock_event := int(event_unlock_requirements.get(str(number), 0))
 		var location := DataLoader.location_for_stage(GameState.current_stage)
 		if int(event_progress_requirements.get(str(number), number)) > maxi(1, GameState.progress_for_location(location)):
 			continue
 		var required_lock: Dictionary = event_lock_requirements.get(str(number), {})
-		if not required_lock.is_empty() and not GameState.destroyed.has(GameState.object_id(
+		if not GameState.unlock_all_for_testing and not required_lock.is_empty() and not GameState.destroyed.has(GameState.object_id(
 			GameState.current_stage, int(required_lock.floor), str(required_lock.id)
 		)):
 			continue
 		if is_instance_valid(interaction) or not GameState.meets_story_requirements(
-			GameState.current_stage, GameState.current_floor, required_event, unlock_event
+			GameState.current_stage, required_floor, required_event, 0
+		) or not GameState.meets_story_requirements(
+			GameState.current_stage, GameState.current_floor, 0, unlock_event
 		):
 			continue
 		if is_instance_valid(lever):
@@ -1072,6 +1180,7 @@ func build_backdrop(position: Vector2, signed_value: int) -> void:
 		if scenery != null:
 			var view := Sprite2D.new()
 			view.name = "WindowMountains"
+			preview_daylight_on(view)
 			view.texture = scenery
 			var pane_size := frame.texture.get_size() * frame.scale * Vector2(0.90, 0.81)
 			var source := roof_texture_region(scenery, roof_exterior.get("windowRegion", [0, 0, 1, 1]))

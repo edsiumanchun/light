@@ -15,7 +15,7 @@
     "obstacles": ["Dark"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Dark", "Lamp", "Wall", "Frontier/RoadblockNormal", "Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion", "Frontier/CrescentMoonInn"],
+    "decorations": ["Dark", "Lamp", "Wall", "Frontier/RoadblockNormal", "Frontier/RuneGreed", "Frontier/RuneAnger", "Frontier/RuneDelusion", "Frontier/CrescentMoonInn", "Frontier/CaveRocks"],
     "walls": ["Blue0", "Blue1", "Blue2"],
     "audios": ["elf","bgm"]
   }

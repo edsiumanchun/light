@@ -1,0 +1,30 @@
+{
+  "storyArray": [
+    {
+      "name": "player",
+      "dialogue": [
+        "霜月？是妳在下面嗎？"
+      ],
+      "leftPrefab": "playerkid",
+      "rightPrefab": "nurse"
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "姐姐，我下來拿繃帶。外頭起風，窗板撞掉了卡榫，以前鎖貨用的木閘就掉下來了。"
+      ]
+    },
+    {
+      "name": "nurse",
+      "dialogue": [
+        "我沒受傷。妳沿著鐵鏈看，落石後面那根拉桿能把閘門升起來。"
+      ]
+    },
+    {
+      "name": "player",
+      "dialogue": [
+        "我去拉。妳先離閘門遠一點。"
+      ]
+    }
+  ]
+}
