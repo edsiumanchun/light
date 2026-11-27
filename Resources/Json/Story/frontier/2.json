@@ -3,103 +3,60 @@
     {
       "name": "event",
       "dialogue": [
-        "黛苓回到客棧時，老先生也帶著藥箱趕到了。"
+        "黛苓回到客棧，見婆婆和霜月已在大堂坐下。"
       ]
     },
     {
       "name": "teacher",
-      "leftPrefab": "playerkid",
-      "rightPrefab": "teacher",
+      "leftPrefab": "teacher",
+      "rightPrefab": "grandmom",
       "dialogue": [
-        "靈藏，你可有受傷？"
+        "我在外頭找了一圈，沒見著其他人。"
       ]
     },
     {
       "name": "player",
       "dialogue": [
-        "我沒事。霜月跌傷了腳，走路有些疼。"
-      ]
-    },
-    {
-      "name": "grandpa",
-      "rightPrefab": "grandpa",
-      "dialogue": [
-        "孩子，先坐好，讓老朽看看。"
-      ]
-    },
-    {
-      "name": "event",
-      "dialogue": [
-        "老先生替霜月檢查腳傷，敷藥包紮。婆婆在旁握著她的手，漸漸放下心來。"
-      ]
-    },
-    {
-      "name": "grandpa",
-      "dialogue": [
-        "只是扭傷，沒有傷到骨頭。這幾日少走動，好好歇著。"
+        "老師，我在地下室找到她們。兩人都被閘門困住了。"
       ]
     },
     {
       "name": "nurse",
       "rightPrefab": "nurse",
       "dialogue": [
-        "謝謝您……已經沒那麼疼了。"
-      ]
-    },
-    {
-      "name": "grandmom",
-      "rightPrefab": "grandmom",
-      "dialogue": [
-        "多虧你們幫忙。我方才急得沒了主意……"
-      ]
-    },
-    {
-      "name": "nurse",
-      "rightPrefab": "nurse",
-      "dialogue": [
-        "老先生，往後我也能學著包紮嗎？"
-      ]
-    },
-    {
-      "name": "grandpa",
-      "rightPrefab": "grandpa",
-      "dialogue": [
-        "可以。等你的傷好了，老朽教你。"
-      ]
-    },
-    {
-      "name": "nurse",
-      "rightPrefab": "nurse",
-      "dialogue": [
-        "那我也能替受傷的人幫一點忙了。"
+        "你好，我叫霜月。這是我嬤嬤。"
       ]
     },
     {
       "name": "teacher",
-      "rightPrefab": "teacher",
+      "rightPrefab": "grandmom",
       "dialogue": [
-        "霜月已無大礙，您也能安心了。",
-        "我們便先告辭，讓她好好歇著。"
+        "婆婆，您可有受傷？"
       ]
     },
     {
       "name": "grandmom",
-      "rightPrefab": "grandmom",
       "dialogue": [
-        "今日辛苦你們了。改日再來坐坐。"
+        "我沒事。沙塵暴一來，我便帶霜月到地下室避風，誰知閘門卡住了。"
       ]
     },
     {
       "name": "nurse",
-      "rightPrefab": "nurse",
       "dialogue": [
-        "靈藏姐姐，謝謝你來救我。"
+        "我也沒事，多謝姐姐把我們救出來。"
+      ]
+    },
+    {
+      "name": "teacher",
+      "dialogue": [
+        "你們都平安，我就放心了。",
+        "靈藏，天色不早，你爹怕是等急了。"
       ]
     },
     {
       "name": "player",
       "dialogue": [
-        "你好好養傷，我再來看你。"
+        "婆婆、霜月，你們好好歇著...我們先告辭了。"
       ]
     },
     {

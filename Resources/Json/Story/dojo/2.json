@@ -123,12 +123,6 @@
       ]
     },
     {
-      "name": "grandpa",
-      "dialogue": [
-        "老朽先安頓好小雁，再帶藥箱過去。"
-      ]
-    },
-    {
       "name": "event",
       "dialogue": [
         "unlockinn",
