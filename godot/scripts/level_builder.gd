@@ -836,6 +836,7 @@ func build_door(position: Vector2, target_floor: int, ceiling_boundary_y: float)
 	door.collision_mask = 0
 	add_child(door)
 	var sprite := add_sprite(door, "Decorations", str(destination.get("decoration", door_decoration)))
+	sprite.flip_h = bool(destination.get("artFlipH", false))
 	var inset := door_inset + float(destination.get("artLift", 0.0))
 	var visible_rect := interaction_sprite_rect(sprite)
 	var ceiling_bottom := horizontal_plate_surface_y(ceiling_boundary_y) + platform_half_thickness * 2.0
@@ -873,6 +874,7 @@ func build_door(position: Vector2, target_floor: int, ceiling_boundary_y: float)
 	door.set("target_floor", destination_floor)
 	var opens_world_map := bool(destination.get("openMap", false))
 	door.set("opens_world_map", opens_world_map)
+	door.set("discovers_destination", bool(destination.get("discoverDestination", false)))
 	if destination_floor < 0 and not opens_world_map:
 		door.remove_from_group("interactable")
 	door.set("required_event", int(destination.get("requiresEvent", 0)))

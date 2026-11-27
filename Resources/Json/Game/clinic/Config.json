@@ -1,6 +1,7 @@
 {
+  "rockSkins": { "base": "Frontier/RoadblockNormal" },
   "paths": {
-    "backgrounds": ["ScaleNight", "ScaleNight2", "Clinic/ApothecaryWall"],
+    "backgrounds": ["ScaleNight", "ScaleNight2", "Clinic/ApothecaryWall", "Clinic/StorageDungeon"],
     "plateH": ["Wood", "GoUp", "GoDown","Space"],
     "plateV": ["Wood","GateCopper","GateSilver","GateGold", "GateExit","Space","GateGray","GateFake"],
     "characters": ["Player","StoryShop","StoryMaria","StoryGhostKid","Rosia", "StoryGhostMum"],
@@ -8,10 +9,10 @@
     "enemies": ["EnemyMummy", "EnemyBat", "Enemy1"],
     "gems": ["Ethics", "Concentration", "Wisdom", "Greed", "Hatred", "Delusion", "Greed2", "Hatred2", "Delusion2"],
     "items": ["KeyCopper","KeySilver","KeyGold", "Light", "Dark", "Heart","Trigger"],
-    "obstacles": ["Dark"],
+    "obstacles": ["Dark", "Frontier/RoadblockNormal"],
     "triggers": ["TriggerLight", "TriggerDark", "PotionGreen","PotionBlue", "PotionRed"],
     "bullets": ["GreedBall", "HatredBall", "DelusionBall"],
-    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed", "Clinic/MedicineCabinet", "Clinic/HerbRack", "Clinic/ConsultationDesk", "Clinic/MedicinePot", "Clinic/TreatmentBed"],
+    "decorations": ["Lamp", "Plant1", "Plant2", "Plant3", "Bed", "Clinic/MedicineCabinet", "Clinic/HerbRack", "Clinic/ConsultationDesk", "Clinic/MedicinePot", "Clinic/TreatmentBed", "Clinic/HerbSupplies", "LampStory25D"],
     "walls": ["Brick0", "Brick1", "Brick2"],
     "audios": ["elf","bgm"]
   }

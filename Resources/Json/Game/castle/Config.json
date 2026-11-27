@@ -1,0 +1,26 @@
+{
+  "rockSkins": {
+    "base": "Frontier/RoadblockNormal"
+  },
+  "paths": {
+    "backgrounds": [
+      "Loulan/RammedEarthRuins"
+    ],
+    "plateH": [
+      "City"
+    ],
+    "plateV": [
+      "City"
+    ],
+    "items": [
+      "KeyCopper"
+    ],
+    "obstacles": [
+      "Frontier/RoadblockNormal"
+    ],
+    "decorations": [
+      "Loulan/AdobeRubble",
+      "Frontier/CaveRocks"
+    ]
+  }
+}

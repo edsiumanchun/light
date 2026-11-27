@@ -5,9 +5,14 @@
     { "name": "月牙泉村", "shortName": "泉村", "coordinates": [94.6694, 40.0874], "labelOffset": [7, 98] },
     { "name": "月牙客棧", "shortName": "客棧", "coordinates": [94.6639, 40.1411], "labelOffset": [-42, -13], "approximate": true, "location": "inn", "floor": 1 },
     { "name": "敦煌邊境・地穴", "shortName": "地穴", "coordinates": [94.71, 40.156], "labelOffset": [97, 107], "approximate": true, "location": "frontier", "floor": 2, "arrivalFrom": 3, "discovery": "discover_frontier_entrance" },
-    { "name": "玉門藥谷", "shortName": "藥谷", "coordinates": [94.35, 40.22], "labelOffset": [-15, 42], "approximate": true, "location": "clinic", "floor": 11 }
+    { "name": "玉門藥谷", "shortName": "藥谷", "coordinates": [94.35, 40.22], "labelOffset": [-15, 42], "approximate": true, "location": "clinic", "floor": 11 },
+    { "name": "下游河岸", "shortName": "下游", "coordinates": [94.8, 40.077], "labelOffset": [92, 43], "approximate": true, "location": "downstream", "floor": 1 }
   ],
-  "west": "樓蘭古城",
+  "west": { "name": "樓蘭古城", "shortName": "往樓蘭", "location": "castle", "floor": 1 },
   "grottoAnchor": { "name": "莫高窟", "coordinates": [94.81667, 40.13333], "labelOffset": [52, -47] },
-  "grottoSites": ["敦煌石窟崖下", "敦煌石窟", "敦煌藏書閣", "天山"]
+  "grottoSites": [
+    { "name": "莫高洞窟", "shortName": "洞窟", "location": "grotto", "floor": 1 },
+    { "name": "莫高藏書閣", "shortName": "藏書閣", "location": "library", "floor": 1 },
+    { "name": "天山", "shortName": "天山", "location": "mount", "floor": 1 }
+  ]
 }

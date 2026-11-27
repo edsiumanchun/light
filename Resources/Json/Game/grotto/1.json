@@ -1,0 +1,93 @@
+{
+  "layout": {
+    "columns": 10,
+    "rows": 5,
+    "cellWidth": 131,
+    "cellHeight": 136,
+    "backgroundMode": "image",
+    "cameraZoom": 1.0,
+    "hidePlates": true,
+    "doorDestinations": {
+      "10": {
+        "floor": 1,
+        "location": "castle",
+        "decoration": "Frontier/RouteSign"
+      },
+      "11": {
+        "floor": 1,
+        "location": "library",
+        "decoration": "Liuhe/LatticeDoor",
+        "discoverDestination": true
+      }
+    },
+    "assetScales": {
+      "Decorations/Grotto/VotivePedestal": 0.12,
+      "Decorations/Liuhe/LatticeDoor": 0.108,
+      "Decorations/LampStory25D": 0.34
+    },
+    "jumpReferenceHeight": 170,
+    "backgroundCropTop": 0.16
+  },
+  "camera": {
+    "visibleRows": 5,
+    "followPlayerX": true,
+    "followPlayerY": false
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [0]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [10, 0, 0, 0, 0, 0, 0, 0, 0, 11],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}

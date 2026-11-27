@@ -1,0 +1,26 @@
+{
+  "rockSkins": {
+    "base": "Frontier/RoadblockNormal"
+  },
+  "paths": {
+    "backgrounds": [
+      "Downstream/Riverbank"
+    ],
+    "plateH": [
+      "City"
+    ],
+    "plateV": [
+      "City"
+    ],
+    "items": [
+      "KeyCopper"
+    ],
+    "obstacles": [
+      "Frontier/RoadblockNormal"
+    ],
+    "decorations": [
+      "Downstream/RiverSkiff",
+      "Frontier/CaveRocks"
+    ]
+  }
+}

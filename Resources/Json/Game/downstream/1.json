@@ -1,0 +1,80 @@
+{
+  "layout": {
+    "columns": 10,
+    "rows": 4,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "cameraZoom": 1.0,
+    "hidePlates": true,
+    "assetScales": {
+      "Decorations/Frontier/RouteSign": 0.45,
+      "Decorations/Downstream/RiverSkiff": 0.16,
+      "Decorations/Frontier/CaveRocks": 0.085
+    },
+    "doorDestinations": {
+      "10": {
+        "floor": -1,
+        "openMap": true,
+        "decoration": "Frontier/RouteSign"
+      }
+    }
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerX": true,
+    "followPlayerY": false
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [0]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [10, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "layout": {
+    "columns": 10,
+    "rows": 4,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "cameraZoom": 1.0,
+    "hidePlates": true,
+    "doorDestinations": {
+      "10": {
+        "floor": 1,
+        "location": "library",
+        "decoration": "Frontier/RouteSign"
+      },
+      "11": {
+        "floor": -1,
+        "openMap": true,
+        "decoration": "Frontier/RouteSign",
+        "artFlipH": true
+      }
+    },
+    "assetScales": {
+      "Decorations/Mount/SnowCairn": 0.1,
+      "Decorations/Liuhe/LatticeDoor": 0.108,
+      "Decorations/LampStory25D": 0.34
+    }
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerX": true,
+    "followPlayerY": false
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [0]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [10, 0, 0, 0, 0, 0, 0, 0, 0, 11],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}

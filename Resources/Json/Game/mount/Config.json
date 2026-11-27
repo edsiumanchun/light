@@ -1,0 +1,16 @@
+{
+  "paths": {
+    "backgrounds": [
+      "Mount/SnowPass"
+    ],
+    "plateH": [
+      "City"
+    ],
+    "plateV": [
+      "City"
+    ],
+    "decorations": [
+      "Mount/SnowCairn"
+    ]
+  }
+}

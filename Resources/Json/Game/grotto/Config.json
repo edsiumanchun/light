@@ -1,0 +1,16 @@
+{
+  "paths": {
+    "backgrounds": [
+      "Grotto/MuralChamber"
+    ],
+    "plateH": [
+      "City"
+    ],
+    "plateV": [
+      "City"
+    ],
+    "decorations": [
+      "Grotto/VotivePedestal"
+    ]
+  }
+}

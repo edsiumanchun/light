@@ -4,13 +4,22 @@
       "name": "player",
       "leftPrefab": "playerkid",
       "dialogue": [
-        "霜月說的木櫃，應該就是這個。"
+        "婆婆，你們別急。",
+        "鎖打開了，閘門卻還卡著……"
+      ]
+    },
+    {
+      "name": "nurse",
+      "rightPrefab": "nurse",
+      "dialogue": [
+        "姐姐，我和嬤嬤都在這裡。",
+        "姐姐，門邊還有一道閂！"
       ]
     },
     {
       "name": "player",
       "dialogue": [
-        "繃帶和乾淨的布都在。多帶一些上去，免得不夠用。"
+        "看見了。你們往後退，我試著把它移開。"
       ]
     }
   ]

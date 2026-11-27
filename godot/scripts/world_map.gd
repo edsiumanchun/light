@@ -10,6 +10,8 @@ const TERRAIN_PATH := "res://Resources/Sprites/UI/DunhuangRelief.png"
 
 var board: Control
 var locations: Array = []
+var west_destination: Dictionary = {}
+var grotto_destinations: Array = []
 var travel_buttons: Dictionary = {}
 var selected_location: Label
 
@@ -19,6 +21,8 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var config := DataLoader.load_json(DataLoader.JSON_ROOT + "/Game/WorldMap.json")
 	locations = config.get("locations", [])
+	west_destination = config.get("west", {})
+	grotto_destinations = config.get("grottoSites", [])
 	build_map(config)
 	resized.connect(fit_board)
 	fit_board()
@@ -53,17 +57,16 @@ func build_map(config: Dictionary) -> void:
 
 	add_caption("敦煌行旅圖", Rect2(34, 20, 410, 43), 34, INK)
 	add_caption("敦煌地形與故事路線", Rect2(35, 66, 450, 24), 17, MUTED)
-	add_panel(Rect2(40, 241, 140, 35), Color("#392b22"), GOLD)
-	add_caption("往 " + str(config.get("west", "")), Rect2(40, 241, 140, 35), 17, INK, HORIZONTAL_ALIGNMENT_CENTER)
+	add_travel_button(west_destination, Rect2(40, 241, 140, 35))
 	add_caption("↑ 北", Rect2(650, 119, 56, 27), 18, INK, HORIZONTAL_ALIGNMENT_CENTER)
 	add_panel(Rect2(39, 433, 349, 26), Color("#392b22"), Color("#98754c"))
 	add_caption("◇ 故事地點約略位置    地形：Mapzen / USGS", Rect2(46, 433, 337, 26), 13, INK)
 	add_caption("敦煌石窟一帶", Rect2(757, 145, 241, 30), 22, GOLD)
-	for index in range(config.get("grottoSites", []).size()):
-		var site: String = config.grottoSites[index]
-		add_caption("◇  " + site, Rect2(752, 195 + index * 51, 222, 32), 19, INK)
-		if index < config.grottoSites.size() - 1:
-			add_caption("↓", Rect2(756, 224 + index * 51, 20, 19), 15, GOLD)
+	for index in range(grotto_destinations.size()):
+		var site: Dictionary = grotto_destinations[index]
+		add_travel_button(site, Rect2(758, 195 + index * 61, 222, 35))
+		if index + 1 < grotto_destinations.size():
+			add_caption("↓", Rect2(858, 231 + index * 61, 22, 23), 15, GOLD, HORIZONTAL_ALIGNMENT_CENTER)
 
 	for entry in locations:
 		var bounds := landmark_label_bounds(entry)
@@ -225,7 +228,7 @@ func open_map() -> void:
 	show()
 
 func location_name_for(stage: int, floor: int) -> String:
-	for entry: Dictionary in locations:
+	for entry: Dictionary in locations + [west_destination] + grotto_destinations:
 		if str(entry.get("location", "")) == DataLoader.location_for_stage(stage):
 			return str(entry.get("currentLabel", entry.name))
 	return ""

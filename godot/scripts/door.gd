@@ -12,6 +12,7 @@ var key_name := ""
 var persistent_id := ""
 var required_gates: Array = []
 var opens_world_map := false
+var discovers_destination := false
 
 func setup(destination_floor: int) -> void:
 	target_floor = destination_floor
@@ -44,4 +45,8 @@ func interact(_player: CastlePlayer) -> void:
 		return
 	if not GameState.unlock_all_for_testing and not key_name.is_empty() and not GameState.open_key_lock(persistent_id, key_name):
 		return
+	if discovers_destination:
+		var location := DataLoader.location_for_stage(stage)
+		if int(GameState.location_progress.get(location, 0)) == 0:
+			GameState.advance_location(location, "discover_route_" + location)
 	GameState.travel_to(stage, target_floor)

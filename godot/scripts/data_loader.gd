@@ -2,7 +2,7 @@ class_name DataLoader
 extends RefCounted
 
 const JSON_ROOT := "res://Resources/Json"
-const LOCATIONS := ["home", "dojo", "frontier", "inn", "clinic"]
+const LOCATIONS := ["home", "dojo", "frontier", "inn", "clinic", "castle", "downstream", "grotto", "library", "mount"]
 const ENTRY_FLOOR := 1
 
 static func location_for_stage(stage: int) -> String:

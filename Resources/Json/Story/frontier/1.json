@@ -1,38 +1,17 @@
 {
   "storyArray": [
     {
-      "name": "teachernpc",
-      "rightPrefab": "scout",
+      "name": "event",
       "dialogue": [
-        "黛苓老師，玉門客棧有人受了重傷！",
-        "掌櫃婆婆開門接應客人，被風吹倒的馬車撞傷了。"
+        "風沙已歇，玉門客棧裡卻一個人也找不到。"
       ]
     },
     {
       "name": "teacher",
-      "leftPrefab": "teacher",
-      "rightPrefab": "grandpa",
-      "dialogue": [
-        "老先生，能否請您一同過去看看？"
-      ]
-    },
-    {
-      "name": "grandpa",
-      "dialogue": [
-        "救人要緊，快帶路。"
-      ]
-    },
-    {
-      "name": "player",
       "leftPrefab": "playerkid",
+      "rightPrefab": "teacher",
       "dialogue": [
-        "老師，我也去幫忙。"
-      ]
-    },
-    {
-      "name": "teacher",
-      "dialogue": [
-        "好，跟緊我們。"
+        "靈藏，你留在客棧裡等我，我到外邊找找看有沒有遇難者。"
       ]
     }
   ]

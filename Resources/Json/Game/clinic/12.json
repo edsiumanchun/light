@@ -1,0 +1,76 @@
+{
+  "layout": {
+    "columns": 9,
+    "rows": 4,
+    "cellWidth": 131,
+    "cellHeight": 170,
+    "backgroundMode": "image",
+    "backgroundCropTop": 0.11,
+    "cameraZoom": 1.0,
+    "hidePlates": true,
+    "assetScales": {
+      "Decorations/Clinic/HerbSupplies": 0.11,
+      "Decorations/LampStory25D": 0.36,
+      "Decorations/Frontier/RoadblockNormal": 0.15,
+      "Decorations/Liuhe/LatticeDoor": 0.108
+    },
+    "doorDecoration": "Liuhe/LatticeDoor"
+  },
+  "camera": {
+    "visibleRows": 4,
+    "followPlayerX": true,
+    "followPlayerY": false
+  },
+  "assets0": [
+    {
+      "name": "Background",
+      "gridArray0": [3]
+    },
+    {
+      "name": "PlateH",
+      "grid": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "PlateV",
+      "grid": [
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      ]
+    },
+    {
+      "name": "Object",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 32, 0, 0, 0, 21, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Decoration",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 12, 11, 0, 12, 0, 11, 0, 12],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    },
+    {
+      "name": "Door",
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [11, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}
